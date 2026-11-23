@@ -32,11 +32,8 @@
 - 代码结构：`scripts/terrain.gd` 地形、流场寻路、天光烘焙；`agent_state.gd` 状态树；`beats.gd` 错相节拍；`presence.gd` 阵营势力场；`unit.gd` 小兵本体（身体追步、受击速度、眩晕、击飞、死亡）；`swordsman.gd` 剑兵大脑；`squad.gd` 小队协调器（蛇形方阵、换槽、到位转身）；`sprite_factory.gd` 精灵帧；`main.gd` 场景、模拟驱动顺序、输入、镜头、特效、胜负
 - 行动逻辑按 `docs/badnorth-behavior-spec.md` 实现；数值改动先对照规格第 12 节
 
-## 法律边界（必须遵守）
-用户本地有 Bad North 的解包文件：`~/Downloads/BadNorth-Unpacked`（反编译源码在 `DecompiledSource/Assembly-CSharp`）。
-- 可以：阅读解包文件，学习其机制、算法、参数、美术实现和程序架构；把读到的内容整理成 `docs/` 下的规格文档（用自己的话写，参数可以记录）
-- 不可以：把其中的代码、精灵、模型、贴图、着色器、音频复制、逐行翻译或改写进本工程；工程文件不得引用解包目录
-- 做法：先读懂 → 写规格文档 → 按文档用自己的代码和自己做的素材实现
+## 参考资料
+用户本地有 Bad North 的解包文件：`~/Downloads/BadNorth-Unpacked`（反编译源码在 `DecompiledSource/Assembly-CSharp`，素材在 `ExtractedMedia`、`UnityProject/ExportedProject`）。整理过的结论见 `docs/badnorth-*.md`。
 
 ## 协作方式
 - 用中文回答，先给结论，少铺垫
