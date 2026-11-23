@@ -28,6 +28,7 @@ const PALETTE := [
 var terrain: Terrain
 var camera: Camera3D
 var units: Array = []
+var presence: Array = []
 var squads: Array = []
 var player_squads: Array = []
 var time := 0.0
@@ -211,7 +212,7 @@ func _setup_assets() -> void:
 	var ring_tex := ImageTexture.create_from_image(_circle_image(64, 0.34, 0.46, false))
 
 	shadow_mesh = PlaneMesh.new()
-	shadow_mesh.size = Vector2(0.44, 0.3)
+	shadow_mesh.size = Vector2(0.34, 0.23)
 	var smat := _flat_mat(soft_tex, Color(0.05, 0.04, 0.08, 0.6))
 	shadow_mesh.material = smat
 	ring_mesh = PlaneMesh.new()
@@ -342,16 +343,18 @@ func _spawn_armies() -> void:
 	terrain.bake_light()
 	_build_flag()
 
-	var s1 := _make_squad("亡魂一队", 0, 2, 6, pa, true, {"hp": 3.0, "power": 1.0})
-	var s2 := _make_squad("亡魂二队", 0, 3, 6, pb, true, {"hp": 3.0, "power": 1.1})
+	presence = [Presence.new(), Presence.new()]
+	presence[0].setup(terrain, 0)
+	presence[1].setup(terrain, 1)
+
+	# 数值参照规格第 12 节：普通剑兵一刀死，战斗靠招架、拼刀、威慑和体力拉开
 	var face_down := (pa + pb) * 0.5 - flag_pos
 	face_down.y = 0.0
-	_make_squad("王旗卫队", 1, 1, 5, flag_pos + face_down.normalized() * 0.6, false, {"hp": 4.0, "power": 1.25}, face_down)
-	var d2 := _make_squad("山腰民兵", 1, 0, 5, mid, false, {"hp": 3.0, "power": 1.0}, face_down)
-	d2.guard_radius = 3.0
+	var s1 := _make_squad("亡魂一队", 0, 2, 9, pa, true, {"hp": 1.0, "damage": 1.0, "knockback": 1.0, "stun": 1.0}, -face_down)
+	var s2 := _make_squad("亡魂二队", 0, 3, 9, pb, true, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1}, -face_down)
+	_make_squad("王旗卫队", 1, 1, 8, flag_pos + face_down.normalized() * 0.4, false, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1}, face_down)
+	_make_squad("山腰民兵", 1, 0, 8, mid, false, {"hp": 0.6, "damage": 1.0, "knockback": 1.0, "stun": 1.0}, face_down)
 	player_squads = [s1, s2]
-	for u in s1.units + s2.units:
-		u.facing = -face_down.normalized()
 
 
 func _best_beach(list: Array[Vector2i], pred: Callable) -> Vector2i:
@@ -376,11 +379,13 @@ func _make_squad(title: String, faction: int, palette_row: int, count: int, pos:
 	sq.title = title
 	add_child(sq)
 	for i in count:
-		var off := Vector3((i % 3 - 1) * 0.4, 0, (i / 3) * 0.4) + Vector3(randf_range(-0.1, 0.1), 0, randf_range(-0.1, 0.1))
+		var off := Vector3((i % 3 - 1) * 0.26, 0, (i / 3) * 0.26) + Vector3(randf_range(-0.05, 0.05), 0, randf_range(-0.05, 0.05))
 		var p := terrain.nearest_walkable(pos + off)
 		var u := Unit.new()
 		add_child(u)
 		u.setup(self, sq, faction, palette_row, p, stats)
+		if face != Vector3.ZERO:
+			u.facing = Vector3(face.x, 0, face.z).normalized()
 		sq.units.append(u)
 		units.append(u)
 	sq.order_move(pos, face)
@@ -511,6 +516,7 @@ func _process(delta: float) -> void:
 	if rdt > 0.1 and time > 0.5:
 		print("HITCH %.2fs at t=%.2f stats=%s" % [rdt, time, stats])
 	time += delta
+	_simulate(delta)
 	_update_camera(rdt)
 	if flag_cloth:
 		flag_cloth.rotation.y = sin(time * 3.0) * 0.25
@@ -519,6 +525,44 @@ func _process(delta: float) -> void:
 	if not shots.is_empty() and (now - real_start) / 1000.0 >= shots[0]:
 		shots.pop_front()
 		_take_shot()
+
+
+## 每帧模拟顺序（规格 2.4）：势力场 → 清零威慑 → 互相通知靠近 → 逐个更新小兵 → 小队整队
+func _simulate(delta: float) -> void:
+	AgentState.now = time
+	AgentState.dt = delta
+	if delta <= 0.0:
+		return
+	for p in presence:
+		p.update(units)
+	for u in units:
+		u.soft_int = 0.0
+		u.hard_int = 0.0
+	for u in units:
+		if not u.alive_grounded.active:
+			continue
+		var e = u.enemy
+		if e == null or not is_instance_valid(e) or e.removed or not e.alive_grounded.active:
+			continue
+		e.brain.on_proximity(u)
+		if e.enemy != u:
+			u.brain.on_proximity(e)
+	for u in units.duplicate():
+		u.tick(delta)
+	for sq in squads:
+		sq.tick()
+	if args.has("trace") and floorf(time) != floorf(time - delta):
+		var parts := []
+		for sq in squads:
+			var list: Array = sq.alive_units()
+			if not list.is_empty():
+				var u = list[0]
+				parts.append("%s:%s st=%.2f e=%.1f o=%.1f" % [sq.title, u.state_path().trim_prefix("Root/"), u.brain.stamina, minf(u.enemy_dist, 99.0), u.order_dist])
+		print("T%.0f " % time, " | ".join(parts))
+
+
+func on_unit_removed(u) -> void:
+	units.erase(u)
 
 
 func _update_camera(rdt: float) -> void:
@@ -702,5 +746,5 @@ func _take_shot() -> void:
 	DirAccess.make_dir_recursive_absolute(out_dir)
 	get_viewport().get_texture().get_image().save_png(out_dir.path_join("shot_%d.png" % idx))
 	if last:
-		print("STATS ", stats, " time=", snappedf(time, 0.1), " capture=", snappedf(capture, 0.1), " banner=", banner.text)
+		print("STATS ", stats, " fps=", Engine.get_frames_per_second(), " time=", snappedf(time, 0.1), " capture=", snappedf(capture, 0.1), " banner=", banner.text)
 		get_tree().quit()

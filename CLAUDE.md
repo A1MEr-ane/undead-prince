@@ -26,10 +26,11 @@
 - 运行：`godot --path .`；操作：1/2 或点击小兵选队（时间放慢到 0.3），左键地面下令，右键取消，Q/E 旋转，滚轮缩放，R 重开
 - 截图验证（`--` 之后是游戏参数，截图存到 shots/，已在 .gitignore）：
   `godot --path . -- --auto --zoom=9 --focus=12,13 --out=$PWD/shots --shots=3,6,10`
-  其他参数：`--zoom=正交尺寸`（默认 15）、`--yaw=度`、`--sun=太阳仰角`（默认 55，从 +X 侧照来）、`--dump_atlas`（导出精灵图集预览）、`--click_test`（模拟点选和下令）、`--no_prewarm`
+  其他参数：`--zoom=正交尺寸`（默认 15）、`--yaw=度`、`--sun=太阳仰角`（默认 55，从 +X 侧照来）、`--dump_atlas`（导出精灵图集预览）、`--click_test`（模拟点选和下令）、`--trace`（每秒打印各队第一个兵的状态路径、体力、敌距、站位距离）、`--no_prewarm`
 - 退出时打印 `STATS`（命中、格挡、拼刀、滑退、击飞、落水次数），帧卡顿超过 0.1 秒打印 `HITCH`
 - 光照：不用实时光。`terrain.bake_light()` 烘焙三光瓣天光体积，`shaders/terrain.gdshader` 合成；海面是 `shaders/fog_sea.gdshader` 雾平面；镜头正交俯角 30°
-- 代码结构：`scripts/terrain.gd` 地形与流场寻路；`sprite_factory.gd` 部位编码帧；`shaders/unit.gdshader` 公告板与调色板；`unit.gd` 个体状态与战斗；`squad.gd` 小队协调器；`main.gd` 场景、输入、镜头、特效、胜负
+- 代码结构：`scripts/terrain.gd` 地形、流场寻路、天光烘焙；`agent_state.gd` 状态树；`beats.gd` 错相节拍；`presence.gd` 阵营势力场；`unit.gd` 小兵本体（身体追步、受击速度、眩晕、击飞、死亡）；`swordsman.gd` 剑兵大脑；`squad.gd` 小队协调器（蛇形方阵、换槽、到位转身）；`sprite_factory.gd` 精灵帧；`main.gd` 场景、模拟驱动顺序、输入、镜头、特效、胜负
+- 行动逻辑按 `docs/badnorth-behavior-spec.md` 实现；数值改动先对照规格第 12 节
 
 ## 法律边界（必须遵守）
 用户本地有 Bad North 的解包文件：`~/Downloads/BadNorth-Unpacked`（反编译源码在 `DecompiledSource/Assembly-CSharp`）。
