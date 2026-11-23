@@ -1,0 +1,693 @@
+extends Node3D
+## 战斗原型主场景：搭环境、生成岛屿和两军、处理输入、镜头、特效和胜负。
+## 命令行（-- 之后）：--auto 自动进攻；--shots=1,3,5 按真实秒数截图；--out=目录；
+## --zoom=距离；--yaw=度；--focus=x,z；--dump_atlas 导出精灵图集预览。
+
+const SLOW := 0.3
+const PALETTE := [
+	# 0 王国民兵
+	{1: Color(0.94, 0.76, 0.6), 2: Color(0.22, 0.38, 0.74), 3: Color(0.38, 0.29, 0.21), 4: Color(0.72, 0.74, 0.78),
+	 5: Color(0.9, 0.92, 0.96), 6: Color(0.46, 0.31, 0.19), 7: Color(0.88, 0.86, 0.78), 8: Color(0.22, 0.33, 0.64),
+	 9: Color(0.1, 0.08, 0.08), 10: Color(0.3, 0.2, 0.12), 15: Color(0.09, 0.08, 0.08)},
+	# 1 王国老兵
+	{1: Color(0.92, 0.74, 0.58), 2: Color(0.74, 0.17, 0.15), 3: Color(0.3, 0.24, 0.2), 4: Color(0.78, 0.8, 0.84),
+	 5: Color(0.92, 0.94, 0.98), 6: Color(0.4, 0.26, 0.15), 7: Color(0.8, 0.2, 0.16), 8: Color(0.88, 0.76, 0.4),
+	 9: Color(0.1, 0.08, 0.08), 10: Color(0.25, 0.16, 0.1), 15: Color(0.09, 0.07, 0.07)},
+	# 2 亡魂兵
+	{1: Color(0.72, 0.8, 0.74), 2: Color(0.27, 0.21, 0.34), 3: Color(0.18, 0.16, 0.21), 4: Color(0.44, 0.4, 0.35),
+	 5: Color(0.62, 0.88, 0.84), 6: Color(0.26, 0.21, 0.21), 7: Color(0.34, 0.31, 0.38), 8: Color(0.52, 0.47, 0.41),
+	 9: Color(0.5, 1.0, 0.92), 10: Color(0.2, 0.16, 0.18), 15: Color(0.06, 0.05, 0.09)},
+	# 3 亡魂精锐
+	{1: Color(0.78, 0.84, 0.78), 2: Color(0.12, 0.34, 0.36), 3: Color(0.15, 0.18, 0.2), 4: Color(0.5, 0.48, 0.44),
+	 5: Color(0.7, 0.95, 0.9), 6: Color(0.3, 0.25, 0.22), 7: Color(0.2, 0.42, 0.44), 8: Color(0.84, 0.82, 0.72),
+	 9: Color(0.75, 1.0, 0.6), 10: Color(0.18, 0.14, 0.14), 15: Color(0.05, 0.06, 0.08)},
+]
+
+var terrain: Terrain
+var camera: Camera3D
+var units: Array = []
+var squads: Array = []
+var player_squads: Array = []
+var time := 0.0
+var selected = null
+
+var anims: Dictionary
+var unit_material: ShaderMaterial
+var unit_quad: QuadMesh
+var shadow_mesh: PlaneMesh
+var ring_mesh: PlaneMesh
+var soft_tex: ImageTexture
+var blob_tex: ImageTexture
+var puff_mesh: QuadMesh
+var dust_mat: StandardMaterial3D
+var splash_mat: StandardMaterial3D
+var spark_mat: StandardMaterial3D
+var blood_puff_mat: StandardMaterial3D
+var blood_mat: StandardMaterial3D
+var decals: Array = []
+var marker: MeshInstance3D
+
+var cam_yaw := 0.0
+var cam_yaw_target := 0.0
+var cam_pitch := deg_to_rad(50.0)
+var cam_dist := 24.0
+var cam_focus := Vector3(12, 0.5, 12)
+var shake_amt := 0.0
+
+var label: Label
+var banner: Label
+var flag_pos := Vector3.ZERO
+var flag_cloth: MeshInstance3D
+var capture := 0.0
+var game_over := false
+
+var args := {}
+var shots: Array = []
+var shot_idx := 0
+var real_start := 0
+var last_ticks := 0
+
+
+func _ready() -> void:
+	_parse_args()
+	seed(int(args.get("seed", "7")))
+	_setup_env()
+	terrain = Terrain.new()
+	add_child(terrain)
+	terrain.generate(int(args.get("island", "3")))
+	_setup_assets()
+	_setup_camera()
+	_spawn_armies()
+	_setup_ui()
+	if not args.has("no_prewarm"):
+		_prewarm()
+	real_start = Time.get_ticks_msec()
+	last_ticks = real_start
+	if args.has("auto"):
+		get_tree().create_timer(0.8).timeout.connect(_auto_orders)
+	if args.has("click_test"):
+		get_tree().create_timer(1.0).timeout.connect(_click_test)
+
+
+## 用合成的鼠标事件走一遍"点选小兵 → 点地面下令"的输入路径。
+func _click_test() -> void:
+	var sq: Squad = player_squads[0]
+	var u = sq.alive_units()[0]
+	_send_click(camera.unproject_position(u.position + Vector3(0, 0.3, 0)))
+	await get_tree().process_frame
+	print("CLICK selected=", selected.title if selected else "none", " time_scale=", Engine.time_scale)
+	var dest := terrain.nearest_walkable(flag_pos.lerp(sq.center(), 0.5))
+	_send_click(camera.unproject_position(dest))
+	await get_tree().process_frame
+	print("CLICK order target=", sq.target_point.snappedf(0.1), " expected≈", dest.snappedf(0.1), " selected=", selected, " time_scale=", Engine.time_scale)
+
+
+func _send_click(p: Vector2) -> void:
+	var e := InputEventMouseButton.new()
+	e.button_index = MOUSE_BUTTON_LEFT
+	e.pressed = true
+	e.position = p
+	e.global_position = p
+	Input.parse_input_event(e)
+
+
+## 开场把每种特效材质各画一次，避免第一次命中时编译着色器卡顿。
+func _prewarm() -> void:
+	var p := camera.position + (cam_focus - camera.position).normalized() * 3.0
+	for mat in [dust_mat, splash_mat, spark_mat, blood_puff_mat]:
+		_puff(p, mat, 0.01, 0.1, Vector3.ZERO)
+	var m := MeshInstance3D.new()
+	var pm := PlaneMesh.new()
+	pm.size = Vector2(0.01, 0.01)
+	m.mesh = pm
+	m.material_override = blood_mat
+	add_child(m)
+	m.position = p
+	get_tree().create_timer(0.2).timeout.connect(m.queue_free)
+
+
+func _parse_args() -> void:
+	for a in OS.get_cmdline_user_args():
+		var kv := a.trim_prefix("--").split("=", true, 1)
+		args[kv[0]] = kv[1] if kv.size() > 1 else "1"
+	if args.has("shots"):
+		for s in String(args["shots"]).split(","):
+			shots.append(float(s))
+
+
+# ---------- 环境 ----------
+
+func _setup_env() -> void:
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color(0.6, 0.69, 0.76)
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.74, 0.8, 0.9)
+	env.ambient_light_energy = 0.6
+	env.ssao_enabled = true
+	env.ssao_radius = 0.6
+	env.ssao_intensity = 1.5
+	env.fog_enabled = true
+	env.fog_light_color = Color(0.6, 0.69, 0.76)
+	env.fog_density = 0.008
+	var we := WorldEnvironment.new()
+	we.environment = env
+	add_child(we)
+
+	var sun := DirectionalLight3D.new()
+	sun.rotation_degrees = Vector3(-52, -35, 0)
+	sun.light_energy = 1.15
+	sun.light_color = Color(1.0, 0.95, 0.86)
+	sun.shadow_enabled = true
+	sun.directional_shadow_max_distance = 45.0
+	add_child(sun)
+
+	var water := MeshInstance3D.new()
+	var wm := PlaneMesh.new()
+	wm.size = Vector2(160, 160)
+	water.mesh = wm
+	var wmat := StandardMaterial3D.new()
+	wmat.albedo_color = Color(0.24, 0.45, 0.58, 0.78)
+	wmat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	wmat.roughness = 0.15
+	wmat.metallic_specular = 0.6
+	water.material_override = wmat
+	water.position = Vector3(12, Terrain.WATER_Y, 12)
+	add_child(water)
+	var bed := MeshInstance3D.new()
+	var bm := PlaneMesh.new()
+	bm.size = Vector2(160, 160)
+	bed.mesh = bm
+	var bmat := StandardMaterial3D.new()
+	bmat.albedo_color = Color(0.2, 0.3, 0.34)
+	bed.material_override = bmat
+	bed.position = Vector3(12, Terrain.SEABED_Y, 12)
+	add_child(bed)
+
+
+func _setup_assets() -> void:
+	var res := SpriteFactory.build()
+	var img: Image = res["image"]
+	anims = res["anims"]
+	var pal := _make_palette()
+	if args.has("dump_atlas"):
+		_dump_atlas(img, pal)
+	unit_material = ShaderMaterial.new()
+	unit_material.shader = load("res://shaders/unit.gdshader")
+	unit_material.set_shader_parameter("atlas", ImageTexture.create_from_image(img))
+	unit_material.set_shader_parameter("palette", ImageTexture.create_from_image(pal))
+	unit_material.set_shader_parameter("atlas_grid", res["grid"])
+	unit_material.set_shader_parameter("quad_size", Unit.QUAD)
+	unit_quad = QuadMesh.new()
+	unit_quad.size = Vector2(Unit.QUAD, Unit.QUAD)
+	unit_quad.center_offset = Vector3(0, Unit.QUAD * 0.5, 0)
+
+	soft_tex = ImageTexture.create_from_image(_circle_image(32, 0.0, 0.5, false))
+	blob_tex = ImageTexture.create_from_image(_circle_image(32, 0.0, 0.45, true))
+	var ring_tex := ImageTexture.create_from_image(_circle_image(64, 0.34, 0.46, false))
+
+	shadow_mesh = PlaneMesh.new()
+	shadow_mesh.size = Vector2(0.4, 0.28)
+	var smat := _flat_mat(soft_tex, Color(0, 0, 0, 0.42))
+	shadow_mesh.material = smat
+	ring_mesh = PlaneMesh.new()
+	ring_mesh.size = Vector2(0.55, 0.55)
+	ring_mesh.material = _flat_mat(ring_tex, Color(0.55, 1.0, 0.9, 0.95))
+
+	puff_mesh = QuadMesh.new()
+	puff_mesh.size = Vector2(0.16, 0.16)
+	dust_mat = _puff_mat(Color(0.86, 0.8, 0.68, 0.85), false)
+	splash_mat = _puff_mat(Color(0.9, 0.96, 1.0, 0.9), false)
+	spark_mat = _puff_mat(Color(1.0, 0.86, 0.45, 1.0), true)
+	blood_puff_mat = _puff_mat(Color(0.55, 0.04, 0.04, 0.95), false)
+	blood_mat = StandardMaterial3D.new()
+	blood_mat.albedo_texture = blob_tex
+	blood_mat.albedo_color = Color(0.45, 0.03, 0.03)
+	blood_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
+	blood_mat.alpha_scissor_threshold = 0.5
+	blood_mat.roughness = 0.4
+
+	marker = MeshInstance3D.new()
+	var mm := PlaneMesh.new()
+	mm.size = Vector2(1.3, 1.3)
+	mm.material = _flat_mat(ring_tex, Color(0.55, 1.0, 0.9, 1.0))
+	marker.mesh = mm
+	marker.visible = false
+	add_child(marker)
+
+
+func _make_palette() -> Image:
+	var img := Image.create(16, PALETTE.size(), false, Image.FORMAT_RGBA8)
+	img.fill(Color(1, 0, 1))
+	for r in PALETTE.size():
+		var row: Dictionary = PALETTE[r]
+		for code in row:
+			img.set_pixel(code, r, row[code])
+	return img
+
+
+func _dump_atlas(img: Image, pal: Image) -> void:
+	var out_dir: String = args.get("out", "res://shots")
+	DirAccess.make_dir_recursive_absolute(out_dir)
+	for row in [0, 2]:
+		var prev := Image.create(img.get_width(), img.get_height(), false, Image.FORMAT_RGBA8)
+		prev.fill(Color(0.55, 0.62, 0.5))
+		for y in img.get_height():
+			for x in img.get_width():
+				var c := img.get_pixel(x, y)
+				if c.a > 0.5:
+					var code := int(round(c.r * 15.0))
+					var pc := pal.get_pixel(code, row)
+					prev.set_pixel(x, y, Color(pc.r * c.g, pc.g * c.g, pc.b * c.g))
+		prev.resize(img.get_width() * 4, img.get_height() * 4, Image.INTERPOLATE_NEAREST)
+		prev.save_png(out_dir.path_join("atlas_row%d.png" % row))
+
+
+func _circle_image(n: int, r_in: float, r_out: float, ragged: bool) -> Image:
+	var img := Image.create(n, n, false, Image.FORMAT_RGBA8)
+	for y in n:
+		for x in n:
+			var p := Vector2(x + 0.5, y + 0.5) / n - Vector2(0.5, 0.5)
+			var d := p.length()
+			var a := 0.0
+			if ragged:
+				var ang := atan2(p.y, p.x)
+				var edge := r_out * (0.8 + 0.2 * sin(ang * 5.0 + 1.3) * sin(ang * 3.0))
+				a = 1.0 if d < edge else 0.0
+			elif r_in > 0.0:
+				a = clampf(1.0 - abs(d - (r_in + r_out) * 0.5) / ((r_out - r_in) * 0.5), 0.0, 1.0)
+				a = 1.0 if a > 0.3 else 0.0
+			else:
+				a = clampf(1.0 - d / r_out, 0.0, 1.0)
+				a = a * a * (3.0 - 2.0 * a)
+			img.set_pixel(x, y, Color(1, 1, 1, a))
+	return img
+
+
+func _flat_mat(tex: Texture2D, col: Color) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.albedo_texture = tex
+	m.albedo_color = col
+	m.render_priority = 1
+	return m
+
+
+func _puff_mat(col: Color, additive: bool) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.albedo_texture = soft_tex
+	m.albedo_color = col
+	m.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+	if additive:
+		m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	return m
+
+
+func _setup_camera() -> void:
+	camera = Camera3D.new()
+	camera.fov = 30.0
+	camera.far = 200.0
+	add_child(camera)
+	cam_dist = float(args.get("zoom", "24"))
+	cam_yaw = deg_to_rad(float(args.get("yaw", "0")))
+	cam_yaw_target = cam_yaw
+	if args.has("focus"):
+		var f := String(args["focus"]).split(",")
+		cam_focus = Vector3(float(f[0]), 0.5, float(f[1]))
+	_update_camera(0.0)
+
+
+# ---------- 部队 ----------
+
+func _spawn_armies() -> void:
+	var peak := terrain.peak_tile()
+	flag_pos = terrain.tile_center(peak)
+	var beaches := terrain.beach_tiles()
+	var half := Terrain.SIZE / 2
+	var a := _best_beach(beaches, func(t: Vector2i): return t.x < half)
+	var b := _best_beach(beaches, func(t: Vector2i): return t.x >= half)
+	var pa := terrain.tile_center(a)
+	var pb := terrain.tile_center(b)
+	var mid := terrain.nearest_walkable(flag_pos.lerp((pa + pb) * 0.5, 0.5))
+
+	terrain.add_trees(7, [flag_pos, pa, pb, mid], 2.5)
+	_build_flag()
+
+	var s1 := _make_squad("亡魂一队", 0, 2, 6, pa, true, {"hp": 3.0, "power": 1.0})
+	var s2 := _make_squad("亡魂二队", 0, 3, 6, pb, true, {"hp": 3.0, "power": 1.1})
+	var face_down := (pa + pb) * 0.5 - flag_pos
+	face_down.y = 0.0
+	_make_squad("王旗卫队", 1, 1, 5, flag_pos + face_down.normalized() * 0.6, false, {"hp": 4.0, "power": 1.25}, face_down)
+	var d2 := _make_squad("山腰民兵", 1, 0, 5, mid, false, {"hp": 3.0, "power": 1.0}, face_down)
+	d2.guard_radius = 3.0
+	player_squads = [s1, s2]
+	for u in s1.units + s2.units:
+		u.facing = -face_down.normalized()
+
+
+func _best_beach(list: Array[Vector2i], pred: Callable) -> Vector2i:
+	var best := Vector2i(Terrain.SIZE / 2, Terrain.SIZE - 3)
+	var score := -1e9
+	for t in list:
+		if not pred.call(t):
+			continue
+		var s := t.y * 3.0 - absf(t.x - Terrain.SIZE * 0.5) * 0.8
+		if s > score:
+			score = s
+			best = t
+	return best
+
+
+func _make_squad(title: String, faction: int, palette_row: int, count: int, pos: Vector3, is_player: bool, stats: Dictionary, face: Vector3 = Vector3.ZERO) -> Squad:
+	var sq := Squad.new()
+	sq.main = self
+	sq.terrain = terrain
+	sq.faction = faction
+	sq.is_player = is_player
+	sq.title = title
+	add_child(sq)
+	for i in count:
+		var off := Vector3((i % 3 - 1) * 0.4, 0, (i / 3) * 0.4) + Vector3(randf_range(-0.1, 0.1), 0, randf_range(-0.1, 0.1))
+		var p := terrain.nearest_walkable(pos + off)
+		var u := Unit.new()
+		add_child(u)
+		u.setup(self, sq, faction, palette_row, p, stats)
+		sq.units.append(u)
+		units.append(u)
+	sq.order_move(pos, face)
+	squads.append(sq)
+	return sq
+
+
+func _build_flag() -> void:
+	var root := Node3D.new()
+	root.position = flag_pos
+	add_child(root)
+	var stone := StandardMaterial3D.new()
+	stone.albedo_color = Color(0.62, 0.6, 0.56)
+	var base := MeshInstance3D.new()
+	var bm := BoxMesh.new()
+	bm.size = Vector3(0.55, 0.12, 0.55)
+	base.mesh = bm
+	base.material_override = stone
+	base.position.y = 0.06
+	root.add_child(base)
+	var pole := MeshInstance3D.new()
+	var pm := CylinderMesh.new()
+	pm.top_radius = 0.02
+	pm.bottom_radius = 0.025
+	pm.height = 1.3
+	pole.mesh = pm
+	var wood := StandardMaterial3D.new()
+	wood.albedo_color = Color(0.4, 0.28, 0.18)
+	pole.material_override = wood
+	pole.position.y = 0.75
+	root.add_child(pole)
+	flag_cloth = MeshInstance3D.new()
+	var cm := BoxMesh.new()
+	cm.size = Vector3(0.5, 0.32, 0.02)
+	flag_cloth.mesh = cm
+	var cloth := StandardMaterial3D.new()
+	cloth.albedo_color = Color(0.22, 0.38, 0.74)
+	flag_cloth.material_override = cloth
+	flag_cloth.position = Vector3(0.26, 1.22, 0)
+	root.add_child(flag_cloth)
+
+
+func _auto_orders() -> void:
+	for i in player_squads.size():
+		var sq: Squad = player_squads[i]
+		var side := Vector3(-0.6 if i == 0 else 0.6, 0, 0.3)
+		sq.order_move(terrain.nearest_walkable(flag_pos + side))
+
+
+# ---------- 输入 ----------
+
+func _unhandled_input(e: InputEvent) -> void:
+	if e is InputEventMouseButton and e.pressed:
+		match e.button_index:
+			MOUSE_BUTTON_LEFT:
+				_click(e.position)
+			MOUSE_BUTTON_RIGHT:
+				_select(null)
+			MOUSE_BUTTON_WHEEL_UP:
+				cam_dist = max(8.0, cam_dist - 1.0)
+			MOUSE_BUTTON_WHEEL_DOWN:
+				cam_dist = min(34.0, cam_dist + 1.0)
+	elif e is InputEventKey and e.pressed and not e.echo:
+		match e.keycode:
+			KEY_1:
+				_select(player_squads[0])
+			KEY_2:
+				_select(player_squads[1])
+			KEY_Q:
+				cam_yaw_target += PI / 4.0
+			KEY_E:
+				cam_yaw_target -= PI / 4.0
+			KEY_R:
+				Engine.time_scale = 1.0
+				get_tree().reload_current_scene()
+			KEY_ESCAPE:
+				_select(null)
+
+
+func _click(screen: Vector2) -> void:
+	# 先按屏幕距离点选己方小兵
+	var best = null
+	var bd := 26.0
+	for sq in player_squads:
+		for u in sq.alive_units():
+			var p := camera.unproject_position(u.position + Vector3(0, 0.3, 0))
+			var d := p.distance_to(screen)
+			if d < bd:
+				bd = d
+				best = sq
+	if best != null and best != selected:
+		_select(best)
+		return
+	if selected == null:
+		return
+	var hit = terrain.raycast(camera.project_ray_origin(screen), camera.project_ray_normal(screen))
+	if hit == null or not terrain.is_walkable_at(hit):
+		return
+	selected.order_move(hit)
+	_show_marker(hit)
+	_select(null)
+
+
+func _select(sq) -> void:
+	if selected != null:
+		selected.set_selected(false)
+	selected = sq
+	if sq != null:
+		sq.set_selected(true)
+	Engine.time_scale = SLOW if sq != null else 1.0
+
+
+func _show_marker(p: Vector3) -> void:
+	marker.position = Vector3(p.x, terrain.height_at(p) + 0.02, p.z)
+	marker.visible = true
+	marker.scale = Vector3.ONE * 1.4
+	marker.transparency = 0.0
+	var tw := create_tween()
+	tw.set_ignore_time_scale(true)
+	tw.set_parallel(true)
+	tw.tween_property(marker, "scale", Vector3.ONE * 0.5, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tw.tween_property(marker, "transparency", 1.0, 0.8)
+
+
+# ---------- 每帧 ----------
+
+func _process(delta: float) -> void:
+	var now := Time.get_ticks_msec()
+	var rdt := (now - last_ticks) / 1000.0
+	last_ticks = now
+	if rdt > 0.1 and time > 0.5:
+		print("HITCH %.2fs at t=%.2f stats=%s" % [rdt, time, stats])
+	time += delta
+	_update_camera(rdt)
+	if flag_cloth:
+		flag_cloth.rotation.y = sin(time * 3.0) * 0.25
+	_check_goal(delta)
+	_update_ui()
+	if not shots.is_empty() and (now - real_start) / 1000.0 >= shots[0]:
+		shots.pop_front()
+		_take_shot()
+
+
+func _update_camera(rdt: float) -> void:
+	cam_yaw = lerp_angle(cam_yaw, cam_yaw_target, 1.0 - exp(-rdt * 8.0))
+	var off := Vector3(sin(cam_yaw) * cos(cam_pitch), sin(cam_pitch), cos(cam_yaw) * cos(cam_pitch)) * cam_dist
+	camera.position = cam_focus + off
+	camera.look_at(cam_focus, Vector3.UP)
+	camera.h_offset = randf_range(-1.0, 1.0) * shake_amt
+	camera.v_offset = randf_range(-1.0, 1.0) * shake_amt
+	shake_amt = move_toward(shake_amt, 0.0, rdt * 0.5)
+
+
+func cam_right() -> Vector3:
+	return camera.global_transform.basis.x
+
+
+var stats := {}
+
+
+func note(key: String) -> void:
+	stats[key] = stats.get(key, 0) + 1
+
+
+func shake(a: float) -> void:
+	shake_amt = max(shake_amt, a)
+
+
+func _check_goal(delta: float) -> void:
+	if game_over:
+		return
+	var near_p := false
+	var near_d := false
+	var any_p := false
+	for u in units:
+		if not u.alive:
+			continue
+		var d := Vector2(u.position.x - flag_pos.x, u.position.z - flag_pos.z).length()
+		if u.faction == 0:
+			any_p = true
+			if d < 1.3:
+				near_p = true
+		elif d < 2.5:
+			near_d = true
+	if near_p and not near_d:
+		capture += delta
+	else:
+		capture = max(0.0, capture - delta * 0.5)
+	if capture >= 3.0:
+		game_over = true
+		banner.text = "王旗已夺取"
+		(flag_cloth.material_override as StandardMaterial3D).albedo_color = Color(0.3, 0.2, 0.36)
+	elif not any_p:
+		game_over = true
+		banner.text = "亡魂散尽"
+
+
+# ---------- 特效 ----------
+
+func _puff(pos: Vector3, mat: Material, scale_to: float, life: float, drift: Vector3) -> void:
+	var m := MeshInstance3D.new()
+	m.mesh = puff_mesh
+	m.material_override = mat
+	m.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(m)
+	m.position = pos
+	m.transparency = 0.15
+	var tw := create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(m, "position", pos + drift, life).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tw.tween_property(m, "scale", Vector3.ONE * scale_to, life).set_ease(Tween.EASE_OUT)
+	tw.tween_property(m, "transparency", 1.0, life)
+	tw.chain().tween_callback(m.queue_free)
+
+
+func spawn_dust(pos: Vector3, n: int, strength: float) -> void:
+	for i in n:
+		var o := Vector3(randf_range(-0.08, 0.08), 0.04, randf_range(-0.08, 0.08))
+		var drift := Vector3(randf_range(-0.3, 0.3), randf_range(0.08, 0.22), randf_range(-0.3, 0.3)) * strength
+		_puff(pos + o, dust_mat, randf_range(1.5, 2.5) * (0.6 + strength * 0.5), randf_range(0.45, 0.7), drift)
+
+
+func spawn_splash(pos: Vector3) -> void:
+	var p := Vector3(pos.x, Terrain.WATER_Y + 0.02, pos.z)
+	for i in 8:
+		var drift := Vector3(randf_range(-0.35, 0.35), randf_range(0.25, 0.6), randf_range(-0.35, 0.35))
+		_puff(p, splash_mat, randf_range(1.2, 2.2), randf_range(0.4, 0.7), drift)
+
+
+func spawn_spark(pos: Vector3) -> void:
+	for i in 4:
+		var drift := Vector3(randf_range(-0.25, 0.25), randf_range(0.0, 0.25), randf_range(-0.25, 0.25))
+		_puff(pos, spark_mat, randf_range(0.4, 0.8), 0.18, drift)
+
+
+func spawn_blood(pos: Vector3, dir: Vector3) -> void:
+	for i in 3:
+		var drift := dir * randf_range(0.15, 0.4) + Vector3(randf_range(-0.1, 0.1), randf_range(0.05, 0.2), randf_range(-0.1, 0.1))
+		_puff(pos + Vector3(0, 0.3, 0), blood_puff_mat, randf_range(0.6, 1.0), 0.3, drift)
+	for i in 2:
+		var p := pos + dir * randf_range(0.1, 0.45) + Vector3(randf_range(-0.1, 0.1), 0, randf_range(-0.1, 0.1))
+		_decal(p, randf_range(0.06, 0.14), 0.0)
+
+
+func spawn_blood_pool(pos: Vector3) -> void:
+	_decal(pos, randf_range(0.28, 0.4), 2.5)
+
+
+func _decal(p: Vector3, size: float, grow: float) -> void:
+	if not terrain.is_land_at(p):
+		return
+	var m := MeshInstance3D.new()
+	var pm := PlaneMesh.new()
+	pm.size = Vector2(size, size)
+	m.mesh = pm
+	m.material_override = blood_mat
+	m.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(m)
+	m.position = Vector3(p.x, terrain.height_at(p) + 0.006 + randf() * 0.004, p.z)
+	m.rotation.y = randf() * TAU
+	if grow > 0.0:
+		m.scale = Vector3.ONE * 0.2
+		create_tween().tween_property(m, "scale", Vector3.ONE, grow).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	decals.append(m)
+	if decals.size() > 400:
+		decals.pop_front().queue_free()
+
+
+# ---------- UI ----------
+
+func _setup_ui() -> void:
+	var layer := CanvasLayer.new()
+	add_child(layer)
+	label = Label.new()
+	label.position = Vector2(16, 12)
+	label.add_theme_font_size_override("font_size", 15)
+	label.add_theme_color_override("font_color", Color(1, 1, 1))
+	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.7))
+	label.add_theme_constant_override("outline_size", 4)
+	layer.add_child(label)
+	banner = Label.new()
+	banner.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	banner.position = Vector2(540, 80)
+	banner.size = Vector2(200, 40)
+	banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	banner.add_theme_font_size_override("font_size", 34)
+	banner.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+	banner.add_theme_constant_override("outline_size", 8)
+	layer.add_child(banner)
+
+
+func _update_ui() -> void:
+	var lines := []
+	for sq in squads:
+		lines.append("%s  %d/%d" % [sq.title, sq.alive_units().size(), sq.units.size()])
+	lines.append("")
+	if selected != null:
+		lines.append("已选：%s（时间放慢）— 左键地面下令，右键取消" % selected.title)
+	else:
+		lines.append("1 / 2 或点击小兵选队 · Q/E 旋转 · 滚轮缩放 · R 重开")
+	if capture > 0.0 and not game_over:
+		lines.append("夺旗 %d%%" % int(capture / 3.0 * 100.0))
+	label.text = "\n".join(lines)
+
+
+func _take_shot() -> void:
+	var idx := shot_idx
+	shot_idx += 1
+	var last := shots.is_empty()
+	await RenderingServer.frame_post_draw
+	var out_dir: String = args.get("out", "res://shots")
+	DirAccess.make_dir_recursive_absolute(out_dir)
+	get_viewport().get_texture().get_image().save_png(out_dir.path_join("shot_%d.png" % idx))
+	if last:
+		print("STATS ", stats, " time=", snappedf(time, 0.1), " capture=", snappedf(capture, 0.1), " banner=", banner.text)
+		get_tree().quit()
