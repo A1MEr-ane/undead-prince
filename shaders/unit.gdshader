@@ -1,10 +1,13 @@
-// 小兵精灵：只绕竖轴转的公告板 + 部位编码查调色板。
+// UV sprite: nearest RG/light data, filtered supersample coverage, local part texture.
 // 正交镜头俯角 30°，竖向乘 1/sin(60°) 抵消俯视压缩。
 shader_type spatial;
-render_mode unshaded, cull_disabled, shadows_disabled;
+render_mode unshaded, cull_disabled, shadows_disabled, alpha_to_coverage_and_one;
 
 uniform sampler2D atlas : filter_nearest, repeat_disable;
-uniform sampler2D palette : source_color, filter_nearest, repeat_disable;
+// Same atlas, separate sampler: interpolating encoded RG would cross materials.
+uniform sampler2D atlas_coverage : filter_linear, repeat_disable;
+uniform sampler2D parts : source_color, filter_linear, repeat_disable;
+uniform vec2 look_grid = vec2(2.0, 2.0);
 uniform vec2 atlas_grid = vec2(8.0, 5.0);
 uniform float quad_size = 0.8;
 uniform float up_scale = 1.1547;
@@ -41,24 +44,41 @@ void fragment() {
 	if (flip > 0.5) {
 		uv.x = 1.0 - uv.x;
 	}
-	uv = clamp(uv, vec2(0.002), vec2(0.998));
+	vec2 frame_size = vec2(textureSize(atlas, 0)) / atlas_grid;
+	uv = clamp(uv, 0.5 / frame_size, vec2(1.0) - 0.5 / frame_size);
 	float f = floor(frame + 0.5);
 	vec2 cell = vec2(mod(f, atlas_grid.x), floor(f / atlas_grid.x));
-	vec4 t = texture(atlas, (cell + uv) / atlas_grid);
-	if (t.a < 0.5) {
-		discard;
+	vec2 atlas_uv = (cell + uv) / atlas_grid;
+	vec4 t = texture(atlas, atlas_uv);
+	float coverage = texture(atlas_coverage, atlas_uv).a;
+	float look = clamp(floor(palette_row + 0.5), 0.0, look_grid.x * look_grid.y - 1.0);
+	vec2 look_cell = vec2(mod(look, look_grid.x), floor(look / look_grid.x));
+	vec4 material = texture(parts, (look_cell + t.rg) / look_grid);
+	float light = t.b <= 0.5 ? 0.6 + t.b * 0.8 : 0.7 + t.b * 0.6;
+	vec3 col = material.rgb * light;
+
+	// Alpha in the part sheet is a stable, smooth blood field, not opacity.
+	// Its coordinates follow each body part; no TIME or screen-space randomness.
+	ivec2 slot = ivec2(floor(t.rg * 4.0));
+	int part = slot.y * 4 + slot.x + 1;
+	bool stainable = part == 1 || part == 2 || part == 3 || part == 4 || part == 7;
+	float wound = sqrt(clamp(1.0 - health, 0.0, 1.0));
+	float blood = smoothstep(1.02 - wound * 0.82, 1.10 - wound * 0.82, material.a);
+	if (stainable) {
+		col = mix(col, col * vec3(0.37, 0.055, 0.075), blood * 0.92);
 	}
-	int code = int(t.r * 15.0 + 0.5);
-	vec3 col = texelFetch(palette, ivec2(code, int(palette_row + 0.5)), 0).rgb * t.g;
-	// 受伤：按帧内像素位置撒血点，血量越低越多。
-	vec2 px = floor(uv * 32.0);
-	float h = fract(sin(dot(px, vec2(12.9898, 78.233))) * 43758.5453);
-	bool cloth = code == 1 || code == 2 || code == 3 || code == 4 || code == 7;
-	if (cloth && h < (1.0 - health) * 0.22) {
-		col = vec3(0.42, 0.03, 0.03) * t.g;
+	// Spectral eyes retain their bright cyan-green color in the baked shadows.
+	if (part == 9 && look >= 2.0) {
+		col = material.rgb * 1.2;
 	}
 	float feet = clamp((UV.y - (1.0 - feet_height)) / feet_height, 0.0, 1.0);
 	col = mix(col, feet_color, feet * grass * 0.85);
-	col = mix(col, vec3(1.0, 0.96, 0.9), flash);
+	col = mix(col, vec3(1.0, 0.96, 0.9), clamp(flash, 0.0, 1.0));
 	ALBEDO = col;
+	// Alpha scissor keeps depth writes and avoids transparent-sprite sorting.
+	// Project uses 4x MSAA; alpha-to-coverage smooths the sampled silhouette.
+	ALPHA = coverage;
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	ALPHA_ANTIALIASING_EDGE = 0.3;
+	ALPHA_TEXTURE_COORDINATE = uv * frame_size;
 }

@@ -200,7 +200,9 @@ func _setup_assets() -> void:
 	unit_material = ShaderMaterial.new()
 	unit_material.shader = load("res://shaders/unit.gdshader")
 	unit_material.set_shader_parameter("atlas", ImageTexture.create_from_image(img))
-	unit_material.set_shader_parameter("palette", ImageTexture.create_from_image(pal))
+	unit_material.set_shader_parameter("atlas_coverage", unit_material.get_shader_parameter("atlas"))
+	unit_material.set_shader_parameter("parts", ImageTexture.create_from_image(pal))
+	unit_material.set_shader_parameter("look_grid", Vector2(SpriteFactory.LOOK_GRID))
 	unit_material.set_shader_parameter("atlas_grid", res["grid"])
 	unit_material.set_shader_parameter("quad_size", Unit.QUAD)
 	unit_quad = QuadMesh.new()
@@ -242,30 +244,91 @@ func _setup_assets() -> void:
 
 
 func _make_palette() -> Image:
-	var img := Image.create(16, PALETTE.size(), false, Image.FORMAT_RGBA8)
-	img.fill(Color(1, 0, 1))
-	for r in PALETTE.size():
-		var row: Dictionary = PALETTE[r]
-		for code in row:
-			img.set_pixel(code, r, row[code])
-	return img
+	# Keep the existing faction hues; each look now contains ten textured regions.
+	return SpriteFactory.make_parts(PALETTE)
 
 
 func _dump_atlas(img: Image, pal: Image) -> void:
 	var out_dir: String = args.get("out", "res://shots")
 	DirAccess.make_dir_recursive_absolute(out_dir)
-	for row in [0, 2]:
+	img.save_png(out_dir.path_join("atlas_uv.png"))
+	pal.save_png(out_dir.path_join("parts.png"))
+	var names := ["kingdom_militia", "kingdom_veteran", "revenant", "revenant_elite"]
+	var manifest := {"frame_size": [SpriteFactory.FW, SpriteFactory.FH],
+		"supersampling": SpriteFactory.SS, "attack_hit_time": SpriteFactory.ATTACK_HIT_TIME,
+		"looks": names, "animations": {}}
+	for anim_name in anims:
+		var span: Vector2i = anims[anim_name]
+		manifest.animations[anim_name] = {"start": span.x, "frames": span.y,
+			"duration": SpriteFactory.ANIM_DURATIONS[anim_name]}
+	var file := FileAccess.open(out_dir.path_join("atlas_manifest.json"), FileAccess.WRITE)
+	file.store_string(JSON.stringify(manifest, "\t"))
+	# Tiny original bitmap lettering keeps the PNG contact sheets self-describing.
+	var font := {
+		"A": [2,5,7,5,5], "B": [6,5,6,5,6], "C": [3,4,4,4,3],
+		"D": [6,5,5,5,6], "E": [7,4,6,4,7], "F": [7,4,6,4,4],
+		"G": [3,4,5,5,3], "H": [5,5,7,5,5], "I": [7,2,2,2,7],
+		"J": [1,1,1,5,2], "K": [5,5,6,5,5], "L": [4,4,4,4,7],
+		"M": [5,7,7,5,5], "N": [5,7,7,7,5], "O": [2,5,5,5,2],
+		"P": [6,5,6,4,4], "Q": [2,5,5,3,1], "R": [6,5,6,5,5],
+		"S": [3,4,2,1,6], "T": [7,2,2,2,2], "U": [5,5,5,5,7],
+		"V": [5,5,5,5,2], "W": [5,5,7,7,5], "X": [5,5,2,5,5],
+		"Y": [5,5,2,2,2], "Z": [7,1,2,4,7], "_": [0,0,0,0,7],
+	}
+	var write_text := func(target: Image, title: String, origin: Vector2i):
+		var cursor := origin
+		for ch in title.to_upper():
+			var glyph: Array = font.get(ch, [0,0,0,0,0])
+			for gy in 5:
+				for gx in 3:
+					if (int(glyph[gy]) & (1 << (2 - gx))) != 0:
+						target.fill_rect(Rect2i(cursor + Vector2i(gx, gy) * 2, Vector2i(2, 2)), Color(0.78, 0.82, 0.86))
+			cursor.x += 8
+	var bg := Color(0.24, 0.28, 0.29)
+	for look in PALETTE.size():
 		var prev := Image.create(img.get_width(), img.get_height(), false, Image.FORMAT_RGBA8)
-		prev.fill(Color(0.55, 0.62, 0.5))
+		prev.fill(bg)
+		var look_origin := Vector2i(look % SpriteFactory.LOOK_GRID.x, look / SpriteFactory.LOOK_GRID.x) * SpriteFactory.LOOK_PX
 		for y in img.get_height():
 			for x in img.get_width():
-				var c := img.get_pixel(x, y)
-				if c.a > 0.5:
-					var code := int(round(c.r * 15.0))
-					var pc := pal.get_pixel(code, row)
-					prev.set_pixel(x, y, Color(pc.r * c.g, pc.g * c.g, pc.b * c.g))
-		prev.resize(img.get_width() * 4, img.get_height() * 4, Image.INTERPOLATE_NEAREST)
-		prev.save_png(out_dir.path_join("atlas_row%d.png" % row))
+				var t := img.get_pixel(x, y)
+				if t.a == 0.0:
+					continue
+				# Match the GPU's linear sampling at the encoded UV (no RG blur).
+				var pos := Vector2(look_origin) + Vector2(t.r, t.g) * SpriteFactory.LOOK_PX - Vector2.ONE * 0.5
+				var p0 := Vector2i(pos.floor())
+				var f := pos - Vector2(p0)
+				var top := pal.get_pixelv(p0).srgb_to_linear().lerp(pal.get_pixelv(p0 + Vector2i(1, 0)).srgb_to_linear(), f.x)
+				var bot := pal.get_pixelv(p0 + Vector2i(0, 1)).srgb_to_linear().lerp(pal.get_pixelv(p0 + Vector2i(1, 1)).srgb_to_linear(), f.x)
+				var color := top.lerp(bot, f.y)
+				var light := SpriteFactory.light_decode(t.b)
+				var slot := Vector2i(Vector2(t.r, t.g) * SpriteFactory.PART_GRID)
+				if slot.y * SpriteFactory.PART_GRID + slot.x + 1 == SpriteFactory.EYE and look >= 2:
+					light = 1.2
+				color = Color(color.r * light, color.g * light, color.b * light, 1.0).linear_to_srgb()
+				prev.set_pixel(x, y, bg.lerp(color, t.a))
+		var enlarged := prev.duplicate()
+		enlarged.resize(img.get_width() * 3, img.get_height() * 3, Image.INTERPOLATE_BILINEAR)
+		enlarged.save_png(out_dir.path_join("atlas_row%d_%s.png" % [look, names[look]]))
+		# One named strip per animation, in original frame order, at 3x scale.
+		var row_height := SpriteFactory.FH * 3 + 24
+		var sheet := Image.create(SpriteFactory.COLS * SpriteFactory.FW * 3,
+			row_height * anims.size() + 24, false, Image.FORMAT_RGBA8)
+		sheet.fill(bg)
+		write_text.call(sheet, names[look], Vector2i(8, 7))
+		var row := 0
+		for anim_name in anims:
+			var span: Vector2i = anims[anim_name]
+			var y0 := row * row_height + 24
+			write_text.call(sheet, anim_name, Vector2i(8, y0 + 5))
+			for frame_idx in span.y:
+				var idx := span.x + frame_idx
+				var source := Rect2i(Vector2i(idx % SpriteFactory.COLS, idx / SpriteFactory.COLS) * SpriteFactory.FW * 3,
+					Vector2i(SpriteFactory.FW, SpriteFactory.FH) * 3)
+				sheet.blit_rect(enlarged, source, Vector2i(frame_idx * SpriteFactory.FW * 3, y0 + 24))
+			row += 1
+		sheet.save_png(out_dir.path_join("animations_row%d.png" % look))
+	print("UV_ATLAS: exported four looks, named animation strips, parts and manifest to ", out_dir)
 
 
 func _circle_image(n: int, r_in: float, r_out: float, ragged: bool) -> Image:
