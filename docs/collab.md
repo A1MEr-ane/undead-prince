@@ -78,4 +78,4 @@
 - 网页版 AI（例如 ChatGPT 网页生图）产出的文件需要用户手动放进 `concept/` 对应目录，并在 `TASKS.md` 记一笔。
 
 ## 8. GitHub 备份
-- 远程：https://github.com/A1MEr-ane/undead-prince（私有）。只在用户明确要求时推送，平时只做本地提交。
+- 远程：https://github.com/A1MEr-ane/undead-prince（私有）。每次提交后由 `.git/hooks/post-commit` 在后台静默推送（结果在 `.git/push.log`）；钩子不随仓库同步。
