@@ -1,6 +1,6 @@
 class_name Terrain
 extends Node3D
-## 方块地形：高度分层的格子岛。负责网格生成、高度查询、可走判定和流场寻路。
+## 格子玩法与视觉网格分离：查询保持分层平面，视觉使用共享轮廓的倒角岩岛。
 
 const SIZE := 24
 const LEVEL_H := 0.6
@@ -26,10 +26,22 @@ const LIT_SHADER := preload("res://shaders/terrain.gdshader")
 var lit_materials: Array[ShaderMaterial] = []
 var light_params := {}
 var sky_volume: ImageTexture3D
+var art_rng := RandomNumberGenerator.new()
+var art_noise := FastNoiseLite.new()
+var shore_field: ImageTexture
+var generation_ms := 0
+var decoration_ms := 0
+const SHORE_RES := SIZE * 4
+const CORNERS := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 1)]
+const EDGES := [Vector2i(0, -1), Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0)]
 
 
 func generate(seed_value: int) -> void:
+	var started := Time.get_ticks_msec()
 	rng.seed = seed_value
+	art_rng.seed = seed_value + 7493
+	art_noise.seed = seed_value + 1021
+	art_noise.frequency = 0.24
 	levels.resize(SIZE * SIZE)
 	blocked.resize(SIZE * SIZE)
 	blocked.fill(0)
@@ -51,7 +63,10 @@ func generate(seed_value: int) -> void:
 				h = 3
 			levels[z * SIZE + x] = h
 	_smooth()
+	_build_shore_field()
 	_build_mesh()
+	generation_ms = Time.get_ticks_msec() - started
+	print("TERRAIN geometry + shore %d ms" % generation_ms)
 
 
 ## 相邻格最多差一级，保证每块陆地都能一步一跳走上去。
@@ -287,37 +302,153 @@ func flow_dir(pos: Vector3, goal: Vector2i) -> Vector3:
 
 # ---------- 网格 ----------
 
-func _top_color(t: Vector2i, h: int) -> Color:
-	var jitter := (rng.randf() - 0.5) * 0.05
-	var sandy := false
-	if h == 1:
-		for d in N8:
-			if level(t + d) == 0:
-				sandy = true
-				break
-	var c: Color
-	if sandy:
-		c = Color(0.80, 0.74, 0.57)
-	elif h == 1:
-		c = Color(0.50, 0.60, 0.33)
-	elif h == 2:
-		c = Color(0.45, 0.56, 0.31)
-	else:
-		c = Color(0.40, 0.52, 0.29)
-	return Color(c.r + jitter, c.g + jitter, c.b + jitter * 0.5)
+# 海岸有符号距离场：四像素/格，两趟 chamfer，陆地为正。与玩法数据只读共享。
+func _build_shore_field() -> void:
+	var dist := PackedFloat32Array()
+	var land := PackedByteArray()
+	dist.resize(SHORE_RES * SHORE_RES)
+	land.resize(dist.size())
+	dist.fill(1000.0)
+	for z in SHORE_RES:
+		for x in SHORE_RES:
+			land[z * SHORE_RES + x] = int(level(Vector2i(x / 4, z / 4)) > 0)
+	for z in SHORE_RES:
+		for x in SHORE_RES:
+			var i := z * SHORE_RES + x
+			for d in N4:
+				var q := Vector2i(x, z) + d
+				if q.x >= 0 and q.y >= 0 and q.x < SHORE_RES and q.y < SHORE_RES:
+					if land[i] != land[q.y * SHORE_RES + q.x]:
+						dist[i] = 0.5
+	for forward in [true, false]:
+		for zi in SHORE_RES:
+			var z: int = zi if forward else SHORE_RES - 1 - zi
+			for xi in SHORE_RES:
+				var x: int = xi if forward else SHORE_RES - 1 - xi
+				var i := z * SHORE_RES + x
+				for d in [Vector2i(-1, 0), Vector2i(0, -1), Vector2i(-1, -1), Vector2i(1, -1)]:
+					var q: Vector2i = Vector2i(x, z) + (d if forward else -d)
+					if q.x >= 0 and q.y >= 0 and q.x < SHORE_RES and q.y < SHORE_RES:
+						dist[i] = minf(dist[i], dist[q.y * SHORE_RES + q.x] + (1.4142 if d.x != 0 and d.y != 0 else 1.0))
+	var image := Image.create(SHORE_RES, SHORE_RES, false, Image.FORMAT_RF)
+	for z in SHORE_RES:
+		for x in SHORE_RES:
+			var i := z * SHORE_RES + x
+			var signed_d := dist[i] * 0.25 * (1.0 if land[i] == 1 else -1.0)
+			image.set_pixel(x, z, Color(clampf(0.5 + signed_d / 16.0, 0.0, 1.0), 0, 0))
+	shore_field = ImageTexture.create_from_image(image)
+	set_light_param("shore_field", shore_field)
+	set_light_param("island_size", float(SIZE))
+	# main 已先创建雾海：自动绑定已有材质；其它场景也可显式调用 bind_sea_material。
+	if get_parent():
+		for child in get_parent().get_children():
+			if child is MeshInstance3D and child.material_override is ShaderMaterial:
+				var mat: ShaderMaterial = child.material_override
+				if mat.shader and mat.shader.resource_path == "res://shaders/fog_sea.gdshader":
+					bind_sea_material(mat)
 
 
-func _quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, n: Vector3, c_top: Color, c_bot: Color) -> void:
-	var verts := [a, b, c, d]
-	var cols := [c_top, c_top, c_bot, c_bot]
-	# Godot 以顺时针为正面：叉积与法线同向时说明是逆时针，要翻转。
-	if (b - a).cross(c - a).dot(n) > 0.0:
-		verts = [a, d, c, b]
-		cols = [c_top, c_bot, c_bot, c_top]
-	for idx in [0, 1, 2, 0, 2, 3]:
+func bind_sea_material(material: ShaderMaterial) -> void:
+	material.set_shader_parameter("shore_field", shore_field)
+	material.set_shader_parameter("island_size", float(SIZE))
+	material.set_shader_parameter("shore_enabled", true)
+
+
+func _top_color(p: Vector3, h: int) -> Color:
+	var patch := art_noise.get_noise_2d(p.x, p.z)
+	return Color(0.47, 0.57, 0.32).lerp(Color(0.57, 0.63, 0.38), patch * 0.5 + 0.5).darkened((h - 1) * 0.025)
+
+
+func _tri(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, ca: Color, cb: Color, cc: Color, outward: Vector3, wind: Vector3 = Vector3.ZERO) -> void:
+	var n := (c - a).cross(b - a)
+	if n.length_squared() < 0.00000001:
+		return
+	var flip := n.dot(outward) < 0.0
+	n = -n.normalized() if flip else n.normalized()
+	var vertices := [a, c, b] if flip else [a, b, c]
+	var colors := [ca, cc, cb] if flip else [ca, cb, cc]
+	var weights := [wind.x, wind.z, wind.y] if flip else [wind.x, wind.y, wind.z]
+	for i in 3:
 		st.set_normal(n)
-		st.set_color(cols[idx])
-		st.add_vertex(verts[idx])
+		st.set_color(colors[i])
+		st.set_uv(Vector2(weights[i], 0.0))
+		st.add_vertex(vertices[i])
+
+
+func _panel(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, top: Color, bottom: Color, outward: Vector3) -> void:
+	_tri(st, a, b, c, top, top, bottom, outward)
+	_tri(st, a, c, d, top, bottom, bottom, outward)
+
+
+func _mesh_node(st: SurfaceTool, material: ShaderMaterial, label: String) -> void:
+	var mi := MeshInstance3D.new()
+	mi.name = label
+	mi.mesh = st.commit()
+	mi.material_override = material
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	# 摆动最大约 0.05，扩展包围盒防止屏幕边缘被提前裁掉。
+	mi.extra_cull_margin = 0.08
+	add_child(mi)
+
+
+# 一个角由四格共同决定。凹角共用一个斜接点，凸角拆成两点；对角接触各自圆角。
+# 参数只看世界角点/高度，连续边上的不同模块会得到完全相同的位置。
+func _corner_pair(t: Vector2i, h: int, k: int, inset: float, cut: float, y: float) -> PackedVector3Array:
+	var g: Vector2i = t + CORNERS[k]
+	var count := 0
+	var sum := Vector2.ZERO
+	var contact := 0.0
+	for dz in [-1, 0]:
+		for dx in [-1, 0]:
+			var neighbor := level(g + Vector2i(dx, dz))
+			if neighbor >= h:
+				count += 1
+				sum += Vector2(dx * 2 + 1, dz * 2 + 1)
+			elif neighbor > 0:
+				contact = maxf(contact, 1.0 - smoothstep(0.025, 0.13, absf(y - level_y(neighbor))))
+	var origin := Vector3(g.x, y, g.y)
+	var jitter := art_noise.get_noise_2d(g.x * 2.7 + h * 3, g.y * 2.7) * 0.018
+	# 崖脚展开到下层顶面之内；角点的四格共同决定接触，避免腰线内收露出底缝。
+	var width := lerpf(inset + jitter, -0.03, contact)
+	var corner_cut := lerpf(cut, -0.03, contact)
+	if count == 1 or (count == 2 and sum == Vector2.ZERO):
+		var prev: Vector2i = CORNERS[(k + 3) % 4] - CORNERS[k]
+		var next: Vector2i = CORNERS[(k + 1) % 4] - CORNERS[k]
+		var pv := Vector3(prev.x, 0, prev.y)
+		var nv := Vector3(next.x, 0, next.y)
+		return PackedVector3Array([origin + pv * corner_cut + nv * width, origin + pv * width + nv * corner_cut])
+	var offset := sum * width / (2.0 if count == 2 else 1.0)
+	var p := origin + Vector3(offset.x, 0, offset.y)
+	return PackedVector3Array([p, p])
+
+
+# 每边分两段，腰线轻微内外错动，端点仍由共享角决定。
+func _outline(t: Vector2i, h: int, y: float, inset: float, cut: float) -> PackedVector3Array:
+	var points := PackedVector3Array()
+	for k in 4:
+		var pair := _corner_pair(t, h, k, inset, cut, y)
+		points.append(pair[0])
+		points.append(pair[1])
+		var mid: Vector2 = Vector2(t) + (Vector2(CORNERS[k]) + Vector2(CORNERS[(k + 1) % 4])) * 0.5
+		var shift := 0.0
+		var neighbor := level(t + EDGES[k])
+		if neighbor < h:
+			shift = inset + art_noise.get_noise_2d(mid.x * 3.7 + y * 2.0, mid.y * 3.7) * 0.045
+			if neighbor > 0:
+				var contact := 1.0 - smoothstep(0.025, 0.13, absf(y - level_y(neighbor)))
+				shift = lerpf(shift, -0.03, contact)
+		points.append(Vector3(mid.x - EDGES[k].x * shift, y, mid.y - EDGES[k].y * shift))
+	return points
+
+
+func _wall_ring(t: Vector2i, h: int, y: float) -> PackedVector3Array:
+	var depth := level_y(h) - y
+	var waist := sin(depth * 17.0 + h) * 0.028
+	# 草皮下的第一圈略外展，保证站到逻辑格边缘时脚下仍有窄斜面承托。
+	waist = lerpf(-0.025, waist, smoothstep(0.09, 0.27, depth))
+	# 水下内收；水上扩张不超过约 0.05 格。
+	var inset := waist + maxf(WATER_Y - y, 0.0) * 0.11
+	return _outline(t, h, y, inset, 0.12 + maxf(WATER_Y - y, 0.0) * 0.06)
 
 
 func _build_mesh() -> void:
@@ -330,42 +461,55 @@ func _build_mesh() -> void:
 			if h == 0:
 				continue
 			var y := level_y(h)
-			var col := _top_color(t, h)
-			_quad(st, Vector3(x, y, z), Vector3(x + 1, y, z), Vector3(x + 1, y, z + 1), Vector3(x, y, z + 1), Vector3.UP, col, col)
-			var lip := col.darkened(0.25)
-			for dir in N4:
-				var nh := level(t + dir)
-				if nh >= h:
-					continue
-				var y2 := level_y(nh) if nh > 0 else SEABED_Y
-				var a: Vector3
-				var b: Vector3
-				if dir == Vector2i(1, 0):
-					a = Vector3(x + 1, 0, z); b = Vector3(x + 1, 0, z + 1)
-				elif dir == Vector2i(-1, 0):
-					a = Vector3(x, 0, z + 1); b = Vector3(x, 0, z)
-				elif dir == Vector2i(0, 1):
-					a = Vector3(x + 1, 0, z + 1); b = Vector3(x, 0, z + 1)
-				else:
-					a = Vector3(x, 0, z); b = Vector3(x + 1, 0, z)
-				var n := Vector3(dir.x, 0, dir.y)
-				var ylip := y - 0.07
-				_quad(st, Vector3(a.x, y, a.z), Vector3(b.x, y, b.z), Vector3(b.x, ylip, b.z), Vector3(a.x, ylip, a.z), n, lip, lip)
-				# alpha = 0 标记岩壁，着色器按高度画岩层
-				var rock_top := Color(0.56, 0.53, 0.49, 0.0)
-				var rock_bot := Color(0.30, 0.30, 0.33, 0.0)
-				_quad(st, Vector3(a.x, ylip, a.z), Vector3(b.x, ylip, b.z), Vector3(b.x, y2, b.z), Vector3(a.x, y2, a.z), n, rock_top, rock_bot)
-	var mi := MeshInstance3D.new()
-	mi.mesh = st.commit()
-	mi.material_override = make_lit_material(Color.WHITE, true, true)
-	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(mi)
+			var ring := _outline(t, h, y, 0.065, 0.18)
+			var center := tile_center(t)
+			var col := _top_color(center, h)
+			for k in ring.size():
+				var a := ring[k]
+				var b := ring[(k + 1) % ring.size()]
+				_tri(st, center, a, b, col, _top_color(a, h), _top_color(b, h), Vector3.UP)
+			for k in 4:
+				var nh := level(t + EDGES[k])
+				var ph := level(t + EDGES[(k + 3) % 4])
+				# 凸角的切面归当前模块；平/凹角两点重合，无需额外面。
+				if nh < h and ph < h:
+					_build_wall(st, t, h, mini(nh, ph), k * 3, k * 3 + 1, ring)
+				if nh < h:
+					_build_wall(st, t, h, nh, k * 3 + 1, k * 3 + 2, ring)
+					_build_wall(st, t, h, nh, k * 3 + 2, ((k + 1) * 3) % 12, ring)
+	var mat := make_lit_material(Color.WHITE, true, true)
+	mat.set_shader_parameter("ground_surface", true)
+	_mesh_node(st, mat, "IslandRockAndTurf")
 
 
-## 在高处放几棵树；树所在的格子不可走。
+func _build_wall(st: SurfaceTool, t: Vector2i, h: int, nh: int, a: int, b: int, top: PackedVector3Array) -> void:
+	var y := level_y(h)
+	var bottom := level_y(nh) - 0.015 if nh > 0 else SEABED_Y
+	var outward := Vector3.UP.cross(top[b] - top[a]).normalized()
+	var rim := _wall_ring(t, h, y - 0.09)
+	_panel(st, top[a], top[b], rim[b], rim[a], _top_color(top[a], h), _top_color(top[a], h).darkened(0.11), outward + Vector3.UP)
+	var upper := rim
+	var upper_y := y - 0.09
+	var band := 0
+	while upper_y > bottom + 0.001:
+		var lower_y := maxf(bottom, y - 0.27 - band * 0.20)
+		var lower := _wall_ring(t, h, lower_y)
+		var shade := 0.9 + art_noise.get_noise_2d(t.x * 1.9 + band, t.y * 1.9) * 0.1
+		var ct := Color(shade, shade, shade, 0.0)
+		var cb := Color(shade * 0.94, shade * 0.94, shade * 0.94, 0.0)
+		_panel(st, upper[a], upper[b], lower[b], lower[a], ct, cb, outward)
+		upper = lower
+		upper_y = lower_y
+		band += 1
+
+
+## 树仍只占原来的 blocked 格；装饰使用独立随机流，不干扰树位/玩法随机数。
 func add_trees(count: int, avoid: Array[Vector3], avoid_r: float) -> void:
-	var trunk_mat := make_lit_material(Color(0.36, 0.25, 0.17), false, false)
-	var leaf_mat := make_lit_material(Color(0.24, 0.40, 0.24), false, false)
+	var started := Time.get_ticks_msec()
+	var wood := SurfaceTool.new()
+	var leaves := SurfaceTool.new()
+	wood.begin(Mesh.PRIMITIVE_TRIANGLES)
+	leaves.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var placed := 0
 	var tries := 0
 	while placed < count and tries < 400:
@@ -384,31 +528,136 @@ func add_trees(count: int, avoid: Array[Vector3], avoid_r: float) -> void:
 		blocked[_i(t)] = 1
 		tree_tiles.append(t)
 		placed += 1
-		var tree := Node3D.new()
-		tree.position = c + Vector3(rng.randf_range(-0.15, 0.15), 0, rng.randf_range(-0.15, 0.15))
-		var s := rng.randf_range(0.8, 1.2)
-		tree.scale = Vector3(s, s * rng.randf_range(0.9, 1.15), s)
-		add_child(tree)
-		var trunk := MeshInstance3D.new()
-		var tm := CylinderMesh.new()
-		tm.top_radius = 0.05; tm.bottom_radius = 0.07; tm.height = 0.35; tm.radial_segments = 6
-		trunk.mesh = tm
-		trunk.material_override = trunk_mat
-		trunk.position.y = 0.17
-		tree.add_child(trunk)
-		for k in 2:
-			var cone := MeshInstance3D.new()
-			var cm := CylinderMesh.new()
-			cm.top_radius = 0.0
-			cm.bottom_radius = 0.34 - k * 0.1
-			cm.height = 0.6 - k * 0.12
-			cm.radial_segments = 7
-			cone.mesh = cm
-			cone.material_override = leaf_mat
-			cone.position.y = 0.55 + k * 0.32
-			cone.rotation.y = rng.randf() * TAU
-			tree.add_child(cone)
+		var base := c + Vector3(art_rng.randf_range(-0.10, 0.10), 0, art_rng.randf_range(-0.10, 0.10))
+		_build_pine(wood, leaves, base)
+	if placed > 0:
+		_mesh_node(wood, make_lit_material(Color.WHITE, true, false), "TreeTrunks")
+		var leaf_mat := make_lit_material(Color.WHITE, true, false)
+		leaf_mat.set_shader_parameter("wind_enabled", true)
+		leaf_mat.set_shader_parameter("wind_strength", 0.045)
+		_mesh_node(leaves, leaf_mat, "PineCrowns")
+	_add_ground_details(avoid, avoid_r)
 	flow_cache.clear()
+	decoration_ms += Time.get_ticks_msec() - started
+	print("TERRAIN decorations %d ms, %d trees" % [decoration_ms, placed])
+
+
+# 多层偏心针叶冠：裙边 -> 肩部 -> 错位尖端，面色/高度/偏航各有小变化。
+func _build_pine(wood: SurfaceTool, leaves: SurfaceTool, base: Vector3) -> void:
+	var size := art_rng.randf_range(0.88, 1.20)
+	var lean := Vector3(art_rng.randf_range(-0.09, 0.09), 0, art_rng.randf_range(-0.09, 0.09))
+	_taper(wood, base, base + Vector3.UP * size * 0.83 + lean * 0.5, 0.065 * size, 0.033 * size, 6, Color(0.40, 0.30, 0.21), Color(0.34, 0.27, 0.20))
+	var green := Color(0.28, 0.43, 0.28).lerp(Color(0.40, 0.50, 0.30), art_rng.randf() * 0.65)
+	for k in 4:
+		var y := (0.32 + k * 0.26) * size
+		var radius := (0.40 - k * 0.078) * size
+		var height := (0.58 - k * 0.055) * size
+		var center := base + Vector3.UP * y + lean * (float(k) / 3.0)
+		var offset := Vector3(art_rng.randf_range(-0.035, 0.035), 0, art_rng.randf_range(-0.035, 0.035))
+		var shoulder := center + Vector3.UP * height * 0.25 + offset
+		var tip := center + Vector3.UP * height + lean * 0.4
+		var color := green.lightened(k * 0.025)
+		var phase := art_rng.randf() * TAU
+		_taper(leaves, center, shoulder, radius, radius * 0.72, 7, color.darkened(0.10), color, 0.18 + k * 0.16, 0.28 + k * 0.16, phase)
+		_taper(leaves, shoulder, tip, radius * 0.72, 0.0, 7, color, color.lightened(0.06), 0.28 + k * 0.16, 0.42 + k * 0.16, phase)
+
+
+func _taper(st: SurfaceTool, base: Vector3, tip: Vector3, r0: float, r1: float, sides: int, c0: Color, c1: Color, w0: float = 0.0, w1: float = 0.0, phase: float = 0.0) -> void:
+	for i in sides:
+		var a := phase + i * TAU / sides
+		var b := phase + (i + 1) * TAU / sides
+		var va := Vector3(cos(a), 0, sin(a))
+		var vb := Vector3(cos(b), 0, sin(b))
+		var pa := base + va * r0
+		var pb := base + vb * r0
+		var pc := tip + vb * r1
+		var pd := tip + va * r1
+		var tint := 0.96 + 0.04 * sin(i * 2.4 + phase)
+		_tri(st, pa, pb, pc, c0 * Color(tint, tint, tint), c0 * Color(tint, tint, tint), c1, va + vb, Vector3(w0, w0, w1))
+		_tri(st, pa, pc, pd, c0, c1, c1, va + vb, Vector3(w0, w1, w1))
+		_tri(st, base, pb, pa, c0.darkened(0.15), c0.darkened(0.15), c0.darkened(0.15), Vector3.DOWN, Vector3(w0, w0, w0))
+
+
+func _add_ground_details(avoid: Array[Vector3], avoid_r: float) -> void:
+	var grass := SurfaceTool.new()
+	var rocks := SurfaceTool.new()
+	grass.begin(Mesh.PRIMITIVE_TRIANGLES)
+	rocks.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var grass_count := 0
+	var rock_count := 0
+	for z in SIZE:
+		for x in SIZE:
+			var t := Vector2i(x, z)
+			var h := level(t)
+			if h == 0:
+				continue
+			var center := tile_center(t)
+			var traffic := false
+			for p in avoid:
+				if Vector2(p.x - center.x, p.z - center.z).length() < avoid_r * 0.65:
+					traffic = true
+			var cliff := false
+			for d in N4:
+				cliff = cliff or level(t + d) > h
+			if grass_at(center) > 0.5 and (blocked[_i(t)] == 1 or (not traffic and art_rng.randf() < 0.48)):
+				for clump in art_rng.randi_range(1, 3):
+					# 留出格子中心，矮草只在内部边缘，避免伸到倒角/低台阶外。
+					var angle := art_rng.randf() * TAU
+					var radius := art_rng.randf_range(0.20, 0.30)
+					var p := center + Vector3(cos(angle) * radius, 0.004, sin(angle) * radius)
+					_build_grass(grass, p)
+					grass_count += 1
+			if (h == 1 or cliff) and art_rng.randf() < (0.45 if cliff else 0.19):
+				var p := center + Vector3(art_rng.randf_range(-0.28, 0.28), -0.015, art_rng.randf_range(-0.28, 0.28))
+				if cliff:
+					for d in N4:
+						if level(t + d) > h:
+							p = center + Vector3(d.x, 0, d.y) * 0.40
+							break
+				var scale := Vector3(art_rng.randf_range(0.10, 0.22), art_rng.randf_range(0.06, 0.14), art_rng.randf_range(0.09, 0.18))
+				_build_boulder(rocks, p, scale)
+				rock_count += 1
+	if grass_count > 0:
+		var mat := make_lit_material(Color.WHITE, true, false)
+		mat.set_shader_parameter("wind_enabled", true)
+		mat.set_shader_parameter("wind_strength", 0.035)
+		_mesh_node(grass, mat, "GrassClumps")
+	if rock_count > 0:
+		_mesh_node(rocks, make_lit_material(Color.WHITE, true, false), "BeachAndCliffStones")
+	print("DETAIL %d grass clumps, %d stones (2 batches, no extra bake rays)" % [grass_count, rock_count])
+
+
+func _build_grass(st: SurfaceTool, base: Vector3) -> void:
+	var color := Color(0.45, 0.55, 0.30).lerp(Color(0.62, 0.65, 0.39), art_rng.randf() * 0.6)
+	for blade in art_rng.randi_range(4, 6):
+		var angle := art_rng.randf() * TAU
+		var right := Vector3(cos(angle), 0, sin(angle)) * art_rng.randf_range(0.018, 0.030)
+		var root := base + Vector3(art_rng.randf_range(-0.055, 0.055), 0, art_rng.randf_range(-0.055, 0.055))
+		var tip := root + Vector3(art_rng.randf_range(-0.05, 0.05), art_rng.randf_range(0.09, 0.19), art_rng.randf_range(-0.05, 0.05))
+		var n := (tip - root).cross(right).normalized()
+		_tri(st, root - right, root + right, tip, color.darkened(0.14), color.darkened(0.14), color.lightened(0.08), n, Vector3(0, 0, 1))
+		_tri(st, root + right, root - right, tip, color.darkened(0.14), color.darkened(0.14), color.lightened(0.08), -n, Vector3(0, 0, 1))
+
+
+func _build_boulder(st: SurfaceTool, base: Vector3, scale: Vector3) -> void:
+	var sides := 7
+	var phase := art_rng.randf() * TAU
+	var ring := PackedVector3Array()
+	for i in sides:
+		var a := phase + i * TAU / sides
+		var radial := art_rng.randf_range(0.80, 1.15)
+		ring.append(base + Vector3(cos(a) * scale.x * radial, scale.y * art_rng.randf_range(0.35, 0.65), sin(a) * scale.z * radial))
+	var top := base + Vector3(scale.x * 0.12, scale.y, -scale.z * 0.15)
+	var color := Color(0.58, 0.57, 0.52).lerp(Color(0.70, 0.66, 0.55), art_rng.randf())
+	for i in sides:
+		var a := ring[i]
+		var b := ring[(i + 1) % sides]
+		var va := a - base
+		var vb := b - base
+		var pa := Vector3(a.x, base.y, a.z)
+		var pb := Vector3(b.x, base.y, b.z)
+		_tri(st, top, a, b, color.lightened(0.04), color, color, Vector3.UP)
+		_panel(st, a, b, pb, pa, color, color.darkened(0.13), Vector3(va.x + vb.x, 0, va.z + vb.z))
 
 
 # ---------- 光照 ----------
@@ -499,7 +748,9 @@ func bake_light() -> void:
 	set_light_param("vol_size", Vector3(w_px, w_px, layers))
 	set_light_param("vol_base_y", BASE_Y)
 	set_light_param("vol_dy", VOL_DY)
-	print("BAKE %d ms, %d layers, %d traced points, %d dirs" % [Time.get_ticks_msec() - t0, layers, traced, dirs.size()])
+	var bake_ms := Time.get_ticks_msec() - t0
+	print("BAKE %d ms, %d layers, %d traced points, %d dirs" % [bake_ms, layers, traced, dirs.size()])
+	print("TERRAIN TOTAL generation + decoration + bake = %d ms (%d + %d + %d)" % [generation_ms + decoration_ms + bake_ms, generation_ms, decoration_ms, bake_ms])
 
 
 func _trace(p: Vector3, d: Vector3, tops: PackedFloat32Array, max_top: float) -> float:

@@ -25,17 +25,43 @@ uniform float grade_amount = 0.06;
 uniform vec3 albedo_color = vec3(1.0);
 uniform bool use_vertex_color = true;
 uniform bool cliff_bands = true;
+uniform bool ground_surface = false;
+uniform sampler2D shore_field : filter_linear, repeat_disable;
+uniform float island_size = 24.0;
+// UV.x 是程序网格写入的摆动权重；根部为零，只给草/树冠材质开启。
+uniform bool wind_enabled = false;
+uniform float wind_strength = 0.035;
+uniform vec2 wind_direction = vec2(0.94, 0.34);
 
 varying vec3 w_pos;
 varying vec3 w_nrm;
 
 void vertex() {
 	w_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	if (wind_enabled) {
+		float wave = sin(TIME * 1.8 - dot(w_pos.xz, vec2(0.72, 0.44)));
+		float flutter = sin(TIME * 3.7 + w_pos.x * 2.3 + w_pos.z * 1.9);
+		vec2 sway = wind_direction * (wave + flutter * 0.18) * wind_strength * UV.x;
+		// 装饰合批在世界坐标中生成；逆变换也支持外部带变换的实例。
+		VERTEX += (inverse(MODEL_MATRIX) * vec4(sway.x, 0.0, sway.y, 0.0)).xyz;
+		w_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	}
 	w_nrm = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 }
 
 float hash1(float n) {
 	return fract(sin(n * 12.9898) * 43758.5453);
+}
+
+float noise2(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	f = f * f * (3.0 - 2.0 * f);
+	float a = hash1(dot(i, vec2(17.0, 131.0)));
+	float b = hash1(dot(i + vec2(1.0, 0.0), vec2(17.0, 131.0)));
+	float c = hash1(dot(i + vec2(0.0, 1.0), vec2(17.0, 131.0)));
+	float d = hash1(dot(i + vec2(1.0), vec2(17.0, 131.0)));
+	return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
 }
 
 vec3 sky(vec3 p) {
@@ -45,10 +71,11 @@ vec3 sky(vec3 p) {
 
 // 岩层：按高度分条，每条随机深浅；用粗网格噪声把条带边缘错开
 float strata(vec3 p) {
-	float jitter = hash1(floor(p.x * 2.0) * 7.0 + floor(p.z * 2.0) * 13.0) - 0.5;
-	float b = floor((p.y + 3.0) * 6.0 + jitter * 0.9);
-	float dark = step(hash1(b), 0.32);
-	return mix(0.74, 0.46, dark) + (hash1(b + 31.0) - 0.5) * 0.07;
+	float layer = (p.y + 3.0) * 4.2 + (noise2(p.xz * 1.1) - 0.5) * 0.65;
+	float b = floor(layer);
+	float width = max(fwidth(layer), 0.035);
+	float value = mix(hash1(b - 1.0), hash1(b), smoothstep(0.0, width, fract(layer)));
+	return mix(0.52, 0.72, value) + (noise2(p.xz * 3.0) - 0.5) * 0.035;
 }
 
 void fragment() {
@@ -56,7 +83,15 @@ void fragment() {
 	vec3 base = use_vertex_color ? COLOR.rgb : albedo_color;
 	bool rock = cliff_bands && COLOR.a < 0.5;
 	if (rock) {
-		base = vec3(strata(w_pos)) * vec3(1.0, 0.97, 0.93);
+		base = vec3(strata(w_pos)) * vec3(1.0, 0.97, 0.93) * COLOR.r;
+	} else if (ground_surface) {
+		float coast = (texture(shore_field, w_pos.xz / island_size).r - 0.5) * 16.0;
+		float patch = noise2(w_pos.xz * 0.32);
+		float grass = smoothstep(0.38, 1.85, coast + (patch - 0.5) * 0.7);
+		// 二级以上台地即使贴近岸边也保持草皮，一级岸台逐渐露沙。
+		grass = max(grass, smoothstep(0.46, 0.72, w_pos.y));
+		vec3 sand = mix(vec3(0.72, 0.67, 0.52), vec3(0.84, 0.78, 0.60), patch);
+		base = mix(sand, base * mix(0.93, 1.06, patch), grass);
 	}
 
 	// 三光瓣：R = +X 侧，G = 上方，B = −X 侧
@@ -73,8 +108,9 @@ void fragment() {
 
 	// 水线：岩壁贴近水面的一圈压暗
 	float above = w_pos.y - water_y;
-	if (rock && above > -0.05 && above < 0.07) {
-		col *= 0.86;
+	if (rock) {
+		float wet = 1.0 - smoothstep(0.025, 0.115, abs(above + 0.015));
+		col *= 1.0 - wet * 0.18;
 	}
 
 	// 去饱和 + 往时段颜色偏
