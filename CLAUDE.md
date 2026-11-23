@@ -1,7 +1,7 @@
 # 项目：亡魂王子复仇（暂名）
 
 单机、即时战术、肉鸽构筑。局内战斗和建模以 Bad North 为模板，玩家站在进攻方。
-详细背景见 `docs/design.md`（设计决策与待定项）和 `docs/badnorth-reference.md`（Bad North 技术拆解）。
+详细背景见 `docs/design.md`（设计决策与待定项）、`docs/badnorth-reference.md`（Bad North 技术拆解）和 `docs/badnorth-behavior-spec.md`（读源码整理的行动逻辑规格与参数）。
 
 ## 当前阶段
 先做战斗原型，美术和动画按 Bad North 的标准规划，"功能和小巧思都要有"。
@@ -31,9 +31,10 @@
 - 代码结构：`scripts/terrain.gd` 地形与流场寻路；`sprite_factory.gd` 部位编码帧；`shaders/unit.gdshader` 公告板与调色板；`unit.gd` 个体状态与战斗；`squad.gd` 小队协调器；`main.gd` 场景、输入、镜头、特效、胜负
 
 ## 法律边界（必须遵守）
-用户本地有 Bad North 的解包文件，只用来学习设计思路。
-不得把它的代码、精灵、模型、着色器、音频复制或改写进本工程，也不要从解包目录引用任何文件。
-所有实现都自己写，素材都自己做。
+用户本地有 Bad North 的解包文件：`~/Downloads/BadNorth-Unpacked`（反编译源码在 `DecompiledSource/Assembly-CSharp`）。
+- 可以：阅读解包文件，学习其机制、算法、参数、美术实现和程序架构；把读到的内容整理成 `docs/` 下的规格文档（用自己的话写，参数可以记录）
+- 不可以：把其中的代码、精灵、模型、贴图、着色器、音频复制、逐行翻译或改写进本工程；工程文件不得引用解包目录
+- 做法：先读懂 → 写规格文档 → 按文档用自己的代码和自己做的素材实现
 
 ## 协作方式
 - 用中文回答，先给结论，少铺垫
