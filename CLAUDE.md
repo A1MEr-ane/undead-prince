@@ -26,8 +26,9 @@
 - 运行：`godot --path .`；操作：1/2 或点击小兵选队（时间放慢到 0.3），左键地面下令，右键取消，Q/E 旋转，滚轮缩放，R 重开
 - 截图验证（`--` 之后是游戏参数，截图存到 shots/，已在 .gitignore）：
   `godot --path . -- --auto --zoom=9 --focus=12,13 --out=$PWD/shots --shots=3,6,10`
-  其他参数：`--yaw=度`、`--dump_atlas`（导出精灵图集预览）、`--click_test`（模拟点选和下令）、`--no_prewarm`
+  其他参数：`--zoom=正交尺寸`（默认 15）、`--yaw=度`、`--sun=太阳仰角`（默认 55，从 +X 侧照来）、`--dump_atlas`（导出精灵图集预览）、`--click_test`（模拟点选和下令）、`--no_prewarm`
 - 退出时打印 `STATS`（命中、格挡、拼刀、滑退、击飞、落水次数），帧卡顿超过 0.1 秒打印 `HITCH`
+- 光照：不用实时光。`terrain.bake_light()` 烘焙三光瓣天光体积，`shaders/terrain.gdshader` 合成；海面是 `shaders/fog_sea.gdshader` 雾平面；镜头正交俯角 30°
 - 代码结构：`scripts/terrain.gd` 地形与流场寻路；`sprite_factory.gd` 部位编码帧；`shaders/unit.gdshader` 公告板与调色板；`unit.gd` 个体状态与战斗；`squad.gd` 小队协调器；`main.gd` 场景、输入、镜头、特效、胜负
 
 ## 法律边界（必须遵守）

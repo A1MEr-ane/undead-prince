@@ -4,6 +4,8 @@ extends Node3D
 ## --zoom=距离；--yaw=度；--focus=x,z；--dump_atlas 导出精灵图集预览。
 
 const SLOW := 0.3
+const FOG_COLOR := Color(0.75, 0.76, 0.78)
+const CAM_PITCH := 30.0
 const PALETTE := [
 	# 0 王国民兵
 	{1: Color(0.94, 0.76, 0.6), 2: Color(0.22, 0.38, 0.74), 3: Color(0.38, 0.29, 0.21), 4: Color(0.72, 0.74, 0.78),
@@ -49,8 +51,10 @@ var marker: MeshInstance3D
 
 var cam_yaw := 0.0
 var cam_yaw_target := 0.0
-var cam_pitch := deg_to_rad(50.0)
-var cam_dist := 24.0
+var cam_pitch := deg_to_rad(CAM_PITCH)
+var cam_dist := 15.0
+var sel_zoom := 1.0
+var sel_pull := Vector3.ZERO
 var cam_focus := Vector3(12, 0.5, 12)
 var shake_amt := 0.0
 
@@ -75,6 +79,7 @@ func _ready() -> void:
 	terrain = Terrain.new()
 	add_child(terrain)
 	terrain.generate(int(args.get("island", "3")))
+	_setup_light()
 	_setup_assets()
 	_setup_camera()
 	_spawn_armies()
@@ -137,52 +142,51 @@ func _parse_args() -> void:
 
 # ---------- 环境 ----------
 
+## 不用实时光和实时阴影：背景就是雾色，海面是一张雾平面。
 func _setup_env() -> void:
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color(0.6, 0.69, 0.76)
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color(0.74, 0.8, 0.9)
-	env.ambient_light_energy = 0.6
-	env.ssao_enabled = true
-	env.ssao_radius = 0.6
-	env.ssao_intensity = 1.5
-	env.fog_enabled = true
-	env.fog_light_color = Color(0.6, 0.69, 0.76)
-	env.fog_density = 0.008
+	env.background_color = FOG_COLOR
+	env.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	var we := WorldEnvironment.new()
 	we.environment = env
 	add_child(we)
 
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-52, -35, 0)
-	sun.light_energy = 1.15
-	sun.light_color = Color(1.0, 0.95, 0.86)
-	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 45.0
-	add_child(sun)
+	var sea := MeshInstance3D.new()
+	var sm := PlaneMesh.new()
+	sm.size = Vector2(240, 240)
+	sea.mesh = sm
+	var mat := ShaderMaterial.new()
+	mat.shader = load("res://shaders/fog_sea.gdshader")
+	var noise := FastNoiseLite.new()
+	noise.frequency = 0.012
+	noise.fractal_octaves = 3
+	var tex := NoiseTexture2D.new()
+	tex.width = 256
+	tex.height = 256
+	tex.seamless = true
+	tex.noise = noise
+	mat.set_shader_parameter("cloud_noise", tex)
+	mat.set_shader_parameter("fog_color", Vector3(FOG_COLOR.r, FOG_COLOR.g, FOG_COLOR.b))
+	sea.material_override = mat
+	sea.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	sea.position = Vector3(12, Terrain.WATER_Y, 12)
+	add_child(sea)
 
-	var water := MeshInstance3D.new()
-	var wm := PlaneMesh.new()
-	wm.size = Vector2(160, 160)
-	water.mesh = wm
-	var wmat := StandardMaterial3D.new()
-	wmat.albedo_color = Color(0.24, 0.45, 0.58, 0.78)
-	wmat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	wmat.roughness = 0.15
-	wmat.metallic_specular = 0.6
-	water.material_override = wmat
-	water.position = Vector3(12, Terrain.WATER_Y, 12)
-	add_child(water)
-	var bed := MeshInstance3D.new()
-	var bm := PlaneMesh.new()
-	bm.size = Vector2(160, 160)
-	bed.mesh = bm
-	var bmat := StandardMaterial3D.new()
-	bmat.albedo_color = Color(0.2, 0.3, 0.34)
-	bed.material_override = bmat
-	bed.position = Vector3(12, Terrain.SEABED_Y, 12)
-	add_child(bed)
+
+## 太阳在 X-Y 平面里：elev 是仰角（度），正值从 +X 侧照来。
+func _setup_light() -> void:
+	var elev := deg_to_rad(float(args.get("sun", "55")))
+	var to_sun := Vector3(cos(elev), sin(elev), 0.0)
+	terrain.set_light_param("sun_dir", -to_sun)
+	terrain.set_light_param("fog_color", Vector3(FOG_COLOR.r, FOG_COLOR.g, FOG_COLOR.b))
+	terrain.set_light_param("water_y", Terrain.WATER_Y)
+	var c := Terrain.SIZE * 0.5
+	terrain.set_light_param("fog_center", Vector2(c, c))
+	# 雾的内外径：岛半径 × 0.5 + 1 到 × 1.2 + 2
+	var r := Terrain.SIZE * 0.42
+	terrain.set_light_param("fog_min", r * 0.5 + 1.0)
+	terrain.set_light_param("fog_max", r * 1.2 + 2.0)
 
 
 func _setup_assets() -> void:
@@ -207,8 +211,8 @@ func _setup_assets() -> void:
 	var ring_tex := ImageTexture.create_from_image(_circle_image(64, 0.34, 0.46, false))
 
 	shadow_mesh = PlaneMesh.new()
-	shadow_mesh.size = Vector2(0.4, 0.28)
-	var smat := _flat_mat(soft_tex, Color(0, 0, 0, 0.42))
+	shadow_mesh.size = Vector2(0.44, 0.3)
+	var smat := _flat_mat(soft_tex, Color(0.05, 0.04, 0.08, 0.6))
 	shadow_mesh.material = smat
 	ring_mesh = PlaneMesh.new()
 	ring_mesh.size = Vector2(0.55, 0.55)
@@ -225,7 +229,7 @@ func _setup_assets() -> void:
 	blood_mat.albedo_color = Color(0.45, 0.03, 0.03)
 	blood_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 	blood_mat.alpha_scissor_threshold = 0.5
-	blood_mat.roughness = 0.4
+	blood_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 
 	marker = MeshInstance3D.new()
 	var mm := PlaneMesh.new()
@@ -308,10 +312,11 @@ func _puff_mat(col: Color, additive: bool) -> StandardMaterial3D:
 
 func _setup_camera() -> void:
 	camera = Camera3D.new()
-	camera.fov = 30.0
+	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+	camera.near = 1.0
 	camera.far = 200.0
 	add_child(camera)
-	cam_dist = float(args.get("zoom", "24"))
+	cam_dist = float(args.get("zoom", "15"))   # 正交镜头的竖向尺寸
 	cam_yaw = deg_to_rad(float(args.get("yaw", "0")))
 	cam_yaw_target = cam_yaw
 	if args.has("focus"):
@@ -334,6 +339,7 @@ func _spawn_armies() -> void:
 	var mid := terrain.nearest_walkable(flag_pos.lerp((pa + pb) * 0.5, 0.5))
 
 	terrain.add_trees(7, [flag_pos, pa, pb, mid], 2.5)
+	terrain.bake_light()
 	_build_flag()
 
 	var s1 := _make_squad("亡魂一队", 0, 2, 6, pa, true, {"hp": 3.0, "power": 1.0})
@@ -386,8 +392,7 @@ func _build_flag() -> void:
 	var root := Node3D.new()
 	root.position = flag_pos
 	add_child(root)
-	var stone := StandardMaterial3D.new()
-	stone.albedo_color = Color(0.62, 0.6, 0.56)
+	var stone := terrain.make_lit_material(Color(0.62, 0.6, 0.56), false, false)
 	var base := MeshInstance3D.new()
 	var bm := BoxMesh.new()
 	bm.size = Vector3(0.55, 0.12, 0.55)
@@ -401,8 +406,7 @@ func _build_flag() -> void:
 	pm.bottom_radius = 0.025
 	pm.height = 1.3
 	pole.mesh = pm
-	var wood := StandardMaterial3D.new()
-	wood.albedo_color = Color(0.4, 0.28, 0.18)
+	var wood := terrain.make_lit_material(Color(0.4, 0.28, 0.18), false, false)
 	pole.material_override = wood
 	pole.position.y = 0.75
 	root.add_child(pole)
@@ -410,8 +414,7 @@ func _build_flag() -> void:
 	var cm := BoxMesh.new()
 	cm.size = Vector3(0.5, 0.32, 0.02)
 	flag_cloth.mesh = cm
-	var cloth := StandardMaterial3D.new()
-	cloth.albedo_color = Color(0.22, 0.38, 0.74)
+	var cloth := terrain.make_lit_material(Color(0.22, 0.38, 0.74), false, false)
 	flag_cloth.material_override = cloth
 	flag_cloth.position = Vector3(0.26, 1.22, 0)
 	root.add_child(flag_cloth)
@@ -434,9 +437,9 @@ func _unhandled_input(e: InputEvent) -> void:
 			MOUSE_BUTTON_RIGHT:
 				_select(null)
 			MOUSE_BUTTON_WHEEL_UP:
-				cam_dist = max(8.0, cam_dist - 1.0)
+				cam_dist = max(5.0, cam_dist - 1.0)
 			MOUSE_BUTTON_WHEEL_DOWN:
-				cam_dist = min(34.0, cam_dist + 1.0)
+				cam_dist = min(26.0, cam_dist + 1.0)
 	elif e is InputEventKey and e.pressed and not e.echo:
 		match e.keycode:
 			KEY_1:
@@ -520,9 +523,19 @@ func _process(delta: float) -> void:
 
 func _update_camera(rdt: float) -> void:
 	cam_yaw = lerp_angle(cam_yaw, cam_yaw_target, 1.0 - exp(-rdt * 8.0))
-	var off := Vector3(sin(cam_yaw) * cos(cam_pitch), sin(cam_pitch), cos(cam_yaw) * cos(cam_pitch)) * cam_dist
-	camera.position = cam_focus + off
-	camera.look_at(cam_focus, Vector3.UP)
+	# 选中部队（慢动作）时稍微拉近，并往部队方向偏一点
+	var k := 1.0 - exp(-rdt * 6.0)
+	sel_zoom = lerp(sel_zoom, 0.975 if selected != null else 1.0, k)
+	var pull := Vector3.ZERO
+	if selected != null:
+		pull = (selected.center() - cam_focus) * 0.12
+		pull.y = 0.0
+	sel_pull = sel_pull.lerp(pull, k)
+	var focus := cam_focus + sel_pull
+	var off := Vector3(sin(cam_yaw) * cos(cam_pitch), sin(cam_pitch), cos(cam_yaw) * cos(cam_pitch)) * 60.0
+	camera.position = focus + off
+	camera.look_at(focus, Vector3.UP)
+	camera.size = cam_dist * sel_zoom
 	camera.h_offset = randf_range(-1.0, 1.0) * shake_amt
 	camera.v_offset = randf_range(-1.0, 1.0) * shake_amt
 	shake_amt = move_toward(shake_amt, 0.0, rdt * 0.5)
@@ -566,7 +579,7 @@ func _check_goal(delta: float) -> void:
 	if capture >= 3.0:
 		game_over = true
 		banner.text = "王旗已夺取"
-		(flag_cloth.material_override as StandardMaterial3D).albedo_color = Color(0.3, 0.2, 0.36)
+		(flag_cloth.material_override as ShaderMaterial).set_shader_parameter("albedo_color", Vector3(0.3, 0.2, 0.36))
 	elif not any_p:
 		game_over = true
 		banner.text = "亡魂散尽"

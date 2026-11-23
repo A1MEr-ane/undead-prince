@@ -18,6 +18,14 @@ var levels := PackedInt32Array()
 var blocked := PackedByteArray()
 var flow_cache := {}
 var rng := RandomNumberGenerator.new()
+var tree_tiles: Array[Vector2i] = []
+
+# 光照：所有地形和道具共用一组参数，烘焙结果是一张三维天光贴图
+const VOL_DY := 0.3
+const LIT_SHADER := preload("res://shaders/terrain.gdshader")
+var lit_materials: Array[ShaderMaterial] = []
+var light_params := {}
+var sky_volume: ImageTexture3D
 
 
 func generate(seed_value: int) -> void:
@@ -289,13 +297,13 @@ func _top_color(t: Vector2i, h: int) -> Color:
 				break
 	var c: Color
 	if sandy:
-		c = Color(0.86, 0.79, 0.58)
+		c = Color(0.80, 0.74, 0.57)
 	elif h == 1:
-		c = Color(0.55, 0.67, 0.34)
+		c = Color(0.50, 0.60, 0.33)
 	elif h == 2:
-		c = Color(0.47, 0.62, 0.31)
+		c = Color(0.45, 0.56, 0.31)
 	else:
-		c = Color(0.41, 0.56, 0.29)
+		c = Color(0.40, 0.52, 0.29)
 	return Color(c.r + jitter, c.g + jitter, c.b + jitter * 0.5)
 
 
@@ -343,27 +351,21 @@ func _build_mesh() -> void:
 				var n := Vector3(dir.x, 0, dir.y)
 				var ylip := y - 0.07
 				_quad(st, Vector3(a.x, y, a.z), Vector3(b.x, y, b.z), Vector3(b.x, ylip, b.z), Vector3(a.x, ylip, a.z), n, lip, lip)
-				var rock_top := Color(0.56, 0.53, 0.49) + Color(1, 1, 1) * ((rng.randf() - 0.5) * 0.04)
-				var rock_bot := Color(0.30, 0.30, 0.33)
+				# alpha = 0 标记岩壁，着色器按高度画岩层
+				var rock_top := Color(0.56, 0.53, 0.49, 0.0)
+				var rock_bot := Color(0.30, 0.30, 0.33, 0.0)
 				_quad(st, Vector3(a.x, ylip, a.z), Vector3(b.x, ylip, b.z), Vector3(b.x, y2, b.z), Vector3(a.x, y2, a.z), n, rock_top, rock_bot)
-	var mat := StandardMaterial3D.new()
-	mat.vertex_color_use_as_albedo = true
-	mat.vertex_color_is_srgb = true
-	mat.roughness = 0.95
 	var mi := MeshInstance3D.new()
 	mi.mesh = st.commit()
-	mi.material_override = mat
+	mi.material_override = make_lit_material(Color.WHITE, true, true)
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(mi)
 
 
 ## 在高处放几棵树；树所在的格子不可走。
 func add_trees(count: int, avoid: Array[Vector3], avoid_r: float) -> void:
-	var trunk_mat := StandardMaterial3D.new()
-	trunk_mat.albedo_color = Color(0.36, 0.25, 0.17)
-	trunk_mat.roughness = 1.0
-	var leaf_mat := StandardMaterial3D.new()
-	leaf_mat.albedo_color = Color(0.22, 0.38, 0.22)
-	leaf_mat.roughness = 1.0
+	var trunk_mat := make_lit_material(Color(0.36, 0.25, 0.17), false, false)
+	var leaf_mat := make_lit_material(Color(0.24, 0.40, 0.24), false, false)
 	var placed := 0
 	var tries := 0
 	while placed < count and tries < 400:
@@ -380,6 +382,7 @@ func add_trees(count: int, avoid: Array[Vector3], avoid_r: float) -> void:
 		if not ok:
 			continue
 		blocked[_i(t)] = 1
+		tree_tiles.append(t)
 		placed += 1
 		var tree := Node3D.new()
 		tree.position = c + Vector3(rng.randf_range(-0.15, 0.15), 0, rng.randf_range(-0.15, 0.15))
@@ -406,3 +409,127 @@ func add_trees(count: int, avoid: Array[Vector3], avoid_r: float) -> void:
 			cone.rotation.y = rng.randf() * TAU
 			tree.add_child(cone)
 	flow_cache.clear()
+
+
+# ---------- 光照 ----------
+
+## 地形与道具共用的不受光照着色器材质。albedo 只在不用顶点色时生效。
+func make_lit_material(albedo: Color, use_vertex_color: bool, cliff_bands: bool) -> ShaderMaterial:
+	var m := ShaderMaterial.new()
+	m.shader = LIT_SHADER
+	m.set_shader_parameter("albedo_color", Vector3(albedo.r, albedo.g, albedo.b))
+	m.set_shader_parameter("use_vertex_color", use_vertex_color)
+	m.set_shader_parameter("cliff_bands", cliff_bands)
+	for k in light_params:
+		m.set_shader_parameter(k, light_params[k])
+	lit_materials.append(m)
+	return m
+
+
+func set_light_param(key: String, value: Variant) -> void:
+	light_params[key] = value
+	for m in lit_materials:
+		m.set_shader_parameter(key, value)
+
+
+## 三光瓣天光体积：每个格点向外发射线，统计从 +X 侧、正上方、−X 侧来的天光有多少没被挡住。
+## 太阳只在 X-Y 平面里转，着色器按太阳方向给三个通道加权。
+func bake_light() -> void:
+	var t0 := Time.get_ticks_msec()
+	var tops := PackedFloat32Array()
+	tops.resize(SIZE * SIZE)
+	var max_top := WATER_Y
+	for i in SIZE * SIZE:
+		var h := levels[i]
+		tops[i] = level_y(h) if h > 0 else -100.0
+		max_top = maxf(max_top, tops[i])
+
+	var lobe_r := Vector3(1, 0.2, 0).normalized()
+	var lobe_b := Vector3(-1, 0.2, 0).normalized()
+	var dirs: Array[Vector3] = []
+	var wts: Array[Vector3] = []
+	var sums := Vector3.ZERO
+	var n := 96
+	for i in n:
+		# 黄金角螺旋均匀取方向
+		var y := 1.0 - (i + 0.5) / n * 2.0
+		var r := sqrt(maxf(0.0, 1.0 - y * y))
+		var a := i * 2.39996323
+		var d := Vector3(cos(a) * r, y, sin(a) * r)
+		var w := Vector3(pow(maxf(d.dot(lobe_r), 0.0), 5.0), pow(maxf(d.y, 0.0), 5.0), pow(maxf(d.dot(lobe_b), 0.0), 5.0))
+		if w.x + w.y + w.z < 1e-4:
+			continue
+		dirs.append(d)
+		wts.append(w)
+		sums += w
+
+	var w_px := SIZE + 1
+	var layers := int(ceil((max_top + 1.6 - BASE_Y) / VOL_DY)) + 1
+	var images: Array[Image] = []
+	var traced := 0
+	for k in layers:
+		var y := BASE_Y + k * VOL_DY
+		var img := Image.create(w_px, w_px, false, Image.FORMAT_RGB8)
+		for z in w_px:
+			for x in w_px:
+				var c := Vector3.ONE
+				if y < max_top + 1.3:
+					var cover := 0.0
+					for dz in [-1, 0]:
+						for dx in [-1, 0]:
+							var tx: int = x + dx
+							var tz: int = z + dz
+							if tx >= 0 and tz >= 0 and tx < SIZE and tz < SIZE and tops[tz * SIZE + tx] > y:
+								cover += 0.25
+					if cover >= 1.0:
+						c = Vector3.ZERO
+					else:
+						traced += 1
+						var acc := Vector3.ZERO
+						var p := Vector3(x, y, z)
+						for i in dirs.size():
+							acc += wts[i] * _trace(p, dirs[i], tops, max_top)
+						c = Vector3(acc.x / sums.x, acc.y / sums.y, acc.z / sums.z) * (1.0 - cover)
+				# 存伽马后的值，暗部精度更高，过渡也更柔和
+				img.set_pixel(x, z, Color(pow(c.x, 0.6), pow(c.y, 0.6), pow(c.z, 0.6)))
+		images.append(img)
+	sky_volume = ImageTexture3D.new()
+	sky_volume.create(Image.FORMAT_RGB8, w_px, w_px, layers, false, images)
+	set_light_param("sky_volume", sky_volume)
+	set_light_param("vol_size", Vector3(w_px, w_px, layers))
+	set_light_param("vol_base_y", BASE_Y)
+	set_light_param("vol_dy", VOL_DY)
+	print("BAKE %d ms, %d layers, %d traced points, %d dirs" % [Time.get_ticks_msec() - t0, layers, traced, dirs.size()])
+
+
+func _trace(p: Vector3, d: Vector3, tops: PackedFloat32Array, max_top: float) -> float:
+	var trans := 1.0
+	var t := 0.2
+	while t < 5.0:
+		var q := p + d * t
+		if q.y > max_top + 1.3:
+			return trans
+		var tx := floori(q.x)
+		var tz := floori(q.z)
+		if tx >= 0 and tz >= 0 and tx < SIZE and tz < SIZE:
+			var i := tz * SIZE + tx
+			if q.y < tops[i]:
+				return 0.0
+			# 树冠只挡一部分光
+			if blocked[i] == 1 and q.y < tops[i] + 1.2:
+				trans *= 0.7
+		t += 0.3
+	return trans
+
+
+## 草量：草地 1，沙滩 0.3，水 0。小兵脚下按这个值陷进草里。
+func grass_at(p: Vector3) -> float:
+	var t := tile_of(p)
+	var h := level(t)
+	if h == 0:
+		return 0.0
+	if h == 1:
+		for d in N8:
+			if level(t + d) == 0:
+				return 0.3
+	return 1.0

@@ -208,6 +208,7 @@ func _apply_visuals() -> void:
 	mesh.set_instance_shader_parameter("flip", 1.0 if facing.dot(right) < 0.0 else 0.0)
 	mesh.set_instance_shader_parameter("flash", flash)
 	var g := terrain.height_at(position)
+	mesh.set_instance_shader_parameter("grass", terrain.grass_at(position) if state != S.TUMBLE else 0.0)
 	shadow.global_position = Vector3(position.x, g + 0.015, position.z)
 	var air: float = max(0.0, position.y - g)
 	shadow.scale = Vector3.ONE * clampf(1.0 - air * 0.9, 0.4, 1.0)
