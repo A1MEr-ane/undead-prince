@@ -76,3 +76,8 @@
 - 不同 AI 读的入口不同：Claude 读 CLAUDE.md（已引用 AGENTS.md），Codex 读 AGENTS.md，DeepSeek 需要在简报里明确让它先读 AGENTS.md。
 - 上下文有限的模型（或网页版）：在简报里直接贴相关文档的段落，不要只给路径。
 - 网页版 AI（例如 ChatGPT 网页生图）产出的文件需要用户手动放进 `concept/` 对应目录，并在 `TASKS.md` 记一笔。
+
+## 8. GitHub 同步
+- 远程仓库：https://github.com/A1MEr-ane/undead-prince（私有）
+- 每次提交后，`.git/hooks/post-commit` 会在后台推送当前分支（含各 worktree 的分支）；结果记在 `.git/push.log`。钩子不随仓库同步，换机器要重新放。
+- 执行者在沙箱里可能没有网络，推送失败无害，Lead 合并后会再推。
