@@ -1,7 +1,7 @@
 # 项目：亡魂王子复仇（暂名）
 
 单机、即时战术、肉鸽构筑。局内战斗和建模以 Bad North 为模板，玩家站在进攻方。
-详细背景见 `docs/design.md`（设计决策与待定项）、`docs/badnorth-reference.md`（Bad North 技术拆解）和 `docs/badnorth-behavior-spec.md`（读源码整理的行动逻辑规格与参数）。
+详细背景见 `docs/design.md`（设计决策与待定项）、`docs/badnorth-reference.md`（Bad North 技术拆解）、`docs/badnorth-behavior-spec.md`（行动逻辑规格与参数）和 `docs/badnorth-art-spec.md`（美术实现规格：镜头、精灵、烘焙光照、雾、涂色）。
 
 ## 当前阶段
 先做战斗原型，美术和动画按 Bad North 的标准规划，"功能和小巧思都要有"。
