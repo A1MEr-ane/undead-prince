@@ -96,8 +96,9 @@ def verify(output, check_rig=True, spec_path=None):
         # Authored pose assertions catch swapped stepping and incorrect strike timing.
         left_swing = skeleton(pose_parameters('walk', .667 / 4, .667))
         right_swing = skeleton(pose_parameters('walk', .667 * .75, .667))
-        assert left_swing['foot_l'][0].z > left_swing['foot_r'][0].z + .1
-        assert right_swing['foot_r'][0].z > right_swing['foot_l'][0].z + .1
+        if not recipe:  # Spec assets have their own measured gait limits below.
+            assert left_swing['foot_l'][0].z > left_swing['foot_r'][0].z + .1
+            assert right_swing['foot_r'][0].z > right_swing['foot_l'][0].z + .1
         strike = skeleton(pose_parameters('attack', .333, .6))
         hand, tip = strike['hand_r']
         assert (tip - hand).normalized().x > .99
@@ -188,19 +189,52 @@ def validate_spec_model(recipe, rig, objects):
     assert by_name['shield_front']['bone'] == 'hand_l' and not by_name['shield_front']['far_side']
     assert by_name['forearm_l']['part'] == recipe.part('sleeves')
     assert by_name['forearm_r']['part'] == recipe.part('sleeves')
-    duration=.667
-    # Passing is highest, opposite arms/legs, no foot sliding while planted.
-    contact=recipe.pose_parameters('walk',0,duration)
-    passing=recipe.pose_parameters('walk',duration/4,duration)
-    assert passing['hip'][2] > contact['hip'][2] + .02
-    for side in ('l','r'):
-        samples=[recipe.pose_parameters('walk',duration*i/32,duration) for i in range(33)]
-        feet=np.array([p['foot_'+side][0] for p in samples])
-        hands=np.array([p['wrist_'+side][0] for p in samples])
-        assert np.corrcoef(feet,hands)[0,1] < -.99
+    validate_spec_walk(recipe, rig)
+    print('SPEC_MODEL', recipe.spec['id'],
+          'triangles='+str(sum(sum(len(p.vertices)-2 for p in ob.data.polygons) for ob in objects)), flush=True)
+
+
+def validate_spec_walk(recipe, rig):
+    """Measure baked motion against animation_notes.walk, in total-height units."""
+    duration = next(a[2] for a in ANIMATIONS if a[0] == 'walk')
+    height, tolerance = recipe.height, 1e-5
     scene=bpy.context.scene
     rig.animation_data.action=bpy.data.actions['walk']
     rig.animation_data.action_slot=bpy.data.actions['walk'].slots[0]
+    locked = ('root', 'spine', 'head', 'upper_arm_l', 'upper_arm_r',
+              'forearm_l', 'forearm_r', 'hand_l', 'hand_r')
+    matrices, feet, hips = [], {'l': [], 'r': []}, []
+    # Include all 8 output frames, the loop endpoint, and halfway samples
+    # between the 64 extra baked poses to catch interpolation motion.
+    for phase in np.linspace(0, 1, 129):
+        frame = phase * duration * 1000 + 1
+        scene.frame_set(int(frame), subframe=frame % 1)
+        bpy.context.view_layer.update()
+        matrices.append([np.array(rig.pose.bones[name].matrix) for name in locked])
+        hips.append(rig.pose.bones['root'].head.z)
+        for side in feet:
+            feet[side].append(tuple(rig.pose.bones['foot_'+side].head))
+    feet = {side: np.array(points) for side, points in feet.items()}
+    spans = {side: float(np.ptp(points[:, 0])) for side, points in feet.items()}
+    lifts = {side: float(np.ptp(points[:, 2])) for side, points in feet.items()}
+    bob = float(np.ptp(hips))
+    upper_delta = float(np.max(np.abs(np.array(matrices)-matrices[0])))
+    # Limits are specified in k2_shieldman.yml animation_notes.walk.
+    assert all(tolerance < span <= height*.06+tolerance for span in spans.values()), spans
+    assert all(tolerance < lift <= height*.03+tolerance for lift in lifts.values()), lifts
+    assert bob <= height*.01+tolerance, bob
+    assert upper_delta < tolerance, ('upper body must remain locked', upper_delta)
+    assert np.allclose(feet['l'][:, 0], -feet['r'][:, 0], atol=tolerance)
+    # Frame 0: right contact; frame 4: left contact. Both have maximal forward
+    # reach; passing poses lift only the opposite foot, once per half-cycle.
+    for side, contact, passing in (('r', 0, 96), ('l', 64, 32)):
+        other = 'l' if side == 'r' else 'r'
+        points = feet[side]
+        ground = points[:, 2].min()
+        assert abs(points[contact, 0]-points[:, 0].max()) < tolerance, side
+        assert abs(points[contact, 2]-ground) < tolerance, side
+        assert points[passing, 2] > feet[other][passing, 2]+tolerance, side
+        assert np.allclose(points[:-1, 2], np.roll(feet[other][:-1, 2], 64), atol=tolerance)
     drift=[]
     for side,start in (('r',.02),('l',.52)):
         planted=[]
@@ -209,14 +243,16 @@ def validate_spec_model(recipe, rig, objects):
             scene.frame_set(int(t*1000+1),subframe=(t*1000+1)%1)
             bpy.context.view_layer.update()
             ankle=rig.pose.bones['foot_'+side].head.copy()
-            planted.append(ankle+Vector((.8/duration*t,0,0)))
+            planted.append(ankle+Vector((2*spans[side]/duration*t,0,0)))
         drift.append(max((p-planted[0]).length for p in planted))
     assert max(drift) < .006, drift
     rig.animation_data.action=bpy.data.actions['idle']
     rig.animation_data.action_slot=bpy.data.actions['idle'].slots[0]
     scene.frame_set(1)
-    print('SPEC_MODEL',recipe.spec['id'],'triangles='+str(sum(sum(len(p.vertices)-2 for p in ob.data.polygons) for ob in objects)),
-          'walk_stance_drift='+str([round(d,6) for d in drift]),flush=True)
+    print('SPEC_WALK', recipe.spec['id'], json.dumps(dict(
+        height=height, foot_travel=spans, foot_lift=lifts, body_bob=bob,
+        upper_matrix_delta=upper_delta, stance_drift=drift,
+        right_contact_frame=0, left_contact_frame=4), sort_keys=True), flush=True)
 
 
 def validate_shield_poses(recipe, rig, objects):

@@ -104,23 +104,17 @@ class Shieldman:
             yaw -= 24 * push
         if name == 'walk':
             phase = t / duration
-            stride = .40
+            stride = self.height * .05
+            lift = self.height * .025
             def foot(q, y):
                 q %= 1
                 if q < .5:
                     a = q * 2
-                    return (-stride / 2 + stride * a, y, .12 + .14 * math.sin(PI * a))
+                    return (-stride / 2 + stride * a, y, .12 + lift * math.sin(PI * a))
                 return (stride / 2 - stride * (q - .5) * 2, y, .12)
-            # Each passing pose is highest; the stance sole moves backwards at
-            # constant speed. Translating the root at stride/(T/2) plants it.
-            bob = .030 * (1 - math.cos(4 * PI * phase)) / 2
-            p.update(hip=(0, 0, self.h['belt'] - .035 + bob), lean=self.lean,
+            p = dict(self.neutral)
+            p.update(lean=self.lean,
                      foot_l=foot(phase, -.22), foot_r=foot(phase + .5, .22))
-            for side in ('l', 'r'):
-                x, y, z = self.neutral['wrist_' + side]
-                leg_x = p['foot_' + side][0]
-                p['wrist_' + side] = (x - .22 * leg_x, y, z + bob - .035)
-            p['sword'] = 115.
         # Yaw the existing hand bone at the wrist; no extra rig bone or channel
         # is needed in the runtime atlas. The hand's pitch still follows shield.
         p['bone_yaws'] = {'hand_l': self.shield_yaw - yaw}
