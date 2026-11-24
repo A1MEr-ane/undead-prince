@@ -1,0 +1,842 @@
+[
+  {
+    "id": "CHAR-CAPTAIN",
+    "name": "Captain Bernard / 伯纳德卫队长",
+    "age_at_death": 49,
+    "files": {
+      "hero": "art/chars/CHAR-CAPTAIN/hero.png",
+      "turnaround": "art/chars/CHAR-CAPTAIN/turnaround.png",
+      "expressions": "art/chars/CHAR-CAPTAIN/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-CAPTAIN/alt/hero-02.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-CAPTAIN/alt/turnaround-02.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-CAPTAIN/alt/expressions-02.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Asset: full-body hero illustration for a dark maritime fantasy game. Generate ONE portrait 1024x1536, 2:3.\nReferences: image 1 is ONLY the approved painting and ink style; image 2 RIGHT-HAND ARMOURED CAPTAIN is the approved Captain Bernard identity to reproduce faithfully. Do not depict the prince, UI, text or scene from either reference.\nSubject: Captain Bernard, age 49 at death, undead naval guard captain. Broad sturdy shoulders but elongated angular adult anatomy. Exactly the enclosed rounded steel naval greathelm from reference 2, raised reinforcing brow band, thin horizontal turquoise visor slit, full faceplate, no visible human face. Worn matte steel-grey plate armour with scratched small naval crown insignia; battered purple short mantle over HIS LEFT shoulder, round old bronze clasp; practical belts, articulated gauntlets and greaves, sturdy boots. Worn tall rounded shield with metal rim and scratched crest held on his left arm. No horns, crown headwear, extravagant ornament or weapon.\nComposition: complete figure from helmet to boot soles, margin around all silhouette. Grounded planted stance, shield near left leg, right hand opening in a restrained professional offer of support. Quiet authority, not charging. Character bright on a simple dark ink-blue smoky background, small ground shadow.\nStyle: HAND-PAINTED thick opaque brushwork, bold variable-width black ink outer contours, finer angular internal lines, dramatic flat hard-edged shadow masses, visible dry brush texture, long angular limbs, saturated turquoise soulfire edge along one side, cool steel-blue secondary reflected highlight. Steel-grey and purple limited palette. A little turquoise light only inside visor and between armour joints; obviously undead but no gore. Match reference style closely, no 3D render, no low-poly facets, no soft airbrush gradients, no photographic materials. NO text, labels, border, other people, duplicate figures.",
+      "turnaround": "Use case: stylized-concept. Reference 1 is approved Captain Bernard identity and exact style; reconstruct the SAME equipment in three directions. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Purple mantle stays worn over anatomical LEFT shoulder in all views; right pauldron exposed, back mantle mainly covers left back. Shield detached and drawn by itself at far right, no shields in hands or on backs. Show shield front and small back construction as props only, not additional person. Maintain broad adult 7-head proportions in all views. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"CAPTAIN BERNARD\". No extra character or face portrait.",
+      "expressions": "Use case: stylized-concept. Reference 1 locks Bernard's exact identity. Reference 2 ONLY sets the waist-up portrait scale and ink-painted style: exclude prince and UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT: calm attentive professional, helmet upright, shoulders relaxed, right hand lowered. CENTER: permission to disagree, helmet inclined forward a little, firm open raised right palm, restrained and resolute, no aggression. RIGHT: offering a defensive boon with a reassuring nod and a level open right palm offered toward viewer, left arm near shield upper rim, subtle turquoise glow and cool steel-blue highlight around glove, grounded dignity. Keep helmet rigid and closed in every panel, do not draw a mouth or eyebrows onto metal. Different head angles, torso and hand gestures carry emotion. Small visor soul light, never a huge fire plume. No unmasking, horns or comic-face helmet."
+    },
+    "tool": "image_gen.imagegen (built-in; no CLI/API fallback)",
+    "status": "in_review",
+    "palette": "钢灰、紫；冷钢蓝反光；面罩及甲缝少量青绿冥火",
+    "expressions_selection": [
+      {
+        "slot": "left",
+        "state": "平静待命",
+        "reason": "专业沉稳，平视与放松肩部。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:73"
+      },
+      {
+        "slot": "center",
+        "state": "克制而坚定地提出异议",
+        "reason": "人物成长是敢于反对错误命令；对应“请准许我提出异议”的语气，用抬掌与俯头传达。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:76; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:105"
+      },
+      {
+        "slot": "right",
+        "state": "沉稳授益",
+        "reason": "他把船员视为家庭，关照装备与同伴；用点头和伸掌给予防护支持，不表现狂热服从。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:74; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:107"
+      }
+    ],
+    "self_check": [
+      {
+        "requirement": "49 岁亡灵海军卫队长身份保留；年龄由设定约束，闭盔无法从面貌验证。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "钢灰甲、紫披风、旧盾、磨损纹章与冷钢蓝反光可见；面罩青绿光克制。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三视图披风在人物左肩：正面画面右侧、背面画面左侧；盾牌独立于人物。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三种神态通过头盔倾角、肩部与手势区分，头盔未添加嘴眉或活人面孔。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "每文件仅一个角色身份；hero 全身竖版约 2:3；turnaround/expressions 横版",
+        "result": "pass",
+        "evidence": "实际生成图逐张目视审阅；PNG 尺寸另由交付校验记录。"
+      },
+      {
+        "requirement": "手绘厚涂、粗细变化墨线、修长有棱角造型、强明暗平涂阴影、暗背景、单侧饱和轮廓光；无 3D 低多边形风格",
+        "result": "pass",
+        "evidence": "以已审批 prince_hero.png/ui_dialogue.png 为画风输入，保留笔触、黑色外轮廓与大块硬边阴影。"
+      },
+      {
+        "requirement": "亡灵明确、青绿冥火、不血腥",
+        "result": "pass",
+        "evidence": "头盔光缝/缝合与露骨/骷髅脸/骨质下颌按各人特征呈现，未出现血液与内脏。"
+      },
+      {
+        "requirement": "三视图正、真侧、背，同一空手中性站姿、等高共地线，道具右列；英文名与 FRONT / SIDE / BACK / PROPS",
+        "result": "pass_for_concept",
+        "evidence": "已目视核对选版三视图，人物不持道具，头顶及靴底基准线对应。未做三维几何校核，不标记 model-ready。"
+      },
+      {
+        "requirement": "三张同身份对话半身像，平静加两种性格状态，包含给予增益",
+        "result": "pass",
+        "evidence": "从左到右顺序为 calm / character_reaction / boon_offer；选择与依据见 expressions_selection。"
+      },
+      {
+        "requirement": "提示词不包含现有游戏、工作室或画师名；不从图中文字推导设定",
+        "result": "pass",
+        "evidence": "完整提示词与输入路径保存在 generation_history；手稿/石板上的线条和图形只是绘画符号。"
+      },
+      {
+        "requirement": "从 ~/.codex/generated_images/ 复制，保留原图；每主文件有 alt；状态 in_review",
+        "result": "pass",
+        "evidence": "每次生成一张独立图片；所有源路径及目标路径逐次记录，交付校验比对 SHA-256。未裁切、缩放、拼贴或用代码重绘图片。"
+      }
+    ],
+    "review_notes": [
+      "封闭头盔遮住皮肤与骨骼，按已审批造型以青绿光缝/甲缝表达亡灵；未为通用露骨要求破坏审批造型。"
+    ],
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_history": [
+      {
+        "kind": "hero",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Asset: full-body hero illustration for a dark maritime fantasy game. Generate ONE portrait 1024x1536, 2:3.\nReferences: image 1 is ONLY the approved painting and ink style; image 2 RIGHT-HAND ARMOURED CAPTAIN is the approved Captain Bernard identity to reproduce faithfully. Do not depict the prince, UI, text or scene from either reference.\nSubject: Captain Bernard, age 49 at death, undead naval guard captain. Broad sturdy shoulders but elongated angular adult anatomy. Exactly the enclosed rounded steel naval greathelm from reference 2, raised reinforcing brow band, thin horizontal turquoise visor slit, full faceplate, no visible human face. Worn matte steel-grey plate armour with scratched small naval crown insignia; battered purple short mantle over HIS LEFT shoulder, round old bronze clasp; practical belts, articulated gauntlets and greaves, sturdy boots. Worn tall rounded shield with metal rim and scratched crest held on his left arm. No horns, crown headwear, extravagant ornament or weapon.\nComposition: complete figure from helmet to boot soles, margin around all silhouette. Grounded planted stance, shield near left leg, right hand opening in a restrained professional offer of support. Quiet authority, not charging. Character bright on a simple dark ink-blue smoky background, small ground shadow.\nStyle: HAND-PAINTED thick opaque brushwork, bold variable-width black ink outer contours, finer angular internal lines, dramatic flat hard-edged shadow masses, visible dry brush texture, long angular limbs, saturated turquoise soulfire edge along one side, cool steel-blue secondary reflected highlight. Steel-grey and purple limited palette. A little turquoise light only inside visor and between armour joints; obviously undead but no gore. Match reference style closely, no 3D render, no low-poly facets, no soft airbrush gradients, no photographic materials. NO text, labels, border, other people, duplicate figures.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-1aedac4c-3367-416b-a436-1f2b7fbfecf3.png",
+        "file": "art/chars/CHAR-CAPTAIN/hero.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "hero",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Create one independent alternate FULL BODY HERO illustration, portrait 1024x1536. Reference 1 locks Captain Bernard's exact identity, armour construction, helm, mantle and shield; reference 2 RIGHT character confirms approved design and painting style. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Full body with generous margin, no cropping. Alternate pose: planted protective weight on rear leg, left hand holding shield upright beside him, right gauntlet resting briefly on shield upper rim, head looking attentively toward viewer with calm dignity. Same colours, no added items. Dark smoky abstract background with small ground shadow. NO labels, words, frame, prince or other character.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-63c8f52e-b2bc-42d9-bc17-7af262a45b69.png",
+        "file": "art/chars/CHAR-CAPTAIN/alt/hero-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 is approved Captain Bernard identity and exact style; reconstruct the SAME equipment in three directions. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Purple mantle stays worn over anatomical LEFT shoulder in all views; right pauldron exposed, back mantle mainly covers left back. Shield detached and drawn by itself at far right, no shields in hands or on backs. Show shield front and small back construction as props only, not additional person. Maintain broad adult 7-head proportions in all views. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"CAPTAIN BERNARD\". No extra character or face portrait.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-7b56f5a6-2e89-43d9-966a-2958ea32135a.png",
+        "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 is approved Captain Bernard identity and exact style; reconstruct the SAME equipment in three directions. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Purple mantle stays worn over anatomical LEFT shoulder in all views; right pauldron exposed, back mantle mainly covers left back. Shield detached and drawn by itself at far right, no shields in hands or on backs. Show shield front and small back construction as props only, not additional person. Maintain broad adult 7-head proportions in all views. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"CAPTAIN BERNARD\". No extra character or face portrait. Make a separately drawn alternate sheet of the SAME design, keeping the layout from reference 2. Use slightly cleaner large shadow shapes to clarify armour construction, without redesigning or moving mantle attachment. Reference 2 is the prior turnaround, not a second identity.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/hero.png",
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/turnaround.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-90f0ca70-8b76-49c2-a3bc-78e024fa3aa1.png",
+        "file": "art/chars/CHAR-CAPTAIN/alt/turnaround-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Bernard's exact identity. Reference 2 ONLY sets the waist-up portrait scale and ink-painted style: exclude prince and UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT: calm attentive professional, helmet upright, shoulders relaxed, right hand lowered. CENTER: permission to disagree, helmet inclined forward a little, firm open raised right palm, restrained and resolute, no aggression. RIGHT: offering a defensive boon with a reassuring nod and a level open right palm offered toward viewer, left arm near shield upper rim, subtle turquoise glow and cool steel-blue highlight around glove, grounded dignity. Keep helmet rigid and closed in every panel, do not draw a mouth or eyebrows onto metal. Different head angles, torso and hand gestures carry emotion. Small visor soul light, never a huge fire plume. No unmasking, horns or comic-face helmet.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-8b6c62f7-4a7f-419c-a9d2-90fda88d67b0.png",
+        "file": "art/chars/CHAR-CAPTAIN/expressions.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Bernard's exact identity. Reference 2 ONLY sets the waist-up portrait scale and ink-painted style: exclude prince and UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Captain Bernard, 49 at death, undead naval guard captain. Wide sturdy shoulders, elongated adult limbs; enclosed rounded steel greathelm with reinforcing brow band, narrow horizontal turquoise visor and full faceplate; worn steel-grey plate, small scratched gold naval crown on chest; purple tattered mantle attached on anatomical LEFT shoulder with round bronze clasp, its cloth reaching near calves; double brown waist belts, layered hip armour, gauntlets, greaves and boots. No visible living face. Restrained turquoise light inside visor and dark joints, cool steel-blue edge reflections. Worn tall rounded shield with metal rim and scratched crown is a detachable prop. No horns, no head crown, no weapon. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT: calm attentive professional, helmet upright, shoulders relaxed, right hand lowered. CENTER: permission to disagree, helmet inclined forward a little, firm open raised right palm, restrained and resolute, no aggression. RIGHT: offering a defensive boon with a reassuring nod and a level open right palm offered toward viewer, left arm near shield upper rim, subtle turquoise glow and cool steel-blue highlight around glove, grounded dignity. Keep helmet rigid and closed in every panel, do not draw a mouth or eyebrows onto metal. Different head angles, torso and hand gestures carry emotion. Small visor soul light, never a huge fire plume. No unmasking, horns or comic-face helmet. Alternate independent drawing, slightly tighter true waist-up framing, with all three helmet tops level. Keep the CENTER palm nearer chest and RIGHT offered hand level and open, so the dissent and boon gestures read distinctly.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-CAPTAIN/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-1e3343e0-d3ae-4817-b7cc-e40f87addb67.png",
+        "file": "art/chars/CHAR-CAPTAIN/alt/expressions-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      }
+    ],
+    "scope_notes": [
+      "按本次任务卡三文件规格，道具列入 turnaround 右侧，未另增 props.png。",
+      "仅产出静态叙事概念图；未接入游戏，未作为多帧游戏精灵或最终正交建模资产。",
+      "docs/art-style.md 第 2 节未给出增益卡框具体色值，本批沿用第 3 节人物主色，未新增卡框标准。"
+    ]
+  },
+  {
+    "id": "CHAR-STITCHER",
+    "name": "Matilda / 玛蒂尔达缝合匠",
+    "age_at_death": 38,
+    "files": {
+      "hero": "art/chars/CHAR-STITCHER/hero.png",
+      "turnaround": "art/chars/CHAR-STITCHER/turnaround.png",
+      "expressions": "art/chars/CHAR-STITCHER/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-STITCHER/alt/hero-02.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-STITCHER/alt/turnaround-01.png",
+        "art/chars/CHAR-STITCHER/alt/turnaround-02.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-STITCHER/alt/expressions-01.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3, single character. Reference 1 is PAINTING STYLE ONLY, do not copy prince identity, armour, crown or cape. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Dramatic confident work pose, both feet grounded, torso turning slightly toward viewer, right gloved hand raising a clearly curved surgical needle with fine pale-cyan thread, left patched gloved hand lower drawing thread taut, elbow and sleeve reveal left bone wrist. Thread makes one restrained sweeping arc, not a huge magic spell. Mature dry amused half-smile, competent and meticulous, strong sturdy stance. Whole body visible head to soles with margin. Simple dark navy stormy brush-texture background, small ground shadow, bright silhouette, turquoise edge on one side and subtle soul-light at bone wrist. No workbench or props covering body, no other person, no title or any text.",
+      "turnaround": "Edit this one Matilda turnaround sheet. Preserve the entire sheet: same name and labels, identical three full body neutral front/side/back views, all proportions and matched height, clothing, bone LEFT wrist, auburn bun, props at right, painted black ink style, background and layout. CHANGE ONLY the right cheek stitch seam on the SIDE view in the SECOND column: draw a CLEAR diagonal 2-centimetre healed seam across the visible cheek below the cheekbone, running from just below ear toward mouth, with FOUR distinct pale-cyan perpendicular suture marks. It must be as plainly visible as the cheek seam of the FRONT view, because this side faces image-left and shows the same anatomical right cheek. No blood or wound hole. Do not leave the side cheek blank or replace the sutures with a smooth line. Keep every other detail unchanged. One landscape image 1536x1024.",
+      "expressions": "Use case: stylized-concept. Reference 1 locks Matilda's identity, face and clothing.  ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three clearly different expressions left-to-right: LEFT calm professional attention, neutral mouth and relaxed brows, hands lowered. CENTER stern clinical admonition: narrowed turquoise eyes, one eyebrow lowered, mouth slightly open mid-dry rebuke, one gloved index finger raised near chest as if saying hold still, no rage. RIGHT giving a healing/repair boon: a small crooked amused smile, eyebrow lifted with meticulous confidence, gently offers a curved needle and pale-cyan thread in right gloved hand while left gloved palm supports thread near chest; left wrist bone visible, no gore. Same mature features in every panel, same ashen complexion, low auburn bun, facial and neck stitches and leather apron. No text or title, no crowns, hammers or extra tools beyond surgeon equipment. Alternate independent drawing of same three states, slightly tighter waist-up composition. Keep face unmistakably grey-white ashen, cooler than living flesh. In RIGHT boon portrait make the exposed bone LEFT wrist visibly emerge above patched glove with a tiny cyan glimmer. Preserve anatomical right-cheek seam and low bun in every portrait. No change of identity or tools."
+    },
+    "tool": "image_gen.imagegen (built-in; no CLI/API fallback)",
+    "status": "in_review",
+    "palette": "皮棕、褪海军蓝、锈红；淡青缝线与青绿轮廓光",
+    "expressions_selection": [
+      {
+        "slot": "left",
+        "state": "平静的专业关注",
+        "reason": "她因批评而成为细致的军医，观察患者时稳定专注。",
+        "source": "docs/canon/B/B2-HOUSE-AND-COUNCIL.md:113"
+      },
+      {
+        "slot": "center",
+        "state": "严厉的临床叮嘱",
+        "reason": "从“死了也不是乱扭的理由”推出皱眉和竖指提醒，保持干练的幽默而非暴怒。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:81"
+      },
+      {
+        "slot": "right",
+        "state": "带干笑的自信授益",
+        "reason": "她把亡灵视为医学机会，对修复技术有兴趣；给予增益时持弯针线，微笑且认真。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:79; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:119"
+      }
+    ],
+    "self_check": [
+      {
+        "requirement": "成年 38 岁军医外观；赤棕头发扎起、皮肤苍白、整齐缝线与左腕露骨可见，无血腥。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "皮质医用围裙、褪海军蓝服、锈红卷袖、补丁手套和器械卷；主立绘明确持弯针与线。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三视图主文件选第 3 版，补齐侧面右脸缝线；左腕露骨前后换侧对应，背面交叉围裙带可见。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "针线、线轴、剪刀、器械卷在三视图右侧独立排列，人物空手且卸下器械卷。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "未出现锤、铁砧、机械义肢、王冠或王室披风。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "每文件仅一个角色身份；hero 全身竖版约 2:3；turnaround/expressions 横版",
+        "result": "pass",
+        "evidence": "实际生成图逐张目视审阅；PNG 尺寸另由交付校验记录。"
+      },
+      {
+        "requirement": "手绘厚涂、粗细变化墨线、修长有棱角造型、强明暗平涂阴影、暗背景、单侧饱和轮廓光；无 3D 低多边形风格",
+        "result": "pass",
+        "evidence": "以已审批 prince_hero.png/ui_dialogue.png 为画风输入，保留笔触、黑色外轮廓与大块硬边阴影。"
+      },
+      {
+        "requirement": "亡灵明确、青绿冥火、不血腥",
+        "result": "pass",
+        "evidence": "头盔光缝/缝合与露骨/骷髅脸/骨质下颌按各人特征呈现，未出现血液与内脏。"
+      },
+      {
+        "requirement": "三视图正、真侧、背，同一空手中性站姿、等高共地线，道具右列；英文名与 FRONT / SIDE / BACK / PROPS",
+        "result": "pass_for_concept",
+        "evidence": "已目视核对选版三视图，人物不持道具，头顶及靴底基准线对应。未做三维几何校核，不标记 model-ready。"
+      },
+      {
+        "requirement": "三张同身份对话半身像，平静加两种性格状态，包含给予增益",
+        "result": "pass",
+        "evidence": "从左到右顺序为 calm / character_reaction / boon_offer；选择与依据见 expressions_selection。"
+      },
+      {
+        "requirement": "提示词不包含现有游戏、工作室或画师名；不从图中文字推导设定",
+        "result": "pass",
+        "evidence": "完整提示词与输入路径保存在 generation_history；手稿/石板上的线条和图形只是绘画符号。"
+      },
+      {
+        "requirement": "从 ~/.codex/generated_images/ 复制，保留原图；每主文件有 alt；状态 in_review",
+        "result": "pass",
+        "evidence": "每次生成一张独立图片；所有源路径及目标路径逐次记录，交付校验比对 SHA-256。未裁切、缩放、拼贴或用代码重绘图片。"
+      }
+    ],
+    "review_notes": [
+      "turnaround-01 的侧脸缝线缺失，turnaround-02 缝线仍偏淡；仅作有缺陷的追溯备选，不能代替第 3 版主文件。",
+      "expressions 选第 2 版，授益像的左腕骨段比第 1 版更清楚。",
+      "皮肤局部有偏暖的受光笔触；亡灵辨识依靠苍白底色、缝合、青绿眼光与露骨腕部共同呈现。"
+    ],
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 3,
+      "expressions": 2
+    },
+    "generation_history": [
+      {
+        "kind": "hero",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3, single character. Reference 1 is PAINTING STYLE ONLY, do not copy prince identity, armour, crown or cape. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Dramatic confident work pose, both feet grounded, torso turning slightly toward viewer, right gloved hand raising a clearly curved surgical needle with fine pale-cyan thread, left patched gloved hand lower drawing thread taut, elbow and sleeve reveal left bone wrist. Thread makes one restrained sweeping arc, not a huge magic spell. Mature dry amused half-smile, competent and meticulous, strong sturdy stance. Whole body visible head to soles with margin. Simple dark navy stormy brush-texture background, small ground shadow, bright silhouette, turquoise edge on one side and subtle soul-light at bone wrist. No workbench or props covering body, no other person, no title or any text.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-9a7e1966-315e-4c15-b71e-b032d317f372.png",
+        "file": "art/chars/CHAR-STITCHER/hero.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "hero",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Create one independent alternate FULL-BODY HERO portrait 1024x1536. Reference 1 locks Matilda's exact identity, clothing, face, hair, and artistic treatment. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Same 38-year-old sturdy adult surgeon, same brow and pale-grey face. Keep right-cheek stitches and exposed anatomical LEFT wrist on the same sides as reference. Alternate quieter dynamic pose: slight forward lean from hips, one boot braced a little forward, right hand at shoulder height pinching curved surgical needle, left hand drawing pale-cyan thread toward waist; attentive knowing wry smile, eyes looking at viewer. Instrument roll at right hip and shears/spool tucked in apron pocket. Complete body, feet visible, dark abstract blue background, turquoise rim. No new accessories, text or characters.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-19f73585-9e02-47ab-97bc-bd3f521c19eb.png",
+        "file": "art/chars/CHAR-STITCHER/alt/hero-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Matilda's identity and outfit. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"MATILDA\". Remove ALL detachable tools, needle, shears, spool and instrument roll from the three figure views; draw curved needle and thread, spool, shears and instrument roll SEPARATELY to far right only. Empty apron pocket and empty belt attachment loops stay. Same neutral stance, head and feet aligned. Show cross-back apron straps and tied waist band on BACK, same auburn low bun from every angle, bone wrist anatomical LEFT (viewer right FRONT, viewer left BACK) and closed stitches on right cheek only. No hand tools in figure hands, no new clothing or equipment, no extra figures. Maintain mature sturdy 7-head anatomy, no chibi proportions.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-20678feb-66ea-4550-af22-0f7171fb230e.png",
+        "file": "art/chars/CHAR-STITCHER/alt/turnaround-01.png",
+        "selected": false,
+        "review": "not_selected_with_issue",
+        "rejection_reason": "侧面右脸缝线缺失"
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Matilda's identity and outfit. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"MATILDA\". Remove ALL detachable tools, needle, shears, spool and instrument roll from the three figure views; draw curved needle and thread, spool, shears and instrument roll SEPARATELY to far right only. Empty apron pocket and empty belt attachment loops stay. Same neutral stance, head and feet aligned. Show cross-back apron straps and tied waist band on BACK, same auburn low bun from every angle, bone wrist anatomical LEFT (viewer right FRONT, viewer left BACK) and closed stitches on right cheek only. No hand tools in figure hands, no new clothing or equipment, no extra figures. Maintain mature sturdy 7-head anatomy, no chibi proportions. Reference 2 is previous turnaround of the same identity. Targeted correction: the SIDE view faces image-left and displays anatomical RIGHT cheek, so it MUST show the same small diagonal pale-cyan stitched cheek seam seen on viewer-left cheek of FRONT. In SIDE draw that neat seam clearly between ear and mouth corner, no bleeding. Preserve exact outfit, equal scale, top and ground alignment, all tools separate. Give a little more top margin. Do not change anything else.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/hero.png",
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/turnaround.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-3847dff9-14f8-4332-92e7-6339f97880cd.png",
+        "file": "art/chars/CHAR-STITCHER/alt/turnaround-02.png",
+        "selected": false,
+        "review": "not_selected_with_issue",
+        "rejection_reason": "侧面右脸缝线仍过淡"
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 3,
+        "prompt": "Edit this one Matilda turnaround sheet. Preserve the entire sheet: same name and labels, identical three full body neutral front/side/back views, all proportions and matched height, clothing, bone LEFT wrist, auburn bun, props at right, painted black ink style, background and layout. CHANGE ONLY the right cheek stitch seam on the SIDE view in the SECOND column: draw a CLEAR diagonal 2-centimetre healed seam across the visible cheek below the cheekbone, running from just below ear toward mouth, with FOUR distinct pale-cyan perpendicular suture marks. It must be as plainly visible as the cheek seam of the FRONT view, because this side faces image-left and shows the same anatomical right cheek. No blood or wound hole. Do not leave the side cheek blank or replace the sutures with a smooth line. Keep every other detail unchanged. One landscape image 1536x1024.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/alt/turnaround-02.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-ef239c7e-a900-45ed-98fc-af6f4328acb2.png",
+        "file": "art/chars/CHAR-STITCHER/turnaround.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Matilda's identity, face and clothing. Reference 2 is ONLY the approved waist-up ink-painting composition, no prince, armour or UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three clearly different expressions left-to-right: LEFT calm professional attention, neutral mouth and relaxed brows, hands lowered. CENTER stern clinical admonition: narrowed turquoise eyes, one eyebrow lowered, mouth slightly open mid-dry rebuke, one gloved index finger raised near chest as if saying hold still, no rage. RIGHT giving a healing/repair boon: a small crooked amused smile, eyebrow lifted with meticulous confidence, gently offers a curved needle and pale-cyan thread in right gloved hand while left gloved palm supports thread near chest; left wrist bone visible, no gore. Same mature features in every panel, same ashen complexion, low auburn bun, facial and neck stitches and leather apron. No text or title, no crowns, hammers or extra tools beyond surgeon equipment.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-865f96fa-158d-4485-ad2b-8f3dd7103990.png",
+        "file": "art/chars/CHAR-STITCHER/alt/expressions-01.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Matilda's identity, face and clothing.  ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Matilda the Stitcher, a 38-year-old adult undead naval field surgeon, compact sturdy shoulders and torso with angular mature face and elongated adult limbs. Tied-back auburn hair in a practical low bun, ashen grey-white skin, neat small closed stitches along anatomical RIGHT cheek and neck, a little exposed ivory bone at anatomical LEFT wrist between patched glove and rolled sleeve, dim turquoise eye lights. Rolled rust-red sleeves and faded navy practical tunic, patched worn brown leather surgical apron with crossed back straps, dark trousers, stout brown calf boots, belt instrument roll on anatomical RIGHT hip. Patched brown finger gloves, no mechanical limbs. Brown/rust-red/navy limited palette and pale cyan stitches. Tools are a small curved surgical needle with thread, spool, surgical shears and rolled instrument kit. No hammer, anvil, crown, royal cloak, bone spikes or blood. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three clearly different expressions left-to-right: LEFT calm professional attention, neutral mouth and relaxed brows, hands lowered. CENTER stern clinical admonition: narrowed turquoise eyes, one eyebrow lowered, mouth slightly open mid-dry rebuke, one gloved index finger raised near chest as if saying hold still, no rage. RIGHT giving a healing/repair boon: a small crooked amused smile, eyebrow lifted with meticulous confidence, gently offers a curved needle and pale-cyan thread in right gloved hand while left gloved palm supports thread near chest; left wrist bone visible, no gore. Same mature features in every panel, same ashen complexion, low auburn bun, facial and neck stitches and leather apron. No text or title, no crowns, hammers or extra tools beyond surgeon equipment. Alternate independent drawing of same three states, slightly tighter waist-up composition. Keep face unmistakably grey-white ashen, cooler than living flesh. In RIGHT boon portrait make the exposed bone LEFT wrist visibly emerge above patched glove with a tiny cyan glimmer. Preserve anatomical right-cheek seam and low bun in every portrait. No change of identity or tools.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-STITCHER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-645c0df8-c66a-4058-a989-0e8a0f2e2199.png",
+        "file": "art/chars/CHAR-STITCHER/expressions.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      }
+    ],
+    "scope_notes": [
+      "按本次任务卡三文件规格，道具列入 turnaround 右侧，未另增 props.png。",
+      "仅产出静态叙事概念图；未接入游戏，未作为多帧游戏精灵或最终正交建模资产。",
+      "docs/art-style.md 第 2 节未给出增益卡框具体色值，本批沿用第 3 节人物主色，未新增卡框标准。"
+    ]
+  },
+  {
+    "id": "CHAR-MAGE",
+    "name": "Oswin / 奥斯温宫廷法师",
+    "age_at_death": 43,
+    "files": {
+      "hero": "art/chars/CHAR-MAGE/hero.png",
+      "turnaround": "art/chars/CHAR-MAGE/turnaround.png",
+      "expressions": "art/chars/CHAR-MAGE/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-MAGE/alt/hero-02.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-MAGE/alt/turnaround-01.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-MAGE/alt/expressions-02.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3. Reference 1 is ONLY the hand-painted and inked style, exclude prince identity and all royal equipment. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Pose: grounded scholar leans slightly forward engrossed yet addressing viewer with dry exacting intelligence. His LEFT bony hand supports a small rectangular dark slate near waist, his RIGHT hand holds an open annotated manuscript in front of chest, two loose parchment pages floating close beside forearm, faint teal-green light at fingertips. Keep both tools readable and separate, no giant spell circle. Both solid boot soles fully visible and planted, entire figure within frame with margin. Dark abstract ink-blue smoke background, dramatic hard-edged shadow, slate-blue and parchment palette, controlled turquoise-green edge light. No title, legible writing, narrative text, crown, halo, staff, other characters or giant books.",
+      "turnaround": "Use case: stylized-concept. Reference 1 locks Oswin's identity, skull, clothes, proportions and painted style. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"OSWIN\". All THREE neutral views have empty bone hands hanging at sides, NO floating papers and no books/slates on body or in hands. Show SAME layered narrow slate-grey robe with beige inner layer and cuffs, short hood and shoulder cowl, plain brown belt and small cloth pouches. Back of hood is modest fabric, not a huge veil or ceremonial cloak. Pouches fixed on anatomical RIGHT hip (viewer-left FRONT and viewer-right BACK). Both boot soles at common ground line in all three. Same slight shoulder hunch in every view. Props column right: one open manuscript, one rectangular dark slate and two loose parchment leaves, no extra accessories. No text on props except tiny nonverbal diagram strokes, no lore. Reference 2 is prior turnaround of SAME person and sets clear layout. Independently redraw the same sheet with a little more construction clarity. In SIDE, show the SAME pair of small brown belt pouches at anatomical RIGHT hip, projecting slightly forward just ahead of the hanging forearm so they are not lost. In BACK they are at viewer-right, in FRONT at viewer-left. Do not add additional pouches. Keep slate-blue narrow robe, beige inner layer, short hood, grounded boots, equal head top and foot baseline.",
+      "expressions": "Use case: stylized-concept. Reference 1 locks Oswin's SAME skull identity, short hood, robes and style. Reference 2 provides ONLY large waist-up dialogue framing and ink painting style; exclude all characters and UI from it. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT calm attentive scholar, head upright, small teal eyes steady, bony hands resting near waist on closed manuscript. CENTER exacting scepticism: head cocked slightly down and to side, one bony hand thoughtfully at chin, teal eye lights narrowed in fixed sockets, faint dry disapproval; scrutinising an unrecorded experimental claim. RIGHT giving a technical boon: quietly delighted by an elegant solution, skull raised a little and jaw slightly open as speaking, left bony hand offers the small slate outward, right index finger points to its simple technical diagram. Show intellectual satisfaction and patient explanation, no sinister cackle or battle spell. Same bone skull anatomy in all panels, no flesh or human eyebrows added to bone, no halo, crown, staff, text or other people."
+    },
+    "tool": "image_gen.imagegen (built-in; no CLI/API fallback)",
+    "status": "in_review",
+    "palette": "石板蓝、灰、羊皮纸色；青绿冥火",
+    "expressions_selection": [
+      {
+        "slot": "left",
+        "state": "平静观察",
+        "reason": "档案学者的日常观察状态，手持闭合手稿。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:83"
+      },
+      {
+        "slot": "center",
+        "state": "怀疑而严谨的审视",
+        "reason": "他鄙视只写成功而不记录失败的实验者；托下颌、俯头和收窄眼光传达质疑。",
+        "source": "docs/canon/B/B2-HOUSE-AND-COUNCIL.md:123"
+      },
+      {
+        "slot": "right",
+        "state": "欣赏技术、乐于讲解的授益",
+        "reason": "他同时反对制度与欣赏工程，并能给予技术指导；展示石板、指向图解表达增益与解释。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:86; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:127"
+      }
+    ],
+    "self_check": [
+      {
+        "requirement": "无皮肉的明显骷髅脸、骨手、微弱青绿眼光；43 岁为设定年龄，骨脸无法做写实年龄鉴定。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "瘦长学者、短兜帽、窄灰袍，主立绘双靴完整落地，微佝偻与低头姿态成立。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "主立绘手稿、石板和两张近身漂浮残页齐全；无光环、冠冕、巨杖、悬浮身体。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三视图第 2 版明确侧面右髋腰袋；前面画面左、背面画面右，右侧独立手稿/石板/残页。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三种对话像保留同一骨脸，授益以讲解石板呈现；与无脸悬浮的渡魂人不同。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "每文件仅一个角色身份；hero 全身竖版约 2:3；turnaround/expressions 横版",
+        "result": "pass",
+        "evidence": "实际生成图逐张目视审阅；PNG 尺寸另由交付校验记录。"
+      },
+      {
+        "requirement": "手绘厚涂、粗细变化墨线、修长有棱角造型、强明暗平涂阴影、暗背景、单侧饱和轮廓光；无 3D 低多边形风格",
+        "result": "pass",
+        "evidence": "以已审批 prince_hero.png/ui_dialogue.png 为画风输入，保留笔触、黑色外轮廓与大块硬边阴影。"
+      },
+      {
+        "requirement": "亡灵明确、青绿冥火、不血腥",
+        "result": "pass",
+        "evidence": "头盔光缝/缝合与露骨/骷髅脸/骨质下颌按各人特征呈现，未出现血液与内脏。"
+      },
+      {
+        "requirement": "三视图正、真侧、背，同一空手中性站姿、等高共地线，道具右列；英文名与 FRONT / SIDE / BACK / PROPS",
+        "result": "pass_for_concept",
+        "evidence": "已目视核对选版三视图，人物不持道具，头顶及靴底基准线对应。未做三维几何校核，不标记 model-ready。"
+      },
+      {
+        "requirement": "三张同身份对话半身像，平静加两种性格状态，包含给予增益",
+        "result": "pass",
+        "evidence": "从左到右顺序为 calm / character_reaction / boon_offer；选择与依据见 expressions_selection。"
+      },
+      {
+        "requirement": "提示词不包含现有游戏、工作室或画师名；不从图中文字推导设定",
+        "result": "pass",
+        "evidence": "完整提示词与输入路径保存在 generation_history；手稿/石板上的线条和图形只是绘画符号。"
+      },
+      {
+        "requirement": "从 ~/.codex/generated_images/ 复制，保留原图；每主文件有 alt；状态 in_review",
+        "result": "pass",
+        "evidence": "每次生成一张独立图片；所有源路径及目标路径逐次记录，交付校验比对 SHA-256。未裁切、缩放、拼贴或用代码重绘图片。"
+      }
+    ],
+    "review_notes": [
+      "turnaround 第 1 版侧面腰袋被遮没，第 2 版补明后选为主文件。",
+      "手稿/石板上的几何与笔画不作为新魔法体系或设定。"
+    ],
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_history": [
+      {
+        "kind": "hero",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3. Reference 1 is ONLY the hand-painted and inked style, exclude prince identity and all royal equipment. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Pose: grounded scholar leans slightly forward engrossed yet addressing viewer with dry exacting intelligence. His LEFT bony hand supports a small rectangular dark slate near waist, his RIGHT hand holds an open annotated manuscript in front of chest, two loose parchment pages floating close beside forearm, faint teal-green light at fingertips. Keep both tools readable and separate, no giant spell circle. Both solid boot soles fully visible and planted, entire figure within frame with margin. Dark abstract ink-blue smoke background, dramatic hard-edged shadow, slate-blue and parchment palette, controlled turquoise-green edge light. No title, legible writing, narrative text, crown, halo, staff, other characters or giant books.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-78bbb0f7-ec43-4559-893d-fc8d5a954df2.png",
+        "file": "art/chars/CHAR-MAGE/hero.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "hero",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Independent alternate FULL BODY HERO portrait 1024x1536. Reference 1 locks Oswin's skull, short hood, layered robes, palette and style. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Alternative pose of exact same lich scholar: shoulders slightly hunched, head tilted in precise sceptical consideration, right bony hand holding open annotated parchment manuscript closer to chest, left bony hand holding small dark slate at hip level tilted toward viewer. Two small loose pages float beside right elbow. Both dark leather boots firmly planted, complete figure with head/foot margin. Keep identical robe panel shapes, beige inner layer and belt pouches as reference; dark ink-blue background, restrained teal light. No staff, giant magic, circle, halo, crown, floating figure, text title or extra characters.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-62e6b93e-d8d7-452a-9347-38d4940c575a.png",
+        "file": "art/chars/CHAR-MAGE/alt/hero-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Oswin's identity, skull, clothes, proportions and painted style. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"OSWIN\". All THREE neutral views have empty bone hands hanging at sides, NO floating papers and no books/slates on body or in hands. Show SAME layered narrow slate-grey robe with beige inner layer and cuffs, short hood and shoulder cowl, plain brown belt and small cloth pouches. Back of hood is modest fabric, not a huge veil or ceremonial cloak. Pouches fixed on anatomical RIGHT hip (viewer-left FRONT and viewer-right BACK). Both boot soles at common ground line in all three. Same slight shoulder hunch in every view. Props column right: one open manuscript, one rectangular dark slate and two loose parchment leaves, no extra accessories. No text on props except tiny nonverbal diagram strokes, no lore.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-9b66bbbb-8164-49a0-8a53-56752980c8b6.png",
+        "file": "art/chars/CHAR-MAGE/alt/turnaround-01.png",
+        "selected": false,
+        "review": "not_selected_with_issue",
+        "rejection_reason": "侧面腰袋被遮没；第二版补明轮廓"
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Oswin's identity, skull, clothes, proportions and painted style. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"OSWIN\". All THREE neutral views have empty bone hands hanging at sides, NO floating papers and no books/slates on body or in hands. Show SAME layered narrow slate-grey robe with beige inner layer and cuffs, short hood and shoulder cowl, plain brown belt and small cloth pouches. Back of hood is modest fabric, not a huge veil or ceremonial cloak. Pouches fixed on anatomical RIGHT hip (viewer-left FRONT and viewer-right BACK). Both boot soles at common ground line in all three. Same slight shoulder hunch in every view. Props column right: one open manuscript, one rectangular dark slate and two loose parchment leaves, no extra accessories. No text on props except tiny nonverbal diagram strokes, no lore. Reference 2 is prior turnaround of SAME person and sets clear layout. Independently redraw the same sheet with a little more construction clarity. In SIDE, show the SAME pair of small brown belt pouches at anatomical RIGHT hip, projecting slightly forward just ahead of the hanging forearm so they are not lost. In BACK they are at viewer-right, in FRONT at viewer-left. Do not add additional pouches. Keep slate-blue narrow robe, beige inner layer, short hood, grounded boots, equal head top and foot baseline.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/hero.png",
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/turnaround.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-82a240d6-80fc-41bc-a9bc-f6ec66ec4925.png",
+        "file": "art/chars/CHAR-MAGE/turnaround.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Oswin's SAME skull identity, short hood, robes and style. Reference 2 provides ONLY large waist-up dialogue framing and ink painting style; exclude all characters and UI from it. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT calm attentive scholar, head upright, small teal eyes steady, bony hands resting near waist on closed manuscript. CENTER exacting scepticism: head cocked slightly down and to side, one bony hand thoughtfully at chin, teal eye lights narrowed in fixed sockets, faint dry disapproval; scrutinising an unrecorded experimental claim. RIGHT giving a technical boon: quietly delighted by an elegant solution, skull raised a little and jaw slightly open as speaking, left bony hand offers the small slate outward, right index finger points to its simple technical diagram. Show intellectual satisfaction and patient explanation, no sinister cackle or battle spell. Same bone skull anatomy in all panels, no flesh or human eyebrows added to bone, no halo, crown, staff, text or other people.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-6c66f69a-633a-480c-bc84-fca4e87703ca.png",
+        "file": "art/chars/CHAR-MAGE/expressions.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Oswin's SAME skull identity, short hood, robes and style.  ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Oswin the Court Mage, a 43-year-old undead lich SCHOLAR with thin elongated solid body, slightly hunched shoulders, fully visible clean ivory-bone skull face with angular cheekbones, exposed bony jaw and dim teal-green lights inside eye sockets. No flesh mask, beard or hair. SHORT faded ink-blue scholarly hood and shoulder cowl, narrow layered slate-blue and grey robes with parchment-beige collar/inner cuffs and restrained frayed hems, plain brown belt and small cloth pouches. Full bony hands, two solid dark leather boots visibly extend beneath ankle-length hem and touch ground. No floating body. Scholar's tools: one annotated parchment manuscript and one small rectangular dark stone writing slate. A few detached manuscript pages may float close to hands only. Slim grounded silhouette, no staff, halo, crown, floating long ceremonial vestments, royal insignia, armour or weapons. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. LEFT calm attentive scholar, head upright, small teal eyes steady, bony hands resting near waist on closed manuscript. CENTER exacting scepticism: head cocked slightly down and to side, one bony hand thoughtfully at chin, teal eye lights narrowed in fixed sockets, faint dry disapproval; scrutinising an unrecorded experimental claim. RIGHT giving a technical boon: quietly delighted by an elegant solution, skull raised a little and jaw slightly open as speaking, left bony hand offers the small slate outward, right index finger points to its simple technical diagram. Show intellectual satisfaction and patient explanation, no sinister cackle or battle spell. Same bone skull anatomy in all panels, no flesh or human eyebrows added to bone, no halo, crown, staff, text or other people. Alternate independent sheet. Keep skull tops aligned to similar height, slightly tighter waist-up framing. Make RIGHT technical-boon emotion a restrained knowing satisfaction with jaw only just parted, not an open-mouthed laugh. CENTER is dry analytical scepticism rather than anger. Same fixed bony face, no human flesh, no smiling painted eyebrows. Keep hand anatomy clear and uncluttered.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-MAGE/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-ee47cd6c-2e14-4f7f-9f52-2b0922365146.png",
+        "file": "art/chars/CHAR-MAGE/alt/expressions-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      }
+    ],
+    "scope_notes": [
+      "按本次任务卡三文件规格，道具列入 turnaround 右侧，未另增 props.png。",
+      "仅产出静态叙事概念图；未接入游戏，未作为多帧游戏精灵或最终正交建模资产。",
+      "docs/art-style.md 第 2 节未给出增益卡框具体色值，本批沿用第 3 节人物主色，未新增卡框标准。"
+    ]
+  },
+  {
+    "id": "CHAR-BUGLER",
+    "name": "Pip / 皮普号手",
+    "age_at_death": 19,
+    "files": {
+      "hero": "art/chars/CHAR-BUGLER/hero.png",
+      "turnaround": "art/chars/CHAR-BUGLER/turnaround.png",
+      "expressions": "art/chars/CHAR-BUGLER/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-BUGLER/alt/hero-02.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-BUGLER/alt/turnaround-02.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-BUGLER/alt/expressions-02.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3. Reference 1 is ONLY approved ink and brush painting style, not character identity, armour, crown or cape. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Full body with margins, one adult sailor only. Lively playful stance, left boot forward firmly on ground, rear heel lifted a little, shoulders angled, RIGHT hand makes an impish casual two-finger salute near brow; LEFT hand carries the oversized brass bugle at hip with its bell lifted outward and the small broken-crown pennant hanging visibly from the instrument. Mischievous youthful grown-up smirk through upper face and eye shape, lower jaw unmistakably skeletal. Scarf tails flutter, no sprawling cloak. Dark blue smoky brushed background, dramatic hard shadow, turquoise rim one side, small gold reflections only on brass horn. No child/chibi proportions, baby cheeks, large round eyes, full living face, gore, other people, labels or any text.",
+      "turnaround": "Use case: stylized-concept. Reference 1 locks Pip's exact adult undead face, hair, navy sailor clothing, rust scarf, boots, bugle and pennant. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"PIP\". Neutral arms down EMPTY hands, feet parallel, NO salute, no bend, no jaunty acting in views. Three same-scale slender young ADULT figures with same head/heel alignments. Hair tousled but not enormous; lower jaw and teeth visibly skeletal, teal eyes. Tunic has the same pale grey edged sailor collar: front V shape and square fall on BACK, rust red scarf knot at front, short scarf tails rest still rather than flying. Both sleeve rolls and wrist wraps consistent. No bugle, flag or straps on figures; draw detached brass bugle and a SEPARATE small broken-crown pennant with its tying cord in far-right PROPS column only. Do not combine pennant with horn in prop drawings. No crown headwear, toy proportions, armour, cape or child.",
+      "expressions": "Use case: stylized-concept. Reference 1 locks Pip's exact nineteen-year-old adult undead face, hair, clothing and horn. Reference 2 is only approved dialogue portrait framing and painted ink style, no prince or UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three distinct states left-to-right: LEFT calm listening, head upright, eyes attentive, shoulders relaxed, bugle lowered near waist; exposed lower jaw stays skeletal without a human lip cover. CENTER playful irreverence: one raised eyebrow, a quick wink, head tilted, right hand makes a loose two-finger mock salute near temple, upper face communicates dry wit, no childish baby face. RIGHT giving an encouraging boon: both teal eyes open bright and eager, warm spirited confidence, left hand raises brass bugle beside shoulder with small broken-crown pennant visible, right palm opens outward inviting companions onward. Same adult facial proportions, ash-grey skin and exposed bone jaw in all three, no change of age. No blood, title, labels, crowns, cape, armour or extra figures."
+    },
+    "tool": "image_gen.imagegen (built-in; no CLI/API fallback)",
+    "status": "in_review",
+    "palette": "海军蓝、铁锈红领巾、铜号金；青绿亡灵眼光与轮廓光",
+    "expressions_selection": [
+      {
+        "slot": "left",
+        "state": "平静听令",
+        "reason": "保留号手日常听令与观察的一面，眼睛专注、铜号放低。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:88"
+      },
+      {
+        "slot": "center",
+        "state": "俏皮揶揄",
+        "reason": "他善于讲笑话，也看得出小小虚伪；眨眼、挑眉与随意敬礼传达成年人的机灵。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:91; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:131"
+      },
+      {
+        "slot": "right",
+        "state": "热情鼓劲的授益",
+        "reason": "他喜欢航行冒险与号令，授益时举起铜号、伸掌邀请，表达积极同伴感。",
+        "source": "docs/canon/B/B1-CORE-CHARACTERS.md:89; docs/canon/B/B2-HOUSE-AND-COUNCIL.md:131"
+      }
+    ],
+    "self_check": [
+      {
+        "requirement": "成年 19 岁脸型与成人头身，未采用儿童大头/幼态体型；短乱发和局部露骨下颌明确。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "海军蓝短衣、铁锈红领巾、靴、略大铜号及带碎王冠图案的小旗齐全；王冠只作旗徽。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "青绿眼部/发缘魂光、局部颌骨与苍白肤色共同体现亡灵，无血腥。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三视图中性空手、等高共地线；水手领前 V 后方领，铜号和旗帜在右侧分别卸下展示。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "三表情同一年轻成人身份，左平静、中央眨眼调皮、右举号授益；未混入他人。",
+        "result": "pass",
+        "evidence": "逐张审阅实际生成图。"
+      },
+      {
+        "requirement": "每文件仅一个角色身份；hero 全身竖版约 2:3；turnaround/expressions 横版",
+        "result": "pass",
+        "evidence": "实际生成图逐张目视审阅；PNG 尺寸另由交付校验记录。"
+      },
+      {
+        "requirement": "手绘厚涂、粗细变化墨线、修长有棱角造型、强明暗平涂阴影、暗背景、单侧饱和轮廓光；无 3D 低多边形风格",
+        "result": "pass",
+        "evidence": "以已审批 prince_hero.png/ui_dialogue.png 为画风输入，保留笔触、黑色外轮廓与大块硬边阴影。"
+      },
+      {
+        "requirement": "亡灵明确、青绿冥火、不血腥",
+        "result": "pass",
+        "evidence": "头盔光缝/缝合与露骨/骷髅脸/骨质下颌按各人特征呈现，未出现血液与内脏。"
+      },
+      {
+        "requirement": "三视图正、真侧、背，同一空手中性站姿、等高共地线，道具右列；英文名与 FRONT / SIDE / BACK / PROPS",
+        "result": "pass_for_concept",
+        "evidence": "已目视核对选版三视图，人物不持道具，头顶及靴底基准线对应。未做三维几何校核，不标记 model-ready。"
+      },
+      {
+        "requirement": "三张同身份对话半身像，平静加两种性格状态，包含给予增益",
+        "result": "pass",
+        "evidence": "从左到右顺序为 calm / character_reaction / boon_offer；选择与依据见 expressions_selection。"
+      },
+      {
+        "requirement": "提示词不包含现有游戏、工作室或画师名；不从图中文字推导设定",
+        "result": "pass",
+        "evidence": "完整提示词与输入路径保存在 generation_history；手稿/石板上的线条和图形只是绘画符号。"
+      },
+      {
+        "requirement": "从 ~/.codex/generated_images/ 复制，保留原图；每主文件有 alt；状态 in_review",
+        "result": "pass",
+        "evidence": "每次生成一张独立图片；所有源路径及目标路径逐次记录，交付校验比对 SHA-256。未裁切、缩放、拼贴或用代码重绘图片。"
+      }
+    ],
+    "review_notes": [
+      "小巧是相对其他角色的体态方向；单人图不提供跨角色的绝对身高尺，建模时仍需统一身高表。",
+      "皮肤局部保留绘画的暖灰受光；下颌露骨和青绿魂光应在后续 UI 缩小测试中继续检查。"
+    ],
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_history": [
+      {
+        "kind": "hero",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. One FULL BODY HERO portrait 1024x1536, 2:3. Reference 1 is ONLY approved ink and brush painting style, not character identity, armour, crown or cape. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Full body with margins, one adult sailor only. Lively playful stance, left boot forward firmly on ground, rear heel lifted a little, shoulders angled, RIGHT hand makes an impish casual two-finger salute near brow; LEFT hand carries the oversized brass bugle at hip with its bell lifted outward and the small broken-crown pennant hanging visibly from the instrument. Mischievous youthful grown-up smirk through upper face and eye shape, lower jaw unmistakably skeletal. Scarf tails flutter, no sprawling cloak. Dark blue smoky brushed background, dramatic hard shadow, turquoise rim one side, small gold reflections only on brass horn. No child/chibi proportions, baby cheeks, large round eyes, full living face, gore, other people, labels or any text.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-750ae42e-5c0c-4be6-97e0-6cad4fc117cf.png",
+        "file": "art/chars/CHAR-BUGLER/hero.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "hero",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Independent alternate FULL BODY HERO portrait 1024x1536. Reference 1 locks Pip's precise young-adult undead face, tousled brown hair, navy sailor outfit, rust-red scarf, brass bugle and small broken-crown pennant. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Alternate pose: lively compact adult sailor with torso turned slightly, weight on right leg and left knee relaxed; LEFT hand lifts the same brass bugle beside shoulder, bell angled outward, same SMALL broken-crown pennant hangs from it; RIGHT hand open near chest in a witty storytelling gesture. Playful raised eyebrow and knowing grin with visible bone jaw. Make ash-grey upper-face skin and teal glowing eyes unmistakably undead. Whole body and boot soles in frame, margins. Same dark ink-blue background. Scarf only, no cape, no childish proportions, no title, extra figures or new equipment.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-4a3aac6d-695b-4464-9b4b-4cfe4c85b909.png",
+        "file": "art/chars/CHAR-BUGLER/alt/hero-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Pip's exact adult undead face, hair, navy sailor clothing, rust scarf, boots, bugle and pennant. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"PIP\". Neutral arms down EMPTY hands, feet parallel, NO salute, no bend, no jaunty acting in views. Three same-scale slender young ADULT figures with same head/heel alignments. Hair tousled but not enormous; lower jaw and teeth visibly skeletal, teal eyes. Tunic has the same pale grey edged sailor collar: front V shape and square fall on BACK, rust red scarf knot at front, short scarf tails rest still rather than flying. Both sleeve rolls and wrist wraps consistent. No bugle, flag or straps on figures; draw detached brass bugle and a SEPARATE small broken-crown pennant with its tying cord in far-right PROPS column only. Do not combine pennant with horn in prop drawings. No crown headwear, toy proportions, armour, cape or child.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-a56d5f02-1e82-4521-aed9-61bed8084aa7.png",
+        "file": "art/chars/CHAR-BUGLER/turnaround.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "turnaround",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Pip's exact adult undead face, hair, navy sailor clothing, rust scarf, boots, bugle and pennant. Create ONE LANDSCAPE 1536x1024 character turnaround illustration for later modelling reference. Exactly THREE full-length views of ONE identical person, FRONT, exact 90-degree SIDE facing left, and BACK, plus separate detachable equipment on the FAR RIGHT under PROPS. Reserve 25% width for each view and remaining 25% for props. All three wear the same outfit with corresponding construction, SAME SCALE and same helmet/head top height, matching boot ground line; identical relaxed neutral anatomical stance, arms straight down slightly separated from torso, empty hands; no acting, no perspective foreshortening, no held props. Align crown of head and heel soles to faint horizontal guide lines. Rotational consistency: character's anatomical left appears on viewer's right in FRONT and viewer's left in BACK; do not mirror asymmetric clothing. Entire bodies including soles visible, even clear spacing, margins. Plain dark desaturated blue-charcoal backing, quieter rim light than hero for construction clarity. English name title small at upper left; exactly FRONT / SIDE / BACK / PROPS beneath corresponding columns; NO other written labels, prose, measurements or lore. Props do not overlap figures. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Name text exactly \"PIP\". Neutral arms down EMPTY hands, feet parallel, NO salute, no bend, no jaunty acting in views. Three same-scale slender young ADULT figures with same head/heel alignments. Hair tousled but not enormous; lower jaw and teeth visibly skeletal, teal eyes. Tunic has the same pale grey edged sailor collar: front V shape and square fall on BACK, rust red scarf knot at front, short scarf tails rest still rather than flying. Both sleeve rolls and wrist wraps consistent. No bugle, flag or straps on figures; draw detached brass bugle and a SEPARATE small broken-crown pennant with its tying cord in far-right PROPS column only. Do not combine pennant with horn in prop drawings. No crown headwear, toy proportions, armour, cape or child. Reference 2 is prior turnaround of SAME person and layout. Independently redraw the same design with slightly more quiet soul-fire hair outline and clearer plain grey-white skin. Keep adult 7-head proportions, exact side, equal height and common baseline, same empty neutral hands and detached props. Preserve identical front V and back square sailor collar with pale edge stripe. No redesign.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/hero.png",
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/turnaround.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-81984463-a410-43a6-bd0b-3515ea2ac410.png",
+        "file": "art/chars/CHAR-BUGLER/alt/turnaround-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 1,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Pip's exact nineteen-year-old adult undead face, hair, clothing and horn. Reference 2 is only approved dialogue portrait framing and painted ink style, no prince or UI. ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three distinct states left-to-right: LEFT calm listening, head upright, eyes attentive, shoulders relaxed, bugle lowered near waist; exposed lower jaw stays skeletal without a human lip cover. CENTER playful irreverence: one raised eyebrow, a quick wink, head tilted, right hand makes a loose two-finger mock salute near temple, upper face communicates dry wit, no childish baby face. RIGHT giving an encouraging boon: both teal eyes open bright and eager, warm spirited confidence, left hand raises brass bugle beside shoulder with small broken-crown pennant visible, right palm opens outward inviting companions onward. Same adult facial proportions, ash-grey skin and exposed bone jaw in all three, no change of age. No blood, title, labels, crowns, cape, armour or extra figures.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/hero.png",
+          "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-a305e5f1-e209-4680-9496-ed51276e063b.png",
+        "file": "art/chars/CHAR-BUGLER/expressions.png",
+        "selected": true,
+        "review": "selected_in_review",
+        "rejection_reason": null
+      },
+      {
+        "kind": "expressions",
+        "attempt": 2,
+        "prompt": "Use case: stylized-concept. Reference 1 locks Pip's exact nineteen-year-old adult undead face, hair, clothing and horn.  ONE LANDSCAPE 1536x1024 illustration: a three-panel row of the SAME person's WAIST-UP DIALOGUE PORTRAIT, not full-body, heads and torsos large like the attached approved dialogue reference. Equal scale and head height in all three, clear separation and hands included where gesturing. Match exact head/face, outfit, colour palette and asymmetric marks in all panels. Only one character identity repeated to show three states, no other people, no UI, no dialogue bubble, no letters or labels, no decorative borders. Dark quiet blue-black backdrop. Pip the Bugler, a 19-year-old YOUNG ADULT undead naval sailor, short slim lively build but elongated adult 7-head anatomy, angular youthful adult face, no childlike oversized head. Short tousled dark brown hair, ash-grey-white forehead and upper face with expressive dark brows, clearly exposed clean ivory skeletal LOWER JAW and teeth on both sides, small teal eye lights and subtle cheek decay without blood. Faded navy short sailor tunic with broad square pale-grey-edged sailor collar, rust-red neck scarf knotted at chest, plain brown belt, dark slim trousers, weathered brown calf boots and simple wrist wraps. Distinct warm brass bugle with round loop tubing and broad slightly oversized bell; a SMALL tattered navy pennant bearing a simple broken gold crown symbol tied to bugle with cord. The crown is ONLY a flag emblem, no crown worn. No royal mantle, armour, toy costume or living flesh colour. Naval-blue/rust-red/brass palette, turquoise-green undead rim and golden brass reflections. Hand-painted opaque brushwork with visible dry-brush texture, variable-width bold black ink outer contours and fine angular internal lines, elongated angular adult anatomy, strong flat hard-edged shadow shapes and saturated turquoise-green soulfire rim on one side. Dark ink-blue background. Limited character-specific palette. No 3D rendering, no low-poly polygons, no soft gradients, no photorealism, no gore, no watermark. Three distinct states left-to-right: LEFT calm listening, head upright, eyes attentive, shoulders relaxed, bugle lowered near waist; exposed lower jaw stays skeletal without a human lip cover. CENTER playful irreverence: one raised eyebrow, a quick wink, head tilted, right hand makes a loose two-finger mock salute near temple, upper face communicates dry wit, no childish baby face. RIGHT giving an encouraging boon: both teal eyes open bright and eager, warm spirited confidence, left hand raises brass bugle beside shoulder with small broken-crown pennant visible, right palm opens outward inviting companions onward. Same adult facial proportions, ash-grey skin and exposed bone jaw in all three, no change of age. No blood, title, labels, crowns, cape, armour or extra figures. Independent alternate sheet, slightly tighter waist-up framing and same head heights. Keep calm, mischievous wink and encouraging boon clearly different. Preserve identical partial skeletal cheek and jaw as reference, more cool ashen grey-white on exposed upper face, teal eyes visible in LEFT and RIGHT. Bugle and small broken-crown pennant must remain same design, no oversized flag. No childlike grin or change of identity.",
+        "input_references": [
+          "/Users/cyy/Projects/亡魂王子-t33/art/chars/CHAR-BUGLER/hero.png"
+        ],
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-1e26-7d12-a6ce-5a9619f7798a/exec-82b49241-0d7a-4bcb-b01d-1a995dd22c63.png",
+        "file": "art/chars/CHAR-BUGLER/alt/expressions-02.png",
+        "selected": false,
+        "review": "usable_alternate_in_review",
+        "rejection_reason": null
+      }
+    ],
+    "scope_notes": [
+      "按本次任务卡三文件规格，道具列入 turnaround 右侧，未另增 props.png。",
+      "仅产出静态叙事概念图；未接入游戏，未作为多帧游戏精灵或最终正交建模资产。",
+      "docs/art-style.md 第 2 节未给出增益卡框具体色值，本批沿用第 3 节人物主色，未新增卡框标准。"
+    ]
+  }
+]
