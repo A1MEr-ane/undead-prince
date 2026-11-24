@@ -2,7 +2,7 @@
 id: T27
 title: 通用 Q 版身体模板 + 按 B 比例重建盾兵
 owner: codex
-status: running
+status: done
 branch: codex/t27-chibi
 worktree: ../亡魂王子-t27
 images: [/Users/cyy/Projects/亡魂王子/concept/turnaround/t_k2_shieldman_B_turn.png, /Users/cyy/Projects/亡魂王子/concept/turnaround/t_k2_shieldman_B_props.png, /Users/cyy/Projects/亡魂王子/concept/proportion/prop_shieldman.png]
