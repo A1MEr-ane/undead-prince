@@ -39,7 +39,7 @@ tools/verify/verify.sh      固定验证套件：parse / battle（多种子无�
 reports/agents/<id>.md      执行者交付报告；<id>.log 原始日志（Lead 只看报告和 verify JSON，不读全日志）
 reports/verify/*.json       每次验证的结构化结果（不入库）
 reports/metrics.csv         每次执行一行：耗时、退出码、用量、是否交报告  ✓
-tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（定时触发：每天 12:00 与 18:00 由定时任务调用，待用户同意后安装）
+tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（launchd：`~/Library/LaunchAgents/com.undeadprince.dsh-queue.plist`，每天 12:01、18:01；工程必须在 ~/Documents 之外，否则 macOS 不让后台任务访问）
 ```
 流程：Claude 写任务卡 → `run_agent.sh` 启动 → 执行者在分支提交 + 写报告 → Claude 读报告和 verify JSON → 视觉项看截图 → 合并到 main → 再跑一次 `verify.sh all`。
 
