@@ -652,11 +652,11 @@
       "source_time": 0.0,
       "alpha_bbox": [
         25,
-        19,
-        53,
+        18,
+        54,
         62
       ],
-      "ground_lift": 1e-06
+      "ground_lift": 0.0
     },
     {
       "index": 7,
@@ -710,7 +710,7 @@
       "alpha_bbox": [
         25,
         18,
-        55,
+        54,
         62
       ],
       "ground_lift": 0.0
@@ -728,8 +728,8 @@
       "source_time": 0.3335,
       "alpha_bbox": [
         25,
-        19,
-        55,
+        18,
+        54,
         62
       ],
       "ground_lift": 0.0
@@ -748,7 +748,7 @@
       "alpha_bbox": [
         25,
         18,
-        55,
+        54,
         62
       ],
       "ground_lift": 0.0
@@ -1844,8 +1844,8 @@
     "triangles": 494
   },
   "validation": {
-    "covered_pixels": 46497,
-    "antialiased_pixels": 13081,
+    "covered_pixels": 46302,
+    "antialiased_pixels": 12996,
     "shade_range": [
       43,
       255

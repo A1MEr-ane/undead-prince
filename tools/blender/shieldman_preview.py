@@ -71,7 +71,11 @@ def create_previews(atlas, metadata, output, spec):
     metadata['part_texture']['appearances']=[dict(name=key,label=key.upper(),tile=[i%2,i//2],
         pixel_rect=[i%2*256,i//2*256,256,256]) for i,(key,_) in enumerate(looks)]
     for (name,_),paint in zip(looks,paints):
-        write_png(output/f'{prefix}_preview_{name}.png',contact_sheet(decode(atlas,paint),metadata,name.upper()))
+        decoded = decode(atlas,paint)
+        write_png(output/f'{prefix}_preview_{name}.png',contact_sheet(decoded,metadata,name.upper()))
+        if name == looks[0][0]:
+            walk_metadata = dict(metadata, animations={'walk': metadata['animations']['walk']})
+            write_png(output/f'{prefix}_preview_walk.png',contact_sheet(decoded,walk_metadata,name.upper()+' WALK'))
     for name,source in (('uv',atlas),('shading',atlas.copy())):
         if name=='shading':
             source[...,:3]=source[...,2:3]
