@@ -25,9 +25,10 @@ class Shieldman:
         self.hand = spec['proportions']['hand_size'] * self.height
         self.lean = spec['proportions']['lean_degrees']
         self.parts = spec['parts']
+        self.shield_yaw = self.parts['shield']['face_yaw_degrees']
         self.neutral = dict(hip=(0, 0, self.h['belt']), lean=0., head_tilt=0.,
                             foot_l=(.035, -.22, .12), foot_r=(-.035, .22, .12),
-                            wrist_l=(.14, -.49, 1.00), wrist_r=(.11, .36, .96),
+                            wrist_l=(.48, -.45, 1.08), wrist_r=(.11, .36, .96),
                             sword=115., shield=0., tumble=0.)
 
     def part(self, name, key='uv_part'):
@@ -83,12 +84,24 @@ class Shieldman:
         # The original key poses survive; only the relaxed sword points down.
         rest_weight = max(0., 1 - abs(old['sword'] - base.DEFAULT['sword']) / 35)
         p['sword'] = old['sword'] + 80 * rest_weight
+        yaw = self.shield_yaw
         if name == 'idle':
             s = math.sin(2 * PI * t / duration)
-            p['wrist_l'] = (.14, -.49, 1.00 + .012 * s)
+            x, y, z = self.neutral['wrist_l']
+            p['wrist_l'] = (x, y, z + .012 * s)
         if name == 'attack':
             guard = math.sin(PI * min(1., t / .41)) if t <= .41 else 0.
-            p['wrist_l'] = (.14 + .055 * guard, -.49, 1.00 + .07 * guard)
+            x, y, z = self.neutral['wrist_l']
+            p['wrist_l'] = (x - .06 * guard, y + .04 * guard, z + .025 * guard)
+            yaw -= 8 * guard
+        if name == 'parry':
+            push = base.blend([(0, dict(shield=0.)), (.13, dict(shield=.15)),
+                               (.26, dict(shield=1.)), (.39, dict(shield=.5)),
+                               (.65, dict(shield=0.))], t)['shield']
+            x, y, z = self.neutral['wrist_l']
+            p['wrist_l'] = (x + .14 * push, y + .05 * push, z + .08 * push)
+            p['shield'] = -12 * push
+            yaw -= 24 * push
         if name == 'walk':
             phase = t / duration
             stride = .40
@@ -108,6 +121,9 @@ class Shieldman:
                 leg_x = p['foot_' + side][0]
                 p['wrist_' + side] = (x - .22 * leg_x, y, z + bob - .035)
             p['sword'] = 115.
+        # Yaw the existing hand bone at the wrist; no extra rig bone or channel
+        # is needed in the runtime atlas. The hand's pitch still follows shield.
+        p['bone_yaws'] = {'hand_l': self.shield_yaw - yaw}
         return p
 
     def profile(self, name, rings, part, bone, cap_bottom=True, cap_top=True, far=False):
@@ -271,9 +287,10 @@ class Shieldman:
         radius=p['diameter']*self.height/2
         depth=p['thickness']*self.height
         n=p['sides']
-        centre=base.REST['hand_l'][0]+V((.025,-.045,-.045))
-        normal=V((.20,-.98,0)).normalized()
-        horizontal=V((.98,.20,0)).normalized()
+        angle=math.radians(self.shield_yaw)
+        normal=V((math.cos(angle),-math.sin(angle),0))
+        horizontal=V((math.sin(angle),math.cos(angle),0))
+        centre=base.REST['hand_l'][0]+normal*(self.hand*.60)+V((0,0,-.045))
         vertices=[]
         for r,d in ((radius,-depth/2),(radius,depth/2),(radius*.89,depth/2+.004)):
             for i in range(n):

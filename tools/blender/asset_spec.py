@@ -1,7 +1,8 @@
 """Read the project's small YAML mapping/list subset, without Blender add-ons.
 
-Supports indented mappings, scalar lists, inline mappings and quoted scalars.
-Rejects YAML anchors, tags, multiline scalars and flow lists. No eval or network.
+Supports indented mappings, scalar lists, flow mappings/lists and quoted scalars.
+Flow collections may span lines. Rejects anchors, tags and block scalars.
+No eval or network.
 """
 import hashlib
 from pathlib import Path
@@ -30,9 +31,12 @@ def _scalar(value):
     if value.startswith('{'):
         if not value.endswith('}'):
             raise ValueError('Unclosed inline mapping')
-        fields = re.split(r',\s*(?=[A-Za-z_][\w-]*\s*:)', value[1:-1])
-        return dict(_entry(field) for field in fields)
-    if value.startswith(('&', '*', '!', '|', '>', '[')):
+        return dict(_entry(field) for field in _flow_items(value[1:-1]))
+    if value.startswith('['):
+        if not value.endswith(']'):
+            raise ValueError('Unclosed inline list')
+        return [_scalar(field) for field in _flow_items(value[1:-1])]
+    if value.startswith(('&', '*', '!', '|', '>')):
         raise ValueError(f'Unsupported YAML scalar: {value}')
     if value.startswith(('"', "'")):
         # A quoted colour embedded in Chinese prose is still a plain scalar.
@@ -46,6 +50,29 @@ def _scalar(value):
     return value
 
 
+def _flow_items(value):
+    quote, stack, start = None, [], 0
+    for i, ch in enumerate(value):
+        if ch in ('"', "'"):
+            if quote == ch:
+                quote = None
+            elif quote is None:
+                quote = ch
+        elif quote is None:
+            if ch in '{[':
+                stack.append(ch)
+            elif ch in '}]':
+                if not stack or stack.pop() != {'}': '{', ']': '['}[ch]:
+                    raise ValueError('Mismatched flow collection')
+            elif ch == ',' and not stack:
+                yield value[start:i].strip()
+                start = i + 1
+    if quote or stack:
+        raise ValueError('Unclosed flow collection or quote')
+    if value[start:].strip():
+        yield value[start:].strip()
+
+
 def _entry(text):
     key, sep, value = text.partition(':')
     if not sep or not re.fullmatch(r'[A-Za-z_][\w-]*', key.strip()):
@@ -56,12 +83,33 @@ def _entry(text):
 def load_spec(path=DEFAULT_SPEC):
     path = Path(path).resolve()
     lines = []
+    pending = 0
     for number, raw in enumerate(path.read_text().splitlines(), 1):
         if '\t' in raw:
             raise ValueError(f'{path}:{number}: use spaces for indentation')
         clean = _uncomment(raw).rstrip()
         if clean.strip():
-            lines.append((len(clean) - len(clean.lstrip()), clean.lstrip(), number))
+            # A continued flow mapping/list is one logical YAML line. Preserve
+            # its starting indentation for the block parser below.
+            if lines and pending:
+                indent, text, first = lines[-1]
+                lines[-1] = (indent, text + ' ' + clean.strip(), first)
+            else:
+                lines.append((len(clean) - len(clean.lstrip()), clean.lstrip(), number))
+            pending = 0
+            quote = None
+            for ch in lines[-1][1]:
+                if ch in ('"', "'"):
+                    if quote == ch:
+                        quote = None
+                    elif quote is None:
+                        quote = ch
+                elif quote is None:
+                    pending += (ch in '{[') - (ch in '}]')
+            if pending < 0:
+                raise ValueError(f'{path}:{number}: unexpected flow closing bracket')
+    if not lines or pending:
+        raise ValueError(f'{path}: empty file or unclosed flow collection')
 
     def block(index, indent):
         sequence = lines[index][1].startswith('- ')

@@ -1,6 +1,8 @@
 """Artifact and independent ray/UV/light verification. Run with Blender Python."""
 import argparse
+from collections import Counter
 import json
+import math
 from pathlib import Path
 import sys
 
@@ -64,7 +66,7 @@ def verify(output, check_rig=True, spec_path=None):
             assert np.array_equal(paint[y:y+256,x:x+256], paint_tile(recipe.spec['looks'][look]))
         for name in ('uv', 'shading'):
             assert (output / f'{prefix}_preview_{name}.png').is_file()
-        for name in ('front', 'side', 'back', 'equipped'):
+        for name in ('front', 'side', 'back', 'equipped', 'equipped_side'):
             assert read_png(output / f'{prefix}_view_{name}.png').shape == (768, 768, 3)
     else:
         for name in ('militia', 'veteran', 'undead', 'elite', 'looks', 'uv', 'shading'):
@@ -78,6 +80,7 @@ def verify(output, check_rig=True, spec_path=None):
             assert stats == metadata['model']
             assert stats['triangles'] <= recipe.spec['triangle_budget']['max']
             validate_spec_model(recipe, rig, OBJECTS)
+            validate_shield_poses(recipe, rig, OBJECTS)
         else:
             rig, stats = build()
             assert 300 <= stats['polygons'] <= 800 and stats['triangles'] <= 800
@@ -214,6 +217,69 @@ def validate_spec_model(recipe, rig, objects):
     scene.frame_set(1)
     print('SPEC_MODEL',recipe.spec['id'],'triangles='+str(sum(sum(len(p.vertices)-2 for p in ob.data.polygons) for ob in objects)),
           'walk_stance_drift='+str([round(d,6) for d in drift]),flush=True)
+
+
+def validate_shield_poses(recipe, rig, objects):
+    """Check baked shield orientation and the required pure-side visibility."""
+    by_name = {ob.name: ob for ob in objects}
+    scene = bpy.context.scene
+    direction = Vector((0, 1, 0))
+    poses, visibility = {}, []
+    samples = [('idle', 0)] + [('walk', i*.667/8) for i in range(8)]
+    samples += [('attack', .17), ('parry', .26)]
+    for name, t in samples:
+        action = bpy.data.actions[name]
+        rig.animation_data.action = action
+        rig.animation_data.action_slot = action.slots[0]
+        scene.frame_set(int(t*1000+1), subframe=(t*1000+1)%1)
+        graph = bpy.context.evaluated_depsgraph_get()
+        front = by_name['shield_front'].evaluated_get(graph)
+        normal = (front.matrix_world.to_3x3() @ front.data.polygons[0].normal).normalized()
+        centre = front.matrix_world @ (sum((v.co for v in front.data.vertices), Vector()) / len(front.data.vertices))
+        yaw = math.degrees(math.atan2(-normal.y, normal.x))
+        poses[name] = (centre.copy(), yaw)
+        fist = by_name['fist_l'].evaluated_get(graph)
+        assert max((fist.matrix_world @ v.co-centre).dot(normal) for v in fist.data.vertices) < 0, (name, 'fist through shield')
+        if name not in ('idle', 'walk'):
+            continue
+        assert abs(yaw-recipe.shield_yaw) < 1, (name, yaw)
+        counts = Counter()
+        for row in range(64):
+            for col in range(64):
+                x = ((col+.5)/64-.5)*3.05
+                z = 1.465+(.5-(row+.5)/64)*3.05
+                hit = scene.ray_cast(graph, Vector((x, -8, z)), direction)
+                if not hit[0]:
+                    continue
+                counts[hit[4].name] += 1
+                # Look behind the shield to catch it cutting into the head or
+                # the stepping legs, even if some of those parts remain visible.
+                if hit[4].name.startswith('shield_'):
+                    for _ in range(4):
+                        hit = scene.ray_cast(graph, hit[1]+direction*.0001, direction)
+                        if not hit[0] or not hit[4].name.startswith('shield_'):
+                            break
+                    if hit[0]:
+                        hidden = hit[4].name
+                        assert hidden not in ('head', 'nose', 'short_hair', 'nasal_guard'), (name, t, hidden)
+                        assert not hidden.startswith(('helmet_', 'thigh_', 'shin_', 'boot')), (name, t, hidden)
+        visible = dict(upper_tunic=counts['tabard_body'], far_shoulder=counts['upper_arm_r'])
+        for side in ('l', 'r'):
+            visible['leg_'+side] = counts['thigh_'+side]+counts['shin_'+side]
+            visible['boot_'+side] = sum(counts['boot'+segment+side] for segment in ('_', '_shaft_', '_cuff_'))
+        assert visible['upper_tunic'] >= 16 and min(visible.values()) > 0, (name, t, visible)
+        visibility.append(visible)
+    idle, attack, parry = (poses[name] for name in ('idle', 'attack', 'parry'))
+    assert recipe.h['belt'] < idle[0].z < recipe.h['shoulder']
+    assert idle[0].x > .2
+    assert attack[0].x < idle[0].x-.02, (idle, attack)
+    assert parry[0].x > idle[0].x+.1 and 0 < parry[1] < idle[1]-15, (idle, parry)
+    rig.animation_data.action = bpy.data.actions['idle']
+    rig.animation_data.action_slot = bpy.data.actions['idle'].slots[0]
+    scene.frame_set(1)
+    print('SPEC_SHIELD', recipe.spec['id'], 'idle_yaw='+str(round(idle[1], 2)),
+          'parry_yaw='+str(round(parry[1], 2)),
+          'side_visible_min='+json.dumps({key: min(v[key] for v in visibility) for key in visibility[0]}), flush=True)
 
 
 if __name__ == '__main__':

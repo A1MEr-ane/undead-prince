@@ -457,7 +457,12 @@ def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
     for bone in rig.data.bones:
         pb = rig.pose.bones[bone.name]
         pb.rotation_mode = 'QUATERNION'
-        pb.matrix = bone_matrix(*bones[bone.name])
+        matrix = bone_matrix(*bones[bone.name])
+        yaw = parameters.get('bone_yaws', {}).get(bone.name, 0.)
+        if yaw:
+            pivot = Matrix.Translation(bones[bone.name][0])
+            matrix = pivot @ Matrix.Rotation(math.radians(yaw), 4, 'Z') @ pivot.inverted() @ matrix
+        pb.matrix = matrix
         bpy.context.view_layer.update()
         if keyframe is not None:
             for prop in ('location', 'rotation_quaternion', 'scale'):

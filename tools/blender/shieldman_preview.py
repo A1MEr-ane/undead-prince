@@ -138,8 +138,8 @@ def render_views(rig, recipe, output, threads):
     apply_pose(rig,dict(wrist_l=(0,-.55,.82),wrist_r=(0,.55,.82)),skeleton_fn=recipe.skeleton)
     with tempfile.TemporaryDirectory(prefix=prefix+'-views-') as directory:
         for view,position in (('front',(8,0,1.06)),('side',(0,-8,1.06)),('back',(-8,0,1.06)),
-                              ('equipped',(5,-8,2.3))):
-            if view=='equipped':
+                              ('equipped',(5,-8,2.3)), ('equipped_side',(0,-8,1.06))):
+            if view.startswith('equipped'):
                 for ob in equipment:
                     ob.hide_render=False
                 apply_pose(rig,recipe.pose_parameters('idle',0,.667),skeleton_fn=recipe.skeleton)
