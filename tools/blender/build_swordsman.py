@@ -451,20 +451,25 @@ def model():
     ellipsoid('shield_boss', centre + normal * .065, (.065, .043, .065), 'metal', 'hand_l', sides=6, bands=2)
 
 
-def apply_pose(rig, parameters, keyframe=None):
-    bones = skeleton(parameters)
+def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
+    bones = (skeleton_fn or skeleton)(parameters)
     # Blender pose matrices depend on evaluated parents. Assign in hierarchy order.
     for bone in rig.data.bones:
         pb = rig.pose.bones[bone.name]
         pb.rotation_mode = 'QUATERNION'
-        pb.matrix = bone_matrix(*bones[bone.name])
+        matrix = bone_matrix(*bones[bone.name])
+        yaw = parameters.get('bone_yaws', {}).get(bone.name, 0.)
+        if yaw:
+            pivot = Matrix.Translation(bones[bone.name][0])
+            matrix = pivot @ Matrix.Rotation(math.radians(yaw), 4, 'Z') @ pivot.inverted() @ matrix
+        pb.matrix = matrix
         bpy.context.view_layer.update()
         if keyframe is not None:
             for prop in ('location', 'rotation_quaternion', 'scale'):
                 pb.keyframe_insert(data_path=prop, frame=keyframe, group=bone.name)
 
 
-def build():
+def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None):
     global REST, MATERIALS
     # Optional .blend export must not write thumbnails outside the chosen output.
     # This is only an in-memory preference; user settings are never saved.
@@ -472,9 +477,15 @@ def build():
     OBJECTS.clear()
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.delete(use_global=False)
+    # A validation process builds several recipes in one Blender scene. Avoid
+    # reusing the previous rig's Actions through Blender's .001 name suffixes.
+    for name, *_ in ANIMATIONS:
+        previous = bpy.data.actions.get(name)
+        if previous:
+            bpy.data.actions.remove(previous)
     MATERIALS = {False: uv_material(False), True: uv_material(True)}
-    REST = skeleton({})
-    model()
+    REST = (skeleton_fn or skeleton)({})
+    (model_builder or model)()
     rig = make_rig()
     scene = bpy.context.scene
     scene.render.fps = 1000
@@ -488,8 +499,9 @@ def build():
             times = [0, .085, .17, .25, .333, .41, .50, .60]
         if name == 'parry':
             times = [0, .09, .18, .26, .35, .44, .54, .65]
-        for t in sorted(set(times + ([duration] if loop else []) + list(events.values()))):
-            apply_pose(rig, pose_parameters(name, t, duration), t * 1000 + 1)
+        extra = (bake_times or {}).get(name, [])
+        for t in sorted(set(times + ([duration] if loop else []) + list(events.values()) + extra)):
+            apply_pose(rig, (pose_fn or pose_parameters)(name, t, duration), t * 1000 + 1, skeleton_fn)
         action = rig.animation_data.action
         action['sample_times'] = times
         action['duration'] = duration
