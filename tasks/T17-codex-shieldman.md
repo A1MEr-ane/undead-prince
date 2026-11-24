@@ -2,7 +2,7 @@
 id: T17
 title: 盾兵试点 P2：按规格建模并渲染 UV 精灵
 owner: codex
-status: running
+status: done
 branch: codex/t17-shieldman
 worktree: ../亡魂王子-t17
 images: [/Users/cyy/Documents/ChatGPT/亡魂王子/concept/turnaround/t_k2_shieldman_turn.png, /Users/cyy/Documents/ChatGPT/亡魂王子/concept/turnaround/t_k2_shieldman_props.png, /Users/cyy/Documents/ChatGPT/亡魂王子/concept/simple/s_k2_shieldman.png]

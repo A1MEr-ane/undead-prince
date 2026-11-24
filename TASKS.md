@@ -20,7 +20,7 @@
 | T14 | 兵种设计 | Claude | docs/units.md | — | 初稿，待用户确认 |
 | T15 | 多智能体工作流与验证套件 | Claude | docs/workflow.md, tools/ | — | 已合并 |
 | T16 | 盾兵试点 P1：资产规格 | Claude | assets/specs/k2_shieldman.yml | — | 完成 |
-| T17 | 盾兵试点 P2：按规格建模渲染 | Codex | codex/t17-shieldman（任务卡 tasks/T17） | tools/blender/, assets/ | 进行中 |
+| T17 | 盾兵试点 P2：按规格建模渲染 | Codex | codex/t17-shieldman（任务卡 tasks/T17） | tools/blender/, assets/ | 已合并（4 次，见 metrics） |
 | T18 | 盾兵试点 P3：图集接入游戏、重做走路 | Claude | main | — | 待办（依赖 T17） |
 | T19 | 平衡：进攻方 3 局都在 15 秒内夺旗，偏强 | Claude | — | — | 待办（等 T21 数据） |
 | T20 | DSH 能力冒烟测试 | DSH | tasks/T20 | reports | 谷时排队（今天 12:00） |
