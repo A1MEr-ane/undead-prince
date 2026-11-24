@@ -1,4 +1,4 @@
-# 亡魂王子复仇（暂名）— 项目说明（AGENTS.md）
+# Fleet of the Fallen（中文名暂定《沉钟》）— 项目说明（AGENTS.md）
 
 单机、即时战术、肉鸽构筑。局内战斗和建模以 Bad North 为模板，玩家站在进攻方。
 本文件是所有 AI 协作者（Claude、Codex、DeepSeek 等）共用的项目说明；Claude 通过 CLAUDE.md 引用本文件。
