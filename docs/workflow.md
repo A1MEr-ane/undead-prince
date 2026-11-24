@@ -39,7 +39,7 @@ tools/verify/verify.sh      固定验证套件：parse / battle（多种子无�
 reports/agents/<id>.md      执行者交付报告；<id>.log 原始日志（Lead 只看报告和 verify JSON，不读全日志）
 reports/verify/*.json       每次验证的结构化结果（不入库）
 reports/metrics.csv         每次执行一行：耗时、退出码、用量、是否交报告  ✓
-（待做）谷时调度：launchd 在谷时窗口执行 `tools/agents/run_queue.sh`，依次跑 owner=dsh 且状态为"排队"的任务卡
+tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（定时触发：每天 12:00 与 18:00 由定时任务调用，待用户同意后安装）
 ```
 流程：Claude 写任务卡 → `run_agent.sh` 启动 → 执行者在分支提交 + 写报告 → Claude 读报告和 verify JSON → 视觉项看截图 → 合并到 main → 再跑一次 `verify.sh all`。
 
@@ -60,7 +60,9 @@ reports/metrics.csv         每次执行一行：耗时、退出码、用量、�
 - 每次执行自动写 `reports/metrics.csv`：日期、任务、执行者、退出码、墙钟时间、用量（Codex 日志里的 tokens used；DSH 的 `--json` 事件）。
 - Claude 在合并时补两列（手工）：**首次是否通过验收**、**人工介入次数**。
 - 每周（或每 10 个任务）汇总一次：按执行者算 *每个合格产出的平均墙钟时间、重试次数、用量、返工率*；据此调整第 2 节的分工，而不是按模型名固定。
-- DSH 的真实账单以 DeepSeek 后台为准；谷时价格和时间窗口**待核验**（以官方当期公告为准），核验后再开 launchd 调度。
+- DSH 的真实账单以 DeepSeek 后台为准。
+- **谷时（2026-11-24 核实官方价格页 api-docs.deepseek.com/quick_start/pricing）**：高峰 = 工作日 UTC 01:00–04:00、06:00–10:00（北京时间 09:00–12:00、14:00–18:00）；其余时间（含周末和中国法定节假日全天）为谷时，价格为高峰的一半。deepseek-flash（DSH 默认模型）标注支持看图，deepseek-v4-pro 不支持。
+- **规则：DSH 只在谷时运行**。`tools/agents/offpeak.sh` 判断时段；`run_agent.sh` 在高峰拒绝启动 DSH（`FORCE=1` 可强制）并把任务时长截到本段谷时结束前 5 分钟；`run_queue.sh` 在谷时依次执行 owner=dsh、status=queued 的任务卡。
 
 ## 7. 需要用户拍板的（只列阻塞下一步的）
 1. **在 DSH 里存 DeepSeek API 密钥**（Models 页面），否则 DSH 无法无人值守运行。——阻塞 DSH 的一切工作。

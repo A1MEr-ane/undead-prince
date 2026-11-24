@@ -55,7 +55,7 @@ run() {
     codex)
       /Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex exec -C "$WT" -s workspace-write \
         --add-dir "$ROOT/.git" --add-dir "$HOME/.codex" ${IMG_ARGS[@]+"${IMG_ARGS[@]}"} \
-        "$PROMPT" >"$LOG" 2>&1 ;;
+        -- "$PROMPT" >"$LOG" 2>&1 ;;
     dsh)
       (cd "$WT" && exec "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
         --profile headless --json "$PROMPT") >"$LOG" 2>&1 &
