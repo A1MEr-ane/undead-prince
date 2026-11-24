@@ -29,12 +29,12 @@ for card in $(ls tasks/T*.md 2>/dev/null | sort); do
   [ "$owner" = "dsh" ] && [ "$status" = "queued" ] || continue
   if ! tools/agents/offpeak.sh >/dev/null; then say "已到高峰，队列暂停：$(tools/agents/offpeak.sh)"; break; fi
   id=$(sed -n '2,20p' "$card" | grep -m1 '^id:' | sed 's/id:[[:space:]]*//; s/[[:space:]]*#.*//')
-  say "开始 $id（$card）"
+  say "开始 ${id}（${card}）"
   sed -i '' 's/^status:[[:space:]]*queued/status: running/' "$card"
   tools/agents/run_agent.sh "$card" --fg; code=$?
   if [ $code -eq 0 ] && [ -f "reports/agents/$id.md" ]; then st=done; else st=failed; fi
   sed -i '' "s/^status:[[:space:]]*running/status: $st/" "$card"
-  say "结束 $id：$st（退出码 $code）"
+  say "结束 ${id}：${st}（退出码 ${code}）"
 done
 say "队列结束"
 

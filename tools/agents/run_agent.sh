@@ -94,6 +94,6 @@ finish() {
   [ -f reports/metrics.csv ] || echo "date,id,owner,exit,wall_sec,usage,report_exists" > reports/metrics.csv
   echo "$(date '+%F %T'),$ID,$OWNER,$code,$((end-start)),\"$usage\",$([ -f "$REPORT" ] && echo yes || echo no)" >> reports/metrics.csv
 }
-if [ "$FG" = "--fg" ]; then run; finish $?; else (run; finish $?) & echo "$ID 已在后台启动（$OWNER），日志 $LOG"; fi
+if [ "$FG" = "--fg" ]; then run; finish $?; else (run; finish $?) & echo "$ID 已在后台启动（${OWNER}），日志 $LOG"; fi
 
 exit $?
