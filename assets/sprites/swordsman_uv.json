@@ -1,0 +1,1899 @@
+{
+  "format": "swordsman_uv_v1",
+  "image": "swordsman_uv.png",
+  "frame_size": [
+    64,
+    64
+  ],
+  "columns": 8,
+  "rows": 9,
+  "total_frames": 69,
+  "image_size": [
+    512,
+    576
+  ],
+  "order": "row_major",
+  "image_origin": "top_left",
+  "channels": {
+    "R": "part UV.u, linear UNORM8",
+    "G": "part UV.v, linear UNORM8, bottom-left UV origin",
+    "B": "(0.5 + 0.5 * dot(world_normal, light_direction)) * side_factor",
+    "A": "linear coverage, straight alpha"
+  },
+  "color_space": "linear data; no sRGB, gamma, ICC, tone mapping or premultiplied storage",
+  "sampling": {
+    "atlas": "nearest; no mipmaps; disable sRGB; clamp each frame",
+    "parts": "bilinear; decode parts_preview RGB from sRGB to linear before lighting",
+    "brightness": "multiply linear parts RGB by 2 * B; B=0.5 is neutral",
+    "antialiasing": "supersample, dominant UV island, coverage alpha"
+  },
+  "coordinates": {
+    "model_forward": "+X",
+    "camera_side": "-Y",
+    "model_up": "+Z",
+    "camera_pitch_degrees": 0,
+    "orthographic_size": 3.05,
+    "camera_target_z": 1.465,
+    "game_vertical_compensation": 1.154700538,
+    "standing_foot_anchor_pixels": [
+      32.0,
+      62.00655737704918
+    ]
+  },
+  "light": {
+    "direction": [
+      0.46373888850212097,
+      -0.6028605103492737,
+      0.649234414100647
+    ],
+    "near_side_factor": 1.0,
+    "far_limb_factor": 0.82
+  },
+  "render": {
+    "engine": "Cycles CPU",
+    "samples": 1,
+    "supersample": 8,
+    "color_management": "Raw, exposure 0, gamma 1; float EXR intermediate"
+  },
+  "part_texture": {
+    "image": "parts_preview.png",
+    "tile_size": [
+      256,
+      256
+    ],
+    "grid": [
+      2,
+      2
+    ],
+    "uv_origin": "bottom_left_within_appearance",
+    "region_grid": [
+      4,
+      4
+    ],
+    "padding_pixels": 4,
+    "regions": {
+      "skin": {
+        "cell": [
+          0,
+          3
+        ],
+        "uv_rect": [
+          0.015625,
+          0.765625,
+          0.234375,
+          0.984375
+        ],
+        "description": "Rounded head, nose and hands; cylindrical / spherical"
+      },
+      "helmet": {
+        "cell": [
+          1,
+          3
+        ],
+        "uv_rect": [
+          0.265625,
+          0.765625,
+          0.484375,
+          0.984375
+        ],
+        "description": "Helmet dome and nasal guard; cylindrical"
+      },
+      "tunic": {
+        "cell": [
+          2,
+          3
+        ],
+        "uv_rect": [
+          0.515625,
+          0.765625,
+          0.734375,
+          0.984375
+        ],
+        "description": "Coat and flared skirt; cylindrical, seam at +X"
+      },
+      "cloth_trim": {
+        "cell": [
+          3,
+          3
+        ],
+        "uv_rect": [
+          0.765625,
+          0.765625,
+          0.984375,
+          0.984375
+        ],
+        "description": "Collar and hem; cylindrical"
+      },
+      "sleeves": {
+        "cell": [
+          0,
+          2
+        ],
+        "uv_rect": [
+          0.015625,
+          0.515625,
+          0.234375,
+          0.734375
+        ],
+        "description": "Upper arms; cylindrical"
+      },
+      "trousers": {
+        "cell": [
+          1,
+          2
+        ],
+        "uv_rect": [
+          0.265625,
+          0.515625,
+          0.484375,
+          0.734375
+        ],
+        "description": "Thighs and shins; cylindrical"
+      },
+      "boots": {
+        "cell": [
+          2,
+          2
+        ],
+        "uv_rect": [
+          0.515625,
+          0.515625,
+          0.734375,
+          0.734375
+        ],
+        "description": "Boots; side planar / cylindrical"
+      },
+      "leather": {
+        "cell": [
+          3,
+          2
+        ],
+        "uv_rect": [
+          0.765625,
+          0.515625,
+          0.984375,
+          0.734375
+        ],
+        "description": "Belt and sword grip; cylindrical"
+      },
+      "shield_face": {
+        "cell": [
+          0,
+          1
+        ],
+        "uv_rect": [
+          0.015625,
+          0.265625,
+          0.234375,
+          0.484375
+        ],
+        "description": "Shield front; circular planar UV, centre (0.5, 0.5)"
+      },
+      "shield_rim": {
+        "cell": [
+          1,
+          1
+        ],
+        "uv_rect": [
+          0.265625,
+          0.265625,
+          0.484375,
+          0.484375
+        ],
+        "description": "Thick shield rim; radial front mapping"
+      },
+      "shield_back": {
+        "cell": [
+          2,
+          1
+        ],
+        "uv_rect": [
+          0.515625,
+          0.265625,
+          0.734375,
+          0.484375
+        ],
+        "description": "Shield back; circular planar mapping"
+      },
+      "metal": {
+        "cell": [
+          3,
+          1
+        ],
+        "uv_rect": [
+          0.765625,
+          0.265625,
+          0.984375,
+          0.484375
+        ],
+        "description": "Helmet rim, shield boss and crossguard"
+      },
+      "blade": {
+        "cell": [
+          0,
+          0
+        ],
+        "uv_rect": [
+          0.015625,
+          0.015625,
+          0.234375,
+          0.234375
+        ],
+        "description": "Blade; U across width, V from guard to tip"
+      },
+      "hilt": {
+        "cell": [
+          1,
+          0
+        ],
+        "uv_rect": [
+          0.265625,
+          0.015625,
+          0.484375,
+          0.234375
+        ],
+        "description": "Pommel and grip fittings"
+      },
+      "eye": {
+        "cell": [
+          2,
+          0
+        ],
+        "uv_rect": [
+          0.515625,
+          0.015625,
+          0.734375,
+          0.234375
+        ],
+        "description": "Eyes; planar"
+      },
+      "belt_buckle": {
+        "cell": [
+          3,
+          0
+        ],
+        "uv_rect": [
+          0.765625,
+          0.015625,
+          0.984375,
+          0.234375
+        ],
+        "description": "Buckle; planar"
+      }
+    },
+    "appearances": [
+      {
+        "name": "militia",
+        "label": "KINGDOM MILITIA",
+        "tile": [
+          0,
+          0
+        ],
+        "pixel_rect": [
+          0,
+          0,
+          256,
+          256
+        ]
+      },
+      {
+        "name": "veteran",
+        "label": "KINGDOM VETERAN",
+        "tile": [
+          1,
+          0
+        ],
+        "pixel_rect": [
+          256,
+          0,
+          256,
+          256
+        ]
+      },
+      {
+        "name": "undead",
+        "label": "REVENANT GUARD",
+        "tile": [
+          0,
+          1
+        ],
+        "pixel_rect": [
+          0,
+          256,
+          256,
+          256
+        ]
+      },
+      {
+        "name": "elite",
+        "label": "REVENANT ELITE",
+        "tile": [
+          1,
+          1
+        ],
+        "pixel_rect": [
+          256,
+          256,
+          256,
+          256
+        ]
+      }
+    ]
+  },
+  "animations": {
+    "idle": {
+      "start_frame": 0,
+      "frame_count": 6,
+      "duration": 0.667,
+      "loop": true,
+      "frame_duration": 0.11116666666666668,
+      "events": {},
+      "event_frames": {},
+      "source_sample_times": [
+        0.0,
+        0.11116666666666668,
+        0.22233333333333336,
+        0.3335000000000001,
+        0.4446666666666667,
+        0.5558333333333333
+      ]
+    },
+    "walk": {
+      "start_frame": 6,
+      "frame_count": 8,
+      "duration": 0.667,
+      "loop": true,
+      "frame_duration": 0.083375,
+      "events": {
+        "left_step": 0.3335,
+        "right_step": 0.0
+      },
+      "event_frames": {
+        "left_step": 10,
+        "right_step": 6
+      },
+      "source_sample_times": [
+        0.0,
+        0.083375,
+        0.16675,
+        0.25012500000000004,
+        0.3335,
+        0.416875,
+        0.5002500000000001,
+        0.5836250000000001
+      ]
+    },
+    "attack": {
+      "start_frame": 14,
+      "frame_count": 8,
+      "duration": 0.6,
+      "loop": false,
+      "frame_duration": 0.075,
+      "events": {
+        "hit": 0.333
+      },
+      "event_frames": {
+        "hit": 18
+      },
+      "source_sample_times": [
+        0.0,
+        0.085,
+        0.17,
+        0.25,
+        0.333,
+        0.41,
+        0.5,
+        0.6
+      ]
+    },
+    "parry": {
+      "start_frame": 22,
+      "frame_count": 8,
+      "duration": 0.65,
+      "loop": false,
+      "frame_duration": 0.08125,
+      "events": {
+        "block": 0.26
+      },
+      "event_frames": {
+        "block": 25
+      },
+      "source_sample_times": [
+        0.0,
+        0.09,
+        0.18,
+        0.26,
+        0.35,
+        0.44,
+        0.54,
+        0.65
+      ]
+    },
+    "clash": {
+      "start_frame": 30,
+      "frame_count": 4,
+      "duration": 0.35,
+      "loop": false,
+      "frame_duration": 0.0875,
+      "events": {
+        "contact": 0.0
+      },
+      "event_frames": {
+        "contact": 30
+      },
+      "source_sample_times": [
+        0.0,
+        0.11666666666666665,
+        0.2333333333333333,
+        0.3499999999999999
+      ]
+    },
+    "fall": {
+      "start_frame": 34,
+      "frame_count": 4,
+      "duration": 0.35,
+      "loop": false,
+      "frame_duration": 0.0875,
+      "events": {
+        "ground_contact": 0.35
+      },
+      "event_frames": {
+        "ground_contact": 37
+      },
+      "source_sample_times": [
+        0.0,
+        0.11666666666666665,
+        0.2333333333333333,
+        0.3499999999999999
+      ]
+    },
+    "sit": {
+      "start_frame": 38,
+      "frame_count": 6,
+      "duration": 1.0,
+      "loop": true,
+      "frame_duration": 0.16666666666666666,
+      "events": {},
+      "event_frames": {},
+      "source_sample_times": [
+        0.0,
+        0.16666666666666666,
+        0.3333333333333333,
+        0.5,
+        0.6666666666666666,
+        0.8333333333333334
+      ]
+    },
+    "rise": {
+      "start_frame": 44,
+      "frame_count": 10,
+      "duration": 0.833,
+      "loop": false,
+      "frame_duration": 0.0833,
+      "events": {
+        "standing": 0.74
+      },
+      "event_frames": {
+        "standing": 52
+      },
+      "source_sample_times": [
+        0.0,
+        0.09255555555555556,
+        0.18511111111111112,
+        0.2776666666666666,
+        0.37022222222222223,
+        0.4627777777777778,
+        0.5553333333333332,
+        0.6478888888888888,
+        0.7404444444444445,
+        0.833
+      ]
+    },
+    "death": {
+      "start_frame": 54,
+      "frame_count": 7,
+      "duration": 0.583,
+      "loop": false,
+      "frame_duration": 0.08328571428571428,
+      "events": {
+        "ground_contact": 0.486
+      },
+      "event_frames": {
+        "ground_contact": 59
+      },
+      "source_sample_times": [
+        0.0,
+        0.09716666666666667,
+        0.19433333333333333,
+        0.2915,
+        0.38866666666666666,
+        0.48583333333333334,
+        0.583
+      ]
+    },
+    "ragdoll": {
+      "start_frame": 61,
+      "frame_count": 6,
+      "duration": 0.517,
+      "loop": true,
+      "frame_duration": 0.08616666666666667,
+      "events": {},
+      "event_frames": {},
+      "source_sample_times": [
+        0.0,
+        0.08616666666666667,
+        0.17233333333333334,
+        0.2585,
+        0.3446666666666667,
+        0.43083333333333335
+      ]
+    },
+    "hit": {
+      "start_frame": 67,
+      "frame_count": 2,
+      "duration": 0.167,
+      "loop": false,
+      "frame_duration": 0.0835,
+      "events": {
+        "impact": 0.0
+      },
+      "event_frames": {
+        "impact": 67
+      },
+      "source_sample_times": [
+        0.0,
+        0.167
+      ]
+    }
+  },
+  "frames": [
+    {
+      "index": 0,
+      "animation": "idle",
+      "local_frame": 0,
+      "rect": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 1,
+      "animation": "idle",
+      "local_frame": 1,
+      "rect": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.11116666666666668,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 2,
+      "animation": "idle",
+      "local_frame": 2,
+      "rect": [
+        128,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.22233333333333336,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 3,
+      "animation": "idle",
+      "local_frame": 3,
+      "rect": [
+        192,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.3335000000000001,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 4,
+      "animation": "idle",
+      "local_frame": 4,
+      "rect": [
+        256,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.4446666666666667,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 5,
+      "animation": "idle",
+      "local_frame": 5,
+      "rect": [
+        320,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.5558333333333333,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 6,
+      "animation": "walk",
+      "local_frame": 0,
+      "rect": [
+        384,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        24,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 7,
+      "animation": "walk",
+      "local_frame": 1,
+      "rect": [
+        448,
+        0,
+        64,
+        64
+      ],
+      "source_time": 0.083375,
+      "alpha_bbox": [
+        26,
+        19,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 8,
+      "animation": "walk",
+      "local_frame": 2,
+      "rect": [
+        0,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.16675,
+      "alpha_bbox": [
+        27,
+        19,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 9,
+      "animation": "walk",
+      "local_frame": 3,
+      "rect": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.25012500000000004,
+      "alpha_bbox": [
+        26,
+        19,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 10,
+      "animation": "walk",
+      "local_frame": 4,
+      "rect": [
+        128,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.3335,
+      "alpha_bbox": [
+        24,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 11,
+      "animation": "walk",
+      "local_frame": 5,
+      "rect": [
+        192,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.416875,
+      "alpha_bbox": [
+        26,
+        19,
+        51,
+        62
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 12,
+      "animation": "walk",
+      "local_frame": 6,
+      "rect": [
+        256,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.5002500000000001,
+      "alpha_bbox": [
+        25,
+        19,
+        52,
+        62
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 13,
+      "animation": "walk",
+      "local_frame": 7,
+      "rect": [
+        320,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.5836250000000001,
+      "alpha_bbox": [
+        26,
+        19,
+        51,
+        62
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 14,
+      "animation": "attack",
+      "local_frame": 0,
+      "rect": [
+        384,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 15,
+      "animation": "attack",
+      "local_frame": 1,
+      "rect": [
+        448,
+        64,
+        64,
+        64
+      ],
+      "source_time": 0.085,
+      "alpha_bbox": [
+        24,
+        15,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 16,
+      "animation": "attack",
+      "local_frame": 2,
+      "rect": [
+        0,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.17,
+      "alpha_bbox": [
+        15,
+        15,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 17,
+      "animation": "attack",
+      "local_frame": 3,
+      "rect": [
+        64,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.25,
+      "alpha_bbox": [
+        24,
+        10,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 18,
+      "animation": "attack",
+      "local_frame": 4,
+      "rect": [
+        128,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.333,
+      "alpha_bbox": [
+        25,
+        20,
+        63,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 19,
+      "animation": "attack",
+      "local_frame": 5,
+      "rect": [
+        192,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.41,
+      "alpha_bbox": [
+        25,
+        21,
+        55,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 20,
+      "animation": "attack",
+      "local_frame": 6,
+      "rect": [
+        256,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.5,
+      "alpha_bbox": [
+        26,
+        19,
+        58,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 21,
+      "animation": "attack",
+      "local_frame": 7,
+      "rect": [
+        320,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.6,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 22,
+      "animation": "parry",
+      "local_frame": 0,
+      "rect": [
+        384,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 23,
+      "animation": "parry",
+      "local_frame": 1,
+      "rect": [
+        448,
+        128,
+        64,
+        64
+      ],
+      "source_time": 0.09,
+      "alpha_bbox": [
+        24,
+        19,
+        48,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 24,
+      "animation": "parry",
+      "local_frame": 2,
+      "rect": [
+        0,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.18,
+      "alpha_bbox": [
+        25,
+        19,
+        51,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 25,
+      "animation": "parry",
+      "local_frame": 3,
+      "rect": [
+        64,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.26,
+      "alpha_bbox": [
+        27,
+        18,
+        55,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 26,
+      "animation": "parry",
+      "local_frame": 4,
+      "rect": [
+        128,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.35,
+      "alpha_bbox": [
+        24,
+        20,
+        53,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 27,
+      "animation": "parry",
+      "local_frame": 5,
+      "rect": [
+        192,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.44,
+      "alpha_bbox": [
+        23,
+        20,
+        52,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 28,
+      "animation": "parry",
+      "local_frame": 6,
+      "rect": [
+        256,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.54,
+      "alpha_bbox": [
+        25,
+        19,
+        50,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 29,
+      "animation": "parry",
+      "local_frame": 7,
+      "rect": [
+        320,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.65,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 30,
+      "animation": "clash",
+      "local_frame": 0,
+      "rect": [
+        384,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        56,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 31,
+      "animation": "clash",
+      "local_frame": 1,
+      "rect": [
+        448,
+        192,
+        64,
+        64
+      ],
+      "source_time": 0.11666666666666665,
+      "alpha_bbox": [
+        19,
+        13,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 32,
+      "animation": "clash",
+      "local_frame": 2,
+      "rect": [
+        0,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.2333333333333333,
+      "alpha_bbox": [
+        22,
+        17,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 33,
+      "animation": "clash",
+      "local_frame": 3,
+      "rect": [
+        64,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.3499999999999999,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 34,
+      "animation": "fall",
+      "local_frame": 0,
+      "rect": [
+        128,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 35,
+      "animation": "fall",
+      "local_frame": 1,
+      "rect": [
+        192,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.11666666666666665,
+      "alpha_bbox": [
+        15,
+        23,
+        52,
+        62
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 36,
+      "animation": "fall",
+      "local_frame": 2,
+      "rect": [
+        256,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.2333333333333333,
+      "alpha_bbox": [
+        9,
+        31,
+        51,
+        62
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 37,
+      "animation": "fall",
+      "local_frame": 3,
+      "rect": [
+        320,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.3499999999999999,
+      "alpha_bbox": [
+        17,
+        32,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 38,
+      "animation": "sit",
+      "local_frame": 0,
+      "rect": [
+        384,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        17,
+        31,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 39,
+      "animation": "sit",
+      "local_frame": 1,
+      "rect": [
+        448,
+        256,
+        64,
+        64
+      ],
+      "source_time": 0.16666666666666666,
+      "alpha_bbox": [
+        18,
+        31,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 40,
+      "animation": "sit",
+      "local_frame": 2,
+      "rect": [
+        0,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.3333333333333333,
+      "alpha_bbox": [
+        18,
+        31,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 41,
+      "animation": "sit",
+      "local_frame": 3,
+      "rect": [
+        64,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.5,
+      "alpha_bbox": [
+        17,
+        31,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 42,
+      "animation": "sit",
+      "local_frame": 4,
+      "rect": [
+        128,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.6666666666666666,
+      "alpha_bbox": [
+        16,
+        32,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 43,
+      "animation": "sit",
+      "local_frame": 5,
+      "rect": [
+        192,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.8333333333333334,
+      "alpha_bbox": [
+        16,
+        32,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 44,
+      "animation": "rise",
+      "local_frame": 0,
+      "rect": [
+        256,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        17,
+        32,
+        54,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 45,
+      "animation": "rise",
+      "local_frame": 1,
+      "rect": [
+        320,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.09255555555555556,
+      "alpha_bbox": [
+        23,
+        30,
+        55,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 46,
+      "animation": "rise",
+      "local_frame": 2,
+      "rect": [
+        384,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.18511111111111112,
+      "alpha_bbox": [
+        23,
+        31,
+        55,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 47,
+      "animation": "rise",
+      "local_frame": 3,
+      "rect": [
+        448,
+        320,
+        64,
+        64
+      ],
+      "source_time": 0.2776666666666666,
+      "alpha_bbox": [
+        24,
+        30,
+        56,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 48,
+      "animation": "rise",
+      "local_frame": 4,
+      "rect": [
+        0,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.37022222222222223,
+      "alpha_bbox": [
+        26,
+        29,
+        55,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 49,
+      "animation": "rise",
+      "local_frame": 5,
+      "rect": [
+        64,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.4627777777777778,
+      "alpha_bbox": [
+        26,
+        26,
+        53,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 50,
+      "animation": "rise",
+      "local_frame": 6,
+      "rect": [
+        128,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.5553333333333332,
+      "alpha_bbox": [
+        26,
+        22,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 51,
+      "animation": "rise",
+      "local_frame": 7,
+      "rect": [
+        192,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.6478888888888888,
+      "alpha_bbox": [
+        26,
+        20,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 52,
+      "animation": "rise",
+      "local_frame": 8,
+      "rect": [
+        256,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.7404444444444445,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 53,
+      "animation": "rise",
+      "local_frame": 9,
+      "rect": [
+        320,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.833,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 54,
+      "animation": "death",
+      "local_frame": 0,
+      "rect": [
+        384,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        26,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 55,
+      "animation": "death",
+      "local_frame": 1,
+      "rect": [
+        448,
+        384,
+        64,
+        64
+      ],
+      "source_time": 0.09716666666666667,
+      "alpha_bbox": [
+        19,
+        20,
+        53,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 56,
+      "animation": "death",
+      "local_frame": 2,
+      "rect": [
+        0,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.19433333333333333,
+      "alpha_bbox": [
+        12,
+        27,
+        51,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 57,
+      "animation": "death",
+      "local_frame": 3,
+      "rect": [
+        64,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.2915,
+      "alpha_bbox": [
+        7,
+        31,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 58,
+      "animation": "death",
+      "local_frame": 4,
+      "rect": [
+        128,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.38866666666666666,
+      "alpha_bbox": [
+        4,
+        31,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 59,
+      "animation": "death",
+      "local_frame": 5,
+      "rect": [
+        192,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.48583333333333334,
+      "alpha_bbox": [
+        3,
+        49,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 60,
+      "animation": "death",
+      "local_frame": 6,
+      "rect": [
+        256,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.583,
+      "alpha_bbox": [
+        3,
+        49,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 61,
+      "animation": "ragdoll",
+      "local_frame": 0,
+      "rect": [
+        320,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        13,
+        15,
+        44,
+        39
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 62,
+      "animation": "ragdoll",
+      "local_frame": 1,
+      "rect": [
+        384,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.08616666666666667,
+      "alpha_bbox": [
+        26,
+        9,
+        44,
+        46
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 63,
+      "animation": "ragdoll",
+      "local_frame": 2,
+      "rect": [
+        448,
+        448,
+        64,
+        64
+      ],
+      "source_time": 0.17233333333333334,
+      "alpha_bbox": [
+        20,
+        21,
+        55,
+        43
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 64,
+      "animation": "ragdoll",
+      "local_frame": 3,
+      "rect": [
+        0,
+        512,
+        64,
+        64
+      ],
+      "source_time": 0.2585,
+      "alpha_bbox": [
+        20,
+        25,
+        51,
+        50
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 65,
+      "animation": "ragdoll",
+      "local_frame": 4,
+      "rect": [
+        64,
+        512,
+        64,
+        64
+      ],
+      "source_time": 0.3446666666666667,
+      "alpha_bbox": [
+        20,
+        19,
+        38,
+        56
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 66,
+      "animation": "ragdoll",
+      "local_frame": 5,
+      "rect": [
+        128,
+        512,
+        64,
+        64
+      ],
+      "source_time": 0.43083333333333335,
+      "alpha_bbox": [
+        9,
+        22,
+        44,
+        43
+      ],
+      "ground_lift": 0
+    },
+    {
+      "index": 67,
+      "animation": "hit",
+      "local_frame": 0,
+      "rect": [
+        192,
+        512,
+        64,
+        64
+      ],
+      "source_time": 0.0,
+      "alpha_bbox": [
+        17,
+        19,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    },
+    {
+      "index": 68,
+      "animation": "hit",
+      "local_frame": 1,
+      "rect": [
+        256,
+        512,
+        64,
+        64
+      ],
+      "source_time": 0.167,
+      "alpha_bbox": [
+        24,
+        18,
+        49,
+        62
+      ],
+      "ground_lift": 0.0
+    }
+  ],
+  "model": {
+    "objects": 33,
+    "bones": 15,
+    "polygons": 396,
+    "triangles": 768
+  },
+  "validation": {
+    "covered_pixels": 36251,
+    "antialiased_pixels": 11950,
+    "shade_range": [
+      30,
+      255
+    ],
+    "all_frames_inside_cell": true,
+    "uv_islands_valid": true,
+    "transparent_rgb_zero": true
+  }
+}
