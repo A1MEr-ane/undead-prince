@@ -2,7 +2,7 @@
 id: T30
 title: 旧部概念图 P0：玛蒂尔达、奥斯温、皮普（主立绘 + 三视图 + 道具）
 owner: codex
-status: queued
+status: done
 branch: codex/t30-crew-art
 worktree: ../亡魂王子-t30
 images: [/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png, /Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-BERNARD-R1.png, /Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-FERRYMAN-R1.png]
