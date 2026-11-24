@@ -2,7 +2,7 @@
 id: T25
 title: 盾兵走路改成小碎步（上半身锁定）
 owner: codex
-status: running
+status: done
 branch: codex/t25-walk
 worktree: ../亡魂王子-t25
 allowed: [tools/blender/, assets/sprites/, docs/sprite-pipeline.md]
