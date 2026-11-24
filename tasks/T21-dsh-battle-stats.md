@@ -2,7 +2,7 @@
 id: T21
 title: 多种子对战统计与平衡分析（只出报告）
 owner: dsh
-status: queued
+status: done
 branch: dsh/t21-battle-stats
 worktree: ../亡魂王子-t21
 allowed: [reports/agents/T21.md]

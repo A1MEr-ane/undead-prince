@@ -2,7 +2,7 @@
 id: T22
 title: 状态树 AgentState 的无头单元测试
 owner: dsh
-status: queued
+status: done
 branch: dsh/t22-agentstate-tests
 worktree: ../亡魂王子-t22
 allowed: [tests/]

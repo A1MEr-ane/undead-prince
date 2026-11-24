@@ -29,7 +29,8 @@ if [ "$OWNER" = "dsh" ]; then
 fi
 WT=$(cd "$ROOT" && python3 -I -c 'import os,sys;print(os.path.abspath(sys.argv[1]))' "$WT")
 mkdir -p reports/agents
-LOG="$ROOT/reports/agents/$ID.log"; REPORT="$ROOT/reports/agents/$ID.md"
+mkdir -p "$ROOT/reports/inbox"
+LOG="$ROOT/reports/inbox/$ID.log"; REPORT="$ROOT/reports/inbox/$ID.md"   # 收件箱不入库；正式报告随分支合并进来
 
 # 1. worktree（已存在就复用）
 if [ ! -d "$WT" ]; then
@@ -68,8 +69,25 @@ run() {
     *) echo "owner=$OWNER 不由脚本启动（claude 由主会话自己做）" >"$LOG"; return 3 ;;
   esac
 }
+# 执行者在沙箱里提交不了（worktree 的 git 元数据在主仓库 .git 下），由本脚本在沙箱外代为提交：
+# 只暂存任务卡 allowed 里的路径和交付报告，其他改动留在工作区不提交。
+autocommit() {
+  local allowed; allowed=$(field allowed | tr -d '[]')
+  [ -z "$allowed" ] && return 0
+  local paths=() a
+  IFS=',' read -ra _al <<< "$allowed"
+  for a in "${_al[@]}"; do a=$(echo "$a" | xargs); [ -e "$WT/$a" ] && paths+=("$a"); done
+  [ -f "$WT/reports/agents/$ID.md" ] && paths+=("reports/agents/$ID.md")
+  [ ${#paths[@]} -eq 0 ] && return 0
+  ( cd "$WT" && git add -f -- "${paths[@]}" 2>/dev/null
+    git diff --cached --quiet || git -c user.name="$OWNER-agent" -c user.email="$OWNER-agent@local" \
+      commit -q -m "$ID: $(field title)
+
+Co-Authored-By: $OWNER <noreply@local>" ) >>"$LOG" 2>&1
+}
 finish() {
   local code=$1 end; end=$(date +%s)
+  autocommit
   [ -f "$WT/reports/agents/$ID.md" ] && cp "$WT/reports/agents/$ID.md" "$REPORT"
   # 指标：用量从日志里尽量提取（codex 打印 "tokens used"，dsh --json 事件里有 usage）
   local usage; usage=$(grep -A1 -i "tokens used" "$LOG" 2>/dev/null | tail -1 | tr -dc '0-9,' )
@@ -77,3 +95,5 @@ finish() {
   echo "$(date '+%F %T'),$ID,$OWNER,$code,$((end-start)),\"$usage\",$([ -f "$REPORT" ] && echo yes || echo no)" >> reports/metrics.csv
 }
 if [ "$FG" = "--fg" ]; then run; finish $?; else (run; finish $?) & echo "$ID 已在后台启动（$OWNER），日志 $LOG"; fi
+
+exit $?

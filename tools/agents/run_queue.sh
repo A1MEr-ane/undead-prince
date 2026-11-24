@@ -10,6 +10,10 @@ ROOT=$(pwd)
 QLOG="$ROOT/reports/queue.log"; mkdir -p reports
 DSH="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
 say() { echo "$(date '+%F %T') $*" | tee -a "$QLOG"; }
+# 防止两次运行叠在一起（定时任务和手动运行同时触发时）
+LOCK="$ROOT/reports/.queue.lock"
+if ! mkdir "$LOCK" 2>/dev/null; then say "已有队列在运行，跳过"; exit 0; fi
+trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 
 # 凭据检查：用最短的任务试一次；缺密钥时直接退出，不浪费谷时
 check=$("$DSH" --profile headless --patch "$ROOT/tools/agents/dsh-account.patch.yml" "只回答两个字：就绪" 2>&1 | tail -3)
@@ -33,3 +37,5 @@ for card in $(ls tasks/T*.md 2>/dev/null | sort); do
   say "结束 $id：$st（退出码 $code）"
 done
 say "队列结束"
+
+exit 0

@@ -2,7 +2,7 @@
 id: T20
 title: DSH 能力冒烟测试
 owner: dsh
-status: queued
+status: done
 branch: dsh/t20-smoke
 worktree: ../亡魂王子-t20
 allowed: [reports/agents/T20.md]
