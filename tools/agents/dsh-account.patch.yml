@@ -1,0 +1,18 @@
+# DSH 无头模式复用桌面版的 DeepSeek 账号登录（~/.dsh 里的凭据），不需要另配 API 密钥。
+# 无头 profile 默认走 API 密钥路线并关闭了账号相关模块；这里把它们重新打开。
+# 做法参考 dsh-baton（MIT）的 patches/account.patch.yml。
+# 用法：dsh --profile headless --patch tools/agents/dsh-account.patch.yml "任务"
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-account
+    model: deepseek-flash
+- id: deepseek-account
+  name: "@deepseek-ai/dsh-deepseek-account-platform"
+  disabled: false
+- id: authorization
+  name: "@deepseek-ai/dsh-authorization"
+  disabled: false
+- id: credentials
+  name: "@deepseek-ai/dsh-credentials-local"
+  disabled: false

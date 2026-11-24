@@ -58,7 +58,7 @@ run() {
         -- "$PROMPT" >"$LOG" 2>&1 ;;
     dsh)
       (cd "$WT" && exec "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-        --profile headless --json "$PROMPT") >"$LOG" 2>&1 &
+        --profile headless --patch "$ROOT/tools/agents/dsh-account.patch.yml" --json "$PROMPT") >"$LOG" 2>&1 &
       local pid=$!
       ( sleep $((MAXMIN * 60)); kill "$pid" 2>/dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >>"$LOG" ) &
       local wd=$!

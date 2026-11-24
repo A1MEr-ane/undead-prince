@@ -11,7 +11,7 @@
 | 简报里的假设 | 实际情况 | 影响 |
 |---|---|---|
 | 单位是 3D 模型，要验 GLB 重导入、骨骼动作 | 单位是 **Blender 渲染的 2D 精灵**（RG=部位坐标、B=明暗、A=覆盖度），Godot 里只吃图集 PNG + JSON | 验收改成：图集格式、帧布局、`validate.py`、游戏内可读性截图 |
-| DSH 可以直接无人值守 | `dsh --profile headless` 可以跑，但**只认 API 密钥**，不能用桌面版的账号登录（实测 `ACCOUNT_SIGN_IN_REQUIRED`） | 需要用户在 DSH 里存 `DEEPSEEK_API_KEY` |
+| DSH 可以直接无人值守 | 无头 profile 默认只走 API 密钥并关闭账号模块；加 `--patch tools/agents/dsh-account.patch.yml`（参考 dsh-baton）后**复用桌面版账号登录**，实测可用 | 不需要另配密钥；计费以账户后台账单为准 |
 | DSH 能看图 | 未验证；默认模型 deepseek-flash，是否支持图像输入不确定 | 先假设**不能看图**：DSH 的活必须能用脚本判断对错 |
 | Codex 能独立完成并提交 | 沙箱里**打不开 Godot 窗口、经常提交失败** | Codex 交付后由 Lead 截图验收、补提交 |
 
@@ -69,7 +69,13 @@ tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（定�
 - 处理：指标表记 `quota`；任务卡追加"续作说明"（让下一次先看 `git diff` 接着做）；到恢复时间自动重派。
 - 路由调整：Codex 额度紧张时，**能等谷时的活转给 DSH，急的由 Claude 做**；出图类大批量任务（一次几十张）要避开 Codex 正在做的开发任务，错开窗口。
 
+## 6.6 外部工具评估（2026-11-24）
+| 项目 | 结论 |
+|---|---|
+| dsh-baton（MCP：Claude/Codex → DSH，带证据回传和只读复核） | 维护活跃；**暂不安装**——它会自动改写 `~/.claude.json`、`~/.codex/config.toml`，默认自动批准交接任务里的操作。只借用它的账号登录 patch。等需要"Claude 会话里直接交接给 DSH 并等结果"时再评估安装 |
+| dsh-plugin-nonurgent（DSH 内的谷时队列） | 不用：只能在 DSH 界面里加任务，外部不能驱动；8 月后未维护；高峰规则没区分工作日 |
+| game-dev-dsh-skill | 不用：面向 3D/GLB→网页导出，和本项目的 2D 精灵管线不符；安装脚本 rm -rf，带公网隧道 |
+
 ## 7. 需要用户拍板的（只列阻塞下一步的）
-1. **在 DSH 里存 DeepSeek API 密钥**（Models 页面），否则 DSH 无法无人值守运行。——阻塞 DSH 的一切工作。
 2. **兵种造型方向**（细节版造型 + 简化版建模 / 卡通版）。——试点 P1 可以先按盾兵三视图做；但亡魂兵种建模前必须定。
 其余（剧情、地图风格、平衡）不阻塞，可以边做边定。

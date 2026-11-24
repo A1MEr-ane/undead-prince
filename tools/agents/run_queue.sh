@@ -12,7 +12,7 @@ DSH="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
 say() { echo "$(date '+%F %T') $*" | tee -a "$QLOG"; }
 
 # 凭据检查：用最短的任务试一次；缺密钥时直接退出，不浪费谷时
-check=$("$DSH" --profile headless "只回答两个字：就绪" 2>&1 | tail -3)
+check=$("$DSH" --profile headless --patch "$ROOT/tools/agents/dsh-account.patch.yml" "只回答两个字：就绪" 2>&1 | tail -3)
 if echo "$check" | grep -q "MISSING_CREDENTIAL\|SIGN_IN_REQUIRED"; then
   say "DSH 凭据不可用：$(echo "$check" | tail -1)"; exit 3
 fi
