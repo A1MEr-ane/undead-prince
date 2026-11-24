@@ -10,6 +10,7 @@
 | `docs/canon/` | **剧情与世界观基准**（用户提供的 ABC R1；先读 `shared/CANON-COMPACT.md`）。只读，改动需用户同意 |
 | `docs/canon-review.md` | Claude 对 canon 的审阅意见与待决事项 |
 | `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |
+| `docs/boons.md` | 五位旧部的增益表、双人增益、实现顺序 |
 | `docs/art-direction.md` | 可爱比例规范与美术验收反馈 |
 | `docs/units.md` | 兵种设计（亡魂技能与死亡效果、守军职责、克制关系、招魂循环） |
 | `docs/badnorth-reference.md` | Bad North 技术拆解概要 |
