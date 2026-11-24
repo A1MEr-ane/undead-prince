@@ -1,0 +1,232 @@
+[
+  {
+    "id": "undead_lineup",
+    "task_id": "T42",
+    "files": [
+      "art/units/undead_lineup.png"
+    ],
+    "alts": [
+      "art/units/alt/undead_lineup_A.png"
+    ],
+    "prompt": "Use case: stylized-concept.\nAsset type: production concept-art roster sheet for a dark maritime fantasy tactics game; one complete 16:9 landscape image, exact canvas 2560 x 1440.\nPrimary request: paint a single-row lineup of EXACTLY EIGHT distinct undead unit types, full bodies and all equipment entirely visible, each clearly separated, on a common ground line. These are a roster, not a battle scene. No additional figures or inset portraits.\nReference image role: the supplied prince portrait is the STYLE reference and exact identity reference for the eighth unit only. Match its hand-painted impasto marks, varied thick-to-thin black ink contours, angular elongated anatomy, hard flat shadow shapes, high contrast, dark navy background, saturated teal rim light. No 3D rendering, no low-poly facets, no smooth airbrush. Narrative-layer adult proportions, NOT chibi.\nComposition: wide spacious roster on a restrained textured midnight-blue ground, muted grey sea-mist near boots only. Eight readable silhouettes; no overlapping heads, bodies, weapons, labels. Leave a clean bottom label band. Taller giant, mounted cavalry and high standard must fit entirely within frame; adjust spacing, not identity. Giant should visibly dwarf ordinary infantry. Lich and standard bearer float just above ground. Allow 4% safe margins all around.\nOrdered subjects LEFT TO RIGHT, exactly one of each:\n1 普通亡魂 — ordinary skeletal naval infantry, loose slouching bones, battered bowl helmet, worn navy tunic, small ragged purple shoulder cloth; one short sword and one round shield. Teal soulfire eyes.\n2 复仇亡魂 — skeletal or pale grey berserker, forward-leaning aggressive stance, broad sword, unencumbered by a shield, trailing torn purple naval cloth, restrained teal flames.\n3 缝合巨人 — huge stitched grey-skinned former dockworker type, very broad shoulders and enormous articulated hands, visible simple repair stitches, patched dockworker clothes and rope belt, a large real ship's anchor with ring and flukes held beside him as a tool-weapon. Inspired by the dockworker Garran's strength, dexterity and craftsmanship; no gore, no organ display, no extra limbs, no grotesque monster face. His hands must still have fingers.\n4 盾骷髅 — slender skeleton behind a very tall rectangular battered door-plank tower shield, head and toes remain visible, small sidearm, navy and purple rag.\n5 死灵骑士 — one skeletal armored knight MOUNTED on one fully visible skeletal horse, heavy naval armor, tattered purple cloth, teal eyes in knight and horse. The horse is a mount belonging to this one roster entry, not an additional unit type. Long lance held nearly vertical, no horns.\n6 巫妖 — one floating skeletal spellcaster in faded naval-blue robes with ragged purple lining, teal soulfire in one raised hand, a distinct small glowing phylactery at belt and a staff. No two guards, no minions.\n7 旗手亡魂 — one floating skeleton in ragged naval uniform, bearing a high torn PURPLE old naval standard with a fragmented GOLD CROWN device, brass signal horn at hip; whole flag and pole in frame.\n8 亡魂王子 — exactly the prince from reference, age 26, broken gold crown, wavy dark hair, character's LEFT half skull (viewer-right in front view), other half human, old ivory-white and gold armor, long ripped purple cloak, teal soulfire sword. Confident upright angular silhouette. Do not turn both halves into skull, do not make him old.\nFaction language: all eight are skeletons or pale grey undead with teal-green soulfire and teal edge light from one side; weathered maritime/naval clothing, torn purple cloth, fragments of old crown banners. Limited palette of bone-ivory, charcoal/navy, purple, aged gold, teal light.\nText verbatim: under the corresponding figures, large clean readable ivory Simplified Chinese type, exactly these labels in order: “普通亡魂” “复仇亡魂” “缝合巨人” “盾骷髅” “死灵骑士” “巫妖” “旗手亡魂” “亡魂王子”. No other words, no gibberish microtext, no English, no watermark.\nAvoid: modern uniforms, guns, extra units, crowd, cropped feet, cropped flag, cropped horse, occult pentagrams, invented lore, readable background writing, blood or gore. This specific roster intentionally has eight subjects.\nAlternate version B: preserve every subject, order, Chinese label and identity above. Make the silhouettes a little more separated, equipment less busy and the ground line calmer. The ordinary skeleton's head should tilt loosely; the berserker has a clearly forward lean; the stitched dockworker giant's free hand shows articulated fingers and a loose piece of mooring rope while the other holds the anchor; this is only an equipment/pose study, no new narrative. Maintain long angular adult bodies on the non-giants. Prince keeps exact reference left-skull/right-human anatomy and all five identifying features. The tower shield is weathered wood, not a royal sun shield. The lich's belt phylactery must read clearly. Create a fresh alternate finished roster illustration, not a duplicate or comparison panel.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "generation_count": 2,
+    "repair_count": 0,
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-dda2-7213-bb56-15966bd604d4/exec-52b8c530-e0b8-4542-b3d2-4c55be0dba57.png",
+    "canvas": {
+      "requested": "16:9, 2560x1440",
+      "actual": "1672x941",
+      "exact_16_9": false,
+      "relative_ratio_error_percent": 0.05313496280551222,
+      "note": "工具无尺寸参数，输出为近似宽幅；未裁切、填边、缩放或重采样。严格 16:9 待 Lead 处理。"
+    },
+    "selection_reason": "选作主图：八种单位、顺序和标签完整，巨人持锚握绳，骨马及悬浮单位清楚，王子五项身份特征保留。",
+    "generation_log": "art/units/GENERATION-LOG.json",
+    "self_check": [
+      {
+        "requirement": "8 个亡魂兵种单排，顺序与中文名严格按简报",
+        "status": "pass",
+        "evidence": "目视逐位核对：普通亡魂、复仇亡魂、缝合巨人、盾骷髅、死灵骑士、巫妖、旗手亡魂、亡魂王子；各一，无额外护卫。"
+      },
+      {
+        "requirement": "亡魂外观与阵营语言",
+        "status": "pass",
+        "evidence": "骷髅/灰白皮肤，青绿冥火与边光，破海军服饰、紫破布、旧王冠军旗。"
+      },
+      {
+        "requirement": "各兵种职责剪影可辨",
+        "status": "pass",
+        "evidence": "剑盾、无盾突击、锚与巨手、门板塔盾、骑乘骨马、法杖/护命匣、旗与号角、王子冥火剑可区分。"
+      },
+      {
+        "requirement": "巨人参考加兰，不变更人物设定",
+        "status": "pass",
+        "evidence": "码头工补丁服、绳索、可活动大手和船锚；仅提取职业/手艺特征，标签仍是兵种缝合巨人，不认定此兵就是加兰，不新增剧情。"
+      },
+      {
+        "requirement": "走路性格的静态提示",
+        "status": "pass",
+        "evidence": "普通亡魂松垮歪头，狂战士前倾；巨人沉重站姿，骨马骑兵；巫妖与旗手无着地脚步。动画未验证。"
+      },
+      {
+        "requirement": "王子身份一致",
+        "status": "pass",
+        "evidence": "断金冠、紫破披风、白金旧甲、角色左侧半骷髅脸（正面观者右）、青绿冥火剑齐全。"
+      },
+      {
+        "requirement": "叙事层手绘墨线厚涂风",
+        "status": "pass",
+        "evidence": "暗墨蓝底、修长棱角造型、粗细变化墨线、可见笔触、大块强明暗与单侧青绿边光；无 3D/低多边形渲染。"
+      },
+      {
+        "requirement": "全身与装备入框、名字清楚",
+        "status": "pass",
+        "evidence": "八组标签可读，骨马四蹄、长枪尖、完整旗布、船锚与王子剑尖入框；局部披风与自己的装备有正常叠压。"
+      },
+      {
+        "requirement": "严格 16:9",
+        "status": "needs_review",
+        "evidence": "原生 1672x941，相对标准宽高比误差约 0.0531%；保留工具原图，不能标称严格 16:9。"
+      },
+      {
+        "requirement": "提示词与设定边界",
+        "status": "pass",
+        "evidence": "无现有游戏、工作室、画师名；不采信偶然图形/装饰为新增设定。"
+      }
+    ]
+  },
+  {
+    "id": "kingdom_lineup",
+    "task_id": "T42",
+    "files": [
+      "art/units/kingdom_lineup.png"
+    ],
+    "alts": [
+      "art/units/alt/kingdom_lineup_A.png"
+    ],
+    "prompt": "Use case: stylized-concept.\nAsset type: narrative-layer military roster concept sheet for a maritime fantasy kingdom. Wide 16:9 landscape canvas, requested exact 2560 x 1440.\nReference image: use the supplied prince image ONLY as the painting/ink/style reference. Do not copy the undead character, crown, torn purple cape, skull or teal light into this new sheet.\nPrimary request: EXACTLY EIGHT distinct LIVING HUMAN soldiers, all standing ON FOOT in a SINGLE horizontal row, each full body, complete weapons and complete standard visible, shared ground line, substantial space between silhouettes. Match the reference's varied hand-drawn thick black outer ink contours and fine internal ink, angular elongated adult anatomy, visible impasto brushwork, hard-edged flat shadow shapes, high contrast, dark navy textured background. Each has real warm living skin, ordinary natural eyes and a readable human face. Restrained ivory-white, muted navy, aged gold, leather brown; one-sided WHITE-GOLD warm daylight rim, no teal.\nComposition: eight clear varied silhouettes, adult realistic-stylized long proportions (not chibi); calm trained disciplined poses, slight differences in rank/equipment, all directed slightly toward viewer so faces are readable. No overlap of faces or equipment, 4% safe margins, a clean dark label band under feet. Minimal mist and ground only; no buildings, no additional people, no horses.\nORDER LEFT TO RIGHT, exactly one of each:\n1 民兵 — modest living adult militia, plain patched ivory tunic and navy cap, simple short sword and small unpainted wooden buckler; nervous but alert posture, ordinary working person, minimal armor.\n2 盾兵 — trained living shield infantry, open bowl helmet with face visible, mail and white/navy tabard, one large solid heater shield carried clear of face, short sword, stable disciplined stance. Shield device WHITE field bearing GOLD EIGHT-POINTED SUN.\n3 枪兵 — living spearman, upright long spear held close and nearly vertical fully in frame, open kettle helmet, lighter white/navy uniform, braced upright formation posture. This is a spear, not a halberd or staff.\n4 弓兵 — living archer with clearly visible strung longbow and quiver of arrows, simple hood pushed back to expose face, light white/navy tunic, brown bracer. A single arrow has a small warm orange fire tip, no glowing body.\n5 弩手 — living crossbowman holding a visibly recognizable horizontal crossbow at waist with stock, bow limbs and string, heavy rectangular pavise strapped to BACK with its top and side clearly showing. No firearm. Open helmet and alive human face.\n6 修士 — living adult monk in intact white robe with gold trim and simple navy cord, visible warm human face, holy-water flask prominently held in one hand, small gold eight-point sun pendant; a plain staff in the other hand, no skull, no skeletal fingers, no ghostly floating.\n7 传令兵 — light living human messenger in intact navy/ivory livery, visibly carries a brass signal horn, satchel and one tall REGENT military standard. The flag: WHITE rectangular cloth with GOLD EIGHT-POINTED SUN (8 rays exactly), plus ONE RED DIAGONAL STRIPE from upper hoist to lower fly. Flag wholly visible. This red diagonal is a regency identifier, not a crown; no cross symbol.\n8 王国骑士 — elite living human knight ON FOOT, ivory-white plate with gold edging, intact navy cloak, long steel sword and a prominent white shield with gold EIGHT-POINTED SUN. Visor lifted to show human face. Proud disciplined posture, greater armor mass than shield infantry.\nHeraldry consistency: the royal device is a GOLD EIGHT-POINT SUN ON WHITE. Count eight clean rays. Never substitute a crown, anchor, fleur-de-lis, five-point star, cross or twelve-rayed sun. The messenger's regency flag additionally has a single red diagonal stripe. Avoid adding other invented devices or lettering.\nText verbatim, one large clear readable ivory Chinese label directly under each corresponding entry, in exact order: “民兵” “盾兵” “枪兵” “弓兵” “弩手” “修士” “传令兵” “王国骑士”. No other text, no title, no watermark or tiny gibberish.\nLighting: bright warm ivory-white highlights and gold edge light against blue-black shadows. ALL are living humans. No teal, cyan, green magic, skull faces, necromancy, torn death shrouds, undead armor, horns, 3D renders, low-poly facets, smooth gradients, anime cel template, extra units, cropped pole, cropped feet or cropped flags.\nVersion B, targeted layout correction to the supplied first roster: the first roster clips the elite knight's shield at the RIGHT edge. Repaint/reframe so the ENTIRE row, including the far-right shield, fits within the central 88% of canvas width. At least 6% empty background on LEFT and RIGHT, and 5% top clearance above pole tips. Every boot, blade, spear, bow limb, crossbow limb, pavise, flag and shield must remain visible. Do not solve by deleting or shrinking the shield disproportionately. Keep the eight identities, order and EXACT Chinese labels. Keep all 8-rayed gold sun emblems accurate; do not change sun to crown. Give the knight a clearly readable lifted open-face metal helmet to distinguish him from the prince reference; he has no crown, no broken armor, no death damage. The shield infantry shield must be broad, the crossbowman's back pavise visible, monk's holy-water flask readable. Use the style and content already established by the reference roster; refine spacing only with that helmet clarification. A finished alternate version, not a before/after panel.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "generation_count": 2,
+    "repair_count": 1,
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-dda2-7213-bb56-15966bd604d4/exec-abcf5f49-8384-4e5f-80fa-0ebe6c814558.png",
+    "canvas": {
+      "requested": "16:9, 2560x1440",
+      "actual": "1672x941",
+      "exact_16_9": false,
+      "relative_ratio_error_percent": 0.05313496280551222,
+      "note": "工具无尺寸参数，输出为近似宽幅；未裁切、填边、缩放或重采样。严格 16:9 待 Lead 处理。"
+    },
+    "selection_reason": "选作主图：盾牌和全部兵器入框；骑士掀面甲、八名活人、白金暖光及八芒日与红斜带清楚。",
+    "generation_log": "art/units/GENERATION-LOG.json",
+    "self_check": [
+      {
+        "requirement": "8 个王国兵种单排，顺序与中文名",
+        "status": "pass",
+        "evidence": "目视核对：民兵、盾兵、枪兵、弓兵、弩手、修士、传令兵、王国骑士。任务未要求贵族将领 Boss，未增画。"
+      },
+      {
+        "requirement": "全部是活人，白金暖光",
+        "status": "pass",
+        "evidence": "八人均有正常肤色、人脸和眼睛；骑士面甲掀起可见活人面孔。无骷髅或青绿亡灵边光。"
+      },
+      {
+        "requirement": "职责与装备辨识",
+        "status": "pass",
+        "evidence": "民兵木圆盾、盾兵盾剑、枪兵长枪、弓兵长弓箭袋/小火箭、弩手横弩和背立盾、修士圣水瓶、传令号角/旗、精英板甲骑士各异。"
+      },
+      {
+        "requirement": "王室白底金八芒日，摄政旗加红斜带",
+        "status": "pass",
+        "evidence": "盾兵和骑士盾面、传令旗为白底金色八芒日，旗有一条红色斜带；没有用冠替代王国日纹。"
+      },
+      {
+        "requirement": "叙事层画风",
+        "status": "pass",
+        "evidence": "与王子基准同属粗细变化墨线、修长棱角造型、厚涂笔触、大块硬阴影、暗背景与暖金边光。"
+      },
+      {
+        "requirement": "完整全身和装备",
+        "status": "pass",
+        "evidence": "B 修正 A 的最右盾裁切，八人靴、盾、剑、长枪、弓、弩、背立盾和旗均入框。"
+      },
+      {
+        "requirement": "严格 16:9",
+        "status": "needs_review",
+        "evidence": "原生 1672x941，相对宽高比误差约 0.0531%，未改图。"
+      },
+      {
+        "requirement": "提示词无具名风格模仿，未新增设定",
+        "status": "pass",
+        "evidence": "仅描述绘画特征；服装道具用于兵种识别，不写入 canon。"
+      }
+    ]
+  },
+  {
+    "id": "chibi_lineup",
+    "task_id": "T42",
+    "files": [
+      "art/units/chibi_lineup.png"
+    ],
+    "alts": [
+      "art/units/alt/chibi_lineup_A.png",
+      "art/units/alt/chibi_lineup_B.png"
+    ],
+    "prompt": "Use case: precise-object-edit.\nEdit target = image 1, the chibi roster version A. Image 2 = version B for broken-crown detail ONLY; B's giant head is TOO LARGE, do not copy B's giant.\nCreate the final corrected alternate of image 1. Keep all 16 unit identities, all poses except the giant torso/head adjustment, all sixteen exact Chinese labels, two rows of eight, equipment, shields, warm/teal faction light and all other content unchanged.\nONLY EDIT TWO LOCAL AREAS:\n(1) Top row third figure, stitched giant “缝合巨人”: image 1 giant's round grey head occupies about 35% of his height; image 2 wrongly enlarged it to about 60%. The final target is BETWEEN these: 44% head, 34% torso, 22% legs and feet. Exactly a 2.3-head chibi. Do a MODERATE head enlargement from image 1, about 1.27x head linear size, NOT the huge bobble-head of image 2. Keep giant's overall height and foot baseline as in image 1. On the 1672x941 reference canvas, the giant's bald top is approximately y=66 and soles y=387. The corrected head should run from y=66 to about y=207 (141 pixels), barrel torso from y=207 to about y=316 (109 pixels), short legs/feet from y=316 to y=387 (71 pixels). These coordinates are only construction guidance and MUST NOT be written into the picture. Keep head center near x=534, head width about 180–190 pixels, do not spread into neighbors. Round grey stitched head, low-set simple eyes and closed mouth, short neck, broad rounded shoulders, navy patched overalls, rope belt, rounded mitten hands, one ship's anchor with ring and two flukes, no gore. His skeleton and overalls should read like a larger-scaled version of the SPEARMAN BODY PROPORTION in the lower row, with the same head/torso/leg ratios.\n(2) Top right prince “亡魂王子”: use image 2's visibly BROKEN GOLD CROWN, with one missing tip and a dark crack. Preserve his viewer-right skull / viewer-left human face, ivory/gold armor, purple cloak, teal sword and 2.3-head body.\nKeep every other pixel region as close to image 1 as possible, especially all other 15 body shapes and exact leg lengths. Royal shield/flag symbols remain GOLD EIGHT-POINT SUN ON WHITE; living messenger flag also RED DIAGONAL STRIPE. Undead flag remains broken gold crown on purple. All 8 lower units remain living humans. Do not add teal glow to them.\nStyle remains deep dark variable hand-inked outer contour, clean hard two-tone flat shadow blocks, 3–4 major palette masses per figure, no gradient, no 3D, no photoreal detail. No new labels or title, no comparison graphics, no extra figures, no rulers or construction guides, no cropped items. Return the complete finished two-row roster sheet at the same landscape aspect, requested exact 16:9.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "C",
+    "generation_count": 3,
+    "repair_count": 2,
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-dda2-7213-bb56-15966bd604d4/exec-6f510ce2-e902-46d1-b4f7-ee676436b287.png",
+    "canvas": {
+      "requested": "16:9, 2560x1440",
+      "actual": "1671x941",
+      "exact_16_9": false,
+      "relative_ratio_error_percent": 0.11291179596174539,
+      "note": "工具无尺寸参数，输出为近似宽幅；未裁切、填边、缩放或重采样。严格 16:9 待 Lead 处理。"
+    },
+    "selection_reason": "选作主图：巨人约 44% 头高，约 2.3 头身；王子断冠清楚。两排十六单位、武器和旗帜完整。",
+    "generation_log": "art/units/GENERATION-LOG.json",
+    "self_check": [
+      {
+        "requirement": "上下两排，各 8 类，与两张主阵容同序",
+        "status": "pass",
+        "evidence": "上排八亡魂，下排八活人，十六个中文兵种标签完整；骑兵与坐骑算同一兵种，未增画护卫。"
+      },
+      {
+        "requirement": "2.3 头身与 Q 版形体",
+        "status": "pass_with_limits",
+        "evidence": "圆大头、桶身、短粗腿、大脚、圆拳，无收腰。C 巨人顶约 y66、下颌约 y205、脚底约 y387，头占约 43–44%，接近 2.3 头身；普通单位为目视近似，非精密模型测量。骑手身体独立于马计比例，所有人形包括王子均采用 Q 版。"
+      },
+      {
+        "requirement": "巨人只整体放大，保留码头工与船锚",
+        "status": "pass",
+        "evidence": "C 纠正 A 的小头和 B 的过大头；缝线、绳带、海军蓝补丁服、锚保留，无恶心伤口。"
+      },
+      {
+        "requirement": "深墨外轮廓、双档平涂、少量大色块",
+        "status": "pass_with_limits",
+        "evidence": "深色粗外轮廓，硬边平涂为主，主色集中为骨白/海军蓝/紫、肤色/白金/海军蓝；金属高光、边光、抗锯齿仍有额外像素颜色，尚未转为固定部位编码或严格调色板。"
+      },
+      {
+        "requirement": "阵营边光",
+        "status": "pass",
+        "evidence": "亡魂青绿，王国暖金；圣水瓶浅蓝是道具颜色，无王国青绿轮廓光。"
+      },
+      {
+        "requirement": "王室与旧军旗区分",
+        "status": "pass",
+        "evidence": "亡魂旗为紫底破冠；活人盾和军旗为白底金八芒日；传令旗有红斜带。"
+      },
+      {
+        "requirement": "王子五项身份特征",
+        "status": "pass",
+        "evidence": "C 可见缺角断冠、紫破披风、白金甲、观者右侧半骷髅脸与青绿剑。"
+      },
+      {
+        "requirement": "脸/脚可见，武器全入框",
+        "status": "pass",
+        "evidence": "塔盾上方露头、下方露脚，弓/弩/船锚/骨马/两面旗完整，不遮邻兵脸；悬浮两类不补画着地腿。"
+      },
+      {
+        "requirement": "以附图 2 小兵为风格参考",
+        "status": "pass_with_limits",
+        "evidence": "A 使用战斗样张与两张完整兵种图，B/C 定向修正；本图是放大的局内造型指导，静态像素可读性及动画未在 Godot 运行。"
+      },
+      {
+        "requirement": "严格 16:9",
+        "status": "needs_review",
+        "evidence": "C 原生 1671x941，宽高比相对误差约 0.1129%，未裁切/补边/重采样。"
+      },
+      {
+        "requirement": "重试上限与设定边界",
+        "status": "pass",
+        "evidence": "共三版、定向自修两次；C 比例问题目视已修正，不再生成。无世界观/人物设定改动。"
+      }
+    ]
+  }
+]
