@@ -26,12 +26,13 @@ proportions:
     feet_apart: 一个脚宽
   hand_size: 0.09         # 方块拳头，偏大
   lean: 站立时身体略前倾 3–5°
+  lean_degrees: 4          # 数值字段供建模/姿势生成，保持上面的造型说明
 
 # —— 部件（低模，参考三视图；全部大色块、无纹理细节）——
 parts:
   head:   {shape: 圆角方块脸，耳朵小块突出，短棕发从盔下露出鬓角, uv_part: skin}
   eyes:   {shape: 两个小黑点 + 一道粗眉（侧面只见一只）, uv_part: eye}
-  helmet: {shape: 八棱圆顶铁盔 + 一圈宽帽檐 + 前方护鼻条, uv_part: helmet, rim_uv_part: metal}
+  helmet: {shape: 八棱圆顶铁盔 + 一圈宽帽檐 + 前方护鼻条, uv_part: helmet, rim_uv_part: metal, sides: 8}
   tunic:  {shape: 象牙白无袖罩袍，前后下摆开衩，盖到大腿中部, uv_part: tunic}
   sleeves: {shape: 靛蓝长袖内衣（上臂与前臂）, uv_part: sleeves}
   collar: {shape: 靛蓝高领一圈, uv_part: cloth_trim}
@@ -39,8 +40,10 @@ parts:
   legs:   {shape: 靛蓝裤腿（短）, uv_part: trousers}
   boots:  {shape: 棕色高筒靴，靴口外翻一圈, uv_part: boots}
   hands:  {shape: 方块拳头, uv_part: skin}
-  shield: {shape: 圆盾，直径约 0.55 身高，厚度约 0.04，外缘一圈厚边, face_uv_part: shield_face, rim_uv_part: shield_rim, back_uv_part: shield_back, boss: 无（纹章占满盾面）}
-  sword:  {shape: 单手直剑，剑身长约 0.45 身高，宽护手, blade_uv_part: blade, guard_uv_part: metal, grip_uv_part: hilt}
+  shield: {shape: 圆盾，直径约 0.42 身高，厚度约 0.04，外缘一圈厚边, face_uv_part: shield_face, rim_uv_part: shield_rim, back_uv_part: shield_back, boss: 无（纹章占满盾面）, diameter: 0.42, thickness: 0.04, sides: 12,
+           hold: 盾面朝前方（+X）偏向镜头约 40°（不是正对镜头），近侧手持，盾心大约在腰带与肩线之间、身体前方；侧视时只挡住躯干前半和近侧手臂,
+           must_show_in_side_view: [头和盔的完整轮廓, 罩袍上半部（象牙白）, 远侧肩和袖子（靛蓝）, 双腿与靴子的迈步]}
+  sword:  {shape: 单手直剑，剑身长约 0.45 身高，宽护手, blade_uv_part: blade, guard_uv_part: metal, grip_uv_part: hilt, blade_length: 0.45}
 
 silhouette:   # 缩到 40 像素高时必须认得出的特征
   - 大圆盾占侧面剪影约一半（侧视时盾在身体前方/近侧）
