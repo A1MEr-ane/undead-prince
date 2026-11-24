@@ -146,7 +146,7 @@ def section(id_, num, title, body, lead=''):
 
 
 parts = []
-TITLE_ZH = os.environ.get('BOOK_TITLE_ZH', '渡魂')
+TITLE_ZH = os.environ.get('BOOK_TITLE_ZH', '亡者归航')
 TITLE_EN = os.environ.get('BOOK_TITLE_EN', 'FLEET OF THE FALLEN')
 cover = img('art/style/prince_hero.png', 'cover', 1400)
 parts.append(f"""<header class="cover">
