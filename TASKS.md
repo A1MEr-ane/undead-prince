@@ -22,10 +22,12 @@
 | T16 | 盾兵试点 P1：资产规格 | Claude | assets/specs/k2_shieldman.yml | — | 完成 |
 | T17 | 盾兵试点 P2：按规格建模渲染 | Codex | codex/t17-shieldman（任务卡 tasks/T17） | tools/blender/, assets/ | 已合并（4 次，见 metrics） |
 | T18 | 盾兵试点 P3：图集接入游戏、重做走路 | Claude | main | — | 待办（依赖 T17） |
-| T19 | 平衡：进攻方 3 局都在 15 秒内夺旗，偏强 | Claude | — | — | 待办（等 T21 数据） |
-| T20 | DSH 能力冒烟测试 | DSH | tasks/T20 | reports | 谷时排队（今天 12:00） |
-| T21 | 10 种子对战统计与平衡假设（只出报告） | DSH | tasks/T21 | reports | 谷时排队 |
-| T22 | 状态树单元测试 | DSH | tasks/T22 | tests/ | 谷时排队 |
+| T19 | 平衡：进攻方偏强（T21：守军两群不互援、夺旗条件宽松） | Claude | — | — | 待办 |
+| T20 | DSH 能力冒烟测试 | DSH | tasks/T20 | reports | 完成 |
+| T21 | 10 种子对战统计与平衡假设（只出报告） | DSH | tasks/T21 | reports | 已合并 |
+| T22 | 状态树单元测试 | DSH | tasks/T22 | tests/ | 已合并 |
+| T23 | 同种子对战不可复现（随机源未完全固定） | 待定 | — | — | 待办 |
+| T24 | 工程移出 ~/Documents 并安装谷时定时任务 | Claude | — | — | 进行中 |
 
 ## 待用户决定
 - 在 DSH 里保存 DeepSeek API 密钥（无头模式必需）
