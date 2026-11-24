@@ -2,7 +2,7 @@
 id: T29
 title: 航海图难度颜色、首领据点覆盖、敌情记忆与残响（局外成长第一版）
 owner: codex
-status: queued
+status: done
 branch: codex/t29-difficulty
 worktree: ../亡魂王子-t29
 allowed: [scripts/campaign/, scenes/campaign.tscn, data/campaign/, tests/test_campaign.gd, tests/run_tests.gd]

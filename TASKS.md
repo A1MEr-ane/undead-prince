@@ -31,7 +31,7 @@
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
 | T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 已合并 |
 | T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 已合并（3 张均通过） |
-| T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 进行中 |
+| T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 已合并（UI 待按新画风重做） |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
 
 ## 待用户决定
