@@ -42,12 +42,19 @@ PROMPT="你是本项目的执行者。先读 AGENTS.md 和 docs/collab.md，再�
 
 $(cat "$CARD")"
 
+# 参考图：front matter 里 images: [绝对路径, ...]，codex 用 -i 附上，dsh 在提示里给路径
+IMG_ARGS=()
+IMGS=$(field images | tr -d '[]')
+if [ -n "$IMGS" ]; then
+  IFS=',' read -ra _imgs <<< "$IMGS"
+  for i in "${_imgs[@]}"; do i=$(echo "$i" | xargs); [ -f "$i" ] && IMG_ARGS+=(-i "$i"); done
+fi
 start=$(date +%s)
 run() {
   case "$OWNER" in
     codex)
       /Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex exec -C "$WT" -s workspace-write \
-        --add-dir "$ROOT/.git" --add-dir "$ROOT/reports" --add-dir "$HOME/.codex" \
+        --add-dir "$ROOT/.git" --add-dir "$HOME/.codex" ${IMG_ARGS[@]+"${IMG_ARGS[@]}"} \
         "$PROMPT" >"$LOG" 2>&1 ;;
     dsh)
       (cd "$WT" && exec "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \

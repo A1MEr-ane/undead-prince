@@ -1,0 +1,80 @@
+# 兵种资产规格：王国盾兵（盾兵试点 P1，Claude 定，2026-11-24）
+# 用途：Blender 管线按本规格建模、绑骨、渲染 UV 精灵；验收按本规格检查。
+# 造型来源：concept/turnaround/t_k2_shieldman_turn.png（三视图）、t_k2_shieldman_props.png（道具）、
+#          concept/simple/s_k2_shieldman.png（游戏级简化版）。concept/ 不入库，路径相对主仓库。
+
+id: k2_shieldman
+faction: kingdom
+base_rig: tools/blender/build_swordsman.py   # 沿用 15 骨骼和 11 个动作；本规格只改造型
+
+# —— 比例（单位：身高 = 1.0）——
+proportions:
+  head_height: 0.34        # 头（含头盔）占身高约 1/3：卡通、大头
+  head_width: 0.30
+  shoulder_width: 0.40
+  torso_height: 0.30       # 罩袍从肩到下摆
+  leg_height: 0.30         # 短腿
+  hand_size: 0.09          # 拳头偏大
+  boot_height: 0.12        # 靴筒高，靴子偏大
+  stance: 站立时双脚分开约一个脚宽；身体略前倾 3–5°
+
+# —— 部件（低模，参考三视图；全部大色块、无纹理细节）——
+parts:
+  head:   {shape: 圆角方块脸，耳朵小块突出，短棕发从盔下露出鬓角, uv_part: skin}
+  eyes:   {shape: 两个小黑点 + 一道粗眉（侧面只见一只）, uv_part: eye}
+  helmet: {shape: 八棱圆顶铁盔 + 一圈宽帽檐 + 前方护鼻条, uv_part: helmet, rim_uv_part: metal}
+  tunic:  {shape: 象牙白无袖罩袍，前后下摆开衩，盖到大腿中部, uv_part: tunic}
+  sleeves: {shape: 靛蓝长袖内衣（上臂与前臂）, uv_part: sleeves}
+  collar: {shape: 靛蓝高领一圈, uv_part: cloth_trim}
+  belt:   {shape: 宽棕皮带 + 方形扣, uv_part: leather, buckle_uv_part: belt_buckle}
+  legs:   {shape: 靛蓝裤腿（短）, uv_part: trousers}
+  boots:  {shape: 棕色高筒靴，靴口外翻一圈, uv_part: boots}
+  hands:  {shape: 方块拳头, uv_part: skin}
+  shield: {shape: 圆盾，直径约 0.55 身高，厚度约 0.04，外缘一圈厚边, face_uv_part: shield_face, rim_uv_part: shield_rim, back_uv_part: shield_back, boss: 无（纹章占满盾面）}
+  sword:  {shape: 单手直剑，剑身长约 0.45 身高，宽护手, blade_uv_part: blade, guard_uv_part: metal, grip_uv_part: hilt}
+
+silhouette:   # 缩到 40 像素高时必须认得出的特征
+  - 大圆盾占侧面剪影约一半（侧视时盾在身体前方/近侧）
+  - 圆顶盔 + 宽帽檐的蘑菇形头部轮廓
+  - 剑尖向前下方
+
+triangle_budget: {target: 400, max: 600}
+
+# —— 部位贴图外观（每个外观一个 256×256 图块，分区沿用 tools/blender/common.py 的 PARTS）——
+looks:
+  kingdom_militia_blue:   # 盾兵默认外观
+    skin: "#E8B48F"
+    hair: "#5A3A26"
+    helmet: "#8C9096"
+    metal: "#6F747A"
+    tunic: "#E6DCC4"
+    sleeves: "#2B3A67"
+    trousers: "#2B3A67"
+    cloth_trim: "#2B3A67"
+    leather: "#5E3A26"
+    boots: "#6A4330"
+    shield_face: {base: "#2B3A67", emblem: 金色八芒太阳 "#D9A73A" 占盾面约 70%, bend: 右上到左下的暗红斜带 "#8E2A27"}
+    shield_rim: "#7A7E84"
+    shield_back: "#6A4A33"
+    blade: "#B8BDC4"
+    hilt: "#5E3A26"
+    eye: "#1D1A18"
+  painting: 每个部位 2–3 个平面明暗层次（与概念图一致的切面感），不要噪点纹理；纹章边缘清楚
+
+# —— 动作（沿用 common.py 的 ANIMATIONS 名称、帧数、时长、事件）——
+animation_notes:
+  walk: 两步一循环；每步要有"着地—过渡—蹬地"，身体在过渡时最高；手臂与腿反向摆；盾随身体起伏不乱晃
+  idle: 呼吸起伏 + 盾稍微下沉再抬起
+  attack: 盾先护身、剑后拉蓄力 → 0.333 秒砍到最前 → 收剑回盾后
+  parry: 盾向前推出
+  others: 沿用 T06 的姿势设计
+
+# —— 验收 ——
+acceptance:
+  automatic:
+    - tools/verify/verify.sh sprites 通过（图集格式、帧布局、UV 范围、步态、命中姿势、循环闭合）
+    - 三角面数在 triangle_budget 内
+  visual_by_claude:   # Claude 在游戏截图上判断
+    - 远景（zoom 15）下能和民兵、亡魂一眼区分
+    - 近景（zoom 6）下比例和三视图一致：大头、圆顶宽檐盔、大圆盾、太阳纹章清楚
+    - 走路节奏自然，没有滑步和僵直
