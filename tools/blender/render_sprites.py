@@ -87,7 +87,14 @@ def bounds():
 def run(args):
     start = time.monotonic()
     args.output.mkdir(parents=True, exist_ok=True)
-    rig, model_stats = build()
+    recipe = None
+    if args.spec:
+        from build_shieldman import from_spec
+        recipe = from_spec(args.spec)
+        rig, model_stats = recipe.build()
+    else:
+        rig, model_stats = build()
+    prefix = recipe.spec['id'] if recipe else 'swordsman'
     scene = setup_scene(args.size, args.supersample, args.threads)
     total = sum(count for _, count, *_ in ANIMATIONS)
     rows = math.ceil(total / 8)
@@ -140,8 +147,8 @@ def run(args):
     rig.animation_data.action = bpy.data.actions['idle']
     rig.animation_data.action_slot = bpy.data.actions['idle'].slots[0]
     scene.frame_set(1)
-    write_png(args.output / 'swordsman_uv.png', atlas)
-    metadata = dict(format='swordsman_uv_v1', image='swordsman_uv.png',
+    write_png(args.output / f'{prefix}_uv.png', atlas)
+    metadata = dict(format='swordsman_uv_v1', image=f'{prefix}_uv.png',
         frame_size=[args.size, args.size], columns=8, rows=rows, total_frames=total,
         image_size=[8 * args.size, rows * args.size], order='row_major', image_origin='top_left',
         channels=dict(R='part UV.u, linear UNORM8', G='part UV.v, linear UNORM8, bottom-left UV origin',
@@ -164,12 +171,18 @@ def run(args):
                           regions={name: dict(cell=[x, y], uv_rect=uv_rect(name), description=description)
                                    for name, (x, y, description) in PARTS.items()}),
         animations=animations, frames=frame_records, model=model_stats)
-    from preview import create_previews
-    create_previews(atlas, metadata, args.output)
+    if recipe:
+        from shieldman_preview import create_previews, render_views
+        create_previews(atlas, metadata, args.output, recipe.spec)
+    else:
+        from preview import create_previews
+        create_previews(atlas, metadata, args.output)
     metadata['validation'] = validate(atlas, metadata)
-    (args.output / 'swordsman_uv.json').write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + '\n')
+    (args.output / f'{prefix}_uv.json').write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + '\n')
     if args.save_blend:
-        bpy.ops.wm.save_as_mainfile(filepath=str(args.output / 'swordsman.blend'))
+        bpy.ops.wm.save_as_mainfile(filepath=str(args.output / f'{prefix}.blend'))
+    if recipe:
+        render_views(rig, recipe, args.output, args.threads)
     print('COMPLETE', json.dumps(metadata['validation']), f'{time.monotonic() - start:.1f}s', flush=True)
 
 
@@ -196,5 +209,6 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4)
     parser.add_argument('--output', type=Path, default=OUTPUT)
     parser.add_argument('--save-blend', action='store_true', help='Optional inspectable rig/actions; not needed at runtime')
+    parser.add_argument('--spec', type=Path, help='Asset YAML; uses the shieldman recipe and spec.id filenames')
     args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
     run(args)

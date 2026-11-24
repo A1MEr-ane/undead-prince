@@ -28,6 +28,50 @@ blender -b --factory-startup --python-exit-code 1 -P tools/blender/render_sprite
 
 `render_sprites.py` 另支持 `--supersample 2/4/8`、`--threads N`、`--size N`、`--output 目录`。提交产物固定使用 64 像素格和 8 倍超采样；验收脚本检查该 69 帧布局。预览脚本读取本管线写出的 filter-0 PNG，不是通用 PNG 编辑器。
 
+## 从资产规格生成兵种（T17）
+
+【定】盾兵资产使用 `assets/specs/k2_shieldman.yml` 定义比例、部件 UV、装备尺寸、配色与三角面预算。高度以“地面到盔顶 = 1”归一化，`landmarks_from_ground` 全部表示离地高度，不能当成部件自身高度相加。参考图与规格有偏差时，遵守任务卡的升级规则；不在脚本里另定一套比例。
+
+```sh
+# 生成盾兵：69 帧数据图集、JSON、部位贴图、全动作彩色预览、普通着色三视角
+blender -b --factory-startup --python-exit-code 1 -P tools/blender/render_sprites.py -- --spec assets/specs/k2_shieldman.yml --supersample 8
+
+# 可选：同时保存用于 Blender 检查的模型/15 骨骼/11 个 Actions
+blender -b --factory-startup --python-exit-code 1 -P tools/blender/render_sprites.py -- --spec assets/specs/k2_shieldman.yml --save-blend
+
+# 固定验收：同时检查原 T06 swordsman 和盾兵，不需要改变 verify.sh
+tools/verify/verify.sh sprites
+
+# 只检查指定规格产物（输出到其他目录时另加 --output）
+blender -b --factory-startup --python-exit-code 1 -P tools/blender/validate.py -- --spec assets/specs/k2_shieldman.yml
+```
+
+不带 `--spec` 的生成命令保持原 T06 行为。带规格时，所有新文件以 `spec.id` 为前缀，不覆盖 `swordsman_*` 或原有 `parts_preview.png` / `preview_*.png`。
+
+| 盾兵产物 | 内容 |
+| --- | --- |
+| `k2_shieldman_uv.png` / `.json` | `swordsman_uv_v1`，512×576、64×64 格、8 列、69 帧；通道、动画时长/事件、JSON 字段不变 |
+| `k2_shieldman_parts.png` | 512×512，仍为 2×2 个 256 图块；默认外观在 (0,0)，未用图块重复该外观；JSON 只列出已定义外观 |
+| `k2_shieldman_preview_kingdom_militia_blue.png` | 每个动作一行、3 倍放大，带帧号与事件标记 |
+| `k2_shieldman_preview_uv.png` / `_shading.png` | RG 数据和 B 明暗可视预览 |
+| `k2_shieldman_view_front.png` / `_side.png` / `_back.png` | 768×768 普通漫反射材质、区域光；统一尺度、无装备 A 姿势，便于对照三视图 |
+| `k2_shieldman_view_equipped.png` | 768×768 普通着色的持剑盾待机姿势，便于检查近侧盾遮挡与装备位置 |
+
+`asset_spec.py` 读取项目使用的 YAML 子集（缩进映射、标量列表、行内映射、引号标量），无需 PyYAML 或 Blender 插件；不支持锚点、标签、多行标量和行内列表。`build_shieldman.py` 是剑盾兵造型配方，读取主要高度、头/肩宽、拳头大小、前倾角、部位映射、头盔/盾边数、盾直径/厚度、剑长和预算。自然语言 `shape` / `animation_notes` 是配方的制作依据，不由程序解释成任意形状或动作。
+
+新增同类兵种的步骤：
+
+1. 复制规格为新文件，改成独立 `id`，填写 `landmarks_from_ground`、`widths`、`hand_size`、数值 `lean_degrees`、装备数值字段和 `triangle_budget`。使用原有 16 个 UV 部位键。
+2. 在 `looks` 下填外观映射；最多 4 个，每个占 256×256。`painting` 是说明文字；颜色使用 `#RRGGBB`。头发借用 `leather` 区域上部（局部 V > .68），其余皮革使用下部，因此不用增加 UV 区域。盾面按当前配方绘制八芒太阳和右上到左下的斜带，每个部位使用 2–3 个大色块明暗，无噪点。
+3. 用 `--spec 新文件` 生成并用相同 `--spec` 独立验证。默认配方支持相同装备结构的剑盾兵；不同武器/轮廓需新增明确的配方并接入构建入口，不能仅靠改 `shape` 文字。需要改变骨骼、动画表或图集格式时先交 Lead 决定。
+4. 把该规格加入 `validate.py` 默认验证列表，并检查实际彩色预览和三视角。最终造型与游戏远近景由 Lead 验收。
+
+盾兵实测 **42 个刚性网格、230 个多边形、494 个三角面**，15 骨骼。衣摆前后开衩，靴脚跟随 foot、靴筒跟随 shin；盾在近侧左手，无盾心凸起。罩袍象牙白，袖子/裤子靛蓝；盾面金色八芒太阳与暗红斜带均由规格配色生成。
+
+走路保持 8 张输出帧和 `.667s` 两步循环；Action 内额外烘焙 64 段姿势，不增加图集帧数。着地在相位 0 / .5，过渡在 .25 / .75（身体最高），随后支撑腿后移蹬地；同侧手臂与腿反向摆，盾随身体起伏。支撑脚在模型局部匀速后移，模型根节点以 `0.8 / .667 ≈ 1.1994` 单位/秒前移时脚底保持原地。验证采样实际烘焙骨骼的支撑期世界位置，允许漂移 < .006；T17 实测约 `.000011`。游戏接入需要让移动距离与步态相位相配。
+
+新增验证还会检查建模标志点、面数、装备尺寸、完整部位映射、实际外观贴图、三视角文件、过渡起伏及反向摆臂，并复用原来的帧边界、UV、命中、循环与独立射线检查。T06 原有检查保留。
+
 | 文件 | 用途 |
 | --- | --- |
 | `tools/blender/build_swordsman.py` | 网格、部位 UV、15 骨骼、解析双骨 IK、关键帧 Actions |
