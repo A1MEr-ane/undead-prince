@@ -37,15 +37,21 @@
 | T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批；提示词由 Claude 写） | Codex | — | art/story/ | 待办 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
+| T48 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
+| T49 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型 | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |
 | T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 排队（Codex 额度 23:54 恢复后自动启动） |
 | T47 | 按 Claude 提示词重画仇人 + 兵种阵容（18 张） | Codex | codex/t47-chars-b | art/chars/, art/units/ | 排队（同上） |
 | T43 | 开发者设定集（网页） | Claude（内容、文案、版式）；脚本负责出图和生成页面 | — | — | 待办（依赖全部美术） |
-| T44 | 局内新画风：墨线描边、阵营边光、暗调地形、战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T42 兵种图审批） |
+| T44 | 局内新画风落地（按 FLEET_ART_TECH_DECISION 第 3 节）+ 战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T49 实验结果与兵种图审批） |
 | T45 | Blender 精灵按新兵种 Q 版批量重做 | DSH（谷时，先做能力验证）；管线问题 Codex | — | tools/blender/, assets/ | 待办（依赖 T42、T44） |
 | T31 | 新画风样张：王子立绘、对话、增益、航海图、局内战斗 | Codex | codex/t31-style | art/style/ | 已合并（全部通过） |
 | T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 已合并（3 张均通过） |
 | T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 已合并（UI 待按新画风重做） |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
+| T48 | 战斗配置数据化（行为不变，同种子结果逐字一致） | DSH | dsh/t48-battle-data | scripts/main.gd, data/battles/, tests/ | 谷时排队（claude.ai 会话写卡） |
+| T49 | 守军联动 + 夺旗条件 + 24 组参数扫描（T19 第一步） | DSH | dsh/t49-defender-balance | scripts/squad.gd, scripts/main.gd, data/battles/ | 待办（依赖 T48 合并） |
+| T50 | 增益表转数据文件 + 校验测试 | DSH | dsh/t50-boons-data | data/boons/, tests/ | 谷时排队（claude.ai 会话写卡） |
+| T51 | 战役数据一致性检查 + 走廊难度分布报告 | DSH | dsh/t51-campaign-check | tests/, reports/ | 谷时排队（claude.ai 会话写卡） |
 
 ## 待用户决定
 - 开发期剧本语言：中文为主还是英文原稿
