@@ -1,6 +1,6 @@
 #!/bin/bash
 # 固定验证套件：任何 AI 或人都直接运行，不需要重新推导怎么测。
-# 用法：tools/verify/verify.sh [parse|battle|sprites|all] [--seeds 1,7,13] [--quit-at 60]
+# 用法：tools/verify/verify.sh [parse|tests|battle|sprites|all] [--seeds 1,7,13] [--quit-at 60]
 # 结果：reports/verify/<时间>.json（机器读）+ 终端摘要；任一项失败则退出码为 1。
 # 验收阈值由 Lead 维护（见 docs/workflow.md），修 bug 时不要改阈值。
 set -u
@@ -21,6 +21,23 @@ OUT="$ROOT/reports/verify"; mkdir -p "$OUT"
 LOG="$OUT/$TS.log"; JSON="$OUT/$TS.json"
 : > "$LOG"
 results=()
+
+ensure_import() {
+  # 新 worktree 没有全局类缓存，不导入会报 "Identifier not declared"
+  [ -f .godot/global_script_class_cache.cfg ] || godot --headless --path . --import >>"$LOG" 2>&1
+}
+
+run_tests() {
+  if [ -f tests/run_tests.gd ]; then
+    local out; out=$(godot --headless --path . -s tests/run_tests.gd 2>&1); local code=$?
+    echo "$out" >>"$LOG"
+    local summary; summary=$(echo "$out" | grep "结果" | tail -1 | sed 's/"/\\"/g')
+    if [ $code -eq 0 ]; then results+=("{\"check\":\"tests\",\"ok\":true,\"detail\":\"$summary\"}")
+    else results+=("{\"check\":\"tests\",\"ok\":false,\"detail\":\"$summary\"}"); fi
+  else
+    results+=("{\"check\":\"tests\",\"ok\":true,\"skipped\":true}")
+  fi
+}
 
 run_parse() {
   godot --headless --path . --import >>"$LOG" 2>&1
@@ -71,12 +88,14 @@ run_sprites() {
   fi
 }
 
+ensure_import
 case "$MODE" in
   parse) run_parse;;
+  tests) run_tests;;
   battle) run_battle;;
   sprites) run_sprites;;
-  all) run_parse; run_battle; run_sprites;;
-  *) echo "用法：$0 [parse|battle|sprites|all]"; exit 2;;
+  all) run_parse; run_tests; run_battle; run_sprites;;
+  *) echo "用法：$0 [parse|tests|battle|sprites|all]"; exit 2;;
 esac
 
 python3 -I - "$JSON" "$LOG" "$(git rev-parse --short HEAD 2>/dev/null)" "${results[@]}" <<'PY'
@@ -93,7 +112,7 @@ for i in items:
         r=i.get("result",{})
         extra=f" seed={i.get('seed')} 用时={r.get('time')}s 结果={r.get('banner') or '-'} " + (",".join(i.get("fails",[])) if not i["ok"] else "")
     elif i.get("skipped"): extra=" （跳过）"
-    elif not i["ok"]: extra=" "+i.get("detail","")
+    elif i.get("detail"): extra=" "+i.get("detail","")
     print(f"[{tag}] {i['check']}{extra}")
 print(("全部通过" if ok else "有失败项")+f" → {path}")
 sys.exit(0 if ok else 1)
