@@ -5,7 +5,7 @@ owner: codex
 status: done
 branch: codex/t17-shieldman
 worktree: ../亡魂王子-t17
-images: [/Users/cyy/Documents/ChatGPT/亡魂王子/concept/turnaround/t_k2_shieldman_turn.png, /Users/cyy/Documents/ChatGPT/亡魂王子/concept/turnaround/t_k2_shieldman_props.png, /Users/cyy/Documents/ChatGPT/亡魂王子/concept/simple/s_k2_shieldman.png]
+images: [/Users/cyy/Projects/亡魂王子/concept/turnaround/t_k2_shieldman_turn.png, /Users/cyy/Projects/亡魂王子/concept/turnaround/t_k2_shieldman_props.png, /Users/cyy/Projects/亡魂王子/concept/simple/s_k2_shieldman.png]
 allowed: [tools/blender/, assets/sprites/, assets/specs/, docs/sprite-pipeline.md]
 forbidden: [scripts/, shaders/, project.godot, AGENTS.md, tasks/]
 verify: tools/verify/verify.sh sprites
