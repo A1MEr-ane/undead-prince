@@ -1,0 +1,625 @@
+{
+  "task": "T32",
+  "started_at": "2026-11-24T11:52:12.649Z",
+  "characters": [
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "name": "EDMUND - THE UNDEAD PRINCE",
+      "details": "Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign.",
+      "props": "teal soulfire sword with gold hilt and a broken gold crown detail",
+      "light": "teal",
+      "states": [
+        "calm composed attention",
+        "clipped restrained anger, brows pressed down, jaw set, direct sharp gaze; not a screaming monster",
+        "overly formal shame, eyes lowered, rigid posture and tightened human-side lips, one hand straightening collar"
+      ],
+      "why": [
+        "B1：愤怒时言简意赅，采用压住怒意的直视与紧绷下颌。",
+        "B1/B2：羞愧时过分正式，并害怕妹妹认不出自己，采用避视和整理领口。"
+      ]
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "name": "EDMUND - BEFORE THE WRECK",
+      "details": "Exactly the same LIVING 26-year-old man as hero: angular narrow face, strong dark angled brows, dark swept wavy hair, intact narrow gold crown, tall limb proportions. Entire face healthy human with two natural eyes. Intact smooth ivory plate with muted gold edging, high collar, clear unbroken crown chest badge, dark leather belts, full intact purple cape with continuous sewn gold hem and right-shoulder anchor brooch with looped cords. All plate boundaries match, NO cracks, chips, wounds or rips. NO skeletal features, NO green or cyan glow. Warm white-gold light.",
+      "props": "one ordinary nonmagical steel sword, its brown scabbard and a small intact gold crown detail; no green or cyan light",
+      "light": "warm gold",
+      "states": [
+        "calm attentive self-possession",
+        "controlled pride, chin slightly lifted and a small confident smile, not a cruel sneer",
+        "overly formal shame, brows drawn inward, lowered gaze and one hand carefully straightening his collar"
+      ],
+      "why": [
+        "B1/B2：讲究军装、渴望父亲肯定并期待善意得到感激，选择克制的骄傲。",
+        "B1：羞愧时语气过分正式，采用避视和整理领口，保留能够学习的一面。"
+      ]
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "name": "ELEANOR - THE QUEEN",
+      "details": "Same living adult twenty-year-old woman as hero, dark wavy hair in low bun, strong family brows and attentive angular oval face. Simple intact gold crown. Ivory full-length formal CLOTH court gown with high collar, structured waist, sober muted gold edge, long sleeves, thin deep-red regency sash from character RIGHT shoulder diagonally to LEFT hip, with trailing sash on left. Small signet ring. Adult composed sovereign, no armour or weapon. Match hero gown seams and crown profile. Warm white-gold light.",
+      "props": "small carved wooden toy sailboat with repaired mast and patched plain sail matching the hero, plus her small gold seal/signet detail; no weapon",
+      "light": "warm gold",
+      "states": [
+        "calm precise attentive listening",
+        "firm independent objection, brows lowered, chin level, mouth speaking a precise sentence and one small decisive hand gesture",
+        "guarded hurt and fear, slightly widened eyes and pressed lips, controlled sorrow while meeting her brother"
+      ],
+      "why": [
+        "B1：反感居高临下的安慰，希望自主执政；以坚定异议表现自主意志。",
+        "B1/B2：爱哥哥但害怕亡灵军队，也怨恨哥哥擅自决定她命运；选择戒备与受伤，避免被动公主。"
+      ]
+    },
+    {
+      "id": "CHAR-KING",
+      "name": "KING ALDRIC",
+      "details": "Same 55-year-old mature living man depicted historically in hero: broad ageing face, strong family brow, short silver-black beard, short grey-templed dark hair, tired paternal eyes. Intact gold crown; sober long ivory cloth court robe with muted gold borders, brown belt, deep-purple mantle and lining, two simple round crown clasps and gold cords, royal signet ring. No armour. Maintain same robe seam routes, cuff widths and crown design as hero. Warm white-gold light. No villain coding or ghost.",
+      "props": "small royal signet ring shown enlarged and one neat tied bundle of plain blank historical documents matching the hero; no legible writing",
+      "light": "warm gold",
+      "states": [
+        "calm tired sovereign authority",
+        "tender paternal warmth, softened eyes and a small weary smile",
+        "burdened uncertainty, furrowed brow, lowered eyes and a hand resting near temple, responsibility rather than villainy"
+      ],
+      "why": [
+        "B1/B2：曾陪孩子玩木船，保留对孩子的慈爱，选择疲惫中的父亲温情。",
+        "B1/B2：严冬恐惧与迟迟不撤的例外政令压出责任，选择沉重犹疑而非邪恶。"
+      ]
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "name": "QUEEN BEATRICE",
+      "details": "Same mature LIVING coastal noblewoman as hero, warm attentive face, dark chestnut hair with a few natural silver strands in a low braided bun, gentle mature smile lines. Soft cream full-length cloth gown, sea blue-grey shoulder mantle and blue-grey narrow girdle, one modest round gold WAVE clasp at chest, restrained gold seams. No crown, no armour. Match all cloth layers and wave clasp from hero. Warm white-gold light. No spectral form or magical glow; no invented precise age.",
+      "props": "a close clear detached detail of her single modest round gold wave-motif clasp and its simple fastening, no extra narrative object",
+      "light": "warm gold",
+      "states": [
+        "calm attentive listening",
+        "warm reassuring affection, softened eyes and a small smile, modest open-palm gesture",
+        "practical discerning concern, one brow slightly lowered and a steady thoughtful gaze, lips mid-measured advice"
+      ],
+      "why": [
+        "B2：记得承诺对他人的代价、以孩子习惯和信件留下影响，选择温和安抚。",
+        "B2：坚持巡访运作中的港口而非领主厅堂，选择务实审视与关切，避免神秘化。"
+      ]
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "name": "THE FERRYMAN",
+      "details": "Exact same tall slim floating identity as hero: entirely FACELESS opaque black hood interior, no eyes or facial feature at any angle, no visible anatomy or skin. Intact midnight charcoal-blue layered maritime funerary robes, ivory long paired stole with restrained wave motifs, muted bronze clasps, modest cords and seam edging. Long sleeves entirely hide hands; continuous lower hems become translucent cyan-green and float above ground. No feet. Same seam placements, hood shape and garment layer lengths as hero; no ragged tears or shredded ends. Teal lantern/rim light, no halo. Never imply a confirmed species.",
+      "props": "one old wood oar with rope wraps and exactly one bronze lantern holding teal soulfire; do not hold either in body views",
+      "light": "teal",
+      "states": [
+        "calm solemn stillness with upright hood and lowered concealed hands",
+        "restrained dry amusement, slight hood tilt and a small sleeve-covered gesture of polite irony",
+        "quiet sympathetic farewell, hood subtly bowed and one cloth-covered open gesture inviting someone onward"
+      ],
+      "why": [
+        "B1/B2：会拿王子的骄傲与头衔开玩笑，采用兜帽倾角和小手势表现克制揶揄。",
+        "B1：同情悲痛且告别简洁有温情，用微低兜帽与邀请手势表达，无脸、无眼火点，保持身份不明。"
+      ]
+    }
+  ],
+  "generations": [
+    {
+      "id": "CHAR-PRINCE",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "alt/rejected-hero-01.png",
+      "prompt": "Use case: stylized-concept. Create ONE full-body hero portrait, portrait canvas about 2:3, head and both boots entirely inside frame with small margin. The reference is Edmund's approved UNDEAD appearance; depict this exact same man age 26 BEFORE death, with the same angular narrow face, heavy dark brows, straight nose, dark swept wavy hair, same tall elongated body and limb proportions. Restore the entire face to healthy living human skin, intact jaw and two natural non-glowing eyes. Royal naval officer, upright restrained proud stance, one gloved hand resting on the pommel of a sheathed ordinary STEEL sword. Intact narrow gold crown of the same family silhouette, intact ivory plate armour with muted gold edging and a clear unbroken three-point gold crown badge centered on chest, intact rich purple cape secured at his right shoulder with round gold anchor brooch and looped gold cords. Dark leather belt, ivory articulated greaves, boots. Keep armour cut, tall collar, trim and anatomy recognizably continuous with the reference but maintained and undamaged. White-gold warm sunlight with a saturated amber-gold rim from one side, not teal. Plain dark navy painted backdrop with restrained floor shadow. No text. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. Living human only: NO skull, NO exposed bone, NO wounds, NO green or cyan glow, NO magical blade, NO ragged cape, NO wreck damage, NO second figure.",
+      "result_hint": "Generated images are saved to /Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c as /Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-8110bd5b-ae67-454f-85ba-e8c89b4e2a62.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "review": "rejected",
+      "reason": "生前版披风下摆仍破损，白金甲保留过多裂损，与无沉船损伤要求不符。面部与比例可作身份参考。",
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-8110bd5b-ae67-454f-85ba-e8c89b4e2a62.png"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "hero",
+      "attempt": 2,
+      "slot": "hero.png",
+      "prompt": "Use case: identity-preserve. EDIT the reference portrait of living Edmund, keeping exactly the same handsome angular 26-year-old human face, dark swept hair, brows, complete gold crown, tall proportions, pose, armour pattern, purple palette, sword, warm rim light and 2:3 full body composition. This is Edmund BEFORE the disaster, and the image needs TWO precise corrections throughout: (1) Replace the entire purple cape with a fully intact well-maintained woven cloth mantle, its long outer silhouette a continuous sewn curve with a clearly sewn gold hem, no tears anywhere, no holes, no shredded triangles, no ragged strips; the bottom may be wavy but must be connected unbroken fabric. (2) Repair every ivory armour plate to a solid smooth intact plate with painted flat shadows, clean gold rims. Remove all black cracks, chips, fracture lines, dents and damage marks from breastplate, shoulders, forearms, hip lames, greaves and boots. The only dark internal lines are deliberate plate boundaries and ink outlining, not cracks. Keep broad painted shadow shapes and visible painterly brush strokes, do not turn into plastic 3D. Same unbroken crown emblem on chest and anchor brooch. Ordinary sheathed steel sword. Healthy human face, no bone, no teal or green magic. Dark navy backdrop, white-gold warm light. No text, no extra figure. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text.",
+      "refs": [
+        "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-8110bd5b-ae67-454f-85ba-e8c89b4e2a62.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-507fa607-e39e-489b-b768-813d212a9027.png",
+      "review": "pass",
+      "reason": "完整窄金冠、完整白金甲与紫披风；脸型和眉形与亡灵基准连续；暖金光、普通钢剑，无冥火裸骨。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "hero.png",
+      "prompt": "Use case: stylized-concept. Produce one full-body dramatic yet composed hero portrait of ELEANOR, the living adult twenty-year-old queen. Portrait canvas approximately 2:3, whole crown to shoes visible with margin. Input reference is her older BROTHER Edmund, use only the family resemblance and illustration language, NOT his sex or armour. She is a distinct young adult woman with dark wavy hair gathered in a practical low bun, the same strong slightly angled dark family brows, straight nose and attentive eyes, a poised angular oval face. Simple intact narrow gold crown. Formal ivory full-length court gown of woven cloth with sober muted-gold edging, long sleeves and structured high waist, no breastplate or metal shoulder armour. A NARROW deep red regency sash crosses from her right shoulder to her left hip. Modest signet ring. She stands upright with focused attentive authority, gently holding a small old carved wooden toy sailboat with a visibly repaired mast in both hands near waist, practical craftsmanship rather than a magical object. Calm independent sovereign, not a child, not a warrior queen. White, deep red, gold palette with dark hair. Warm white-gold key light and strong amber-gold rim light along one side, dark navy brush-painted empty background. No text, no additional identity. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No skulls, no ghost effects, no glowing eyes, no teal, no armour, no giant ornaments, no weapons, no boat scene, no sexy costume.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-157ceab8-ff02-4c79-aa08-33150780ff61.png",
+      "review": "pass",
+      "reason": "成年女性、深发家族眉形；象牙白金宫廷长袍、右肩至左髋细红绶带、完整简冠、修补木船，无战甲。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "hero.png",
+      "prompt": "Use case: stylized-concept. ONE full-length hero portrait of KING ALDRIC, 55-year-old living man in a historical royal portrait or memory, not resurrected. Portrait 2:3, head/crown and both shoes fully inside frame. Reference is his son Edmund: use the shared dark strong angled family brow and the exact ink-and-painted visual style, but clearly make Aldric an older broader man with a broad kindly yet careworn ageing face, lines around eyes, short neatly trimmed silver-black beard, short dark hair grey at temples. Intact sober gold royal crown. Formal sober ivory and muted-gold full-length court robe, wide shoulders naturally from cloth, a deep purple mantle with deep purple lining, restrained gold edge, simple belt. No plate armour. Royal signet ring visible on one hand. Standing straight with a slight weight of responsibility, one hand touching a small closed bundle of unlettered documents at his side, other relaxed. Authority eroded by responsibility, tired paternal eyes, a dignified flawed human, no sneer. Palette ivory white, dull gold and deep purple. Strong warm white-gold light, saturated amber-gold rim one side, dark navy textured empty background, restrained floor shadow. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No text, no throne, no skulls, no black spiked armour, no huge fur collar, no evil eyes, no supernatural effect, no additional figures.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-18326d7d-ea6a-47a2-b476-3f03bc10b549.png",
+      "review": "pass",
+      "reason": "55岁宽厚衰老面容、银黑短须、完整王冠；白金布袍与深紫内衬、王室印玺，疲惫威仪，无反派符号。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "hero.png",
+      "prompt": "Use case: stylized-concept. Create ONE complete full-body hero portrait of QUEEN BEATRICE, the royal mother in her LIVING years, a mature adult coastal noblewoman with a warm attentive face and practical judgement. Do not specify a new canon age. The reference is her adult daughter Eleanor: use the same project illustration style and subtle family resemblance, but Beatrice is visibly a different older woman, softer compassionate eyes, subtle mature smile lines, dark chestnut hair with a few natural silver strands, neat low braided bun. No crown required: restrained coastal noble dress rather than a grandiose ceremonial queen costume. Soft cream full-length cloth gown, long sleeves, sea blue-grey shoulder mantle and matching blue-grey narrow girdle, a SINGLE modest round muted gold clasp with a simple wave motif at the upper chest. Elegant practical layered fabric, no armour, no gemstones or ostentatious ornament. Upright graceful stance with slight lean of attentive listening; one hand lightly opens in a measured practical explanation, the other rests over her waist. Entire head and two shoes visible in 2:3 vertical frame. Soft cream, marine blue-grey, restrained warm gold. Strong white-gold warm sunlight and narrow amber rim from one side, deep ink-navy painted backdrop, visible bold ink outlines and painted flat shadows. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No text, no red sash, no weapon, no skull, no ghost, no green or blue magical glow, no spectral anatomy, no hidden identity symbol, no additional person.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-77100aef-ab2a-4327-9dd5-c28b2cc969d7.png",
+      "review": "pass",
+      "reason": "成熟生前王后、温和专注；米白海灰蓝沿海贵族衣、单枚波浪金扣，完整服装、暖金光，无幽灵版。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "hero.png",
+      "prompt": "Use case: stylized-concept. ONE full-length hero portrait of THE FERRYMAN. Tall slim floating silhouette, solemn and dignified maritime funerary guide, unknown age, species and origin. 2:3 portrait with hood top, all robe hems, lantern and entire oar fully inside frame, not cropped. Keep only the hand-painted thick-ink rendering language from the supplied style reference; do NOT borrow the prince's crown, face, armour, sword or purple cape. Deep faceless hood with an entirely opaque empty shadow inside: no eyes, no glow points, no nose, no mouth, no skull, no skin, no hair. Intact layered formal maritime burial vestments: midnight charcoal-blue outer hooded mantle, long ivory stole and under-robe, modest muted bronze clasps and restrained stitched seam lines. CLOTH is whole, maintained, solemn and modest, no shredded rags. All limbs hidden by long sleeves; any grip hidden entirely inside cloth or opaque wraps with no exposed anatomy. Lower hems turn semi-transparent cyan-green, floating weightlessly above the ground with continuous cloth shapes and soft readable translucency, no feet visible. Holds an old wooden oar nearly vertical with a slight diagonal on one side and exactly ONE small bronze lantern with teal soulfire suspended from its ring in the other sleeve-covered grip. Restrained gestures, slight suspended lean, broad dark painted shadows, cyan-green light from lantern plus a strong narrow teal rim along one side. Background deep ink-navy painted maritime mist, no boat or scenery competing with silhouette. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No halo, no god symbols, no crown, no facial features, no exposed bones, no exposed hands, no identifiable race, no grim-reaper scythe, no second lantern, no text or other character.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-c353bdb4-1ffa-4442-bcaa-5bd5fc3acc8e.png",
+      "review": "pass",
+      "reason": "无脸兜帽、完整层叠海葬祭服、炭蓝象牙暗铜、青绿半透明悬浮袍尾；旧桨和单灯，无神环与裸露种族特征。"
+    },
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"EDMUND - THE UNDEAD PRINCE\". Use supplied approved hero as the sole identity authority. Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign. Both hands wear matching worn gauntlets and stay empty. Remove sword and any scabbard from all three bodies. PROPS: one full teal soul blade with gold hilt matching hero, plus small separate broken crown detail, orderly right-side column. Same inked painterly look with visible brush strokes, broad flat shadows, strongest black outer lines. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. Do not introduce intact human face on both sides, do not switch skull to other side, do not invent horns or shield.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-52e0c335-b83f-444b-83c8-becb2967bb3e.png",
+      "review": "pass",
+      "reason": "三视图全身、等高同地线、空手；正面骷髅在画面右侧，侧面显示另一侧人脸；右肩披风扣对应，剑冠独列，英文标注正确。裂痕与破布为概念对应，非测量级。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"EDMUND - BEFORE THE WRECK\". Sole identity reference is the supplied living hero. Exactly the same LIVING 26-year-old man as hero: angular narrow face, strong dark angled brows, dark swept wavy hair, intact narrow gold crown, tall limb proportions. Entire face healthy human with two natural eyes. Intact smooth ivory plate with muted gold edging, high collar, clear unbroken crown chest badge, dark leather belts, full intact purple cape with continuous sewn gold hem and right-shoulder anchor brooch with looped cords. All plate boundaries match, NO cracks, chips, wounds or rips. NO skeletal features, NO green or cyan glow. Warm white-gold light. Both gauntleted hands empty, sword and scabbard absent from all three bodies; cape hangs neutral and intact. PROPS column only: one ordinary nonmagical steel sword, its brown scabbard and a small intact gold crown detail; no green or cyan light. Keep all clothing and proportions consistent. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-3047ed89-ff21-4a97-b06b-956b2423ec86.png",
+      "review": "pass",
+      "reason": "三视图等高同地线、空手、正侧背清楚，完整甲披风、右肩扣和冠徽对应；钢剑鞘冠在右栏，无亡灵元素。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"ELEANOR - THE QUEEN\". Sole identity and clothing reference is supplied Eleanor hero. Same living adult twenty-year-old woman as hero, dark wavy hair in low bun, strong family brows and attentive angular oval face. Simple intact gold crown. Ivory full-length formal CLOTH court gown with high collar, structured waist, sober muted gold edge, long sleeves, thin deep-red regency sash from character RIGHT shoulder diagonally to LEFT hip, with trailing sash on left. Small signet ring. Adult composed sovereign, no armour or weapon. Match hero gown seams and crown profile. Warm white-gold light. BOTH HANDS EMPTY at her sides, toy boat absent from body views. The red sash is a continuous cloth loop: right shoulder to left hip across FRONT, left hip to right shoulder across BACK; do not mirror onto different anatomical shoulders. Keep her hair low bun and crown same, gown hem and shoes entirely visible. PROPS column only: small carved wooden toy sailboat with repaired mast and patched plain sail matching the hero, plus her small gold seal/signet detail; no weapon. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No extra woman, no battle armour, no childlike face.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-dd0d3022-3988-4034-a55a-b89af11d3f6e.png",
+      "review": "pass",
+      "reason": "正侧背等高同地线、空手，正面右肩至左髋及背面对应的红绶带连续，低发髻、冠、裙缝一致；木船印玺右列。印玺细纹只作装饰，不推设定。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"KING ALDRIC\". Sole identity/clothing authority is supplied Aldric hero. Same 55-year-old mature living man depicted historically in hero: broad ageing face, strong family brow, short silver-black beard, short grey-templed dark hair, tired paternal eyes. Intact gold crown; sober long ivory cloth court robe with muted gold borders, brown belt, deep-purple mantle and lining, two simple round crown clasps and gold cords, royal signet ring. No armour. Maintain same robe seam routes, cuff widths and crown design as hero. Warm white-gold light. No villain coding or ghost. BOTH HANDS EMPTY relaxed at sides; no papers held in figures, signet remains worn and also shown enlarged under PROPS. Mantle drapes naturally, complete robe and boots visible. Make matching front/back hem length and simple cloth construction. PROPS column only: small royal signet ring shown enlarged and one neat tied bundle of plain blank historical documents matching the hero; no legible writing. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No additional person, no text on papers, no weapon or armoured breastplate.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-336f5455-bd3a-426b-b3fd-85be37a88f04.png",
+      "review": "pass",
+      "reason": "三视图等高同地线、空手、真侧面；王冠、胡须、袍服领袖与深紫披风对应，王室印玺和文书右列，无反派化。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"QUEEN BEATRICE\". Sole identity/clothing authority is supplied Beatrice hero. Same mature LIVING coastal noblewoman as hero, warm attentive face, dark chestnut hair with a few natural silver strands in a low braided bun, gentle mature smile lines. Soft cream full-length cloth gown, sea blue-grey shoulder mantle and blue-grey narrow girdle, one modest round gold WAVE clasp at chest, restrained gold seams. No crown, no armour. Match all cloth layers and wave clasp from hero. Warm white-gold light. No spectral form or magical glow; no invented precise age. Both hands empty relaxed in neutral A-stance, no expressive raised hand. Maintain natural older-adult posture without exaggerated age. No invented objects or crown. PROPS column only: a close clear detached detail of her single modest round gold wave-motif clasp and its simple fastening, no extra narrative object. The detached clasp matches the one still worn on the robe. Entire shoes and cloth hems visible. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. Living human, no ghost, no red sash, no weapons, no extra person.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-MOTHER/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-ad19b291-7c37-465c-8051-571cfad03d97.png",
+      "review": "pass",
+      "reason": "同一成熟活人王后、空手中性站姿、等高同地线；低发髻、米白裙层、海灰蓝披肩、单波浪扣对应，道具栏显示扣正背构造。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "turnaround",
+      "attempt": 1,
+      "slot": "turnaround.png",
+      "prompt": "Use case: stylized-concept. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  Text name exactly \"THE FERRYMAN\". Sole clothing/identity reference is supplied Ferryman hero. Exact same tall slim floating identity as hero: entirely FACELESS opaque black hood interior, no eyes or facial feature at any angle, no visible anatomy or skin. Intact midnight charcoal-blue layered maritime funerary robes, ivory long paired stole with restrained wave motifs, muted bronze clasps, modest cords and seam edging. Long sleeves entirely hide hands; continuous lower hems become translucent cyan-green and float above ground. No feet. Same seam placements, hood shape and garment layer lengths as hero; no ragged tears or shredded ends. Teal lantern/rim light, no halo. Never imply a confirmed species. For all three views, sleeves drop quietly at sides EMPTY with no exposed hands. NO oar and NO lantern attached to bodies. The three translucent robe tips end at the exact same horizontal level above one continuous ground line; hood tops same height, identical hovering gap. SIDE must be a true 90-degree profile of the hood and hanging robe volumes, no face revealed; BACK must show only back of hood and intact mantle. PROPS column only: one old wood oar with rope wraps and exactly one bronze lantern holding teal soulfire; do not hold either in body views. Teal rim light comes consistently from one side; robe transparency shows background, no legs or body through cloth. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No face, no eye dots, no skull, no feet, no halo, no extra figures, no god regalia.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-a0467d95-ad00-4bbd-9f6b-02905a0fa228.png",
+      "review": "pass",
+      "reason": "三视图兜帽均无脸、完整祭服、无可辨认裸露形体；等高与半透明袍尾同线；旧桨单灯独列。属于造型参考，悬浮间隙与层厚仍需建模复核。"
+    },
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "expressions.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied approved undead Edmund hero. Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign. Left portrait: calm composed attention. Middle portrait: clipped restrained anger, brows pressed down, jaw set, direct sharp gaze; not a screaming monster. Right portrait: overly formal shame, eyes lowered, rigid posture and tightened human-side lips, one hand straightening collar. Preserve the half-skeletal jaw and skull on character's LEFT/viewer RIGHT side in every panel and the same intact human-side facial landmarks. Express emotion through human brow, human eye, head angle, lips and restrained gauntlet gesture; never grow new flesh on skull or change skull side. No sword in these portraits. Same broken crown and damaged crown emblem, anchor brooch and torn purple cape in each. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No other person, no lore text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-86d7fc98-5786-4cc6-9490-ebff982a01aa.png",
+      "review": "pass",
+      "reason": "同一脸型、断冠、甲纹与半骷髅侧别；平静、压怒、避视整理领口三态可辨，三张腰上大半身，无文字。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "alt/rejected-expressions-01.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied living Edmund hero. Exactly the same LIVING 26-year-old man as hero: angular narrow face, strong dark angled brows, dark swept wavy hair, intact narrow gold crown, tall limb proportions. Entire face healthy human with two natural eyes. Intact smooth ivory plate with muted gold edging, high collar, clear unbroken crown chest badge, dark leather belts, full intact purple cape with continuous sewn gold hem and right-shoulder anchor brooch with looped cords. All plate boundaries match, NO cracks, chips, wounds or rips. NO skeletal features, NO green or cyan glow. Warm white-gold light. Left portrait: calm attentive self-possession. Middle portrait: controlled pride, chin slightly lifted and a small confident smile, not a cruel sneer. Right portrait: overly formal shame, brows drawn inward, lowered gaze and one hand carefully straightening his collar. All three have the same angular face and two completely natural human eyes, intact crown, unbroken crown chest badge, clean high collar and continuous purple mantle with gold sewn hem. Gloved hand only if gesturing. No sword needed. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. Absolutely NO exposed bone or skull, NO teal/green magic, NO armour fracture lines, NO shredded cape, NO damage, no additional identity.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-999869a0-170f-4bd4-992b-24fba8bdd9f9.png",
+      "review": "rejected",
+      "reason": "第三张整理领口的手变为裸手，和主立绘完整白金手甲不一致；其余表情与身份可用。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "expressions.png",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the THIRD portrait's raised hand in this dialogue expression triptych. Replace its visible bare human hand with the same fully covering ivory-and-gold articulated armoured GAUNTLET that Edmund wears in his hero reference: ivory plates covering all fingers and knuckles, gold-rimmed wrist guard, no skin visible on the hand. Keep its gesture adjusting the collar. The second input is the hero for gauntlet construction reference ONLY. Preserve every other part of the first input unchanged: all three faces and exact expressions, crown shapes, hair, armour seams, unbroken chest badge, purple mantle, gold warm light, same 3-portrait arrangement and scale. Left calm, middle controlled proud small smile, right overly formal shame with downcast gaze. No text, no new damage, no green/teal glow, no exposed bone, no extra figure. Keep the painterly ink style. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/alt/rejected-expressions-01.png",
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f0942703-f5a2-48ae-b727-eeaf2e7b8e4c.png",
+      "review": "pass",
+      "reason": "修复第三张完整白金手甲；三态面部、冠、甲徽和紫披风一致，暖金光，无亡灵元素。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "expressions.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied Eleanor hero. Same living adult twenty-year-old woman as hero, dark wavy hair in low bun, strong family brows and attentive angular oval face. Simple intact gold crown. Ivory full-length formal CLOTH court gown with high collar, structured waist, sober muted gold edge, long sleeves, thin deep-red regency sash from character RIGHT shoulder diagonally to LEFT hip, with trailing sash on left. Small signet ring. Adult composed sovereign, no armour or weapon. Match hero gown seams and crown profile. Warm white-gold light. Left portrait: calm precise attentive listening. Middle portrait: firm independent objection, brows lowered, chin level, mouth speaking a precise sentence and one small decisive hand gesture. Right portrait: guarded hurt and fear, slightly widened eyes and pressed lips, controlled sorrow while meeting her brother. Portray the same twenty-year-old adult woman, equal head size, stable strong angled family brows, same low bun and narrow simple crown, high-neck ivory cloth gown with subdued gold trim, thin deep-red sash from her right shoulder to left hip in every panel. Small hand gestures may enter near waist but no large props; no wooden boat necessary for these expressive dialogue portraits. Restrained emotional precision with independent authority, not helplessness. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No tears streaming melodramatically, no armour, no extra characters, no text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-60ed0b1c-5aab-4999-ada8-6c90cf3eaf24.png",
+      "review": "pass",
+      "reason": "同一成年脸型与低发髻、冠、红绶带；平静、坚定说话手势、戒备受伤三态清楚，完整腰上半身，无战甲。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "alt/rejected-expressions-01.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied Aldric hero. Same 55-year-old mature living man depicted historically in hero: broad ageing face, strong family brow, short silver-black beard, short grey-templed dark hair, tired paternal eyes. Intact gold crown; sober long ivory cloth court robe with muted gold borders, brown belt, deep-purple mantle and lining, two simple round crown clasps and gold cords, royal signet ring. No armour. Maintain same robe seam routes, cuff widths and crown design as hero. Warm white-gold light. No villain coding or ghost. Left portrait: calm tired sovereign authority. Middle portrait: tender paternal warmth, softened eyes and a small weary smile. Right portrait: burdened uncertainty, furrowed brow, lowered eyes and a hand resting near temple, responsibility rather than villainy. Same broad ageing face, short silver-black beard, intact crown, sober white-gold CLOTH robe, deep purple mantle and crown clasps in all three. Make middle warm and paternal with natural small smile; right burdened by decisions and uncertainty, not plotting or sinister. His hand shows the same royal signet ring. Strong brush-painted flat shadow shapes, warm light only. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No armour, no ghost, no evil sneer, no extra figure, no text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f456d0c1-c6c4-46ca-aafe-b6f43d0c0dbc.png",
+      "review": "rejected",
+      "reason": "第三张抬手与持文书手各戴同款王室印玺，单枚道具重复，退回局部修正。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "expressions.png",
+      "prompt": "Use case: precise-object-edit. Correct ONLY one small continuity mistake in this three-portrait King Aldric expression sheet. In the RIGHTMOST portrait, REMOVE the gold ring from the RAISED hand touching his temple. Make that raised finger plain natural human skin. KEEP the single royal signet ring on his LOWER hand holding the tied documents. There must be exactly ONE ring per portrait, always on the lower document-holding hand. Preserve everything else exactly: same three faces, calm / paternal warmth / burdened uncertainty, same short silver-black beard, intact crowns, ivory court robe, purple mantle, clasps, proportions, broad ink-and-brush shadows, warm gold rim light, dark background and landscape waist-up triptych layout. No new jewellery, no text, no new figure.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/alt/rejected-expressions-01.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-1e8a1a91-01ab-4ae9-872d-f16a2b0c45ac.png",
+      "review": "pass",
+      "reason": "第三张重复印玺已去除；三态同一55岁面孔、短须与冠袍，单枚印玺，平静/父亲温情/责任犹疑可辨。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "expressions.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied Beatrice hero. Same mature LIVING coastal noblewoman as hero, warm attentive face, dark chestnut hair with a few natural silver strands in a low braided bun, gentle mature smile lines. Soft cream full-length cloth gown, sea blue-grey shoulder mantle and blue-grey narrow girdle, one modest round gold WAVE clasp at chest, restrained gold seams. No crown, no armour. Match all cloth layers and wave clasp from hero. Warm white-gold light. No spectral form or magical glow; no invented precise age. Left portrait: calm attentive listening. Middle portrait: warm reassuring affection, softened eyes and a small smile, modest open-palm gesture. Right portrait: practical discerning concern, one brow slightly lowered and a steady thoughtful gaze, lips mid-measured advice. Same mature kind woman, low braided dark chestnut bun with a few silver strands, gentle smile lines, cream cloth gown, marine blue-grey mantle and narrow girdle, single gold wave clasp at chest. The third expression is perceptive and practically concerned, not cold, suspicious villainy. All three living human with natural eyes, subtle hand gestures only, no extra objects. White-gold warm light and amber rim. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No crown, no armour, no red sash, no ghost or magical light, no text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-MOTHER/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-0e5aa775-3e62-4a49-940b-058e626f040e.png",
+      "review": "pass",
+      "reason": "三张相同成熟面容与发髻、海灰蓝披肩和波浪扣；平静、温和安抚、务实审视明确，均为活人暖光。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "expressions",
+      "attempt": 1,
+      "slot": "alt/rejected-expressions-01.png",
+      "prompt": "Use case: stylized-concept. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Sole identity authority is supplied Ferryman hero. Exact same tall slim floating identity as hero: entirely FACELESS opaque black hood interior, no eyes or facial feature at any angle, no visible anatomy or skin. Intact midnight charcoal-blue layered maritime funerary robes, ivory long paired stole with restrained wave motifs, muted bronze clasps, modest cords and seam edging. Long sleeves entirely hide hands; continuous lower hems become translucent cyan-green and float above ground. No feet. Same seam placements, hood shape and garment layer lengths as hero; no ragged tears or shredded ends. Teal lantern/rim light, no halo. Never imply a confirmed species. Left portrait: calm solemn stillness with upright hood and lowered concealed hands. Middle portrait: restrained dry amusement, slight hood tilt and a small sleeve-covered gesture of polite irony. Right portrait: quiet sympathetic farewell, hood subtly bowed and one cloth-covered open gesture inviting someone onward. IMPORTANT these are three expressive ACTING states of a permanently faceless hooded being, NOT three human facial expressions. Convey calm / restrained dry amusement / quiet sympathetic farewell only through small differences in hood angle, shoulder line and sleeve-covered gestures. Every hood interior stays featureless opaque BLACK with NO dots, NO eye fire, NO facial silhouette, NO mouth. The hands are covered by long dark cloth or opaque wraps, no skin or bones. Same twin bronze clasps, ivory stole with restrained wave motif, maritime robe layer construction throughout. Lantern glow can illuminate sleeve edges from off-frame but do not add a held prop that hides the portrait. Teal rim on one side, no halo, no species cues. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No text, no extra identity, no skull, no uncovered hand, no crown.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f67c7165-370e-44f4-ab32-dbc138c558a7.png",
+      "review": "rejected",
+      "reason": "三态无脸和手势符合，但画入完整悬浮袍尾，构图接近全身，不符合对话半身像，需收紧。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "expressions.png",
+      "prompt": "Use case: identity-preserve. Recompose this exact faceless Ferryman expression triptych into LARGE WAIST-UP dialogue portraits. Landscape 3:2 canvas. Zoom each of the three portraits to show ONLY hood top through chest to WAIST BELT / rope tie, cropping the lower half of the robes at the bottom image edge. The ivory stole continues beyond the bottom crop: its pointed ends and wave motifs are NOT visible. The translucent floating hems and ground must NOT appear. Heads and shoulders should now be about 1.6 times larger in the frame. Keep all hood tops visible with small top margin and both shoulders visible in each third. Preserve these exact acting states left-to-right: solemn calm upright hood; dry amusement with slight hood tilt and one sleeve raised near chest; sympathetic farewell with bowed hood and small cloth-covered open gesture. Same empty opaque BLACK hood interiors, absolutely no eyes or face, no hands/skin/bones. Same dark layered hood, bronze twin clasps, double cords and ivory stole. Same painted ink linework, flat shadows and teal rim. This is a CLOSE dialogue half-body triptych, NOT full-length figures, NOT entire robes. No text, no extra figure.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/alt/rejected-expressions-01.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-4e137d1f-4bfb-4e1c-819e-eebd0cb7cfc1.png",
+      "review": "pass",
+      "reason": "收紧到腰带以上大半身，三态全程黑兜帽无眼无脸，藏手袖口、祭服与青绿边光一致。"
+    },
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "file": "hero",
+      "attempt": 1,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. Generate one ALTERNATE full-body hero portrait of the exact approved undead Edmund in the reference, same design and same face, not a redesign. Portrait 2:3 with whole crown to both boots inside frame and the entire sword visible. Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign. Pose variation only: a slightly more level three-quarter stance, his right gauntlet holds the gold-hilted teal soul sword lowered diagonally outward, his left gauntlet opens at waist in a restrained command gesture. The skull stays character LEFT/viewer RIGHT, never mirror. Torn purple cape streams from his RIGHT shoulder toward viewer left, same ivory cracked armour and crown emblem, same broken narrow crown, anchor clasp and cords. Long elegant angular proportions. Strong teal rim from his undead side, dark navy painted fog backdrop with ground shadow. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No text, no added costume parts, no other identity, no oversized sword, no additional limb.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-48d9a31e-a784-459a-88bc-08698b2e8281.png",
+      "review": "pass",
+      "reason": "备选为垂剑姿态；保留左半骷髅、断冠、白金旧甲、右肩扣、破紫披风与青绿剑，完整全身。主图仍复用审批原图。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "hero",
+      "attempt": 3,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. Alternate full-body hero portrait of this exact living Edmund, same face age 26 and same costume, 2:3 vertical canvas with crown and both boots in frame. Exactly the same LIVING 26-year-old man as hero: angular narrow face, strong dark angled brows, dark swept wavy hair, intact narrow gold crown, tall limb proportions. Entire face healthy human with two natural eyes. Intact smooth ivory plate with muted gold edging, high collar, clear unbroken crown chest badge, dark leather belts, full intact purple cape with continuous sewn gold hem and right-shoulder anchor brooch with looped cords. All plate boundaries match, NO cracks, chips, wounds or rips. NO skeletal features, NO green or cyan glow. Warm white-gold light. Pose variation only: turn his torso a little more toward the viewer, shoulders square, stance poised and upright, proud but restrained; his right ivory-and-gold gauntlet rests on the gold pommel of the sheathed ordinary steel sword, other fully gauntleted hand lightly holds his belt. Both hands must remain fully armoured with ivory finger plates, no exposed skin on hands. Purple mantle flows gently but every edge is intact, joined continuous cloth with sewn gold hem. All ivory armour plates are solid undamaged, ink outlines follow plate seams only, no chips or fracture lines. Same intact narrow gold crown and unbroken gold crown breastplate badge, right-shoulder anchor brooch and looped cords. White-gold warm light with golden rim, dark navy painted backdrop and floor. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No teal, green, magic, skull, torn fabric, cracks, new ornament or text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-21e39fde-2f3a-4d1b-94ce-7347505ffc33.png",
+      "review": "pass",
+      "reason": "正面更端正的扶剑持腰带备选；同一人脸与冠徽，完整披风甲面和双手手甲，普通钢剑无亡灵元素。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "hero",
+      "attempt": 2,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. Make ONE alternate full-body hero portrait of this EXACT Eleanor, same adult twenty-year-old face, body and clothing. 2:3 vertical with crown and both shoes inside small margins. Same living adult twenty-year-old woman as hero, dark wavy hair in low bun, strong family brows and attentive angular oval face. Simple intact gold crown. Ivory full-length formal CLOTH court gown with high collar, structured waist, sober muted gold edge, long sleeves, thin deep-red regency sash from character RIGHT shoulder diagonally to LEFT hip, with trailing sash on left. Small signet ring. Adult composed sovereign, no armour or weapon. Match hero gown seams and crown profile. Warm white-gold light. Slight pose variation only: more front-facing attentive stance with shoulders level, her two hands gently supporting the SAME repaired small wooden toy sailboat a little lower at the waist, her head turned slightly as if listening to a petition. Keep composed independent authority, no smile of submission. Same narrow gold crown, dark wavy low bun and family brows, high-neck ivory woven gown with muted-gold edges, thin deep-red sash from her anatomical right shoulder to left hip. Toy boat is ordinary carved wood with visibly repaired mast and patched sail, not magic. Warm white-gold light and amber-gold rim one side, dark navy painted ground and background. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No additional object, no weapon, no armour, no ghost or teal glow, no text or other figure.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-47154d20-2dd8-46af-8eba-787ea1332032.png",
+      "review": "pass",
+      "reason": "更正面持船备选；成年面孔、家族眉形、冠、红带与修补木船一致，全身暗底暖光。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "hero",
+      "attempt": 2,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate full-body portrait of EXACTLY King Aldric in the reference, not a redesign. 2:3 vertical canvas, whole crown and both shoes visible. Same 55-year-old mature living man depicted historically in hero: broad ageing face, strong family brow, short silver-black beard, short grey-templed dark hair, tired paternal eyes. Intact gold crown; sober long ivory cloth court robe with muted gold borders, brown belt, deep-purple mantle and lining, two simple round crown clasps and gold cords, royal signet ring. No armour. Maintain same robe seam routes, cuff widths and crown design as hero. Warm white-gold light. No villain coding or ghost. Pose variation: a little more front-facing, holding the same small purple-tied bundle of plain documents near waist with BOTH hands, single royal signet ring only on his right hand. A tired yet attentive humane ruler, slightly bowed chin, careworn broad face and short silver-black beard, no malevolence. Keep exactly the sober long white-gold CLOTH robe, deep-purple mantle and lining, simple gold edges, two round crown clasps and cords, full intact crown. Maintain same elongated inked proportions. Same white-gold warm sunlight and narrow golden rim on one side, dark navy painted backdrop with ground shadow. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No added staff, throne, armour or weapon; no face changes, no evil eyes, no ghost, no text on documents or image.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-43f1a79d-bb91-4095-b8eb-73b1249b793c.png",
+      "review": "pass",
+      "reason": "双手扶文书备选；同一衰老面容、银黑短须、完整冠和布袍紫披风，单枚印玺，无反派化。印面细纹仅概念笔触。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "hero",
+      "attempt": 2,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate full-body portrait of the EXACT living Queen Beatrice in the reference. Portrait 2:3, all head and both shoes visible. Same mature LIVING coastal noblewoman as hero, warm attentive face, dark chestnut hair with a few natural silver strands in a low braided bun, gentle mature smile lines. Soft cream full-length cloth gown, sea blue-grey shoulder mantle and blue-grey narrow girdle, one modest round gold WAVE clasp at chest, restrained gold seams. No crown, no armour. Match all cloth layers and wave clasp from hero. Warm white-gold light. No spectral form or magical glow; no invented precise age. Pose variation only: she stands more squarely, hands loosely joined at waist, head slightly inclined in warm attentive listening, a small thoughtful smile. Retain mature cheek and eye lines, dark chestnut low braided bun with a few natural silver strands, same cream gown, marine blue-grey cloak and girdle and modest SINGLE wave-motif gold clasp. Cloth complete and practical, not an ornate divine costume. Same strong painted flat shadows, ink lineweight and visible paint strokes; warm white-gold light and gold rim along one side; dark ink-navy empty background and floor shadow. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No crown, no new jewellery, no red sash, no weapon or armour, no ghost, no blue/green magical glow, no text or other person.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-MOTHER/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-059e34ba-7613-4441-88a7-d319daa21fd9.png",
+      "review": "pass",
+      "reason": "双手合于腰间的倾听备选；同一成熟面容与低辫髻、完整米白海灰蓝衣和单波浪扣，生前暖光。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "hero",
+      "attempt": 2,
+      "slot": "alt/hero-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate full-length hero illustration of the exact Ferryman in the reference. Portrait 2:3 with hood, entire robe hem, old oar and ONE lantern inside frame. Exact same tall slim floating identity as hero: entirely FACELESS opaque black hood interior, no eyes or facial feature at any angle, no visible anatomy or skin. Intact midnight charcoal-blue layered maritime funerary robes, ivory long paired stole with restrained wave motifs, muted bronze clasps, modest cords and seam edging. Long sleeves entirely hide hands; continuous lower hems become translucent cyan-green and float above ground. No feet. Same seam placements, hood shape and garment layer lengths as hero; no ragged tears or shredded ends. Teal lantern/rim light, no halo. Never imply a confirmed species. Pose variation only: a little more front-facing and still, hood subtly inclined, old oar held nearly upright at his side by entirely covered grip, his other long sleeve slightly raises the single bronze teal-soulfire lantern toward chest level. Keep the same modest bronze twin clasps and cords, charcoal-blue layered mantle, ivory paired stole and restrained wave motif, continuous un-torn funerary vestments. Lower cloth becomes cyan-green translucent and floats with no visible feet or body. Hood interior absolutely opaque featureless black. Teal lantern rim on one side and dark navy painted mist, long dignified weightless silhouette. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No exposed hands or skull, no eyes, no face, no halo, no new costume or symbols, no second lantern, no text or additional person.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-04cc3fe5-4d03-4620-b33d-498a790e1155.png",
+      "review": "pass",
+      "reason": "提灯略高的正面备选；完整祭服、空黑兜帽、旧桨单灯、藏于不透明衣料/手套的握持，袍尾悬浮透明，无裸露种族特征。"
+    },
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: stylized-concept. Draw ONE alternate clean hand-painted turnaround sheet of the exact same character. First reference is existing sheet for layout/clothing; second is approved hero for identity. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  English name exactly \"EDMUND - THE UNDEAD PRINCE\". Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign. Variation for this alternate: SIDE is the OPPOSITE anatomical side from reference sheet, the skull-side profile facing VIEWER LEFT. Show the exposed skeletal cheek/jaw and burning teal eye in that true 90-degree profile; the head/body/feet all face viewer left, no twisted head. FRONT remains skull on viewer RIGHT, BACK remains straight away with correct same shoulder fastening. Keep front/back silhouettes, armour plate shapes and same torn cape draped in quiet neutral stance. Both hands empty, no weapons on bodies. PROPS column only: teal soulfire sword with gold hilt and a broken gold crown detail. Same scale and ground line, same correct title and FRONT/SIDE/BACK/PROPS only, slight alternate brush treatment, no new design. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+        "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-331f5313-7a0f-4ecc-84be-ff63386652aa.png",
+      "review": "pass",
+      "reason": "备选补出向左的骷髅侧真侧面；正面骷髅仍在画面右侧，空手等高同线，披风扣、破甲与道具对应，英文正确。 反侧面的肩扣/垂绳遮挡仅作概念参考，精确侧别拓扑仍交Lead与建模复核。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/rejected-turnaround-02.png",
+      "prompt": "Use case: stylized-concept. ONE alternate clean hand-painted turnaround of exactly living Edmund. First reference is sheet for layout, second hero for identity. Landscape character turnaround concept sheet, about 3:2 or 2:1. Dark muted ink-navy background. Exactly THREE complete full-body drawings of the SAME identity arranged left to right: precise straight-on FRONT, true 90-degree SIDE profile, straight BACK. These are the exact same neutral relaxed symmetrical A-stance, arms slightly clear of torso, BOTH HANDS EMPTY; no gesturing or holding props. SAME height, same crown/hood top alignment, same shoulder/waist/knee levels and one continuous horizontal ground line. Front and back should be orthographic, no perspective, side must have one eye silhouette and fully side-on feet, not three-quarter. Show all feet or full floating hem, no cropped figures. Clothing construction, asymmetric fastening, seam routes, hair, facial age and proportions MUST correspond across all three views and match the hero. On the FAR RIGHT, a narrow separated PROPS column contains the detachable equipment, no fourth body or portrait. Top left only the character English name as specified; below or above columns only FRONT / SIDE / BACK / PROPS. No other text or numerals, no measurements, no lore or additional character. This is a hand-painted 2D inked production CONCEPT reference, not a 3D render and not a measured CAD model.  English name exactly \"EDMUND - BEFORE THE WRECK\". Exactly the same LIVING 26-year-old man as hero: angular narrow face, strong dark angled brows, dark swept wavy hair, intact narrow gold crown, tall limb proportions. Entire face healthy human with two natural eyes. Intact smooth ivory plate with muted gold edging, high collar, clear unbroken crown chest badge, dark leather belts, full intact purple cape with continuous sewn gold hem and right-shoulder anchor brooch with looped cords. All plate boundaries match, NO cracks, chips, wounds or rips. NO skeletal features, NO green or cyan glow. Warm white-gold light. Only variation: SIDE is the opposite anatomical side from reference sheet, a true 90-degree profile facing VIEWER LEFT, whole face, torso and both feet facing left. Same undamaged body and continuous intact purple mantle; do not mirror the anatomical right-shoulder anchor clasp onto the left shoulder. FRONT and BACK remain same correct costume, stable horizontal garment levels and ground line. Empty fully gauntleted hands, no sword/scabbard on bodies. PROPS only: one ordinary nonmagical steel sword, its brown scabbard and a small intact gold crown detail; no green or cyan light. Preserve title and FRONT/SIDE/BACK/PROPS, no other words. Slight alternate paint/line finish, no redesign. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No skull, no magic, no torn cloth or cracked plates.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/turnaround.png",
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/hero.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-512cf0f0-8dde-4ccd-9330-155659297dc3.png",
+      "review": "rejected",
+      "reason": "相反侧面把右肩扣及垂绳仍画在近侧，存在镜像误映射，不作为可靠反侧参考，重新采用原已核对侧面方向。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "turnaround",
+      "attempt": 3,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: identity-preserve. Produce an alternate CLEAN DRAWING of this EXACT living Edmund turnaround sheet. Keep the SAME view directions as this supplied sheet: straight FRONT, true SIDE profile facing viewer RIGHT showing the character's anatomical RIGHT side and anchor shoulder clasp, straight BACK. Do NOT mirror any view. Preserve the exact construction, head and limb proportions, intact narrow gold crown, all face landmarks, high collar, smooth undamaged ivory gold-edged plates, unbroken chest crown badge, continuous intact gold-hemmed purple mantle and anatomical right-shoulder anchor clasp/looped cords. Keep same neutral full-body empty-handed stance, same height and single ground line. Draw side figure a little more clearly with finer internal seam lines but maintain same pose and direction. PROPS column on far right: same ordinary steel sword, scabbard and intact crown. Title exactly \"EDMUND - BEFORE THE WRECK\" at top left, labels FRONT / SIDE / BACK / PROPS only. Landscape. Same dark navy backdrop, warm white-gold lighting and gold rim. No cracked plates, rips, skull or green magic. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/turnaround.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-fc93b891-0141-4cba-bb13-f542ea0aa5cd.png",
+      "review": "pass",
+      "reason": "第三次恢复原向右真侧面，右肩扣与垂绳正确；正背与全身空手等高对应，完整服装及右侧道具，无亡灵元素。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: identity-preserve. Draw ONE alternate polished hand-painted turnaround sheet of exactly Eleanor as the supplied sheet. Preserve SAME view directions: straight FRONT, true SIDE facing viewer RIGHT, straight BACK, all full-body neutral A-stance with empty hands, same equal height and single ground line. Keep exact identity age twenty, family brows, dark low bun, crown design, gown seams and sleeve widths. Same living adult twenty-year-old woman as hero, dark wavy hair in low bun, strong family brows and attentive angular oval face. Simple intact gold crown. Ivory full-length formal CLOTH court gown with high collar, structured waist, sober muted gold edge, long sleeves, thin deep-red regency sash from character RIGHT shoulder diagonally to LEFT hip, with trailing sash on left. Small signet ring. Adult composed sovereign, no armour or weapon. Match hero gown seams and crown profile. Warm white-gold light. Sash stays right shoulder to left hip on front, continuous corresponding loop on back; DO NOT mirror it. Alternate finish only: slightly crisper interior ink seams and more restrained gown brush texture, no costume change. PROPS far right: same repaired wooden toy boat and her signet. Keep title exactly \"ELEANOR - THE QUEEN\" and labels FRONT / SIDE / BACK / PROPS, no extra words. Landscape dark navy backdrop, warm gold rim. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No armour, no extra person, no writing on props.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/turnaround.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-98393b80-e0ea-49c8-b2a3-1c97d90d4d92.png",
+      "review": "pass",
+      "reason": "备选线条更清晰，原方向三视图与绶带连续性保留，等高空手同地线、木船印玺右列、全英文。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: identity-preserve. Create ONE alternate polished hand-painted drawing of this same King Aldric turnaround. SAME straight FRONT, true SIDE facing viewer RIGHT, straight BACK, three equal-height neutral full bodies with both hands empty, shared ground line. Keep same ageing broad face and short silver-black beard, full crown and costume construction. Same 55-year-old mature living man depicted historically in hero: broad ageing face, strong family brow, short silver-black beard, short grey-templed dark hair, tired paternal eyes. Intact gold crown; sober long ivory cloth court robe with muted gold borders, brown belt, deep-purple mantle and lining, two simple round crown clasps and gold cords, royal signet ring. No armour. Maintain same robe seam routes, cuff widths and crown design as hero. Warm white-gold light. No villain coding or ghost. Alternate finish only: slightly crisper internal seam and cloth-fold inks, more readable robe cuff layering. No change of age, silhouette, crown design or robe borders, no mirrored views. PROPS far right only: the same single enlarged royal signet and tied blank documents; signet also worn only once on character right hand. Exact title \"KING ALDRIC\" and FRONT / SIDE / BACK / PROPS only, no other words. Landscape dark navy painted background, warm white-gold light and amber rim. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No new ornament, no armour or weapon, no sinister face or additional figure.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/turnaround.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-5e45e2b9-a6fb-433a-9643-874b010fc603.png",
+      "review": "pass",
+      "reason": "同向中性三视图、空手、等高同线，领袖袍层更清楚；冠须紫披风和单印玺对应，道具右列，无新增设定。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate polished drawing of the exact Beatrice turnaround sheet supplied. Keep SAME view directions: straight FRONT, true SIDE profile facing viewer RIGHT, straight BACK; three full-height neutral relaxed A-stance figures, both hands empty, same head/waist/hem levels and same horizontal ground. Same mature LIVING coastal noblewoman as hero, warm attentive face, dark chestnut hair with a few natural silver strands in a low braided bun, gentle mature smile lines. Soft cream full-length cloth gown, sea blue-grey shoulder mantle and blue-grey narrow girdle, one modest round gold WAVE clasp at chest, restrained gold seams. No crown, no armour. Match all cloth layers and wave clasp from hero. Warm white-gold light. No spectral form or magical glow; no invented precise age. Preserve gown and mantle layer construction, low braided bun, mature face and single wave clasp, cream and marine blue-grey palette. Alternative finish only: clearer fine internal ink lines for cloth borders and braided hair, visible opaque brush strokes, no design change or added items. PROPS far right only: same wave clasp front and reverse fastening, matching worn clasp. Title exactly \"QUEEN BEATRICE\" at top left and FRONT / SIDE / BACK / PROPS only. Dark navy background and warm golden rim, all feet visible. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No crown, no ghost, no red sash, no new jewellery or person.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-MOTHER/turnaround.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-9cbdfe0a-387f-4d1a-a6c7-3c4da0635edb.png",
+      "review": "pass",
+      "reason": "同方向等高中性空手三视图，发髻、衣层、披肩与波浪扣保留；领袖裙缝线更清楚，活人暖光，道具独列。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "turnaround",
+      "attempt": 2,
+      "slot": "alt/turnaround-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate cleanly inked painting of this exact Ferryman turnaround. SAME straight FRONT, exact SIDE facing viewer RIGHT, straight BACK, all neutral still floating figures with empty lowered sleeves, equal hood/waist/robe-tip heights and shared ground line. Exact same tall slim floating identity as hero: entirely FACELESS opaque black hood interior, no eyes or facial feature at any angle, no visible anatomy or skin. Intact midnight charcoal-blue layered maritime funerary robes, ivory long paired stole with restrained wave motifs, muted bronze clasps, modest cords and seam edging. Long sleeves entirely hide hands; continuous lower hems become translucent cyan-green and float above ground. No feet. Same seam placements, hood shape and garment layer lengths as hero; no ragged tears or shredded ends. Teal lantern/rim light, no halo. Never imply a confirmed species. Preserve same robe construction and complete continuous un-torn cloth; no gesture. Alternate finish only: crisper fine seam inks, clearer dark sleeve opening and translucent cyan-green edge shapes, without exposing any anatomy through cloth. Hood interiors remain absolutely empty opaque black even in profile, no face contour or eye dots, no species clues. Oar and exactly one lantern are separated under PROPS at far right, never held. Exact top-left title \"THE FERRYMAN\", labels FRONT / SIDE / BACK / PROPS only. Dark navy background and teal one-sided rim. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No halo, no body, no skull, no skin, no extra identity or text.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/turnaround.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f51cc8d7-3a3e-492c-ba52-337809d6f10a.png",
+      "review": "pass",
+      "reason": "同向正侧背、全身等高，空手袖口无裸露形体；缝线与完整祭服更清楚，青绿透明尾与单桨单灯正确，全英文。"
+    },
+    {
+      "id": "CHAR-PRINCE-UNDEAD",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. Draw ONE alternate dialogue expression triptych of EXACTLY the same undead Edmund in the supplied expression sheet. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Keep the same three expression meanings left to right: calm composed attention; clipped restrained anger, brows pressed down, jaw set, direct sharp gaze; not a screaming monster; overly formal shame, eyes lowered, rigid posture and tightened human-side lips, one hand straightening collar. Slight acting variation only: middle human-side lips narrowly part as if speaking one clipped sentence, right gaze slightly farther down while his SAME fully armoured gauntlet carefully adjusts collar. Preserve every identity feature and all costume construction. Edmund age 26 exactly as approved hero: angular narrow human face with dark swept wavy hair and heavy angled dark brow; character's ANATOMICAL LEFT half of face including jaw is exposed skull, character right half living-looking skin, teal eye fire in the skeletal eye. In FRONT that skull is on viewer RIGHT; keep anatomical side consistent, never mirror it. Same broken narrow gold crown, worn cracked ivory gold-edged armour, centered damaged gold crown breastplate badge, high collar, dark belts, torn purple cape fastened at character RIGHT shoulder (viewer LEFT in FRONT) with round anchor brooch and looped gold cord; cape hangs close to body and its tears correspond across views. Same long limbs and head/body ratio. Teal rim light on undead side, no redesign. Same equal waist-up portrait scale, no missing shoulder or crown. The human side of face stays on viewer LEFT and skull side viewer RIGHT in all portraits; don't mirror. No extra sword or props, no new costume. Same bold variable black ink, flat painted shadows, thick brush texture, teal rim and dark background. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No text or other character.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE-UNDEAD/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f44b6035-e304-4e72-b365-12b1b7733f1a.png",
+      "review": "pass",
+      "reason": "同一半骷髅脸、骷髅侧别及冠甲披风；三态清楚，压怒态短促开口、羞愧态避视整理领口，完整半身，无文字。"
+    },
+    {
+      "id": "CHAR-PRINCE",
+      "file": "expressions",
+      "attempt": 3,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate dialogue expression triptych of EXACTLY the same living Edmund as supplied corrected sheet. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Meanings left-to-right unchanged: calm attentive self-possession; controlled pride, chin slightly lifted and a small confident smile, not a cruel sneer; overly formal shame, brows drawn inward, lowered gaze and one hand carefully straightening his collar. Slight acting variation only: middle proud smile softer and one eyebrow subtly lifted, right gaze down and shoulders held rigidly formal. Preserve same dark hair, face, full crown, undamaged ivory gold-edged armour, unbroken crown badge and intact purple mantle. Every hand shown is FULLY COVERED by ivory-and-gold articulated GAUNTLETS including all fingers and knuckles, especially the third portrait's raised hand adjusting collar; do not show bare fingers. No new hands or props. Keep same three equal waist-up portrait sizes, whole crowns and shoulders in frame, warm white-gold/amber rim, ink-navy background. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. NO skull, bare bone, armour cracks, cape tears, teal or green glow, NO text or second identity.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-PRINCE/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-1282678e-9e7c-4947-a50c-5083d208f8d0.png",
+      "review": "pass",
+      "reason": "第三次为合格备选：三态同一脸冠甲披风，羞愧态完整白金手甲，克制骄傲眉眼略变，暖光无破损与亡灵元素。"
+    },
+    {
+      "id": "CHAR-QUEEN",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate dialogue waist-up triptych of EXACTLY Eleanor in the supplied expression sheet. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Same left-to-right states: calm precise attentive listening; firm independent objection, brows lowered, chin level, mouth speaking a precise sentence and one small decisive hand gesture; guarded hurt and fear, slightly widened eyes and pressed lips, controlled sorrow while meeting her brother. Small acting variation only: middle makes a smaller decisive hand gesture and a more level chin while speaking, right brows draw slightly inward in guarded hurt, not crying helplessly. Preserve same mature twenty-year-old woman face, low dark bun and strong family eyebrows, narrow intact crown, high-neck ivory CLOTH gown with muted-gold seams, thin deep-red sash on same anatomical right shoulder, one small signet ring. Same portrait head scale and stable costume, shoulders/crowns complete. White-gold warm light, amber rim, dark navy painted background. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No new prop, no armour, no teal magic, no text or extra identity.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-QUEEN/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-f41f35bf-fb2c-4089-8340-ae39b60738e1.png",
+      "review": "pass",
+      "reason": "三态同一成年脸、冠、低发髻与绶带；坚定态手势更小，戒备受伤态眉眼微调，完整半身，无文字。"
+    },
+    {
+      "id": "CHAR-KING",
+      "file": "expressions",
+      "attempt": 3,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate waist-up dialogue expression triptych of EXACTLY King Aldric in the corrected sheet supplied. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Keep left calm weary sovereign, middle tender paternal warmth with a small smile, right burdened uncertainty with a furrowed brow and lowered eyes. Slight acting variation only: middle smile a little softer, right looks toward his documents rather than fully shutting eyes. Preserve every face and costume identity detail: broad 55-year-old face, short silver-black beard, intact crown, sober ivory CLOTH robe, gold trim, deep purple mantle, twin crown clasps and cords, tied plain documents. EXACTLY ONE signet ring per portrait: only on the lower hand holding the document bundle. In right portrait the raised hand at temple is BARE SKIN with NO ring. Do not duplicate ring. Same size waist-up portraits, whole crowns, shoulders visible, white-gold warm rim, dark navy paint background. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No new jewellery, no evil sneer, no armour, no ghost, no text or additional identity.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-KING/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-6198423d-86c0-48b3-9c19-2df63d3befff.png",
+      "review": "pass",
+      "reason": "第三次为合格备选：每态仅持文书手一枚印玺，抬手无戒指；脸冠袍一致，三态保留，无邪恶化。"
+    },
+    {
+      "id": "CHAR-MOTHER",
+      "file": "expressions",
+      "attempt": 2,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate dialogue expression triptych of EXACTLY Beatrice in the supplied sheet. A landscape dialogue expression triptych, about 3:2 or 2:1 canvas: EXACTLY THREE waist-up portraits of the SAME character arranged left-to-right, equal head scale and shoulder width, crown/hood top entirely visible, both shoulders and upper torso down to belt included. Big dialogue portraits like a narrative character standing beside a dialogue box, NOT floating heads, NOT small round icons. Each has its own clear silhouette, no overlapping bodies or cropped crowns. Same identity, age, hair, outfit, lighting, and anatomical left/right details in ALL three. Only expression and a small acting gesture change. Plain dark ink-navy painted background. No UI, no dialogue box, no nameplate, no labels, no text at all.  Left-to-right: calm attentive listening; warm reassuring affection, softened eyes and a small smile, modest open-palm gesture; practical discerning concern, one brow slightly lowered and a steady thoughtful gaze, lips mid-measured advice. Slight acting variation only: middle reassuring smile a little quieter and open palm closer to waist, right thoughtful practical concern with a level attentive gaze and hand near chin. Keep same mature face and gentle eye lines, chestnut low braided bun with natural few silver strands, cream gown, marine blue-grey mantle and girdle, single modest round gold wave clasp, identical costume layers in all portraits. Same equal waist-up framing, full hair and shoulders, warm white-gold/amber rim, dark navy painted background. No added objects or ornament. Hand-painted narrative character concept art matching the supplied approved reference: bold variable-width black ink outlines, fine internal ink structure, elongated angular human proportions, visible confident opaque brushwork, broad flat hard-edged shadow shapes, dramatic high contrast, restricted palette, a saturated rim light along one side, dark ink-navy textured background. Painterly 2D illustration, absolutely no 3D render, no polygon facets, no photorealism, no anime, no smooth airbrush gradients. No artist, studio or existing game references. No watermark, no invented lore text. No crown, no armour, no spectral form or magical glow, no text, no other identity.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-MOTHER/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-28d29a41-d524-4239-b319-23b48eccc157.png",
+      "review": "pass",
+      "reason": "三态同一成熟活人面孔、发髻衣扣；安抚手势更收敛，务实关切保留，完整半身、暖光无神秘化。"
+    },
+    {
+      "id": "CHAR-FERRYMAN",
+      "file": "expressions",
+      "attempt": 3,
+      "slot": "alt/expressions-01.png",
+      "prompt": "Use case: identity-preserve. ONE alternate CLOSE dialogue half-body triptych of the EXACT faceless Ferryman in this corrected waist-up sheet. Preserve its camera crop: three large portraits from entire hood tops down ONLY to waist rope ties; lower stole pointed ends, translucent hems and ground are outside frame and must NOT appear. Same equal head scale, full shoulders, no overlapping. Left state solemn calm upright hood; middle restrained dry amusement with hood subtly tilted and small sleeve-covered gesture near chest; right sympathetic farewell with a slightly bowed hood and cloth-covered open gesture. Variation only: make middle hood incline a little more and right gesture quieter. Every hood interior stays completely opaque BLACK and featureless: absolutely no eyes, eye glow dots, nose, mouth, face profile, skull or visible anatomy. Both hands fully hidden in long opaque charcoal cloth, no bare or skeletal fingers. Keep same intact maritime layered charcoal robes, bronze twin clasps, two cords, ivory stole and waist rope. Same thick variable ink, flat brush-painted shadows, teal one-sided rim, dark navy background. NO text, no extra props, no halo, no new identity, do NOT zoom out.",
+      "refs": [
+        "/Users/cyy/Projects/亡魂王子-t32/art/chars/CHAR-FERRYMAN/expressions.png"
+      ],
+      "source": "/Users/cyy/.codex/generated_images/01a20d65-cdb3-7bb0-b4b7-383c5a1e212c/exec-43fd6b55-9781-400c-9de5-42b2a261e4b9.png",
+      "review": "pass",
+      "reason": "第三次为合格备选：腰上构图，微调兜帽倾角与袖中手势；全黑无脸、无眼火点、无裸露形体，服装灯光一致。"
+    }
+  ]
+}
