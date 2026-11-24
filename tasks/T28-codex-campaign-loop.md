@@ -2,7 +2,7 @@
 id: T28
 title: 航海图与回溯闭环（第一阶段 E00/E01，战斗先用桩）
 owner: codex
-status: queued
+status: done
 branch: codex/t28-campaign
 worktree: ../亡魂王子-t28
 allowed: [scripts/campaign/, scenes/campaign.tscn, data/campaign/, tests/test_campaign.gd, tests/run_tests.gd, project.godot]
