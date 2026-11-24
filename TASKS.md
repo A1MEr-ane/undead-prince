@@ -34,10 +34,10 @@
 | T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 排队 |
 | T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 排队 |
 | T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 排队 |
-| T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批） | Codex | — | art/story/ | 待办 |
+| T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批；提示词由 Claude 写） | Codex | — | art/story/ | 待办 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | codex/t38…t40 | art/env/ | 排队 |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 排队 |
-| T43 | 开发者设定集（网页） | 脚本生成（tools/book），Claude 只发布 | — | — | 待办（依赖全部美术） |
+| T43 | 开发者设定集（网页） | Claude（内容、文案、版式）；脚本负责出图和生成页面 | — | — | 待办（依赖全部美术） |
 | T44 | 局内新画风：墨线描边、阵营边光、暗调地形、战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T42 兵种图审批） |
 | T45 | Blender 精灵按新兵种 Q 版批量重做 | DSH（谷时，先做能力验证）；管线问题 Codex | — | tools/blender/, assets/ | 待办（依赖 T42、T44） |
 | T31 | 新画风样张：王子立绘、对话、增益、航海图、局内战斗 | Codex | codex/t31-style | art/style/ | 已合并（全部通过） |
