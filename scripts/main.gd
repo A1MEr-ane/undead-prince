@@ -6,6 +6,9 @@ extends Node3D
 const SLOW := 0.3
 const FOG_COLOR := Color(0.75, 0.76, 0.78)
 const CAM_PITCH := 30.0
+# 模拟固定步长：战斗结果只取决于种子和步数，不受无头/有窗口的帧率影响。
+const SIM_STEP := 1.0 / 60.0
+const SIM_MAX_STEPS := 8   # 单帧最多补 8 步（约 0.13 秒），卡顿后不追帧到死循环
 const PALETTE := [
 	# 0 王国民兵
 	{1: Color(0.94, 0.76, 0.6), 2: Color(0.22, 0.38, 0.74), 3: Color(0.38, 0.29, 0.21), 4: Color(0.72, 0.74, 0.78),
@@ -33,6 +36,12 @@ var squads: Array = []
 var player_squads: Array = []
 var time := 0.0
 var selected = null
+
+# 模拟随机源：只由 --seed 决定，只给战斗逻辑用；视觉特效走 art_rng，互不干扰。
+var sim_rng := RandomNumberGenerator.new()
+var art_rng := RandomNumberGenerator.new()
+var sim_accum := 0.0
+var auto_ordered := false
 
 var anims: Dictionary
 var sprite_sets := {}   # 名字 → {material, anims, lens, loops, direct}
@@ -76,7 +85,10 @@ var last_ticks := 0
 
 func _ready() -> void:
 	_parse_args()
-	seed(int(args.get("seed", "7")))
+	var seed_value := int(args.get("seed", "7"))
+	seed(seed_value)
+	sim_rng.seed = seed_value
+	art_rng.seed = seed_value + 104729
 	_setup_env()
 	terrain = Terrain.new()
 	add_child(terrain)
@@ -90,8 +102,6 @@ func _ready() -> void:
 		_prewarm()
 	real_start = Time.get_ticks_msec()
 	last_ticks = real_start
-	if args.has("auto"):
-		get_tree().create_timer(0.8).timeout.connect(_auto_orders)
 	if args.has("click_test"):
 		get_tree().create_timer(1.0).timeout.connect(_click_test)
 
@@ -492,7 +502,7 @@ func _make_squad(title: String, faction: int, palette_row: int, count: int, pos:
 	sq.title = title
 	add_child(sq)
 	for i in count:
-		var off := Vector3((i % 3 - 1) * 0.26, 0, (i / 3) * 0.26) + Vector3(randf_range(-0.05, 0.05), 0, randf_range(-0.05, 0.05))
+		var off := Vector3((i % 3 - 1) * 0.26, 0, (i / 3) * 0.26) + Vector3(sim_rng.randf_range(-0.05, 0.05), 0, sim_rng.randf_range(-0.05, 0.05))
 		var p := terrain.nearest_walkable(pos + off)
 		var u := Unit.new()
 		add_child(u)
@@ -628,19 +638,41 @@ func _process(delta: float) -> void:
 	last_ticks = now
 	if rdt > 0.1 and time > 0.5:
 		print("HITCH %.2fs at t=%.2f stats=%s" % [rdt, time, stats])
-	time += delta
-	_simulate(delta)
+	_advance_sim(delta)
 	_update_camera(rdt)
 	if flag_cloth:
 		flag_cloth.rotation.y = sin(time * 3.0) * 0.25
-	_check_goal(delta)
 	# 无头验证：游戏时间到 quit_at 秒（或分出胜负）时输出一行 RESULT JSON 并退出
-	if args.has("quit_at") and (time >= float(args["quit_at"]) or (game_over and args.has("quit_on_end"))):
+	if args.has("quit_at") and (time >= float(args["quit_at"]) - 0.0001 or (game_over and args.has("quit_on_end"))):
 		_print_result_and_quit()
 	_update_ui()
 	if not shots.is_empty() and (now - real_start) / 1000.0 >= shots[0]:
 		shots.pop_front()
 		_take_shot()
+
+
+## 按固定步长推进模拟。渲染帧率、无头模式、窗口卡顿都只影响每帧补几步，
+## 不改变战斗逻辑实际走过的步数；--auto 的下令也绑在模拟时间 0.8 秒而不是真实计时器。
+func _advance_sim(frame_delta: float) -> void:
+	sim_accum += frame_delta
+	var steps := 0
+	while sim_accum >= SIM_STEP and steps < SIM_MAX_STEPS:
+		sim_accum -= SIM_STEP
+		time += SIM_STEP
+		if args.has("auto") and not auto_ordered and time >= 0.8:
+			auto_ordered = true
+			_auto_orders()
+		_simulate(SIM_STEP)
+		_check_goal(SIM_STEP)
+		steps += 1
+		if args.has("quit_on_end") and game_over:
+			sim_accum = 0.0
+			return
+		if args.has("quit_at") and time >= float(args["quit_at"]) - 0.0001:
+			sim_accum = 0.0
+			return
+	if steps >= SIM_MAX_STEPS:
+		sim_accum = 0.0
 
 
 ## 每帧模拟顺序（规格 2.4）：势力场 → 清零威慑 → 互相通知靠近 → 逐个更新小兵 → 小队整队
@@ -696,8 +728,8 @@ func _update_camera(rdt: float) -> void:
 	camera.position = focus + off
 	camera.look_at(focus, Vector3.UP)
 	camera.size = cam_dist * sel_zoom
-	camera.h_offset = randf_range(-1.0, 1.0) * shake_amt
-	camera.v_offset = randf_range(-1.0, 1.0) * shake_amt
+	camera.h_offset = art_rng.randf_range(-1.0, 1.0) * shake_amt
+	camera.v_offset = art_rng.randf_range(-1.0, 1.0) * shake_amt
 	shake_amt = move_toward(shake_amt, 0.0, rdt * 0.5)
 
 
@@ -765,35 +797,35 @@ func _puff(pos: Vector3, mat: Material, scale_to: float, life: float, drift: Vec
 
 func spawn_dust(pos: Vector3, n: int, strength: float) -> void:
 	for i in n:
-		var o := Vector3(randf_range(-0.08, 0.08), 0.04, randf_range(-0.08, 0.08))
-		var drift := Vector3(randf_range(-0.3, 0.3), randf_range(0.08, 0.22), randf_range(-0.3, 0.3)) * strength
-		_puff(pos + o, dust_mat, randf_range(1.5, 2.5) * (0.6 + strength * 0.5), randf_range(0.45, 0.7), drift)
+		var o := Vector3(art_rng.randf_range(-0.08, 0.08), 0.04, art_rng.randf_range(-0.08, 0.08))
+		var drift := Vector3(art_rng.randf_range(-0.3, 0.3), art_rng.randf_range(0.08, 0.22), art_rng.randf_range(-0.3, 0.3)) * strength
+		_puff(pos + o, dust_mat, art_rng.randf_range(1.5, 2.5) * (0.6 + strength * 0.5), art_rng.randf_range(0.45, 0.7), drift)
 
 
 func spawn_splash(pos: Vector3) -> void:
 	var p := Vector3(pos.x, Terrain.WATER_Y + 0.02, pos.z)
 	for i in 8:
-		var drift := Vector3(randf_range(-0.35, 0.35), randf_range(0.25, 0.6), randf_range(-0.35, 0.35))
-		_puff(p, splash_mat, randf_range(1.2, 2.2), randf_range(0.4, 0.7), drift)
+		var drift := Vector3(art_rng.randf_range(-0.35, 0.35), art_rng.randf_range(0.25, 0.6), art_rng.randf_range(-0.35, 0.35))
+		_puff(p, splash_mat, art_rng.randf_range(1.2, 2.2), art_rng.randf_range(0.4, 0.7), drift)
 
 
 func spawn_spark(pos: Vector3) -> void:
 	for i in 4:
-		var drift := Vector3(randf_range(-0.25, 0.25), randf_range(0.0, 0.25), randf_range(-0.25, 0.25))
-		_puff(pos, spark_mat, randf_range(0.4, 0.8), 0.18, drift)
+		var drift := Vector3(art_rng.randf_range(-0.25, 0.25), art_rng.randf_range(0.0, 0.25), art_rng.randf_range(-0.25, 0.25))
+		_puff(pos, spark_mat, art_rng.randf_range(0.4, 0.8), 0.18, drift)
 
 
 func spawn_blood(pos: Vector3, dir: Vector3) -> void:
 	for i in 3:
-		var drift := dir * randf_range(0.15, 0.4) + Vector3(randf_range(-0.1, 0.1), randf_range(0.05, 0.2), randf_range(-0.1, 0.1))
-		_puff(pos + Vector3(0, 0.3, 0), blood_puff_mat, randf_range(0.6, 1.0), 0.3, drift)
+		var drift := dir * art_rng.randf_range(0.15, 0.4) + Vector3(art_rng.randf_range(-0.1, 0.1), art_rng.randf_range(0.05, 0.2), art_rng.randf_range(-0.1, 0.1))
+		_puff(pos + Vector3(0, 0.3, 0), blood_puff_mat, art_rng.randf_range(0.6, 1.0), 0.3, drift)
 	for i in 2:
-		var p := pos + dir * randf_range(0.1, 0.45) + Vector3(randf_range(-0.1, 0.1), 0, randf_range(-0.1, 0.1))
-		_decal(p, randf_range(0.06, 0.14), 0.0)
+		var p := pos + dir * art_rng.randf_range(0.1, 0.45) + Vector3(art_rng.randf_range(-0.1, 0.1), 0, art_rng.randf_range(-0.1, 0.1))
+		_decal(p, art_rng.randf_range(0.06, 0.14), 0.0)
 
 
 func spawn_blood_pool(pos: Vector3) -> void:
-	_decal(pos, randf_range(0.28, 0.4), 2.5)
+	_decal(pos, art_rng.randf_range(0.28, 0.4), 2.5)
 
 
 func _decal(p: Vector3, size: float, grow: float) -> void:
@@ -806,8 +838,8 @@ func _decal(p: Vector3, size: float, grow: float) -> void:
 	m.material_override = blood_mat
 	m.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(m)
-	m.position = Vector3(p.x, terrain.height_at(p) + 0.006 + randf() * 0.004, p.z)
-	m.rotation.y = randf() * TAU
+	m.position = Vector3(p.x, terrain.height_at(p) + 0.006 + art_rng.randf() * 0.004, p.z)
+	m.rotation.y = art_rng.randf() * TAU
 	if grow > 0.0:
 		m.scale = Vector3.ONE * 0.2
 		create_tween().tween_property(m, "scale", Vector3.ONE, grow).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)

@@ -148,8 +148,8 @@ func setup(p_main, p_squad, p_faction: int, palette_row: int, pos: Vector3, stat
 	step_to = nav_pos
 	position = vis_pos
 	slot = nav_pos
-	beats = Beats.new()
-	idle_offset = randf()
+	beats = Beats.new(main.sim_rng)
+	idle_offset = main.art_rng.randf()
 	# 倒下：受击后仰 → 跪 → 坐 → 躺（借用已有帧）
 	if not sprite_direct:
 		var hit: Vector2i = anims["hit"]
@@ -512,10 +512,10 @@ func _post_attack(atk: Dictionary) -> void:
 	if not alive_grounded.active:
 		return
 	acc_stun += atk.get("stun", 1.0) * stun_mult / mass
-	if acc_stun > randf_range(1.0, 3.0) and not stun_fall.active:
+	if acc_stun > main.sim_rng.randf_range(1.0, 3.0) and not stun_fall.active:
 		stun_fall.set_true()
-		stun_timer = maxf(sqrt(acc_stun), 2.0) * randf_range(0.5, 1.0)
-	elif acc_stun > randf_range(0.7, 1.2):
+		stun_timer = maxf(sqrt(acc_stun), 2.0) * main.sim_rng.randf_range(0.5, 1.0)
+	elif acc_stun > main.sim_rng.randf_range(0.7, 1.2):
 		stun_slide.set_true()
 
 
@@ -550,7 +550,7 @@ func launch(v: Vector3) -> void:
 		return
 	rag_vel = v
 	ragdoll_st.set_true()
-	play("ragdoll", randf())
+	play("ragdoll", main.art_rng.randf())
 	main.note("launch")
 	main.shake(0.05)
 
@@ -600,7 +600,7 @@ func _ragdoll_update() -> void:
 	rag_vel.y = impact * 0.3
 	rag_vel.x *= 0.6
 	rag_vel.z *= 0.6
-	play("ragdoll", randf())
+	play("ragdoll", main.art_rng.randf())
 
 
 # ---------- 死亡 ----------
@@ -637,7 +637,7 @@ func _remove(keep_corpse: bool) -> void:
 	anim_name = "death"
 	anim_t = 10.0
 	shadow.visible = false
-	mesh.set_instance_shader_parameter("spin", randf_range(-0.15, 0.15))
+	mesh.set_instance_shader_parameter("spin", main.art_rng.randf_range(-0.15, 0.15))
 	_apply_visuals()
 
 
