@@ -30,13 +30,15 @@
 | T24 | 工程移到 ~/Projects 并安装谷时定时任务（12:01、18:01） | Claude | — | — | 完成 |
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
 | T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 已合并 |
-| T32 | 新画风人物：王室与渡魂人（6 人） | Codex | codex/t32-royals | art/chars/ | 排队 |
-| T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 排队 |
-| T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 排队 |
-| T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 排队 |
+| T32 | 新画风人物：王室与渡魂人（6 人） | Codex | codex/t32-royals | art/chars/ | 不采用（风格不统一，由 T46 重画） |
+| T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 不采用（由 T46 重画） |
+| T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 不采用（由 T47 重画） |
+| T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 已合并（效果好，保留） |
 | T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批；提示词由 Claude 写） | Codex | — | art/story/ | 待办 |
-| T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | codex/t38…t40 | art/env/ | 排队 |
-| T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 排队 |
+| T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
+| T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
+| T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 排队（Codex 额度 23:54 恢复后自动启动） |
+| T47 | 按 Claude 提示词重画仇人 + 兵种阵容（18 张） | Codex | codex/t47-chars-b | art/chars/, art/units/ | 排队（同上） |
 | T43 | 开发者设定集（网页） | Claude（内容、文案、版式）；脚本负责出图和生成页面 | — | — | 待办（依赖全部美术） |
 | T44 | 局内新画风：墨线描边、阵营边光、暗调地形、战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T42 兵种图审批） |
 | T45 | Blender 精灵按新兵种 Q 版批量重做 | DSH（谷时，先做能力验证）；管线问题 Codex | — | tools/blender/, assets/ | 待办（依赖 T42、T44） |

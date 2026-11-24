@@ -1,0 +1,13 @@
+Original hand-painted narrative game illustration. Digital opaque gouache with HEAVY BLACK INK CONTOURS: the outer silhouette line is the thickest (about 4-6 px at 1024 px width), interior structure lines thinner, line pressure visibly varies, brush edges slightly irregular. Elongated, angular, stylised adult anatomy; sharp graphic shapes; expressive face; confident, readable pose with a clear line of action. Lighting is high-contrast chiaroscuro: one key light, large crisp FLAT shadow shapes in one or two value steps, no airbrushed gradients, no soft 3D shading. A saturated RIM LIGHT on one side of every figure is mandatory: cyan-green soulfire (#3FE0C0) for the undead, warm ivory-gold sunlight (#F2C56B) for the living and the kingdom. Background is a dark ink-navy / sea-grey painted field with loose strokes, so the figure is the brightest, most saturated thing in the image. Limited palette per figure: two or three main colours plus the rim-light colour. Clean value grouping, uncluttered silhouettes, no busy scratch texture.
+NEGATIVE: no 3D render, no low-poly or faceted triangles, no photorealism, no plastic or glossy surfaces, no soft airbrush, no anime moe face, no chibi proportions (unless the prompt explicitly asks for tiny battle troops), no text except where the prompt asks for it, no logos, no watermarks, no names of existing games, studios or artists.
+FORMAT: landscape 16:9 (2048x1152), army lineup sheet on a dark ink-navy background, eight full-body figures on one ground line with correct relative sizes, a thin gold rule under their feet and a Chinese label under each: 民兵, 盾兵, 枪兵, 弓兵, 弩手, 修士, 传令兵, 王国骑士. No other text.
+SUBJECT: the living kingdom's defenders. ALL OF THEM ARE LIVING HUMANS with healthy skin and real faces, NO skulls, no undead features, warm ivory-gold rim light. Shared costume language: white and royal-blue tabards with a gold eight-rayed sun, regency units add a red diagonal band, kettle helmets and simple steel.
+1 民兵: nervous farmer-conscript with a spear and a padded jacket, too-big helmet.
+2 盾兵: disciplined soldier behind a large round sun shield, short sword.
+3 枪兵: long pike braced, half-plate.
+4 弓兵: longbow, quiver of fire arrows, one arrow lit.
+5 弩手: heavy crossbow and a pavise shield on his back.
+6 修士: priest in white with a gold sun, holding a flask of holy water and a hand bell.
+7 传令兵: lightly dressed runner with a signal horn and a lit torch, mid-run.
+8 王国骑士: armoured knight with a sun-crest helm, long shield and a red regency band.
+REFERENCE IMAGES: attached images show the approved line weight, flat shadow treatment, rim light and palette. Match their rendering exactly; do NOT copy their composition or characters unless told to.
