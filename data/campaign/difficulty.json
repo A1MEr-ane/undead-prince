@@ -1,0 +1,24 @@
+{
+  "note": "T29 可调初值；规则方向见 roguelike.md 第 5、8 节，数值待真实战斗校准。",
+  "minimum_tier": 1,
+  "maximum_tier": 5,
+  "depth_max_score": 2.0,
+  "depth_full_score_at": 8,
+  "shortcut_max_score": 2.0,
+  "shortest_route_steps": 6,
+  "long_route_steps": 11,
+  "memory": {"normal_wins": 1, "boss_wins": 2, "tier_reduction": 1},
+  "tiers": [
+    {"name": "轻松", "color": "67ce91", "rarity": "普通", "soulfire": 8, "stub_win_chance": 0.90},
+    {"name": "普通", "color": "e9d269", "rarity": "普通", "soulfire": 12, "stub_win_chance": 0.78},
+    {"name": "困难", "color": "f5a05c", "rarity": "稀有", "soulfire": 18, "stub_win_chance": 0.50},
+    {"name": "危险", "color": "ec6979", "rarity": "史诗", "soulfire": 26, "stub_win_chance": 0.18},
+    {"name": "首领", "color": "b695ee", "rarity": "史诗", "soulfire": 36, "stub_win_chance": 0.12}
+  ],
+  "stub_reward_power": {
+    "note": "临时，等接入真实战斗后删除：每份本轮已获奖励增加战斗桩胜率。",
+    "per_reward": 0.055,
+    "maximum_win_chance": 0.96
+  },
+  "echoes": {"per_captured_site": 2, "per_boss": 5, "per_new_fact": 3}
+}

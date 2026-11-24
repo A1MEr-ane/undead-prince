@@ -1,0 +1,156 @@
+{
+  "note": "先读 canon，再按地点 id 叠加。display_offset 仅移动航海图，不改地理与航路。sunhold 的首领战仍在 C05B council 步骤发生。",
+  "sites": {
+    "bay": {
+      "display_offset": [
+        -140,
+        -5
+      ]
+    },
+    "wreck": {
+      "display_offset": [
+        -5,
+        0
+      ]
+    },
+    "light": {
+      "display_offset": [
+        -105,
+        0
+      ]
+    },
+    "oar": {
+      "display_offset": [
+        -140,
+        20
+      ]
+    },
+    "northrelief": {
+      "display_offset": [
+        -150,
+        -40
+      ],
+      "difficulty_adjustment": -1
+    },
+    "watchskerry": {
+      "display_offset": [
+        0,
+        -50
+      ]
+    },
+    "pilot": {
+      "display_offset": [
+        -10,
+        -40
+      ]
+    },
+    "kings": {
+      "display_offset": [
+        35,
+        -20
+      ]
+    },
+    "saltmarket": {
+      "type": "boss",
+      "boss": "CHAR_EARL",
+      "difficulty_adjustment": 0,
+      "display_offset": [
+        80,
+        27
+      ]
+    },
+    "sunhold": {
+      "type": "boss",
+      "boss": "CHAR_CHANCELLOR",
+      "boss_step": "council",
+      "boss_title": "王都宫城",
+      "difficulty_adjustment": 0,
+      "display_offset": [
+        60,
+        15
+      ]
+    },
+    "gate": {
+      "boss": "CHAR_MARSHAL",
+      "difficulty_adjustment": 0,
+      "display_offset": [
+        0,
+        -98
+      ]
+    },
+    "granary": {
+      "boss": "CHAR_COUNTESS",
+      "difficulty_adjustment": 0,
+      "display_offset": [
+        40,
+        -10
+      ]
+    },
+    "abbey": {
+      "boss": "CHAR_ARCHBISHOP",
+      "difficulty_adjustment": 0
+    },
+    "lantern": {
+      "display_offset": [
+        -100,
+        15
+      ]
+    },
+    "mill": {
+      "display_offset": [
+        -110,
+        0
+      ],
+      "difficulty_adjustment": -1
+    },
+    "harvest": {
+      "display_offset": [
+        40,
+        -10
+      ]
+    },
+    "merchant": {
+      "display_offset": [
+        -65,
+        45
+      ]
+    },
+    "lion": {
+      "display_offset": [
+        63,
+        -38
+      ]
+    },
+    "provision": {
+      "display_offset": [
+        20,
+        100
+      ]
+    },
+    "titheford": {
+      "display_offset": [
+        0,
+        65
+      ]
+    },
+    "reedcross": {
+      "display_offset": [
+        50,
+        100
+      ]
+    },
+    "yard": {
+      "difficulty_adjustment": 1,
+      "display_offset": [
+        -113,
+        19
+      ]
+    },
+    "foundry": {
+      "display_offset": [
+        60,
+        -50
+      ]
+    }
+  }
+}
