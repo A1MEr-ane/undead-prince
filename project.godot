@@ -15,3 +15,7 @@ window/size/viewport_height=720
 [rendering]
 
 anti_aliasing/quality/msaa_3d=2
+
+[autoload]
+
+Run="*res://scripts/campaign/run_state.gd"
