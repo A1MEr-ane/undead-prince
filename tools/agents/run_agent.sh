@@ -17,6 +17,16 @@ for line in (m.group(1) if m else "").splitlines():
 ' "$CARD" "$1"; }
 ID=$(field id); OWNER=$(field owner); BRANCH=$(field branch); WT=$(field worktree)
 [ -n "$ID" ] && [ -n "$OWNER" ] && [ -n "$BRANCH" ] && [ -n "$WT" ] || { echo "任务卡缺字段 id/owner/branch/worktree"; exit 2; }
+# DSH 只在谷时运行（FORCE=1 可强制），并且必须在本段谷时结束前收工
+MAXMIN=$(field max_minutes); [ -z "$MAXMIN" ] && MAXMIN=60
+if [ "$OWNER" = "dsh" ]; then
+  if [ "${FORCE:-}" != "1" ] && ! tools/agents/offpeak.sh >/dev/null; then
+    echo "高峰时段，不启动 DSH：$(tools/agents/offpeak.sh)"; exit 4
+  fi
+  left=$(tools/agents/offpeak.sh --minutes)
+  if [ "${FORCE:-}" != "1" ] && [ "$left" -lt $((MAXMIN + 5)) ]; then MAXMIN=$((left - 5)); fi
+  [ "$MAXMIN" -lt 5 ] && { echo "本段谷时剩余不足，不启动"; exit 4; }
+fi
 WT=$(cd "$ROOT" && python3 -I -c 'import os,sys;print(os.path.abspath(sys.argv[1]))' "$WT")
 mkdir -p reports/agents
 LOG="$ROOT/reports/agents/$ID.log"; REPORT="$ROOT/reports/agents/$ID.md"
@@ -28,7 +38,7 @@ fi
 
 PROMPT="你是本项目的执行者。先读 AGENTS.md 和 docs/collab.md，再按下面的任务卡完成工作。
 只修改 allowed 里的文件；verify 命令必须通过；自我修复最多 retry_limit 次，超过或遇到 escalate_if 的情况就停止并在报告里说明。
-完成后把交付报告写到 $REPORT（格式见 docs/collab.md 第 4 节），并在分支 $BRANCH 上提交（提交失败就保留改动并在报告里说明）。
+完成后把交付报告写到 reports/agents/$ID.md（相对你的工作目录；格式见 docs/collab.md 第 4 节），并在分支 $BRANCH 上提交（提交失败就保留改动并在报告里说明）。
 
 $(cat "$CARD")"
 
@@ -40,13 +50,20 @@ run() {
         --add-dir "$ROOT/.git" --add-dir "$ROOT/reports" --add-dir "$HOME/.codex" \
         "$PROMPT" >"$LOG" 2>&1 ;;
     dsh)
-      (cd "$WT" && "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-        --profile headless --json "$PROMPT") >"$LOG" 2>&1 ;;
+      (cd "$WT" && exec "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
+        --profile headless --json "$PROMPT") >"$LOG" 2>&1 &
+      local pid=$!
+      ( sleep $((MAXMIN * 60)); kill "$pid" 2>/dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >>"$LOG" ) &
+      local wd=$!
+      wait "$pid"; local code=$?
+      kill "$wd" 2>/dev/null
+      return $code ;;
     *) echo "owner=$OWNER 不由脚本启动（claude 由主会话自己做）" >"$LOG"; return 3 ;;
   esac
 }
 finish() {
   local code=$1 end; end=$(date +%s)
+  [ -f "$WT/reports/agents/$ID.md" ] && cp "$WT/reports/agents/$ID.md" "$REPORT"
   # 指标：用量从日志里尽量提取（codex 打印 "tokens used"，dsh --json 事件里有 usage）
   local usage; usage=$(grep -A1 -i "tokens used" "$LOG" 2>/dev/null | tail -1 | tr -dc '0-9,' )
   [ -f reports/metrics.csv ] || echo "date,id,owner,exit,wall_sec,usage,report_exists" > reports/metrics.csv
