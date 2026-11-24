@@ -1,0 +1,2125 @@
+[
+  {
+    "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE-UNDEAD__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑轮廓与细内线清楚"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "盔甲、披风均为硬边平涂阴影"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "青绿轮廓光"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，象牙白盔甲突出"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年亡灵、半骷髅脸、破甲紫披风、魂火剑与独立断冠齐全"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正侧背等高、空手，姿势一致"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": true,
+        "note": "正面观众右半为骷髅，头戴金冠前端有断口"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "通过七项适用检查，选第 1 版；第 2 版为备选。",
+    "prompt_sha256": "539b3fa6c6d58c9be3cecd6513b8ea52baec8fde8f903eed1af62720022f488f",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-bef5a7c1-1378-4e62-820c-431aa05173bf.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-06157c02-eb62-4029-8b8c-f5039584f353.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "15c9c5a95c1573af4c8317c03ca0d0203299ce165fb9f41864ea1eb0c90d50c5"
+      }
+    ],
+    "alt_notes": {
+      "2": "合格备选；披风横向展开较大，首选版三视图占位更均匀"
+    }
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE-UNDEAD__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v1.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑外轮廓清楚，内结构线较细"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、盔甲及披风采用硬边明暗色块，无柔和渐变"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物右缘均有青绿魂火轮廓光"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物肤色和象牙甲为亮部"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三次均未出现 SUBJECT 指定的魂火剑；成年亡灵、骷髅侧、断冠、紫披风、破甲与三种表情可见"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图，不是三视图"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": true,
+        "note": "三张头像均为观众右半骷髅，金冠前方均有明显断口"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 2,
+    "selection_note": "无完全合格版本；暂留第 2 版供 Lead 审查，不视为验收通过。",
+    "prompt_sha256": "6013be09c3574daa49f733b1ae4c6ddefd73fbdfe2c7ec734641c5ffa8bd684e",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-fec4057e-f4e8-44c5-92d1-ce309be3da01.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "3ef1f8368a6361059ffa68fd4fd6745896460ed78834897631045d8543ac83a1"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-33ca4587-b812-4ef2-937f-9bdafc64f843.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "1b775dc4c826a75715e59cd661785fab8e42e3e378a2b9209f9ea36dca1d32fd"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-79f0e700-c35d-47dd-a9d3-475b13e88ac2.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "f0c242ee39c95e139d2ece228653ca083cb6dc184d6d5757fdc29e2c68b69a9b"
+      }
+    ],
+    "alt_notes": {
+      "1": "不合格：缺少魂火剑；愤怒表情比第 2 版克制",
+      "3": "不合格：仍缺少魂火剑；达到三次生成上限，触发 escalate_if"
+    }
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "ffffb9010d2f480e9e40700ec75438fe9db1d29755dc55ad7cb1ef6ad894f640",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "d8d3ec2f4ba94a00e7cf3faf4659528b5bcbd3a42d49b9cf015a1b213684681f",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "98f5d09ed59b4915a3249cf91c2c1e572826fa4fe3d68bd8d9473c225c808e12",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "525601f32c9db91f3aa490175d2b522b2a02af6eac23ca9f0f61075c9d07b1e7",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "690e383cd3e035432fbe32aac6a1f93a76cd6c3ec3334c9ddfdba6485673d900",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "209680704442a0ac1c77de29b8481d8cacf038f29f8462fc014488859f6891c8",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "31ab4b8e708927a70e6acf5a80969a05c9f87f521f26e82606bfb2a67de3d641",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "5bd0f9377271cf139de1214e36e6df21f64bfd306031428ef70bce823348938b",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "cf5df00663590d839384af84eaa09413a0c75a7b6a729d5500c74e4550f75889",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-KING/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "b79855e8e0795524c13aaba26e5ca164a1ab85141fa5a00d21ea8af63a066cd5",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-KING/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "6ce0db69d59829593816b292676f3e6d468efb4eac4e596412232117cdc493ea",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-KING/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "3dadd98d43059267e232b1544d55e7c3c6450d8fc6af14f3b892859d32c8bb3e",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "e2aa07f36b7504c8061e94d545db0326ef18b1d346437a176cec4a6c85ab5ed1",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "4496645ed0d729f6f1ba0efaf8c9a5b419b61a4677f6441afb95b782ddfbd5f8",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "9bf219f575af3ba9e5a849917beb89d6f04ebcd418afe8f362151cdf2770cf59",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "a0f94c0f8065b0fc2d7a74291dfe7f7f1e6aa0158dd53c12a1c68511680b153c",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "7d670e99f18fa3af1be95acbd08aeeedc4b780aaa1a598145817a046e8d73300",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "8a7434dcd8a810e8f3c76ff030f3acd362252161d95eba011b2acf964fb824c6",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "ec128a876c8251c332e8c750db4f09ffa33848d88569572209c1b5303b541568",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "86c5c7e8698b59a72ac4883b4dc0d1364a9fa5c1bb673719aadc12f147390a6c",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "8d1c6bf6628f32232482282e6027a74f26fb0330209f2f60dd0b9eac30e1b644",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "ef711f3ae39d485e9c64af84444d28b28b0a5f41c66e937188ae2a2954b03390",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "1162ed909da292db99ec02f7c150368dfa5d42cfac4d37c9c978962d4846fcb5",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "7d4632dff552877f59eae18c853421f726c95671544dfdf7126c15b53b808bed",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__hero.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "18c43671ce3c963f8c6230817eaca0863a95abb21e8d34f399335f2c9900f3f3",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__turnaround.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "58335bfd1ed8ff1cebd4007dc3c66f0ad0dd4353195cff1fad2b8bd27af0172d",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__expressions.txt",
+    "alts": [],
+    "attempts": 0,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "result": "不通过",
+        "applicable": true,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "不通过",
+        "applicable": false,
+        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "not_started",
+    "acceptance": "not_checked",
+    "selected_variant": null,
+    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "prompt_sha256": "0924d1b7fc1f00e5312e0bf4cb103587da41780cfa7af4148b3438afe52decf6",
+    "prompt_verbatim": null,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": []
+  }
+]
