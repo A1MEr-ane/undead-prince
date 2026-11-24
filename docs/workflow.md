@@ -64,6 +64,11 @@ tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（定�
 - **谷时（2026-11-24 核实官方价格页 api-docs.deepseek.com/quick_start/pricing）**：高峰 = 工作日 UTC 01:00–04:00、06:00–10:00（北京时间 09:00–12:00、14:00–18:00）；其余时间（含周末和中国法定节假日全天）为谷时，价格为高峰的一半。deepseek-flash（DSH 默认模型）标注支持看图，deepseek-v4-pro 不支持。
 - **规则：DSH 只在谷时运行**。`tools/agents/offpeak.sh` 判断时段；`run_agent.sh` 在高峰拒绝启动 DSH（`FORCE=1` 可强制）并把任务时长截到本段谷时结束前 5 分钟；`run_queue.sh` 在谷时依次执行 owner=dsh、status=queued 的任务卡。
 
+## 6.5 额度用尽的处理（2026-11-24 实际遇到）
+- Codex 订阅额度按约 5 小时窗口计算；用尽时日志出现 `usage limit … try again at HH:MM`，任务在中途停下，工作区留有未提交改动。
+- 处理：指标表记 `quota`；任务卡追加"续作说明"（让下一次先看 `git diff` 接着做）；到恢复时间自动重派。
+- 路由调整：Codex 额度紧张时，**能等谷时的活转给 DSH，急的由 Claude 做**；出图类大批量任务（一次几十张）要避开 Codex 正在做的开发任务，错开窗口。
+
 ## 7. 需要用户拍板的（只列阻塞下一步的）
 1. **在 DSH 里存 DeepSeek API 密钥**（Models 页面），否则 DSH 无法无人值守运行。——阻塞 DSH 的一切工作。
 2. **兵种造型方向**（细节版造型 + 简化版建模 / 卡通版）。——试点 P1 可以先按盾兵三视图做；但亡魂兵种建模前必须定。
