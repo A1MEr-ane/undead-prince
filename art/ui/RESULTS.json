@@ -1,0 +1,259 @@
+[
+  {
+    "id": "kit_frames",
+    "task_id": "T35",
+    "files": [
+      "art/ui/kit_frames.png"
+    ],
+    "alts": [
+      "art/ui/alt/kit_frames_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset: kit_frames, standalone reusable game UI ATLAS, ONE wide 16:9 image, target 2048x1152. Hand-painted opaque digital gouache with expressive pressure-varied black ink contours, heavy outer contour and finer interior lines, angular cut edges, visible selective dry brush, crisp large FLAT shadow shapes and strong chiaroscuro. Refined dark maritime narrative UI matching the approved dialogue and boon reference images: ink-navy / sea-gray backplates, brushed forged iron and aged bronze fittings, very thin worn gold inlay, occasional nautical rope, ship rivets and small bell motifs. Saturated cyan-green one-sided soulfire edge light only where undead/energy is shown; living kingdom accents warm ivory-gold. Highly legible limited palette, quiet interiors. NO 3D render, no photorealism, no low-poly triangular faceting, no airbrushed gradients, no glossy mobile-game look, no ornate generic filigree, no existing game/artist/studio names, no watermark.\nSolid perfectly flat dark navy background #0b101a, no scenery or cast shadow outside assets. Orthographic FRONT VIEW, no tilt. All pieces separate, at least 40px empty gutters, full outlines visible within 40px outer margin, easy future rectangular slicing. Make panel interiors very quiet matte ink-blue.\nLayout: TOP row one long EMPTY DIALOGUE BOX occupying 74% width, angular forged iron border, thin gold inner rule, rope only at four corners, small bronze bell suspended from top center. Beside it one independent vertical EMPTY LOCATION PANEL, with upper title compartment and room for body copy. MIDDLE row: independent elongated EMPTY SPEAKER NAMEPLATE with clipped corners; independent smaller EMPTY LOCATION TITLE PLATE suspended by a short rope; three visually identical shaped action buttons side by side labeled exactly \"常态\", \"悬停\", \"按下\". Normal button dark iron/thin bronze; hover thin warm-gold illuminated edge; pressed slightly inset dark fill and lowered inner trim. BOTTOM row: one horizontal SCROLLBAR track and separate matching thumb plus one vertical SCROLLBAR and its separate thumb; three distinct horizontal DIVIDERS with subtle central bell / knot / rivet, and two spare rope corner pieces. Tiny ivory captions outside the pieces may identify \"对话框\" \"地点面板\" \"名牌\" \"地点标题\" \"滚动条\" \"分隔线\". Do not put body text inside empty frames. No portrait, no cards, no decorative overlapping, no clutter, no pseudo-language. Keep cuts and empty central surfaces clean. One atlas only.\nVersion B: a slightly more slender brushed-iron variant, small bronze bell stamped on the nameplate corner, all controls retain simple chamfered geometry. Keep all components and spacing.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-2e367375-574e-4b11-954b-c1f3613b1a96.png",
+    "referenced_image_paths": [],
+    "generation_count": 2,
+    "self_check": [
+      "对话框、名牌、地点面板及地点标题独立齐全，框内留空。",
+      "常态/悬停/按下三态文字和明暗变化清楚。",
+      "横竖滚动条及独立滑块、3条分隔线、2个绳角件齐全。",
+      "暗底留缝，锻铁青铜、细金线、绳结与钟纹符合审批参考；无人物。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。"
+    ],
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "b7a751a96c22422ccc2245b664e5854f5eb09661b843e0758e3d335da9d3fe5d"
+  },
+  {
+    "id": "kit_boon_frames",
+    "task_id": "T35",
+    "files": [
+      "art/ui/kit_boon_frames.png"
+    ],
+    "alts": [
+      "art/ui/alt/kit_boon_frames_B.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset: kit_boon_frames, a reusable BOON CARD FRAME ATLAS, one wide16:9 image target2048x1152. Hand-painted opaque digital gouache with expressive pressure-varied black ink contours, heavy outer contour and finer interior lines, angular cut edges, visible selective dry brush, crisp large FLAT shadow shapes and strong chiaroscuro. Refined dark maritime narrative UI matching the approved dialogue and boon reference images: ink-navy / sea-gray backplates, brushed forged iron and aged bronze fittings, very thin worn gold inlay, occasional nautical rope, ship rivets and small bell motifs. Saturated cyan-green one-sided soulfire edge light only where undead/energy is shown; living kingdom accents warm ivory-gold. Highly legible limited palette, quiet interiors. NO 3D render, no photorealism, no low-poly triangular faceting, no airbrushed gradients, no glossy mobile-game look, no ornate generic filigree, no existing game/artist/studio names, no watermark.\nFlat solid #0b101a background, no scenery. FIVE equally sized tall portrait CARD FRAMES placed in ONE straight horizontal row with 45px clean empty gutters, complete frames and ample outer margins. Match steel/bronze rectangular clipped-corner frame construction of the approved boon cards, thin gold edges. Each card has its own inset object ICON in top crest, exact Chinese owner NAME in header, a large EMPTY dark image window, one thin divider and two EMPTY text slots. Empty windows must stay blank; these are reusable frames with no illustration or invented effects. Five cards left to right:\n1 \"伯纳德\": STEEL GRAY frame, muted purple secondary cloth, SHIELD icon, fine cold steel blue edge highlight.\n2 \"玛蒂尔达\": RUST RED frame, leather brown secondary, curved NEEDLE AND THREAD icon, tiny pale cyan stitch highlight.\n3 \"奥斯温\": SLATE BLUE frame, old parchment inset, SLATE TABLET icon with simple engraved lines, tiny green light accent.\n4 \"皮普\": COPPER GOLD frame, navy secondary, BRASS BUGLE icon, warm copper highlight.\n5 \"渡魂人\": INK BLACK frame with restrained CYAN GREEN inlay, single hooded LANTERN icon, no face. The ferryman card must NOT have a slot label.\nBOTTOM separate strip has exactly THREE standalone rarity CORNER BADGES, each badge a right-angled triangular metal corner attachment that can sit on the upper-right of a card: ordinary steel/bronze labeled \"普通\", rare desaturated blue/silver labeled \"稀有\", epic deep violet/gold labeled \"史诗\". Only owner names and these three rarity labels. Do not add character portraits, numbers, extra cards, legendary rarity, effects or fake script. Symmetry of card sizes, legibility, flat empty background, all components fully separated.\nVersion A: clear broad headers, understated riveted corners, identical window proportions, uncluttered card interiors.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "A",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-99384a06-19eb-482b-8b40-0c4d9adfbc1b.png",
+    "referenced_image_paths": [],
+    "generation_count": 2,
+    "self_check": [
+      "五卡并排且空白图窗和文字槽可切分。",
+      "伯纳德钢灰盾、玛蒂尔达锈红针线、奥斯温石板蓝石板、皮普铜金号角、渡魂人墨黑青绿提灯均对应。",
+      "普通/稀有/史诗3个独立角标齐全，无新增稀有度。",
+      "渡魂人无槽位限定标签，灯火为青绿；中文五名与原文核对。",
+      "主稿角标朝左上，任务未限定角标方向；备选B为右上方向，但暖金灯芯不合主稿光色要求。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。"
+    ],
+    "dimensions": [
+      1774,
+      887
+    ],
+    "sha256": "9d10a5f75e78c716f60922d741618fdbb76e846185b44c46663b3f31df3d0329"
+  },
+  {
+    "id": "kit_icons",
+    "task_id": "T35",
+    "files": [
+      "art/ui/kit_icons.png"
+    ],
+    "alts": [
+      "art/ui/alt/kit_icons_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset kit_icons, one clean 16:9 wide2048x1152 reusable ICON ATLAS. Hand-painted opaque digital gouache with expressive pressure-varied black ink contours, heavy outer contour and finer interior lines, angular cut edges, visible selective dry brush, crisp large FLAT shadow shapes and strong chiaroscuro. Refined dark maritime narrative UI matching the approved dialogue and boon reference images: ink-navy / sea-gray backplates, brushed forged iron and aged bronze fittings, very thin worn gold inlay, occasional nautical rope, ship rivets and small bell motifs. Saturated cyan-green one-sided soulfire edge light only where undead/energy is shown; living kingdom accents warm ivory-gold. Highly legible limited palette, quiet interiors. NO 3D render, no photorealism, no low-poly triangular faceting, no airbrushed gradients, no glossy mobile-game look, no ornate generic filigree, no existing game/artist/studio names, no watermark.\nExactly TWENTY separate square icon cells arranged as a strict FIVE COLUMNS x FOUR ROWS grid, equal spacing, flat uniform ink-navy background, no cell boxes, no metal frames, no scenery. Each icon occupies upper70% of its cell; one exact Chinese label centered BELOW in quiet ivory Chinese printed calligraphic type. All twenty labels below their own icon, no title and no extra writing. Monochrome aged ivory INK DRAWING with ONE and only one small accent color per icon; thick pressure-varied outlines, flat fill, simplest readable silhouette, no 3D shading. Distinct icon choices avoid ambiguity:\nRow1 left-right: \"旧部增益\" = small shield with a four-point blessing spark, accent steel blue; \"招募\" = three simple helmet silhouettes and a plus, accent muted gold; \"魂火\" = small upright flame in an open palm, accent cyan-green; \"缝补\" = curved surgical needle and looped thread, accent rust red; \"休整\" = folded bedroll beneath a shelter arc, accent muted blue.\nRow2: \"遗物\" = ancient broken crown token, accent copper; \"航海\" = boat with a small triangular sail, accent sea blue; \"知识\" = open annotated manuscript, accent parchment gold; \"刃\" = single diagonal sword, accent muted gold; \"阵\" = three aligned shields, accent steel blue.\nRow3: \"行军\" = boot with two forward chevrons, accent copper; \"冥火\" = sharp spiraling flame around a tiny bolt, accent cyan-green, visually different from palm-held 魂火 currency; \"招魂\" = a hand rising above a skull, accent cyan-green; \"破阵\" = visibly split broken shield, accent orange; \"缝线\" = stitched seam with three visible stitches, accent pale cyan.\nRow4: \"冥燃\" = skull topped with small flame, accent cyan-green; \"惊惶\" = startled helmet with short radial lines, accent amber; \"沉\" = weighted anchor with downward arrow, accent sea teal; \"残响\" = echoing concentric broken rings, accent cyan-green; \"钟数\" = nautical bell with tally marks, accent bronze gold.\nPreserve order exactly, all labels correctly spelled and readable, no duplicates or omitted cells. Accent colors restricted to small area, ivory dominates. Clean empty gutters so each icon and label can be sliced independently. All20 cells same visual weight.\nVersion B targeted refinement: EVERY icon is ivory linework with exactly ONE small FLAT accent hue, never two. Boat sail and waves BOTH the same single sea-blue hue. Stitch seam has three pale-CYAN stitch marks. Bell primarily IVORY, just a small bronze-gold clapper accent. Echo-ring icon mostly ivory, one cyan-green broken arc, not all-green. No gradients or large multicolored fills. Equal cell padding, include all20 exact labels.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-b25396ab-f86d-47fe-83bc-330d98b49fc6.png",
+    "referenced_image_paths": [],
+    "generation_count": 2,
+    "self_check": [
+      "严格5列4行，共20个图标，各有独立中文标签。",
+      "奖励8类：旧部增益、招募、魂火、缝补、休整、遗物、航海、知识。",
+      "槽位5类：刃、阵、行军、冥火、招魂；状态5类：破阵、缝线、冥燃、惊惶、沉。",
+      "其他2类：残响、钟数；魂火/冥火/冥燃形状有区分。",
+      "象牙白单色墨线配每格单一强调色，粗细墨线、平涂、暗背景符合要求。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。"
+    ],
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "5daa6ae3a5efe55c99b0f4e4963212b8a513989fd249efede792df02befb3f12"
+  },
+  {
+    "id": "kit_chart",
+    "task_id": "T35",
+    "files": [
+      "art/ui/kit_chart.png"
+    ],
+    "alts": [
+      "art/ui/alt/kit_chart_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset kit_chart, nautical CHART ELEMENT ATLAS, one wide16:9 image2048x1152. Hand-painted opaque digital gouache with expressive pressure-varied black ink contours, heavy outer contour and finer interior lines, angular cut edges, visible selective dry brush, crisp large FLAT shadow shapes and strong chiaroscuro. Refined dark maritime narrative UI matching the approved dialogue and boon reference images: ink-navy / sea-gray backplates, brushed forged iron and aged bronze fittings, very thin worn gold inlay, occasional nautical rope, ship rivets and small bell motifs. Saturated cyan-green one-sided soulfire edge light only where undead/energy is shown; living kingdom accents warm ivory-gold. Highly legible limited palette, quiet interiors. NO 3D render, no photorealism, no low-poly triangular faceting, no airbrushed gradients, no glossy mobile-game look, no ornate generic filigree, no existing game/artist/studio names, no watermark.\nMuted flat warm gray-ochre parchment background, black pressure-varied nautical ink marks with selective hand-painted color dabs. Orthographic front view, no table or scenery, generous empty gutters, every element fully isolated and readable for future slicing. Not a complete map.\nTOP ROW exactly FIVE difficulty node tokens, each a hand-painted color dab within an ink ring, left-to-right GREEN \"轻松\", YELLOW \"普通\", ORANGE \"困难\", RED \"危险\", PURPLE shield-shaped BOSS node \"首领\". Purple boss distinct in shape as well as color.\nSECOND ROW exactly FIVE shield medallion BOSS UI EMBLEMS, drawn from documented office props, never invented dynastic heraldry. All five share small royal sun imprint + narrow diagonal regency-red band and subtle ivory-gold trim, NOT turquoise energy. Left-to-right:\n\"罗德里克\" = customs seal over a closed trade ledger;\n\"阿格尼丝\" = warehouse key crossed over a wax tablet;\n\"安塞姆\" = simple SUN device above a prayer book;\n\"休\" = naval military command pennant behind a squared steel shield;\n\"沃尔特\" = official seal case and neatly tied rolled papers, NO crown or armor.\nThese object-based UI identifiers are visual shorthand, do not introduce new lore.\nBOTTOM SECTION: separate long SOLID dark desaturated ink line with small filled waypoints labeled \"已走航线\"; below a separate DASHED cyan-green ink line with open waypoints and small arrowhead labeled \"可前往航线\"; each line remains isolated on its own strip. One standalone eight-point ink COMPASS ROSE labeled \"罗盘\". Three separated small SEA WAVE pattern strips labeled once \"海浪纹样\", ink blue-gray curves and hatching. Flat matte parchment and crisp hand-inked simplicity, no pseudo map labels, no invented place names, no character portraits, no gold glare. Do not add any count text, only specified labels.\nVersion B corrective constraints: Anselm's prayer book cover must be PLAIN except a SMALL ROUND SUN DISK; absolutely NO CROSS, crucifix, church cross, pentagram, religious symbols from real religions. Only invented royal sun circle with short rays. The custom seal is plain geometric ring, no fictional letters. Keep compass clearly separated from Walter badge with a 40px blank gutter. Improve all outer safe margins, every token inside frame. Preserve exactly5 node colors,5 boss emblems and all specified Chinese labels.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-693e3566-3916-4b3c-9580-3772664feea5.png",
+    "referenced_image_paths": [],
+    "generation_count": 2,
+    "self_check": [
+      "绿轻松、黄普通、橙困难、红危险、紫首领5档齐全，首领另有盾形轮廓。",
+      "五名首领标识：罗德里克税印账簿、阿格尼丝仓钥蜡板、安塞姆日纹祈祷书、休指挥旗盾、沃尔特印盒文书。",
+      "纹章仅是从已有官职道具提取的暂用UI图形，不赋予新家族/信仰/人物设定。",
+      "已走实线+实心点与可前往虚线+空心点/箭头清晰区分；罗盘与3种海浪条齐全。",
+      "羊皮纸底叠手绘墨线及色块，去除首版额外十字符号，不反写地点/航路数据。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。"
+    ],
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "622b2693174afb7fd347d64a7a108b3f8571256c7042ff91a518109d859fbf60"
+  },
+  {
+    "id": "ui_hub",
+    "task_id": "T35",
+    "files": [
+      "art/ui/ui_hub.png"
+    ],
+    "alts": [
+      "art/ui/alt/ui_hub_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset ui_hub, one complete16:9 wide game HUB SCREEN target2048x1152, not an atlas. Hand-painted opaque digital gouache with expressive pressure-varied black ink contours, heavy outer contour and finer interior lines, angular cut edges, visible selective dry brush, crisp large FLAT shadow shapes and strong chiaroscuro. Refined dark maritime narrative UI matching the approved dialogue and boon reference images: ink-navy / sea-gray backplates, brushed forged iron and aged bronze fittings, very thin worn gold inlay, occasional nautical rope, ship rivets and small bell motifs. Saturated cyan-green one-sided soulfire edge light only where undead/energy is shown; living kingdom accents warm ivory-gold. Highly legible limited palette, quiet interiors. NO 3D render, no photorealism, no low-poly triangular faceting, no airbrushed gradients, no glossy mobile-game look, no ornate generic filigree, no existing game/artist/studio names, no watermark.\nThe canonical Bellgrave sunken-wreck deck: a raised salvaged wooden wreck above a storm-dark gray sea, ruined masts and slack ropes, half-submerged bronze bell visible beyond railing, broken hull silhouettes, ink blue storm clouds. Slight elevated three-quarter camera; dark readable foreground deck, no 3D render. This is a narrative environment UI scene with exactly FIVE named old companions as small but readable full-body angular ADULT figures placed at five separate interactive stations, not a portrait/turnaround sheet. No duplicate characters, no extra NPCs, no Prince needed. Each is visibly undead, avoid gore.\nFrom left to right: Bernard at muster post with worn shield, broad heavy closed naval helm and narrow cyan visor, worn ivory/bronze steel-gray armor and purple mantle, no human face or horns; Matilda at surgeon's worktable, sturdy38-year-old woman with tied hair, ashen stitched skin, rolled navy sleeves, rust-red cloth and brown leather medical apron, gloves, needle/thread/tool roll, NOT blacksmith/no prosthesis; Oswin at chart desk, thin43-year-old bone-faced lich scholar in short hood and slate-blue layered robe with solid feet, slate tablet and a few loose pages, no halo/crown/staff; Pip by mainmast, young ADULT19-year-old skeletal sailor, short navy tunic, rust-red neck scarf, boots, oversized copper bugle and small broken-crown pennant, lively but not child; Ferryman far right by rail, tallest slim FLOATING figure with COMPLETE intact ink-black maritime ceremonial vestments with subdued bronze edging, FACELESS hood, translucent cyan-green robe hems, wooden oar and ONE lantern, no face, no armor/no rags/no halo. Undead one-sided cyan-green light, auxiliary colors remain visible.\nReadable small unobtrusive bronze/iron NAMEPLATES near their feet exactly \"伯纳德\" \"玛蒂尔达\" \"奥斯温\" \"皮普\" \"渡魂人\". Top center dark rope-suspended location plaque exact \"沉钟湾\". Top left compact counter with concentric echo-ring icon exact \"残响 240\"; beside it nautical bell icon exact \"钟数 2\". These are mockup counter values only, no items lying around suggesting permanent inventory. Bottom center large but restrained forged-iron bronze-edged button exact \"出征\", route-arrow icon, clear cyan-green hover edge. Rest of interface minimal, no added quest/gacha/store menus, no labels naming new places, no exposition. Moody painting, characters brighter than deck, strong silhouettes, full UI safe margins.\nVersion B targeted correction: absolutely NO red cross, white cross, medical cross, crucifix, real-world religious symbol, cross on cloth, cross on costume or shield. Matilda's tablecloth is plain ivory with a small RUST-RED STITCHED PATCH, not a cross. Her body must be clearly ashen-gray with subtle pale cyan stitched wrist, tied dark hair, rust-red sleeves and brown leather apron. Bernard's worn shield has ONLY a small broken GOLD CROWN device, no anchor/cross. Ferryman's vestments use simple vertical bronze edging and a tiny abstract wave hem, no cross on chest, full intact ceremonial robe, lower hem translucent floating mist rather than ripped rags. Pip is visibly nineteen-year-old young ADULT sailor with skeletal jaw, not child, no tricorn pirate hat. Keep5stations evenly spaced and all exact Chinese labels and counters.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-5141048e-296a-4663-9366-faefb49fa337.png",
+    "referenced_image_paths": [],
+    "generation_count": 2,
+    "self_check": [
+      "沉钟湾沉船甲板、残骸灰海及半沉钟场景；5位旧部五处站位与名牌齐全。",
+      "伯纳德封闭盔和冠盾；玛蒂尔达灰白皮肤缝线、军医围裙和针线台；奥斯温骨脸学者、石板与实体足；皮普成年水手铜号；渡魂人无脸祭服悬浮、桨及单盏青绿灯。",
+      "残响240、钟数2及出征按钮齐全，数值仅作样张。",
+      "5人同框用于任务明确要求的据点叙事场景，未生成多人物生产立绘/三视图。",
+      "手绘墨线、有限主色、暗海背景、青绿单侧光；去除A版红十字，不改人物身份。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。",
+      "原生尺寸1672×941，与严格16:9相差约0.0531%；保留工具原图，未裁切或重采样。"
+    ],
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "50e1b71aa3b0688adecd8bb5c3dac0b4b8c53fae72c73374cf28924e2a8a8e72",
+    "requested_aspect": "16:9",
+    "native_aspect_error_percent": 0.0531
+  },
+  {
+    "id": "ui_hud",
+    "task_id": "T35",
+    "files": [
+      "art/ui/ui_hud.png"
+    ],
+    "alts": [
+      "art/ui/alt/ui_hud_A.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Asset ui_hud variant B. Image1 is the APPROVED tactical battlefield image, used as EDIT TARGET and COMPOSITION/ART reference. Create ONE complete wide16:9 HUD screenshot by changing ONLY THE HUD overlays. Preserve the entire battlefield painting: identical pulled-back camera, island silhouette, stepped plateau positions, tree positions, flag, tiny2.3-head-tall chibi soldiers and their approximate positions, proportions and color, scene brightness, brush style. Do NOT zoom in, do not make troops tall, do not add a cinematic hero. Approved hand-painted gouache, coarse/fine expressive ink contours, flat strong shadow grouping. Preserve cyan-green undead and warm-gold living faction lights.\nReplace old two top-left counter boxes with exactly THREE SMALL compact troop cards in a vertical stack, each card about17% of screen width and6.5% screen height. They sit at upper left within20px safe margin. Matte dark navy forged-iron frames with fine bronze line, each pictogram at LEFT, concise exact Chinese type at MIDDLE and clear count at RIGHT:\n1 small skeletal SWORD + SHIELD pictogram; \"剑盾\" and \"9/9\"; selected state thin bright CYAN-GREEN outline and a small corner check.\n2 small skeletal SPEAR pictogram; \"长枪\" and \"7/9\"; unselected neutral.\n3 small skeletal BOW pictogram; \"弓兵\" and \"8/9\"; unselected neutral.\nNo full character portraits on cards, simple infantry pictograms only.\nReplace the bottom old energy meter with a clean same-width slim iron framed energy bar occupying about25% of width at bottom center, about3.5% height, exact label \"冥火\" plus small flame glyph and65% cyan-green fill.\nAdd at upper RIGHT one thin dark iron and bronze boss HEALTH BAR, width24% of frame and height3%, warm ivory-gold70% fill. Small precise label immediately above EXACT \"休元帅\". Left of health bar a tiny naval COMMAND PENNANT in gold/ivory (no new family crest). Thin and unobtrusive.\nKeep all overlays inside safe margins and away from troop clusters. No other changes, no extra interface, debug strings, minimap, giant portraits, new lore, logos or titles. All Chinese text exact and readable. This is a UI overlay variation of approved image, not a new battlefield interpretation.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-b9244fe7-e19d-4757-b988-e825b6860815.png",
+    "referenced_image_paths": [
+      "/Users/cyy/Projects/亡魂王子-t35/art/style/battle_mock.png"
+    ],
+    "generation_count": 2,
+    "self_check": [
+      "直接以审批battle_mock为图像编辑输入，保留远景地形、树木、旗和2.3头身小兵。",
+      "左上剑盾9/9、长枪7/9、弓兵8/9三卡，首卡青绿选中态。",
+      "底部冥火能量条、右上休元帅血条及指挥旗齐全，不遮中央交战。",
+      "亡魂青绿/王国暖金分色、厚涂墨线与平涂阴影匹配审批图。",
+      "静态UI示意，非运行截图，血量和兵力示意不用于判定真实战斗状态。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。",
+      "原生尺寸1671×941，与严格16:9相差约0.1129%；保留工具原图，未裁切或重采样。"
+    ],
+    "dimensions": [
+      1671,
+      941
+    ],
+    "sha256": "edb8b6bde0adef168d3ce9721f45c83583bc31d1a6e2687d702b0fa50c321191",
+    "requested_aspect": "16:9",
+    "native_aspect_error_percent": 0.1129
+  },
+  {
+    "id": "ui_ending",
+    "task_id": "T35",
+    "files": [
+      "art/ui/ui_ending.png"
+    ],
+    "alts": [
+      "art/ui/alt/ui_ending_A.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Asset ui_ending variant B. Image1 EDIT TARGET is the ending UI. Preserve exactly its entire layout, illustration style, throne, undead guards, lighting, purple cloak, half-human/half-skull face orientation, the pale golden daylight windows, complete text panel, borders, typography, text contents and button. Make ONLY TWO precise changes on the seated prince:\n1. Replace the GOLD SUN emblem on the center of HIS CHEST ARMOR with a small clearly recognizable GOLD THREE-POINT CROWN badge, matching the undead prince's PERSONAL crown device. This is a crown silhouette, NOT a sun, star, cross, anchor, halo. Keep the size and position of old chest emblem, remove all radiating rays from chest. Palace banner in background can retain state sun.\n2. His narrow golden HEAD CROWN must be visibly BROKEN: create one obvious jagged missing segment at the wearer's LEFT temple (VIEWER RIGHT) beside the skull side, with snapped irregular bronze/gold tips. It is still a recognizable damaged royal crown, NOT intact complete coronation crown. Leave black swept hair and skull/teal eye visible.\nEverything else invariant. Character LEFT face remains skull (viewer right) and character right face remains human (viewer left). Keep angular elongated adult26-year-old prince, hand-painted opaque gouache, pressure-varied ink contours, flat shadow shapes, white-gold worn armor, torn purple cloak, cyan-green rimlight, no3D or triangular facets.\nPreserve EXACT text verbatim without replacing or omitting any characters:\n\"E01\"\n\"灰烬王冠\"\n\"王冠复归，在证据允许范围内平反，亡灵卫队站在王座前。妹妹可能留在宫廷或退居别处，军团仍受命令束缚。王子发现胜利能够恢复身份，却不能让生前生活回来。\"\n\"渡魂人\"\n\"那么，陛下。一切都如你所愿吗？\"\n\"回溯到沉钟湾\"\nThis is E01: oath kept, artificial daylight continues, ordinary Return follows. No new plot details, sunset, departing freed souls, credits or additional UI. ONE wide16:9 image.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-f069fac9-e67e-4b0f-b01e-1f934d0c5fdc.png",
+    "referenced_image_paths": [
+      "/Users/cyy/.codex/generated_images/01a20d84-1842-7990-9fe0-dbe7fb95bda3/exec-c8d675ac-1fd0-4afe-b29c-b68367e5401c.png"
+    ],
+    "generation_count": 2,
+    "self_check": [
+      "E01灰烬王冠标题与canon完整尾声在暗色文本面板内。",
+      "渡魂人台词逐字为“那么，陛下。一切都如你所愿吗？”，按钮为“回溯到沉钟湾”。",
+      "王子断金冠、紫破披风、白金旧甲、私人王冠胸徽、角色左侧骷髅/画面右侧骷髅及青绿冥火保留。",
+      "永昼仍在、亡灵卫队仍列队，未添加解誓/停机/真结局设定，未出现演职员表或封档。",
+      "铜铁细金边、绳与钟纹、暗背景及清晰中文层级符合UI方向。"
+    ],
+    "limitations": [
+      "原生生成位图，未做透明分层、切图、九宫格拉伸或Godot接入。",
+      "主图及备选均从~/.codex/generated_images/复制，未裁切或重采样。",
+      "提示词不含现有游戏、工作室或画师名称。",
+      "所有主稿为in_review，审美与正式纹章验收由Lead决定。",
+      "原生尺寸1672×941，与严格16:9相差约0.0531%；保留工具原图，未裁切或重采样。"
+    ],
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "4ff728ec910a4a9e612f684372eb44dd92175d84804bec3acb9128dc766b6b37",
+    "requested_aspect": "16:9",
+    "native_aspect_error_percent": 0.0531
+  }
+]
