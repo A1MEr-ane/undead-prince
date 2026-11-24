@@ -1,0 +1,134 @@
+{
+  "task": "T30",
+  "date": "2026-11-24",
+  "branch": "codex/t30-crew-art",
+  "tool": "image_gen.imagegen (built-in); model: undisclosed by tool response",
+  "model_id": null,
+  "model_note": "工具返回值仅有 image_url 与 output_hint，没有公开底层模型名；不推定具体模型。",
+  "mode": "built-in image generation; no CLI/API fallback",
+  "reference_sha256": {
+    "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2",
+    "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-BERNARD-R1.png": "f95cdf0bd77e7f789a3a14a811fbde4f9b7eba3029a7d7c9f28cd6d3ed8e2c01",
+    "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-FERRYMAN-R1.png": "7b7c8637cd68cc10e8a96422c2a8e3de3e73133be846c79e82c9cbc740a0bc11"
+  },
+  "reference_roles": {
+    "prince": "faceted low-poly matte material guide only; adult proportions follow Bernard and Ferryman",
+    "bernard": "visual style, adult proportion, board layout",
+    "ferryman": "visual style, adult proportion, board layout; do not copy silhouette"
+  },
+  "crop_box_convention": "[left, top, right, bottom], pixels, right/bottom exclusive; native source 1672 x 941; no resampling",
+  "postprocess": "User-authorized deterministic column cropping with macOS sips. Source images copied intact to sheet.png; all originals retained in ~/.codex/generated_images/. One local crop correction: sips treated (0,0) as centered for hero; explicit x=1 crop corrected all three. No character-generation retries.",
+  "generations": [
+    {
+      "id": "CHAR-STITCHER",
+      "attempt": 1,
+      "generation_count": 1,
+      "rejected": false,
+      "rejection_reason": null,
+      "source": "/Users/cyy/.codex/generated_images/01a20d39-35b8-7fb2-84a2-62611bb719b3/exec-3ca9b193-ddfb-4f4b-90b5-de402b6f5f35.png",
+      "sheet": "art/canon/CHAR-STITCHER/sheet.png",
+      "prompt": "Use case: stylized-concept.\nCreate a polished wide landscape character production concept board, preferably 3072 x 1728 or the highest available landscape resolution, for ONE single character identity. Match the supplied CAPTAIN BERNARD and THE FERRYMAN reference boards: sculpted faceted low-poly 3D volumes, visible planar angular cuts on skin, hair and cloth, simple matte material, restrained wear, quiet soft studio lighting with ground-contact shadows, clean warm grey background, dark English serif title and view labels, fine muted-brown divider rules, small unlabelled palette swatches. Adult character proportions like Bernard, roughly 6.5–7 heads tall, no chibi, no baby-face, no smooth cartoon rendering, no photorealism, no painterly brushwork. The prince image is a MATERIAL reference only; do not copy his crown, cape, armor or proportions. Bernard and Ferryman are STYLE and BOARD-LAYOUT references only, do not copy their character or equipment.\nCRITICAL BOARD LAYOUT for clean separate crops: LEFT 31% of canvas: one large full-body 3/4 HERO illustration, fully contained, feet visible, all held props inside this column, generous margin. MIDDLE 50%: character title across the top, then three full-body orthographic-style FRONT / SIDE / BACK views in three separate equal columns, truly exact frontal, true side profile facing right, true rear. These three views have exactly equal character height and head scale, top of head aligned, feet all on the very same horizontal ground line. Identical relaxed neutral standing pose, arms straight slightly away from body, hands empty with no held props, no detached floating props near these views. Same identity, costume, proportions and features consistently rotated, never mirrored. RIGHT 19%: detached prop study column with props clearly separated, no character here, plus a small palette at bottom. Do not cross column boundaries. Keep the empty column gutters wide enough to crop.\nOnly the exact English character title plus HERO, FRONT, SIDE, BACK, PROPS may be readable text. No narrative, no ages printed, no invented lore, no watermark, no busy environment, no parchment collage, no unrelated characters, no royal cloak, no worn crown or halo. Multiple views of this one character only are allowed.\nCHARACTER: Matilda — the Stitcher. Exact title: \"MATILDA — THE STITCHER\".\nA 38-year-old undead female naval field surgeon, compact sturdy ADULT build and competent amused expression; tied-back auburn hair in a practical small low bun, mature angular ashen face with a couple of SMALL neat sewn seams, no gore. One exposed anatomical BONE wrist, not mechanical, a tiny restrained teal soul-light on that seam. Both hands gloved. Practical patched BROWN leather surgical apron over FADED NAVY tunic, rolled sleeves, worn sturdy boots, belt with a closed leather instrument roll. Work clothing, no armor, no noble regalia.\nHERO: busy capable pose carefully holding ONE curved surgical needle threaded with one visible fine thread between her two gloved hands, needle lifted just enough to read against background, subtle humorous expression. Keep both hands anatomically clear.\nFRONT/SIDE/BACK: identical neutral stance, hands EMPTY. Garment seams, bun, belt roll and apron straps consistent across rotations. Apron covers front; crossing apron straps visible on back. The same one exposed bone wrist is retained anatomically on her LEFT arm in every view; other wrist intact. No open wound.\nPROPS: separate studies of exactly a curved surgical needle with thread, one thread spool, surgical shears, and one opened leather instrument roll containing simple surgical instruments. No other equipment. Palette: ashen grey, brown leather, faded navy, auburn, dull bone, very small muted teal.\nABSOLUTE EXCLUSIONS: hammer, anvil, smith tools, mechanical prosthesis, mechanical hand, crown, royal cape, royal heraldry, gore.",
+      "crops": {
+        "hero.png": [
+          1,
+          0,
+          444,
+          941
+        ],
+        "turnaround.png": [
+          454,
+          0,
+          1308,
+          941
+        ],
+        "props.png": [
+          1320,
+          0,
+          1672,
+          941
+        ]
+      },
+      "derived_generation_counts": {
+        "hero.png": 1,
+        "turnaround.png": 1,
+        "props.png": 1,
+        "sheet.png": 1
+      },
+      "review_notes": "首轮生成，未退回。已逐张查看拆分文件：38岁成年军医方向、赤棕扎发、灰白皮肤整齐缝线、褪蓝军服、棕皮围裙、卷袖手套、单侧露骨腕与少量青绿魂光；主立绘持弯针线，配件含针线、线轴、外科剪、器械卷；未见锤、铁砧、机械义肢、王冠或王室披风。正侧背目视等高、同地线、空手，左腕骨与右髋器械卷朝向对应。已知不足：主立绘的露骨段延及短段前臂，弯针为展示而放大；手套握持遮挡部分手指，未逐根确认；不能据此认定为几何精确建模图。"
+    },
+    {
+      "id": "CHAR-MAGE",
+      "attempt": 1,
+      "generation_count": 1,
+      "rejected": false,
+      "rejection_reason": null,
+      "source": "/Users/cyy/.codex/generated_images/01a20d39-35b8-7fb2-84a2-62611bb719b3/exec-36c4a959-e122-4932-8fb0-bd36d803a59c.png",
+      "sheet": "art/canon/CHAR-MAGE/sheet.png",
+      "prompt": "Use case: stylized-concept.\nCreate a polished wide landscape character production concept board, preferably 3072 x 1728 or the highest available landscape resolution, for ONE single character identity. Match the supplied CAPTAIN BERNARD and THE FERRYMAN reference boards: sculpted faceted low-poly 3D volumes, visible planar angular cuts on skin, hair and cloth, simple matte material, restrained wear, quiet soft studio lighting with ground-contact shadows, clean warm grey background, dark English serif title and view labels, fine muted-brown divider rules, small unlabelled palette swatches. Adult character proportions like Bernard, roughly 6.5–7 heads tall, no chibi, no baby-face, no smooth cartoon rendering, no photorealism, no painterly brushwork. The prince image is a MATERIAL reference only; do not copy his crown, cape, armor or proportions. Bernard and Ferryman are STYLE and BOARD-LAYOUT references only, do not copy their character or equipment.\nCRITICAL BOARD LAYOUT for clean separate crops: LEFT 31% of canvas: one large full-body 3/4 HERO illustration, fully contained, feet visible, all held props inside this column, generous margin. MIDDLE 50%: character title across the top, then three full-body orthographic-style FRONT / SIDE / BACK views in three separate equal columns, truly exact frontal, true side profile facing right, true rear. These three views have exactly equal character height and head scale, top of head aligned, feet all on the very same horizontal ground line. Identical relaxed neutral standing pose, arms straight slightly away from body, hands empty with no held props, no detached floating props near these views. Same identity, costume, proportions and features consistently rotated, never mirrored. RIGHT 19%: detached prop study column with props clearly separated, no character here, plus a small palette at bottom. Do not cross column boundaries. Keep the empty column gutters wide enough to crop.\nOnly the exact English character title plus HERO, FRONT, SIDE, BACK, PROPS may be readable text. No narrative, no ages printed, no invented lore, no watermark, no busy environment, no parchment collage, no unrelated characters, no royal cloak, no worn crown or halo. Multiple views of this one character only are allowed.\nCHARACTER: Oswin — the Court Mage. Exact title: \"OSWIN — THE COURT MAGE\".\nA single 43-year-old undead male LICH SCHOLAR, thin solid-footed adult figure, slightly hunched shoulders and an exacting scholarly attitude. Clearly EXPOSED SKELETAL BONE SKULL FACE with angular cheekbones, nasal cavity, articulated jaw, small DIM TEAL EYE LIGHTS, not a living skin-covered face and not a dark empty void. A SHORT faded INK-BLUE scholarly hood resting around skull and upper shoulders, without long pointed drooping top or ornate ceremonial mantle. NARROW layered GREY cloth robes over thin trousers, restrained wear, modest belt and simple worn boots. His two solid booted FEET must be fully visible and planted on the floor, no floating hem or spectral body. Thin bony hands, no jewelry or regalia. Hood remains worn in all views. Palette ink-blue hood, grey layered robes, bone ivory, dark boots, tiny muted teal.\nHERO: slightly hunched 3/4 scholarly stance, holding a SMALL annotated paper manuscript in one hand and a clearly distinct rectangular GREY STONE SLATE in the other, its rough thick mineral edge visible. Exactly THREE detached torn manuscript pages floating gently near his upper torso within the HERO column, subdued and noncombat magical effect. Only faint abstract marks on documents, NO readable sentences or invented narrative.\nFRONT/SIDE/BACK: same identity and outfit, neutral relaxed standing pose, hands completely empty, no documents or floating pages in those three views; same slight upper back hunch in each rotated view. Equal height and scale, exact side profile facing right, no head rotation toward camera, two real boots visible.\nPROPS: one separate PAPER MANUSCRIPT and one separate rectangular thick GREY STONE SLATE, plus a few detached torn paper leaves arranged neatly, same design as held props. Manuscript marks are abstract annotation strokes, no readable text.\nABSOLUTE EXCLUSIONS: crown, royal cape, halo, staff of any size, weapon, floating body, faceless black hood, Ferryman silhouette, long pointed wizard hat, lavish gold decoration, child proportions, gore.",
+      "crops": {
+        "hero.png": [
+          1,
+          0,
+          458,
+          941
+        ],
+        "turnaround.png": [
+          470,
+          0,
+          1305,
+          941
+        ],
+        "props.png": [
+          1320,
+          0,
+          1672,
+          941
+        ]
+      },
+      "derived_generation_counts": {
+        "hero.png": 1,
+        "turnaround.png": 1,
+        "props.png": 1,
+        "sheet.png": 1
+      },
+      "review_notes": "首轮生成，未退回。已逐张查看拆分文件：成年瘦长巫妖、骨质骷髅脸、微弱青绿眼火、褪墨蓝短兜帽、层叠灰袍、略佝偻且实体双脚落地；主立绘持手稿及石板，三张残页漂浮；配件含手稿、石板及残页。正侧背目视等高、同地线、空手，无漂浮残页；未见冠冕、光环、巨杖、王室披风或悬浮身体，与渡魂人的无脸长袍剪影可区分。已知不足：主立绘与道具石板的破边轮廓略有差异，骨手指部分遮挡；手稿符号仅为不可读图形，不构成新设定；未做几何审查。"
+    },
+    {
+      "id": "CHAR-BUGLER",
+      "attempt": 1,
+      "generation_count": 1,
+      "rejected": false,
+      "rejection_reason": null,
+      "source": "/Users/cyy/.codex/generated_images/01a20d39-35b8-7fb2-84a2-62611bb719b3/exec-7f965624-b4e7-4250-824b-14099d3d903c.png",
+      "sheet": "art/canon/CHAR-BUGLER/sheet.png",
+      "prompt": "Use case: stylized-concept.\nCreate a polished wide landscape character production concept board, preferably 3072 x 1728 or the highest available landscape resolution, for ONE single character identity. Match the supplied CAPTAIN BERNARD and THE FERRYMAN reference boards: sculpted faceted low-poly 3D volumes, visible planar angular cuts on skin, hair and cloth, simple matte material, restrained wear, quiet soft studio lighting with ground-contact shadows, clean warm grey background, dark English serif title and view labels, fine muted-brown divider rules, small unlabelled palette swatches. Adult character proportions like Bernard, roughly 6.5–7 heads tall, no chibi, no baby-face, no smooth cartoon rendering, no photorealism, no painterly brushwork. The prince image is a MATERIAL reference only; do not copy his crown, cape, armor or proportions. Bernard and Ferryman are STYLE and BOARD-LAYOUT references only, do not copy their character or equipment.\nCRITICAL BOARD LAYOUT for clean separate crops: LEFT 31% of canvas: one large full-body 3/4 HERO illustration, fully contained, feet visible, all held props inside this column, generous margin. MIDDLE 50%: character title across the top, then three full-body orthographic-style FRONT / SIDE / BACK views in three separate equal columns, truly exact frontal, true side profile facing right, true rear. These three views have exactly equal character height and head scale, top of head aligned, feet all on the very same horizontal ground line. Identical relaxed neutral standing pose, arms straight slightly away from body, hands empty with no held props, no detached floating props near these views. Same identity, costume, proportions and features consistently rotated, never mirrored. RIGHT 19%: detached prop study column with props clearly separated, no character here, plus a small palette at bottom. Do not cross column boundaries. Keep the empty column gutters wide enough to crop.\nOnly the exact English character title plus HERO, FRONT, SIDE, BACK, PROPS may be readable text. No narrative, no ages printed, no invented lore, no watermark, no busy environment, no parchment collage, no unrelated characters, no royal cloak, no worn crown or halo. Multiple views of this one character only are allowed.\nCHARACTER: Pip — the Bugler. Exact title: \"PIP — THE BUGLER\".\nA single 19-year-old YOUNG ADULT MALE undead naval bugler, SHORT in overall stature but with FULL ADULT ANATOMY, long adult limbs, head roughly 1/6.5 of standing height like Captain Bernard. Lean compact build with slightly angular young man's face, not a boy, not a small child, no baby face and no enormous eyes or head. Shaggy short dark chestnut hair. Ashen grey upper face with small teal soul-lit eyes, clearly EXPOSED BONE LOWER JAW with angular tooth row and no gore, recognisably UNDEAD. Expressive mischievous grin and lively posture.\nSimple FADED NAVY short sailor tunic with plain sailor collar, worn leather belt, RUST-RED scarf tied around neck, dark fitted trousers and sturdy boots. No armor, no elegant noble clothes or cape. No hat or crown. Restrained material wear and faceted volumes.\nHERO: an impish energetic but readable full-body 3/4 standing stance with one knee relaxed and weight on other leg, youthful confidence; holding a slightly OVERSIZED BRASS BUGLE clearly in hands. A SMALL faded navy cloth PENNANT with a simple BROKEN-CROWN SYMBOL is tied to the bugle by a short attachment; it is a small instrument flag, NOT a cape and NOT an actual crown worn on him. The bugle is a simple recognisable coiled military SIGNAL HORN with one bell and mouthpiece, NO valves, not a trumpet. Keep all props inside hero column.\nFRONT/SIDE/BACK: exact same young ADULT undead face, hair, scarf and outfit, equal scale and head size, feet grounded, relaxed neutral stance with arms gently apart, hands completely EMPTY, no bugle and no pennant present on any turnaround view. All three figures are 6.5-head adult proportion, same height, same neutral stance, exact side profile facing right.\nPROPS: one separate large matte aged BRASS BUGLE with simple coiled pipe, single bell and mouthpiece, NO valves; one separate SMALL FRAYED NAVY PENNANT with dull-gold BROKEN-CROWN emblem, consistent with hero pennant. The emblem is a simple split three-point crown graphic crossed by a crack, graphic only, no lettering.\nSmall palette: faded navy, rust-red, dull brass, dark leather, ashen grey, bone, tiny teal.\nABSOLUTE EXCLUSIONS: child, toddler, chibi, huge head, living healthy human, king's crown worn, royal cape, regal mantle, weapon, extra characters, gore.",
+      "crops": {
+        "hero.png": [
+          1,
+          0,
+          462,
+          941
+        ],
+        "turnaround.png": [
+          474,
+          0,
+          1308,
+          941
+        ],
+        "props.png": [
+          1320,
+          0,
+          1672,
+          941
+        ]
+      },
+      "derived_generation_counts": {
+        "hero.png": 1,
+        "turnaround.png": 1,
+        "props.png": 1,
+        "sheet.png": 1
+      },
+      "review_notes": "首轮生成，未退回。已逐张查看拆分文件：19岁年轻成年人体比例、灰白上脸与骨质下颌、青绿眼光、俏皮姿态、褪蓝短海军衣、铁锈红领巾与靴；主立绘持略大铜号及小碎王冠号旗；配件铜号和旗齐全。正侧背目视等高、同地线、空手，无儿童大头比例；王冠仅为旗面裂纹图形，未戴王冠或披王室披风。已知不足：主立绘铜号环管比道具页更窄，建模前需统一尺寸；握持手部分手指遮挡。各图独立构图未设跨角色物理身高标尺，不能从画布高低推定实际身高。"
+    }
+  ]
+}
