@@ -33,3 +33,7 @@ escalate_if: [规格里的比例或部件与三视图冲突, 需要改图集格�
 
 ## 交付报告
 reports/agents/T17.md
+
+## 续作说明（2026-11-24 11:15 追加）
+- 规格已改为"离地高度"写法（`proportions.landmarks_from_ground`），与三视图偏差 10% 以内照三视图做，不必上报。
+- 上一次执行因 Codex 额度用尽中断，工作区里有**未提交的改动**（已开始让 build_swordsman.py 支持自定义 model/skeleton/pose 构建函数）。先 `git status` 和 `git diff` 查看，在其基础上继续，不要从头重来。
