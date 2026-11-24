@@ -1,0 +1,1754 @@
+diff --git a/proto/rotation/.gitignore b/proto/rotation/.gitignore
+new file mode 100644
+index 0000000..a29e756
+--- /dev/null
++++ b/proto/rotation/.gitignore
+@@ -0,0 +1,2 @@
++override.cfg
++evidence/*-engine.log
+diff --git a/proto/rotation/effects.gd b/proto/rotation/effects.gd
+new file mode 100644
+index 0000000..2c411a5
+--- /dev/null
++++ b/proto/rotation/effects.gd
+@@ -0,0 +1,216 @@
++extends Node3D
++
++const TEAL := Color(0.18, 0.95, 0.72)
++const GOLD := Color(1.0, 0.65, 0.23)
++const ARROW_FROM := Vector3(-6.0, 1.0, -3.8)
++const ARROW_TO := Vector3(-2.4, 0.04, -1.0)
++const FIRE_FROM := Vector3(1.3, 0.9, -4.8)
++const FIRE_TO := Vector3(4.5, 0.2, -1.0)
++const FAN_ORIGIN := Vector3(-4, 0.08, 3.3)
++const FAN_FORWARD := Vector3(1, 0, -0.35)
++var ribbons := ImmediateMesh.new()
++var ground_materials: Array[ShaderMaterial] = []
++var bursts: Array[Sprite3D] = []
++var spheres: Array[MeshInstance3D] = []
++var last_time := 0.0
++var impacts := 0
++var axis_fallbacks := 0
++var fan_tip := Vector3.ZERO
++
++func _ready() -> void:
++	var mesh := MeshInstance3D.new()
++	mesh.mesh = ribbons
++	var mat := ShaderMaterial.new()
++	mat.shader = load("res://flat.gdshader")
++	mesh.material_override = mat
++	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++	mesh.custom_aabb = AABB(Vector3(-14, -1, -14), Vector3(28, 12, 28))
++	add_child(mesh)
++	_ground(Vector3(3.8, 0.045, 3.6), 3.1, TEAL, 0)
++	_ground(Vector3(3.8, 0.055, 3.6), 2.4, GOLD, 1)
++	_ground(ARROW_TO, 1.0, GOLD, 0)
++	_ground(FIRE_TO, 1.8, TEAL, 0)
++	var texture := _burst_texture()
++	for i in 3:
++		var burst := Sprite3D.new()
++		burst.texture = texture
++		burst.hframes = 8
++		burst.pixel_size = 0.028
++		burst.billboard = BaseMaterial3D.BILLBOARD_ENABLED
++		burst.alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
++		burst.no_depth_test = false
++		burst.position = [FIRE_TO + Vector3.UP * 0.8, Vector3(6, 1.1, 1.5), Vector3(3.8, 1, 3.6)][i]
++		add_child(burst)
++		bursts.append(burst)
++	for i in 2:
++		var sphere := MeshInstance3D.new()
++		var ball := SphereMesh.new()
++		ball.radius = 0.18
++		ball.height = 0.36
++		ball.radial_segments = 12
++		ball.rings = 6
++		sphere.mesh = ball
++		var orb_material := StandardMaterial3D.new()
++		orb_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
++		orb_material.albedo_color = TEAL.lightened(0.45)
++		orb_material.emission_enabled = true
++		orb_material.emission = TEAL
++		orb_material.emission_energy_multiplier = 2.0
++		sphere.material_override = orb_material
++		add_child(sphere)
++		spheres.append(sphere)
++	_label("ARROW VOLLEYS  /  WORLD +X,+Z", Vector3(-5.2, 0.2, -5.2))
++	_label("SOULFIRE  /  PARABOLA", Vector3(3, 0.2, -5.5))
++	_label("FAN  /  WORLD +X,-Z", Vector3(-4, 0.2, 5.0))
++	_label("SIGIL + BURN", Vector3(3.8, 0.2, 5.5))
++	_label("AXIAL BEAM + CHAIN", Vector3(0, 0.2, 0.4))
++
++func _label(value: String, at: Vector3) -> void:
++	var label := Label3D.new()
++	label.text = value
++	label.position = at
++	label.font_size = 30
++	label.pixel_size = 0.009
++	label.modulate = Color("c4cec9")
++	label.outline_modulate = Color("101820")
++	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
++	add_child(label)
++
++func _ground(at: Vector3, diameter: float, color: Color, kind: int) -> void:
++	var mesh := MeshInstance3D.new()
++	var plane := PlaneMesh.new()
++	plane.size = Vector2.ONE * diameter
++	mesh.mesh = plane
++	mesh.position = at
++	var mat := ShaderMaterial.new()
++	mat.shader = load("res://ground.gdshader")
++	mat.set_shader_parameter("tint", color)
++	mat.set_shader_parameter("kind", kind)
++	mesh.material_override = mat
++	add_child(mesh)
++	ground_materials.append(mat)
++
++static func ballistic(from: Vector3, to: Vector3, u: float, height: float) -> Vector3:
++	return from.lerp(to, u) + Vector3.UP * (4.0 * height * u * (1.0 - u))
++
++static func tangent(from: Vector3, to: Vector3, u: float, height: float) -> Vector3:
++	return to - from + Vector3.UP * (4.0 * height * (1.0 - 2.0 * u))
++
++static func axial_side(axis: Vector3, view: Vector3, camera_up: Vector3) -> Vector3:
++	var side := axis.cross(view)
++	if side.length_squared() < 0.0001:
++		side = axis.cross(camera_up)
++	if side.length_squared() < 0.0001:
++		side = axis.cross(Vector3.RIGHT)
++	return side.normalized()
++
++func _quad(a: Vector3, b: Vector3, c: Vector3, d: Vector3, color: Color) -> void:
++	for v in [a, b, c, a, c, d]:
++		ribbons.surface_set_color(color)
++		ribbons.surface_add_vertex(v)
++
++func _strip(a: Vector3, b: Vector3, width: float, color: Color, camera: Camera3D) -> void:
++	var axis := (b - a).normalized()
++	if axis.length_squared() < 0.001:
++		return
++	var side := axial_side(axis, camera.global_basis.z, camera.global_basis.y) * width * 0.5
++	_quad(a - side, b - side, b + side, a + side, color)
++
++func _particle(at: Vector3, size: float, color: Color, camera: Camera3D) -> void:
++	var right := camera.global_basis.x * size
++	var up := camera.global_basis.y * size
++	_quad(at - right - up, at + right - up, at + right + up, at - right + up, Color("101b23"))
++	_quad(at - right * 0.72 - up * 0.7, at + right * 0.72 - up * 0.7, at + up * 0.9, at - right * 0.6 + up * 0.3, color)
++
++func update(time: float, camera: Camera3D, detect_impact: bool = true) -> bool:
++	var hit := false
++	ribbons.clear_surfaces()
++	ribbons.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
++	for mat in ground_materials:
++		mat.set_shader_parameter("clock", time)
++	# Four pooled volleys: flight lasts 1.4 s, embedded arrows last exactly 3 s.
++	for volley in 4:
++		var age := fposmod(time + volley * 0.77, 4.4)
++		var old_age := fposmod(last_time + volley * 0.77, 4.4)
++		if old_age < 1.4 and age >= 1.4 and detect_impact:
++			hit = true
++			impacts += 1
++		for i in 6:
++			var offset := Vector3((i % 3 - 1) * 0.32, 0, (i / 3) * 0.29)
++			var from := ARROW_FROM + offset
++			var to := ARROW_TO + offset
++			var u := minf(age / 1.4, 1.0)
++			var tip := ballistic(from, to, u, 2.5)
++			var axis := tangent(from, to, u, 2.5).normalized()
++			_strip(tip - axis * 0.65, tip, 0.07, Color("121a23"), camera)
++			_strip(tip - axis * 0.59, tip - axis * 0.09, 0.028, Color("e3bc79"), camera)
++			_strip(tip - axis * 0.14, tip, 0.10, Color("dbe7de"), camera)
++			_strip(tip - axis * 0.65, tip - axis * 0.5, 0.14, Color("b96b4f"), camera)
++			if age < 1.4:
++				for j in 6:
++					var a := maxf(0.0, u - j * 0.025)
++					var b := maxf(0.0, u - (j + 1) * 0.025)
++					_strip(ballistic(from, to, a, 2.5), ballistic(from, to, b, 2.5), 0.028 * (1.0 - j / 6.0), Color(0.95, 0.75, 0.4, 0.55), camera)
++	for i in 2:
++		var age := fposmod(time + i * 1.1, 2.2)
++		var u := minf(age / 1.3, 1.0)
++		var offset := Vector3(i * 0.5, 0, 0)
++		var at := ballistic(FIRE_FROM + offset, FIRE_TO + offset, u, 2.1)
++		spheres[i].position = at
++		spheres[i].visible = age < 1.3
++		if age < 1.3:
++			_particle(at, 0.28, Color(0.12, 0.9, 0.65, 0.65), camera)
++			for j in 10:
++				var a := maxf(0.0, u - j * 0.027)
++				var b := maxf(0.0, u - (j + 1) * 0.027)
++				_strip(ballistic(FIRE_FROM + offset, FIRE_TO + offset, a, 2.1), ballistic(FIRE_FROM + offset, FIRE_TO + offset, b, 2.1), 0.23 * (1.0 - j / 10.0), Color(TEAL, 0.7), camera)
++	# A filled world-space fan; particles move along the same fixed world rays.
++	var forward := FAN_FORWARD.normalized()
++	fan_tip = FAN_ORIGIN + forward * 3.6
++	for i in 24:
++		var a := forward.rotated(Vector3.UP, lerpf(-0.50, 0.50, i / 24.0))
++		var b := forward.rotated(Vector3.UP, lerpf(-0.50, 0.50, (i + 1) / 24.0))
++		_quad(FAN_ORIGIN, FAN_ORIGIN + a * 3.6, FAN_ORIGIN + b * 3.6, FAN_ORIGIN, Color(0.91, 0.28, 0.07, 0.65))
++		var u := fposmod(time * 0.8 + i * 0.173, 1.0)
++		var point := FAN_ORIGIN + a * (0.25 + u * 3.2) + Vector3.UP * (0.15 + sin(u * PI) * 0.45)
++		_particle(point, 0.09 + u * 0.08, GOLD if i % 2 == 0 else Color("d94a25"), camera)
++	_strip(FAN_ORIGIN + Vector3.UP * 0.03, fan_tip, 0.045, Color("ffe9ac"), camera)
++	# Axial beam + a chain whose control points stay in world space.
++	var beam_a := Vector3(-1.5, 1.0, 0.1)
++	var beam_b := Vector3(2.0, 1.5, -0.7)
++	_strip(beam_a, beam_b, 0.22, Color(TEAL, 0.3), camera)
++	_strip(beam_a, beam_b, 0.065, TEAL.lightened(0.6), camera)
++	var nodes := [beam_b, Vector3(3, 1.5, 0.5), Vector3(5.4, 1.0, 1.1), Vector3(6, 1.2, 2.3)]
++	for i in 3:
++		var a: Vector3 = nodes[i]
++		var b: Vector3 = nodes[i + 1]
++		var previous := a
++		for j in range(1, 7):
++			var u := j / 6.0
++			var wobble := 0.0 if j == 6 else sin(j * 17.0 + floor(time * 12.0)) * 0.13
++			var next := a.lerp(b, u) + Vector3(0, wobble, wobble)
++			_strip(previous, next, 0.045, Color("fff1b5"), camera)
++			previous = next
++	for i in bursts.size():
++		var phase := fposmod(time + i * 0.37, 0.8)
++		bursts[i].frame = mini(7, int(phase * 10.0))
++		bursts[i].modulate = TEAL if i != 2 else GOLD
++	ribbons.surface_end()
++	last_time = time
++	return hit
++
++func _burst_texture() -> ImageTexture:
++	var img := Image.create(64 * 8, 64, false, Image.FORMAT_RGBA8)
++	for frame in 8:
++		var radius := 0.26 + frame * 0.06
++		for y in 64:
++			for x in 64:
++				var p := (Vector2(x, y) - Vector2(31.5, 31.5)) / 32.0
++				var angle := p.angle()
++				var contour := radius * (1.0 + sin(angle * 7.0 + frame * 0.5) * 0.14 + sin(angle * 13.0) * 0.06)
++				var r := p.length()
++				if r > contour or r < maxf(0.0, frame - 3.0) * 0.11:
++					continue
++				var color := Color("101b26") if r > contour - 0.065 else (Color("efffd1") if r < contour * 0.58 else Color("78eabb"))
++				img.set_pixel(frame * 64 + x, y, color)
++	return ImageTexture.create_from_image(img)
+diff --git a/proto/rotation/effects.gd.uid b/proto/rotation/effects.gd.uid
+new file mode 100644
+index 0000000..a27c941
+--- /dev/null
++++ b/proto/rotation/effects.gd.uid
+@@ -0,0 +1 @@
++uid://mdw24d6o3egv
+diff --git a/proto/rotation/evidence/parse-effects.gd.log b/proto/rotation/evidence/parse-effects.gd.log
+new file mode 100644
+index 0000000..ef295ec
+--- /dev/null
++++ b/proto/rotation/evidence/parse-effects.gd.log
+@@ -0,0 +1,2 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
+diff --git a/proto/rotation/evidence/parse-main.gd.log b/proto/rotation/evidence/parse-main.gd.log
+new file mode 100644
+index 0000000..ef295ec
+--- /dev/null
++++ b/proto/rotation/evidence/parse-main.gd.log
+@@ -0,0 +1,2 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
+diff --git a/proto/rotation/evidence/parse-sprite_factory.gd.log b/proto/rotation/evidence/parse-sprite_factory.gd.log
+new file mode 100644
+index 0000000..ef295ec
+--- /dev/null
++++ b/proto/rotation/evidence/parse-sprite_factory.gd.log
+@@ -0,0 +1,2 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
+diff --git a/proto/rotation/evidence/parse-unit.gd.log b/proto/rotation/evidence/parse-unit.gd.log
+new file mode 100644
+index 0000000..ef295ec
+--- /dev/null
++++ b/proto/rotation/evidence/parse-unit.gd.log
+@@ -0,0 +1,2 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
+diff --git a/proto/rotation/evidence/runtime-failure.log b/proto/rotation/evidence/runtime-failure.log
+new file mode 100644
+index 0000000..4d1601b
+--- /dev/null
++++ b/proto/rotation/evidence/runtime-failure.log
+@@ -0,0 +1,44 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
++ERROR: Condition "ret != noErr" is true. Returning: ""
++   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
++SCRIPT ERROR: Trying to assign an array of type "Array" to a variable of type "Array[String]".
++   at: _ready (res://main.gd:61)
++   GDScript backtrace (most recent call first):
++       [0] _ready (res://main.gd:61)
++ERROR: Node not inside tree. Use look_at_from_position() instead.
++   at: look_at (scene/3d/node_3d.cpp:1253)
++   GDScript backtrace (most recent call first):
++       [0] _update_camera (res://main.gd:186)
++       [1] _advance (res://main.gd:198)
++       [2] _process (res://main.gd:216)
++SCRIPT ERROR: Invalid call. Nonexistent function 'update' in base 'Nil'.
++   at: _advance (res://main.gd:201)
++   GDScript backtrace (most recent call first):
++       [0] _advance (res://main.gd:201)
++       [1] _process (res://main.gd:216)
++ERROR: Node not inside tree. Use look_at_from_position() instead.
++   at: look_at (scene/3d/node_3d.cpp:1253)
++   GDScript backtrace (most recent call first):
++       [0] _update_camera (res://main.gd:186)
++       [1] _advance (res://main.gd:198)
++       [2] _process (res://main.gd:216)
++SCRIPT ERROR: Invalid call. Nonexistent function 'update' in base 'Nil'.
++   at: _advance (res://main.gd:201)
++   GDScript backtrace (most recent call first):
++       [0] _advance (res://main.gd:201)
++       [1] _process (res://main.gd:216)
++ERROR: Node not inside tree. Use look_at_from_position() instead.
++   at: look_at (scene/3d/node_3d.cpp:1253)
++   GDScript backtrace (most recent call first):
++       [0] _update_camera (res://main.gd:186)
++       [1] _advance (res://main.gd:198)
++       [2] _process (res://main.gd:216)
++SCRIPT ERROR: Invalid call. Nonexistent function 'update' in base 'Nil'.
++   at: _advance (res://main.gd:201)
++   GDScript backtrace (most recent call first):
++       [0] _advance (res://main.gd:201)
++       [1] _process (res://main.gd:216)
++ERROR: Node not inside tree. Use look_at_from_position() instead.
++   at: look_at (scene/3d/node_3d.cpp:1253)
++   GDScript backtrace (most recent call first):
+diff --git a/proto/rotation/evidence/verify.json b/proto/rotation/evidence/verify.json
+new file mode 100644
+index 0000000..529867f
+--- /dev/null
++++ b/proto/rotation/evidence/verify.json
+@@ -0,0 +1,5 @@
++{
++  "ok": false,
++  "error": "Command '['godot', '--path', '/Users/cyy/Projects/\u4ea1\u9b42\u738b\u5b50-t49/proto/rotation', '--log-file', '/Users/cyy/Projects/\u4ea1\u9b42\u738b\u5b50-t49/proto/rotation/evidence/headless-engine.log', '--headless', '--max-fps', '120', '--', '--orbit=6', '--units=200', '--seconds=2']' timed out after 90 seconds",
++  "checks": []
++}
+\ No newline at end of file
+diff --git a/proto/rotation/flat.gdshader b/proto/rotation/flat.gdshader
+new file mode 100644
+index 0000000..641b04e
+--- /dev/null
++++ b/proto/rotation/flat.gdshader
+@@ -0,0 +1,6 @@
++shader_type spatial;
++render_mode unshaded, cull_disabled, shadows_disabled, blend_mix, depth_draw_opaque;
++void fragment() {
++	ALBEDO = COLOR.rgb;
++	ALPHA = COLOR.a;
++}
+diff --git a/proto/rotation/flat.gdshader.uid b/proto/rotation/flat.gdshader.uid
+new file mode 100644
+index 0000000..5062fd6
+--- /dev/null
++++ b/proto/rotation/flat.gdshader.uid
+@@ -0,0 +1 @@
++uid://dwgilsjh8m1gf
+diff --git a/proto/rotation/ground.gdshader b/proto/rotation/ground.gdshader
+new file mode 100644
+index 0000000..7df1dbf
+--- /dev/null
++++ b/proto/rotation/ground.gdshader
+@@ -0,0 +1,23 @@
++shader_type spatial;
++render_mode unshaded, cull_disabled, shadows_disabled;
++uniform vec4 tint : source_color = vec4(0.12, 0.16, 0.18, 1.0);
++uniform int kind = 0;
++uniform float clock = 0.0;
++void fragment() {
++	vec2 p = (UV - 0.5) * 2.0;
++	float r = length(p);
++	if (r > 0.98) { discard; }
++	vec3 ink = vec3(0.025, 0.035, 0.05);
++	vec3 col = tint.rgb;
++	if (kind == 0) {
++		float ring = step(abs(r - 0.83), 0.035) + step(abs(r - 0.97), 0.025);
++		float rune = step(abs(sin(atan(p.y, p.x) * 12.0)), 0.15) * step(0.70, r);
++		col = mix(col * 0.22, col, clamp(ring + rune, 0.0, 1.0));
++	} else {
++		float flame = sin(p.x * 22.0 + clock * 3.0 + sin(p.y * 17.0)) * sin(p.y * 19.0 - clock * 5.0);
++		col = mix(ink, col * 0.65, step(-0.30, flame));
++		col = mix(col, tint.rgb * 1.5, step(0.53, flame));
++		col = mix(col, ink, step(0.89, r));
++	}
++	ALBEDO = col;
++}
+diff --git a/proto/rotation/ground.gdshader.uid b/proto/rotation/ground.gdshader.uid
+new file mode 100644
+index 0000000..69086d3
+--- /dev/null
++++ b/proto/rotation/ground.gdshader.uid
+@@ -0,0 +1 @@
++uid://bqkpoq38mebil
+diff --git a/proto/rotation/main.gd b/proto/rotation/main.gd
+new file mode 100644
+index 0000000..ee030c7
+--- /dev/null
++++ b/proto/rotation/main.gd
+@@ -0,0 +1,339 @@
++extends Node3D
++
++const Factory = preload("res://sprite_factory.gd")
++const Soldier = preload("res://unit.gd")
++const Effects = preload("res://effects.gd")
++var args := {}
++var camera := Camera3D.new()
++var effects: Node3D
++var units: Array[Node3D] = []
++var hud := Label.new()
++var yaw := 0.0
++var target_yaw := 0.0
++var zoom := 27.0
++var target_zoom := 27.0
++var angular_speed := 0.0
++var orbit_seconds := 0.0
++var orbit_age := 0.0
++var world_time := 0.0
++var stop_left := 0.0
++var shake_left := 0.0
++var dragging := false
++var capturing := false
++var moving := false
++var modes: Array[String] = []
++var phase := 0
++var phase_age := 0.0
++var warmup := 1.5
++var sample_seconds := 4.0
++var samples: Array[float] = []
++var draws: Array[float] = []
++var cpu: Array[float] = []
++var results: Array[Dictionary] = []
++var completed := false
++var raw_min := 0.0
++var raw_max := 0.0
++var reversed := false
++var frame_last_us := 0
++var headless := false
++var output := ""
++var shot_manifest: Array[Dictionary] = []
++
++func _ready() -> void:
++	for argument in OS.get_cmdline_user_args():
++		var pair := argument.trim_prefix("--").split("=", true, 1)
++		args[pair[0]] = pair[1] if pair.size() == 2 else "true"
++	headless = DisplayServer.get_name() == "headless"
++	var count := int(args.get("units", "50"))
++	if count not in [50, 200, 500]:
++		push_error("units must be 50, 200 or 500")
++		get_tree().quit(2)
++		return
++	orbit_seconds = float(args.get("orbit", "0"))
++	sample_seconds = float(args.get("seconds", "4"))
++	output = args.get("out", ProjectSettings.globalize_path("res://../../shots/t49"))
++	var mode: String = args.get("mode", "both")
++	if mode not in ["render", "move", "both"] or sample_seconds < 0.5 or (args.has("orbit") and orbit_seconds <= 0):
++		push_error("invalid mode, seconds or orbit")
++		get_tree().quit(2)
++		return
++	if args.has("bench") or args.has("orbit"):
++		modes = ["render", "move"] if mode == "both" else [mode]
++		moving = modes[0] == "move"
++	_build_stage()
++	_build_units(count)
++	effects = Effects.new()
++	add_child(effects)
++	var layer := CanvasLayer.new()
++	add_child(layer)
++	layer.add_child(hud)
++	hud.position = Vector2(20, 16)
++	hud.add_theme_font_size_override("font_size", 18)
++	hud.add_theme_color_override("font_color", Color("e5e3cf"))
++	hud.add_theme_color_override("font_shadow_color", Color("101820"))
++	hud.add_theme_constant_override("shadow_offset_x", 2)
++	hud.add_theme_constant_override("shadow_offset_y", 2)
++	_update_camera(0, true)
++	_self_check()
++	print("CONFIG " + JSON.stringify({"units": count, "resolution": get_viewport().get_visible_rect().size, "display": DisplayServer.get_name(), "renderer": RenderingServer.get_current_rendering_method(), "driver": RenderingServer.get_current_rendering_driver_name(), "adapter": RenderingServer.get_video_adapter_name(), "headless": headless, "warmup_s": warmup, "sample_s": sample_seconds, "vsync": "disabled", "godot": Engine.get_version_info().string}))
++	if args.has("shots"):
++		if headless:
++			print("SHOTS_SKIPPED headless display; no rendered image available")
++			if modes.is_empty():
++				get_tree().quit()
++		else:
++			capturing = true
++			_capture_sequence.call_deferred()
++	frame_last_us = Time.get_ticks_usec()
++
++func _build_stage() -> void:
++	add_child(camera)
++	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
++	camera.near = 0.1
++	camera.far = 150
++	var env := WorldEnvironment.new()
++	env.environment = Environment.new()
++	env.environment.background_mode = Environment.BG_COLOR
++	env.environment.background_color = Color("17232c")
++	env.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
++	env.environment.ambient_light_color = Color.WHITE
++	env.environment.ambient_light_energy = 0.8
++	env.environment.glow_enabled = true
++	add_child(env)
++	var base := MeshInstance3D.new()
++	var mesh := CylinderMesh.new()
++	mesh.top_radius = 11.5
++	mesh.bottom_radius = 11.8
++	mesh.height = 0.45
++	mesh.radial_segments = 64
++	base.mesh = mesh
++	base.position.y = -0.24
++	var mat := StandardMaterial3D.new()
++	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
++	mat.albedo_color = Color("34434a")
++	base.material_override = mat
++	add_child(base)
++	for i in 4:
++		var label := Label3D.new()
++		label.text = ["+Z", "+X", "-Z", "-X"][i]
++		label.position = Vector3(sin(i * PI / 2.0), 0.2, cos(i * PI / 2.0)) * Vector3(10.6, 1, 10.6)
++		label.font_size = 64
++		label.pixel_size = 0.012
++		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
++		add_child(label)
++
++func _build_units(count: int) -> void:
++	var full: Dictionary = Factory.build(true)
++	var bare: Dictionary = Factory.build(false)
++	var palettes: Array = []
++	for color in [Color("395465"), Color("8e3c38"), Color("376668"), Color("3e596b")]:
++		palettes.append({1: Color("bebfaa"), 2: color, 3: Color("343543"), 4: Color("bbc5c5"), 5: Color("d7dbd2"), 6: Color("826955"), 7: color, 8: Color("d7b572"), 9: Color("9affd0"), 10: Color("4c3940")})
++	var parts := ImageTexture.create_from_image(Factory.make_parts(palettes))
++	var materials: Array[ShaderMaterial] = []
++	for variant in 4:
++		var mat := ShaderMaterial.new()
++		mat.shader = load("res://unit.gdshader")
++		var data: Dictionary = full if variant < 2 else bare
++		var tex := ImageTexture.create_from_image(data.image)
++		mat.set_shader_parameter("atlas", tex)
++		mat.set_shader_parameter("atlas_coverage", tex)
++		mat.set_shader_parameter("atlas_grid", data.grid)
++		mat.set_shader_parameter("parts", parts)
++		mat.set_shader_parameter("quad_size", Soldier.QUAD)
++		mat.set_shader_parameter("rim_color", Color("53eab9") if variant % 2 == 0 else Color("ffd17b"))
++		materials.append(mat)
++	for i in count:
++		var use_mesh := i % 4 >= 2
++		var at := Vector3.ZERO
++		if i < 8:
++			at = Vector3(-5.2 + (i % 4) * 3.4, 0, 7.0 + (i / 4) * 1.5)
++		else:
++			var row := (i - 8) / 64
++			var angle := (i - 8) * TAU / 64.0
++			var radius := 7.5 + row * 0.43
++			at = Vector3(sin(angle) * radius, 0, cos(angle) * radius * 0.65 - 1.2)
++		var soldier := Soldier.new()
++		add_child(soldier)
++		soldier.setup(i, at, materials[i % 4], bare if use_mesh else full, use_mesh)
++		units.append(soldier)
++	for x in 4:
++		var label := Label3D.new()
++		label.text = ["SPRITE / TEAL", "SPRITE / GOLD", "3D SHIELD / TEAL", "3D SHIELD / GOLD"][x]
++		label.position = Vector3(-5.2 + x * 3.4, 0.3, 9.1)
++		label.font_size = 32
++		label.pixel_size = 0.009
++		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
++		add_child(label)
++
++static func damp(value: float, target: float, rate: float, dt: float) -> float:
++	return lerpf(value, target, 1.0 - exp(-rate * dt))
++
++static func orbit_target(age: float, duration: float) -> float:
++	var u := clampf(age / duration, 0, 1)
++	return (u * 3.0 if u <= 2.0 / 3.0 else 2.0 - (u - 2.0 / 3.0) * 3.0) * TAU
++
++func _update_camera(dt: float, instant: bool = false) -> void:
++	var old := yaw
++	yaw = target_yaw if instant else damp(yaw, target_yaw, 12.0, dt)
++	angular_speed = (yaw - old) / dt if dt > 0 else 0.0
++	zoom = target_zoom if instant else damp(zoom, target_zoom, 12.0, dt)
++	camera.size = zoom
++	var back := Vector3(sin(yaw) * cos(PI / 6), sin(PI / 6), cos(yaw) * cos(PI / 6))
++	var focus := Vector3(0, 0.5, 0)
++	if shake_left > 0:
++		focus += Vector3(sin(world_time * 193), cos(world_time * 137), sin(world_time * 107)) * shake_left * 0.24
++	camera.position = focus + back * 36.0
++	camera.look_at(focus)
++	raw_min = minf(raw_min, yaw)
++	raw_max = maxf(raw_max, yaw)
++	reversed = reversed or angular_speed < -0.01
++
++func _advance(dt: float) -> void:
++	var sim_dt := dt
++	if stop_left > 0:
++		stop_left = maxf(0, stop_left - dt)
++		sim_dt = 0.0
++	world_time += sim_dt
++	shake_left = maxf(0, shake_left - dt)
++	_update_camera(dt)
++	for unit in units:
++		unit.tick(dt, world_time, camera, angular_speed, moving)
++	if effects.update(world_time, camera):
++		stop_left = 0.055
++		shake_left = 0.18
++
++func _process(delta: float) -> void:
++	if completed or capturing:
++		return
++	var now := Time.get_ticks_usec()
++	var frame_ms := (now - frame_last_us) / 1000.0
++	frame_last_us = now
++	var begin := now
++	var dt := delta
++	if orbit_seconds > 0:
++		orbit_age += dt
++		target_yaw = orbit_target(orbit_age, orbit_seconds)
++	_advance(dt)
++	hud.text = "T49  |  %d UNITS  |  %s  |  YAW %.1f°\nRMB / MMB drag · Q/E 45° · Wheel zoom · M movement · Space impact\nTeal = fallen  /  Gold = kingdom  |  pitch locked 30°" % [units.size(), "MOVE" if moving else "RENDER", rad_to_deg(yaw)]
++	if modes.is_empty():
++		return
++	if phase >= modes.size():
++		if orbit_age >= orbit_seconds + 0.7:
++			_finish_run()
++		return
++	phase_age += dt
++	if phase_age >= warmup:
++		samples.append(frame_ms)
++		draws.append(float(Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)))
++		cpu.append((Time.get_ticks_usec() - begin) / 1000.0)
++	if phase_age >= warmup + sample_seconds:
++		_finish_phase()
++
++func _percentile(list: Array[float], percentile: float) -> float:
++	var sorted := list.duplicate()
++	sorted.sort()
++	return sorted[clampi(ceili(percentile * sorted.size()) - 1, 0, sorted.size() - 1)]
++
++func _finish_phase() -> void:
++	var row := {"mode": modes[phase], "units": units.size(), "samples": samples.size(), "mean_ms": _mean(samples), "p95_ms": _percentile(samples, 0.95), "p99_ms": _percentile(samples, 0.99), "logic_mean_ms": _mean(cpu), "draw_calls_mean": null if headless else _mean(draws), "draw_calls_p95": null if headless else _percentile(draws, 0.95), "headless": headless}
++	results.append(row)
++	print("PERF " + JSON.stringify(row))
++	phase += 1
++	if phase < modes.size():
++		moving = modes[phase] == "move"
++		phase_age = 0
++		samples.clear()
++		draws.clear()
++		cpu.clear()
++	else:
++		if orbit_seconds > 0 and orbit_age < orbit_seconds + 0.7:
++			return
++		_finish_run()
++
++func _finish_run() -> void:
++	var orbit := {"requested_s": orbit_seconds, "elapsed_s": orbit_age, "target_turns": target_yaw / TAU, "max_yaw_deg": rad_to_deg(raw_max), "min_yaw_deg": rad_to_deg(raw_min), "reversed": reversed, "impacts": effects.impacts}
++	print("ORBIT " + JSON.stringify(orbit))
++	print("RESULT " + JSON.stringify({"ok": true, "metrics": results, "orbit": orbit, "headless": headless}))
++	completed = true
++	get_tree().quit()
++
++func _mean(list: Array[float]) -> float:
++	var total := 0.0
++	for value in list:
++		total += value
++	return total / max(1, list.size())
++
++func _unhandled_input(event: InputEvent) -> void:
++	if event is InputEventMouseButton:
++		if event.button_index in [MOUSE_BUTTON_RIGHT, MOUSE_BUTTON_MIDDLE]:
++			dragging = event.pressed
++		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
++			target_zoom = maxf(10, target_zoom - 1.0)
++		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
++			target_zoom = minf(40, target_zoom + 1.0)
++	if event is InputEventMouseMotion and dragging:
++		target_yaw -= event.relative.x * 0.008
++	if event is InputEventKey and event.pressed and not event.echo:
++		if event.keycode == KEY_Q:
++			target_yaw -= PI / 4
++		if event.keycode == KEY_E:
++			target_yaw += PI / 4
++		if event.keycode == KEY_M:
++			moving = not moving
++		if event.keycode == KEY_SPACE:
++			stop_left = 0.055
++			shake_left = 0.18
++		if event.keycode == KEY_ESCAPE:
++			get_tree().quit()
++
++func _self_check() -> void:
++	var a := damp(0, 10, 12, 1.0 / 30)
++	var b := damp(damp(0, 10, 12, 1.0 / 60), 10, 12, 1.0 / 60)
++	assert(absf(a - b) < 0.00001, "damping must be frame-rate independent")
++	assert(damp(TAU - 0.01, TAU + 0.01, 12, 0.016) > TAU - 0.01)
++	assert(is_equal_approx(orbit_target(2, 3), TAU * 2))
++	assert(is_equal_approx(orbit_target(3, 3), TAU))
++	assert(Effects.ballistic(Vector3.ZERO, Vector3.ONE, 1, 2).is_equal_approx(Vector3.ONE))
++	assert(Effects.axial_side(Vector3.FORWARD, Vector3.FORWARD, Vector3.UP).is_normalized())
++	assert(Effects.axial_side(Vector3.UP, Vector3.UP, Vector3.UP).is_normalized())
++	print("CHECKS damping_30_60=ok cross_zero=ok two_turns_reverse=ok ballistic_endpoint=ok axial_parallel=ok")
++
++func _save_shot(filename: String, kind: String, sample_time: float) -> void:
++	await RenderingServer.frame_post_draw
++	var image := get_viewport().get_texture().get_image()
++	var error := image.save_png(output.path_join(filename))
++	if error != OK:
++		push_error("screenshot write failed: " + filename)
++		get_tree().quit(3)
++		return
++	shot_manifest.append({"file": filename, "kind": kind, "sample_s": sample_time, "world_s": world_time, "yaw_deg": rad_to_deg(yaw), "target_yaw_deg": rad_to_deg(target_yaw), "resolution": [image.get_width(), image.get_height()], "fan_origin": Effects.FAN_ORIGIN, "fan_tip": effects.fan_tip, "hitstop": stop_left > 0})
++	print("SHOT " + filename)
++
++func _capture_sequence() -> void:
++	DirAccess.make_dir_recursive_absolute(output)
++	for angle in range(0, 360, 45):
++		target_yaw = deg_to_rad(angle)
++		_update_camera(0, true)
++		world_time = 1.17
++		for unit in units:
++			unit.tick(0.1, world_time, camera, 0, false)
++		effects.update(world_time, camera, false)
++		hud.text = "T49  |  STATIC %03d°  |  %d UNITS  |  ALL EFFECTS @ 1.17s\nFront: sprite shields (left) / world-facing 3D shields (right)\nWorld +X,+Z markers and station labels remain fixed" % [angle, units.size()]
++		await _save_shot("azimuth_%03d.png" % angle, "static", 1.17)
++	yaw = deg_to_rad(315)
++	target_yaw = yaw
++	world_time = 1.17
++	shake_left = 0
++	stop_left = 0
++	moving = true
++	for frame in 20:
++		for substep in 6:
++			target_yaw += 3.5 / 60.0
++			_advance(1.0 / 60.0)
++			await get_tree().process_frame
++		hud.text = "T49  |  CONTINUOUS %02d / 20  |  t=%.1fs  |  YAW %.1f°\nFixed 60 Hz simulation; capture every 0.1 simulation seconds\nWorld-space effects + 80 ms flips + 55 ms impact stop + shake" % [frame + 1, (frame + 1) * 0.1, rad_to_deg(yaw)]
++		await _save_shot("continuous_%02d.png" % frame, "continuous", (frame + 1) * 0.1)
++	var file := FileAccess.open(output.path_join("manifest.json"), FileAccess.WRITE)
++	file.store_string(JSON.stringify({"count": shot_manifest.size(), "pitch_deg": 30, "cadence_s": 0.1, "fixed_step_hz": 60, "shots": shot_manifest}, "\t"))
++	print("SHOTS_COMPLETE count=28 out=" + output)
++	get_tree().quit()
+diff --git a/proto/rotation/main.gd.uid b/proto/rotation/main.gd.uid
+new file mode 100644
+index 0000000..1a811b0
+--- /dev/null
++++ b/proto/rotation/main.gd.uid
+@@ -0,0 +1 @@
++uid://cg4kywyxddnj
+diff --git a/proto/rotation/main.tscn b/proto/rotation/main.tscn
+new file mode 100644
+index 0000000..c5f31b6
+--- /dev/null
++++ b/proto/rotation/main.tscn
+@@ -0,0 +1,6 @@
++[gd_scene load_steps=2 format=3]
++
++[ext_resource type="Script" path="res://main.gd" id="1"]
++
++[node name="RotationLab" type="Node3D"]
++script = ExtResource("1")
+diff --git a/proto/rotation/project.godot b/proto/rotation/project.godot
+new file mode 100644
+index 0000000..2fece75
+--- /dev/null
++++ b/proto/rotation/project.godot
+@@ -0,0 +1,15 @@
++config_version=5
++
++[application]
++config/name="T49 · Rotation laboratory"
++run/main_scene="res://main.tscn"
++config/features=PackedStringArray("4.7", "Forward Plus")
++
++[display]
++window/size/viewport_width=1280
++window/size/viewport_height=720
++window/vsync/vsync_mode=0
++
++[rendering]
++anti_aliasing/quality/msaa_3d=2
++environment/defaults/default_clear_color=Color(0.035, 0.05, 0.07, 1)
+diff --git a/proto/rotation/sprite_factory.gd b/proto/rotation/sprite_factory.gd
+new file mode 100644
+index 0000000..6eb0405
+--- /dev/null
++++ b/proto/rotation/sprite_factory.gd
+@@ -0,0 +1,492 @@
++extends RefCounted
++## Original, procedural sword-and-shield soldier. RG = part-sheet UV,
++## B = baked volume light (0.5 neutral), A = 4x4 sample coverage.
++## Never interpolate RG across part boundaries; only coverage is filtered.
++
++const FW := 64
++const FH := 64
++const COLS := 8
++const SS := 4
++const SCALE := 1.9
++const HIP := Vector2(32, 43)
++const PART_GRID := 4
++const PART_PX := 64
++const LOOK_PX := PART_GRID * PART_PX
++const LOOK_GRID := Vector2i(2, 2)
++const PART_PAD := 3.0
++
++const SKIN := 1
++const TUNIC := 2
++const PANTS := 3
++const HELM := 4
++const BLADE := 5
++const HILT := 6
++const SHIELD := 7
++const RIM := 8
++const EYE := 9
++const BELT := 10
++const FAR := 0.76
++
++# Advisory seconds; playback remains owned by Unit. Keep its fixed frame counts.
++# Attack: 0..2 anticipation, 3 contact, 4 follow-through, 5 recovery.
++const ANIM_DURATIONS := {
++	"idle": 0.8, "walk": 0.52, "attack": 0.72, "block": 0.3,
++	"clash": 0.4, "hit": 0.3, "tumble": 0.5, "down": 1.0,
++	"getup": 0.56, "dead": 0.5,
++}
++const ATTACK_HIT_TIME := 0.333
++
++var draw_shield := true
++var anchors := PackedVector2Array()
++
++var _owners := PackedByteArray()
++var _uvs := PackedVector2Array()
++var _lights := PackedFloat32Array()
++var _rot := 0.0
++var _off := Vector2.ZERO
++
++
++static func build(with_shield: bool = true) -> Dictionary:
++	var factory = load("res://sprite_factory.gd").new()
++	factory.draw_shield = with_shield
++	return factory._build()
++
++
++static func part_uv(code: int, uv: Vector2) -> Vector2:
++	var slot := Vector2((code - 1) % PART_GRID, (code - 1) / PART_GRID)
++	return (slot * PART_PX + Vector2.ONE * (PART_PAD + 0.5)
++		+ uv.clamp(Vector2.ZERO, Vector2.ONE) * (PART_PX - PART_PAD * 2.0 - 1.0)) / LOOK_PX
++
++
++static func light_decode(b: float) -> float:
++	return 0.6 + b * 0.8 if b <= 0.5 else 0.7 + b * 0.6
++
++
++func _build() -> Dictionary:
++	var poses: Array[Dictionary] = []
++	var anims := {}
++	_add(anims, poses, "idle", _idle())
++	_add(anims, poses, "walk", _walk())
++	_add(anims, poses, "attack", _attack())
++	_add(anims, poses, "block", _block())
++	_add(anims, poses, "clash", _clash())
++	_add(anims, poses, "hit", _hit())
++	_add(anims, poses, "tumble", _tumble())
++	_add(anims, poses, "down", [_down_pose()])
++	_add(anims, poses, "getup", _getup())
++	_add(anims, poses, "dead", _dead())
++	var rows := ceili(poses.size() / float(COLS))
++	var img := Image.create(COLS * FW, rows * FH, false, Image.FORMAT_RGBA8)
++	for i in poses.size():
++		_render(poses[i])
++		img.blit_rect(_resolve(), Rect2i(0, 0, FW, FH), Vector2i(i % COLS, i / COLS) * FW)
++	return {"image": img, "anims": anims, "grid": Vector2(COLS, rows), "count": poses.size(), "anchors": anchors}
++
++
++func _add(anims: Dictionary, poses: Array[Dictionary], anim_name: String, list: Array) -> void:
++	anims[anim_name] = Vector2i(poses.size(), list.size())
++	for p in list:
++		poses.append(p)
++
++
++# ---------- 姿势 ----------
++# 角度约定：0 = 竖直向下，正值 = 向前（朝右）。躯干 lean 正值前倾。
++# 腿：大腿 t、小腿相对 s；臂：上臂 u、前臂相对 l。near = 持盾的近侧，far = 持剑的远侧。
++
++func _p(over: Dictionary) -> Dictionary:
++	var p := {
++		"lean": 0.0, "ft": 0.12, "fs": 0.0, "bt": -0.12, "bs": 0.0,
++		"nu": 0.3, "nl": 0.6, "fu": 0.35, "fl": -0.9, "sw": 2.7, "sh": 0.0,
++		"rot": 0.0, "ox": 0.0, "oy": 0.0, "dy": 0.0,
++	}
++	p.merge(over, true)
++	return p
++
++
++func _idle() -> Array:
++	return [
++		_p({}),
++		_p({"sw": 2.72}),
++		_p({"dy": 0.35, "sw": 2.78, "nl": 0.7}),
++		_p({"dy": 0.35, "sw": 2.74, "nl": 0.7}),
++	]
++
++
++func _walk() -> Array:
++	var out := []
++	for i in 6:
++		var ph := (i + 0.5) / 6.0 * TAU
++		var s := sin(ph)
++		out.append(_p({
++			"lean": 0.1,
++			"ft": 0.6 * s, "bt": -0.6 * s,
++			"fs": -0.7 * max(0.0, -s), "bs": -0.7 * max(0.0, s),
++			"nu": 0.3 - 0.3 * s, "fu": 0.35 + 0.35 * s,
++			"dy": -0.35 * abs(cos(ph)),
++		}))
++	return out
++
++
++func _attack() -> Array:
++	return [
++		_p({"lean": -0.1, "fu": PI - 0.5, "fl": -0.5, "sw": PI + 0.7, "ft": 0.3, "bt": -0.3}),
++		_p({"lean": -0.2, "fu": PI - 0.25, "fl": -0.4, "sw": PI + 1.15, "ft": 0.35, "bt": -0.35}),
++		_p({"lean": -0.22, "fu": PI - 0.2, "fl": -0.4, "sw": PI + 1.25, "ft": 0.35, "bt": -0.35, "dy": 0.35}),
++		_p({"lean": 0.28, "fu": 1.9, "fl": -0.2, "sw": 1.75, "ft": 0.75, "fs": -0.2, "bt": -0.5, "nu": 0.0}),
++		_p({"lean": 0.35, "fu": 1.3, "fl": 0.0, "sw": 1.0, "ft": 0.85, "fs": -0.3, "bt": -0.6, "dy": 0.35, "nu": -0.1}),
++		_p({"lean": 0.12, "fu": 0.8, "fl": -0.4, "sw": 2.0, "ft": 0.4, "bt": -0.3}),
++	]
++
++
++func _block() -> Array:
++	return [
++		_p({"lean": -0.12, "nu": 1.45, "nl": 0.1, "ft": 0.35, "bt": -0.35, "sw": 2.5}),
++		_p({"lean": -0.22, "nu": 1.35, "nl": 0.15, "ft": 0.4, "bt": -0.4, "sw": 2.6, "dy": 0.35}),
++	]
++
++
++func _clash() -> Array:
++	return [
++		_p({"lean": 0.22, "fu": 1.7, "fl": -0.7, "sw": 2.25, "ft": 0.55, "bt": -0.5, "nu": 0.9}),
++		_p({"lean": 0.05, "fu": 1.4, "fl": -0.9, "sw": 2.65, "ft": 0.45, "bt": -0.45, "nu": 0.7, "dy": 0.35}),
++	]
++
++
++func _hit() -> Array:
++	return [
++		_p({"lean": -0.45, "nu": -0.5, "nl": 0.3, "fu": -0.4, "fl": -0.5, "sw": 3.7, "ft": 0.45, "bt": 0.1, "dy": 0.35}),
++		_p({"lean": -0.25, "nu": -0.2, "fu": -0.1, "fl": -0.6, "sw": 3.3, "ft": 0.35, "bt": 0.0}),
++	]
++
++
++func _tumble() -> Array:
++	var out := []
++	for i in 6:
++		out.append(_p({
++			"lean": 0.5, "ft": 1.7, "fs": -2.4, "bt": 1.4, "bs": -2.2,
++			"nu": 1.3, "nl": 1.0, "fu": 0.9, "fl": 1.25, "sw": 3.5,
++			"rot": i * TAU / 6.0, "oy": -5.0,
++		}))
++	return out
++
++
++func _down_pose() -> Dictionary:
++	return _p({"rot": -PI / 2.0, "ox": 2.0, "oy": 5.2, "ft": 0.05, "bt": -0.08, "nu": 0.4, "nl": 0.2, "fu": 0.8, "fl": 0.3, "sw": 1.6})
++
++
++func _getup() -> Array:
++	return [
++		_down_pose(),
++		_p({"rot": -1.0, "ox": 1.0, "oy": 5.2, "ft": 0.6, "bt": 0.5, "nu": 0.9, "fu": 0.6, "sw": 2.0}),
++		_p({"lean": 0.3, "ft": 1.5, "fs": -1.5, "bt": 0.9, "bs": -2.4, "oy": 5.0, "nu": 0.6, "sw": 2.3}),
++		_p({"lean": 0.15, "ft": 0.6, "fs": -0.9, "bt": -0.3, "bs": -0.6, "oy": 1.0, "sw": 2.5}),
++	]
++
++
++func _dead() -> Array:
++	return [
++		_p({"lean": 0.75, "ft": 1.5, "fs": -1.5, "bt": 0.9, "bs": -2.4, "oy": 3.5, "nu": 0.1, "fu": 0.2, "fl": 0.0, "sw": 1.35}),
++		_p({"rot": PI / 2.0, "ox": -3.0, "oy": 2.0, "ft": 0.1, "bt": -0.1, "nu": 2.8, "nl": 0.0, "fu": 2.5, "fl": 0.2, "sw": 2.6}),
++	]
++
++
++# ---------- Supersampled, local-UV geometry ----------
++
++func _dir(a: float) -> Vector2:
++	return Vector2(sin(a), cos(a))
++
++
++func _tx(v: Vector2) -> Vector2:
++	return (v.rotated(_rot) + _off) * SCALE + HIP
++
++
++## Ellipse: local Y follows the part, so patterns rotate with it.
++func _ellipse(c: Vector2, radii: Vector2, axis: Vector2, code: int,
++		shade: float = 1.0, cap: float = 1.0) -> void:
++	_raster(c, axis, radii, code, shade, 0, cap)
++
++
++## Rounded, tapered cylinders; ends are real hemispheres, not thick lines.
++func _capsule(a: Vector2, b: Vector2, r0: float, r1: float, code: int,
++		shade: float = 1.0) -> void:
++	var delta := b - a
++	_raster(a, delta.normalized(), Vector2(r0, r1), code, shade, 1, delta.length())
++
++
++## kind 0 ellipse, 1 tapered capsule, 2 fitted tunic, 3 pointed blade.
++func _raster(c: Vector2, axis: Vector2, size: Vector2, code: int,
++		shade: float, kind: int, extent: float) -> void:
++	var center := _tx(c)
++	var along := axis.rotated(_rot)
++	var across := Vector2(along.y, -along.x)
++	var reach := maxf(size.x, size.y)
++	if kind == 1:
++		reach += extent
++	var lo := Vector2i((center - Vector2.ONE * (reach * SCALE + 1.0)) * SS)
++	var hi := Vector2i((center + Vector2.ONE * (reach * SCALE + 1.0)) * SS)
++	for y in range(maxi(0, lo.y), mini(FH * SS, hi.y + 1)):
++		for x in range(maxi(0, lo.x), mini(FW * SS, hi.x + 1)):
++			var d := (Vector2(x + 0.5, y + 0.5) / SS - center) / SCALE
++			var q := Vector2(d.dot(across), d.dot(along))
++			var uv := Vector2.ZERO
++			var round_x := 0.0
++			var edge := 0.0
++			if kind == 0:
++				var n := q / size
++				if n.length_squared() > 1.0 or n.y > extent:
++					continue
++				uv = n * 0.5 + Vector2.ONE * 0.5
++				round_x = n.x
++				edge = n.length()
++			elif kind == 1:
++				var t := clampf(q.y / extent, 0.0, 1.0)
++				var radius := lerpf(size.x, size.y, t)
++				var dist := Vector2(q.x, q.y - t * extent).length() / radius
++				if dist > 1.0:
++					continue
++				uv = Vector2(q.x / radius * 0.5 + 0.5,
++					(q.y + size.x) / (extent + size.x + size.y))
++				round_x = q.x / radius
++				edge = dist
++			else:
++				var t := q.y / size.y * 0.5 + 0.5
++				if t < 0.0 or t > 1.0:
++					continue
++				var width := size.x
++				if kind == 2:
++					# Shoulders, cinched waist, flared hem, rounded shoulder corners.
++					width *= (0.76 + 0.24 * cos(t * TAU))
++					width *= sqrt(clampf(t / 0.055, 0.0, 1.0))
++				else:
++					width *= minf(1.0, (1.0 - t) * 5.0)
++				if absf(q.x) > width:
++					continue
++				round_x = q.x / maxf(width, 0.001)
++				uv = Vector2(round_x * 0.5 + 0.5, t)
++				edge = absf(round_x)
++			# Broad curved highlight on the left, narrow shaded right silhouette.
++			var light := shade * (0.79 + 0.27 * sqrt(maxf(0.0, 1.0 - round_x * round_x))
++				- round_x * 0.10 - 0.035 * (uv.y - 0.5))
++			light *= lerpf(1.0, 0.84, smoothstep(0.83, 1.0, edge))
++			var idx := y * FW * SS + x
++			_owners[idx] = code
++			_uvs[idx] = uv
++			_lights[idx] = clampf(light, 0.6, 1.3)
++
++
++func _resolve() -> Image:
++	var img := Image.create(FW, FH, false, Image.FORMAT_RGBA8)
++	for y in FH:
++		for x in FW:
++			var votes := PackedInt32Array()
++			votes.resize(BELT + 1)
++			var covered := 0
++			for sy in SS:
++				for sx in SS:
++					var code := _owners[(y * SS + sy) * FW * SS + x * SS + sx]
++					votes[code] += 1
++					if code > 0:
++						covered += 1
++			if covered == 0:
++				continue
++			var winner := 1
++			for code in range(2, BELT + 1):
++				if votes[code] > votes[winner]:
++					winner = code
++			var uv := Vector2.ZERO
++			var light := 0.0
++			for sy in SS:
++				for sx in SS:
++					var idx := (y * SS + sy) * FW * SS + x * SS + sx
++					if _owners[idx] == winner:
++						uv += _uvs[idx]
++						light += _lights[idx]
++			uv = part_uv(winner, uv / votes[winner])
++			light /= votes[winner]
++			var b := (light - 0.6) / 0.8 if light <= 1.0 else 0.5 + (light - 1.0) / 0.6
++			img.set_pixel(x, y, Color(uv.x, uv.y, b, covered / float(SS * SS)))
++	# Extrude UV/light into transparent texels for the coverage filter's fringe.
++	# Never bleed into another frame or average unrelated part UVs.
++	var src: Image = img.duplicate()
++	for y in FH:
++		for x in FW:
++			if src.get_pixel(x, y).a > 0.0:
++				continue
++			var best := 0.0
++			var value := Color(0, 0, 0, 0)
++			for dy in range(-1, 2):
++				for dx in range(-1, 2):
++					var p := Vector2i(x + dx, y + dy)
++					if p.x < 0 or p.y < 0 or p.x >= FW or p.y >= FH:
++						continue
++					var c := src.get_pixelv(p)
++					if c.a > best:
++						best = c.a
++						value = Color(c.r, c.g, c.b, 0)
++			img.set_pixel(x, y, value)
++	return img
++
++
++func _render(p: Dictionary) -> void:
++	_owners.resize(FW * FH * SS * SS)
++	_owners.fill(0)
++	_uvs.resize(_owners.size())
++	_lights.resize(_owners.size())
++	_rot = p.rot
++	_off = Vector2(p.ox, p.oy)
++	var hip := Vector2(0, p.dy)
++	var up := _dir(PI - p.lean)
++	var fwd := Vector2(-up.y, up.x)
++	var neck := hip + up * 7.0
++	var head := neck + up * 3.0
++	var shoulder := neck - up * 1.1
++
++	_leg(hip - fwd * 0.85, p.bt, p.bs, FAR)
++	var elbow := shoulder + _dir(p.fu) * 3.2
++	var hand := elbow + _dir(p.fu + p.fl) * 3.2
++	_capsule(shoulder, elbow, 1.25, 1.0, TUNIC, FAR)
++	_capsule(elbow, hand, 0.85, 0.7, TUNIC, FAR)
++	# Sword is drawn above the far arm so windup and contact remain legible.
++	var sw := _dir(p.sw)
++	_capsule(hand - sw * 1.25, hand + sw * 0.8, 0.45, 0.4, HILT, 0.92)
++	_raster(hand + sw * 4.65, sw, Vector2(0.58, 3.65), BLADE, 1.16, 3, 1.0)
++	_capsule(hand + sw * 0.9 - sw.orthogonal() * 1.4,
++		hand + sw * 0.9 + sw.orthogonal() * 1.4, 0.32, 0.32, HILT, 1.1)
++	_ellipse(hand - sw * 1.35, Vector2(0.58, 0.58), sw, RIM)
++	_ellipse(hand, Vector2(0.8, 0.95), _dir(p.fu + p.fl), SKIN, FAR)
++
++	_leg(hip + fwd * 0.8, p.ft, p.fs, 1.0)
++	_raster(hip + up * 3.3, -up, Vector2(2.85, 4.2), TUNIC, 1.0, 2, 1.0)
++	var belt := hip + up * 1.25
++	_capsule(belt - fwd * 2.1, belt + fwd * 2.1, 0.38, 0.38, BELT)
++	_ellipse(belt + fwd * 0.6, Vector2(0.45, 0.45), -up, RIM, 1.1)
++	_capsule(neck - up * 0.5, neck + up * 1.5, 1.0, 1.0, SKIN)
++	_ellipse(head, Vector2(3.0, 3.25), -up, SKIN)
++	_ellipse(head + fwd * 2.75 - up * 0.6, Vector2(0.68, 0.75), -up, SKIN)
++	_ellipse(head, Vector2(3.25, 3.4), -up, HELM, 1.03, 0.0)
++	_capsule(head - fwd * 2.9, head + fwd * 2.8, 0.27, 0.27, HELM, 0.85)
++	_ellipse(head + fwd * 1.9 - up * 0.65, Vector2(0.38, 0.35), -up, EYE, 1.2)
++
++	elbow = shoulder + _dir(p.nu) * 3.25
++	hand = elbow + _dir(p.nu + p.nl) * 3.0
++	_capsule(shoulder, elbow, 1.25, 1.0, TUNIC)
++	_ellipse(shoulder, Vector2(1.55, 1.25), -up, HELM)
++	_capsule(elbow, hand, 0.88, 0.7, TUNIC)
++	_ellipse(hand, Vector2(0.8, 0.9), _dir(p.nu + p.nl), SKIN)
++	var shield_axis := (-up).rotated(p.sh)
++	var sc := hand + fwd * 0.75
++	anchors.append(_tx(sc))
++	if draw_shield:
++		_ellipse(sc, Vector2(2.85, 4.2), shield_axis, RIM, 0.96)
++		_ellipse(sc, Vector2(2.36, 3.65), shield_axis, SHIELD, 1.03)
++		_ellipse(sc, Vector2(0.6, 0.68), shield_axis, RIM, 1.15)
++
++
++func _leg(h: Vector2, thigh: float, shin: float, shade: float) -> void:
++	var knee := h + _dir(thigh) * 4.5
++	var foot := knee + _dir(thigh + shin) * 4.0
++	_capsule(h, knee, 1.22, 1.0, PANTS, shade)
++	_capsule(knee, foot, 0.93, 0.75, PANTS, shade)
++	var toe := Vector2(cos(thigh + shin), -sin(thigh + shin))
++	_capsule(foot - _dir(thigh + shin) * 0.55, foot + toe * 1.1, 0.8, 0.75, BELT, shade)
++
++
++# ---------- Part sheet: four original looks, 4x4 material slots per look ----------
++
++static func make_parts(palettes: Array) -> Image:
++	var img := Image.create(LOOK_PX * LOOK_GRID.x, LOOK_PX * LOOK_GRID.y, false, Image.FORMAT_RGBA8)
++	img.fill(Color(0.2, 0.18, 0.23, 1))
++	for look in palettes.size():
++		var origin := Vector2i(look % LOOK_GRID.x, look / LOOK_GRID.x) * LOOK_PX
++		var colors: Dictionary = palettes[look]
++		for code in range(SKIN, BELT + 1):
++			var slot := Vector2i((code - 1) % PART_GRID, (code - 1) / PART_GRID) * PART_PX
++			for y in PART_PX:
++				for x in PART_PX:
++					# Replicated 3px gutters keep linear filtering inside a material.
++					var uv := (Vector2(x, y) - Vector2.ONE * PART_PAD) / (PART_PX - PART_PAD * 2.0 - 1.0)
++					uv = uv.clamp(Vector2.ZERO, Vector2.ONE)
++					var col := _part_color(look, code, uv, colors)
++					# Alpha is DATA here, not opacity: smooth deterministic blood field.
++					var n := (sin(uv.x * 11.0 + sin(uv.y * 9.0) * 1.6 + code * 1.7)
++						+ sin(uv.y * 13.0 - uv.x * 7.0 + code)
++						+ sin(uv.x * 27.0 + uv.y * 19.0) * 0.22) / 2.22
++					col.a = clampf(0.5 + n * 0.46, 0.04, 0.96)
++					img.set_pixelv(origin + slot + Vector2i(x, y), col)
++	return img
++
++
++static func _part_color(look: int, code: int, uv: Vector2, colors: Dictionary) -> Color:
++	var col: Color = colors[code]
++	var u := uv.x
++	var v := uv.y
++	var metal := code == HELM or code == BLADE or code == RIM
++	var grain := sin(u * 143.0 + v * 79.0) * sin(v * 177.0 - u * 47.0)
++	var light := 1.0 + grain * (0.014 if metal else 0.025)
++	if code == SKIN:
++		light *= 1.05 - v * 0.12 + 0.035 * sin(u * PI)
++		col = col.lerp(Color(0.45, 0.52, 0.53) if look >= 2 else Color(0.7, 0.39, 0.3), smoothstep(0.7, 1.0, v) * 0.13)
++	elif code == TUNIC:
++		light *= 0.92 + sin(u * 25.0 + sin(v * 6.0) * 1.8) * 0.075 + sin(u * 43.0 + v * 7.0) * 0.025
++		# Light collar and hem; veteran gold seams, spectral elite teal trim.
++		var trim: Color = colors[RIM] if look % 2 == 1 else colors[SHIELD].lightened(0.15)
++		if v < 0.1 or v > 0.88 or absf(u - 0.5) < 0.025:
++			col = col.lerp(trim, 0.85)
++		if look == 0 and u < 0.28:
++			col = col.lerp(Color(0.86, 0.85, 0.78), 0.9)
++	elif code == PANTS:
++		light *= 0.88 + 0.12 * sin(u * PI) + 0.04 * sin(u * 23.0 + v * 9.0)
++		if u > 0.83:
++			light *= 0.8
++	elif metal:
++		light *= 0.72 + 0.24 * sin(u * PI) + 0.3 * exp(-pow((u - 0.29) / 0.12, 2.0))
++		if code == BLADE:
++			light *= 1.05
++			if absf(u - 0.48) < 0.055 or u < 0.1:
++				col = col.lerp(Color(0.96, 0.99, 1.0), 0.75)
++			if u > 0.58:
++				light *= 0.78
++		elif code == HELM:
++			if v > 0.4 and v < 0.47:
++				col = col.lerp(colors[RIM], 0.65)
++			if absf(u - 0.5) < 0.025:
++				light *= 0.74
++		else:
++			light += 0.09 * sin(v * 18.0)
++	elif code == HILT or code == BELT:
++		light *= 0.86 + 0.1 * sin(v * 52.0) + 0.1 * sin(u * PI)
++		if code == BELT and (u < 0.12 or u > 0.9):
++			light *= 0.76
++	elif code == SHIELD:
++		light *= 0.92 + 0.045 * sin(u * 47.0) + 0.025 * sin(u * 93.0 + v * 4.0)
++		var d := uv - Vector2(0.5, 0.5)
++		var emblem := false
++		if look == 0:
++			# A broad ivory chevron and small bar on a blue field.
++			col = colors[TUNIC].lerp(colors[SHIELD], 0.1)
++			emblem = absf(v - (0.29 + absf(d.x) * 0.7)) < 0.06 and absf(d.x) < 0.34
++			emblem = emblem or (absf(v - 0.72) < 0.045 and absf(d.x) < 0.2)
++		elif look == 1:
++			# Gold stepped tower with two crenels on a crimson field.
++			emblem = absf(d.x) < 0.12 and v > 0.29 and v < 0.76
++			emblem = emblem or (absf(d.x) < 0.24 and v > 0.24 and v < 0.37 and absf(d.x) > 0.055)
++			emblem = emblem or (absf(d.x) < 0.22 and v > 0.72 and v < 0.78)
++		elif look == 2:
++			# Bone-white forked sigil, split by a small irregular crack.
++			emblem = absf(d.x) < 0.04 and absf(d.y) < 0.31
++			emblem = emblem or (absf(absf(d.x) - (0.28 - v) * 0.7 - 0.10) < 0.036 and v < 0.4 and v > 0.19)
++			emblem = emblem or (absf(d.y - 0.12) + absf(d.x) * 0.6 < 0.055)
++		else:
++			# An open angular lozenge with an inner spectral bar.
++			emblem = absf(absf(d.x) * 1.1 + absf(d.y) * 0.72 - 0.24) < 0.035
++			emblem = emblem or (absf(d.x) < 0.035 and absf(d.y) < 0.13)
++		if emblem:
++			col = Color(0.84, 0.86, 0.74) if look == 2 else colors[RIM].lightened(0.25)
++			if look == 0:
++				col = Color(0.94, 0.91, 0.77)
++		if look >= 2 and absf(u - (0.72 + sin(v * 21.0) * 0.035)) < 0.012:
++			light *= 0.45
++	elif code == EYE:
++		col = colors[EYE]
++		light = 1.0
++	return Color(clampf(col.r * light, 0.0, 1.0), clampf(col.g * light, 0.0, 1.0), clampf(col.b * light, 0.0, 1.0))
+diff --git a/proto/rotation/sprite_factory.gd.uid b/proto/rotation/sprite_factory.gd.uid
+new file mode 100644
+index 0000000..dc8042e
+--- /dev/null
++++ b/proto/rotation/sprite_factory.gd.uid
+@@ -0,0 +1 @@
++uid://ddpax8vj5ph4f
+diff --git a/proto/rotation/unit.gd b/proto/rotation/unit.gd
+new file mode 100644
+index 0000000..19665c9
+--- /dev/null
++++ b/proto/rotation/unit.gd
+@@ -0,0 +1,89 @@
++extends Node3D
++
++const QUAD := 1.65
++const TURN_SECONDS := 0.08
++var body: MeshInstance3D
++var shield: Node3D
++var anchor := Vector3.ZERO
++var facing := Vector3.RIGHT
++var index := 0
++var flipped := false
++var target_flip := false
++var turn_age := TURN_SECONDS
++var last_frame := -1
++var data: Dictionary
++var transitions := 0
++
++func setup(i: int, origin: Vector3, material: ShaderMaterial, sprite_data: Dictionary, mesh_shield: bool) -> void:
++	index = i
++	anchor = origin
++	position = origin
++	data = sprite_data
++	var quad := QuadMesh.new()
++	quad.size = Vector2.ONE * QUAD
++	quad.center_offset.y = QUAD * 0.5
++	body = MeshInstance3D.new()
++	body.mesh = quad
++	body.material_override = material
++	body.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++	body.custom_aabb = AABB(Vector3(-2, -1, -2), Vector3(4, 4, 4))
++	add_child(body)
++	body.set_instance_shader_parameter("palette_row", 2.0 if i % 2 == 0 else 1.0)
++	if mesh_shield:
++		shield = Node3D.new()
++		add_child(shield)
++		for layer in 3:
++			var disc := MeshInstance3D.new()
++			var mesh := CylinderMesh.new()
++			mesh.top_radius = [0.16, 0.13, 0.035][layer]
++			mesh.bottom_radius = mesh.top_radius
++			mesh.height = 0.045
++			mesh.radial_segments = 12
++			disc.mesh = mesh
++			disc.rotation.x = PI / 2.0
++			disc.scale.z = 1.25
++			disc.position.z = layer * 0.026
++			var mat := StandardMaterial3D.new()
++			mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
++			mat.albedo_color = [Color("171e29"), Color("315b61") if i % 2 == 0 else Color("8e3f37"), Color("e2c486")][layer]
++			disc.material_override = mat
++			shield.add_child(disc)
++
++func tick(dt: float, time: float, camera: Camera3D, angular_speed: float, move: bool) -> void:
++	if move:
++		var phase := time * 0.8 + index * 0.61
++		var offset := Vector3(sin(phase) * 0.27, 0, cos(phase) * 0.22)
++		var goal := anchor + offset
++		position = position.lerp(goal, 1.0 - exp(-10.0 * dt))
++		facing = Vector3(cos(phase), 0, -sin(phase)).normalized()
++	var right := camera.global_basis.x
++	var d := facing.dot(right)
++	var hysteresis := lerpf(0.1, 0.3, clampf(absf(angular_speed) / 2.0, 0.0, 1.0))
++	if turn_age >= TURN_SECONDS:
++		if flipped and d > hysteresis:
++			target_flip = false
++			turn_age = 0.0
++		elif not flipped and d < -hysteresis:
++			target_flip = true
++			turn_age = 0.0
++	var old_age := turn_age
++	turn_age = minf(turn_age + dt, TURN_SECONDS)
++	if old_age < TURN_SECONDS * 0.5 and turn_age >= TURN_SECONDS * 0.5:
++		flipped = target_flip
++		transitions += 1
++		body.set_instance_shader_parameter("flip", float(flipped))
++	var squeeze := maxf(0.04, absf(cos(PI * turn_age / TURN_SECONDS)))
++	body.set_instance_shader_parameter("squeeze", squeeze)
++	var clip: Vector2i = data.anims["walk" if move else "idle"]
++	var frame := clip.x + int(time * 12.0 + index * 0.31) % clip.y
++	if last_frame != frame:
++		body.set_instance_shader_parameter("frame", float(frame))
++		last_frame = frame
++	if shield != null:
++		var a: Vector2 = data.anchors[frame]
++		var x := (a.x / 64.0 - 0.5) * QUAD * (-1.0 if flipped else 1.0) * squeeze
++		var y := (1.0 - a.y / 64.0) * QUAD * 1.1547
++		var back := Vector3(camera.global_basis.z.x, 0, camera.global_basis.z.z).normalized()
++		shield.position = right * x + Vector3.UP * y + back * 0.11
++		# World facing controls the shield normal; the body animation controls its grip.
++		shield.rotation.y = atan2(facing.x, facing.z)
+diff --git a/proto/rotation/unit.gd.uid b/proto/rotation/unit.gd.uid
+new file mode 100644
+index 0000000..53a3569
+--- /dev/null
++++ b/proto/rotation/unit.gd.uid
+@@ -0,0 +1 @@
++uid://cm7167ivqaymm
+diff --git a/proto/rotation/unit.gdshader b/proto/rotation/unit.gdshader
+new file mode 100644
+index 0000000..c311df8
+--- /dev/null
++++ b/proto/rotation/unit.gdshader
+@@ -0,0 +1,122 @@
++// UV sprite: nearest RG/light data, filtered supersample coverage, local part texture.
++// 正交镜头俯角 30°，竖向乘 1/sin(60°) 抵消俯视压缩。
++shader_type spatial;
++render_mode unshaded, cull_disabled, shadows_disabled, alpha_to_coverage_and_one;
++
++uniform sampler2D atlas : filter_nearest, repeat_disable;
++// Same atlas, separate sampler: interpolating encoded RG would cross materials.
++uniform sampler2D atlas_coverage : filter_linear, repeat_disable;
++uniform sampler2D parts : source_color, filter_linear, repeat_disable;
++uniform vec2 look_grid = vec2(2.0, 2.0);
++uniform vec2 atlas_grid = vec2(8.0, 5.0);
++uniform float quad_size = 0.8;
++uniform float up_scale = 1.1547;
++// 沿水平视线方向往镜头挪一点，避免贴着身后的崖壁时被吃掉
++uniform float depth_nudge = 0.08;
++// 脚下陷进草里：精灵底部按草量混成草色
++uniform vec3 feet_color : source_color = vec3(0.36, 0.47, 0.25);
++uniform float feet_height = 0.13;
++// 两种图集格式共用本着色器（默认值 = 程序化精灵）：
++// v_up：RG 的 V 轴向上（Blender 管线），部位分区从左下角编号
++// light_mode：0 = 程序化精灵的明暗曲线；1 = Blender 管线约定的"部位色 × 2B"
++// stain_mask：哪些部位分区会沾血（按 4×4 分区编号的位掩码）；eye_cell：眼睛所在分区
++// blood_from_alpha：部位贴图 alpha 存了血迹噪声时用它，否则用按部位坐标生成的固定噪声
++uniform bool v_up = false;
++uniform int light_mode = 0;
++uniform int stain_mask = 79;
++uniform int eye_cell = 8;
++uniform bool blood_from_alpha = true;
++
++instance uniform float frame = 0.0;
++instance uniform float flip = 0.0;
++instance uniform float palette_row = 0.0;
++instance uniform float health = 1.0;
++instance uniform float flash = 0.0;
++instance uniform float spin = 0.0;
++instance uniform float grass = 0.0;
++// 每步的竖向伸缩（Bad North 走路片段在步伐中段拉高 1%）
++instance uniform float stretch = 0.0;
++instance uniform float squeeze = 1.0;
++uniform vec3 rim_color : source_color = vec3(0.2, 1.0, 0.72);
++
++void vertex() {
++	VERTEX.x *= squeeze;
++	vec2 pivot = vec2(0.0, quad_size * 0.4);
++	vec2 p = VERTEX.xy - pivot;
++	float c = cos(spin);
++	float s = sin(spin);
++	p = vec2(p.x * c - p.y * s, p.x * s + p.y * c);
++	VERTEX.xy = p + pivot;
++	VERTEX.z += depth_nudge;
++	vec3 right = normalize(vec3(INV_VIEW_MATRIX[0].x, 0.0, INV_VIEW_MATRIX[0].z));
++	vec3 back = normalize(vec3(INV_VIEW_MATRIX[2].x, 0.0, INV_VIEW_MATRIX[2].z));
++	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(right, 0.0), vec4(0.0, up_scale * (1.0 + stretch), 0.0, 0.0), vec4(back, 0.0), MODEL_MATRIX[3]);
++	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
++}
++
++void fragment() {
++	vec2 uv = UV;
++	if (flip > 0.5) {
++		uv.x = 1.0 - uv.x;
++	}
++	vec2 frame_size = vec2(textureSize(atlas, 0)) / atlas_grid;
++	uv = clamp(uv, 0.5 / frame_size, vec2(1.0) - 0.5 / frame_size);
++	float f = floor(frame + 0.5);
++	vec2 cell = vec2(mod(f, atlas_grid.x), floor(f / atlas_grid.x));
++	vec2 atlas_uv = (cell + uv) / atlas_grid;
++	vec4 t = texture(atlas, atlas_uv);
++	vec2 px = 1.3 / vec2(textureSize(atlas, 0));
++	float edge = 0.0;
++	float inner = 1.0;
++	for (int x = -1; x <= 1; x++) {
++		for (int y = -1; y <= 1; y++) {
++			vec2 tap = clamp(atlas_uv + vec2(float(x), float(y)) * px,
++				(cell + vec2(0.5) / frame_size) / atlas_grid,
++				(cell + vec2(1.0) - vec2(0.5) / frame_size) / atlas_grid);
++			float a = texture(atlas_coverage, tap).a;
++			edge = max(edge, a);
++			inner = min(inner, a);
++		}
++	}
++	float coverage = texture(atlas_coverage, atlas_uv).a;
++	float look = clamp(floor(palette_row + 0.5), 0.0, look_grid.x * look_grid.y - 1.0);
++	vec2 look_cell = vec2(mod(look, look_grid.x), floor(look / look_grid.x));
++	vec2 part_uv = v_up ? vec2(t.r, 1.0 - t.g) : t.rg;
++	vec4 material = texture(parts, (look_cell + part_uv) / look_grid);
++	float light = light_mode == 1 ? 2.0 * t.b : (t.b <= 0.5 ? 0.6 + t.b * 0.8 : 0.7 + t.b * 0.6);
++	vec3 col = material.rgb * (light < 0.94 ? 0.70 : 1.08);
++
++	// Alpha in the part sheet is a stable, smooth blood field, not opacity.
++	// Its coordinates follow each body part; no TIME or screen-space randomness.
++	ivec2 slot = ivec2(clamp(floor(t.rg * 4.0), vec2(0.0), vec2(3.0)));
++	int part_cell = slot.y * 4 + slot.x;
++	bool stainable = ((stain_mask >> part_cell) & 1) == 1;
++	float wound = sqrt(clamp(1.0 - health, 0.0, 1.0));
++	float field = material.a;
++	if (!blood_from_alpha) {
++		vec2 q = floor(t.rg * 48.0);
++		field = fract(sin(dot(q, vec2(12.9898, 78.233))) * 43758.5453);
++	}
++	float blood = smoothstep(1.02 - wound * 0.82, 1.10 - wound * 0.82, field);
++	if (stainable) {
++		col = mix(col, col * vec3(0.37, 0.055, 0.075), blood * 0.92);
++	}
++	// Spectral eyes retain their bright cyan-green color in the baked shadows.
++	if (part_cell == eye_cell && look >= 2.0) {
++		col = material.rgb * 1.2;
++	}
++	float feet = clamp((UV.y - (1.0 - feet_height)) / feet_height, 0.0, 1.0);
++	col = mix(col, feet_color, feet * grass * 0.85);
++	col = mix(col, vec3(1.0, 0.96, 0.9), clamp(flash, 0.0, 1.0));
++	float ink = step(coverage, 0.5);
++	float rim = (1.0 - inner) * step(0.5, coverage) * step(0.48, uv.x);
++	col = mix(col, rim_color, rim * 0.75);
++	ALBEDO = mix(col, vec3(0.025, 0.035, 0.05), ink);
++	coverage = max(coverage, edge);
++	// Alpha scissor keeps depth writes and avoids transparent-sprite sorting.
++	// Project uses 4x MSAA; alpha-to-coverage smooths the sampled silhouette.
++	ALPHA = coverage;
++	ALPHA_SCISSOR_THRESHOLD = 0.5;
++	ALPHA_ANTIALIASING_EDGE = 0.3;
++	ALPHA_TEXTURE_COORDINATE = uv * frame_size;
++}
+diff --git a/proto/rotation/unit.gdshader.uid b/proto/rotation/unit.gdshader.uid
+new file mode 100644
+index 0000000..4a5cee5
+--- /dev/null
++++ b/proto/rotation/unit.gdshader.uid
+@@ -0,0 +1 @@
++uid://i22mg8nt33vd
+diff --git a/reports/agents/T49.md b/reports/agents/T49.md
+new file mode 100644
+index 0000000..3d0af6f
+--- /dev/null
++++ b/reports/agents/T49.md
+@@ -0,0 +1,144 @@
++---
++task_id: T49
++executor: codex
++status: blocked
++summary: |
++  已在 proto/rotation/ 编写独立 Godot 原型与专用验证脚本，未修改生产文件。
++  主脚本和三个依赖脚本通过最终一轮 check-only；无头运行初始化失败。
++  已使用任务卡允许的 3 次自修复，依要求停止继续修复。
++  尚无有效性能数据或实际运行截图，不能据此确认美术技术结论。
++artifacts:
++  - proto/rotation/
++  - tools/verify/proto_rotation.sh
++  - proto/rotation/evidence/verify.json
++  - proto/rotation/evidence/runtime-failure.log
++  - proto/rotation/evidence/T49.patch
++validation: "tools/verify/proto_rotation.sh 失败；main.gd:61 普通数组赋给 Array[String] 导致初始化中断，最终触发 90 秒超时。"
++issues:
++  - 验证脚本未通过，原型当前不能作为可运行交付验收。
++  - 50/200/500 单位性能实测全部未完成。
++  - 未截图，Lead 的视觉验收全部待进行。
++  - git add 无法创建主仓库 worktree 的 index.lock；尚未提交，改动及补丁保留在工作区。
++usage: "使用本地 Godot 与本地文件工具；实际 API 费用及额度不可取得。未使用图像生成。"
++needs_claude: true
++reason: "3 次自修复预算已用尽。需 Lead 决定是否另开修复轮次；首个明确阻塞点是 main.gd:61 的数组赋值。"
++---
++
++## 结果：部分完成，验证失败
++
++本报告是失败交付，不能标记任务通过。遵守 `retry_limit: 3`，最后一轮失败后未继续修改原型或验证脚本。没有触发修改生产代码的需求，也没有证据表明目标在原型中做不到；实际阻塞是运行错误和修复次数上限。
++
++工作目录：`/Users/cyy/Projects/亡魂王子-t49`；分支：`codex/t49-rotation-proto`。起点提交：`f3e8934`。尚未产生交付提交，未合并 main。
++
++提交尝试在 `git add proto/rotation tools/verify/proto_rotation.sh reports/agents/T49.md` 阶段失败：
++
++```text
++fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t49/index.lock': Operation not permitted
++```
++
++按任务卡保留工作区改动，并生成 `proto/rotation/evidence/T49.patch`（含报告，补丁本身不递归包含）。Lead 可在有提交权限的原 worktree 中暂存以上目录和报告后提交；提交信息结尾需有 `Co-Authored-By: GPT-6 <noreply@openai.com>`。
++
++## 改动
++
++以下均为已写入但未完成运行验收的代码：
++
++- `proto/rotation/project.godot`、`main.tscn`：独立子项目，不依赖或修改根项目配置及生产场景。
++- `proto/rotation/main.gd`：正交 30° 镜头、连续且不归一化的方位角、指数阻尼、拖动/Q/E/缩放输入；自动两圈再反向一圈；两种压力采样模式；8 方位与连续 20 帧的截图流程；命中停顿与震屏。
++- `proto/rotation/sprite_factory.gd`：复制生产 `scripts/sprite_factory.gd` 的原创程序化精灵生成逻辑，添加可关闭的精灵盾牌和逐帧盾牌挂点；不读取第三方素材。
++- `proto/rotation/unit.gdshader`：派生自生产部位换色着色器，加入 alpha 邻域墨线、两档明暗、阵营边光与压扁参数。
++- `proto/rotation/unit.gd`：0.08 秒压扁换面、0.1–0.3 动态滞回；带动画挂点的独立 3D 盾牌；简单目标移动逻辑。
++- `proto/rotation/effects.gd`、`flat.gdshader`、`ground.gdshader`：抛物线箭雨与插地保留 3 秒、冥火弹与拖尾、地面符文/燃烧、程序化 8 帧公告板爆发、世界空间扇形喷火与粒子、轴向公告板光束/闪电链。
++- `tools/verify/proto_rotation.sh`：解析四个脚本，限时运行无头 `--orbit=6 --units=200`；计划检查两种模式帧时间、轨道反向及命中；可用 `--screenshots` 生成并检查 28 张截图。
++- `proto/rotation/evidence/`：解析日志、失败摘要与运行错误摘录。`.uid` 文件随代码提交；`.godot/`、本机 `override.cfg` 与冗长引擎日志不提交。
++
++除明确要求的本报告外，源码改动均在 allowed 内；未修改 `scripts/`、`shaders/`、`scenes/`、`assets/`、`art/`、`docs/`、`tasks/` 或根 `project.godot`。
++
++## 验证
++
++执行命令：
++
++```sh
++tools/verify/proto_rotation.sh
++```
++
++最后一轮四个脚本的解析均返回 0，日志为 `proto/rotation/evidence/parse-*.gd.log`。解析通过不代表运行正确。
++
++最后一轮无头运行的首个有效错误（摘自 `proto/rotation/evidence/runtime-failure.log`）：
++
++```text
++SCRIPT ERROR: Trying to assign an array of type "Array" to a variable of type "Array[String]".
++   at: _ready (res://main.gd:61)
++```
++
++其后 `_ready()` 已中断，镜头和特效未加入场景树，产生连带错误：
++
++```text
++ERROR: Node not inside tree. Use look_at_from_position() instead.
++SCRIPT ERROR: Invalid call. Nonexistent function 'update' in base 'Nil'.
++```
++
++没有输出 `CONFIG`、`PERF`、`ORBIT` 或 `RESULT`。验证进程达到 90 秒超时后退出失败。`git diff --check` 通过。
++
++修复次数记录（首次验证不计入自修复）：
++
++| 轮次 | 处理 | 结果 |
++|---|---|---|
++| 首次验证 | 直接解析/导入独立项目 | 特效脚本局部变量 `mat` 重名；Godot 默认用户数据和编辑器目录不可写 |
++| 自修复 1 | 修复变量重名；尝试工作区内便携运行 | 便携可执行文件启动返回 `-9`，未取得进一步运行数据 |
++| 自修复 2 | 使用原始可执行文件；取消编辑器导入；尝试本地用户目录覆盖 | Godot 清理自定义路径的 `..`，目录仍不可写 |
++| 自修复 3 | 无状态原型使用已有用户目录，日志显式落在工作区 | 解析通过；运行在 `main.gd:61` 中断，达到次数上限后停止 |
++
++验证脚本保留 macOS 沙箱下使用既有 `[unnamed project]` 数据目录的本机覆盖逻辑；原型源码没有 `user://` 写入。Godot 证书日志按项目协作规范排除。便携方案已移除。
++
++### 性能表
++
++机器：MacBook Air `MacBookAir10,1`，Apple M1，8 核 CPU、7 核 GPU、8 GB 内存；macOS 26.6.2；Godot 4.7.2.stable.official.ed1daf0bf。
++
++分辨率配置为 1280×720；原型配置 Forward+、4× MSAA、关闭 VSync。**实际只启动了 headless/dummy，未执行 GPU 渲染；场景初始化中断，连无头 CPU 帧时间也未取得。** 下表明确列出缺测项，不把无头数据充当渲染性能。
++
++| 单位 | 模式 | 平均 ms | p95 ms | p99 ms | 绘制调用数 | 实测状态 |
++|---:|---|---:|---:|---:|---:|---|
++| 50 | 只渲染 | — | — | — | — | 未运行 |
++| 50 | 简单移动 | — | — | — | — | 未运行 |
++| 200 | 只渲染 | — | — | — | — | 初始化失败 |
++| 200 | 简单移动 | — | — | — | — | 初始化失败 |
++| 500 | 只渲染 | — | — | — | — | 未运行 |
++| 500 | 简单移动 | — | — | — | — | 未运行 |
++
++代码中的采样计划：每种模式预热 1.5 秒、默认采样 4 秒，记录实际进程帧间隔、更新 CPU 耗时及 Godot 每帧绘制调用数；无头绘制调用数输出 `null`。只渲染模式仍包含镜头、动画和特效更新，移动模式额外加入单位目标计算、位置插值与朝向更新；不是生产战斗 AI 的性能测试。
++
++### 截图
++
++**未截图。** 没有启动窗口验证，因为无头初始化已失败并耗尽修复预算。未证明当前沙箱能否打开窗口，也未编译验证 GPU 着色器。`shots/t49/` 没有本任务的截图产物。
++
++计划文件名为 `azimuth_000.png` 至 `azimuth_315.png`（间隔 45°）、`continuous_00.png` 至 `continuous_19.png`，以及包含角度、时间、分辨率的 `manifest.json`。连续截图按固定 60 Hz 模拟每 0.1 模拟秒取一张，不保证截图保存本身每 0.1 墙钟秒完成。
++
++修复后供 Lead 复跑的命令（本轮未成功执行）：
++
++```sh
++tools/verify/proto_rotation.sh --screenshots
++godot --path proto/rotation --log-file /tmp/t49-interactive.log
++godot --path proto/rotation --log-file /tmp/t49-50.log -- --bench --units=50 --mode=both --seconds=6
++godot --path proto/rotation --log-file /tmp/t49-200.log -- --bench --units=200 --mode=both --seconds=6
++godot --path proto/rotation --log-file /tmp/t49-500.log -- --bench --units=500 --mode=both --seconds=6
++```
++
++三档性能测试应依次执行，采样时不并行运行其他 Godot/Blender。交互操作：右键/中键拖动，Q/E 45°，滚轮缩放，M 切换移动，空格触发停顿/震屏，Esc 退出。
++
++## 风险与已知不足
++
++- 明确阻塞点是 `modes = ["render", "move"] if mode == "both" else [mode]`。下一轮可用显式填充或 `assign()` 保持 `Array[String]` 类型，再复跑验证；本轮没有执行此修复。
++- GPU 着色器、透明排序、盾牌挂点和全部特效均未得到实际渲染证据；后续可能还有运行问题。
++- 爆发序列图由程序生成，只作技术占位，未做美术质量结论。
++- 目前无法评价 8 个方位的方向正确性、连续转动的吸附/重影/漂移、翻转是否刺眼、两种盾牌的取舍，也无法判断 16.7 ms 预算。
++
++## 未完成
++
++- [ ] `tools/verify/proto_rotation.sh` 通过：初始化运行错误。
++- [ ] 50/200/500 单位两种模式的实测性能表：没有有效采样。
++- [ ] 8 方位静帧与连续 20 帧：未生成。
++- [ ] Lead 视觉验收及技术结论复核：缺少截图证据。
++
++## 疑问（需要用户或 Lead 决定的）
++
++是否给本任务安排新的修复轮次。当前代码保留在指定分支；本轮严格在第 3 次自修复失败后停止。
+diff --git a/tools/verify/proto_rotation.sh b/tools/verify/proto_rotation.sh
+new file mode 100755
+index 0000000..cf8a198
+--- /dev/null
++++ b/tools/verify/proto_rotation.sh
+@@ -0,0 +1,85 @@
++#!/bin/bash
++set -eu
++cd "$(dirname "$0")/../.."
++export T49_ROOT="$PWD"
++python3 - "$@" <<'PY'
++import json
++import math
++import os
++from pathlib import Path
++import re
++import struct
++import subprocess
++import sys
++
++root = Path(os.environ['T49_ROOT'])
++project = root / 'proto/rotation'
++evidence = project / 'evidence'
++evidence.mkdir(exist_ok=True)
++godot = os.environ.get('GODOT', 'godot')
++# This stateless scene never writes user://; logs have explicit local paths.
++# In the macOS sandbox, reuse the existing unnamed data directory read-only.
++# Do not launch the editor, which would attempt to save shared editor settings.
++if sys.platform == 'darwin' and (Path.home() / 'Library/Application Support/Godot/app_userdata/[unnamed project]').is_dir():
++    (project / 'override.cfg').write_text('[application]\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name="Godot/app_userdata/[unnamed project]"\n')
++checks = []
++
++def run(name, arguments, timeout=90):
++    command = [godot, '--path', str(project), '--log-file', str(evidence / (name + '-engine.log')), *arguments]
++    result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
++    log = result.stdout + result.stderr
++    (evidence / (name + '.log')).write_text(log)
++    errors = re.findall(r'^.*(?:SCRIPT ERROR|SHADER ERROR|Parse Error|ERROR:|Assertion failed).*$', log, re.M)
++    # macOS certificate messages are environmental, not Godot script failures.
++    errors = [x for x in errors if 'certificate' not in x.lower() and 'ret != noErr' not in x]
++    if result.returncode or errors:
++        raise RuntimeError(f'{name}: exit={result.returncode}\n' + '\n'.join(errors[:15]) + '\n' + log[-3000:])
++    return log
++
++try:
++    for script in ['sprite_factory.gd', 'unit.gd', 'effects.gd', 'main.gd']:
++        run('parse-' + script, ['--headless', '--check-only', '--script', 'res://' + script])
++    log = run('headless', ['--headless', '--max-fps', '120', '--', '--orbit=6', '--units=200', '--seconds=2'])
++    rows = [json.loads(x) for x in re.findall(r'^PERF (.*)$', log, re.M)]
++    assert {r['mode'] for r in rows} == {'render', 'move'}, 'missing render/move metrics'
++    for row in rows:
++        assert row['units'] == 200 and row['samples'] >= 40
++        assert all(math.isfinite(row[k]) and row[k] > 0 for k in ['mean_ms', 'p95_ms', 'p99_ms'])
++        assert row['p99_ms'] >= row['p95_ms']
++        print('PERF ' + json.dumps(row))
++    orbit = json.loads(re.search(r'^ORBIT (.*)$', log, re.M)[1])
++    assert orbit['max_yaw_deg'] > 650 and orbit['reversed'], 'two turns/reverse not observed'
++    assert abs(orbit['target_turns'] - 1) < 0.01, 'orbit did not finish'
++    assert orbit['impacts'] > 0, 'no projectile impacts'
++    assert 'CHECKS damping_30_60=ok' in log and '"ok":true' in log
++    checks.append({'check': 'headless_orbit_and_200_units', 'ok': True, 'orbit': orbit, 'metrics': rows})
++    print('[PASS] headless two turns + reverse; frame metrics for render/move')
++    shots = root / 'shots/t49'
++    if '--screenshots' in sys.argv:
++        run('screenshots', ['--', '--shots', '--units=50', '--out=' + str(shots)], timeout=120)
++    manifest_path = shots / 'manifest.json'
++    if manifest_path.exists():
++        manifest = json.loads(manifest_path.read_text())
++        expected = {f'azimuth_{a:03}.png' for a in range(0, 360, 45)} | {f'continuous_{f:02}.png' for f in range(20)}
++        assert manifest['count'] == 28 and {r['file'] for r in manifest['shots']} == expected
++        for name in expected:
++            data = (shots / name).read_bytes()
++            assert data[:8] == b'\x89PNG\r\n\x1a\n' and len(data) > 10000, f'invalid image {name}'
++            assert struct.unpack('>II', data[16:24]) == (1280, 720)
++        static = [s for s in manifest['shots'] if s['kind'] == 'static']
++        assert all(abs(s['yaw_deg'] - a) < .001 for s, a in zip(static, range(0, 360, 45)))
++        sequence = [s for s in manifest['shots'] if s['kind'] == 'continuous']
++        assert all(abs((b['sample_s'] - a['sample_s']) - .1) < .00001 for a, b in zip(sequence, sequence[1:]))
++        assert all(0 < b['yaw_deg'] - a['yaw_deg'] < 25 for a, b in zip(sequence, sequence[1:])), 'camera discontinuity'
++        checks.append({'check': 'screenshots', 'ok': True, 'count': 28, 'path': str(shots)})
++        print('[PASS] screenshots 8 azimuths + 20 continuous frames at 1280x720')
++    else:
++        checks.append({'check': 'screenshots', 'ok': True, 'skipped': True, 'reason': 'headless verification; run with --screenshots on a windowed display'})
++        print('[SKIP] screenshots: headless run; use --screenshots for window capture')
++    (evidence / 'verify.json').write_text(json.dumps({'ok': True, 'checks': checks}, indent=2))
++except (AssertionError, RuntimeError, subprocess.TimeoutExpired) as error:
++    (evidence / 'verify.json').write_text(json.dumps({'ok': False, 'error': str(error), 'checks': checks}, indent=2))
++    print('[FAIL] ' + str(error), file=sys.stderr)
++    sys.exit(1)
++PY
++exit

@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "error": "Command '['godot', '--path', '/Users/cyy/Projects/\u4ea1\u9b42\u738b\u5b50-t49/proto/rotation', '--log-file', '/Users/cyy/Projects/\u4ea1\u9b42\u738b\u5b50-t49/proto/rotation/evidence/headless-engine.log', '--headless', '--max-fps', '120', '--', '--orbit=6', '--units=200', '--seconds=2']' timed out after 90 seconds",
+  "checks": []
+}
