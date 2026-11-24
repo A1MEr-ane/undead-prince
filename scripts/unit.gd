@@ -123,6 +123,7 @@ var stun_timer := 0.0
 var fall_phase := 0
 var rag_vel := Vector3.ZERO
 var flash := 0.0
+var stretch := 0.0
 
 
 func setup(p_main, p_squad, p_faction: int, palette_row: int, pos: Vector3, stats: Dictionary) -> void:
@@ -447,9 +448,12 @@ func _stepping_update() -> void:
 		step_to += push
 	var t := clampf(step, 0.0, 1.0)
 	var p := step_from.lerp(step_to, t)
+	# 平地直线插值（起伏交给精灵帧，同 Bad North）；只有上台阶时才抬起
 	var climb := step_to.y - step_from.y
-	p.y += sin(t * PI) * (0.02 + maxf(climb, 0.0) * 0.6)
+	if climb > 0.01:
+		p.y += sin(t * PI) * climb * 0.6
 	vis_pos = p
+	stretch = 0.01 * sin(t * PI)
 	if move_animate.active:
 		anim_name = "walk"
 		anim_t = (t * 0.5 + 0.5 * parity) * WALK_LEN
@@ -694,6 +698,7 @@ func _apply_visuals() -> void:
 		flipped = true
 	mesh.set_instance_shader_parameter("flip", 1.0 if flipped else 0.0)
 	mesh.set_instance_shader_parameter("flash", flash)
+	mesh.set_instance_shader_parameter("stretch", stretch if stepping.active else 0.0)
 	mesh.set_instance_shader_parameter("health", clampf(hp / max_hp, 0.0, 1.0))
 	var g := terrain.height_at(vis_pos)
 	mesh.set_instance_shader_parameter("grass", terrain.grass_at(vis_pos) if grounded.active else 0.0)

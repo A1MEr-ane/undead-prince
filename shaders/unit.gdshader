@@ -34,6 +34,8 @@ instance uniform float health = 1.0;
 instance uniform float flash = 0.0;
 instance uniform float spin = 0.0;
 instance uniform float grass = 0.0;
+// 每步的竖向伸缩（Bad North 走路片段在步伐中段拉高 1%）
+instance uniform float stretch = 0.0;
 
 void vertex() {
 	vec2 pivot = vec2(0.0, quad_size * 0.4);
@@ -45,7 +47,7 @@ void vertex() {
 	VERTEX.z += depth_nudge;
 	vec3 right = normalize(vec3(INV_VIEW_MATRIX[0].x, 0.0, INV_VIEW_MATRIX[0].z));
 	vec3 back = normalize(vec3(INV_VIEW_MATRIX[2].x, 0.0, INV_VIEW_MATRIX[2].z));
-	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(right, 0.0), vec4(0.0, up_scale, 0.0, 0.0), vec4(back, 0.0), MODEL_MATRIX[3]);
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(right, 0.0), vec4(0.0, up_scale * (1.0 + stretch), 0.0, 0.0), vec4(back, 0.0), MODEL_MATRIX[3]);
 	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }
 
