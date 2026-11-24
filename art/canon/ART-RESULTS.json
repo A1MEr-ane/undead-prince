@@ -1,0 +1,53 @@
+[
+  {
+    "id": "CHAR-STITCHER",
+    "status": "in_review",
+    "outputs": [
+      "art/canon/CHAR-STITCHER/hero.png",
+      "art/canon/CHAR-STITCHER/turnaround.png",
+      "art/canon/CHAR-STITCHER/props.png",
+      "art/canon/CHAR-STITCHER/sheet.png"
+    ],
+    "reference_sha256": {
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-BERNARD-R1.png": "f95cdf0bd77e7f789a3a14a811fbde4f9b7eba3029a7d7c9f28cd6d3ed8e2c01",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-FERRYMAN-R1.png": "7b7c8637cd68cc10e8a96422c2a8e3de3e73133be846c79e82c9cbc740a0bc11"
+    },
+    "tool": "image_gen.imagegen (built-in); model: undisclosed by tool response",
+    "review_notes": "首轮生成，未退回。已逐张查看拆分文件：38岁成年军医方向、赤棕扎发、灰白皮肤整齐缝线、褪蓝军服、棕皮围裙、卷袖手套、单侧露骨腕与少量青绿魂光；主立绘持弯针线，配件含针线、线轴、外科剪、器械卷；未见锤、铁砧、机械义肢、王冠或王室披风。正侧背目视等高、同地线、空手，左腕骨与右髋器械卷朝向对应。已知不足：主立绘的露骨段延及短段前臂，弯针为展示而放大；手套握持遮挡部分手指，未逐根确认；不能据此认定为几何精确建模图。"
+  },
+  {
+    "id": "CHAR-MAGE",
+    "status": "in_review",
+    "outputs": [
+      "art/canon/CHAR-MAGE/hero.png",
+      "art/canon/CHAR-MAGE/turnaround.png",
+      "art/canon/CHAR-MAGE/props.png",
+      "art/canon/CHAR-MAGE/sheet.png"
+    ],
+    "reference_sha256": {
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-BERNARD-R1.png": "f95cdf0bd77e7f789a3a14a811fbde4f9b7eba3029a7d7c9f28cd6d3ed8e2c01",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-FERRYMAN-R1.png": "7b7c8637cd68cc10e8a96422c2a8e3de3e73133be846c79e82c9cbc740a0bc11"
+    },
+    "tool": "image_gen.imagegen (built-in); model: undisclosed by tool response",
+    "review_notes": "首轮生成，未退回。已逐张查看拆分文件：成年瘦长巫妖、骨质骷髅脸、微弱青绿眼火、褪墨蓝短兜帽、层叠灰袍、略佝偻且实体双脚落地；主立绘持手稿及石板，三张残页漂浮；配件含手稿、石板及残页。正侧背目视等高、同地线、空手，无漂浮残页；未见冠冕、光环、巨杖、王室披风或悬浮身体，与渡魂人的无脸长袍剪影可区分。已知不足：主立绘与道具石板的破边轮廓略有差异，骨手指部分遮挡；手稿符号仅为不可读图形，不构成新设定；未做几何审查。"
+  },
+  {
+    "id": "CHAR-BUGLER",
+    "status": "in_review",
+    "outputs": [
+      "art/canon/CHAR-BUGLER/hero.png",
+      "art/canon/CHAR-BUGLER/turnaround.png",
+      "art/canon/CHAR-BUGLER/props.png",
+      "art/canon/CHAR-BUGLER/sheet.png"
+    ],
+    "reference_sha256": {
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-BERNARD-R1.png": "f95cdf0bd77e7f789a3a14a811fbde4f9b7eba3029a7d7c9f28cd6d3ed8e2c01",
+      "/Users/cyy/Projects/亡魂王子/concept/canon-art/B/art/ART-B4-FERRYMAN-R1.png": "7b7c8637cd68cc10e8a96422c2a8e3de3e73133be846c79e82c9cbc740a0bc11"
+    },
+    "tool": "image_gen.imagegen (built-in); model: undisclosed by tool response",
+    "review_notes": "首轮生成，未退回。已逐张查看拆分文件：19岁年轻成年人体比例、灰白上脸与骨质下颌、青绿眼光、俏皮姿态、褪蓝短海军衣、铁锈红领巾与靴；主立绘持略大铜号及小碎王冠号旗；配件铜号和旗齐全。正侧背目视等高、同地线、空手，无儿童大头比例；王冠仅为旗面裂纹图形，未戴王冠或披王室披风。已知不足：主立绘铜号环管比道具页更窄，建模前需统一尺寸；握持手部分手指遮挡。各图独立构图未设跨角色物理身高标尺，不能从画布高低推定实际身高。"
+  }
+]
