@@ -1,0 +1,1236 @@
+{
+  "nodes": [
+    {
+      "id": "bay",
+      "en": "Bellgrave Bay",
+      "zh": "沉钟湾",
+      "x": 270,
+      "y": 251,
+      "type": "hub",
+      "stage": 1,
+      "why": "回溯锚点；旗舰沉于避风湾内。",
+      "scene": "唤醒基础军团，选择开局倾向，与旧部交谈。",
+      "plot": "每轮从此开始，只有王子保留亲历记忆。",
+      "reward": "仅基础军团",
+      "facts": [],
+      "effect": "",
+      "eng": "The Ferryman raises the wreck where the relief fleet was betrayed. Every Return begins here.",
+      "scene_en": "Wake the company; choose a starting doctrine and speak to the crew.",
+      "reward_en": "Starting company only",
+      "encounter_kind": "Anchor",
+      "consequence_en": "No worldly gains persist across the Return.",
+      "consequence_zh": "现世收益不跨回溯保留。",
+      "side_story_beats": [
+        "S03_01",
+        "S03_03",
+        "S04_01",
+        "S04_03",
+        "S05_02",
+        "S06_03",
+        "S07_01",
+        "S07_03"
+      ]
+    },
+    {
+      "id": "wreck",
+      "en": "Wrecker’s Rest",
+      "zh": "断桅滩",
+      "x": 388,
+      "y": 312,
+      "type": "battle",
+      "stage": 1,
+      "why": "湾外最近的打捞岛；必须取得小艇与本地通行能力。",
+      "scene": "抢占打捞码头，防止守军转移小艇；两处登陆滩。",
+      "plot": "找到旗舰的一块军旗碎片；确认不是所有遇难者都能被安葬。",
+      "reward": "小艇：改善首次部署",
+      "facts": [],
+      "effect": "craft",
+      "eng": "Secure salvage craft and a landing. A torn banner connects the company to the wreck.",
+      "scene_en": "Take the salvage pier before defenders move the boats; two beach approaches.",
+      "reward_en": "Landing craft: improve the first deployment",
+      "encounter_kind": "Landing",
+      "consequence_en": "Recover a usable boat and open the coastal/pilot passages.",
+      "consequence_zh": "回收可用小艇，打开沿岸与引航水路。",
+      "side_story_beats": []
+    },
+    {
+      "id": "light",
+      "en": "The Last Lighthouse",
+      "zh": "天涯灯塔",
+      "x": 235,
+      "y": 394,
+      "type": "battle",
+      "stage": 1,
+      "why": "沿外岛岸线南下，接管信号灯。",
+      "scene": "在灯塔发出警报前夺取它；低处码头更安全但绕路。",
+      "plot": "灯塔曾收到禁止搜救的命令；家属一直为失踪者添灯油。",
+      "reward": "侦察：额外预览下一处遭遇",
+      "facts": [],
+      "effect": "signal",
+      "eng": "The signal ledger records an order forbidding rescue.",
+      "scene_en": "Capture the beacon before its warning reaches the next garrison; the lower pier is a safer but longer approach.",
+      "reward_en": "Scout: preview one additional next encounter",
+      "encounter_kind": "Signals",
+      "consequence_en": "A captured signal ledger helps establish the rescue ban; suppression reduces one reinforcement event.",
+      "consequence_zh": "信号簿佐证禁救令；压制信号可减少一次增援。",
+      "side_story_beats": [
+        "S08_01"
+      ],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "oar",
+      "en": "Broken Oar Harbour",
+      "zh": "折桨港",
+      "x": 270,
+      "y": 478,
+      "type": "battle",
+      "stage": 1,
+      "why": "沿近岸航道抵达港税和渔船集散地。",
+      "scene": "穿过仓库巷道或突击暴露码头；避免误毁民用货物。",
+      "plot": "伯爵罗德里克支付佣兵费用，并安排船队改航。获得一封未寄家书的线索。",
+      "reward": "水手：额外招募选项",
+      "facts": [],
+      "effect": "harbour",
+      "eng": "Customs papers connect the Earl to the mercenaries and the diversion.",
+      "scene_en": "Fight through warehouse alleys or cross the exposed quay; protect civilian cargo from incidental damage.",
+      "reward_en": "Crew: extra recruitment choice",
+      "encounter_kind": "Harbour assault",
+      "consequence_en": "Customs records and surviving dock officials can support the palace confrontation.",
+      "consequence_zh": "港税账簿及存续官吏可支援宫城对质。",
+      "side_story_beats": [
+        "S04_02",
+        "S06_01",
+        "S08_02"
+      ],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "pilot",
+      "en": "Pilot’s Rest",
+      "zh": "引航岛",
+      "x": 698,
+      "y": 295,
+      "type": "battle",
+      "stage": 1,
+      "why": "从湾外往东横渡短距离水面；先占引航站。",
+      "scene": "夺取潮汐堤道连接的两处海图房；随潮位选择登陆点。",
+      "plot": "海图证明当日所谓航道危险的通报是伪造的。",
+      "reward": "引航：灵活布置登陆点",
+      "facts": [],
+      "effect": "pilot",
+      "eng": "The original chart contradicts the false warning that diverted the fleet.",
+      "scene_en": "Secure two chart huts linked by a tidal causeway; choose a landing while the tide changes.",
+      "reward_en": "Pilotage: flexible landing placement",
+      "encounter_kind": "Navigation",
+      "consequence_en": "Restore the charted northern and central crossings.",
+      "consequence_zh": "恢复北峡及中央海道的海图通行。",
+      "side_story_beats": [],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "gate",
+      "en": "The Iron Gate",
+      "zh": "锁海之门",
+      "x": 968,
+      "y": 228,
+      "type": "boss",
+      "stage": 1,
+      "why": "引航岛取得海图后可攻克北方双堡。",
+      "scene": "攻破双锁链塔，压制守军后控制绞盘。",
+      "plot": "元帅休亲自签署封湾军令；他认为牺牲王子能避免内战。",
+      "reward": "重装兵种或破甲增益",
+      "facts": [],
+      "effect": "gate",
+      "eng": "Hugh’s signed naval orders establish his role in the betrayal.",
+      "scene_en": "Break the two chain towers; occupy the winch after suppressing the defending formation.",
+      "reward_en": "Heavy troops or armour-breaking boon",
+      "encounter_kind": "Stronghold",
+      "consequence_en": "Open the military passage; recover Hugh’s order, not a blanket declaration of his death.",
+      "consequence_zh": "打开军用海道并取得休的军令；不默认宣告其死亡。",
+      "side_story_beats": [
+        "S03_02",
+        "S11_01"
+      ],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "yard",
+      "en": "Blackwake Yard",
+      "zh": "黑浪船厂",
+      "x": 1293,
+      "y": 251,
+      "type": "battle",
+      "stage": 1,
+      "why": "北峡通行后沿森林海岸进入王家军工港。",
+      "scene": "阻止援船离港，控制滑道和船坞。",
+      "plot": "船厂工匠也受旧征发令约束；部分海军愿意效忠合法君主。",
+      "reward": "攻城强化或护甲加固",
+      "facts": [],
+      "effect": "navy",
+      "eng": "The shipyard reveals the cost of requisition and weakens royal naval reinforcement.",
+      "scene_en": "Disable launch ramps and seize the dry dock before a relief ship departs.",
+      "reward_en": "Siege upgrade or armour reinforcement",
+      "encounter_kind": "Shipyard",
+      "consequence_en": "Reduce naval reinforcement; surviving crews may offer present-run testimony.",
+      "consequence_zh": "削弱海军增援；存续船员可在本轮作证。",
+      "side_story_beats": [
+        "S11_02"
+      ]
+    },
+    {
+      "id": "kings",
+      "en": "The Drowned Kings",
+      "zh": "沉王群像",
+      "x": 557,
+      "y": 478,
+      "type": "lore",
+      "stage": 1,
+      "why": "沿引航岛或折桨港的传统渡线抵达古代纪念岛。",
+      "scene": "调查巨像铭文，在两处遗物中选择其一，无强制战斗。",
+      "plot": "历代君主曾以控制海道统一群岛；王国并非自古就依赖永昼。",
+      "reward": "王室遗物：指挥或阵形增益",
+      "facts": [],
+      "effect": "chart",
+      "eng": "Monuments record the conquest of the Crownsea long before the eternal light.",
+      "scene_en": "Inspect the monument inscriptions; choose one of two relic caches instead of a compulsory battle.",
+      "reward_en": "Royal relic: command or formation bonus",
+      "encounter_kind": "Exploration",
+      "consequence_en": "Identify an old central anchorage; learn pre-Day history.",
+      "consequence_zh": "辨认古中央锚地；了解永昼以前的历史。",
+      "side_story_beats": []
+    },
+    {
+      "id": "roads",
+      "en": "Crown Roads",
+      "zh": "王冠海道",
+      "x": 900,
+      "y": 375,
+      "type": "battle",
+      "stage": 1,
+      "why": "内海中央锚地，连接商航与军事航路。",
+      "scene": "在巡逻船威胁登陆区时攻下锚地堡垒。",
+      "plot": "被扣押的赈粮清单指向粮仓女伯爵；王都商人开始动摇。",
+      "reward": "船队预备：补充部署次数",
+      "facts": [],
+      "effect": "roads",
+      "eng": "The inner anchorage controls the merchant approach and holds missing relief manifests.",
+      "scene_en": "Capture the harbour fort while patrol boats threaten the landing zone.",
+      "reward_en": "Fleet reserve: replenish a deployment charge",
+      "encounter_kind": "Patrol harbour",
+      "consequence_en": "Open the merchant or military approach; recover the relief manifest.",
+      "consequence_zh": "打开商港或军港进路，回收赈粮清单。",
+      "side_story_beats": [],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "lantern",
+      "en": "Lantern Isle",
+      "zh": "长灯岛",
+      "x": 255,
+      "y": 626,
+      "type": "battle",
+      "stage": 1,
+      "why": "折桨港外侧的南方引航港，通往河口与潮汐浅滩。",
+      "scene": "夺取引航码头并保护民居；浅水通道限制大型阵形。",
+      "plot": "失踪船员的家属在此等候；可依据已知家书内容寻找家人。",
+      "reward": "浅水艇：侧翼部署",
+      "facts": [],
+      "effect": "shallow",
+      "eng": "A missing sailor’s family waits at the southern pilot station.",
+      "scene_en": "Secure the pilot pier without destroying occupied homes; shallow channels limit large formations.",
+      "reward_en": "Shallow craft: flank deployment",
+      "encounter_kind": "Shallow crossing",
+      "consequence_en": "Gain coastal access and a chance to meet Pip’s family.",
+      "consequence_zh": "取得沿岸通道，并可能与皮普家人会面。",
+      "side_story_beats": [
+        "S06_02",
+        "S06_04"
+      ]
+    },
+    {
+      "id": "west",
+      "en": "Westhaven",
+      "zh": "西庇港",
+      "x": 156,
+      "y": 562,
+      "type": "lore",
+      "stage": 2,
+      "why": "长灯岛西南旧港；第二阶段认识到战后补给的重要性。",
+      "scene": "勘察淤积港池并询问工人；选择修港建议或补给储藏。",
+      "plot": "发现永昼结束后可使用的替代港，但必须投入疏浚和储运。",
+      "reward": "补给或一次装备修复",
+      "facts": [],
+      "effect": "winterPort",
+      "eng": "A viable alternative winter harbour, if its neglected facilities are restored.",
+      "scene_en": "Inspect the silted basin and interview harbour workers; choose repair advice or a supply cache.",
+      "reward_en": "Supply or one equipment repair",
+      "encounter_kind": "Port survey",
+      "consequence_en": "Record a credible winter-port restoration plan, not an instantly restored port.",
+      "consequence_zh": "取得可行的冬港修复方案，而非立即修复港口。",
+      "side_story_beats": []
+    },
+    {
+      "id": "mill",
+      "en": "Miller’s Crossing",
+      "zh": "磨桥渡",
+      "x": 418,
+      "y": 750,
+      "type": "battle",
+      "stage": 1,
+      "why": "南方小艇沿河口浅水进入磨坊渡口。",
+      "scene": "在援兵过桥前控制磨桥，尽量保全磨坊。",
+      "plot": "王子的旧征发令仍被地方执行，受征者没有得到补偿。",
+      "reward": "预备队：步兵补充选项",
+      "facts": [],
+      "effect": "mills",
+      "eng": "Edmund’s own emergency levy remains in force long after his death.",
+      "scene_en": "Control the mill bridge before reinforcements cross; keep the mill intact if possible.",
+      "reward_en": "Reinforcement: reserve infantry option",
+      "encounter_kind": "River assault",
+      "consequence_en": "Recover copied requisition warrants and current claim receipts.",
+      "consequence_zh": "取得征发令抄件及本轮欠账凭据。",
+      "side_story_beats": [
+        "S09_01"
+      ]
+    },
+    {
+      "id": "harvest",
+      "en": "Harvest End",
+      "zh": "麦尽村",
+      "x": 530,
+      "y": 690,
+      "type": "battle",
+      "stage": 1,
+      "why": "磨桥渡与长灯岛之间有粮运支流。",
+      "scene": "夺取配粮站瓦解征发守军，避开民用粮仓。",
+      "plot": "守军以服役换家人的口粮；王子的征发令曾经伤害这些人。",
+      "reward": "口粮：遭遇之间恢复",
+      "facts": [],
+      "effect": "grain",
+      "eng": "The garrison fights for its families’ ration entitlements.",
+      "scene_en": "Break the levy garrison by taking its ration station; avoid the civilian granary.",
+      "reward_en": "Rations: recovery between encounters",
+      "encounter_kind": "Village defence lines",
+      "consequence_en": "Open the grain route or tidal coast; preserved food matters in the settlement.",
+      "consequence_zh": "打开粮运或潮岸路线；保存的粮食影响战后安排。",
+      "side_story_beats": []
+    },
+    {
+      "id": "granary",
+      "en": "The Great Granary",
+      "zh": "万谷仓",
+      "x": 776,
+      "y": 745,
+      "type": "boss",
+      "stage": 1,
+      "why": "从麦尽村沿内河驳运线驶入粮仓港。",
+      "scene": "夺取三处仓门，压制守军而不焚毁粮储。",
+      "plot": "阿格尼丝扣押赈粮迫使王子出航。现存储备可以缓冲未来的冬季危机。",
+      "reward": "补给增益或攻城专精",
+      "facts": [],
+      "effect": "reserve",
+      "eng": "Agnes’s records prove deliberate delays; preserved stores support a winter transition.",
+      "scene_en": "Seize three warehouse gates; suppress the garrison without burning the food stores.",
+      "reward_en": "Supply boon or a siege specialist",
+      "encounter_kind": "Stronghold",
+      "consequence_en": "Intact stores support the Winter Council; if burned, the evidence survives but reserve support does not.",
+      "consequence_zh": "完整粮储支援冬政会议；焚毁则保留证据但失去粮储支持。",
+      "side_story_beats": [
+        "S09_02"
+      ],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "lock",
+      "en": "King’s Lock",
+      "zh": "王闸",
+      "x": 851,
+      "y": 836,
+      "type": "battle",
+      "stage": 1,
+      "why": "万谷仓沿低地水道进入东向水闸。",
+      "scene": "控制两岸并操作水闸；桥路与渡船为不同进路。",
+      "plot": "王室工程曾将粮食送往旧王都；本轮取得粮运船队的支持。",
+      "reward": "内河船：灵活部署",
+      "facts": [],
+      "effect": "grainGate",
+      "eng": "The lock opens the eastern grain passage and can support the capital’s food supply.",
+      "scene_en": "Control both banks and operate the sluice; bridge and ferry provide distinct approaches.",
+      "reward_en": "River craft: flexible deployment",
+      "encounter_kind": "Hydraulic crossing",
+      "consequence_en": "Secure the grain convoy route into Sunhold.",
+      "consequence_zh": "取得通往王都的粮运船队水道。",
+      "side_story_beats": []
+    },
+    {
+      "id": "silent",
+      "en": "Silent Shoals",
+      "zh": "寂礁群",
+      "x": 1018,
+      "y": 630,
+      "type": "lore",
+      "stage": 2,
+      "why": "从麦尽村或长灯岛沿南缘潮汐水道抵达古葬岛。",
+      "scene": "落潮时辨读葬碑，选择安全渡线或遗物。",
+      "plot": "早期死者直接渡入灰海；教会后来接管了送葬船。",
+      "reward": "护符：有限抗圣光",
+      "facts": [],
+      "effect": "burialChart",
+      "eng": "Old burial rites predate the Church’s control of the dead.",
+      "scene_en": "Read the burial stones at low tide; choose a safe ferry route or a relic cache.",
+      "reward_en": "Ward: limited resistance to holy attacks",
+      "encounter_kind": "Tidal exploration",
+      "consequence_en": "Identify old funeral channels and rites without unlocking the Seal early.",
+      "consequence_zh": "辨认古葬水道与仪式，但不提前开放秘印。",
+      "side_story_beats": [
+        "S07_02"
+      ]
+    },
+    {
+      "id": "archive",
+      "en": "The Drowned Archive",
+      "zh": "沉水藏书阁",
+      "x": 1065,
+      "y": 499,
+      "type": "lore",
+      "stage": 3,
+      "why": "掌握古葬与旧航路后，可以从寂礁群或沉王群像前往。",
+      "scene": "穿过积水下厅；优先抄录盟约或查看奥斯温批注，安全时可兼取。",
+      "plot": "永昼起于大寒冬中的临时盟约，后逐渐依靠强制截留完整灵魂。",
+      "reward": "研究增益：提高冥火使用效率",
+      "facts": [
+        "K05"
+      ],
+      "effect": "archive",
+      "eng": "The founding compact records the Great Winter and the original temporary bargain.",
+      "scene_en": "Navigate the flooded lower hall; choose to copy the founding charter or inspect Oswin’s notes, with both readable if safe.",
+      "reward_en": "Research boon: efficient soulfire use",
+      "encounter_kind": "Archive exploration",
+      "consequence_en": "K05 knowledge; copied evidence is run-local and supports the shutdown plan.",
+      "consequence_zh": "获得K05；抄本是本轮证据，支援停机方案。",
+      "side_story_beats": [
+        "S02_02",
+        "S05_01"
+      ]
+    },
+    {
+      "id": "old",
+      "en": "Old Crown Keep",
+      "zh": "旧王堡",
+      "x": 655,
+      "y": 192,
+      "type": "lore",
+      "stage": 2,
+      "why": "从引航岛沿北岸旧渡线登陆先王遗址。",
+      "scene": "勘察古渡阶梯与纪念室，回收王朝遗物。",
+      "plot": "发现王室曾在寒冬迁都，旧王国与今日政治体系并不相同。",
+      "reward": "指挥遗物",
+      "facts": [],
+      "effect": "oldRoad",
+      "eng": "The abandoned dynastic route survives as a ferry crossing beneath the mountains.",
+      "scene_en": "Survey the old ferry stairs and memorial rooms; recover a dynastic relic.",
+      "reward_en": "Command relic",
+      "encounter_kind": "Ruined keep",
+      "consequence_en": "Find the old ferry passage and evidence of the winter relocation.",
+      "consequence_zh": "找到古渡通路及寒冬迁都证据。",
+      "side_story_beats": [
+        "S02_01"
+      ]
+    },
+    {
+      "id": "orchard",
+      "en": "The King’s Orchard",
+      "zh": "旧王果园",
+      "x": 1500,
+      "y": 530,
+      "type": "lore",
+      "stage": 2,
+      "why": "从王闸或沉水藏书阁沿东岸旧渡线登陆。",
+      "scene": "探访破损庄园，找到童年速写，不要求战斗。",
+      "plot": "兄妹童年在水沟里比赛木船；埃德蒙意识到妹妹已不再是需要他代作决定的孩子。",
+      "reward": "休整：选择轻量恢复增益",
+      "facts": [
+        "K02"
+      ],
+      "effect": "orchard",
+      "eng": "A childhood memory of wooden boats opens a more personal conversation with Eleanor.",
+      "scene_en": "Visit the damaged country house; recover a childhood sketch, with no garrison encounter required.",
+      "reward_en": "Rest: select a modest recovery boon",
+      "encounter_kind": "Quiet interlude",
+      "consequence_en": "Open the personal audience; no automatic trust or consent is carried over.",
+      "consequence_zh": "开启私人会面；不自动继承信任或同意。",
+      "side_story_beats": [
+        "S01_01"
+      ]
+    },
+    {
+      "id": "graves",
+      "en": "Hollow Graves",
+      "zh": "无碑墓园",
+      "x": 1410,
+      "y": 817,
+      "type": "lore",
+      "stage": 2,
+      "why": "南部水闸或寂礁群通向潮汐葬运水域。",
+      "scene": "涨潮前辨读隐藏姓名；证人可自愿作证。",
+      "plot": "死者被定罪后无法安葬；原先的葬运开始服务于王室秘密。",
+      "reward": "魂护或恢复",
+      "facts": [],
+      "effect": "graveNames",
+      "eng": "The erased names expose the social consequences of condemnation.",
+      "scene_en": "Read concealed names before the tide rises; a witness may volunteer to speak.",
+      "reward_en": "Soul ward or recovery",
+      "encounter_kind": "Graveyard exploration",
+      "consequence_en": "Remember names; only present witnesses and copies can support restitution.",
+      "consequence_zh": "记住姓名；仅本轮证人与抄本能支持追偿。",
+      "side_story_beats": [
+        "S10_01"
+      ]
+    },
+    {
+      "id": "abbey",
+      "en": "The Pale Abbey",
+      "zh": "苍白圣堂",
+      "x": 1255,
+      "y": 713,
+      "type": "boss",
+      "stage": 1,
+      "why": "王闸通行后，沿潮汐浅道抵达圣堂。",
+      "scene": "压制钟楼圣光区域，再夺取档案室。",
+      "plot": "教会在沉船前已经拟定叛国判决。后期可发现被截留灵魂的运送记录。",
+      "reward": "抗圣光增益或专精兵种",
+      "facts": [],
+      "effect": "church",
+      "eng": "The date of the treason decree predates the sinking. Later records reveal diverted souls.",
+      "scene_en": "Silence the bell tower’s holy field, then seize the record room.",
+      "reward_en": "Anti-holy boon or specialist",
+      "encounter_kind": "Stronghold",
+      "consequence_en": "Find the predated decree; Stage III reveals transfer records.",
+      "consequence_zh": "取得提前拟定的判决；第三阶段揭示转运记录。",
+      "side_story_beats": [
+        "S10_02"
+      ],
+      "evidence_fragment": "K01"
+    },
+    {
+      "id": "funeral",
+      "en": "Funeral Landing",
+      "zh": "灵渡码头",
+      "x": 1141,
+      "y": 781,
+      "type": "battle",
+      "stage": 3,
+      "why": "第二阶段新结局后发现受限葬运路线，须本轮取得入口。",
+      "scene": "控制仪式码头，阻止转运且不毁记录。",
+      "plot": "确认永昼消耗被截留的完整灵魂，而非普通冥火。",
+      "reward": "冥火增益或防护",
+      "facts": [
+        "K04"
+      ],
+      "effect": "sealAccess",
+      "eng": "Restricted cargo proves the Seal consumes captive souls, not residual Soulfire.",
+      "scene_en": "Secure the ceremonial jetty and stop the transfer without destroying the records.",
+      "reward_en": "Soulfire boon or protection",
+      "encounter_kind": "Convoy interception",
+      "consequence_en": "K04 and present access to the ritual transport network.",
+      "consequence_zh": "K04及本轮仪式运输网通行权。",
+      "side_story_beats": []
+    },
+    {
+      "id": "merchant",
+      "en": "Merchant Gate",
+      "zh": "白港门",
+      "x": 1360,
+      "y": 407,
+      "type": "entry",
+      "stage": 1,
+      "why": "由王冠海道进入深水商港。",
+      "scene": "控制海关码头，守卫投降后与商人协商通行。",
+      "plot": "贸易账目、商人态度与摄政议会的经济基础将在宫城对质中发挥作用。",
+      "reward": "无新构筑奖励；王都入口",
+      "facts": [],
+      "effect": "merchant",
+      "eng": "The merchant waterfront offers leverage over the regency’s customs network.",
+      "scene_en": "Secure the customs quay and negotiate a passage with merchants after the local guard yields.",
+      "reward_en": "No new build reward; capital approach",
+      "encounter_kind": "Capital approach",
+      "consequence_en": "Merchant witnesses and customs cooperation alter the confrontation.",
+      "consequence_zh": "商人证人与海关合作影响对质。",
+      "side_story_beats": [
+        "S12_01"
+      ]
+    },
+    {
+      "id": "lion",
+      "en": "Lion Gate",
+      "zh": "雄狮门",
+      "x": 1387,
+      "y": 333,
+      "type": "entry",
+      "stage": 1,
+      "why": "通过黑浪船厂削弱舰队，或由王冠海道转向军港。",
+      "scene": "以军事压力或承认合法君主打开军港门。",
+      "plot": "王国军队的效忠对象取决于王子对王位的主张和此前取得的军令。",
+      "reward": "无新构筑奖励；王都入口",
+      "facts": [],
+      "effect": "lion",
+      "eng": "The military quay carries the consequences of naval defections into the palace.",
+      "scene_en": "Open the naval gate through military pressure or recognition of the lawful ruler.",
+      "reward_en": "No new build reward; capital approach",
+      "encounter_kind": "Capital approach",
+      "consequence_en": "Guard allegiance reflects current naval support, not past lives.",
+      "consequence_zh": "宫卫效忠反映本轮海军支持，不继承前世。",
+      "side_story_beats": []
+    },
+    {
+      "id": "provision",
+      "en": "Provision Gate",
+      "zh": "粮运门",
+      "x": 1373,
+      "y": 493,
+      "type": "entry",
+      "stage": 1,
+      "why": "控制王闸后沿王都粮船航线进入。",
+      "scene": "控制粮运登陆点，取得可用粮储清单。",
+      "plot": "本轮保全的粮食和冬港计划将影响冬政会议。",
+      "reward": "无新构筑奖励；王都入口",
+      "facts": [],
+      "effect": "provision",
+      "eng": "Grain reserves and intact supply routes change the Winter Council.",
+      "scene_en": "Secure the grain landing and obtain a statement of available stocks.",
+      "reward_en": "No new build reward; capital approach",
+      "encounter_kind": "Capital approach",
+      "consequence_en": "Supplies and transport inform the Winter Council.",
+      "consequence_zh": "粮储与运输影响冬政会议。",
+      "side_story_beats": []
+    },
+    {
+      "id": "procession",
+      "en": "Processional Gate",
+      "zh": "圣仪门",
+      "x": 1555,
+      "y": 474,
+      "type": "entry",
+      "stage": 3,
+      "why": "从灵渡码头循受限葬运线进入王都。",
+      "scene": "沿仪式水道控制登陆点，取得本轮通行文书。",
+      "plot": "秘印设施的现世入口向王子开放。",
+      "reward": "无新构筑奖励；王都入口",
+      "facts": [],
+      "effect": "procession",
+      "eng": "The procession route grants a current-history approach to the Seal.",
+      "scene_en": "Follow the ceremonial waterway, secure its landing and obtain current access papers.",
+      "reward_en": "No new build reward; capital approach",
+      "encounter_kind": "Capital approach",
+      "consequence_en": "Present-run access to the hidden chamber; the lawful ruler still authorises intervention.",
+      "consequence_zh": "本轮取得秘印入口；干预仍需合法君主授权。",
+      "side_story_beats": []
+    },
+    {
+      "id": "sunhold",
+      "en": "Sunhold",
+      "zh": "永昼王城",
+      "x": 1500,
+      "y": 399,
+      "type": "capital",
+      "stage": 1,
+      "why": "从任一已攻克的王都入口进入宫城。",
+      "scene": "王室会面、摄政对质、军团集结、冬政会议、秘印、尾声；选择分开作出。",
+      "plot": "三个决定分阶段作出，塑造本轮结局。",
+      "reward": "结局，不是随机增益",
+      "facts": [],
+      "effect": "",
+      "eng": "The capital unfolds through separate Crown, Oath and Day decisions.",
+      "scene_en": "Audience, Council confrontation, Muster, Winter Council, Seal, epilogue; choices are separated.",
+      "reward_en": "Ending, not a random boon",
+      "encounter_kind": "Capital chapter",
+      "consequence_en": "Resolve Crown/Oath/Day and Return or qualified Final Crossing.",
+      "consequence_zh": "结算王权、军誓、永昼，回溯或符合条件时最终渡航。",
+      "side_story_beats": [
+        "S01_02",
+        "S01_03",
+        "S02_03",
+        "S03_04",
+        "S05_03",
+        "S07_04",
+        "S08_03",
+        "S09_03",
+        "S10_03",
+        "S11_03",
+        "S12_02",
+        "S12_03"
+      ]
+    },
+    {
+      "id": "northrelief",
+      "en": "Northhaven",
+      "zh": "北望港",
+      "x": 295,
+      "y": 155,
+      "type": "battle",
+      "stage": 1,
+      "why": "沿外海岸绕行至原赈粮目的港。",
+      "plot": "赈粮清单揭示原目的地。",
+      "eng": "A relief manifest identifies the intended destination.",
+      "facts": [],
+      "effect": "reliefManifest",
+      "scene": "攻占外港并检查空赈粮仓，保护等待救济的家庭。",
+      "scene_en": "Seize the outer harbour and inspect the empty relief store; spare the waiting families.",
+      "reward": "船员或紧急补给",
+      "reward_en": "Crew or emergency supply",
+      "encounter_kind": "Relief port",
+      "consequence_en": "Recover the intended destination and promised cargo; no claim that the fleet ever arrived.",
+      "consequence_zh": "确认原目的地及承诺货物；不声称舰队曾抵达。",
+      "side_story_beats": []
+    },
+    {
+      "id": "watchskerry",
+      "en": "Watchman’s Skerry",
+      "zh": "孤哨礁",
+      "x": 480,
+      "y": 210,
+      "type": "battle",
+      "stage": 1,
+      "why": "从引航水道进入北方岗哨。",
+      "plot": "岗哨曾收到禁止救援的命令，副本尚存。",
+      "eng": "The watch received an order to withhold assistance; a duplicate survives.",
+      "facts": [],
+      "effect": "watchOrder",
+      "scene": "从岗哨塔下登陆，在巡逻队抵达北峡前切断警报。",
+      "scene_en": "Land below the watch tower and disable the alert before a patrol reaches the northern passage.",
+      "reward": "反伏击：预览巡逻时序",
+      "reward_en": "Ambush prevention: preview patrol timing",
+      "encounter_kind": "Signal skerry",
+      "consequence_en": "Recover the duplicate rescue order; support K01 at the palace.",
+      "consequence_zh": "取得禁救令副本，支援宫城K01。",
+      "side_story_beats": []
+    },
+    {
+      "id": "saltmarket",
+      "en": "Saltmarket",
+      "zh": "盐市港",
+      "x": 320,
+      "y": 553,
+      "type": "battle",
+      "stage": 1,
+      "why": "沿沿海盐贸航道前往税关。",
+      "plot": "罗德里克的垄断源自曾以船役换取的特权。",
+      "eng": "Roderick’s monopoly was built on privileges once exchanged for ship service.",
+      "facts": [],
+      "effect": "charterRecords",
+      "scene": "控制税关；可保全盐仓而非悉数掠夺。",
+      "scene_en": "Secure the tollhouse; choose to preserve the salt depots rather than seize everything as spoils.",
+      "reward": "贸易储藏：两种补给增益择一",
+      "reward_en": "Trade cache: choice of two supply boons",
+      "encounter_kind": "Chartered town",
+      "consequence_en": "Expose charter abuses and preserve merchant cooperation when depots are spared.",
+      "consequence_zh": "揭露特许权滥用；保全盐仓可争取商人合作。",
+      "side_story_beats": []
+    },
+    {
+      "id": "foundry",
+      "en": "Ashen Foundry",
+      "zh": "灰铁工坊",
+      "x": 1390,
+      "y": 180,
+      "type": "battle",
+      "stage": 1,
+      "why": "军用海峡打开铁矿海岸。",
+      "plot": "元帅的动员在原有威胁消退后仍被延续。",
+      "eng": "The marshal’s mobilisations outlasted the danger that justified them.",
+      "facts": [],
+      "effect": "armsCut",
+      "scene": "横穿暴露炉场，关闭炉门并控制甲具库。",
+      "scene_en": "Cross exposed furnace yards, shut the blast gates and capture the armour depot.",
+      "reward": "护甲或武器升级",
+      "reward_en": "Armour or weapon upgrade",
+      "encounter_kind": "Industrial assault",
+      "consequence_en": "Interrupt arms shipments and recover obsolete mobilisation orders.",
+      "consequence_zh": "截断军械运输并取得已经过时的动员令。",
+      "side_story_beats": []
+    },
+    {
+      "id": "banners",
+      "en": "Field of Broken Banners",
+      "zh": "万旗冢",
+      "x": 1135,
+      "y": 280,
+      "type": "lore",
+      "stage": 2,
+      "why": "沿岸渡线通往古战场登陆点。",
+      "plot": "投降者记录补全官方英雄叙事，不引入新的阴谋。",
+      "eng": "Accounts of surrender challenge the official heroic version without revealing a new conspiracy.",
+      "facts": [],
+      "effect": "surrenderHistory",
+      "scene": "探索古战场纪念地，对照王室与投降士兵记录。",
+      "scene_en": "Search the old memorial field and compare royal and surrendered soldiers’ accounts.",
+      "reward": "阵形遗物或军心增益",
+      "reward_en": "Formation relic or morale boon",
+      "encounter_kind": "Battlefield relic",
+      "consequence_en": "Learn how old surrender agreements survived unification; no new conspiracy.",
+      "consequence_zh": "了解统一战争后的降约；不引入新阴谋。",
+      "side_story_beats": []
+    },
+    {
+      "id": "titheford",
+      "en": "Titheford",
+      "zh": "十税渡",
+      "x": 470,
+      "y": 807,
+      "type": "battle",
+      "stage": 1,
+      "why": "沿税渡水道继续内河航行。",
+      "plot": "家庭欠账展示王子征发令如何被反复抄发。",
+      "eng": "Household arrears demonstrate how the prince’s warrant was copied.",
+      "facts": [],
+      "effect": "taxClaims",
+      "scene": "控制税渡与账房；守军依托狭窄河道。",
+      "scene_en": "Control the toll ferry and ledger office; defending formations use narrow river approaches.",
+      "reward": "招募或内河机动",
+      "reward_en": "Recruitment or river mobility",
+      "encounter_kind": "Tax crossing",
+      "consequence_en": "Trace copies of Edmund’s warrant and record household arrears.",
+      "consequence_zh": "追查王子征发令抄件与家庭欠账。",
+      "side_story_beats": []
+    },
+    {
+      "id": "barleyhall",
+      "en": "Barley Hall",
+      "zh": "金麦府",
+      "x": 666,
+      "y": 703,
+      "type": "battle",
+      "stage": 2,
+      "why": "顺流前往地方行政码头。",
+      "plot": "地方请愿书揭示王都储粮与村庄口粮的冲突。",
+      "eng": "Local petitions reveal a conflict between reserves for the capital and village rations.",
+      "facts": [],
+      "effect": "rationPetitions",
+      "scene": "控制行政庭院并保护请愿档案。",
+      "scene_en": "Capture the civic courtyard and protect the petition archive from destruction.",
+      "reward": "预备支援：选择补给契约",
+      "reward_en": "Reserve support: choose a supply contract",
+      "encounter_kind": "Administrative town",
+      "consequence_en": "Recover regional ration petitions; intact records aid the winter allocation plan.",
+      "consequence_zh": "取得地方口粮请愿；完整档案支持冬粮分配。",
+      "side_story_beats": []
+    },
+    {
+      "id": "reedcross",
+      "en": "Reedcross",
+      "zh": "芦苇渡",
+      "x": 1030,
+      "y": 765,
+      "type": "battle",
+      "stage": 1,
+      "why": "浅水船沿南侧潮岸通行。",
+      "plot": "葬运水道早于秘印，早期记录展示原本用途。",
+      "eng": "The funeral route predates the Seal; early records reveal its legitimate uses.",
+      "facts": [],
+      "effect": "oldFerry",
+      "scene": "控制芦苇渡口；重装守军守堤时利用浅水路线。",
+      "scene_en": "Secure a reed-lined crossing; use shallow approaches while heavy defenders hold the embankment.",
+      "reward": "浅水机动或护符",
+      "reward_en": "Shallow movement or ward",
+      "encounter_kind": "Tidal ferry",
+      "consequence_en": "Find legitimate old funeral ferry records, not the late secret itself.",
+      "consequence_zh": "发现古葬运的正当记录，不提前揭示后期秘密。",
+      "side_story_beats": []
+    },
+    {
+      "id": "hospice",
+      "en": "Saint Orlan’s Hospice",
+      "zh": "静息院",
+      "x": 1345,
+      "y": 780,
+      "type": "lore",
+      "stage": 2,
+      "why": "避风沼泽水道连接墓园与静息院。",
+      "plot": "无人认领者过去曾得到照护与登记，后期名册却将其分类转送。",
+      "eng": "Unclaimed people were once cared for and named; later registers classify them for transfer.",
+      "facts": [],
+      "effect": "careRegisters",
+      "scene": "与照护者交谈并检查名册，不打扰住民。",
+      "scene_en": "Speak to caretakers and inspect registers; let residents remain undisturbed.",
+      "reward": "恢复或有限护符",
+      "reward_en": "Recovery or limited ward",
+      "encounter_kind": "Quiet interlude",
+      "consequence_en": "Identify old charity registers and later classification of the unclaimed; witness consent remains local.",
+      "consequence_zh": "辨认早期慈善名册和后来的无人认领者分类；证人同意仅本轮有效。",
+      "side_story_beats": []
+    },
+    {
+      "id": "winterpalace",
+      "en": "The Winter Palace",
+      "zh": "寒宫",
+      "x": 640,
+      "y": 150,
+      "type": "lore",
+      "stage": 3,
+      "why": "循旧王庭渡线进入北部避风湾。",
+      "plot": "创制寒冬账册区分初期临时仪式与后来的强制献祭。",
+      "eng": "Founding winter accounts distinguish the original temporary ritual from later coercion.",
+      "facts": [
+        "K05"
+      ],
+      "effect": "foundingAccounts",
+      "scene": "勘察冰封宫厅并找到寒冬账册，不强制首领战。",
+      "scene_en": "Survey frozen halls and recover the winter accounts; no compulsory boss.",
+      "reward": "王朝遗物或研究增益",
+      "reward_en": "Dynastic relic or research boon",
+      "encounter_kind": "Ruined capital",
+      "consequence_en": "Alternative evidence of the initial compact (K05); reveals why the court moved.",
+      "consequence_zh": "初始盟约的替代证据（K05），解释迁都原因。",
+      "side_story_beats": []
+    },
+    {
+      "id": "oldbridge",
+      "en": "Old Crown Bridge",
+      "zh": "旧王冠桥",
+      "x": 791,
+      "y": 210,
+      "type": "battle",
+      "stage": 2,
+      "why": "旧堡渡线连接残存桥头。",
+      "plot": "税碑显示王室曾通过共同出资修建基础设施。",
+      "eng": "A toll inscription shows the Crown once financed infrastructure by shared contributions.",
+      "facts": [],
+      "effect": "royalFerry",
+      "scene": "控制桥头渡船与断桥；用船绕过坍塌中拱。",
+      "scene_en": "Secure the bridgehead ferry and collapsed span; boats bypass the broken central arch.",
+      "reward": "机动增益或防御阵形",
+      "reward_en": "Movement boon or defensive formation",
+      "encounter_kind": "Royal crossing",
+      "consequence_en": "Reopen an old ferry connection toward the central anchorage.",
+      "consequence_zh": "重新打开通向中央锚地的古渡线。",
+      "side_story_beats": []
+    },
+    {
+      "id": "sealquay",
+      "en": "The Sealed Wharf",
+      "zh": "封印码头",
+      "x": 1455,
+      "y": 563,
+      "type": "battle",
+      "stage": 3,
+      "why": "沿限制货运驳船线进入封印码头。",
+      "plot": "转运记录证实获罪灵魂的运输；记忆不替代本轮证据。",
+      "eng": "Consignment records document the transfer of condemned souls; knowledge does not substitute for current proof.",
+      "facts": [
+        "K04"
+      ],
+      "effect": "sealAccess",
+      "scene": "在货册被转移前夺取封印仓库，控制仪式驳船。",
+      "scene_en": "Capture the sealed warehouse before the cargo register is removed; secure the ritual barge.",
+      "reward": "防护或冥火效率",
+      "reward_en": "Protection or soulfire efficiency",
+      "encounter_kind": "Restricted wharf",
+      "consequence_en": "Obtain present consignment papers and ritual access; no permanent possession of documents.",
+      "consequence_zh": "取得本轮托运文书与仪式通行权；实物不跨轮保留。",
+      "side_story_beats": []
+    }
+  ],
+  "edges": [
+    [
+      "bay",
+      "wreck"
+    ],
+    [
+      "wreck",
+      "light"
+    ],
+    [
+      "wreck",
+      "pilot"
+    ],
+    [
+      "light",
+      "oar"
+    ],
+    [
+      "light",
+      "kings"
+    ],
+    [
+      "pilot",
+      "gate"
+    ],
+    [
+      "pilot",
+      "kings"
+    ],
+    [
+      "pilot",
+      "old"
+    ],
+    [
+      "oar",
+      "kings"
+    ],
+    [
+      "oar",
+      "lantern"
+    ],
+    [
+      "gate",
+      "yard"
+    ],
+    [
+      "gate",
+      "roads"
+    ],
+    [
+      "yard",
+      "lion"
+    ],
+    [
+      "old",
+      "gate"
+    ],
+    [
+      "old",
+      "roads"
+    ],
+    [
+      "kings",
+      "roads"
+    ],
+    [
+      "kings",
+      "archive"
+    ],
+    [
+      "roads",
+      "merchant"
+    ],
+    [
+      "roads",
+      "lion"
+    ],
+    [
+      "lantern",
+      "mill"
+    ],
+    [
+      "lantern",
+      "west"
+    ],
+    [
+      "lantern",
+      "harvest"
+    ],
+    [
+      "west",
+      "mill"
+    ],
+    [
+      "mill",
+      "harvest"
+    ],
+    [
+      "mill",
+      "granary"
+    ],
+    [
+      "harvest",
+      "granary"
+    ],
+    [
+      "harvest",
+      "silent"
+    ],
+    [
+      "silent",
+      "archive"
+    ],
+    [
+      "silent",
+      "graves"
+    ],
+    [
+      "silent",
+      "granary"
+    ],
+    [
+      "archive",
+      "roads"
+    ],
+    [
+      "archive",
+      "orchard"
+    ],
+    [
+      "granary",
+      "lock"
+    ],
+    [
+      "lock",
+      "provision"
+    ],
+    [
+      "lock",
+      "orchard"
+    ],
+    [
+      "lock",
+      "graves"
+    ],
+    [
+      "lock",
+      "abbey"
+    ],
+    [
+      "orchard",
+      "provision"
+    ],
+    [
+      "orchard",
+      "abbey"
+    ],
+    [
+      "graves",
+      "abbey"
+    ],
+    [
+      "abbey",
+      "provision"
+    ],
+    [
+      "abbey",
+      "funeral"
+    ],
+    [
+      "funeral",
+      "procession"
+    ],
+    [
+      "merchant",
+      "sunhold"
+    ],
+    [
+      "lion",
+      "sunhold"
+    ],
+    [
+      "provision",
+      "sunhold"
+    ],
+    [
+      "procession",
+      "sunhold"
+    ],
+    [
+      "wreck",
+      "northrelief"
+    ],
+    [
+      "northrelief",
+      "pilot"
+    ],
+    [
+      "pilot",
+      "watchskerry"
+    ],
+    [
+      "watchskerry",
+      "gate"
+    ],
+    [
+      "oar",
+      "saltmarket"
+    ],
+    [
+      "saltmarket",
+      "kings"
+    ],
+    [
+      "gate",
+      "foundry"
+    ],
+    [
+      "foundry",
+      "yard"
+    ],
+    [
+      "yard",
+      "banners"
+    ],
+    [
+      "banners",
+      "roads"
+    ],
+    [
+      "mill",
+      "titheford"
+    ],
+    [
+      "titheford",
+      "harvest"
+    ],
+    [
+      "harvest",
+      "barleyhall"
+    ],
+    [
+      "barleyhall",
+      "granary"
+    ],
+    [
+      "lantern",
+      "reedcross"
+    ],
+    [
+      "reedcross",
+      "abbey"
+    ],
+    [
+      "graves",
+      "hospice"
+    ],
+    [
+      "hospice",
+      "abbey"
+    ],
+    [
+      "old",
+      "winterpalace"
+    ],
+    [
+      "winterpalace",
+      "orchard"
+    ],
+    [
+      "old",
+      "oldbridge"
+    ],
+    [
+      "oldbridge",
+      "roads"
+    ],
+    [
+      "funeral",
+      "sealquay"
+    ],
+    [
+      "sealquay",
+      "procession"
+    ],
+    [
+      "northrelief",
+      "light"
+    ],
+    [
+      "saltmarket",
+      "lantern"
+    ],
+    [
+      "reedcross",
+      "graves"
+    ],
+    [
+      "oldbridge",
+      "orchard"
+    ]
+  ]
+}

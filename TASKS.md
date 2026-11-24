@@ -29,9 +29,10 @@
 | T23 | 同种子对战不可复现（随机源未完全固定） | DSH（谷时队列） | — | — | 待办 |
 | T24 | 工程移到 ~/Projects 并安装谷时定时任务（12:01、18:01） | Claude | — | — | 完成 |
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
+| T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 进行中 |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
 
 ## 待用户决定
-- 盾兵 B 比例是否够可爱（通过后推广到亡魂）
+- canon 审阅的三项决定（docs/canon-review.md 第 4 节）
 - 剧情大纲第 8 节、兵种设计第六节的问题
 - 大地图风格（沙盘 / 羊皮纸）

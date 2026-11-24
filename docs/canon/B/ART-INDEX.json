@@ -1,0 +1,439 @@
+{
+  "characters": [
+    {
+      "character_id": "CHAR_PRINCE",
+      "english": "Edmund — before the wreck",
+      "chinese": "生前埃德蒙",
+      "status": "extracted_turnaround_draft",
+      "linked_nodes": [
+        "bay",
+        "wreck",
+        "mill",
+        "orchard",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-CORE-01.png",
+      "design_en": "Royal naval officer; dark swept hair, intact narrow gold crown, white-gold plate with unbroken crown badge, purple mantle, ordinary steel sword. Keep the original undead head and limb proportions.",
+      "design_zh": "王室海军军官；深色侧扫发型、完整窄金冠、带完整王冠徽的白金甲、紫披风、普通钢剑。沿用原亡灵图头身与四肢比例。",
+      "pose_en": "Controlled pride; upright stance, one hand on sword pommel. No soul-fire, exposed bone or wreck damage.",
+      "pose_zh": "克制的骄傲；挺拔，一手扶剑柄。不出现冥火、裸骨或沉船损伤。",
+      "turnaround_asset": "B/art/ART-B4-EDMUND-TURNAROUND-DRAFT.png",
+      "additional_visual_variant": {
+        "asset": "B/art/ART-B4-EDMUND-UNDEAD-R1.png",
+        "status": "generated_concept_turnaround_review",
+        "notes": "Current undead concept reference; original u8_prince.png remains identity anchor. Front face and side skeletal jaw need continuity check."
+      }
+    },
+    {
+      "character_id": "CHAR_QUEEN",
+      "english": "Eleanor — the Queen",
+      "chinese": "埃莉诺女王",
+      "status": "generated_concept_turnaround_review",
+      "linked_nodes": [
+        "orchard",
+        "provision",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-ELEANOR-ADULT-R1.png",
+      "design_en": "Age twenty; family resemblance through dark hair and brow shape. Ivory gown with muted gold edging, narrow red regency sash, simple intact crown, repaired wooden boat.",
+      "design_zh": "二十岁；深发与眉形体现家族相似。象牙白长袍、暗金边、细红摄政绶带、完整简冠、修过的木船。",
+      "pose_en": "Composed adult sovereign, attentive and upright; formal court dress, not battle armour.",
+      "pose_zh": "成年女王，沉着专注，站姿端正；正式宫廷服，不用战甲。",
+      "turnaround_asset": "B/art/ART-B4-ELEANOR-ADULT-R1.png",
+      "additional_visual_variant": {
+        "asset": "B/art/ART-B4-ELEANOR-ADULT-R1.png",
+        "status": "generated_concept_turnaround_review",
+        "notes": "Adult living queen, working age twenty; check crown, sash and orthographic continuity."
+      }
+    },
+    {
+      "character_id": "CHAR_FERRYMAN",
+      "english": "The Ferryman",
+      "chinese": "渡魂人",
+      "status": "generated_concept_turnaround_review",
+      "linked_nodes": [
+        "bay",
+        "silent",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-FERRYMAN-R1.png",
+      "design_en": "Tall floating silhouette; intact layered maritime funerary vestments in midnight charcoal, ivory and muted bronze. Faceless hood, translucent cyan-green hems, old oar and single soulfire lantern. No halo or visible anatomy that confirms his nature.",
+      "design_zh": "高瘦悬浮剪影；完整层叠海葬祭服，深炭蓝、象牙白与暗铜。兜帽内无可辨认面孔，青绿半透明袍尾，旧桨与一盏冥火灯。不设神环或能确认身份的裸露形体。",
+      "pose_en": "Still and dignified; spectral weightlessness, restrained gestures. Never confirm his species.",
+      "pose_zh": "静穆庄严，具有亡魂失重感，动作克制；不确认其种族。",
+      "turnaround_asset": "B/art/ART-B4-FERRYMAN-R1.png"
+    },
+    {
+      "character_id": "CHAR_KING",
+      "english": "King Aldric",
+      "chinese": "阿尔德里克国王",
+      "status": "concept_sheet",
+      "linked_nodes": [
+        "old",
+        "orchard",
+        "archive",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-PARENTS-01.png",
+      "design_en": "Broad, ageing face with family brow, silver-black beard, sober white and gold court robe, dark purple lining, royal signet. Full crown for formal portraits.",
+      "design_zh": "宽厚而衰老的脸，家族眉形，银黑短须，克制的白金宫廷袍与深紫内衬，王室印玺。正式肖像佩完整王冠。",
+      "pose_en": "Authority worn down by responsibility; seated or standing over documents. No villain coding.",
+      "pose_zh": "责任压出的疲惫威仪；可坐于案前或站立。不使用反派化符号。"
+    },
+    {
+      "character_id": "CHAR_MOTHER",
+      "english": "Queen Beatrice",
+      "chinese": "贝阿特丽斯王后",
+      "status": "concept_sheet",
+      "linked_nodes": [
+        "orchard",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-PARENTS-01.png",
+      "design_en": "Coastal noble dress, soft cream and marine blue-grey, modest gold clasp with a wave motif. Living figure only.",
+      "design_zh": "沿海贵族服饰，柔和米白与海灰蓝，带波浪纹的简洁金扣。只设计生前形象。",
+      "pose_en": "Warm attention and practical judgement; no spectral version.",
+      "pose_zh": "温和专注，有务实判断。不做幽灵版本。"
+    },
+    {
+      "character_id": "CHAR_CAPTAIN",
+      "english": "Captain Bernard",
+      "chinese": "伯纳德卫队长",
+      "status": "generated_concept_turnaround_review",
+      "linked_nodes": [
+        "oar",
+        "gate",
+        "yard",
+        "bay",
+        "sunhold"
+      ],
+      "asset": "B/art/ART-B4-BERNARD-R1.png",
+      "design_en": "Wide sturdy silhouette, enclosed naval helm, scratched insignia, worn shield, restrained turquoise in visor slit.",
+      "design_zh": "宽厚稳固剪影、封闭海军头盔、磨损纹章、旧盾牌；面罩缝内少量青绿光。",
+      "pose_en": "Professional, grounded, careful with equipment; no ornate horns.",
+      "pose_zh": "专业、沉稳，爱惜装备；不使用夸张骨角。",
+      "turnaround_asset": "B/art/ART-B4-BERNARD-R1.png"
+    },
+    {
+      "character_id": "CHAR_STITCHER",
+      "english": "Matilda — the Stitcher",
+      "chinese": "玛蒂尔达缝合匠",
+      "status": "brief_only",
+      "linked_nodes": [
+        "abbey",
+        "oar",
+        "bay",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Compact silhouette, patched surgeon apron over old naval clothes, instrument roll, gloves; small seams and subtle soulfire, not gore.",
+      "design_zh": "紧凑剪影，旧军服外穿补丁军医围裙、器械卷、手套；细小缝线与少量冥火，不做血腥效果。",
+      "pose_en": "Busy, amused and competent; hands engaged with tools.",
+      "pose_zh": "忙碌、风趣、专业；双手操持工具。"
+    },
+    {
+      "character_id": "CHAR_MAGE",
+      "english": "Oswin — the Court Mage",
+      "chinese": "奥斯温宫廷法师",
+      "status": "brief_only",
+      "linked_nodes": [
+        "abbey",
+        "archive",
+        "funeral",
+        "bay",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Thin lich silhouette, scholarly hood, layered faded cloth, slate and a few floating manuscript fragments, teal soul-light.",
+      "design_zh": "瘦长巫妖剪影、学者兜帽、层叠褪色布料、石板及少数漂浮残页、青绿魂光。",
+      "pose_en": "Exacting scholar rather than battle sorcerer. Keep silhouette distinct from the Ferryman.",
+      "pose_zh": "严谨学者而非战斗术士；剪影必须与渡魂人区分。"
+    },
+    {
+      "character_id": "CHAR_BUGLER",
+      "english": "Pip — the Bugler",
+      "chinese": "皮普号手",
+      "status": "brief_only",
+      "linked_nodes": [
+        "lantern",
+        "bay",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Small lively young undead sailor, oversized brass bugle, frayed crown pennant, simple naval tunic, boots.",
+      "design_zh": "活泼年轻亡灵水手，小巧体态，略大的铜号、破王冠军旗、简洁海军衣与靴。",
+      "pose_en": "Impish posture, exaggerated movement rather than grotesque face.",
+      "pose_zh": "俏皮姿势，靠夸张动作而非怪诞面部表现。"
+    },
+    {
+      "character_id": "CHAR_EARL",
+      "english": "Earl Roderick",
+      "chinese": "罗德里克伯爵",
+      "status": "brief_only",
+      "linked_nodes": [
+        "oar",
+        "pilot",
+        "light",
+        "merchant",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Fur-edged merchant noble coat, navy and warm brown, ledger and customs seal, neat moustache or beard.",
+      "design_zh": "毛边商贸贵族外衣，海蓝与暖棕，账簿、税印，整洁胡须。",
+      "pose_en": "Sociable, polished, easy smile; not a caricature of greed.",
+      "pose_zh": "善交际、讲究、自然微笑；避免贪婪 caricature。"
+    },
+    {
+      "character_id": "CHAR_COUNTESS",
+      "english": "Countess Agnes",
+      "chinese": "阿格尼丝女伯爵",
+      "status": "brief_only",
+      "linked_nodes": [
+        "mill",
+        "harvest",
+        "granary",
+        "roads",
+        "lock",
+        "provision",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Structured practical gown in deep ochre and olive, warehouse keys, wax tablet.",
+      "design_zh": "深赭黄及橄榄色实用贵族服，仓库钥匙、蜡板。",
+      "pose_en": "Decisive estate administrator, not a wicked queen archetype.",
+      "pose_zh": "果断的庄园管理者，不套用邪恶女王形象。"
+    },
+    {
+      "character_id": "CHAR_ARCHBISHOP",
+      "english": "Archbishop Anselm",
+      "chinese": "安塞姆大主教",
+      "status": "brief_only",
+      "linked_nodes": [
+        "abbey",
+        "archive",
+        "graves",
+        "funeral",
+        "procession",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "White sun vestments, muted gold stitching, old prayer book, official seal; upright tall silhouette.",
+      "design_zh": "白色日纹祭服、暗金刺绣、旧祈祷书、官印；高直剪影。",
+      "pose_en": "Earnest expression, ceremonial restraint; no sinister eyes or demonic elements.",
+      "pose_zh": "诚恳神情、仪式性克制，不用邪眼或恶魔元素。"
+    },
+    {
+      "character_id": "CHAR_MARSHAL",
+      "english": "Lord Marshal Hugh",
+      "chinese": "休元帅",
+      "status": "brief_only",
+      "linked_nodes": [
+        "gate",
+        "yard",
+        "lion",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Squared steel armour, navy mantle, command pennant, practical blade. A training sword is a separate story prop.",
+      "design_zh": "方正钢甲、海军蓝披风、指挥旗、实用佩剑；练习剑是独立故事道具。",
+      "pose_en": "Disciplined, austere veteran; strong horizontal shoulders.",
+      "pose_zh": "严肃守纪的老兵，横向肩部剪影鲜明。"
+    },
+    {
+      "character_id": "CHAR_CHANCELLOR",
+      "english": "Lord Chancellor Walter",
+      "chinese": "沃尔特宰相",
+      "status": "brief_only",
+      "linked_nodes": [
+        "roads",
+        "merchant",
+        "sunhold"
+      ],
+      "asset": null,
+      "design_en": "Dark burgundy and charcoal official robes, thin regency insignia, seal case and neatly tied papers.",
+      "design_zh": "暗酒红与炭灰官服，细摄政徽记、印盒、整齐捆扎的文书。",
+      "pose_en": "Polite, composed bureaucrat; no crown, armour, or theatrical evil.",
+      "pose_zh": "礼貌镇定的文官；不戴王冠、不穿甲、不做戏剧化邪恶造型。"
+    }
+  ],
+  "assets": [
+    {
+      "id": "ART-B4-CORE-01",
+      "path": "B/art/ART-B4-CORE-01.png",
+      "status": "generated_concept_review",
+      "character_ids": [
+        "CHAR_PRINCE",
+        "CHAR_QUEEN",
+        "CHAR_FERRYMAN"
+      ],
+      "notes": "Living Edmund mantle and crown badge require correction; not orthographic. Ferryman appearance superseded by ART-B4-FERRYMAN-R1; Edmund and Eleanor hero poses remain concept references only."
+    },
+    {
+      "id": "ART_B02_01",
+      "english": "The Orchard Race",
+      "chinese": "果园竞舟",
+      "character_ids": [
+        "CHAR_PRINCE",
+        "CHAR_QUEEN"
+      ],
+      "site_id": "orchard",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_02",
+      "english": "The Empty Chair",
+      "chinese": "空椅",
+      "character_ids": [
+        "CHAR_PRINCE",
+        "CHAR_QUEEN",
+        "CHAR_KING",
+        "CHAR_MOTHER"
+      ],
+      "site_id": "sunhold",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_03",
+      "english": "The Winter Exception",
+      "chinese": "寒冬例外",
+      "character_ids": [
+        "CHAR_KING",
+        "CHAR_ARCHBISHOP"
+      ],
+      "site_id": "sunhold",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_04",
+      "english": "The Last Flag",
+      "chinese": "最后的军旗",
+      "character_ids": [
+        "CHAR_PRINCE",
+        "CHAR_CAPTAIN",
+        "CHAR_BUGLER"
+      ],
+      "site_id": "bay",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_05",
+      "english": "The Unopened Petition",
+      "chinese": "未拆请愿",
+      "character_ids": [
+        "CHAR_QUEEN",
+        "CHAR_CHANCELLOR"
+      ],
+      "site_id": "sunhold",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_06",
+      "english": "The Last Muster",
+      "chinese": "最后的集结",
+      "character_ids": [
+        "CHAR_PRINCE",
+        "CHAR_CAPTAIN",
+        "CHAR_STITCHER",
+        "CHAR_MAGE",
+        "CHAR_BUGLER"
+      ],
+      "site_id": "sunhold",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART_B02_07",
+      "english": "The Empty Seat",
+      "chinese": "船上空座",
+      "character_ids": [
+        "CHAR_FERRYMAN"
+      ],
+      "site_id": "bay",
+      "status": "brief_only",
+      "path": null
+    },
+    {
+      "id": "ART-B4-PARENTS-01",
+      "path": "B/art/ART-B4-PARENTS-01.png",
+      "status": "generated_concept_review",
+      "character_ids": [
+        "CHAR_KING",
+        "CHAR_MOTHER"
+      ],
+      "notes": "Living royal parents; correct Aldric name; queen age not canonised. Concept, not turnaround.",
+      "site_id": "sunhold"
+    },
+    {
+      "id": "ART-B4-FAMILY-01",
+      "path": "B/art/ART-B4-FAMILY-01.png",
+      "status": "composition_draft_needs_revision",
+      "character_ids": [
+        "CHAR_KING",
+        "CHAR_MOTHER",
+        "CHAR_PRINCE",
+        "CHAR_QUEEN"
+      ],
+      "site_id": "sunhold",
+      "notes": "Text-free crop of generated study; intended T−8, Edmund 18, Eleanor 12, Aldric approximately 47. Red sash and crown/age/heraldry must be corrected before approval. No new canon."
+    },
+    {
+      "id": "ART-B4-FERRYMAN-R1",
+      "path": "B/art/ART-B4-FERRYMAN-R1.png",
+      "status": "generated_concept_turnaround_review",
+      "character_ids": [
+        "CHAR_FERRYMAN"
+      ],
+      "notes": "New standalone sheet. Ceremonial midnight robes, faceless hood, floating translucent cyan-green hems, oar and lantern; no halo or revealed identity. Geometry and back clasp still need modelling review."
+    },
+    {
+      "id": "ART-B4-EDMUND-TURNAROUND-DRAFT",
+      "path": "B/art/ART-B4-EDMUND-TURNAROUND-DRAFT.png",
+      "status": "extracted_turnaround_draft",
+      "character_ids": [
+        "CHAR_PRINCE"
+      ],
+      "notes": "Extracted concept views; pre-wreck mantle damage and personal crown badge require correction, align proportions to supplied undead prince. Not approved orthographic production art."
+    },
+    {
+      "id": "ART-B4-ELEANOR-TURNAROUND-DRAFT",
+      "path": "B/art/ART-B4-ELEANOR-TURNAROUND-DRAFT.png",
+      "status": "superseded_reference",
+      "character_ids": [
+        "CHAR_QUEEN"
+      ],
+      "notes": "Earlier youthful study; not a current adult reference."
+    },
+    {
+      "id": "ART-B4-BERNARD-R1",
+      "path": "B/art/ART-B4-BERNARD-R1.png",
+      "status": "generated_concept_turnaround_review",
+      "character_ids": [
+        "CHAR_CAPTAIN"
+      ],
+      "notes": "Standalone concept with three full-body views and isolated equipment. Review helmet, cape fastening, crown insignia and scale before production."
+    },
+    {
+      "id": "ART-B4-EDMUND-UNDEAD-R1",
+      "path": "B/art/ART-B4-EDMUND-UNDEAD-R1.png",
+      "status": "generated_concept_turnaround_review",
+      "character_ids": [
+        "CHAR_PRINCE"
+      ],
+      "notes": "Current undead concept reference; original u8_prince.png remains identity anchor. Front face and side skeletal jaw need continuity check."
+    },
+    {
+      "id": "ART-B4-ELEANOR-ADULT-R1",
+      "path": "B/art/ART-B4-ELEANOR-ADULT-R1.png",
+      "status": "generated_concept_turnaround_review",
+      "character_ids": [
+        "CHAR_QUEEN"
+      ],
+      "notes": "Adult living queen, working age twenty; check crown, sash and orthographic continuity."
+    }
+  ]
+}

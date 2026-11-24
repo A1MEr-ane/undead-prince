@@ -1,0 +1,40 @@
+id	en	zh	stage	type	encounter_en	encounter_zh	reward_en	reward_zh	side_story_beats
+bay	Bellgrave Bay	沉钟湾	1	hub	Wake the company; choose a starting doctrine and speak to the crew.	唤醒基础军团，选择开局倾向，与旧部交谈。	Starting company only	仅基础军团	S03_01,S03_03,S04_01,S04_03,S05_02,S06_03,S07_01,S07_03
+wreck	Wrecker’s Rest	断桅滩	1	battle	Take the salvage pier before defenders move the boats; two beach approaches.	抢占打捞码头，防止守军转移小艇；两处登陆滩。	Landing craft: improve the first deployment	小艇：改善首次部署	
+light	The Last Lighthouse	天涯灯塔	1	battle	Capture the beacon before its warning reaches the next garrison; the lower pier is a safer but longer approach.	在灯塔发出警报前夺取它；低处码头更安全但绕路。	Scout: preview one additional next encounter	侦察：额外预览下一处遭遇	S08_01
+oar	Broken Oar Harbour	折桨港	1	battle	Fight through warehouse alleys or cross the exposed quay; protect civilian cargo from incidental damage.	穿过仓库巷道或突击暴露码头；避免误毁民用货物。	Crew: extra recruitment choice	水手：额外招募选项	S04_02,S06_01,S08_02
+pilot	Pilot’s Rest	引航岛	1	battle	Secure two chart huts linked by a tidal causeway; choose a landing while the tide changes.	夺取潮汐堤道连接的两处海图房；随潮位选择登陆点。	Pilotage: flexible landing placement	引航：灵活布置登陆点	
+gate	The Iron Gate	锁海之门	1	boss	Break the two chain towers; occupy the winch after suppressing the defending formation.	攻破双锁链塔，压制守军后控制绞盘。	Heavy troops or armour-breaking boon	重装兵种或破甲增益	S03_02,S11_01
+yard	Blackwake Yard	黑浪船厂	1	battle	Disable launch ramps and seize the dry dock before a relief ship departs.	阻止援船离港，控制滑道和船坞。	Siege upgrade or armour reinforcement	攻城强化或护甲加固	S11_02
+kings	The Drowned Kings	沉王群像	1	lore	Inspect the monument inscriptions; choose one of two relic caches instead of a compulsory battle.	调查巨像铭文，在两处遗物中选择其一，无强制战斗。	Royal relic: command or formation bonus	王室遗物：指挥或阵形增益	
+roads	Crown Roads	王冠海道	1	battle	Capture the harbour fort while patrol boats threaten the landing zone.	在巡逻船威胁登陆区时攻下锚地堡垒。	Fleet reserve: replenish a deployment charge	船队预备：补充部署次数	
+lantern	Lantern Isle	长灯岛	1	battle	Secure the pilot pier without destroying occupied homes; shallow channels limit large formations.	夺取引航码头并保护民居；浅水通道限制大型阵形。	Shallow craft: flank deployment	浅水艇：侧翼部署	S06_02,S06_04
+west	Westhaven	西庇港	2	lore	Inspect the silted basin and interview harbour workers; choose repair advice or a supply cache.	勘察淤积港池并询问工人；选择修港建议或补给储藏。	Supply or one equipment repair	补给或一次装备修复	
+mill	Miller’s Crossing	磨桥渡	1	battle	Control the mill bridge before reinforcements cross; keep the mill intact if possible.	在援兵过桥前控制磨桥，尽量保全磨坊。	Reinforcement: reserve infantry option	预备队：步兵补充选项	S09_01
+harvest	Harvest End	麦尽村	1	battle	Break the levy garrison by taking its ration station; avoid the civilian granary.	夺取配粮站瓦解征发守军，避开民用粮仓。	Rations: recovery between encounters	口粮：遭遇之间恢复	
+granary	The Great Granary	万谷仓	1	boss	Seize three warehouse gates; suppress the garrison without burning the food stores.	夺取三处仓门，压制守军而不焚毁粮储。	Supply boon or a siege specialist	补给增益或攻城专精	S09_02
+lock	King’s Lock	王闸	1	battle	Control both banks and operate the sluice; bridge and ferry provide distinct approaches.	控制两岸并操作水闸；桥路与渡船为不同进路。	River craft: flexible deployment	内河船：灵活部署	
+silent	Silent Shoals	寂礁群	2	lore	Read the burial stones at low tide; choose a safe ferry route or a relic cache.	落潮时辨读葬碑，选择安全渡线或遗物。	Ward: limited resistance to holy attacks	护符：有限抗圣光	S07_02
+archive	The Drowned Archive	沉水藏书阁	3	lore	Navigate the flooded lower hall; choose to copy the founding charter or inspect Oswin’s notes, with both readable if safe.	穿过积水下厅；优先抄录盟约或查看奥斯温批注，安全时可兼取。	Research boon: efficient soulfire use	研究增益：提高冥火使用效率	S02_02,S05_01
+old	Old Crown Keep	旧王堡	2	lore	Survey the old ferry stairs and memorial rooms; recover a dynastic relic.	勘察古渡阶梯与纪念室，回收王朝遗物。	Command relic	指挥遗物	S02_01
+orchard	The King’s Orchard	旧王果园	2	lore	Visit the damaged country house; recover a childhood sketch, with no garrison encounter required.	探访破损庄园，找到童年速写，不要求战斗。	Rest: select a modest recovery boon	休整：选择轻量恢复增益	S01_01
+graves	Hollow Graves	无碑墓园	2	lore	Read concealed names before the tide rises; a witness may volunteer to speak.	涨潮前辨读隐藏姓名；证人可自愿作证。	Soul ward or recovery	魂护或恢复	S10_01
+abbey	The Pale Abbey	苍白圣堂	1	boss	Silence the bell tower’s holy field, then seize the record room.	压制钟楼圣光区域，再夺取档案室。	Anti-holy boon or specialist	抗圣光增益或专精兵种	S10_02
+funeral	Funeral Landing	灵渡码头	3	battle	Secure the ceremonial jetty and stop the transfer without destroying the records.	控制仪式码头，阻止转运且不毁记录。	Soulfire boon or protection	冥火增益或防护	
+merchant	Merchant Gate	白港门	1	entry	Secure the customs quay and negotiate a passage with merchants after the local guard yields.	控制海关码头，守卫投降后与商人协商通行。	No new build reward; capital approach	无新构筑奖励；王都入口	S12_01
+lion	Lion Gate	雄狮门	1	entry	Open the naval gate through military pressure or recognition of the lawful ruler.	以军事压力或承认合法君主打开军港门。	No new build reward; capital approach	无新构筑奖励；王都入口	
+provision	Provision Gate	粮运门	1	entry	Secure the grain landing and obtain a statement of available stocks.	控制粮运登陆点，取得可用粮储清单。	No new build reward; capital approach	无新构筑奖励；王都入口	
+procession	Processional Gate	圣仪门	3	entry	Follow the ceremonial waterway, secure its landing and obtain current access papers.	沿仪式水道控制登陆点，取得本轮通行文书。	No new build reward; capital approach	无新构筑奖励；王都入口	
+sunhold	Sunhold	永昼王城	1	capital	Audience, Council confrontation, Muster, Winter Council, Seal, epilogue; choices are separated.	王室会面、摄政对质、军团集结、冬政会议、秘印、尾声；选择分开作出。	Ending, not a random boon	结局，不是随机增益	S01_02,S01_03,S02_03,S03_04,S05_03,S07_04,S08_03,S09_03,S10_03,S11_03,S12_02,S12_03
+northrelief	Northhaven	北望港	1	battle	Seize the outer harbour and inspect the empty relief store; spare the waiting families.	攻占外港并检查空赈粮仓，保护等待救济的家庭。	Crew or emergency supply	船员或紧急补给	
+watchskerry	Watchman’s Skerry	孤哨礁	1	battle	Land below the watch tower and disable the alert before a patrol reaches the northern passage.	从岗哨塔下登陆，在巡逻队抵达北峡前切断警报。	Ambush prevention: preview patrol timing	反伏击：预览巡逻时序	
+saltmarket	Saltmarket	盐市港	1	battle	Secure the tollhouse; choose to preserve the salt depots rather than seize everything as spoils.	控制税关；可保全盐仓而非悉数掠夺。	Trade cache: choice of two supply boons	贸易储藏：两种补给增益择一	
+foundry	Ashen Foundry	灰铁工坊	1	battle	Cross exposed furnace yards, shut the blast gates and capture the armour depot.	横穿暴露炉场，关闭炉门并控制甲具库。	Armour or weapon upgrade	护甲或武器升级	
+banners	Field of Broken Banners	万旗冢	2	lore	Search the old memorial field and compare royal and surrendered soldiers’ accounts.	探索古战场纪念地，对照王室与投降士兵记录。	Formation relic or morale boon	阵形遗物或军心增益	
+titheford	Titheford	十税渡	1	battle	Control the toll ferry and ledger office; defending formations use narrow river approaches.	控制税渡与账房；守军依托狭窄河道。	Recruitment or river mobility	招募或内河机动	
+barleyhall	Barley Hall	金麦府	2	battle	Capture the civic courtyard and protect the petition archive from destruction.	控制行政庭院并保护请愿档案。	Reserve support: choose a supply contract	预备支援：选择补给契约	
+reedcross	Reedcross	芦苇渡	1	battle	Secure a reed-lined crossing; use shallow approaches while heavy defenders hold the embankment.	控制芦苇渡口；重装守军守堤时利用浅水路线。	Shallow movement or ward	浅水机动或护符	
+hospice	Saint Orlan’s Hospice	静息院	2	lore	Speak to caretakers and inspect registers; let residents remain undisturbed.	与照护者交谈并检查名册，不打扰住民。	Recovery or limited ward	恢复或有限护符	
+winterpalace	The Winter Palace	寒宫	3	lore	Survey frozen halls and recover the winter accounts; no compulsory boss.	勘察冰封宫厅并找到寒冬账册，不强制首领战。	Dynastic relic or research boon	王朝遗物或研究增益	
+oldbridge	Old Crown Bridge	旧王冠桥	2	battle	Secure the bridgehead ferry and collapsed span; boats bypass the broken central arch.	控制桥头渡船与断桥；用船绕过坍塌中拱。	Movement boon or defensive formation	机动增益或防御阵形	
+sealquay	The Sealed Wharf	封印码头	3	battle	Capture the sealed warehouse before the cargo register is removed; secure the ritual barge.	在货册被转移前夺取封印仓库，控制仪式驳船。	Protection or soulfire efficiency	防护或冥火效率	

@@ -1,0 +1,1233 @@
+[
+  {
+    "id": "CHAR-PRINCE",
+    "kind": "character",
+    "title_en": "Edmund — before the wreck",
+    "title_zh": "生前埃德蒙",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Royal naval officer; dark swept hair, intact narrow gold crown, white-gold plate with unbroken crown badge, purple mantle, ordinary steel sword. Keep the original undead head and limb proportions. Controlled pride; upright stance, one hand on sword pommel. No soul-fire, exposed bone or wreck damage. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "王室海军军官；深色侧扫发型、完整窄金冠、带完整王冠徽的白金甲、紫披风、普通钢剑。沿用原亡灵图头身与四肢比例。 克制的骄傲；挺拔，一手扶剑柄。不出现冥火、裸骨或沉船损伤。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P0",
+    "status": "pending",
+    "character_id": "CHAR_PRINCE",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-QUEEN",
+    "kind": "character",
+    "title_en": "Eleanor — the Queen",
+    "title_zh": "埃莉诺女王",
+    "reference_paths": [
+      "B/u8_prince.png",
+      "B/art/ART-B4-ELEANOR-ADULT-R1.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Age twenty; family resemblance through dark hair and brow shape. Ivory gown with muted gold edging, narrow red regency sash, simple intact crown, repaired wooden boat. Composed adult sovereign, attentive and upright; formal court dress, not battle armour. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "二十岁；深发与眉形体现家族相似。象牙白长袍、暗金边、细红摄政绶带、完整简冠、修过的木船。 成年女王，沉着专注，站姿端正；正式宫廷服，不用战甲。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P0",
+    "status": "concept_review_then_turnaround",
+    "character_id": "CHAR_QUEEN",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-FERRYMAN",
+    "kind": "character",
+    "title_en": "The Ferryman",
+    "title_zh": "渡魂人",
+    "reference_paths": [
+      "B/u8_prince.png",
+      "B/art/ART-B4-FERRYMAN-R1.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Tall floating silhouette; intact layered maritime funerary vestments in midnight charcoal, ivory and muted bronze. Faceless hood, translucent cyan-green hems, old oar and single soulfire lantern. No halo or visible anatomy that confirms his nature. Still and dignified; spectral weightlessness, restrained gestures. Never confirm his species. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "高瘦悬浮剪影；完整层叠海葬祭服，深炭蓝、象牙白与暗铜。兜帽内无可辨认面孔，青绿半透明袍尾，旧桨与一盏冥火灯。不设神环或能确认身份的裸露形体。 静穆庄严，具有亡魂失重感，动作克制；不确认其种族。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P0",
+    "status": "concept_review_then_turnaround",
+    "character_id": "CHAR_FERRYMAN",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-KING",
+    "kind": "character",
+    "title_en": "King Aldric",
+    "title_zh": "阿尔德里克国王",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Broad, ageing face with family brow, silver-black beard, sober white and gold court robe, dark purple lining, royal signet. Full crown for formal portraits. Authority worn down by responsibility; seated or standing over documents. No villain coding. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "宽厚而衰老的脸，家族眉形，银黑短须，克制的白金宫廷袍与深紫内衬，王室印玺。正式肖像佩完整王冠。 责任压出的疲惫威仪；可坐于案前或站立。不使用反派化符号。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_KING",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-MOTHER",
+    "kind": "character",
+    "title_en": "Queen Beatrice",
+    "title_zh": "贝阿特丽斯王后",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Coastal noble dress, soft cream and marine blue-grey, modest gold clasp with a wave motif. Living figure only. Warm attention and practical judgement; no spectral version. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "沿海贵族服饰，柔和米白与海灰蓝，带波浪纹的简洁金扣。只设计生前形象。 温和专注，有务实判断。不做幽灵版本。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_MOTHER",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-CAPTAIN",
+    "kind": "character",
+    "title_en": "Captain Bernard",
+    "title_zh": "伯纳德卫队长",
+    "reference_paths": [
+      "B/u8_prince.png",
+      "B/art/ART-B4-BERNARD-R1.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Wide sturdy silhouette, enclosed naval helm, scratched insignia, worn shield, restrained turquoise in visor slit. Professional, grounded, careful with equipment; no ornate horns. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "宽厚稳固剪影、封闭海军头盔、磨损纹章、旧盾牌；面罩缝内少量青绿光。 专业、沉稳，爱惜装备；不使用夸张骨角。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "concept_review_then_turnaround",
+    "character_id": "CHAR_CAPTAIN",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-STITCHER",
+    "kind": "character",
+    "title_en": "Matilda — the Stitcher",
+    "title_zh": "玛蒂尔达缝合匠",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "A single standalone production concept sheet of Matilda, a 38-year-old undead naval field surgeon. Compact sturdy build, tied-back auburn hair, ashen skin with small neat seams and one exposed bone wrist, tiny teal soul-light, no gore. Practical brown leather surgical apron over faded navy tunic, rolled sleeves, gloves, belt instrument roll. Hero holding curved surgical needle and thread; no hammer, anvil, mechanical prosthesis, crown or royal cape. Separate needle, thread spool, surgical shears and instrument roll. Match the supplied stylized faceted low-poly 3D game-art reference, simple matte material, neutral warm-grey background. One character identity only, with one large hero render and three equally scaled full-body orthographic-style FRONT / SIDE / BACK views in identical neutral stance, no held props in the three views. Show detachable props and small palette. English title and view labels only. No other characters, no group lineup, no narrative text, no parchment collage. For final delivery, split the hero, measured turnaround and props into separate files.",
+    "brief_zh": "单独一张38岁亡灵海军军医玛蒂尔达的概念板。紧凑结实，赤棕头发扎起，灰白皮肤有整齐缝线，腕部露骨与微弱青绿冥火，无血腥。皮质医用围裙、褪色海军服、卷袖手套及器械卷。主立绘持弯针线；无铁匠锤、铁砧、机械义肢、王冠与王室披风。 沿用参考图低多边形材质、暖灰背景；单角色主立绘与同姿势等高正侧背全身视图，三视图卸下道具，独立配件与色板；仅英文标题和视图标注。 最终交付主立绘、精确三视图与道具分文件。",
+    "priority": "P0",
+    "status": "pending",
+    "character_id": "CHAR_STITCHER",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-MAGE",
+    "kind": "character",
+    "title_en": "Oswin — the Court Mage",
+    "title_zh": "奥斯温宫廷法师",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "A single standalone production concept sheet of Oswin, a 43-year-old undead lich scholar. Thin solid-footed figure, clearly skeletal bone face, dim teal eye lights, short faded ink-blue scholarly hood, narrow layered grey robes, slightly hunched silhouette. Hero holding annotated manuscript and slate with a few detached floating pages. No halo, crown, giant staff or floating body. Separate manuscript and slate. Match the supplied stylized faceted low-poly 3D game-art reference, simple matte material, neutral warm-grey background. One character identity only, with one large hero render and three equally scaled full-body orthographic-style FRONT / SIDE / BACK views in identical neutral stance, no held props in the three views. Show detachable props and small palette. English title and view labels only. No other characters, no group lineup, no narrative text, no parchment collage. For final delivery, split the hero, measured turnaround and props into separate files.",
+    "brief_zh": "单独一张43岁巫妖学者奥斯温的概念板。瘦长，有实体双脚，明显骨质骷髅脸及微弱青绿眼火，褪墨蓝短兜帽，窄灰袍，略佝偻。主立绘持批注手稿及石板，少量漂浮残页；无光环、冠冕、巨杖或悬浮身体。 沿用参考图低多边形材质、暖灰背景；单角色主立绘与同姿势等高正侧背全身视图，三视图卸下道具，独立配件与色板；仅英文标题和视图标注。 最终交付主立绘、精确三视图与道具分文件。",
+    "priority": "P0",
+    "status": "pending",
+    "character_id": "CHAR_MAGE",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-BUGLER",
+    "kind": "character",
+    "title_en": "Pip — the Bugler",
+    "title_zh": "皮普号手",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "A single standalone production concept sheet of Pip, a 19-year-old young adult undead naval bugler. Short lively build, stylized skull or partially skeletal jaw, teal eye lights, expressive mischievous posture. Faded navy short sailor tunic, rust-red scarf, boots, oversized brass bugle and small broken-crown pennant. Not a living human and not a child. Separate brass bugle and pennant. Match the supplied stylized faceted low-poly 3D game-art reference, simple matte material, neutral warm-grey background. One character identity only, with one large hero render and three equally scaled full-body orthographic-style FRONT / SIDE / BACK views in identical neutral stance, no held props in the three views. Show detachable props and small palette. English title and view labels only. No other characters, no group lineup, no narrative text, no parchment collage. For final delivery, split the hero, measured turnaround and props into separate files.",
+    "brief_zh": "单独一张19岁年轻成年亡灵海军号手皮普的概念板。小巧活泼，卡通骷髅脸或局部骨质下颌，青绿眼火，俏皮动作。褪蓝短海军衣、铁锈红领巾、靴、略大铜号和小碎王冠旗；非活人、非儿童。 沿用参考图低多边形材质、暖灰背景；单角色主立绘与同姿势等高正侧背全身视图，三视图卸下道具，独立配件与色板；仅英文标题和视图标注。 最终交付主立绘、精确三视图与道具分文件。",
+    "priority": "P0",
+    "status": "pending",
+    "character_id": "CHAR_BUGLER",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-EARL",
+    "kind": "character",
+    "title_en": "Earl Roderick",
+    "title_zh": "罗德里克伯爵",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Fur-edged merchant noble coat, navy and warm brown, ledger and customs seal, neat moustache or beard. Sociable, polished, easy smile; not a caricature of greed. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "毛边商贸贵族外衣，海蓝与暖棕，账簿、税印，整洁胡须。 善交际、讲究、自然微笑；避免贪婪 caricature。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_EARL",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "kind": "character",
+    "title_en": "Countess Agnes",
+    "title_zh": "阿格尼丝女伯爵",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Structured practical gown in deep ochre and olive, warehouse keys, wax tablet. Decisive estate administrator, not a wicked queen archetype. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "深赭黄及橄榄色实用贵族服，仓库钥匙、蜡板。 果断的庄园管理者，不套用邪恶女王形象。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_COUNTESS",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "kind": "character",
+    "title_en": "Archbishop Anselm",
+    "title_zh": "安塞姆大主教",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "White sun vestments, muted gold stitching, old prayer book, official seal; upright tall silhouette. Earnest expression, ceremonial restraint; no sinister eyes or demonic elements. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "白色日纹祭服、暗金刺绣、旧祈祷书、官印；高直剪影。 诚恳神情、仪式性克制，不用邪眼或恶魔元素。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_ARCHBISHOP",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "kind": "character",
+    "title_en": "Lord Marshal Hugh",
+    "title_zh": "休元帅",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Squared steel armour, navy mantle, command pennant, practical blade. A training sword is a separate story prop. Disciplined, austere veteran; strong horizontal shoulders. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "方正钢甲、海军蓝披风、指挥旗、实用佩剑；练习剑是独立故事道具。 严肃守纪的老兵，横向肩部剪影鲜明。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_MARSHAL",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "kind": "character",
+    "title_en": "Lord Chancellor Walter",
+    "title_zh": "沃尔特宰相",
+    "reference_paths": [
+      "B/u8_prince.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Dark burgundy and charcoal official robes, thin regency insignia, seal case and neatly tied papers. Polite, composed bureaucrat; no crown, armour, or theatrical evil. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "暗酒红与炭灰官服，细摄政徽记、印盒、整齐捆扎的文书。 礼貌镇定的文官；不戴王冠、不穿甲、不做戏剧化邪恶造型。 每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P1",
+    "status": "pending",
+    "character_id": "CHAR_CHANCELLOR",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "CHAR-PRINCE-UNDEAD",
+    "kind": "character",
+    "title_en": "Edmund — The Undead Prince",
+    "title_zh": "亡灵埃德蒙",
+    "reference_paths": [
+      "B/u8_prince.png",
+      "B/art/ART-B4-EDMUND-UNDEAD-R1.png"
+    ],
+    "depends_on": [],
+    "brief_en": "Preserve original half-skeletal jaw, teal eye and soul blade, broken crown, worn ivory armour and torn purple cape. Only one character identity per output file; hero, turnaround and props are separate deliverables. Neutral warm-grey background, faceted low-poly 3D, matte surfaces. English labels only. No story text or collage of other characters. Hero pose and separate full-body neutral front, exact side, back views at matched scale and ground line; detachable props shown separately. Concept must be checked before measured turnaround production.",
+    "brief_zh": "保留原图半骷髅下颌、青绿眼火与冥火剑、断冠、白金旧甲及破紫披风。每份输出仅一个角色身份；主立绘、三视图、道具分文件；暖灰底、低多边形块面、哑光材质；纯英文标注，不混入其他角色或剧情文字。主立绘及独立等高同地线正侧背全身中性姿态，配件另列；概念通过审阅后再做精确建模三视图。",
+    "priority": "P0",
+    "status": "concept_review_then_turnaround",
+    "character_id": "CHAR_PRINCE",
+    "deliverables": [
+      "hero.png",
+      "turnaround.png",
+      "props.png"
+    ]
+  },
+  {
+    "id": "ART_B02_01",
+    "kind": "story_scene",
+    "title_en": "The Orchard Race",
+    "title_zh": "果园竞舟",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE",
+      "CHAR-QUEEN",
+      "ENV-ORCHARD"
+    ],
+    "brief_en": "Childhood, Edmund about 14, Eleanor about 8; shallow irrigation ditch, toy boats, warm late summer. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "童年，埃德蒙约14岁、埃莉诺约8岁；浅引水沟、木雕小船、夏末暖光。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "orchard"
+  },
+  {
+    "id": "ART_B02_02",
+    "kind": "story_scene",
+    "title_en": "The Empty Chair",
+    "title_zh": "空椅",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE",
+      "CHAR-QUEEN",
+      "CHAR-KING",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "After Beatrice dies naturally: Edmund 19, Eleanor 13, father at the dining table. Empty chair, no ghost. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "王后自然病逝后：埃德蒙19岁、埃莉诺13岁，父亲在餐桌旁；空椅，无王后幽灵。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "ART_B02_03",
+    "kind": "story_scene",
+    "title_en": "The Winter Exception",
+    "title_zh": "寒冬例外",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-KING",
+      "CHAR-ARCHBISHOP",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Aldric signs a sober emergency document with Anselm; show relief logistics, not occult spectacle. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "国王与大主教签署严肃紧急文书；体现救济压力，不用邪教奇观。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "ART_B02_04",
+    "kind": "story_scene",
+    "title_en": "The Last Flag",
+    "title_zh": "最后的军旗",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE",
+      "CHAR-CAPTAIN",
+      "CHAR-BUGLER",
+      "ENV-BAY"
+    ],
+    "brief_en": "Before death, living crew and intact personal crown flag aboard the stricken flagship; storm and grief, not graphic harm. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "死亡前的活人舰队、完整私人王冠旗、遇难旗舰；风暴与悲壮，无血腥。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "bay"
+  },
+  {
+    "id": "ART_B02_05",
+    "kind": "story_scene",
+    "title_en": "The Unopened Petition",
+    "title_zh": "未拆请愿",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-QUEEN",
+      "CHAR-CHANCELLOR",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Adult living queen at a desk, repaired toy boat, sealed petition and constrained court access. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "成年活人女王案前、修补木船、封请愿书及受限制的宫廷接见。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "ART_B02_06",
+    "kind": "story_scene",
+    "title_en": "The Last Muster",
+    "title_zh": "最后的集结",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-CAPTAIN",
+      "CHAR-STITCHER",
+      "CHAR-MAGE",
+      "CHAR-BUGLER",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "After palace victory, crew gathered in the capital muster court; leave room for dialogue, contrast volunteers and oath. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "宫城获胜后王都集结庭旧部集结，留对白空间，体现志愿与军誓。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "ART_B02_07",
+    "kind": "story_scene",
+    "title_en": "The Empty Seat",
+    "title_zh": "船上空座",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-FERRYMAN",
+      "ENV-BAY"
+    ],
+    "brief_en": "Single empty boat seat, lantern, vast dark sea; obscured face, no revealed species. One landscape illustration without printed text. Approved character references only.",
+    "brief_zh": "小船空座、提灯、广阔暗海；遮蔽面容，不揭示种族。 单幅无字横向故事插画；只采用获批人物参考。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "bay"
+  },
+  {
+    "id": "ROYAL-FAMILY-PORTRAIT",
+    "kind": "story_scene",
+    "title_en": "The Royal Household",
+    "title_zh": "王室家庭肖像",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE",
+      "CHAR-QUEEN",
+      "CHAR-KING",
+      "CHAR-MOTHER",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "T−8: Edmund 18, Eleanor 12, Aldric about 47, Beatrice alive. No regency sash, undead traits or text.",
+    "brief_zh": "锚点前8年：王子18岁、妹妹12岁、国王约47岁、王后在世。无摄政绶带、亡灵特征或文字。",
+    "priority": "P1",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "MAP-CROWNSEA",
+    "kind": "map",
+    "title_en": "The Crownsea campaign chart",
+    "title_zh": "王冠海战役地图",
+    "reference_paths": [
+      "C/Crownsea-Chart-C3.html",
+      "C/CAMPAIGN-DATA.json"
+    ],
+    "depends_on": [],
+    "brief_en": "Top-down symbolic parchment cartography, coastline shapes, ink mountain symbols, small non-scale icons. Full 16:9 desktop, no baked labels or routes; preserve geographical order, remap nodes if needed, verify all 39.",
+    "brief_zh": "俯视符号化羊皮纸制图，墨线山脉、小型非实尺图标。16:9桌面，不预印文字航路；保留地理顺序，必要时重映射坐标并验证39节点。",
+    "priority": "P0",
+    "status": "pending",
+    "deliverables": [
+      "map-background.png",
+      "node-coordinates.json",
+      "updated-map.html"
+    ]
+  },
+  {
+    "id": "ENV-BAY",
+    "kind": "environment",
+    "title_en": "Bellgrave Bay",
+    "title_zh": "沉钟湾",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Black rock amphitheatre, submerged bell, raised flagship and a sheltered pier; broad quiet deck for the crew. Wake the company; choose a starting doctrine and speak to the crew. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "黑岩环湾、沉钟、升起的旗舰与避风码头；甲板留足旧部互动空间。 唤醒基础军团，选择开局倾向，与旧部交谈。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "bay"
+  },
+  {
+    "id": "ENV-WRECK",
+    "kind": "environment",
+    "title_en": "Wrecker’s Rest",
+    "title_zh": "断桅滩",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Two beaches separated by wreck ribs; salvage crane, winch and boat sheds. Take the salvage pier before defenders move the boats; two beach approaches. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "两处登陆滩由船肋隔开；打捞吊架、绞盘与船棚。 抢占打捞码头，防止守军转移小艇；两处登陆滩。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "wreck"
+  },
+  {
+    "id": "ENV-LIGHT",
+    "kind": "environment",
+    "title_en": "The Last Lighthouse",
+    "title_zh": "天涯灯塔",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Tall tapered beacon on a headland; winding stair and lower pier. Capture the beacon before its warning reaches the next garrison; the lower pier is a safer but longer approach. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "岬角上的收分灯塔；盘旋阶梯及低码头。 在灯塔发出警报前夺取它；低处码头更安全但绕路。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "light"
+  },
+  {
+    "id": "ENV-OAR",
+    "kind": "environment",
+    "title_en": "Broken Oar Harbour",
+    "title_zh": "折桨港",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Slate-roofed warehouses, narrow alleys, working quay and fishing homes. Fight through warehouse alleys or cross the exposed quay; protect civilian cargo from incidental damage. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "石板屋顶货仓、窄巷、工作码头与渔民住屋。 穿过仓库巷道或突击暴露码头；避免误毁民用货物。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "oar"
+  },
+  {
+    "id": "ENV-PILOT",
+    "kind": "environment",
+    "title_en": "Pilot’s Rest",
+    "title_zh": "引航岛",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Two low chart houses on tidal islets with a partly flooded causeway. Secure two chart huts linked by a tidal causeway; choose a landing while the tide changes. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "潮汐小岛上的两间海图房与半淹堤道。 夺取潮汐堤道连接的两处海图房；随潮位选择登陆点。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "pilot"
+  },
+  {
+    "id": "ENV-GATE",
+    "kind": "environment",
+    "title_en": "The Iron Gate",
+    "title_zh": "锁海之门",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Paired massive towers with an iron chain over a channel, a separate winch yard. Break the two chain towers; occupy the winch after suppressing the defending formation. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "海峡双巨塔、横水铁链与独立绞盘院。 攻破双锁链塔，压制守军后控制绞盘。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "gate"
+  },
+  {
+    "id": "ENV-YARD",
+    "kind": "environment",
+    "title_en": "Blackwake Yard",
+    "title_zh": "黑浪船厂",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Timber ribs of ships, dry dock, slipways and ropewalk. Disable launch ramps and seize the dry dock before a relief ship departs. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "木质船肋、干船坞、下水滑道与制绳长廊。 阻止援船离港，控制滑道和船坞。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "yard"
+  },
+  {
+    "id": "ENV-KINGS",
+    "kind": "environment",
+    "title_en": "The Drowned Kings",
+    "title_zh": "沉王群像",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Weathered royal stone heads emerging above the tide; readable pedestal inscriptions. Inspect the monument inscriptions; choose one of two relic caches instead of a compulsory battle. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "潮水上露出的先王巨像，基座保留可辨铭文。 调查巨像铭文，在两处遗物中选择其一，无强制战斗。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "kings"
+  },
+  {
+    "id": "ENV-ROADS",
+    "kind": "environment",
+    "title_en": "Crown Roads",
+    "title_zh": "王冠海道",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Low harbour bastion and protected mooring field; open water for patrol craft. Capture the harbour fort while patrol boats threaten the landing zone. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "低矮港堡、受保护的泊位区与巡逻船活动水面。 在巡逻船威胁登陆区时攻下锚地堡垒。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "roads"
+  },
+  {
+    "id": "ENV-LANTERN",
+    "kind": "environment",
+    "title_en": "Lantern Isle",
+    "title_zh": "长灯岛",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Oil shops, warm windows and narrow channels between occupied cottages. Secure the pilot pier without destroying occupied homes; shallow channels limit large formations. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "灯油铺、暖窗与住人小屋之间的狭窄水道。 夺取引航码头并保护民居；浅水通道限制大型阵形。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "lantern"
+  },
+  {
+    "id": "ENV-WEST",
+    "kind": "environment",
+    "title_en": "Westhaven",
+    "title_zh": "西庇港",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Silted harbour basin, unused cranes, former stone customs hall. Inspect the silted basin and interview harbour workers; choose repair advice or a supply cache. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "淤积港池、废置吊架与旧石砌海关厅。 勘察淤积港池并询问工人；选择修港建议或补给储藏。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "west"
+  },
+  {
+    "id": "ENV-MILL",
+    "kind": "environment",
+    "title_en": "Miller’s Crossing",
+    "title_zh": "磨桥渡",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Watermill beside a working bridge and a clear upstream channel. Control the mill bridge before reinforcements cross; keep the mill intact if possible. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "磨桥相邻的水磨与清楚的上游河道。 在援兵过桥前控制磨桥，尽量保全磨坊。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "mill"
+  },
+  {
+    "id": "ENV-HARVEST",
+    "kind": "environment",
+    "title_en": "Harvest End",
+    "title_zh": "麦尽村",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Ordinary farm cottages, ration post and civilian grain barn separated visually. Break the levy garrison by taking its ration station; avoid the civilian granary. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "普通农舍、配粮站与民用粮仓视觉分离。 夺取配粮站瓦解征发守军，避开民用粮仓。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "harvest"
+  },
+  {
+    "id": "ENV-GRANARY",
+    "kind": "environment",
+    "title_en": "The Great Granary",
+    "title_zh": "万谷仓",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Tiered stone warehouses with three defensible entrances, ventilated dry stores. Seize three warehouse gates; suppress the garrison without burning the food stores. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "阶梯式石粮仓、三个可防御入口及通风干燥仓储。 夺取三处仓门，压制守军而不焚毁粮储。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "granary"
+  },
+  {
+    "id": "ENV-LOCK",
+    "kind": "environment",
+    "title_en": "King’s Lock",
+    "title_zh": "王闸",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Sluice gates and dual banks with ferry and bridge landings. Control both banks and operate the sluice; bridge and ferry provide distinct approaches. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "水闸与两岸，渡船登陆和桥路并存。 控制两岸并操作水闸；桥路与渡船为不同进路。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "lock"
+  },
+  {
+    "id": "ENV-SILENT",
+    "kind": "environment",
+    "title_en": "Silent Shoals",
+    "title_zh": "寂礁群",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Low burial stones revealed by tide, weathered ferryman token, no monsters required. Read the burial stones at low tide; choose a safe ferry route or a relic cache. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "落潮露出的低葬碑与风化渡魂信物，无需怪物。 落潮时辨读葬碑，选择安全渡线或遗物。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "silent"
+  },
+  {
+    "id": "ENV-ARCHIVE",
+    "kind": "environment",
+    "title_en": "The Drowned Archive",
+    "title_zh": "沉水藏书阁",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Flooded lower hall, elevated reading ledges, shelves above the water line. Navigate the flooded lower hall; choose to copy the founding charter or inspect Oswin’s notes, with both readable if safe. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "积水下厅、高处阅览台与水线上方书架。 穿过积水下厅；优先抄录盟约或查看奥斯温批注，安全时可兼取。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "archive"
+  },
+  {
+    "id": "ENV-OLD",
+    "kind": "environment",
+    "title_en": "Old Crown Keep",
+    "title_zh": "旧王堡",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Abandoned royal ferry stairs and weathered memorial rooms, pre-Day masonry. Survey the old ferry stairs and memorial rooms; recover a dynastic relic. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "废弃王家渡阶、风化纪念室及永昼前石构。 勘察古渡阶梯与纪念室，回收王朝遗物。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "old"
+  },
+  {
+    "id": "ENV-ORCHARD",
+    "kind": "environment",
+    "title_en": "The King’s Orchard",
+    "title_zh": "旧王果园",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Country house garden, shallow irrigation ditch and fruit trees; no battlefield clutter. Visit the damaged country house; recover a childhood sketch, with no garrison encounter required. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "庄园花园、浅引水沟与果树；无战场杂物。 探访破损庄园，找到童年速写，不要求战斗。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "orchard"
+  },
+  {
+    "id": "ENV-GRAVES",
+    "kind": "environment",
+    "title_en": "Hollow Graves",
+    "title_zh": "无碑墓园",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Unmarked graves among tidal stones; hidden inscribed slabs beneath paths. Read concealed names before the tide rises; a witness may volunteer to speak. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "潮间石地的无名墓，路下隐藏刻名石板。 涨潮前辨读隐藏姓名；证人可自愿作证。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "graves"
+  },
+  {
+    "id": "ENV-ABBEY",
+    "kind": "environment",
+    "title_en": "The Pale Abbey",
+    "title_zh": "苍白圣堂",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Bell tower, cloister, archive room and visible holy-field footprint. Silence the bell tower’s holy field, then seize the record room. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "钟塔、回廊、档案室及清晰圣光作用区域。 压制钟楼圣光区域，再夺取档案室。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "abbey"
+  },
+  {
+    "id": "ENV-FUNERAL",
+    "kind": "environment",
+    "title_en": "Funeral Landing",
+    "title_zh": "灵渡码头",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Ceremonial stone jetty and sombre covered cargo shelters. Secure the ceremonial jetty and stop the transfer without destroying the records. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "仪式石码头与肃穆的遮蔽货棚。 控制仪式码头，阻止转运且不毁记录。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "funeral"
+  },
+  {
+    "id": "ENV-MERCHANT",
+    "kind": "environment",
+    "title_en": "Merchant Gate",
+    "title_zh": "白港门",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "White-stone customs quay, merchant seals and civic guard post. Secure the customs quay and negotiate a passage with merchants after the local guard yields. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "白石海关码头、商人印记与市政守卫岗。 控制海关码头，守卫投降后与商人协商通行。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "merchant"
+  },
+  {
+    "id": "ENV-LION",
+    "kind": "environment",
+    "title_en": "Lion Gate",
+    "title_zh": "雄狮门",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Naval gate with heavy portcullis and white-gold military insignia. Open the naval gate through military pressure or recognition of the lawful ruler. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "重闸军港门、白金军事标志。 以军事压力或承认合法君主打开军港门。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "lion"
+  },
+  {
+    "id": "ENV-PROVISION",
+    "kind": "environment",
+    "title_en": "Provision Gate",
+    "title_zh": "粮运门",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Broad grain landing with cranes, inspection tables and supply records. Secure the grain landing and obtain a statement of available stocks. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "宽阔粮运登陆场、吊架、查验台与粮册。 控制粮运登陆点，取得可用粮储清单。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "provision"
+  },
+  {
+    "id": "ENV-PROCESSION",
+    "kind": "environment",
+    "title_en": "Processional Gate",
+    "title_zh": "圣仪门",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Quiet processional steps, covered landing and documented access threshold. Follow the ceremonial waterway, secure its landing and obtain current access papers. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "安静仪式阶梯、遮蔽登陆区及文书查验入口。 沿仪式水道控制登陆点，取得本轮通行文书。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "procession"
+  },
+  {
+    "id": "ENV-SUNHOLD",
+    "kind": "environment",
+    "title_en": "Sunhold",
+    "title_zh": "永昼王城",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "White stone terraces: audience hall, council chamber, muster court, winter council and hidden Seal beneath; separate scene layers. Audience, Council confrontation, Muster, Winter Council, Seal, epilogue; choices are separated. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "白石阶城：会面厅、议会厅、集结庭、冬政会议及地下秘印，分层制作。 王室会面、摄政对质、军团集结、冬政会议、秘印、尾声；选择分开作出。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P0",
+    "status": "pending",
+    "site_id": "sunhold"
+  },
+  {
+    "id": "ENV-NORTHRELIEF",
+    "kind": "environment",
+    "title_en": "Northhaven",
+    "title_zh": "北望港",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Cold outer harbour, empty relief store, waiting families at the waterfront. Seize the outer harbour and inspect the empty relief store; spare the waiting families. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "寒冷外港、空赈粮仓、岸边等待的家属。 攻占外港并检查空赈粮仓，保护等待救济的家庭。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "northrelief"
+  },
+  {
+    "id": "ENV-WATCHSKERRY",
+    "kind": "environment",
+    "title_en": "Watchman’s Skerry",
+    "title_zh": "孤哨礁",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Isolated rock watchtower, exposed landing and signal platform. Land below the watch tower and disable the alert before a patrol reaches the northern passage. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "孤立礁石岗哨塔、暴露登陆点与信号台。 从岗哨塔下登陆，在巡逻队抵达北峡前切断警报。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "watchskerry"
+  },
+  {
+    "id": "ENV-SALTMARKET",
+    "kind": "environment",
+    "title_en": "Saltmarket",
+    "title_zh": "盐市港",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Salt sheds and drying pans, tollhouse, sheltered merchant docks. Secure the tollhouse; choose to preserve the salt depots rather than seize everything as spoils. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "盐棚、晒盐池、税关与避风商码头。 控制税关；可保全盐仓而非悉数掠夺。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "saltmarket"
+  },
+  {
+    "id": "ENV-FOUNDRY",
+    "kind": "environment",
+    "title_en": "Ashen Foundry",
+    "title_zh": "灰铁工坊",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Furnace courtyards, blast gates and separate armour stores, readable hazard zones. Cross exposed furnace yards, shut the blast gates and capture the armour depot. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "炉场庭院、炉门与独立甲具仓，危险区清晰。 横穿暴露炉场，关闭炉门并控制甲具库。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "foundry"
+  },
+  {
+    "id": "ENV-BANNERS",
+    "kind": "environment",
+    "title_en": "Field of Broken Banners",
+    "title_zh": "万旗冢",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Old memorial field with ruined standards, stone terraces and competing inscriptions. Search the old memorial field and compare royal and surrendered soldiers’ accounts. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "古战场纪念地、残旗、石台及相互矛盾的铭文。 探索古战场纪念地，对照王室与投降士兵记录。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "banners"
+  },
+  {
+    "id": "ENV-TITHEFORD",
+    "kind": "environment",
+    "title_en": "Titheford",
+    "title_zh": "十税渡",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Toll ferry, ledger office, narrow river banks and modest market stalls. Control the toll ferry and ledger office; defending formations use narrow river approaches. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "税渡、账房、狭窄河岸与小市场摊。 控制税渡与账房；守军依托狭窄河道。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "titheford"
+  },
+  {
+    "id": "ENV-BARLEYHALL",
+    "kind": "environment",
+    "title_en": "Barley Hall",
+    "title_zh": "金麦府",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Regional civic hall with a petition archive, covered market and central courtyard. Capture the civic courtyard and protect the petition archive from destruction. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "地方行政厅、请愿档案室、遮棚市场及中心庭院。 控制行政庭院并保护请愿档案。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "barleyhall"
+  },
+  {
+    "id": "ENV-REEDCROSS",
+    "kind": "environment",
+    "title_en": "Reedcross",
+    "title_zh": "芦苇渡",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Reed-lined shallows, low ferry and raised embankment with limited heavy access. Secure a reed-lined crossing; use shallow approaches while heavy defenders hold the embankment. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "芦苇浅滩、低渡口及限制重装通行的高堤。 控制芦苇渡口；重装守军守堤时利用浅水路线。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "reedcross"
+  },
+  {
+    "id": "ENV-HOSPICE",
+    "kind": "environment",
+    "title_en": "Saint Orlan’s Hospice",
+    "title_zh": "静息院",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Quiet care courtyard, register desk, beds screened from the approach. Speak to caretakers and inspect registers; let residents remain undisturbed. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "安静照护院落、名册台与避开进路的病床。 与照护者交谈并检查名册，不打扰住民。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "hospice"
+  },
+  {
+    "id": "ENV-WINTERPALACE",
+    "kind": "environment",
+    "title_en": "The Winter Palace",
+    "title_zh": "寒宫",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Ice-filled court halls, abandoned harbour visible below, no compulsory garrison. Survey frozen halls and recover the winter accounts; no compulsory boss. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "冰封宫厅与下方废港可见，无强制驻军。 勘察冰封宫厅并找到寒冬账册，不强制首领战。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "winterpalace"
+  },
+  {
+    "id": "ENV-OLDBRIDGE",
+    "kind": "environment",
+    "title_en": "Old Crown Bridge",
+    "title_zh": "旧王冠桥",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Ancient stone bridge with central arch collapsed and usable ferry bypass. Secure the bridgehead ferry and collapsed span; boats bypass the broken central arch. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "古石桥中央拱坍塌，保留可用渡船绕行。 控制桥头渡船与断桥；用船绕过坍塌中拱。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "oldbridge"
+  },
+  {
+    "id": "ENV-SEALQUAY",
+    "kind": "environment",
+    "title_en": "The Sealed Wharf",
+    "title_zh": "封印码头",
+    "reference_paths": [
+      "C/C4-ENVIRONMENT-ART.md"
+    ],
+    "depends_on": [],
+    "brief_en": "Sealed stone warehouses, guarded record office and a ritual barge. Capture the sealed warehouse before the cargo register is removed; secure the ritual barge. Use regional kit; concept or blockout only as needed.",
+    "brief_zh": "封印石仓、受守卫的记录室与仪式驳船。 在货册被转移前夺取封印仓库，控制仪式驳船。 复用地区组件；按需概念图或灰盒。",
+    "priority": "P2",
+    "status": "pending",
+    "site_id": "sealquay"
+  },
+  {
+    "id": "ENDING-E00",
+    "kind": "ending",
+    "title_en": "Lost at Sea",
+    "title_zh": "再沉灰海",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-BAY"
+    ],
+    "brief_en": "Flagship sinking into dark water; no victorious court. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "旗舰沉入暗水，不出现获胜宫廷。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P1",
+    "status": "pending",
+    "ending_id": "E00"
+  },
+  {
+    "id": "ENDING-E01",
+    "kind": "ending",
+    "title_en": "The Crown of Ash",
+    "title_zh": "灰烬王冠",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Undead king in bright court, bound guard still in formation. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "永昼宫廷中的亡灵国王，受束缚卫队仍列队。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P1",
+    "status": "pending",
+    "ending_id": "E01"
+  },
+  {
+    "id": "ENDING-E02",
+    "kind": "ending",
+    "title_en": "The Hollow Crown",
+    "title_zh": "空冠",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Edmund crowned, former company departing, daylight remains. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "埃德蒙加冕，旧部离去，永昼仍在。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E02"
+  },
+  {
+    "id": "ENDING-E03",
+    "kind": "ending",
+    "title_en": "The Black Regent",
+    "title_zh": "冥夜摄政",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Living queen on throne, undead commander beside it, bound troops in background. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "活人女王在位，亡灵统帅在旁，背景受军誓约束的军队。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E03"
+  },
+  {
+    "id": "ENDING-E04",
+    "kind": "ending",
+    "title_en": "Homeward Bound",
+    "title_zh": "归途",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Eleanor’s court and freed company boarding ordinary boats; sun remains. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "妹妹宫廷与登船离去的自由旧部，太阳仍在。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E04"
+  },
+  {
+    "id": "ENDING-E05",
+    "kind": "ending",
+    "title_en": "The King of Night",
+    "title_zh": "长夜之王",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Edmund crowned, compelled company aiding the harbour after sunset. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "王子在位，日落后受命军团帮助港口。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E05"
+  },
+  {
+    "id": "ENDING-E06",
+    "kind": "ending",
+    "title_en": "A Mortal Kingdom",
+    "title_zh": "凡世王国",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Undead king signs winter budget by candlelight, no compelled ranks. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "亡灵国王烛下签冬季预算，无强制列队。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E06"
+  },
+  {
+    "id": "ENDING-E07",
+    "kind": "ending",
+    "title_en": "The Last Watch",
+    "title_zh": "最后的守望",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Queen and undead brother on shore after sunset, army still bound. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "日落后女王与亡灵兄长岸边相会，军誓仍在。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P2",
+    "status": "pending",
+    "ending_id": "E07"
+  },
+  {
+    "id": "ENDING-E08",
+    "kind": "ending",
+    "title_en": "The First Sunset",
+    "title_zh": "第一次日落",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-SUNHOLD"
+    ],
+    "brief_en": "Siblings witness fading light on white walls, released crew. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "兄妹看白墙光彩消退，旧部获自由。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P1",
+    "status": "pending",
+    "ending_id": "E08"
+  },
+  {
+    "id": "ENDING-TRUE",
+    "kind": "ending",
+    "title_en": "The Final Crossing",
+    "title_zh": "最后的渡航",
+    "reference_paths": [],
+    "depends_on": [
+      "CHAR-PRINCE-UNDEAD",
+      "CHAR-QUEEN",
+      "CHAR-FERRYMAN",
+      "ENV-BAY"
+    ],
+    "brief_en": "Ferryman and Edmund embark into the Grey Sea; no return shore, fade to credits. Read the matching A.5 epilogue. Reuse approved compositions and state variants; no printed narration.",
+    "brief_zh": "渡魂人与埃德蒙驶向灰海；无回归岸，淡出进入演职员表。 阅读对应A.5尾声，复用获批构图和状态变体，不印旁白。",
+    "priority": "P1",
+    "status": "pending",
+    "ending_id": "TRUE"
+  }
+]

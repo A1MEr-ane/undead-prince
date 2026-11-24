@@ -1,0 +1,247 @@
+[
+  {
+    "id": "CHAR_PRINCE",
+    "en": "Edmund",
+    "zh": "埃德蒙",
+    "age_at_anchor_or_death": 26,
+    "linked_nodes": [
+      "bay",
+      "wreck",
+      "mill",
+      "orchard",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_FERRYMAN",
+    "en": "The Ferryman",
+    "zh": "渡魂人",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "bay",
+      "silent",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_QUEEN",
+    "en": "Eleanor",
+    "zh": "埃莉诺",
+    "age_at_anchor_or_death": 20,
+    "linked_nodes": [
+      "orchard",
+      "provision",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_KING",
+    "en": "Aldric",
+    "zh": "阿尔德里克",
+    "age_at_anchor_or_death": 55,
+    "linked_nodes": [
+      "old",
+      "orchard",
+      "archive",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_CAPTAIN",
+    "en": "Bernard",
+    "zh": "伯纳德",
+    "age_at_anchor_or_death": 49,
+    "linked_nodes": [
+      "oar",
+      "gate",
+      "yard",
+      "bay",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_STITCHER",
+    "en": "Matilda",
+    "zh": "玛蒂尔达",
+    "age_at_anchor_or_death": 38,
+    "linked_nodes": [
+      "abbey",
+      "oar",
+      "bay",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_MAGE",
+    "en": "Oswin",
+    "zh": "奥斯温",
+    "age_at_anchor_or_death": 43,
+    "linked_nodes": [
+      "abbey",
+      "archive",
+      "funeral",
+      "bay",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_BUGLER",
+    "en": "Pip",
+    "zh": "皮普",
+    "age_at_anchor_or_death": 19,
+    "linked_nodes": [
+      "lantern",
+      "bay",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_EARL",
+    "en": "Roderick",
+    "zh": "罗德里克",
+    "age_at_anchor_or_death": 47,
+    "linked_nodes": [
+      "oar",
+      "pilot",
+      "light",
+      "merchant",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_COUNTESS",
+    "en": "Agnes",
+    "zh": "阿格尼丝",
+    "age_at_anchor_or_death": 44,
+    "linked_nodes": [
+      "mill",
+      "harvest",
+      "granary",
+      "roads",
+      "lock",
+      "provision",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_ARCHBISHOP",
+    "en": "Anselm",
+    "zh": "安塞姆",
+    "age_at_anchor_or_death": 61,
+    "linked_nodes": [
+      "abbey",
+      "archive",
+      "graves",
+      "funeral",
+      "procession",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_MARSHAL",
+    "en": "Hugh",
+    "zh": "休",
+    "age_at_anchor_or_death": 53,
+    "linked_nodes": [
+      "gate",
+      "yard",
+      "lion",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_CHANCELLOR",
+    "en": "Walter",
+    "zh": "沃尔特",
+    "age_at_anchor_or_death": 52,
+    "linked_nodes": [
+      "roads",
+      "merchant",
+      "sunhold"
+    ],
+    "tier": "principal",
+    "status": "WORKING"
+  },
+  {
+    "id": "CHAR_MOTHER",
+    "en": "Beatrice",
+    "zh": "贝阿特丽斯",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "orchard",
+      "sunhold"
+    ],
+    "tier": "supporting",
+    "status": "WORKING"
+  },
+  {
+    "id": "SUP_DOCKWORKER",
+    "en": "Garran",
+    "zh": "加兰",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "oar",
+      "bay"
+    ],
+    "tier": "supporting",
+    "status": "WORKING"
+  },
+  {
+    "id": "SUP_PIP_MOTHER",
+    "en": "Pip’s mother (name pending)",
+    "zh": "皮普的母亲（姓名待定）",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "lantern"
+    ],
+    "tier": "supporting",
+    "status": "WORKING"
+  },
+  {
+    "id": "SUP_NOVICE",
+    "en": "The novice (name pending)",
+    "zh": "见习修士（姓名待定）",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "graves",
+      "abbey"
+    ],
+    "tier": "supporting",
+    "status": "WORKING"
+  },
+  {
+    "id": "SUP_CLERK",
+    "en": "The household clerk (name pending)",
+    "zh": "宫廷文书官（姓名待定）",
+    "age_at_anchor_or_death": null,
+    "linked_nodes": [
+      "sunhold"
+    ],
+    "tier": "supporting",
+    "status": "WORKING"
+  }
+]

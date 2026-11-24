@@ -1,0 +1,40 @@
+legacy_id	legacy_name	legacy_zh	current_node	current_name	current_zh	migration_note
+H00	Bellgrave Bay	沉钟湾	bay	Bellgrave Bay	沉钟湾	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+S00	Wrecker's Rest	断桅岛	wreck	Wrecker’s Rest	断桅滩	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A11	Lanternwick	长明渔村	lantern	Lantern Isle	长灯岛	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A12	Miller's Holm	磨风岛	mill	Miller’s Crossing	磨桥渡	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A13	Lowtide Chapel	落潮礼拜堂	silent	Silent Shoals	寂礁群	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A14	Watchman's Skerry	孤哨礁				Non-playable background; do not add graph node / 非可玩背景，不新增节点
+A21	Broken Oar Harbour	折桨港	oar	Broken Oar Harbour	折桨港	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A22	Titheford	十税渡	mill	Miller’s Crossing	磨桥渡	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A23	Reedcross	芦苇渡	silent	Silent Shoals	寂礁群	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A24	Ravenwatch	鸦望台	pilot	Pilot’s Rest	引航岛	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A31	Saltmarket	盐市港	oar	Broken Oar Harbour	折桨港	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A32	Harvest End	麦尽村	harvest	Harvest End	麦尽村	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A33	Hollow Graves	无碑墓园	graves	Hollow Graves	无碑墓园	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A34	Pinecut	松伐岛	yard	Blackwake Yard	黑浪船厂	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A41	Gull's Reach	鸥翼海峡	roads	Crown Roads	王冠海道	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A42	Winter Stores	冬储仓城	granary	The Great Granary	万谷仓	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A43	Saint Orlan's Hospice	静息院				Non-playable background; do not add graph node / 非可玩背景，不新增节点
+A44	King's Causeway	王堤关	gate	The Iron Gate	锁海之门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A51	Greywake Customs	灰潮税关	oar	Broken Oar Harbour	折桨港	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A52	Barley Hall	金麦府	granary	The Great Granary	万谷仓	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A53	Saltmarsh Abbey	盐沼大修院	abbey	The Pale Abbey	苍白圣堂	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A54	Pinewatch Keep	松卫堡	gate	The Iron Gate	锁海之门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A61	Crown Ferry	王室渡口	roads	Crown Roads	王冠海道	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A62	Whitewater Mill	白溪水闸	lock	King’s Lock	王闸	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A63	Pilgrim's Gate	朝圣门	procession	Processional Gate	圣仪门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+A64	Sentinel Strait	铁哨海峡	lion	Lion Gate	雄狮门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C01	The Harbour Gate	白港门	merchant	Merchant Gate	白港门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C02	The Provision Gate	粮运门	provision	Provision Gate	粮运门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C03	The Processional Gate	圣仪门	procession	Processional Gate	圣仪门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C04	The Lion Gate	雄狮门	lion	Lion Gate	雄狮门	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C05	The Crown Court	日冕宫	sunhold	Sunhold	永昼王城	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+C06	The Sunward Seal	日轮秘印	sunhold	Sunhold	永昼王城	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X01	The Old Anchorage	旧泊湾	old	Old Crown Keep	旧王堡	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X02	Widow's Sound	寡妇海峡	light	The Last Lighthouse	天涯灯塔	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X03	Ashen Foundry	灰铁工坊	yard	Blackwake Yard	黑浪船厂	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X04	The King's Orchard	旧王果园	orchard	The King’s Orchard	旧王果园	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X05	The Drowned Archive	沉水藏书阁	archive	The Drowned Archive	沉水藏书阁	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X06	Westhaven	西庇港	west	Westhaven	西庇港	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点
+X07	The Silent Shoals	寂礁群	silent	Silent Shoals	寂礁群	Story function migrated; not necessarily same geography / 剧情功能迁移，未必同一地点

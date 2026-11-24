@@ -1,0 +1,76 @@
+from	to	min_stage	kind	rationale_en	rationale_zh
+bay	wreck	1	retained	Existing chart passage: Wrecker’s Rest is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达断桅滩。
+wreck	light	1	retained	Existing chart passage: The Last Lighthouse is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达天涯灯塔。
+wreck	pilot	1	retained	Existing chart passage: Pilot’s Rest is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达引航岛。
+light	oar	1	retained	Existing chart passage: Broken Oar Harbour is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达折桨港。
+light	kings	1	retained	Existing chart passage: The Drowned Kings is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达沉王群像。
+pilot	gate	1	retained	Existing chart passage: The Iron Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达锁海之门。
+pilot	kings	1	retained	Existing chart passage: The Drowned Kings is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达沉王群像。
+pilot	old	2	retained	Existing chart passage: Old Crown Keep is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达旧王堡。
+oar	kings	1	retained	Existing chart passage: The Drowned Kings is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达沉王群像。
+oar	lantern	1	retained	Existing chart passage: Lantern Isle is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达长灯岛。
+gate	yard	1	retained	Existing chart passage: Blackwake Yard is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达黑浪船厂。
+gate	roads	1	retained	Existing chart passage: Crown Roads is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达王冠海道。
+yard	lion	1	retained	Existing chart passage: Lion Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达雄狮门。
+old	gate	2	retained	Existing chart passage: The Iron Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达锁海之门。
+old	roads	2	retained	Existing chart passage: Crown Roads is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达王冠海道。
+kings	roads	1	retained	Existing chart passage: Crown Roads is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达王冠海道。
+kings	archive	3	retained	Existing chart passage: The Drowned Archive is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达沉水藏书阁。
+roads	merchant	1	retained	Existing chart passage: Merchant Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达白港门。
+roads	lion	1	retained	Existing chart passage: Lion Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达雄狮门。
+lantern	mill	1	retained	Existing chart passage: Miller’s Crossing is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达磨桥渡。
+lantern	west	2	retained	Existing chart passage: Westhaven is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达西庇港。
+lantern	harvest	1	retained	Existing chart passage: Harvest End is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达麦尽村。
+west	mill	2	retained	Existing chart passage: Miller’s Crossing is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达磨桥渡。
+mill	harvest	1	retained	Existing chart passage: Harvest End is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达麦尽村。
+mill	granary	1	retained	Existing chart passage: The Great Granary is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达万谷仓。
+harvest	granary	1	retained	Existing chart passage: The Great Granary is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达万谷仓。
+harvest	silent	2	retained	Existing chart passage: Silent Shoals is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达寂礁群。
+silent	archive	3	retained	Existing chart passage: The Drowned Archive is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达沉水藏书阁。
+silent	graves	2	retained	Existing chart passage: Hollow Graves is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达无碑墓园。
+silent	granary	2	retained	Existing chart passage: The Great Granary is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达万谷仓。
+archive	roads	3	retained	Existing chart passage: Crown Roads is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达王冠海道。
+archive	orchard	3	retained	Existing chart passage: The King’s Orchard is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达旧王果园。
+granary	lock	1	retained	Existing chart passage: King’s Lock is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达王闸。
+lock	provision	1	retained	Existing chart passage: Provision Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达粮运门。
+lock	orchard	2	retained	Existing chart passage: The King’s Orchard is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达旧王果园。
+lock	graves	2	retained	Existing chart passage: Hollow Graves is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达无碑墓园。
+lock	abbey	1	retained	Existing chart passage: The Pale Abbey is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达苍白圣堂。
+orchard	provision	2	retained	Existing chart passage: Provision Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达粮运门。
+orchard	abbey	2	retained	Existing chart passage: The Pale Abbey is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达苍白圣堂。
+graves	abbey	2	retained	Existing chart passage: The Pale Abbey is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达苍白圣堂。
+abbey	provision	1	retained	Existing chart passage: Provision Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达粮运门。
+abbey	funeral	3	retained	Existing chart passage: Funeral Landing is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达灵渡码头。
+funeral	procession	3	retained	Existing chart passage: Processional Gate is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达圣仪门。
+merchant	sunhold	1	retained	Existing chart passage: Sunhold is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达永昼王城。
+lion	sunhold	1	retained	Existing chart passage: Sunhold is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达永昼王城。
+provision	sunhold	1	retained	Existing chart passage: Sunhold is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达永昼王城。
+procession	sunhold	3	retained	Existing chart passage: Sunhold is reached through the established coastal, ferry or harbour network.	沿既有海岸、渡线或港口通道抵达永昼王城。
+wreck	northrelief	1	new	Outer coastal detour to the intended relief port.	沿外海岸绕行至原赈粮目的港。
+northrelief	pilot	1	new	Return through the charted outer island ferry lane.	经已测绘的外岛渡线转入引航岛。
+pilot	watchskerry	1	new	Approach the northern watch station from the pilot channel.	从引航水道进入北方岗哨。
+watchskerry	gate	1	new	Follow the naval patrol lane into the narrows.	循海军巡逻线抵达北峡。
+oar	saltmarket	1	new	Follow the coastal salt trade to its toll town.	沿沿海盐贸航道前往税关。
+saltmarket	kings	1	new	Merchant ferry to the old monument island.	搭商贸渡线到古王纪念岛。
+gate	foundry	1	new	The military strait opens the iron coast.	军用海峡打开铁矿海岸。
+foundry	yard	1	new	Armaments barges connect the works and dockyard.	军械驳船连接工坊与船厂。
+yard	banners	2	new	A coastal ferry serves the old battlefield landing.	沿岸渡线通往古战场登陆点。
+banners	roads	2	new	Memorial ferry reconnects to the inner anchorage.	纪念岛渡线汇入内海锚地。
+mill	titheford	1	new	Continue upriver on the tax ferry channel.	沿税渡水道继续内河航行。
+titheford	harvest	1	new	Local produce barges connect the ferry with the ration village.	地方粮船连接税渡与配粮村。
+harvest	barleyhall	2	new	Travel downstream to the regional administrative landing.	顺流前往地方行政码头。
+barleyhall	granary	2	new	The state grain road continues by barge to the warehouse basin.	官粮驳运线通往粮仓港池。
+lantern	reedcross	1	new	Shallow boats cross the tidal southern coast.	浅水船沿南侧潮岸通行。
+reedcross	abbey	1	new	The old burial ferry reaches the abbey landing.	古葬渡线抵达圣堂码头。
+graves	hospice	2	new	A sheltered marsh channel links the burial ground to the hospice.	避风沼泽水道连接墓园与静息院。
+hospice	abbey	2	new	A short ceremonial ferry carries records to the abbey.	短程礼仪渡船将名册送至圣堂。
+old	winterpalace	3	new	Follow the old court ferry into the sheltered northern inlet.	循旧王庭渡线进入北部避风湾。
+winterpalace	orchard	3	new	The former royal coastal passage reaches the summer estate; a long exposed crossing.	旧王室沿岸航道通往避暑庄园，需长程暴露横渡。
+old	oldbridge	2	new	The keep’s ferry links to the surviving bridgehead.	旧堡渡线连接残存桥头。
+oldbridge	roads	2	new	Old ferry route bypasses the collapsed arch into the central waters.	古渡线绕过断拱进入中央海域。
+funeral	sealquay	3	new	Follow the restricted cargo barges to the sealed quay.	沿限制货运驳船线进入封印码头。
+sealquay	procession	3	new	A service channel connects the consignment wharf and ceremonial gate.	设施服务水道连接货运码头与圣仪门。
+northrelief	light	1	new	Coastal return passes the beacon headland.	沿返航海岸通过灯塔岬。
+saltmarket	lantern	1	new	Salt-and-fish coastal traffic links the southern pilot island.	盐鱼贸易连接南部引航岛。
+reedcross	graves	2	new	A low-tide burial channel leads to the old cemetery.	落潮葬运水道抵达旧墓园。
+oldbridge	orchard	2	new	The surviving royal ferry route leads to the estate landing.	幸存的王室渡线通往庄园码头。

@@ -1,0 +1,226 @@
+[
+  {
+    "path": "A/NARRATIVE-DESIGN.md",
+    "sha256": "ee220df043d62a955d1739949c950b6d5ddc43101852874bddf9ce6bc67347fd"
+  },
+  {
+    "path": "A/PLAYER-OVERVIEW.md",
+    "sha256": "8626f6a464ff6d3058b9d236faf77cbc5cda64c275ae663dcc408e750b8c9556"
+  },
+  {
+    "path": "A/WORLD-BIBLE.md",
+    "sha256": "c885ef1c39d79e815a23600d4d1455e8ab76559edceb1ec96b44ac13690978a9"
+  },
+  {
+    "path": "A/assets/u8_prince.png",
+    "sha256": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2"
+  },
+  {
+    "path": "B/ART-INDEX.json",
+    "sha256": "0f5d8badb27969614f35476ceb8e66fcd187e41d760d60d5cf474596716c2f95"
+  },
+  {
+    "path": "B/B1-CORE-CHARACTERS.md",
+    "sha256": "cd6fe4f588eb7e284af0cf7c42e65233d7168a5e64bea929f638fd7f54453c64"
+  },
+  {
+    "path": "B/B2-HOUSE-AND-COUNCIL.md",
+    "sha256": "b2ec9c082c8e484b73039030969993ede683d57fe29292088c7f1630fcba5379"
+  },
+  {
+    "path": "B/B3-LIVES-BETWEEN-THE-RETURNS.md",
+    "sha256": "5a4d126c3ddb270476f40d2ff59e5095b481e1363db96c30f3b25e9658cac473"
+  },
+  {
+    "path": "B/B4-2-ROYAL-FAMILY.md",
+    "sha256": "c6d394036a96508ac2bfcfe05d0c9d371bd81be5ff97e1aba8bc46c1e7127888"
+  },
+  {
+    "path": "B/B4-2R-CORE-TURNAROUNDS.md",
+    "sha256": "a7389f9e5f5130b4e9150bd06fdaee7db047a741faa78d1994e7ab40d12fdafd"
+  },
+  {
+    "path": "B/B4-3-CREW-OF-BELLGRAVE.md",
+    "sha256": "786cde94ef4c31a56959cc1decc55b1db10d35c15ed053d1910da2b051999aad"
+  },
+  {
+    "path": "B/B4-ISOLATED-IMAGE-TASKS.md",
+    "sha256": "cb5e1063140cca408857dc2e47b04ff4a0e2e4fbdefe4474e6f5da8952f468a0"
+  },
+  {
+    "path": "B/B4-PRODUCTION-SPEC.md",
+    "sha256": "6cce0832d20c01aa3dd2f70dbd34661525849f48f1c17d813c9aaed40971baad"
+  },
+  {
+    "path": "B/B4-VISUAL-DEVELOPMENT.md",
+    "sha256": "066a1491061ead8fc44faec0b2805762f87e03d996137ccbe68b507c32d3145c"
+  },
+  {
+    "path": "B/SIDE-STORY-INDEX.json",
+    "sha256": "93d2a6e7121ceef75248969bd4dc90b6774658f7b88a071dbf0c7745280c2103"
+  },
+  {
+    "path": "B/art/ART-B4-BERNARD-R1.png",
+    "sha256": "f95cdf0bd77e7f789a3a14a811fbde4f9b7eba3029a7d7c9f28cd6d3ed8e2c01"
+  },
+  {
+    "path": "B/art/ART-B4-CORE-01.png",
+    "sha256": "146a7f072ba1987926a0dd23cda4113bb4a92af18cd4922054c1fd77ee5f3031"
+  },
+  {
+    "path": "B/art/ART-B4-EDMUND-TURNAROUND-DRAFT.png",
+    "sha256": "f23805db56caf4c58d5a08889e8d25682392a5bfea5cb0a6da5a0d92e7d6a643"
+  },
+  {
+    "path": "B/art/ART-B4-EDMUND-UNDEAD-R1.png",
+    "sha256": "1bf45aa34729d7afc256759aa136566131297f0a8f7b0a36a8d26aff3d83f2b5"
+  },
+  {
+    "path": "B/art/ART-B4-ELEANOR-ADULT-R1.png",
+    "sha256": "7b5240d139f852bfb3410619cbcc657d070408d4899ede1ac47cd54a6d028de0"
+  },
+  {
+    "path": "B/art/ART-B4-ELEANOR-TURNAROUND-DRAFT.png",
+    "sha256": "c473f51cb90817a08c7e59de324b72f296a6c242987d52f4f3d395b9aabbb24f"
+  },
+  {
+    "path": "B/art/ART-B4-FAMILY-01.png",
+    "sha256": "406310af91adacd3f50fb9684106ed837fc660801d4ac4794d4294a57b252f5d"
+  },
+  {
+    "path": "B/art/ART-B4-FERRYMAN-R1.png",
+    "sha256": "7b7c8637cd68cc10e8a96422c2a8e3de3e73133be846c79e82c9cbc740a0bc11"
+  },
+  {
+    "path": "B/art/ART-B4-PARENTS-01.png",
+    "sha256": "b100c4315fe324b7721c376e3458c0ed3c2e5ebebc35292a3851723cd6c22688"
+  },
+  {
+    "path": "B/u8_prince.png",
+    "sha256": "25e3010a7874f2b8c34f0dc0df188eebe7a2ccb2603951161221fd2cefc317d2"
+  },
+  {
+    "path": "C/C11-GEOGRAPHY-AND-PASSAGES.md",
+    "sha256": "60c1ebebd52eb5fca3a680f5a9925ab36a7a4c2defad3d763769a3afa57f91c0"
+  },
+  {
+    "path": "C/C2-CAMPAIGN-SITE-REGISTER.tsv",
+    "sha256": "2b325dabc103ad2aef3d8906662a51aabaaae858cdd1ab200959ca6b0fb9270c"
+  },
+  {
+    "path": "C/C2-KINGDOM-CHRONICLES.md",
+    "sha256": "0ab278b29ae664fa692d21af5578a95894b57fea5f067c6e6c8d532ef8b48954"
+  },
+  {
+    "path": "C/C3-ROADS-TO-SUNHOLD.md",
+    "sha256": "da5c901b0fb1757ae687c4bd4a5867655d98f03c83d2b9379fd7348f1e01ed04"
+  },
+  {
+    "path": "C/C3-ROUTE-EDGES.tsv",
+    "sha256": "566f1a421de112fdc3171bee1e22275610904d60e2f5e8e4511217dbfd54acb4"
+  },
+  {
+    "path": "C/C3-SITE-REGISTER.tsv",
+    "sha256": "542e3dcb2ea144539b175ce5495e0662c0e1d865321479169e925aff39a30c6b"
+  },
+  {
+    "path": "C/C4-ENVIRONMENT-ART.md",
+    "sha256": "e27f388e3ca87550874c6506faa7e6c6f324c367bd3212a5f8438eb6e3c1f32d"
+  },
+  {
+    "path": "C/CAMPAIGN-DATA.json",
+    "sha256": "2e0c70e0c717fa02564efcdda0b14c6ca5a54e590870dd68568f9f05fd89caba"
+  },
+  {
+    "path": "C/Crownsea-Chart-C3.html",
+    "sha256": "d7676d675a7ac9e3962e28114565aa9c0d4c9d6731bdc558f06aaa4f5224d105"
+  },
+  {
+    "path": "CLAUDE-HANDOFF.md",
+    "sha256": "465c66a4bf77733ae1c6d53f56b42ace08a830bf878c7ffc26874789f1b11e40"
+  },
+  {
+    "path": "README.md",
+    "sha256": "ec26006f4ab70fbb5efb79ff20502d4f243c43da8b8ef5695629e6bcc5da1154"
+  },
+  {
+    "path": "WORLD-COMPENDIUM.html",
+    "sha256": "e63734997171117cd6520d5e48df33669caf0721586a827a9116940a8f77a2c1"
+  },
+  {
+    "path": "WORLD-COMPENDIUM.md",
+    "sha256": "7c69addd1e0a79017e1cf080bec9a0a0d25658ba6646921fc410a94db1c330b1"
+  },
+  {
+    "path": "archive/05-narrative-and-atlas-revision.md",
+    "sha256": "246d8a8335e4454184b745a2cac956a13b767896f00007fbb4b61e6eb918078f"
+  },
+  {
+    "path": "archive/Crownsea-Chart-27node.html",
+    "sha256": "ccbbf524571449f1e2b50788aacdacb3a9c03c658490c14f51978f89c5e1a10f"
+  },
+  {
+    "path": "archive/story-background.md",
+    "sha256": "e268b8ca804f894524b0455b1b430fde7ef59046d0b6727df0fa244a8c05e7e6"
+  },
+  {
+    "path": "archive/story-outline.md",
+    "sha256": "b452a277a7c721e05421bef8da633c6e84995b49e6cd5314686a709142c22af2"
+  },
+  {
+    "path": "archive/undead-prince-A4.zip",
+    "sha256": "cba8ca643b091b6b2f2604e0f3bec174ca3659ac17465d8218b18bef48bcf0e6"
+  },
+  {
+    "path": "archive/undead-prince-A5.zip",
+    "sha256": "dadc67a7923f8bcf8d74c60a2b30b5c0d9413b07c1a94ea227065c2756ebb6f2"
+  },
+  {
+    "path": "archive/undead-prince-BC1.zip",
+    "sha256": "dc67b3ca466cbac1a9cc9070e00a036e6f2e2b9e82bbf25826204d578fff4230"
+  },
+  {
+    "path": "archive/undead-prince-story-A.zip",
+    "sha256": "86afaec3f6c2a416dc3b85fef5acf3b13254326f11ca50dec04f9c5630fd0634"
+  },
+  {
+    "path": "archive/undead-prince-world-bible-A3.zip",
+    "sha256": "1fc750adb532c6e345c6dbf787cb8d54457723419da827b49455cdb37f335a1d"
+  },
+  {
+    "path": "shared/ART-PRODUCTION-QUEUE.json",
+    "sha256": "4068c81a3be6309187ec4ed1901fbc1cd75329c82874f8978201b34c94473dcd"
+  },
+  {
+    "path": "shared/ART-RESULTS.json",
+    "sha256": "053f796e3d5aee7ddb09d335dabd15b536045f4649cb916efc6e692370ef40ce"
+  },
+  {
+    "path": "shared/CANON-COMPACT.md",
+    "sha256": "ce84183df0659a823565264c5c2509ea06f581d515c47e4640e5100289ee427d"
+  },
+  {
+    "path": "shared/CHARACTER-INDEX.json",
+    "sha256": "aa274fad8caf113a5a75ee56ad674bcaf59cada58cf1e7506c4abe8b90df6f40"
+  },
+  {
+    "path": "shared/CHECK-C3.py",
+    "sha256": "cbf01a47c3b033e3154f7c1546a23f7d00d3540a38020cc47cf309ae6ee7c76d"
+  },
+  {
+    "path": "shared/LOCATION-CROSSWALK.tsv",
+    "sha256": "bac5d471a44c6c8f6eb653fc03eb85ca7676659c4e38c141ae4d05a84e1a1a76"
+  },
+  {
+    "path": "shared/LOCATION-INDEX.tsv",
+    "sha256": "45162d8b209fdf09a6dafbbab455607c3023c820352b6ac6da2c5f33420d90f9"
+  },
+  {
+    "path": "shared/TIMELINE.md",
+    "sha256": "a9b15d62ddcc41592e1cdb540ad2c71c971734e79ac0e9b1bc30ec1de2afb31f"
+  },
+  {
+    "path": "shared/VALIDATION.md",
+    "sha256": "c71d14354163e8150d213d323af706ccbcedb575cf6334227562477bf1f419c7"
+  }
+]

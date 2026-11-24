@@ -7,7 +7,10 @@
 | 文件 | 内容 |
 |---|---|
 | `docs/design.md` | 设计决策与待定项（【定】/【议】/【待定】） |
-| `docs/story-outline.md` | 剧情大纲（世界、陷害真相、据点 NPC、区域与贵族、结局） |
+| `docs/canon/` | **剧情与世界观基准**（用户提供的 ABC R1；先读 `shared/CANON-COMPACT.md`）。只读，改动需用户同意 |
+| `docs/canon-review.md` | Claude 对 canon 的审阅意见与待决事项 |
+| `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |
+| `docs/art-direction.md` | 可爱比例规范与美术验收反馈 |
 | `docs/units.md` | 兵种设计（亡魂技能与死亡效果、守军职责、克制关系、招魂循环） |
 | `docs/badnorth-reference.md` | Bad North 技术拆解概要 |
 | `docs/badnorth-behavior-spec.md` | 行动逻辑规格与参数（读源码整理） |
@@ -19,8 +22,8 @@
 | `TASKS.md` | 任务看板：谁在做什么、在哪个分支 |
 
 ## 当前阶段
-先做战斗原型，美术和动画按 Bad North 的标准规划，"功能和小巧思都要有"。
-构筑系统和世界观设定之后再说，现在不要提前实现。
+（2026-11-24 起）重点是打磨世界观、故事设定和增益体系（肉鸽构筑），剧情以 `docs/canon/` 为准，玩法层见 `docs/roguelike.md`；旧剧情稿在 `docs/archive/`，已作废。
+战斗原型保持可运行；美术打磨推迟到后期（用户反馈见 `docs/art-direction.md` 第 6 节）。
 
 ## 已定（用户原话或明确决定）
 - 切入点是质感，不是玩法创新；操作简单、界面简单、带即时决策

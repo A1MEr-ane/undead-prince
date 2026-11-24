@@ -1,0 +1,586 @@
+[
+  {
+    "id": "CHAR-PRINCE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-QUEEN",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-FERRYMAN",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-KING",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-MOTHER",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-CAPTAIN",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-STITCHER",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-MAGE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-BUGLER",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-EARL",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "CHAR-PRINCE-UNDEAD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_01",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_02",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_03",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_04",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_05",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_06",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ART_B02_07",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ROYAL-FAMILY-PORTRAIT",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "MAP-CROWNSEA",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-BAY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-WRECK",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-LIGHT",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-OAR",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-PILOT",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-GATE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-YARD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-KINGS",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-ROADS",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-LANTERN",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-WEST",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-MILL",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-HARVEST",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-GRANARY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-LOCK",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-SILENT",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-ARCHIVE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-OLD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-ORCHARD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-GRAVES",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-ABBEY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-FUNERAL",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-MERCHANT",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-LION",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-PROVISION",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-PROCESSION",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-SUNHOLD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-NORTHRELIEF",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-WATCHSKERRY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-SALTMARKET",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-FOUNDRY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-BANNERS",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-TITHEFORD",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-BARLEYHALL",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-REEDCROSS",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-HOSPICE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-WINTERPALACE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-OLDBRIDGE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENV-SEALQUAY",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E00",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E01",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E02",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E03",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E04",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E05",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E06",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E07",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-E08",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  },
+  {
+    "id": "ENDING-TRUE",
+    "status": "pending",
+    "outputs": [],
+    "reference_sha256": {},
+    "tool": null,
+    "review_notes": null
+  }
+]

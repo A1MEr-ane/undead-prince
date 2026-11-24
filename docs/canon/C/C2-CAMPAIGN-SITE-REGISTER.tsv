@@ -1,0 +1,40 @@
+id	en	zh	stage	type	status	region	upstream_proposal	downstream_proposal	story_en	story_zh
+bay	Bellgrave Bay	沉钟湾	1	hub	PROTOTYPE				The Ferryman raises the wreck where the relief fleet was betrayed. Every Return begins here.	每轮从此开始，只有王子保留亲历记忆。
+wreck	Wrecker’s Rest	断桅滩	1	battle	PROTOTYPE				Secure salvage craft and a landing. A torn banner connects the company to the wreck.	找到旗舰的一块军旗碎片；确认不是所有遇难者都能被安葬。
+light	The Last Lighthouse	天涯灯塔	1	battle	PROTOTYPE				The signal ledger records an order forbidding rescue.	灯塔曾收到禁止搜救的命令；家属一直为失踪者添灯油。
+oar	Broken Oar Harbour	折桨港	1	battle	PROTOTYPE				Customs papers connect the Earl to the mercenaries and the diversion.	伯爵罗德里克支付佣兵费用，并安排船队改航。获得一封未寄家书的线索。
+pilot	Pilot’s Rest	引航岛	1	battle	PROTOTYPE				The original chart contradicts the false warning that diverted the fleet.	海图证明当日所谓航道危险的通报是伪造的。
+gate	The Iron Gate	锁海之门	1	boss	PROTOTYPE				Hugh’s signed naval orders establish his role in the betrayal.	元帅休亲自签署封湾军令；他认为牺牲王子能避免内战。
+yard	Blackwake Yard	黑浪船厂	1	battle	PROTOTYPE				The shipyard reveals the cost of requisition and weakens royal naval reinforcement.	船厂工匠也受旧征发令约束；部分海军愿意效忠合法君主。
+kings	The Drowned Kings	沉王群像	1	lore	PROTOTYPE				Monuments record the conquest of the Crownsea long before the eternal light.	历代君主曾以控制海道统一群岛；王国并非自古就依赖永昼。
+roads	Crown Roads	王冠海道	1	battle	PROTOTYPE				The inner anchorage controls the merchant approach and holds missing relief manifests.	被扣押的赈粮清单指向粮仓女伯爵；王都商人开始动摇。
+lantern	Lantern Isle	长灯岛	1	battle	PROTOTYPE				A missing sailor’s family waits at the southern pilot station.	失踪船员的家属在此等候；可依据已知家书内容寻找家人。
+west	Westhaven	西庇港	2	lore	PROTOTYPE				A viable alternative winter harbour, if its neglected facilities are restored.	发现永昼结束后可使用的替代港，但必须投入疏浚和储运。
+mill	Miller’s Crossing	磨桥渡	1	battle	PROTOTYPE				Edmund’s own emergency levy remains in force long after his death.	王子的旧征发令仍被地方执行，受征者没有得到补偿。
+harvest	Harvest End	麦尽村	1	battle	PROTOTYPE				The garrison fights for its families’ ration entitlements.	守军以服役换家人的口粮；王子的征发令曾经伤害这些人。
+granary	The Great Granary	万谷仓	1	boss	PROTOTYPE				Agnes’s records prove deliberate delays; preserved stores support a winter transition.	阿格尼丝扣押赈粮迫使王子出航。现存储备可以缓冲未来的冬季危机。
+lock	King’s Lock	王闸	1	battle	PROTOTYPE				The lock opens the eastern grain passage and can support the capital’s food supply.	王室工程曾将粮食送往旧王都；本轮取得粮运船队的支持。
+silent	Silent Shoals	寂礁群	2	lore	PROTOTYPE				Old burial rites predate the Church’s control of the dead.	早期死者直接渡入灰海；教会后来接管了送葬船。
+archive	The Drowned Archive	沉水藏书阁	3	lore	PROTOTYPE				The founding compact records the Great Winter and the original temporary bargain.	永昼起于大寒冬中的临时盟约，后逐渐依靠强制截留完整灵魂。
+old	Old Crown Keep	旧王堡	2	lore	PROTOTYPE				The abandoned dynastic route survives as a ferry crossing beneath the mountains.	发现王室曾在寒冬迁都，旧王国与今日政治体系并不相同。
+orchard	The King’s Orchard	旧王果园	2	lore	PROTOTYPE				A childhood memory of wooden boats opens a more personal conversation with Eleanor.	兄妹童年在水沟里比赛木船；埃德蒙意识到妹妹已不再是需要他代作决定的孩子。
+graves	Hollow Graves	无碑墓园	2	lore	PROTOTYPE				The erased names expose the social consequences of condemnation.	死者被定罪后无法安葬；原先的葬运开始服务于王室秘密。
+abbey	The Pale Abbey	苍白圣堂	1	boss	PROTOTYPE				The date of the treason decree predates the sinking. Later records reveal diverted souls.	教会在沉船前已经拟定叛国判决。后期可发现被截留灵魂的运送记录。
+funeral	Funeral Landing	灵渡码头	3	battle	PROTOTYPE				Restricted cargo proves the Seal consumes captive souls, not residual Soulfire.	确认永昼消耗被截留的完整灵魂，而非普通冥火。
+merchant	Merchant Gate	白港门	1	entry	PROTOTYPE				The merchant waterfront offers leverage over the regency’s customs network.	贸易账目、商人态度与摄政议会的经济基础将在宫城对质中发挥作用。
+lion	Lion Gate	雄狮门	1	entry	PROTOTYPE				The military quay carries the consequences of naval defections into the palace.	王国军队的效忠对象取决于王子对王位的主张和此前取得的军令。
+provision	Provision Gate	粮运门	1	entry	PROTOTYPE				Grain reserves and intact supply routes change the Winter Council.	本轮保全的粮食和冬港计划将影响冬政会议。
+procession	Processional Gate	圣仪门	3	entry	PROTOTYPE				The procession route grants a current-history approach to the Seal.	秘印设施的现世入口向王子开放。
+sunhold	Sunhold	永昼王城	1	capital	PROTOTYPE				The capital unfolds through separate Crown, Oath and Day decisions.	三个决定分阶段作出，塑造本轮结局。
+northrelief	Northhaven	北望港	1	battle	CANDIDATE	Greywake Fringe	wreck	pilot	A relief manifest identifies the intended destination.	赈粮清单揭示原目的地。
+watchskerry	Watchman’s Skerry	孤哨礁	1	battle	CANDIDATE	Pilot Waters	pilot	gate	The watch received an order to withhold assistance; a duplicate survives.	岗哨曾收到禁止救援的命令，副本尚存。
+saltmarket	Saltmarket	盐市港	1	battle	CANDIDATE	Greywake Fringe	oar	kings	Roderick’s monopoly was built on privileges once exchanged for ship service.	罗德里克的垄断源自曾以船役换取的特权。
+foundry	Ashen Foundry	灰铁工坊	1	battle	CANDIDATE	Pinewatch March	gate	yard	The marshal’s mobilisations outlasted the danger that justified them.	元帅的动员在原有威胁消退后仍被延续。
+banners	Field of Broken Banners	万旗冢	2	lore	CANDIDATE	Pinewatch March	yard	roads	Accounts of surrender challenge the official heroic version without revealing a new conspiracy.	投降者记录补全官方英雄叙事，不引入新的阴谋。
+titheford	Titheford	十税渡	1	battle	CANDIDATE	Barley Vale Delta	mill	harvest	Household arrears demonstrate how the prince’s warrant was copied.	家庭欠账展示王子征发令如何被反复抄发。
+barleyhall	Barley Hall	金麦府	2	battle	CANDIDATE	Barley Vale Delta	harvest	granary	Local petitions reveal a conflict between reserves for the capital and village rations.	地方请愿书揭示王都储粮与村庄口粮的冲突。
+reedcross	Reedcross	芦苇渡	1	battle	CANDIDATE	Saltmarsh Reach	lantern	abbey	The funeral route predates the Seal; early records reveal its legitimate uses.	葬运水道早于秘印，早期记录展示原本用途。
+hospice	Saint Orlan’s Hospice	静息院	2	lore	CANDIDATE	Saltmarsh Reach	graves	abbey	Unclaimed people were once cared for and named; later registers classify them for transfer.	无人认领者过去曾得到照护与登记，后期名册却将其分类转送。
+winterpalace	The Winter Palace	寒宫	3	lore	CANDIDATE	The Old Realm	old	orchard	Founding winter accounts distinguish the original temporary ritual from later coercion.	创制寒冬账册区分初期临时仪式与后来的强制献祭。
+oldbridge	Old Crown Bridge	旧王冠桥	2	battle	CANDIDATE	The Old Realm	old	roads	A toll inscription shows the Crown once financed infrastructure by shared contributions.	税碑显示王室曾通过共同出资修建基础设施。
+sealquay	The Sealed Wharf	封印码头	3	battle	CANDIDATE	Sunhold Basin	funeral	procession	Consignment records document the transfer of condemned souls; knowledge does not substitute for current proof.	转运记录证实获罪灵魂的运输；记忆不替代本轮证据。
