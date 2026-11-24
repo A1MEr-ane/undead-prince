@@ -1,0 +1,437 @@
+[
+  {
+    "id": "prince_hero",
+    "file": "art/style/prince_hero.png",
+    "alts": [
+      "art/style/alt/prince_hero_B.png"
+    ],
+    "prompt": "Use case: illustration-story. Asset: prince_hero variant A, a single full-body vertical character key illustration, portrait 2:3, 1024x1536 composition. Original hand-drawn narrative game art: digital opaque gouache painting with bold expressive black ink contours, outer silhouette heaviest and internal lines finer, visibly irregular brush edges. Elongated angular adult anatomy, vivid character expression and dramatic readable poses. Strong chiaroscuro with large crisp flat shadow shapes, no soft airbrushed modeling. Limited character colors against dark ink-navy sea-gray backdrops; saturated rimlight on one side, undead cyan-green soulfire and royal ivory-gold sunlight. Maintain selective painted strokes, clean value grouping and readable silhouettes. Absolutely no 3D render look, no low-poly triangular faceting, no photorealism, no plastic surfaces, no chibi proportions except explicitly requested tiny battle troops. No names or references to existing games, studios, artists, logos or watermarks.\nSubject: Edmund, a 26-year-old assassinated maritime prince returned as undead. Adult, lean and tall, about 7.5 heads, angular tired handsome face, swept dark hair and strong brows, controlled fury. Preserve only these identity features from the user's old concept; invent no new lore and do not imitate its faceted style: a NARROW BROKEN GOLD CROWN visibly snapped in front, a torn royal PURPLE CAPE flowing outward, worn IVORY WHITE PLATE ARMOR with aged GOLD trim and damaged crown badge, CYAN-GREEN SOULFIRE SWORD.\nCritical face requirement: his ANATOMICAL LEFT half of his face is exposed pale skull from eye socket through cheek and jaw, with turquoise flame in socket; his ANATOMICAL RIGHT half retains young human skin, eyebrow, eye, cheek and lips. Clearly visible VERTICAL left/right split, not just a skeletal lower jaw and not both sides skull. In this near-frontal view the skull half appears on the VIEWER'S RIGHT. No face-covering helmet. Keep both face halves visible.\nPose: full body, boots and crown entirely in frame with generous dark breathing space, one foot planted forward, torso angled slightly but face nearly frontal, cloak whipping left. His right gauntleted hand holds the sword low diagonally toward lower right, readable sharp flame blade fully inside frame; left hand open in restrained command. Dynamic long triangular silhouette, asymmetrical weight, bold ink gesture. The metal uses two or three broad painted values; wear is selective brush marks, never texture noise.\nScene: nearly black indigo background with a restrained suggestion of gray sea mist, no scenery competing with figure. Cyan-green light rims the skull side, armor and sword arm, cold purple shadows and pale warm armor lights. Sword is brightest and most saturated accent. Ornamental detail restrained and nautical, no extra weapons, no horns, no halo. No UI, no labels, no text. Produce ONE complete image.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "A",
+    "source": "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-a23a1d4c-5d6d-40e5-8397-e84a803e38e3.png",
+    "referenced_image_paths": [],
+    "canvas": {
+      "width": 1024,
+      "height": 1536,
+      "target_aspect": "2:3",
+      "native_aspect": "2:3"
+    },
+    "selection_reason": "选用：青年面部与左骨右人方向清楚；断冠、紫披风、白金旧甲、冥火剑齐全，手势与斜剑形成张力。披风局部贴左画缘。",
+    "self_check": {
+      "method": "逐张查看内置生图工具返回的实际图像；文件与尺寸另用本地PNG头校验。审美与实装结论仍由Lead验收。",
+      "style": [
+        {
+          "requirement": "手绘数字厚涂与粗细变化墨线，外轮廓较粗",
+          "result": "pass",
+          "evidence": "逐张查看生成图：黑色外轮廓、较细内部结构线及可见刷痕；非3D材质高光。"
+        },
+        {
+          "requirement": "强明暗对比，大块平涂阴影与单侧饱和轮廓光",
+          "result": "pass",
+          "evidence": "人物/单位用明暗大块分组，主要剪影亮于深色场景；轮廓光与局部特效分离。"
+        },
+        {
+          "requirement": "有限主色，亡魂青绿、王国白金日光；伯纳德钢灰紫与冷钢蓝",
+          "result": "pass",
+          "evidence": "以紫、灰钢、象牙白和旧金为主，亡魂与守军光色分工可辨；伯纳德立绘使用冷钢蓝边光。"
+        },
+        {
+          "requirement": "无3D渲染感、低多边形切面、照片感；叙事人物非Q版",
+          "result": "pass",
+          "evidence": "逐图人工审阅，没有3D渲染或照片质感；战斗小兵按任务特例采用Q版。"
+        },
+        {
+          "requirement": "提示词不写现有游戏、工作室或画师名字",
+          "result": "pass",
+          "evidence": "全部原始提示词保存在本文件及GENERATION-LOG.json，仅描述媒介、线条、色块和构图。"
+        }
+      ],
+      "content": [
+        {
+          "requirement": "竖版、单人全身、修长有棱角的成年人体",
+          "result": "pass",
+          "evidence": "1024×1536；冠、双靴与完整剑尖在画面内，面部青年化，伸手与斜剑有张力。披风部分接触左画缘。"
+        },
+        {
+          "requirement": "断裂金冠",
+          "result": "pass",
+          "evidence": "冠左右两段在额前留出明显断口。"
+        },
+        {
+          "requirement": "紫色破披风",
+          "result": "pass",
+          "evidence": "紫色披风向左飘动，布边破损，剪影清楚。"
+        },
+        {
+          "requirement": "白金旧甲",
+          "result": "pass",
+          "evidence": "象牙白甲配旧金边，裂纹和磨损可见。"
+        },
+        {
+          "requirement": "角色左半脸骷髅、右半脸人脸",
+          "result": "pass",
+          "evidence": "近正面可核对：观众右侧是骷髅，观众左侧有人眼、皮肤和嘴唇；并非仅下颌骷髅。"
+        },
+        {
+          "requirement": "青绿冥火剑；旧图仅用于身份特征",
+          "result": "pass",
+          "evidence": "剑斜向右下，青绿火刃是最强色彩焦点；未把旧低多边形图作为生成风格输入。"
+        }
+      ]
+    },
+    "generation_log": "art/style/GENERATION-LOG.json"
+  },
+  {
+    "id": "ui_dialogue",
+    "file": "art/style/ui_dialogue.png",
+    "alts": [
+      "art/style/alt/ui_dialogue_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset: ui_dialogue variant B, one polished hand-painted narrative game conversation screen, EXACT 16:9 wide 2048x1152. Original hand-drawn narrative game art: digital opaque gouache painting with bold expressive black ink contours, outer silhouette heaviest and internal lines finer, visibly irregular brush edges. Elongated angular adult anatomy, vivid character expression and dramatic readable poses. Strong chiaroscuro with large crisp flat shadow shapes, no soft airbrushed modeling. Limited character colors against dark ink-navy sea-gray backdrops; saturated rimlight on one side, undead cyan-green soulfire and royal ivory-gold sunlight. Maintain selective painted strokes, clean value grouping and readable silhouettes. Absolutely no 3D render look, no low-poly triangular faceting, no photorealism, no plastic surfaces, no chibi proportions except explicitly requested tiny battle troops. No names or references to existing games, studios, artists, logos or watermarks.\nDesign a strong, spacious composition: 2 large half-body character portraits at left and right, dark shipwreck bay between them, a readable dialogue panel spanning bottom 24 percent. Consistent broad graphic shapes rather than busy scratch texture. Ink-black lines clearly vary in pressure, deep flat shadow wedges, purposeful loose brushstrokes in fabric and scene.\nAt left Edmund age26, slender adult royal naval prince, swept black hair, worn ivory plate with gold trim and damaged crown badge, ragged PURPLE CAPE and a NARROW GOLD CROWN with a visibly MISSING FRONT SEGMENT leaving two broken sharp edges. The crown must be obviously broken, not a complete circlet. Both halves of his nearly frontal face visible: anatomical LEFT half / VIEWER RIGHT is skull from eye socket to jaw with teal fire; anatomical RIGHT half / VIEWER LEFT is living human skin and intact eye, cheek, lips. Alert frustrated human eye, tight-lipped restrained grief; cyan-green edge light. Do not mirror the skull side.\nAt right Bernard, sturdy broad old undead naval guard captain, sealed practical steel-gray NAVAL HELMET with narrow rectangular visor emitting restrained turquoise, no exposed human face, no horns. STEEL-GRAY armor and PURPLE sash/cape, faded scuffed crown insignia. A large DENTED SHIELD with a visibly pushed-in center rests in front of his body; one gauntlet holds its rim. Helmet tilted respectfully toward prince, free hand in a compact objection gesture. Cool STEEL-BLUE edge lighting.\nCenter backdrop is dim Bellgrave Bay: capsized broken wood hull, splintered masts, black gray-blue sea, atmospheric painted mist. An immense bronze ship BELL lies beneath the near water surface in the midground; submerged waterline, ripples and refraction visibly cross the bell, with dark mouth and clapper readable. Leave negative space above the bell so environment does not become a mural.\nUI is hand-painted aged forged iron with inset thin bronze/gold lines, just 4 nautical nail/rope corner details and understated bell motif. Deep ink-navy fill, minimal ornament, generous padding. Nameplate on dialogue frame reads \"伯纳德\". Inside, exact large ivory Chinese sentence: \"请准许我提出异议，殿下。\" One line, no substitutions or extra marks. Small location tag top center \"沉钟湾\". Small gold continuation diamond bottom right. No other text, no English, no game logos. Background dark, faces and armor brighter, disciplined color blocks. ONE finished image.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-5fdab877-d319-46a6-ad1c-a38449e885f9.png",
+    "referenced_image_paths": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941,
+      "target_aspect": "16:9",
+      "native_aspect": "1672:941",
+      "relative_aspect_error_percent": 0.053135,
+      "check": "near_16_9",
+      "note": "工具原生宽幅；距严格16:9约0.05%，未裁切或重采样。"
+    },
+    "selection_reason": "选用：断冠缺口、完整左右脸、凹盾和封闭头盔明确，水线穿过大钟；台词与名牌清楚，边框克制。",
+    "self_check": {
+      "method": "逐张查看内置生图工具返回的实际图像；文件与尺寸另用本地PNG头校验。审美与实装结论仍由Lead验收。",
+      "style": [
+        {
+          "requirement": "手绘数字厚涂与粗细变化墨线，外轮廓较粗",
+          "result": "pass",
+          "evidence": "逐张查看生成图：黑色外轮廓、较细内部结构线及可见刷痕；非3D材质高光。"
+        },
+        {
+          "requirement": "强明暗对比，大块平涂阴影与单侧饱和轮廓光",
+          "result": "pass",
+          "evidence": "人物/单位用明暗大块分组，主要剪影亮于深色场景；轮廓光与局部特效分离。"
+        },
+        {
+          "requirement": "有限主色，亡魂青绿、王国白金日光；伯纳德钢灰紫与冷钢蓝",
+          "result": "pass",
+          "evidence": "以紫、灰钢、象牙白和旧金为主，亡魂与守军光色分工可辨；伯纳德立绘使用冷钢蓝边光。"
+        },
+        {
+          "requirement": "无3D渲染感、低多边形切面、照片感；叙事人物非Q版",
+          "result": "pass",
+          "evidence": "逐图人工审阅，没有3D渲染或照片质感；战斗小兵按任务特例采用Q版。"
+        },
+        {
+          "requirement": "提示词不写现有游戏、工作室或画师名字",
+          "result": "pass",
+          "evidence": "全部原始提示词保存在本文件及GENERATION-LOG.json，仅描述媒介、线条、色块和构图。"
+        }
+      ],
+      "content": [
+        {
+          "requirement": "16:9构图，王子左、伯纳德右的大半身像",
+          "result": "pass",
+          "evidence": "双立绘分立左右，成年人比例；宽幅原生像素比例的微差见canvas。"
+        },
+        {
+          "requirement": "王子身份与半脸方向一致",
+          "result": "pass",
+          "evidence": "断冠、破紫披风、白金旧甲；观众右侧骷髅、左侧人脸，未镜像。"
+        },
+        {
+          "requirement": "伯纳德封闭海军头盔、磨损纹章、凹盾、钢灰紫",
+          "result": "pass",
+          "evidence": "窄缝面罩无裸脸；胸前旧纹章、盾中心明显凹陷，钢灰甲与紫布，冷钢蓝边光。"
+        },
+        {
+          "requirement": "暗化沉钟湾：沉船与水下大钟",
+          "result": "pass",
+          "evidence": "背景有断桅沉船，中央钟的大部分浸在水线下，水纹横过钟身。"
+        },
+        {
+          "requirement": "底部对话框、名牌与准确中文台词",
+          "result": "pass",
+          "evidence": "名牌“伯纳德”；原句“请准许我提出异议，殿下。”完整可读。"
+        },
+        {
+          "requirement": "锻铁或青铜边框与细金线、海与钟纹样",
+          "result": "pass",
+          "evidence": "深墨蓝框底，旧铁/青铜细框、金色内线、绳结与小钟细节。"
+        }
+      ]
+    },
+    "generation_log": "art/style/GENERATION-LOG.json"
+  },
+  {
+    "id": "ui_boons",
+    "file": "art/style/ui_boons.png",
+    "alts": [
+      "art/style/alt/ui_boons_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset: ui_boons variant B. A single complete widescreen boon-selection screen, EXACT16:9 2048x1152 composition. Original hand-drawn narrative game art: digital opaque gouache painting with bold expressive black ink contours, outer silhouette heaviest and internal lines finer, visibly irregular brush edges. Elongated angular adult anatomy, vivid character expression and dramatic readable poses. Strong chiaroscuro with large crisp flat shadow shapes, no soft airbrushed modeling. Limited character colors against dark ink-navy sea-gray backdrops; saturated rimlight on one side, undead cyan-green soulfire and royal ivory-gold sunlight. Maintain selective painted strokes, clean value grouping and readable silhouettes. Absolutely no 3D render look, no low-poly triangular faceting, no photorealism, no plastic surfaces, no chibi proportions except explicitly requested tiny battle troops. No names or references to existing games, studios, artists, logos or watermarks.\nArt direction: bold graphic ink drawing over opaque hand-painted gouache, controlled visible brushwork, clean flatter UI panels, no decorative clutter. Near-black navy background, steel-gray card bodies, dark purple art shadows, restrained cyan-green undead accent. Thin aged-bronze/gold inset borders and just a few nautical rivets. Background has only very dim shadow shapes of a ship hold.\nTop strip, a SMALL round portrait of Bernard (closed steel naval helmet, narrow turquoise visor, purple collar, no horns and no exposed face); exact title next to portrait \"伯纳德 · 阵线\", exact subtitle quote below \"请准许我提出异议，殿下。\"\nExactly THREE tall equal-width portrait cards horizontally aligned with wide gaps and breathing room on every side. STEEL-GRAY frames, each has an identical small SHIELD pictogram of steel with a single dent line in its top border, making Bernard's identity unmistakable. Each contains an upper slot label, a dynamic hand-inked illustration across top half, large boon name, ONE line effect and a small COMMON rarity badge \"普通\". All letters in warm ivory with strong contrast. Card2 focus is a simple thin gold keyline.\nLEFT card:\nslot \"槽位 · 刃\"\nart a dented steel shield in gauntlet delivering a diagonal blow to an enemy guard, cyan-green fracture wedge, steel-gray and purple with small warm royal gold opposite, no superfluous figures.\nname \"盾击\"\neffect EXACT \"普攻附带破阵\"\nrarity \"普通\"\nMIDDLE:\nslot \"槽位 · 行军\"\nart adult elongated purple-clad shield soldiers in a compact forceful charge, an opponent visibly thrown backward at first contact, cyan-green rimlight, speed indicated with thick clean ink strokes.\nname \"冲阵\"\neffect EXACT \"到位时撞开首个接触敌人，并附带破阵\"\nrarity \"普通\"\nRIGHT:\nslot \"槽位 · 被动\"\nart a gauntlet checking a paper muster list beside three worn naval identity tokens and an old helmet, dignified remembrance, no spellcasting, deep purple and cold steel.\nname \"点名\"\neffect EXACT \"阵亡1人：余部伤害+10%，可叠加，本场有效\"\nrarity \"普通\"\nEffects must each stay on ONE line; reduce effect type size evenly when necessary but make legible, no cropping. Preserve exact Chinese characters and numerals. Do not convert one-line effects into paragraphs, do not invent upgraded numbers. Bottom exact small caption \"选择一项增益\". Keep frames steel-gray, gold lines thin, surface wear sparse rather than full noisy speckles. No English, no logos, no additional choices. ONE image.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-ca494ff6-5f4c-4e1a-ad81-28c41ee1c2aa.png",
+    "referenced_image_paths": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941,
+      "target_aspect": "16:9",
+      "native_aspect": "1672:941",
+      "relative_aspect_error_percent": 0.053135,
+      "check": "near_16_9",
+      "note": "工具原生宽幅；距严格16:9约0.05%，未裁切或重采样。"
+    },
+    "selection_reason": "选用：三张同款钢灰盾图标更统一，细金线与清洁卡底提高可读性；中文槽位、名称、一行效果和普通稀有度齐全。",
+    "self_check": {
+      "method": "逐张查看内置生图工具返回的实际图像；文件与尺寸另用本地PNG头校验。审美与实装结论仍由Lead验收。",
+      "style": [
+        {
+          "requirement": "手绘数字厚涂与粗细变化墨线，外轮廓较粗",
+          "result": "pass",
+          "evidence": "逐张查看生成图：黑色外轮廓、较细内部结构线及可见刷痕；非3D材质高光。"
+        },
+        {
+          "requirement": "强明暗对比，大块平涂阴影与单侧饱和轮廓光",
+          "result": "pass",
+          "evidence": "人物/单位用明暗大块分组，主要剪影亮于深色场景；轮廓光与局部特效分离。"
+        },
+        {
+          "requirement": "有限主色，亡魂青绿、王国白金日光；伯纳德钢灰紫与冷钢蓝",
+          "result": "pass",
+          "evidence": "以紫、灰钢、象牙白和旧金为主，亡魂与守军光色分工可辨；伯纳德立绘使用冷钢蓝边光。"
+        },
+        {
+          "requirement": "无3D渲染感、低多边形切面、照片感；叙事人物非Q版",
+          "result": "pass",
+          "evidence": "逐图人工审阅，没有3D渲染或照片质感；战斗小兵按任务特例采用Q版。"
+        },
+        {
+          "requirement": "提示词不写现有游戏、工作室或画师名字",
+          "result": "pass",
+          "evidence": "全部原始提示词保存在本文件及GENERATION-LOG.json，仅描述媒介、线条、色块和构图。"
+        }
+      ],
+      "content": [
+        {
+          "requirement": "三张竖卡并排，钢灰卡框与盾形图标",
+          "result": "pass",
+          "evidence": "三等宽卡、相同钢灰盾图标；中卡细金线焦点，不遮挡邻卡。"
+        },
+        {
+          "requirement": "上方伯纳德小头像与台词",
+          "result": "pass",
+          "evidence": "封闭头盔圆头像，标题“伯纳德 · 阵线”，台词“请准许我提出异议，殿下。”。"
+        },
+        {
+          "requirement": "盾击（刃）及效果",
+          "result": "pass",
+          "evidence": "图文为“槽位 · 刃”“盾击”“普攻附带破阵”。"
+        },
+        {
+          "requirement": "冲阵（行军）及效果",
+          "result": "pass",
+          "evidence": "“槽位 · 行军”“冲阵”；一行“到位时撞开首个接触敌人，并附带破阵”，保留到位、首个敌人、撞开及破阵条件。"
+        },
+        {
+          "requirement": "点名（被动）及效果",
+          "result": "pass",
+          "evidence": "“槽位 · 被动”“点名”；一行“阵亡1人：余部伤害+10%，可叠加，本场有效”，保留叠加及本场期限。"
+        },
+        {
+          "requirement": "中文槽位、名称、一行效果与稀有度",
+          "result": "pass",
+          "evidence": "三卡均显示“普通”；未生成新的稀有度数值。点名画面纸上小字是装饰性笔迹，不采信为角色名或canon。"
+        }
+      ]
+    },
+    "generation_log": "art/style/GENERATION-LOG.json"
+  },
+  {
+    "id": "ui_chart",
+    "file": "art/style/ui_chart.png",
+    "alts": [
+      "art/style/alt/ui_chart_A.png"
+    ],
+    "prompt": "Use case: ui-mockup. Asset: ui_chart variant B. A complete symbolic nautical campaign-map game screen, wide EXACT16:9 2048x1152 composition. Original hand-drawn narrative game art: digital opaque gouache painting with bold expressive black ink contours, outer silhouette heaviest and internal lines finer, visibly irregular brush edges. Elongated angular adult anatomy, vivid character expression and dramatic readable poses. Strong chiaroscuro with large crisp flat shadow shapes, no soft airbrushed modeling. Limited character colors against dark ink-navy sea-gray backdrops; saturated rimlight on one side, undead cyan-green soulfire and royal ivory-gold sunlight. Maintain selective painted strokes, clean value grouping and readable silhouettes. Absolutely no 3D render look, no low-poly triangular faceting, no photorealism, no plastic surfaces, no chibi proportions except explicitly requested tiny battle troops. No names or references to existing games, studios, artists, logos or watermarks.\nLEFT72 percent: aged muted OCHRE PARCHMENT nautical chart, black pressure-varied ink coastlines and hatch marks, gray-blue ink-washed sea, irregular handpainted stains only at edges. Selective island silhouettes, room for labels, a quiet ink compass bottom-left. RIGHT28 percent: dark INK-NAVY information panel framed with thin bronze/gold lines, forged iron and nautical nails. Clean readable hierarchy rather than crowded fantasy-map typography. Map lighting restrained; undead accents cyan-green, royal accents pale ivory gold; no giant blazing gold glow. No human portraits needed. No3D, no lowpoly facets, no photoreal scanned paper.\nTop-left exact title \"王冠海航路\". Exactly12 labeled locations, all labels clear Chinese, no duplicates or omissions. Place names on small light parchment strips with dark ink letters:\n1 沉钟湾 at upper left, cyan-green hub dot\n2 断桅滩 below-right of 沉钟湾, green dot\n3 天涯灯塔 mid-left below 沉钟湾, green dot, small lighthouse sketch\n4 折桨港 lower-left below 天涯灯塔, yellow dot\n5 沉王群像 bottom-middle-left, yellow dot, subtle submerged statue sketch\n6 引航岛 upper-middle, yellow dot with thin cyan-green selection ring\n7 锁海之门 upper-middle-right, PURPLE boss SHIELD CREST containing a small MILITARY COMMAND PENNANT, a provisional UI motif based on existing practical command-flag equipment, not new family lore\n8 黑浪船厂 upper-right of map, orange dot, tiny drydock sketch\n9 王冠海道 center-right, orange dot\n10 白港门 lower-right, red dot\n11 雄狮门 upper-right above 白港门, red dot\n12 永昼王城 far-right map side between two gates, small ivory-gold sun destination crest and quiet city silhouette.\nRoutes are THIN DASHED BLACK INK lines with NO ARROWHEADS, keep well clear of label text. Represent ONLY the following connections; don't invent shortcut connections:\n沉钟湾—断桅滩\n断桅滩—天涯灯塔\n断桅滩—引航岛\n天涯灯塔—折桨港\n天涯灯塔—沉王群像\n折桨港—沉王群像\n引航岛—锁海之门\n锁海之门—黑浪船厂\n锁海之门—王冠海道\n沉王群像—王冠海道\n黑浪船厂—雄狮门\n王冠海道—白港门\n白港门—永昼王城\n雄狮门—永昼王城\nSpecifically NO line between 沉王群像 and 引航岛; no line directly from 引航岛 to 王冠海道. This map is a sampled subset of existing campaign locations, not a new canonical geographic layout.\nRIGHT PANEL top: small flat hand-inked landscape of two chart huts connected by a tidal causeway with slate gray sea, minor cyan-green navigation glow. Under it show exact Chinese UI strings in this hierarchy:\nlarge \"引航岛\"\nsmall \"战斗 · 难度：中\"\nbody \"夺取潮汐堤道连接的两处海图房。\"\nlabel \"奖励：引航\"\nbody \"灵活布置登陆点\"\nbottom button \"驶向此地\"\nMap footer clean legend on parchment, five painted swatches with exact words: GREEN \"低\", YELLOW \"中\", ORANGE \"高\", RED \"极高\", PURPLE SHIELD \"首领\". Green and yellow visibly distinct, red not pink, purple reserved for boss. No other text, no English, no fake names, no logos. ONE image.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "B",
+    "source": "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-aef50f23-73a4-4e69-879f-680929a80112.png",
+    "referenced_image_paths": [],
+    "canvas": {
+      "width": 1672,
+      "height": 941,
+      "target_aspect": "16:9",
+      "native_aspect": "1672:941",
+      "relative_aspect_error_percent": 0.053135,
+      "check": "near_16_9",
+      "note": "工具原生宽幅；距严格16:9约0.05%，未裁切或重采样。"
+    },
+    "selection_reason": "选用：12个地名、五档颜色和右侧引航岛面板齐全；无箭头，仅示意采样航线，断桅滩到引航岛出现近似双线，非正式导航图。紫色指挥旗盾徽为UI暂用图形，非canon新增家徽。",
+    "self_check": {
+      "method": "逐张查看内置生图工具返回的实际图像；文件与尺寸另用本地PNG头校验。审美与实装结论仍由Lead验收。",
+      "style": [
+        {
+          "requirement": "手绘数字厚涂与粗细变化墨线，外轮廓较粗",
+          "result": "pass",
+          "evidence": "逐张查看生成图：黑色外轮廓、较细内部结构线及可见刷痕；非3D材质高光。"
+        },
+        {
+          "requirement": "强明暗对比，大块平涂阴影与单侧饱和轮廓光",
+          "result": "pass",
+          "evidence": "人物/单位用明暗大块分组，主要剪影亮于深色场景；轮廓光与局部特效分离。"
+        },
+        {
+          "requirement": "有限主色，亡魂青绿、王国白金日光；伯纳德钢灰紫与冷钢蓝",
+          "result": "pass",
+          "evidence": "以紫、灰钢、象牙白和旧金为主，亡魂与守军光色分工可辨；伯纳德立绘使用冷钢蓝边光。"
+        },
+        {
+          "requirement": "无3D渲染感、低多边形切面、照片感；叙事人物非Q版",
+          "result": "pass",
+          "evidence": "逐图人工审阅，没有3D渲染或照片质感；战斗小兵按任务特例采用Q版。"
+        },
+        {
+          "requirement": "提示词不写现有游戏、工作室或画师名字",
+          "result": "pass",
+          "evidence": "全部原始提示词保存在本文件及GENERATION-LOG.json，仅描述媒介、线条、色块和构图。"
+        }
+      ],
+      "content": [
+        {
+          "requirement": "羊皮纸海图叠墨线海岸，十来个中文地点",
+          "result": "pass",
+          "evidence": "12个地点：沉钟湾、断桅滩、天涯灯塔、折桨港、沉王群像、引航岛、锁海之门、黑浪船厂、王冠海道、白港门、雄狮门、永昼王城；均取自CAMPAIGN-DATA.json。"
+        },
+        {
+          "requirement": "难度绿、黄、橙、红，首领紫色加纹章",
+          "result": "pass",
+          "evidence": "节点和底部低/中/高/极高/首领图例齐全；锁海之门为紫色指挥旗盾徽。"
+        },
+        {
+          "requirement": "右侧地点信息面板",
+          "result": "pass",
+          "evidence": "引航岛图景、标题、难度、潮汐堤道两处海图房、引航奖励与灵活布置登陆点、驶向此地按钮均可读。"
+        },
+        {
+          "requirement": "不增加世界观或人物设定",
+          "result": "note",
+          "evidence": "采样构图，不替代完整战役图；难度色阶是样张演示。首领盾徽由已有指挥旗装备提取，暂作UI图案，正式纹章待Lead确认。"
+        },
+        {
+          "requirement": "航线清晰程度",
+          "result": "note",
+          "evidence": "B版无方向箭头，断桅滩—引航岛附近有近似双线；仅作视觉样张，不应据图回写正式战役拓扑。"
+        }
+      ]
+    },
+    "generation_log": "art/style/GENERATION-LOG.json"
+  },
+  {
+    "id": "battle_mock",
+    "file": "art/style/battle_mock.png",
+    "alts": [
+      "art/style/alt/battle_mock_A.png",
+      "art/style/alt/battle_mock_B.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Asset: battle_mock variant C, targeted revision of the supplied hand-painted battle mockup. Keep the entire image, terrain geometry, camera distance, tree placement, flagpole, HUD, gray-olive ground, ink-blue cliffs, broad painted shapes and tiny soldier SCALE unchanged. Exact same pulled-back orthographic30-degree tactical camera.16:9 composition. Change ONLY soldier faction lights and the central contact group as specified.\nOriginal hand-drawn narrative game art: digital opaque gouache painting with bold expressive black ink contours, outer silhouette heaviest and internal lines finer, visibly irregular brush edges. Elongated angular adult anatomy, vivid character expression and dramatic readable poses. Strong chiaroscuro with large crisp flat shadow shapes, no soft airbrushed modeling. Limited character colors against dark ink-navy sea-gray backdrops; saturated rimlight on one side, undead cyan-green soulfire and royal ivory-gold sunlight. Maintain selective painted strokes, clean value grouping and readable silhouettes. Absolutely no 3D render look, no low-poly triangular faceting, no photorealism, no plastic surfaces, no chibi proportions except explicitly requested tiny battle troops. No names or references to existing games, studios, artists, logos or watermarks.\nTroops exception: preserve tiny2.3-head-tall chibi fighters at about4–5percent of frame height, bold variable black outer ink contours, two flat material values and3–4 large color blocks. Never enlarge them, no foreground units.\nCRITICAL FIX1 — clear faction light separation:\nEVERY soldier in IVORY/WHITE ARMOR or cream helmet or royal blue-and-gold shield is a KINGDOM DEFENDER. ALL their weapon glints, edges and any light on their body MUST be WARM GOLD / IVORY SUNLIGHT, never cyan, turquoise, teal or green. Specifically change the TWO STANDING isolated white-helmet soldiers below the flag to warm golden blades and warm gold edge-light. The uppermost flag guards are royal too, warm gold only. A blue shield's interior may remain dark navy, but its rimlight is gold.\nEVERY soldier with PURPLE CLOTH, slate helmet and visible small ivory skull is UNDEAD. Only THIS faction gets CYAN-GREEN SOULFIRE weapon edges and cyan-green rimlight. Keep upper-left compact undead squad as undead. Their edges must clearly read cyan-green, not gold.\nCRITICAL FIX2 — central clash:\nAt the existing center combat spot, keep3–4 small ivory-armored royal shield fighters on LEFT facing RIGHT with narrow warm golden edges. Add/show3 small purple-clad undead shield fighters STANDING on RIGHT facing LEFT, each with narrow vivid cyan-green edge-light and simple skull hint. Their swords/shields meet in the middle with a tiny cyan-green flame slash and a tiny gold spark. Both armies visibly engaged and standing, not all undead lying dead. Replace some fallen silhouettes if needed to preserve original contact group footprint and unit count. Keep2–3 tiny fallen silhouettes outside that footprint.\nKeep the existing BRIGHT SATURATED VERMILION blood marks near contact. Cyan-green fire and vermilion blood remain the brightest saturated battlefield accents; no giant effects, no bright terrain gold. Add NO religious cross emblems, use simple crown notch on royal shields. Flag, troop counts \"9/9\" and \"8/8\", slim bottom meter labeled \"冥火\" remain unchanged and readable.\nThis is still a hand-inked opaque painting with flat shadow blocks, dark background terrain and brighter troops. NO3D rendering, NOlow-poly faceting, NOphotorealism. Do not redesign the layout or add other UI. One image only.",
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "selected_variant": "C",
+    "source": "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-f382398a-32f6-4441-a6e2-22675709428d.png",
+    "referenced_image_paths": [
+      "/Users/cyy/.codex/generated_images/01a20d50-1d2c-73b0-8404-19ad4ffc1eb2/exec-5e3f8dd7-40ca-499f-8358-6379df79c017.png"
+    ],
+    "canvas": {
+      "width": 1672,
+      "height": 941,
+      "target_aspect": "16:9",
+      "native_aspect": "1672:941",
+      "relative_aspect_error_percent": 0.053135,
+      "check": "near_16_9",
+      "note": "工具原生宽幅；距严格16:9约0.05%，未裁切或重采样。"
+    },
+    "selection_reason": "选用：在B上定向修正，孤立守军武器改暖金、中央两边均有站立交战单位；小兵仍小，青绿/暖金阵营分离，血迹鲜红，地形保持暗调。",
+    "self_check": {
+      "method": "逐张查看内置生图工具返回的实际图像；文件与尺寸另用本地PNG头校验。审美与实装结论仍由Lead验收。",
+      "style": [
+        {
+          "requirement": "手绘数字厚涂与粗细变化墨线，外轮廓较粗",
+          "result": "pass",
+          "evidence": "逐张查看生成图：黑色外轮廓、较细内部结构线及可见刷痕；非3D材质高光。"
+        },
+        {
+          "requirement": "强明暗对比，大块平涂阴影与单侧饱和轮廓光",
+          "result": "pass",
+          "evidence": "人物/单位用明暗大块分组，主要剪影亮于深色场景；轮廓光与局部特效分离。"
+        },
+        {
+          "requirement": "有限主色，亡魂青绿、王国白金日光；伯纳德钢灰紫与冷钢蓝",
+          "result": "pass",
+          "evidence": "以紫、灰钢、象牙白和旧金为主，亡魂与守军光色分工可辨；伯纳德立绘使用冷钢蓝边光。"
+        },
+        {
+          "requirement": "无3D渲染感、低多边形切面、照片感；叙事人物非Q版",
+          "result": "pass",
+          "evidence": "逐图人工审阅，没有3D渲染或照片质感；战斗小兵按任务特例采用Q版。"
+        },
+        {
+          "requirement": "提示词不写现有游戏、工作室或画师名字",
+          "result": "pass",
+          "evidence": "全部原始提示词保存在本文件及GENERATION-LOG.json，仅描述媒介、线条、色块和构图。"
+        }
+      ],
+      "content": [
+        {
+          "requirement": "约30度正交俯视、小岛、交战队伍、旗杆",
+          "result": "pass",
+          "evidence": "以用户实机截图作构图输入；阶梯岛、左右树与上方旗杆位置保留，中央为双方近战，镜头保持远景。"
+        },
+        {
+          "requirement": "小兵约2.3头身，和原截图相近占屏尺寸",
+          "result": "pass",
+          "evidence": "目视约2.3头身；站立单位主体约40–60像素高（宽幅原图），相当于720高画面的约31–46像素；主观尺寸核对，非建模测量。"
+        },
+        {
+          "requirement": "深色墨线外轮廓、两档平涂明暗、3–4大色块",
+          "result": "pass",
+          "evidence": "粗黑单位剪影与简化紫/灰/白/金块，明暗为两档主值，内部纹理少。"
+        },
+        {
+          "requirement": "亡魂青绿边光，王国暖金边光",
+          "result": "pass",
+          "evidence": "C版已把两名孤立守军的青绿武器光改为暖金；中央右方站立亡魂为青绿，左方守军为金色。"
+        },
+        {
+          "requirement": "地形暗调、高对比、手绘质感",
+          "result": "pass",
+          "evidence": "灰橄榄地表、墨蓝崖壁，大块笔刷与硬阴影，地表碎纹少于A。"
+        },
+        {
+          "requirement": "冥火与血为最亮、最饱和的战斗色彩焦点",
+          "result": "pass",
+          "evidence": "青绿火线和朱红血迹集中在接触区，地形低饱和；暖金小型碰撞火星仍是一个局部高光。"
+        },
+        {
+          "requirement": "小兵远景且可读，不做特写",
+          "result": "pass",
+          "evidence": "中央主冲突两边都有站立单位，外围仍留大片可通行地表，未变成角色特写。"
+        },
+        {
+          "requirement": "实际运行与动态可读性",
+          "result": "not_tested",
+          "evidence": "此图是基于实机截图生成的静态样张，未接入Godot；不能据此宣称已验证着色器、动画或运行表现。"
+        }
+      ]
+    },
+    "generation_log": "art/style/GENERATION-LOG.json"
+  }
+]
