@@ -1,0 +1,918 @@
+[
+  {
+    "id": "CHAR-EARL",
+    "name": "Earl Roderick",
+    "files": {
+      "hero": "art/chars/CHAR-EARL/hero.png",
+      "turnaround": "art/chars/CHAR-EARL/turnaround.png",
+      "expressions": "art/chars/CHAR-EARL/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-EARL/alt/hero-v2.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-EARL/alt/turnaround-v2.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-EARL/alt/expressions-v2.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Hand-painted narrative character art matching the attached project's style examples: visible opaque paint strokes with bold variable-width black ink outlines, angular elongated anatomy, sharp plane-shaped flat shadow masses, strong light-dark contrast, controlled limited palette, rich dark ink-blue brushed background, one-sided saturated warm gold rim lighting with platinum-white highlights. These are living humans with natural eyes and skin; no teal fire, undead parts, demonic cues, 3D rendering, low-poly polygons, soft airbrush, photorealism, existing-game/artist imitation, text or watermark.\nAsset: portrait 2:3 full-body hero illustration, head and both boots fully inside canvas, one person only. Earl Roderick, age 47: polished, sociable maritime merchant noble with a neatly trimmed dark beard and moustache, some grey at temples, lean mature angular face and an easy believable smile, no greedy caricature. A long navy merchant-noble coat with broad warm-brown fur edging and brown leather inner layers, restrained brass fittings, practical tall boots. Clear regency-red diagonal sash from his right shoulder to his left hip, worn on top of the coat. Distinguished tapering fur-collar silhouette, elongated proportions. He holds a substantial closed brown accounting ledger against his left side and lightly presents a small brass customs stamping seal in his right hand, warm engaging negotiating gesture. Show weight, sleeves, human hands, coherent anatomy. Subtle dynamic coat movement, confident three-quarter pose, readable ledger and tax seal. No crown, armour, weapons, coin piles, story text, second figure or view sheet. Dark background; warm white-gold daylight from one side. Generate one complete polished standalone image.",
+      "turnaround": "Asset: wide landscape single-character modelling turnaround sheet, approximately 3:2, one character identity repeated exactly THREE times in distinct views. Reference image 1 is the selected hero and defines the exact face, hair, age, colours, clothing construction and proportions. Keep those invariants. Three orthographic full-body views in the left 76%: FRONT, exact 90-degree SIDE facing right, BACK facing directly away. All views share the same neutral relaxed standing pose, both arms down and slightly clear of body, EMPTY OPEN HANDS, same height, head top level and boot soles exactly on one shared ground line. No perspective, no dramatic stance, no wind in clothing, no three-quarter view. Keep sleeve lengths, belt, toggles, mantle length, hem panels, boots and diagonal sash construction consistent; sash sits on the same anatomical shoulder when rotated, not mirrored. Leave clean gaps between figures. In the rightmost 24%, detached props laid out clearly, no hands or extra people. Fully visible complete head and feet in all views. Small simple ivory serif English title at top left with exact name below. Only allowed view labels: FRONT / SIDE / BACK / PROPS. No measurements, notes, speech, story text, watermarks or other text. Dark charcoal ink-blue brushed background, readable garment edges. Hand-painted opaque brushwork and variable-width ink outlines, flat graphic shadow masses, restrained white-platinum key light and warm gold rim; not a 3D render or low-poly art.\nCharacter: Earl Roderick, age 47, affable polished merchant noble, lean mature angular face, wavy brown hair grey at temples, neatly trimmed dark beard and moustache. Long navy merchant noble coat with broad warm-brown fur edging and fur cuffs, leather brown inner waistcoat, ivory neck cloth, brass toggles, practical brown tall boots; a regency red diagonal sash from his right shoulder to his left hip on top of the coat. Representative objects: closed brown leather accounting ledger with brass corners and strap, brass customs stamping seal. Easy sociable smile; never a caricature of greed.\nExact title: \"Earl Roderick\". Props at far right: closed leather ledger and brass customs seal, only, completely detached. ",
+      "expressions": "Asset: wide landscape dialogue expression sheet, approximately 3:2. Reference image 1 is the chosen hero and is the STRICT identity and clothing reference. Exactly THREE separate waist-up portraits of the SAME character aligned side by side, equal size and eye line, ample gap between shoulders; each head and hair/headwear fully inside canvas, crop at belt/waist, not disembodied heads. Maintain identical face, age, hairstyle, costume, main colours, sash shoulder and lighting in all three. Same near-frontal three-quarter angle, as large illustrated portraits standing at the sides of a dialogue interface, expressive face and hands where appropriate. No interface frames, dialogue boxes, captions, symbols, text or watermark. No props needed in hands. Dark ink-blue brushed background, hand-painted opaque brushwork, heavy variable-width outer ink contours, fine interior lines, angular elongated anatomy, flat graphic shadow shapes, one-sided saturated gold rim and platinum-white daylight highlights. Natural living skin and eyes, humane believable emotion; no supernatural colours, evil caricature or 3D look.\nCharacter: Earl Roderick, age 47, affable polished merchant noble, lean mature angular face, wavy brown hair grey at temples, neatly trimmed dark beard and moustache. Long navy merchant noble coat with broad warm-brown fur edging and fur cuffs, leather brown inner waistcoat, ivory neck cloth, brass toggles, practical brown tall boots; a regency red diagonal sash from his right shoulder to his left hip on top of the coat. Representative objects: closed brown leather accounting ledger with brass corners and strap, brass customs stamping seal. Easy sociable smile; never a caricature of greed.\nLeft portrait: calm attentive neutrality. Middle portrait: warm persuasive negotiating smile. Right portrait: strained guarded defensiveness. "
+    },
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "self_check": [
+      {
+        "requirement": "年龄与外貌",
+        "result": "pass",
+        "observed": "47岁感；整洁深色胡须、鬓角灰发，自然微笑。"
+      },
+      {
+        "requirement": "衣装与主色",
+        "result": "pass",
+        "observed": "海蓝毛边商贸贵族长衣、暖棕毛领与皮革内层。"
+      },
+      {
+        "requirement": "代表物",
+        "result": "pass",
+        "observed": "账簿及税印，主立绘可辨；三视图右侧分列。"
+      },
+      {
+        "requirement": "性格与禁项",
+        "result": "pass",
+        "observed": "善交际、讲究；无肥胖贪婪 caricature、金钱堆或恶人脸。"
+      },
+      {
+        "requirement": "剪影",
+        "result": "pass",
+        "observed": "宽毛领、收腰长衣，和其余四人区分。"
+      },
+      {
+        "requirement": "单角色身份",
+        "result": "pass",
+        "observed": "每张图仅一个人物身份；三视图/表情为同人重复，不混入其他人物。"
+      },
+      {
+        "requirement": "主立绘版式",
+        "result": "pass",
+        "observed": "竖版2:3，完整头部与双脚、姿态有张力、暗色背景。"
+      },
+      {
+        "requirement": "三视图版式",
+        "result": "pass",
+        "observed": "横版；正面/90度侧面/背面，中性空手，同高同地线；道具在右。"
+      },
+      {
+        "requirement": "三视图标签",
+        "result": "pass",
+        "observed": "左上英文名字；视图标签仅 FRONT / SIDE / BACK / PROPS，无剧情文本。"
+      },
+      {
+        "requirement": "表情版式",
+        "result": "pass",
+        "observed": "横版三张同人半身像并排；平静加两种有canon依据的表情，无字幕或对话框。"
+      },
+      {
+        "requirement": "手绘风格",
+        "result": "pass",
+        "observed": "可见厚涂笔触、粗细变化墨线、修长棱角人体、强明暗与大块平涂阴影；无3D低多边形渲染。"
+      },
+      {
+        "requirement": "阵营光色与标记",
+        "result": "pass",
+        "observed": "全部活人、自然肤色眼睛；摄政红斜带、白金暖光及单侧饱和金色边光，无青绿冥火。"
+      },
+      {
+        "requirement": "设定边界",
+        "result": "pass",
+        "observed": "仅执行canon和任务卡；不由偶然图纹或文字新增设定，未改canon。"
+      },
+      {
+        "requirement": "生成和备选",
+        "result": "pass",
+        "observed": "每张独立调用内置image_gen；从~/.codex/generated_images复制；每种主文件至少一个独立生成备选。"
+      },
+      {
+        "requirement": "提示词",
+        "result": "pass",
+        "observed": "未使用任何现有游戏、工作室或画师名字。"
+      }
+    ],
+    "expression_selection": {
+      "order": [
+        "calm",
+        "warm persuasive negotiating smile",
+        "strained guarded defensiveness"
+      ],
+      "rationale": [
+        "平静：礼貌倾听。",
+        "亲切劝说的微笑：B1待人和气、B2善用人情与合作谈判。",
+        "戒备而勉强维持体面的紧张：审计威胁秘密补贴，面对证据仍试图谈合作；这是语气推断，不新增剧情。"
+      ],
+      "source": [
+        "docs/canon/B/B1-CORE-CHARACTERS.md",
+        "docs/canon/B/B2-HOUSE-AND-COUNCIL.md"
+      ],
+      "interpretation": "表情表演依据人物语气推断，不新增人物设定。"
+    },
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_log": [
+      {
+        "asset": "hero",
+        "version": 1,
+        "file": "art/chars/CHAR-EARL/hero.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-c64f567d-80d5-465c-bf82-b9370fe29e04.png",
+        "selected": true,
+        "review": "通过：全身、海蓝暖棕毛边长衣、账簿税印、整洁胡须与自然笑容，活人暖光红斜带。"
+      },
+      {
+        "asset": "hero",
+        "version": 2,
+        "file": "art/chars/CHAR-EARL/alt/hero-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-98e944dd-582a-4245-bc85-27df3a4d3ec2.png",
+        "selected": false,
+        "review": "通过：全身、海蓝暖棕毛边长衣、账簿税印、整洁胡须与自然笑容，活人暖光红斜带。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 1,
+        "file": "art/chars/CHAR-EARL/turnaround.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-453e1de6-e80c-45e3-97bb-e16b7d33d063.png",
+        "selected": true,
+        "review": "通过：正侧背同高同地线、空手、肩位与衣服对应；右列账簿税印，英文名及FRONT/SIDE/BACK/PROPS正确。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 2,
+        "file": "art/chars/CHAR-EARL/alt/turnaround-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-00936843-b55d-40c3-8550-f80e2e6fe678.png",
+        "selected": false,
+        "review": "通过：正侧背同高同地线、空手、肩位与衣服对应；右列账簿税印，英文名及FRONT/SIDE/BACK/PROPS正确。"
+      },
+      {
+        "asset": "expressions",
+        "version": 1,
+        "file": "art/chars/CHAR-EARL/expressions.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-173400d0-2fe2-42c0-9ebb-6683d479baf0.png",
+        "selected": true,
+        "review": "通过：同一脸型服装的三张半身像，平静/亲切劝说/戒备辩解可分，无附加文字；v1手势略更清楚，v2留备选。"
+      },
+      {
+        "asset": "expressions",
+        "version": 2,
+        "file": "art/chars/CHAR-EARL/alt/expressions-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-cfb5024a-170f-4e6b-aae4-24ada60d9ed8.png",
+        "selected": false,
+        "review": "通过：同一脸型服装的三张半身像，平静/亲切劝说/戒备辩解可分，无附加文字；v1手势略更清楚，v2留备选。"
+      }
+    ],
+    "prompt_log": "art/chars/generation-T34.json",
+    "limitations": [
+      "三视图为手绘建模参考，非尺寸测量图；褶皱、纽扣/铆钉、日纹细线、钥匙数量等小细节仍可能有生成差异，建模以所选turnaround统一。",
+      "本任务未接入游戏；未提供游戏运行截图。"
+    ]
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "name": "Countess Agnes",
+    "files": {
+      "hero": "art/chars/CHAR-COUNTESS/hero.png",
+      "turnaround": "art/chars/CHAR-COUNTESS/turnaround.png",
+      "expressions": "art/chars/CHAR-COUNTESS/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-COUNTESS/alt/hero-v2.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-COUNTESS/alt/turnaround-v2.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-COUNTESS/alt/expressions-v1.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Hand-painted narrative character art matching the attached project's style examples: visible opaque paint strokes with bold variable-width black ink outlines, angular elongated anatomy, sharp plane-shaped flat shadow masses, strong light-dark contrast, controlled limited palette, rich dark ink-blue brushed background, one-sided saturated warm gold rim lighting with platinum-white highlights. These are living humans with natural eyes and skin; no teal fire, undead parts, demonic cues, 3D rendering, low-poly polygons, soft airbrush, photorealism, existing-game/artist imitation, text or watermark.\nAsset: standalone portrait 2:3 full-body hero illustration for a character bible and dialogue portraits. Exactly one living person, crown/headpiece to soles fully visible, dramatic but anatomically sound stance. Character specification: Countess Agnes, age 44, decisive practical estate administrator with a composed mature angular face, strong brows, brown hair with a few grey strands arranged in a compact braided bun. Structured practical deep-ochre court gown with olive shoulder mantle and olive front skirt panel, fitted long sleeves, modest high collar, brown working belt and practical leather boots. Clear regency-red diagonal sash across chest, on top of clothes. Representative objects: a ring of large warehouse iron keys, a simple wood-framed wax tablet with small stylus. Upright decisive, believable dignified woman, no wicked queen styling, no crown, no armour.\nShe stands in a decisive three-quarter stance, one hand holding the warehouse key ring prominently at waist height, the other supporting the wax tablet. Firm calm expression, broad triangular draped gown silhouette.\nDark brushed blue-black background with no scene clutter. Platinum-white key highlights and saturated warm gold rim along one side. Plain objects carry no readable writing. Preserve restrained humane dignity. No captions, extra figures, floating icons or view-sheet layout. Generate one polished complete image.",
+      "turnaround": "Asset: wide landscape single-character modelling turnaround sheet, approximately 3:2, one character identity repeated exactly THREE times in distinct views. Reference image 1 is the selected hero and defines the exact face, hair, age, colours, clothing construction and proportions. Keep those invariants. Three orthographic full-body views in the left 76%: FRONT, exact 90-degree SIDE facing right, BACK facing directly away. All views share the same neutral relaxed standing pose, both arms down and slightly clear of body, EMPTY OPEN HANDS, same height, head top level and boot soles exactly on one shared ground line. No perspective, no dramatic stance, no wind in clothing, no three-quarter view. Keep sleeve lengths, belt, toggles, mantle length, hem panels, boots and diagonal sash construction consistent; sash sits on the same anatomical shoulder when rotated, not mirrored. Leave clean gaps between figures. In the rightmost 24%, detached props laid out clearly, no hands or extra people. Fully visible complete head and feet in all views. Small simple ivory serif English title at top left with exact name below. Only allowed view labels: FRONT / SIDE / BACK / PROPS. No measurements, notes, speech, story text, watermarks or other text. Dark charcoal ink-blue brushed background, readable garment edges. Hand-painted opaque brushwork and variable-width ink outlines, flat graphic shadow masses, restrained white-platinum key light and warm gold rim; not a 3D render or low-poly art.\nCharacter: Countess Agnes, age 44, decisive practical estate administrator with a composed mature angular face, strong brows, brown hair with a few grey strands arranged in a compact braided bun. Structured practical deep-ochre court gown with olive shoulder mantle and olive front skirt panel, fitted long sleeves, modest high collar, brown working belt and practical leather boots. Clear regency-red diagonal sash across chest, on top of clothes. Representative objects: a ring of large warehouse iron keys, a simple wood-framed wax tablet with small stylus. Upright decisive, believable dignified woman, no wicked queen styling, no crown, no armour.\nExact title: \"Countess Agnes\". Right props: warehouse iron key ring and wooden wax tablet with its stylus. NO props worn, no keys at belt, EMPTY HANDS in all three views. Preserve olive mantle/ochre gown arrangement and hem lengths from reference. ",
+      "expressions": "Asset: wide landscape dialogue expression sheet, approximately 3:2. Reference image 1 is the chosen hero and is the STRICT identity and clothing reference. Exactly THREE separate waist-up portraits of the SAME character aligned side by side, equal size and eye line, ample gap between shoulders; each head and hair/headwear fully inside canvas, crop at belt/waist, not disembodied heads. Maintain identical face, age, hairstyle, costume, main colours, sash shoulder and lighting in all three. Same near-frontal three-quarter angle, as large illustrated portraits standing at the sides of a dialogue interface, expressive face and hands where appropriate. No interface frames, dialogue boxes, captions, symbols, text or watermark. No props needed in hands. Dark ink-blue brushed background, hand-painted opaque brushwork, heavy variable-width outer ink contours, fine interior lines, angular elongated anatomy, flat graphic shadow shapes, one-sided saturated gold rim and platinum-white daylight highlights. Natural living skin and eyes, humane believable emotion; no supernatural colours, evil caricature or 3D look.\nCharacter: Countess Agnes, age 44, decisive practical estate administrator with a composed mature angular face, strong brows, brown hair with a few grey strands arranged in a compact braided bun. Structured practical deep-ochre court gown with olive shoulder mantle and olive front skirt panel, fitted long sleeves, modest high collar, brown working belt and practical leather boots. Clear regency-red diagonal sash across chest, on top of clothes. Representative objects: a ring of large warehouse iron keys, a simple wood-framed wax tablet with small stylus. Upright decisive, believable dignified woman, no wicked queen styling, no crown, no armour.\nLeft: calm appraising neutrality. Middle: firm impatient refusal. Right: worried protective concern. Alternate acting: middle expression has a firmer closed mouth, right shows a small worried brow rather than fear; preserve dignified administrator identity."
+    },
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "self_check": [
+      {
+        "requirement": "年龄与外貌",
+        "result": "pass",
+        "observed": "44岁感；紧凑编发髻、成熟有棱角面容。"
+      },
+      {
+        "requirement": "衣装与主色",
+        "result": "pass",
+        "observed": "深赭黄实用贵族长裙与橄榄披肩/前裙片。"
+      },
+      {
+        "requirement": "代表物",
+        "result": "pass",
+        "observed": "仓库钥匙、蜡板及笔，三视图道具右列。"
+      },
+      {
+        "requirement": "性格与禁项",
+        "result": "pass",
+        "observed": "果断务实管理者；无王冠、邪恶女王造型。"
+      },
+      {
+        "requirement": "剪影",
+        "result": "pass",
+        "observed": "收束上身、三角裙摆，与毛领/祭服/钢甲/官袍区分。"
+      },
+      {
+        "requirement": "单角色身份",
+        "result": "pass",
+        "observed": "每张图仅一个人物身份；三视图/表情为同人重复，不混入其他人物。"
+      },
+      {
+        "requirement": "主立绘版式",
+        "result": "pass",
+        "observed": "竖版2:3，完整头部与双脚、姿态有张力、暗色背景。"
+      },
+      {
+        "requirement": "三视图版式",
+        "result": "pass",
+        "observed": "横版；正面/90度侧面/背面，中性空手，同高同地线；道具在右。"
+      },
+      {
+        "requirement": "三视图标签",
+        "result": "pass",
+        "observed": "左上英文名字；视图标签仅 FRONT / SIDE / BACK / PROPS，无剧情文本。"
+      },
+      {
+        "requirement": "表情版式",
+        "result": "pass",
+        "observed": "横版三张同人半身像并排；平静加两种有canon依据的表情，无字幕或对话框。"
+      },
+      {
+        "requirement": "手绘风格",
+        "result": "pass",
+        "observed": "可见厚涂笔触、粗细变化墨线、修长棱角人体、强明暗与大块平涂阴影；无3D低多边形渲染。"
+      },
+      {
+        "requirement": "阵营光色与标记",
+        "result": "pass",
+        "observed": "全部活人、自然肤色眼睛；摄政红斜带、白金暖光及单侧饱和金色边光，无青绿冥火。"
+      },
+      {
+        "requirement": "设定边界",
+        "result": "pass",
+        "observed": "仅执行canon和任务卡；不由偶然图纹或文字新增设定，未改canon。"
+      },
+      {
+        "requirement": "生成和备选",
+        "result": "pass",
+        "observed": "每张独立调用内置image_gen；从~/.codex/generated_images复制；每种主文件至少一个独立生成备选。"
+      },
+      {
+        "requirement": "提示词",
+        "result": "pass",
+        "observed": "未使用任何现有游戏、工作室或画师名字。"
+      }
+    ],
+    "expression_selection": {
+      "order": [
+        "calm",
+        "firm impatient refusal",
+        "worried protective concern"
+      ],
+      "rationale": [
+        "平静：盘算与核对事务。",
+        "果断而略不耐烦的驳斥：B1“王子发怒，也不会让麦子长得更快”，B2认为管理者必须能说不。",
+        "担忧粮荒的紧绷关切：B1比丑闻更怕饥饿，B2亲历歉收并仍检查谷物。"
+      ],
+      "source": [
+        "docs/canon/B/B1-CORE-CHARACTERS.md",
+        "docs/canon/B/B2-HOUSE-AND-COUNCIL.md"
+      ],
+      "interpretation": "表情表演依据人物语气推断，不新增人物设定。"
+    },
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_log": [
+      {
+        "asset": "hero",
+        "version": 1,
+        "file": "art/chars/CHAR-COUNTESS/hero.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-d3c057ec-c520-48f7-9540-3ec8cbbb249f.png",
+        "selected": true,
+        "review": "通过：44岁感、深赭黄橄榄实用贵族服、钥匙蜡板、红斜带、完整全身及白金暖光，非邪恶女王。"
+      },
+      {
+        "asset": "hero",
+        "version": 2,
+        "file": "art/chars/CHAR-COUNTESS/alt/hero-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-d147e1ab-1655-4d23-9dcf-cbf74a23719f.png",
+        "selected": false,
+        "review": "通过：44岁感、深赭黄橄榄实用贵族服、钥匙蜡板、红斜带、完整全身及白金暖光，非邪恶女王。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 1,
+        "file": "art/chars/CHAR-COUNTESS/turnaround.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-df8c11be-a186-4d2e-95cb-f9e9dcb81af2.png",
+        "selected": true,
+        "review": "通过：正侧背等高同地线、中性空手、发髻/披肩/裙摆/斜带对应，右列钥匙蜡板，标签正确。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 2,
+        "file": "art/chars/CHAR-COUNTESS/alt/turnaround-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-de9c36f7-6bf1-471b-b5fb-d3ad33b4920d.png",
+        "selected": false,
+        "review": "通过：正侧背等高同地线、中性空手、发髻/披肩/裙摆/斜带对应，右列钥匙蜡板，标签正确。"
+      },
+      {
+        "asset": "expressions",
+        "version": 1,
+        "file": "art/chars/CHAR-COUNTESS/alt/expressions-v1.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-a042ca42-c23a-4ca1-8ea3-d313723bb86b.png",
+        "selected": false,
+        "review": "通过：同一人物三张半身像，平静/果断驳斥/担忧粮荒可分；v2闭口驳斥更克制，选v2，v1为独立备选。"
+      },
+      {
+        "asset": "expressions",
+        "version": 2,
+        "file": "art/chars/CHAR-COUNTESS/expressions.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-df8b9022-72ed-44b7-88a0-b2757bad3039.png",
+        "selected": true,
+        "review": "通过：同一人物三张半身像，平静/果断驳斥/担忧粮荒可分；v2闭口驳斥更克制，选v2，v1为独立备选。"
+      }
+    ],
+    "prompt_log": "art/chars/generation-T34.json",
+    "limitations": [
+      "三视图为手绘建模参考，非尺寸测量图；褶皱、纽扣/铆钉、日纹细线、钥匙数量等小细节仍可能有生成差异，建模以所选turnaround统一。",
+      "本任务未接入游戏；未提供游戏运行截图。"
+    ]
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "name": "Archbishop Anselm",
+    "files": {
+      "hero": "art/chars/CHAR-ARCHBISHOP/hero.png",
+      "expressions": "art/chars/CHAR-ARCHBISHOP/expressions.png",
+      "turnaround": "art/chars/CHAR-ARCHBISHOP/turnaround.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-ARCHBISHOP/alt/hero-v2.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-ARCHBISHOP/alt/turnaround-v1.png",
+        "art/chars/CHAR-ARCHBISHOP/alt/turnaround-v2.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-ARCHBISHOP/alt/expressions-v2.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Hand-painted narrative character art matching the attached project's style examples: visible opaque paint strokes with bold variable-width black ink outlines, angular elongated anatomy, sharp plane-shaped flat shadow masses, strong light-dark contrast, controlled limited palette, rich dark ink-blue brushed background, one-sided saturated warm gold rim lighting with platinum-white highlights. These are living humans with natural eyes and skin; no teal fire, undead parts, demonic cues, 3D rendering, low-poly polygons, soft airbrush, photorealism, existing-game/artist imitation, text or watermark.\nAsset: standalone portrait 2:3 full-body hero illustration for a character bible and dialogue portraits. Exactly one living person, crown/headpiece to soles fully visible, dramatic but anatomically sound stance. Character specification: Archbishop Anselm, age 61, living earnest hospice cleric turned senior church official. Tall narrow upright silhouette, long mature face with fine age lines, receding silver-grey hair and a modest short neat grey beard, natural kindly tired eyes. Ivory-white full-length solar vestments with muted old-gold sun-disc embroidery, plain high collar and restrained vertical gold trim. Regency-red diagonal sash visible across chest on top of vestments. A modest low white-gold clerical headpiece, not a crown; no horns. Representative objects: small worn brown prayer book with simple sun mark and a brass official hand stamp with a plain sun seal. Sincere ceremonial restraint, no sinister eyes, no demon, skull, fire, weapons or royal crown.\nHe stands full-length upright with an earnest calm expression, one hand holding the small closed prayer book to his body, the other naturally offering the plain brass official seal in an open hand; very tall narrow vertical vestment silhouette.\nDark brushed blue-black background with no scene clutter. Platinum-white key highlights and saturated warm gold rim along one side. Plain objects carry no readable writing. Preserve restrained humane dignity. No captions, extra figures, floating icons or view-sheet layout. Generate one polished complete image.",
+      "expressions": "Asset: wide landscape dialogue expression sheet, approximately 3:2. Reference image 1 is the chosen hero and is the STRICT identity and clothing reference. Exactly THREE separate waist-up portraits of the SAME character aligned side by side, equal size and eye line, ample gap between shoulders; each head and hair/headwear fully inside canvas, crop at belt/waist, not disembodied heads. Maintain identical face, age, hairstyle, costume, main colours, sash shoulder and lighting in all three. Same near-frontal three-quarter angle, as large illustrated portraits standing at the sides of a dialogue interface, expressive face and hands where appropriate. No interface frames, dialogue boxes, captions, symbols, text or watermark. No props needed in hands. Dark ink-blue brushed background, hand-painted opaque brushwork, heavy variable-width outer ink contours, fine interior lines, angular elongated anatomy, flat graphic shadow shapes, one-sided saturated gold rim and platinum-white daylight highlights. Natural living skin and eyes, humane believable emotion; no supernatural colours, evil caricature or 3D look.\nCharacter: Archbishop Anselm, age 61, living earnest hospice cleric turned senior church official. Tall narrow upright silhouette, long mature face with fine age lines, receding silver-grey hair and a modest short neat grey beard, natural kindly tired eyes. Ivory-white full-length solar vestments with muted old-gold sun-disc embroidery, plain high collar and restrained vertical gold trim. Regency-red diagonal sash visible across chest on top of vestments. A modest low white-gold clerical headpiece, not a crown; no horns. Representative objects: small worn brown prayer book with simple sun mark and a brass official hand stamp with a plain sun seal. Sincere ceremonial restraint, no sinister eyes, no demon, skull, fire, weapons or royal crown.\nLeft: calm ceremonial neutrality. Middle: genuine gentle compassion, gently softened eyes and slight comforting smile, no grin. Right: troubled defensive conviction, brows pinched with worry but speaking earnestly in defence, no sinister smirk. ",
+      "turnaround": "Edit the turnaround in reference image 1, keep the whole sheet layout, exact title \"Archbishop Anselm\", FRONT / SIDE / BACK / PROPS labels, all three matched heights and ground line, exact same face, white sun vestments, sun embroidery, cap, red sash direction, detached book and seal, painted dark background and ink style. Correct ONLY the arms and hands of the three views to be the SAME anatomically coherent neutral standing pose: arms relaxed down, elbows straight and slightly away from body, empty fingers gently relaxed, PALMS FACING INWARD TOWARD THE THIGHS (never facing the viewer). In FRONT see the thumb-side edge of each hand, in SIDE see one relaxed hand aligned alongside thigh, in BACK see the correctly rotated hand backs/outer edges, no palm lines facing the camera. No ceremonial open-palm gesture, no extra fingers. Preserve all other costume details and exact view directions. One complete landscape sheet."
+    },
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "self_check": [
+      {
+        "requirement": "年龄与外貌",
+        "result": "pass",
+        "observed": "61岁感；灰发短须、自然眼睛、诚恳神情。"
+      },
+      {
+        "requirement": "衣装与主色",
+        "result": "pass",
+        "observed": "白底祭服、暗金日纹刺绣，克制低帽。"
+      },
+      {
+        "requirement": "代表物",
+        "result": "pass",
+        "observed": "旧祈祷书、普通官印，三视图右列；图案不解释为新魔法设定。"
+      },
+      {
+        "requirement": "性格与禁项",
+        "result": "pass",
+        "observed": "仪式性克制、温柔和辩护；无邪眼、恶魔或亡魂特征。"
+      },
+      {
+        "requirement": "剪影",
+        "result": "pass",
+        "observed": "高直窄长祭服，与其他四人区分。"
+      },
+      {
+        "requirement": "单角色身份",
+        "result": "pass",
+        "observed": "每张图仅一个人物身份；三视图/表情为同人重复，不混入其他人物。"
+      },
+      {
+        "requirement": "主立绘版式",
+        "result": "pass",
+        "observed": "竖版2:3，完整头部与双脚、姿态有张力、暗色背景。"
+      },
+      {
+        "requirement": "三视图版式",
+        "result": "pass",
+        "observed": "横版；正面/90度侧面/背面，中性空手，同高同地线；道具在右。"
+      },
+      {
+        "requirement": "三视图标签",
+        "result": "pass",
+        "observed": "左上英文名字；视图标签仅 FRONT / SIDE / BACK / PROPS，无剧情文本。"
+      },
+      {
+        "requirement": "表情版式",
+        "result": "pass",
+        "observed": "横版三张同人半身像并排；平静加两种有canon依据的表情，无字幕或对话框。"
+      },
+      {
+        "requirement": "手绘风格",
+        "result": "pass",
+        "observed": "可见厚涂笔触、粗细变化墨线、修长棱角人体、强明暗与大块平涂阴影；无3D低多边形渲染。"
+      },
+      {
+        "requirement": "阵营光色与标记",
+        "result": "pass",
+        "observed": "全部活人、自然肤色眼睛；摄政红斜带、白金暖光及单侧饱和金色边光，无青绿冥火。"
+      },
+      {
+        "requirement": "设定边界",
+        "result": "pass",
+        "observed": "仅执行canon和任务卡；不由偶然图纹或文字新增设定，未改canon。"
+      },
+      {
+        "requirement": "生成和备选",
+        "result": "pass",
+        "observed": "每张独立调用内置image_gen；从~/.codex/generated_images复制；每种主文件至少一个独立生成备选。"
+      },
+      {
+        "requirement": "提示词",
+        "result": "pass",
+        "observed": "未使用任何现有游戏、工作室或画师名字。"
+      }
+    ],
+    "expression_selection": {
+      "order": [
+        "calm",
+        "genuine gentle compassion",
+        "troubled defensive conviction"
+      ],
+      "rationale": [
+        "平静：仪式性的克制。",
+        "真诚温柔：B2能温柔对待濒死教民，早年为无亲属者净身。",
+        "不安但坚持辩护：B1担心承认罪行损害教会公信力，B2私人祈祷回避受害者姓名。"
+      ],
+      "source": [
+        "docs/canon/B/B1-CORE-CHARACTERS.md",
+        "docs/canon/B/B2-HOUSE-AND-COUNCIL.md"
+      ],
+      "interpretation": "表情表演依据人物语气推断，不新增人物设定。"
+    },
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 3,
+      "expressions": 2
+    },
+    "generation_log": [
+      {
+        "asset": "hero",
+        "version": 1,
+        "file": "art/chars/CHAR-ARCHBISHOP/hero.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-524a3730-878b-41e2-bae7-4872c70d3179.png",
+        "selected": true,
+        "review": "通过：61岁感、诚恳克制、高直白底日纹祭服、暗金刺绣、旧书官印、红斜带与白金暖光。"
+      },
+      {
+        "asset": "hero",
+        "version": 2,
+        "file": "art/chars/CHAR-ARCHBISHOP/alt/hero-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-cb1afbf6-2a43-4911-b560-6ec3a4d549eb.png",
+        "selected": false,
+        "review": "通过：61岁感、诚恳克制、高直白底日纹祭服、暗金刺绣、旧书官印、红斜带与白金暖光。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 1,
+        "file": "art/chars/CHAR-ARCHBISHOP/alt/turnaround-v1.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-243b76b8-1af4-4edb-984e-d0334803fafa.png",
+        "selected": false,
+        "review": "退回：等高空手与服装总体对应，但前后手掌朝向不够明确一致；保留为有已知不足的备选，生成v3修正。"
+      },
+      {
+        "asset": "expressions",
+        "version": 2,
+        "file": "art/chars/CHAR-ARCHBISHOP/alt/expressions-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-ee2ef17a-cf52-4388-bee7-bd029e83d210.png",
+        "selected": false,
+        "review": "通过：平静/真诚温柔/不安辩护，同脸同服装，三张半身像可分，无邪眼恶魔元素。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 2,
+        "file": "art/chars/CHAR-ARCHBISHOP/alt/turnaround-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-ed5e7ace-7eb0-4243-a01a-eb8cd59ca211.png",
+        "selected": false,
+        "review": "退回：等高空手与服装总体对应，但前后手掌朝向不够明确一致；保留为有已知不足的备选，生成v3修正。"
+      },
+      {
+        "asset": "expressions",
+        "version": 1,
+        "file": "art/chars/CHAR-ARCHBISHOP/expressions.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-576d683f-a467-49dd-b425-0bc786f3312a.png",
+        "selected": true,
+        "review": "通过：平静/真诚温柔/不安辩护，同脸同服装，三张半身像可分，无邪眼恶魔元素。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 3,
+        "file": "art/chars/CHAR-ARCHBISHOP/turnaround.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-ec412378-04e9-488e-8665-765672a00be6.png",
+        "selected": true,
+        "review": "通过：v3修正手掌朝腿侧、双臂放松，正侧背中性姿态对应；同高同地线、服装对应、空手及右侧道具、英文名和视图标签均检查。"
+      }
+    ],
+    "prompt_log": "art/chars/generation-T34.json",
+    "limitations": [
+      "三视图为手绘建模参考，非尺寸测量图；褶皱、纽扣/铆钉、日纹细线、钥匙数量等小细节仍可能有生成差异，建模以所选turnaround统一。",
+      "alt/turnaround-v1.png与v2为退回的对照备选，前后手掌朝向不足；建模只使用已修正v3的turnaround.png。",
+      "本任务未接入游戏；未提供游戏运行截图。"
+    ]
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "name": "Lord Marshal Hugh",
+    "files": {
+      "hero": "art/chars/CHAR-MARSHAL/hero.png",
+      "turnaround": "art/chars/CHAR-MARSHAL/turnaround.png",
+      "expressions": "art/chars/CHAR-MARSHAL/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-MARSHAL/alt/hero-v2.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-MARSHAL/alt/turnaround-v1.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-MARSHAL/alt/expressions-v2.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Hand-painted narrative character art matching the attached project's style examples: visible opaque paint strokes with bold variable-width black ink outlines, angular elongated anatomy, sharp plane-shaped flat shadow masses, strong light-dark contrast, controlled limited palette, rich dark ink-blue brushed background, one-sided saturated warm gold rim lighting with platinum-white highlights. These are living humans with natural eyes and skin; no teal fire, undead parts, demonic cues, 3D rendering, low-poly polygons, soft airbrush, photorealism, existing-game/artist imitation, text or watermark.\nAsset: standalone portrait 2:3 full-body hero illustration for a character bible. Exactly one living person, head to both boots completely visible with margin. Character specification: Lord Marshal Hugh, age 53, disciplined austere veteran of modest origins, weathered broad square face, cropped iron-grey hair and short practical grey beard, natural stern tired eyes. Strong horizontal square shoulders, functional squared steel plate armour with restrained brass edges and honest wear, navy mantle, dark leather belt and armoured practical boots. Regency-red diagonal sash across breastplate, over armour. No crown or ornate royal regalia. Representative objects: practical sheathed steel service sword, compact navy command pennant on a short pole, and a separate old blunt wooden training sword. IMPORTANT: he stopped wearing the training sword; it must appear ONLY as a detached prop on the turnaround sheet, never held, worn or present in hero or expressions. Human, not cruel caricature.\nFirm wide grounded three-quarter stance. Holds a compact navy command pennant upright in one hand, other hand rests naturally near his belt and practical sheathed service sword. Face stern and thoughtful, not hateful. His broad square armour shoulders form a strong horizontal silhouette. The separate story training sword is ABSENT.\nDramatic silhouette, angular mature anatomy, strong expressive hand design. Dark brushed blue-black background, warm white/platinum highlights and saturated gold edge light on one side. No readable writing, captions, second figures, floating icons or view-sheet layout. One complete polished standalone image.",
+      "turnaround": "Asset: wide landscape single-character modelling turnaround sheet, approximately 3:2, one character identity repeated exactly THREE times in distinct views. Reference image 1 is the selected hero and defines the exact face, hair, age, colours, clothing construction and proportions. Keep those invariants. Three orthographic full-body views in the left 76%: FRONT, exact 90-degree SIDE facing right, BACK facing directly away. All views share the same neutral relaxed standing pose, both arms down and slightly clear of body, EMPTY OPEN HANDS, same height, head top level and boot soles exactly on one shared ground line. No perspective, no dramatic stance, no wind in clothing, no three-quarter view. Keep sleeve lengths, belt, toggles, mantle length, hem panels, boots and diagonal sash construction consistent; sash sits on the same anatomical shoulder when rotated, not mirrored. Leave clean gaps between figures. In the rightmost 24%, detached props laid out clearly, no hands or extra people. Fully visible complete head and feet in all views. Small simple ivory serif English title at top left with exact name below. Only allowed view labels: FRONT / SIDE / BACK / PROPS. No measurements, notes, speech, story text, watermarks or other text. Dark charcoal ink-blue brushed background, readable garment edges. Hand-painted opaque brushwork and variable-width ink outlines, flat graphic shadow masses, restrained white-platinum key light and warm gold rim; not a 3D render or low-poly art.\nCharacter: Lord Marshal Hugh, age 53, disciplined austere veteran of modest origins, weathered broad square face, cropped iron-grey hair and short practical grey beard, natural stern tired eyes. Strong horizontal square shoulders, functional squared steel plate armour with restrained brass edges and honest wear, navy mantle, dark leather belt and armoured practical boots. Regency-red diagonal sash across breastplate, over armour. No crown or ornate royal regalia. Representative objects: practical sheathed steel service sword, compact navy command pennant on a short pole, and a separate old blunt wooden training sword. IMPORTANT: he stopped wearing the training sword; it must appear ONLY as a detached prop on the turnaround sheet, never held, worn or present in hero or expressions. Human, not cruel caricature.\nExact title: \"Lord Marshal Hugh\". At far right PROPS, clearly separated: a practical steel service sword with scabbard; a compact navy command pennant on a short pole; a distinct old blunt WOODEN training sword. The wooden training sword is a separate story prop ONLY IN THIS RIGHT COLUMN. All three figures must have EMPTY relaxed hands, palms facing inward toward thighs; no weapon worn, held or strapped on bodies. Preserve reference square pauldrons, breastplate panels, navy mantle, sash shoulder and greaves. Alternative clean sheet with wider gaps; ensure shoulder plates, belt and mantle correspond.",
+      "expressions": "Asset: wide landscape dialogue expression sheet, approximately 3:2. Reference image 1 is the chosen hero and is the STRICT identity and clothing reference. Exactly THREE separate waist-up portraits of the SAME character aligned side by side, equal size and eye line, ample gap between shoulders; each head and hair/headwear fully inside canvas, crop at belt/waist, not disembodied heads. Maintain identical face, age, hairstyle, costume, main colours, sash shoulder and lighting in all three. Same near-frontal three-quarter angle, as large illustrated portraits standing at the sides of a dialogue interface, expressive face and hands where appropriate. No interface frames, dialogue boxes, captions, symbols, text or watermark. No props needed in hands. Dark ink-blue brushed background, hand-painted opaque brushwork, heavy variable-width outer ink contours, fine interior lines, angular elongated anatomy, flat graphic shadow shapes, one-sided saturated gold rim and platinum-white daylight highlights. Natural living skin and eyes, humane believable emotion; no supernatural colours, evil caricature or 3D look.\nCharacter: Lord Marshal Hugh, age 53, disciplined austere veteran of modest origins, weathered broad square face, cropped iron-grey hair and short practical grey beard, natural stern tired eyes. Strong horizontal square shoulders, functional squared steel plate armour with restrained brass edges and honest wear, navy mantle, dark leather belt and armoured practical boots. Regency-red diagonal sash across breastplate, over armour. No crown or ornate royal regalia. Representative objects: practical sheathed steel service sword, compact navy command pennant on a short pole, and a separate old blunt wooden training sword. IMPORTANT: he stopped wearing the training sword; it must appear ONLY as a detached prop on the turnaround sheet, never held, worn or present in hero or expressions. Human, not cruel caricature.\nLeft: calm disciplined neutrality. Middle: stern clipped command, a short controlled spoken order, firm brow. Right: restrained remorseful acknowledgement, eyes slightly lowered and jaw set, admitting responsibility without asking forgiveness, restrained not weeping. No training sword or other props in any portrait. "
+    },
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "self_check": [
+      {
+        "requirement": "年龄与外貌",
+        "result": "pass",
+        "observed": "53岁感；短灰发、灰短须、老兵风霜感。"
+      },
+      {
+        "requirement": "衣装与主色",
+        "result": "pass",
+        "observed": "方正钢甲、海军蓝披风，横向肩部突出。"
+      },
+      {
+        "requirement": "代表物",
+        "result": "pass",
+        "observed": "指挥旗、实用佩剑；旧木训练剑仅在三视图右侧独立列出。"
+      },
+      {
+        "requirement": "剧情约束",
+        "result": "pass",
+        "observed": "B2已不再佩戴训练剑，主立绘和表情图均未混入训练剑。"
+      },
+      {
+        "requirement": "性格与禁项",
+        "result": "pass",
+        "observed": "严肃守纪与克制承担责任，无残忍 caricature、王冠。"
+      },
+      {
+        "requirement": "单角色身份",
+        "result": "pass",
+        "observed": "每张图仅一个人物身份；三视图/表情为同人重复，不混入其他人物。"
+      },
+      {
+        "requirement": "主立绘版式",
+        "result": "pass",
+        "observed": "竖版2:3，完整头部与双脚、姿态有张力、暗色背景。"
+      },
+      {
+        "requirement": "三视图版式",
+        "result": "pass",
+        "observed": "横版；正面/90度侧面/背面，中性空手，同高同地线；道具在右。"
+      },
+      {
+        "requirement": "三视图标签",
+        "result": "pass",
+        "observed": "左上英文名字；视图标签仅 FRONT / SIDE / BACK / PROPS，无剧情文本。"
+      },
+      {
+        "requirement": "表情版式",
+        "result": "pass",
+        "observed": "横版三张同人半身像并排；平静加两种有canon依据的表情，无字幕或对话框。"
+      },
+      {
+        "requirement": "手绘风格",
+        "result": "pass",
+        "observed": "可见厚涂笔触、粗细变化墨线、修长棱角人体、强明暗与大块平涂阴影；无3D低多边形渲染。"
+      },
+      {
+        "requirement": "阵营光色与标记",
+        "result": "pass",
+        "observed": "全部活人、自然肤色眼睛；摄政红斜带、白金暖光及单侧饱和金色边光，无青绿冥火。"
+      },
+      {
+        "requirement": "设定边界",
+        "result": "pass",
+        "observed": "仅执行canon和任务卡；不由偶然图纹或文字新增设定，未改canon。"
+      },
+      {
+        "requirement": "生成和备选",
+        "result": "pass",
+        "observed": "每张独立调用内置image_gen；从~/.codex/generated_images复制；每种主文件至少一个独立生成备选。"
+      },
+      {
+        "requirement": "提示词",
+        "result": "pass",
+        "observed": "未使用任何现有游戏、工作室或画师名字。"
+      }
+    ],
+    "expression_selection": {
+      "order": [
+        "calm",
+        "stern clipped command",
+        "restrained remorseful acknowledgement"
+      ],
+      "rationale": [
+        "平静：纪律性的沉着。",
+        "严肃下令：B1边境军官、军人职业语气；B2长期边防服役。",
+        "克制的悔意与承认：B2承认教给王子的道理比自己的行为好，却不求宽恕；不把罪责抹去。"
+      ],
+      "source": [
+        "docs/canon/B/B1-CORE-CHARACTERS.md",
+        "docs/canon/B/B2-HOUSE-AND-COUNCIL.md"
+      ],
+      "interpretation": "表情表演依据人物语气推断，不新增人物设定。"
+    },
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_log": [
+      {
+        "asset": "hero",
+        "version": 1,
+        "file": "art/chars/CHAR-MARSHAL/hero.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-41ee2c16-7497-47f3-bdff-9c9093c40c56.png",
+        "selected": true,
+        "review": "通过：53岁严肃老兵、方正钢甲、海军蓝披风、红斜带、暖光；佩剑与指挥旗清楚，未佩戴训练剑。"
+      },
+      {
+        "asset": "hero",
+        "version": 2,
+        "file": "art/chars/CHAR-MARSHAL/alt/hero-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-e41dd1d2-c1c2-4afe-9805-813d5d8d3197.png",
+        "selected": false,
+        "review": "通过：53岁严肃老兵、方正钢甲、海军蓝披风、红斜带、暖光；佩剑与指挥旗清楚，未佩戴训练剑。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 1,
+        "file": "art/chars/CHAR-MARSHAL/alt/turnaround-v1.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-538ebe7f-d676-4cd7-8f59-c63250565bd7.png",
+        "selected": false,
+        "review": "退回主选：背面披风覆盖不足、与立绘对应较弱；仅留备选供审阅，不作为建模基准。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 2,
+        "file": "art/chars/CHAR-MARSHAL/turnaround.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-5cd5551a-4ac6-4d58-989a-5f98ba61486c.png",
+        "selected": true,
+        "review": "通过：v2背面海军蓝披风覆盖合理；三视图同高同地线、中性空手、钢甲/红斜带对应；右列佩剑、指挥旗、独立木训练剑，标签正确。"
+      },
+      {
+        "asset": "expressions",
+        "version": 1,
+        "file": "art/chars/CHAR-MARSHAL/expressions.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-6a027bfc-72bf-4c64-9908-939cb5e0e3f5.png",
+        "selected": true,
+        "review": "通过：平静/严肃下令/克制承认责任三张同人半身像；无训练剑，无丑化。"
+      },
+      {
+        "asset": "expressions",
+        "version": 2,
+        "file": "art/chars/CHAR-MARSHAL/alt/expressions-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-3c8dc232-9207-4a75-a339-cd69b53b4a7d.png",
+        "selected": false,
+        "review": "通过：平静/严肃下令/克制承认责任三张同人半身像；无训练剑，无丑化。"
+      }
+    ],
+    "prompt_log": "art/chars/generation-T34.json",
+    "limitations": [
+      "三视图为手绘建模参考，非尺寸测量图；褶皱、纽扣/铆钉、日纹细线、钥匙数量等小细节仍可能有生成差异，建模以所选turnaround统一。",
+      "alt/turnaround-v1.png背面披风覆盖不足，留作审阅对照；建模以选中v2的turnaround.png为准。",
+      "本任务未接入游戏；未提供游戏运行截图。"
+    ]
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "name": "Lord Chancellor Walter",
+    "files": {
+      "hero": "art/chars/CHAR-CHANCELLOR/hero.png",
+      "turnaround": "art/chars/CHAR-CHANCELLOR/turnaround.png",
+      "expressions": "art/chars/CHAR-CHANCELLOR/expressions.png"
+    },
+    "alts": {
+      "hero": [
+        "art/chars/CHAR-CHANCELLOR/alt/hero-v2.png"
+      ],
+      "turnaround": [
+        "art/chars/CHAR-CHANCELLOR/alt/turnaround-v2.png"
+      ],
+      "expressions": [
+        "art/chars/CHAR-CHANCELLOR/alt/expressions-v2.png"
+      ]
+    },
+    "prompt": {
+      "hero": "Use case: stylized-concept. Hand-painted narrative character art matching the attached project's style examples: visible opaque paint strokes with bold variable-width black ink outlines, angular elongated anatomy, sharp plane-shaped flat shadow masses, strong light-dark contrast, controlled limited palette, rich dark ink-blue brushed background, one-sided saturated warm gold rim lighting with platinum-white highlights. These are living humans with natural eyes and skin; no teal fire, undead parts, demonic cues, 3D rendering, low-poly polygons, soft airbrush, photorealism, existing-game/artist imitation, text or watermark.\nAsset: standalone portrait 2:3 full-body hero illustration for a character bible. Exactly one living person, head to both boots completely visible with margin. Character specification: Lord Chancellor Walter, age 52, polite composed senior bureaucrat, lean elongated mature face, neatly combed dark hair with grey at temples, clean-shaven, dignified and approachable reserved expression, natural eyes. Restrained full-length charcoal official robes with dark burgundy inner panels and cuffs, narrow old-gold regency insignia at collar, slim practical belt and plain black boots. Visible narrow regency-red diagonal sash across chest on top of robes. Representative objects: compact rectangular dark burgundy seal case with brass fitting containing an ordinary official stamp, neatly tied bundle of parchment papers. No crown, armour, weapons, theatrical evil, exaggerated smirk or claws. Narrow vertical layered silhouette.\nHe stands with measured poise in a slight three-quarter stance, one arm cradles neatly tied documents, the other hand offers an open compact seal case with an ordinary brass stamp visible inside. Restrained courteous expression, slight coat-tail motion, narrow vertical layered robe silhouette.\nDramatic silhouette, angular mature anatomy, strong expressive hand design. Dark brushed blue-black background, warm white/platinum highlights and saturated gold edge light on one side. No readable writing, captions, second figures, floating icons or view-sheet layout. One complete polished standalone image.",
+      "turnaround": "Asset: wide landscape single-character modelling turnaround sheet, approximately 3:2, one character identity repeated exactly THREE times in distinct views. Reference image 1 is the selected hero and defines the exact face, hair, age, colours, clothing construction and proportions. Keep those invariants. Three orthographic full-body views in the left 76%: FRONT, exact 90-degree SIDE facing right, BACK facing directly away. All views share the same neutral relaxed standing pose, both arms down and slightly clear of body, EMPTY OPEN HANDS, same height, head top level and boot soles exactly on one shared ground line. No perspective, no dramatic stance, no wind in clothing, no three-quarter view. Keep sleeve lengths, belt, toggles, mantle length, hem panels, boots and diagonal sash construction consistent; sash sits on the same anatomical shoulder when rotated, not mirrored. Leave clean gaps between figures. In the rightmost 24%, detached props laid out clearly, no hands or extra people. Fully visible complete head and feet in all views. Small simple ivory serif English title at top left with exact name below. Only allowed view labels: FRONT / SIDE / BACK / PROPS. No measurements, notes, speech, story text, watermarks or other text. Dark charcoal ink-blue brushed background, readable garment edges. Hand-painted opaque brushwork and variable-width ink outlines, flat graphic shadow masses, restrained white-platinum key light and warm gold rim; not a 3D render or low-poly art.\nCharacter: Lord Chancellor Walter, age 52, polite composed senior bureaucrat, lean elongated mature face, neatly combed dark hair with grey at temples, clean-shaven, dignified and approachable reserved expression, natural eyes. Restrained full-length charcoal official robes with dark burgundy inner panels and cuffs, narrow old-gold regency insignia at collar, slim practical belt and plain black boots. Visible narrow regency-red diagonal sash across chest on top of robes. Representative objects: compact rectangular dark burgundy seal case with brass fitting containing an ordinary official stamp, neatly tied bundle of parchment papers. No crown, armour, weapons, theatrical evil, exaggerated smirk or claws. Narrow vertical layered silhouette.\nExact title: \"Lord Chancellor Walter\". Right props only: compact rectangular burgundy seal case shown open with brass official stamp nested inside, plus neatly tied bundle of parchment documents. Empty relaxed hands, palms toward thighs in all three figures, no papers or box held or worn. Preserve exact understated collar insignia, charcoal outer robe and burgundy inner panels, red diagonal sash shoulder, sleeve cuffs and hem construction. Back view must show the outer charcoal back of the robe, not a repeated front opening. ",
+      "expressions": "Asset: wide landscape dialogue expression sheet, approximately 3:2. Reference image 1 is the chosen hero and is the STRICT identity and clothing reference. Exactly THREE separate waist-up portraits of the SAME character aligned side by side, equal size and eye line, ample gap between shoulders; each head and hair/headwear fully inside canvas, crop at belt/waist, not disembodied heads. Maintain identical face, age, hairstyle, costume, main colours, sash shoulder and lighting in all three. Same near-frontal three-quarter angle, as large illustrated portraits standing at the sides of a dialogue interface, expressive face and hands where appropriate. No interface frames, dialogue boxes, captions, symbols, text or watermark. No props needed in hands. Dark ink-blue brushed background, hand-painted opaque brushwork, heavy variable-width outer ink contours, fine interior lines, angular elongated anatomy, flat graphic shadow shapes, one-sided saturated gold rim and platinum-white daylight highlights. Natural living skin and eyes, humane believable emotion; no supernatural colours, evil caricature or 3D look.\nCharacter: Lord Chancellor Walter, age 52, polite composed senior bureaucrat, lean elongated mature face, neatly combed dark hair with grey at temples, clean-shaven, dignified and approachable reserved expression, natural eyes. Restrained full-length charcoal official robes with dark burgundy inner panels and cuffs, narrow old-gold regency insignia at collar, slim practical belt and plain black boots. Visible narrow regency-red diagonal sash across chest on top of robes. Representative objects: compact rectangular dark burgundy seal case with brass fitting containing an ordinary official stamp, neatly tied bundle of parchment papers. No crown, armour, weapons, theatrical evil, exaggerated smirk or claws. Narrow vertical layered silhouette.\nLeft: calm courteous neutrality. Middle: reassuring procedural negotiation, small sincere reassuring smile while explaining a procedure, modest open hand. Right: controlled insistence under pressure, lips pressed slightly and brow concerned yet still polite, patiently insisting on his terms. Never a malicious grin. "
+    },
+    "tool": "image_gen.imagegen (built-in)",
+    "status": "in_review",
+    "self_check": [
+      {
+        "requirement": "年龄与外貌",
+        "result": "pass",
+        "observed": "52岁感；鬓角灰发、梳理整齐、无须的文官形象。"
+      },
+      {
+        "requirement": "衣装与主色",
+        "result": "pass",
+        "observed": "炭灰官袍、暗酒红内层袖口、细摄政徽记。"
+      },
+      {
+        "requirement": "代表物",
+        "result": "pass",
+        "observed": "印匣内放普通官印、捆扎整齐的文书；三视图右列。"
+      },
+      {
+        "requirement": "性格与禁项",
+        "result": "pass",
+        "observed": "礼貌镇定、受压仍谈判；无王冠、甲胄、武器、夸张邪笑。"
+      },
+      {
+        "requirement": "剪影",
+        "result": "pass",
+        "observed": "窄长分层官袍，与甲、祭服、毛领、裙摆区分。"
+      },
+      {
+        "requirement": "单角色身份",
+        "result": "pass",
+        "observed": "每张图仅一个人物身份；三视图/表情为同人重复，不混入其他人物。"
+      },
+      {
+        "requirement": "主立绘版式",
+        "result": "pass",
+        "observed": "竖版2:3，完整头部与双脚、姿态有张力、暗色背景。"
+      },
+      {
+        "requirement": "三视图版式",
+        "result": "pass",
+        "observed": "横版；正面/90度侧面/背面，中性空手，同高同地线；道具在右。"
+      },
+      {
+        "requirement": "三视图标签",
+        "result": "pass",
+        "observed": "左上英文名字；视图标签仅 FRONT / SIDE / BACK / PROPS，无剧情文本。"
+      },
+      {
+        "requirement": "表情版式",
+        "result": "pass",
+        "observed": "横版三张同人半身像并排；平静加两种有canon依据的表情，无字幕或对话框。"
+      },
+      {
+        "requirement": "手绘风格",
+        "result": "pass",
+        "observed": "可见厚涂笔触、粗细变化墨线、修长棱角人体、强明暗与大块平涂阴影；无3D低多边形渲染。"
+      },
+      {
+        "requirement": "阵营光色与标记",
+        "result": "pass",
+        "observed": "全部活人、自然肤色眼睛；摄政红斜带、白金暖光及单侧饱和金色边光，无青绿冥火。"
+      },
+      {
+        "requirement": "设定边界",
+        "result": "pass",
+        "observed": "仅执行canon和任务卡；不由偶然图纹或文字新增设定，未改canon。"
+      },
+      {
+        "requirement": "生成和备选",
+        "result": "pass",
+        "observed": "每张独立调用内置image_gen；从~/.codex/generated_images复制；每种主文件至少一个独立生成备选。"
+      },
+      {
+        "requirement": "提示词",
+        "result": "pass",
+        "observed": "未使用任何现有游戏、工作室或画师名字。"
+      }
+    ],
+    "expression_selection": {
+      "order": [
+        "calm",
+        "reassuring procedural negotiation",
+        "controlled insistence under pressure"
+      ],
+      "rationale": [
+        "平静：礼貌镇定。",
+        "安抚式谈判的浅笑：B1以平反名誉提出交易，B2先放下平反文书再谈谋杀。",
+        "受压仍克制的坚持：B2即使落败仍谈判保存行政体系；不画夸张邪笑。"
+      ],
+      "source": [
+        "docs/canon/B/B1-CORE-CHARACTERS.md",
+        "docs/canon/B/B2-HOUSE-AND-COUNCIL.md"
+      ],
+      "interpretation": "表情表演依据人物语气推断，不新增人物设定。"
+    },
+    "generation_counts": {
+      "hero": 2,
+      "turnaround": 2,
+      "expressions": 2
+    },
+    "generation_log": [
+      {
+        "asset": "hero",
+        "version": 1,
+        "file": "art/chars/CHAR-CHANCELLOR/hero.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-445fc4e5-99f9-4a8c-bc00-0ae25ab78985.png",
+        "selected": true,
+        "review": "通过：52岁感、礼貌镇定文官、酒红炭灰官服、细徽记、红斜带、印匣及文书、全身暖光暗底；无冠无甲无武器。"
+      },
+      {
+        "asset": "hero",
+        "version": 2,
+        "file": "art/chars/CHAR-CHANCELLOR/alt/hero-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-1c01ecf7-7aed-465d-9186-d2f767900e54.png",
+        "selected": false,
+        "review": "通过：52岁感、礼貌镇定文官、酒红炭灰官服、细徽记、红斜带、印匣及文书、全身暖光暗底；无冠无甲无武器。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 1,
+        "file": "art/chars/CHAR-CHANCELLOR/turnaround.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-f8326ff4-573b-4208-af84-0329732d5a74.png",
+        "selected": true,
+        "review": "通过：正侧背中性空手、同高同地线，正面酒红内层/背面炭灰外袍对应；右列印匣文书，英文标题标签正确。"
+      },
+      {
+        "asset": "turnaround",
+        "version": 2,
+        "file": "art/chars/CHAR-CHANCELLOR/alt/turnaround-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-919913f3-1782-4194-b9e4-fe7192622ca5.png",
+        "selected": false,
+        "review": "通过：正侧背中性空手、同高同地线，正面酒红内层/背面炭灰外袍对应；右列印匣文书，英文标题标签正确。"
+      },
+      {
+        "asset": "expressions",
+        "version": 1,
+        "file": "art/chars/CHAR-CHANCELLOR/expressions.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-fb96ab95-a3d9-42c5-91c4-dc107974c03c.png",
+        "selected": true,
+        "review": "通过：平静/安抚式谈判/受压仍克制坚持三张同人半身像，服装斜带一致，无夸张邪笑；选v1，无道具遮挡更便于对白排版。"
+      },
+      {
+        "asset": "expressions",
+        "version": 2,
+        "file": "art/chars/CHAR-CHANCELLOR/alt/expressions-v2.png",
+        "source": "/Users/cyy/.codex/generated_images/01a20d66-6e91-7181-9c6b-5e5b12010b6a/exec-bd7d2108-4354-44f1-8e72-8c3bae783819.png",
+        "selected": false,
+        "review": "通过：平静/安抚式谈判/受压仍克制坚持三张同人半身像，服装斜带一致，无夸张邪笑；选v1，无道具遮挡更便于对白排版。"
+      }
+    ],
+    "prompt_log": "art/chars/generation-T34.json",
+    "limitations": [
+      "三视图为手绘建模参考，非尺寸测量图；褶皱、纽扣/铆钉、日纹细线、钥匙数量等小细节仍可能有生成差异，建模以所选turnaround统一。",
+      "本任务未接入游戏；未提供游戏运行截图。"
+    ]
+  }
+]
