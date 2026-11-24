@@ -32,7 +32,7 @@ for card in $(ls tasks/T*.md 2>/dev/null | sort); do
   say "开始 ${id}（${card}）"
   sed -i '' 's/^status:[[:space:]]*queued/status: running/' "$card"
   tools/agents/run_agent.sh "$card" --fg; code=$?
-  if [ $code -eq 0 ] && [ -f "reports/agents/$id.md" ]; then st=done; else st=failed; fi
+  if [ $code -eq 0 ] && { [ -f "reports/agents/${id}.md" ] || [ -f "reports/inbox/${id}.md" ]; }; then st=done; else st=failed; fi
   sed -i '' "s/^status:[[:space:]]*running/status: $st/" "$card"
   say "结束 ${id}：${st}（退出码 ${code}）"
 done

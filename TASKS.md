@@ -26,7 +26,7 @@
 | T20 | DSH 能力冒烟测试 | DSH | tasks/T20 | reports | 完成 |
 | T21 | 10 种子对战统计与平衡假设（只出报告） | DSH | tasks/T21 | reports | 已合并 |
 | T22 | 状态树单元测试 | DSH | tasks/T22 | tests/ | 已合并 |
-| T23 | 同种子对战不可复现（随机源未完全固定） | DSH（谷时队列） | — | — | 待办 |
+| T23 | 同种子对战不可复现（固定步长 + 模拟/表现随机源分离） | DSH | dsh/t23-determinism | scripts/main.gd 等 | 已合并；verify all 新增 determinism |
 | T24 | 工程移到 ~/Projects 并安装谷时定时任务（12:01、18:01） | Claude | — | — | 完成 |
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
 | T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 已合并 |

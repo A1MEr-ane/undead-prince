@@ -2,7 +2,7 @@
 id: T23
 title: 同种子对战结果可复现
 owner: dsh
-status: queued
+status: done
 branch: dsh/t23-determinism
 worktree: ../亡魂王子-t23
 allowed: [scripts/main.gd, scripts/unit.gd, scripts/swordsman.gd, scripts/squad.gd, scripts/presence.gd, scripts/beats.gd, tools/verify/determinism.sh]

@@ -88,14 +88,26 @@ run_sprites() {
   fi
 }
 
+run_determinism() {
+  # 同种子跑两次，RESULT 必须逐字一致（T23）
+  if [ -x tools/verify/determinism.sh ]; then
+    if tools/verify/determinism.sh 1 >>"$LOG" 2>&1; then
+      results+=("{\"check\":\"determinism\",\"ok\":true}")
+    else
+      results+=("{\"check\":\"determinism\",\"ok\":false,\"detail\":\"同种子两次结果不一致，见日志\"}")
+    fi
+  fi
+}
+
 ensure_import
 case "$MODE" in
   parse) run_parse;;
   tests) run_tests;;
   battle) run_battle;;
   sprites) run_sprites;;
-  all) run_parse; run_tests; run_battle; run_sprites;;
-  *) echo "用法：$0 [parse|tests|battle|sprites|all]"; exit 2;;
+  determinism) run_determinism;;
+  all) run_parse; run_tests; run_battle; run_determinism; run_sprites;;
+  *) echo "用法：$0 [parse|tests|battle|determinism|sprites|all]"; exit 2;;
 esac
 
 python3 -I - "$JSON" "$LOG" "$(git rev-parse --short HEAD 2>/dev/null)" "${results[@]}" <<'PY'
