@@ -138,7 +138,12 @@ def load_spec(path=DEFAULT_SPEC):
     assert end == len(lines)
     assert re.fullmatch(r'[a-z][a-z0-9_]*', spec['id']), 'Unsafe asset id'
     heights = list(spec['proportions']['landmarks_from_ground'].values())
-    assert all(0 < h <= 1 for h in heights) and heights == sorted(heights)
+    # Mapping order is editorial: a skirt can end below the crotch listed above
+    # it. Validate values and anatomical order, rather than YAML insertion order.
+    assert all(0 < h <= 1 for h in heights)
+    h = spec['proportions']['landmarks_from_ground']
+    assert h['boot_top'] < h['crotch'] < h['belt'] < h['shoulder'] <= h['chin'] < h['eye'] < h['helmet_brim'] < h['helmet_top']
+    assert h['boot_top'] < h['tunic_hem'] < h['belt']
     assert 0 < spec['triangle_budget']['target'] <= spec['triangle_budget']['max']
     for part in spec['parts'].values():
         for key, value in part.items():

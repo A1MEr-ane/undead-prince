@@ -183,6 +183,9 @@ def run(args):
         bpy.ops.wm.save_as_mainfile(filepath=str(args.output / f'{prefix}.blend'))
     if recipe:
         render_views(rig, recipe, args.output, args.threads)
+        if args.compare_with:
+            from shieldman_preview import create_comparison
+            create_comparison(args.compare_with,args.output,prefix)
     print('COMPLETE', json.dumps(metadata['validation']), f'{time.monotonic() - start:.1f}s', flush=True)
 
 
@@ -210,5 +213,6 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, default=OUTPUT)
     parser.add_argument('--save-blend', action='store_true', help='Optional inspectable rig/actions; not needed at runtime')
     parser.add_argument('--spec', type=Path, help='Asset YAML; uses the shieldman recipe and spec.id filenames')
+    parser.add_argument('--compare-with', type=Path, help='Preserved v4 equipped side PNG for an old/new review sheet')
     args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
     run(args)
