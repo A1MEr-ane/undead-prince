@@ -18,8 +18,14 @@
 | T12 | 概念图画板（汇总给用户看） | Claude | Artifact https://claude.ai/artifact/RmquNBWoKVqDMo4mgrxunN | — | 完成 |
 | T13 | 剧情大纲 | Claude | docs/story-outline.md | — | 初稿，待用户确认 |
 | T14 | 兵种设计 | Claude | docs/units.md | — | 初稿，待用户确认 |
+| T15 | 多智能体工作流与验证套件 | Claude | docs/workflow.md, tools/ | — | 已合并 |
+| T16 | 盾兵试点 P1：资产规格 | Claude | assets/specs/ | — | 待办 |
+| T17 | 盾兵试点 P2：按规格建模渲染 | Codex | codex/t17-shieldman | tools/blender/, assets/sprites/ | 待办（依赖 T16） |
+| T18 | 盾兵试点 P3：图集接入游戏、重做走路 | Claude | main | — | 待办（依赖 T17） |
+| T19 | 平衡：进攻方 3 局都在 15 秒内夺旗，偏强 | Claude | — | — | 待办 |
 
 ## 待用户决定
+- 在 DSH 里保存 DeepSeek API 密钥（无头模式必需）
 - 兵种造型方向（细节版 / 简化版 / 卡通版）
 - 剧情大纲第 8 节、兵种设计第六节的问题
 - 大地图风格（沙盘 / 羊皮纸）

@@ -584,6 +584,9 @@ func _process(delta: float) -> void:
 	if flag_cloth:
 		flag_cloth.rotation.y = sin(time * 3.0) * 0.25
 	_check_goal(delta)
+	# 无头验证：游戏时间到 quit_at 秒（或分出胜负）时输出一行 RESULT JSON 并退出
+	if args.has("quit_at") and (time >= float(args["quit_at"]) or (game_over and args.has("quit_on_end"))):
+		_print_result_and_quit()
 	_update_ui()
 	if not shots.is_empty() and (now - real_start) / 1000.0 >= shots[0]:
 		shots.pop_front()
@@ -811,3 +814,21 @@ func _take_shot() -> void:
 	if last:
 		print("STATS ", stats, " fps=", Engine.get_frames_per_second(), " time=", snappedf(time, 0.1), " capture=", snappedf(capture, 0.1), " banner=", banner.text)
 		get_tree().quit()
+
+
+func _print_result_and_quit() -> void:
+	var alive := {}
+	for sq in squads:
+		alive[sq.title] = sq.alive_units().size()
+	var r := {
+		"seed": int(args.get("seed", "7")),
+		"island": int(args.get("island", "3")),
+		"time": snappedf(time, 0.01),
+		"banner": banner.text,
+		"capture": snappedf(capture, 0.01),
+		"alive": alive,
+		"stats": stats,
+	}
+	print("RESULT ", JSON.stringify(r))
+	set_process(false)
+	get_tree().quit()
