@@ -21,8 +21,8 @@
 | T15 | 多智能体工作流与验证套件 | Claude | docs/workflow.md, tools/ | — | 已合并 |
 | T16 | 盾兵试点 P1：资产规格 | Claude | assets/specs/k2_shieldman.yml | — | 完成 |
 | T17 | 盾兵试点 P2：按规格建模渲染 | Codex | codex/t17-shieldman（任务卡 tasks/T17） | tools/blender/, assets/ | 已合并（4 次，见 metrics） |
-| T18 | 盾兵试点 P3：图集接入游戏、重做走路 | Claude | main | — | 待办（依赖 T17） |
-| T19 | 平衡：进攻方偏强（T21：守军两群不互援、夺旗条件宽松） | Claude | — | — | 待办 |
+| T18 | 盾兵试点 P3：图集接入游戏、重做走路 | Codex | — | — | 搁置（被新画风局内方案取代，并入 T44） |
+| T19 | 平衡：进攻方偏强（T21：守军两群不互援、夺旗条件宽松） | Codex 实现 + DSH 批量对战；Claude 只定目标胜率 | — | — | 待办 |
 | T20 | DSH 能力冒烟测试 | DSH | tasks/T20 | reports | 完成 |
 | T21 | 10 种子对战统计与平衡假设（只出报告） | DSH | tasks/T21 | reports | 已合并 |
 | T22 | 状态树单元测试 | DSH | tasks/T22 | tests/ | 已合并 |
@@ -37,7 +37,9 @@
 | T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批） | Codex | — | art/story/ | 待办 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | codex/t38…t40 | art/env/ | 排队 |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 排队 |
-| T43 | 开发者设定集（网页） | Claude | — | — | 待办（依赖全部美术） |
+| T43 | 开发者设定集（网页） | 脚本生成（tools/book），Claude 只发布 | — | — | 待办（依赖全部美术） |
+| T44 | 局内新画风：墨线描边、阵营边光、暗调地形、战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T42 兵种图审批） |
+| T45 | Blender 精灵按新兵种 Q 版批量重做 | DSH（谷时，先做能力验证）；管线问题 Codex | — | tools/blender/, assets/ | 待办（依赖 T42、T44） |
 | T31 | 新画风样张：王子立绘、对话、增益、航海图、局内战斗 | Codex | codex/t31-style | art/style/ | 已合并（全部通过） |
 | T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 已合并（3 张均通过） |
 | T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 已合并（UI 待按新画风重做） |
