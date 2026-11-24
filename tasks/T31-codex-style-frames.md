@@ -2,7 +2,7 @@
 id: T31
 title: 新画风样张（手绘墨线叙事风）：王子立绘、对话界面、增益选择、航海图、局内战斗
 owner: codex
-status: queued
+status: done
 branch: codex/t31-style
 worktree: ../亡魂王子-t31
 images: [/Users/cyy/Projects/亡魂王子/concept/canon-art/B/u8_prince.png, /Users/cyy/Projects/亡魂王子/shots/t23/shot_0.png]

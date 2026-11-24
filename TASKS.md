@@ -30,7 +30,15 @@
 | T24 | 工程移到 ~/Projects 并安装谷时定时任务（12:01、18:01） | Claude | — | — | 完成 |
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
 | T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 已合并 |
-| T31 | 新画风样张：王子立绘、对话、增益、航海图、局内战斗 | Codex | codex/t31-style | art/style/ | 进行中 |
+| T32 | 新画风人物：王室与渡魂人（6 人） | Codex | codex/t32-royals | art/chars/ | 排队 |
+| T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 排队 |
+| T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 排队 |
+| T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 排队 |
+| T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批） | Codex | — | art/story/ | 待办 |
+| T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | codex/t38…t40 | art/env/ | 排队 |
+| T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 排队 |
+| T43 | 开发者设定集（网页） | Claude | — | — | 待办（依赖全部美术） |
+| T31 | 新画风样张：王子立绘、对话、增益、航海图、局内战斗 | Codex | codex/t31-style | art/style/ | 已合并（全部通过） |
 | T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 已合并（3 张均通过） |
 | T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 已合并（UI 待按新画风重做） |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
