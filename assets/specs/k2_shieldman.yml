@@ -11,22 +11,26 @@ base_rig: tools/blender/build_swordsman.py   # 沿用 15 骨骼和 11 个动作�
 # 从三视图（正面）量出，单位 = 总身高（地面到盔顶 = 1.0），均为"离地高度"。
 # 以三视图为准：数值与三视图偏差在 10% 以内照三视图做，不必上报；超过 10% 才上报。
 proportions:
+  # B 比例（2.3 头身，docs/art-direction.md【定】）；离地高度，总高 = 1.0（含头盔）
+  # 以 concept/turnaround/t_k2_shieldman_B_turn.png 为准，偏差 10% 内照图做
+  head_heads: 2.3
   landmarks_from_ground:
-    boot_top: 0.18        # 靴口（整只靴子含脚 = 0 到 0.18）
-    tunic_hem: 0.24       # 罩袍下摆；下摆到靴口之间露出一小段裤腿
-    belt: 0.42
-    shoulder: 0.65        # 肩线 / 领口；罩袍从这里到下摆 ≈ 0.41
-    chin: 0.66
-    eye: 0.73
-    helmet_brim: 0.79     # 帽檐下沿
+    boot_top: 0.11        # 大圆头靴（整只靴子含脚 0–0.11）
+    crotch: 0.22          # 腿（含脚）= 0.22
+    tunic_hem: 0.19       # 外衣下摆盖住大腿上半
+    belt: 0.32
+    shoulder: 0.55        # 几乎没有脖子：肩线紧贴下巴
+    chin: 0.56
+    eye: 0.73             # 眼睛偏低：在头高约 40% 处
+    helmet_brim: 0.80
     helmet_top: 1.00
   widths:
-    head: 0.34            # 含帽檐最宽处
-    shoulders: 0.45
-    feet_apart: 一个脚宽
-  hand_size: 0.09         # 方块拳头，偏大
-  lean: 站立时身体略前倾 3–5°
-  lean_degrees: 4          # 数值字段供建模/姿势生成，保持上面的造型说明
+    head: 0.46            # 含帽檐最宽处，头比肩宽
+    shoulders: 0.44
+    foot_length: 0.14
+    hand_diameter: 0.11   # 无手指的圆手套
+  lean_degrees: 2
+  shape_notes: 球形头圆下巴；豆豆眼（竖椭圆黑点）+粗眉，无鼻或极小鼻；梨形躯干不收腰；短粗圆柱腿无膝；大圆头鞋；碗形头盔；整体边角圆润
 
 # —— 部件（低模，参考三视图；全部大色块、无纹理细节）——
 parts:
