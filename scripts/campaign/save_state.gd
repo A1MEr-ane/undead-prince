@@ -1,8 +1,9 @@
 extends RefCounted
-## 只保存 NARRATIVE-DESIGN §12 的持久字段；本轮资产不进入 save.json。
+## canon 持久字段与 T29 记忆/技艺残响；本轮资产不进入 save.json。
 
-const FIELDS := ["known_facts", "known_routes", "endings_seen", "last_outcome",
+const LEGACY_FIELDS := ["known_facts", "known_routes", "endings_seen", "last_outcome",
 	"permanent_unlocks", "ferryman_recognised", "pact_release_known", "save_status"]
+const FIELDS := LEGACY_FIELDS + ["enemy_memory", "echoes"]
 
 var known_facts: Array = []
 var known_routes: Array = []
@@ -12,6 +13,8 @@ var permanent_unlocks: Array = []
 var ferryman_recognised := false
 var pact_release_known := false
 var save_status := "ACTIVE"
+var enemy_memory: Dictionary = {}
+var echoes := 0
 
 
 func to_dict() -> Dictionary:
@@ -32,7 +35,7 @@ func read_from_disk(path: String = "user://save.json") -> Error:
 		return ERR_FILE_CORRUPT
 	var data: Dictionary = parser.data
 	var defaults := to_dict()
-	for field in FIELDS:
+	for field in LEGACY_FIELDS:
 		if not data.has(field) or typeof(data[field]) != typeof(defaults[field]):
 			return ERR_FILE_CORRUPT
 	for field in ["known_facts", "known_routes", "endings_seen", "permanent_unlocks"]:
@@ -41,9 +44,25 @@ func read_from_disk(path: String = "user://save.json") -> Error:
 				return ERR_FILE_CORRUPT
 	if data.save_status not in ["ACTIVE", "COMPLETED"]:
 		return ERR_FILE_CORRUPT
-	for field in FIELDS:
+	# 新字段可缺省；旧八字段仍严格校验。全部校验通过后才更新内存。
+	var memory = data.get("enemy_memory", {})
+	var echo_count = data.get("echoes", 0)
+	if not memory is Dictionary or not _is_count(echo_count):
+		return ERR_FILE_CORRUPT
+	for id in memory:
+		if not id is String or not _is_count(memory[id]):
+			return ERR_FILE_CORRUPT
+	for field in LEGACY_FIELDS:
 		set(field, data[field])
+	enemy_memory = {}
+	for id in memory:
+		enemy_memory[id] = int(memory[id])
+	echoes = int(echo_count)
 	return OK
+
+
+func _is_count(value: Variant) -> bool:
+	return (value is int or value is float) and is_finite(float(value)) and float(value) >= 0 and float(value) == floorf(float(value))
 
 
 func write_to_disk(path: String = "user://save.json") -> Error:

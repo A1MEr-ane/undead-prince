@@ -14,6 +14,7 @@ var _selected := "bay"
 var _seed := 1
 var _automatic := false
 var _capture := false
+var _runs := 1
 var _chart
 var _content: VBoxContainer
 var _status: Label
@@ -30,6 +31,8 @@ func _ready() -> void:
 			_capture = true
 		elif arg.begins_with("--seed="):
 			_seed = arg.trim_prefix("--seed=").to_int()
+		elif arg.begins_with("--runs="):
+			_runs = maxi(1, arg.trim_prefix("--runs=").to_int())
 	Run.initialize(not (_automatic or _capture), _seed)
 	_build_ui()
 	_refresh()
@@ -80,8 +83,14 @@ func _build_ui() -> void:
 	_chart.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_chart.selected_site.connect(_select)
 	map_column.add_child(_chart)
-	_label(map_column, "金色：已走航路    浅绿：可前往    箭头：航向", 14, Color("a6b9c7"))
-	_label(map_column, "[益]旧部增益  [募]招募  [火]魂火  [缝]缝补\n[休]休整  [物]遗物  [航]航海  [知]知识", 14, Color("a6b9c7"))
+	var legend := HBoxContainer.new()
+	legend.add_theme_constant_override("separation", 15)
+	map_column.add_child(legend)
+	for i in range(Run.difficulty.config.tiers.size()):
+		var grade: Dictionary = Run.difficulty.tier_data(i + 1)
+		_label(legend, "■ %d %s" % [i + 1, grade.name], 14, Color(str(grade.color)))
+	_label(map_column, "粗框：可前往  光圈：选中  ◆：首领  金线：本轮航路  蓝线：已知航路", 13, Color("a6b9c7"))
+	_label(map_column, "[益]旧部增益  [募]招募  [火]魂火  [缝]缝补  [休]休整  [物]遗物  [航]航海  [知]知识\n奖励标记带 ·：航路知识或灯塔侦察多看一层", 13, Color("a6b9c7"))
 	var panel := PanelContainer.new()
 	panel.custom_minimum_size.x = 370
 	var style := StyleBoxFlat.new()
@@ -135,10 +144,11 @@ func _refresh() -> void:
 		return
 	_status.text = "第一阶段 · 复仇     本轮 %02d     当前位置：%s     已结算 %d 站" % [
 		Run.run_id, Run.sites[Run.current_site].zh, Run.site_results.size()]
-	_memory.text = "跨轮记忆：%s    |    结局记录：%s    |    本轮奖励：%d" % [
+	_memory.text = "残响：%d    |    敌情：%d 处    |    知识：%s    |    结局：%s    |    本轮奖励：%d · 魂火：%d" % [
+		Run.save.echoes, Run.save.enemy_memory.size(),
 		"暂无" if Run.save.known_facts.is_empty() else " · ".join(Run.save.known_facts),
 		"暂无" if Run.save.endings_seen.is_empty() else " / ".join(Run.save.endings_seen),
-		Run.stores.get("rewards", []).size()]
+		Run.stores.get("rewards", []).size(), int(Run.stores.get("soulfire", 0))]
 	_chart.configure(Run, _selected)
 	if Run.save.save_status == "COMPLETED":
 		_label(_content, "这段故事已经结束", 24)
@@ -154,6 +164,7 @@ func _refresh() -> void:
 		"battle":
 			_label(_content, Run.sites[Run.current_site].zh, 25)
 			_label(_content, "战斗桩", 21, Color("efc990"))
+			_show_difficulty(Run.current_site)
 			_label(_content, "选择结果，或按种子判定。胜利后结算本站；败北进入 E00。")
 			_battle_buttons()
 		_:
@@ -162,14 +173,18 @@ func _refresh() -> void:
 
 func _show_location() -> void:
 	var site: Dictionary = Run.sites[_selected]
-	var reward: Dictionary = Run.rewards[_selected]
+	var reward: Dictionary = Run.reward_offer(_selected)
 	_label(_content, str(site.zh), 25, Color("efc990"))
 	_label(_content, str(site.en), 15, Color("a6b9c7"))
+	_show_difficulty(_selected)
 	_label(_content, "遭遇", 18, Color("a9e5cf"))
 	_label(_content, str(site.scene))
 	_label(_content, "剧情", 18, Color("a9e5cf"))
 	_label(_content, str(site.plot))
 	_label(_content, "[%s] %s\n%s" % [Chart.ICONS[reward.category], reward.category, reward.reward], 16, Color("efc990"))
+	if reward.grants_reward:
+		_label(_content, "奖励档次：%s%s" % [reward.rarity,
+			" · %d 魂火" % reward.soulfire if reward.soulfire > 0 else ""], 15)
 	if Run.phase == "site":
 		if site.type == "lore":
 			_button("调查并领取奖励", _investigate)
@@ -189,7 +204,32 @@ func _show_location() -> void:
 	for id in Run.available_next():
 		var next: Dictionary = Run.sites[id]
 		var category: String = Run.rewards[id].category
-		_button("[%s] %s  ›  %s" % [Chart.ICONS[category], next.zh, category], _select.bind(str(id)))
+		_button("[%s] %s  · %d 档" % [Chart.ICONS[category], next.zh, Run.site_difficulty(id)], _select.bind(str(id)))
+		if Run.save.known_routes.has(Run.current_site + ">" + str(id)) or Run.stores.has("signal"):
+			var following: Array = []
+			for edge in Run.edges:
+				if edge[0] == id and int(Run.sites[edge[1]].stage) <= Run.STAGE and not Run.route.has(edge[1]):
+					following.append("[%s]%s" % [Chart.ICONS[Run.rewards[edge[1]].category], Run.sites[edge[1]].zh])
+			_label(_content, "再下一站：" + " / ".join(following), 14, Color("9cbcca"))
+
+
+func _show_difficulty(id: String) -> void:
+	if id == "bay":
+		_label(_content, "沉钟湾据点 · 不交战", 15, Color("a9e5cf"))
+		return
+	var value: int = Run.site_difficulty(id)
+	var grade: Dictionary = Run.difficulty.tier_data(value)
+	_label(_content, "%d 档 · %s" % [value, grade.name], 18, Color(str(grade.color)))
+	if Run.sites[id].type == "boss":
+		_label(_content, "首领：%s%s" % [Run.boss_name(id),
+			" · 王都宫城" if id == "sunhold" else ""], 16, Color(str(grade.color)))
+	var wins := int(Run.save.enemy_memory.get(id, 0))
+	if wins > 0:
+		var detail: Dictionary = Run.difficulty.describe(id, Run.save.enemy_memory)
+		_label(_content, "已知守军布置 · %d 次胜利\n%s" % [wins,
+			"敌情记忆：难度降低一档" if detail.memory_reduction > 0 else "再胜一次，首领难度降低一档"], 15, Color("a9e5cf"))
+	if Run.phase == "battle" or (Run.phase == "capital" and Run.capital_step == "council"):
+		_label(_content, "战斗桩胜率：%d%% · 本轮 %d 份奖励" % [roundi(Run.battle_win_chance() * 100), Run.stores.get("rewards", []).size()], 15)
 
 
 func _show_capital() -> void:
@@ -204,6 +244,7 @@ func _show_capital() -> void:
 			_label(_content, "2 / 5  摄政议会覆灭", 21)
 			_label(_content, "沃尔特只愿为王子与近卫平反，仍将被征船员列作叛军。完成宫城对质，取得宫廷档案；未交战的议员不默认死亡。")
 			_label(_content, "宫城战斗桩", 18, Color("a9e5cf"))
+			_show_difficulty("sunhold")
 			_battle_buttons()
 		"muster":
 			_label(_content, "3 / 5  最后的集结 · 军誓", 21)
@@ -226,6 +267,9 @@ func _show_ending() -> void:
 	_label(_content, card.title, 23)
 	_label(_content, card.body, 18)
 	_label(_content, "渡魂人\n“%s”" % card.ferryman, 20, Color("a9e5cf"))
+	var settlement: Dictionary = Run.echo_settlement
+	_label(_content, "本轮残响 +%d · 累计 %d\n攻下 %d 处 · 首领 %d · 新知识 %d" % [
+		settlement.earned, Run.save.echoes, settlement.captured_sites, settlement.bosses, settlement.new_facts], 17, Color("efc990"))
 	_label(_content, "回溯将清空本轮军团收益、实物、证据、效忠与决定，保留知识、航路和结局记忆。", 15)
 	if _ending_seconds < 0:
 		_ending_seconds = 20
@@ -282,19 +326,44 @@ func _return() -> void:
 	_refresh()
 
 
-func _auto_run() -> void:
-	if Run.last_error != OK:
-		get_tree().quit(1)
-		return
+func _long_route_steps(id: String, visited: Array = []) -> int:
+	var path := visited.duplicate()
+	path.append(id)
+	var longest := 0
+	for edge in Run.edges:
+		if edge[0] == id and int(Run.sites[edge[1]].stage) <= Run.STAGE and not path.has(edge[1]):
+			longest = maxi(longest, 1 + _long_route_steps(str(edge[1]), path))
+	return longest
+
+
+func _auto_next() -> String:
+	var choices: Array = Run.available_next()
+	var selected := ""
+	var best := INF
+	# 前三局探索低难度长路；有记忆或残响积累后，转向剩余步数少的路。
+	# 残响仅用于这个测试策略识别积累，不给战斗桩额外加成。
+	var prefer_short: bool = Run.run_id > 3 and (Run.save.echoes >= 18 or Run.save.enemy_memory.size() >= 6)
+	for id in choices:
+		var value: int = Run.site_difficulty(id)
+		var remaining := int(Run.difficulty.remaining[id])
+		var score: float = remaining * 4.0 + value * 0.35 if prefer_short else value * 4.0 - _long_route_steps(str(id))
+		var fact := str(Run.sites[id].get("evidence_fragment", ""))
+		if not prefer_short and not fact.is_empty() and not Run.save.known_facts.has(fact):
+			score -= 0.5
+		if score < best:
+			best = score
+			selected = str(id)
+	return selected
+
+
+func _complete_auto_run() -> bool:
 	for step in range(160):
 		match Run.phase:
 			"map":
-				var next: String = Run.random_next()
-				if next.is_empty():
+				var next := _auto_next()
+				if next.is_empty() or not Run.travel_to(next):
 					push_error("Campaign has no available directed route")
-					get_tree().quit(1)
-					return
-				Run.travel_to(next)
+					return false
 			"site":
 				if Run.sites[Run.current_site].type == "lore":
 					Run.investigate()
@@ -308,19 +377,41 @@ func _auto_run() -> void:
 				else:
 					Run.advance_capital()
 			"ending":
-				var result := {"seed": _seed, "route": Run.route.duplicate(),
-					"ending": Run.outcome, "knowledge": Run.save.known_facts.duplicate()}
-				Run.return_to_bay()
-				result["returned_to"] = Run.current_site
-				result["run_cleared"] = Run.site_results.is_empty() and Run.stores.is_empty() and Run.crown.is_empty()
-				print("CAMPAIGN " + JSON.stringify(result))
-				get_tree().quit(0)
-				return
+				return true
 	push_error("Campaign exceeded transition limit")
-	get_tree().quit(1)
+	return false
+
+
+func _run_summary() -> Dictionary:
+	var total := 0.0
+	for value in Run.route_difficulties:
+		total += float(value)
+	return {"seed": _seed, "run": Run.run_id, "route": Run.route.duplicate(),
+		"route_length": Run.route.size() - 1, "ending": Run.outcome,
+		"average_difficulty": snappedf(total / maxi(1, Run.route_difficulties.size()), 0.01),
+		"encounter_difficulties": Run.route_difficulties.duplicate(),
+		"echoes_earned": Run.echo_settlement.earned, "echoes_total": Run.save.echoes,
+		"enemy_memory_sites": Run.save.enemy_memory.size(), "knowledge": Run.save.known_facts.duplicate()}
+
+
+func _auto_run() -> void:
+	if Run.last_error != OK:
+		get_tree().quit(1)
+		return
+	for index in range(_runs):
+		if not _complete_auto_run():
+			get_tree().quit(1)
+			return
+		var result := _run_summary()
+		Run.return_to_bay()
+		result["returned_to"] = Run.current_site
+		result["run_cleared"] = Run.site_results.is_empty() and Run.stores.is_empty() and Run.crown.is_empty()
+		print("CAMPAIGN " + JSON.stringify(result))
+	get_tree().quit(0)
 
 
 func _capture_run() -> void:
+	await _shot("chart_difficulty", "t29")
 	_sail("wreck")
 	_attack()
 	_battle_result(true)
@@ -349,13 +440,26 @@ func _capture_run() -> void:
 	_attack()
 	_battle_result(false)
 	await _shot("ending_e00")
+	Run.initialize(false, _seed)
+	for index in range(4):
+		if not _complete_auto_run():
+			get_tree().quit(1)
+			return
+		print("CAMPAIGN_CAPTURE_RUN " + JSON.stringify(_run_summary()))
+		Run.return_to_bay()
+	_selected = "bay"
+	_refresh()
+	await _shot("chart_run5", "t29")
 	get_tree().quit()
 
 
-func _shot(name: String) -> void:
+func _shot(name: String, folder: String = "t28") -> void:
+	if DisplayServer.get_name() == "headless":
+		print("CAMPAIGN_SHOT unavailable (headless): shots/%s/%s.png" % [folder, name])
+		return
 	await get_tree().process_frame
 	await RenderingServer.frame_post_draw
-	var directory := ProjectSettings.globalize_path("res://shots/t28")
+	var directory := ProjectSettings.globalize_path("res://shots/" + folder)
 	DirAccess.make_dir_recursive_absolute(directory)
 	var path := directory.path_join(name + ".png")
 	var error := get_viewport().get_texture().get_image().save_png(path)
