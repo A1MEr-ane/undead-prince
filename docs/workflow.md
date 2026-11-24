@@ -123,6 +123,10 @@ tools/agents/offpeak.sh / run_queue.sh   谷时判断与 DSH 队列  ✓（launc
 - **出图和建模类任务需要视觉验收回合**：预算按 2–3 轮考虑。
 - 用量记录：Codex 读日志里的 tokens used；DSH 需要从 `--json` 事件累加 usage（待在 run_agent.sh 里补上）。
 
+## 6.8 DSH 生图能力测试（2026-11-24 20:55，谷时）
+- 实测：DSH 无头模式的工具只有 bash/read/write/edit/glob/grep/read_image、子代理、后台任务、web_search/web_fetch、skill，**没有文生图工具**；`read_image` 只能看图。
+- 结论：图像生产继续只走 Codex；DSH 可以做读图类工作（例如按清单抽检图片、核对文件和尺寸）。本次测试约 6.8k token。
+
 ## 7. 需要用户拍板的（只列阻塞下一步的）
 2. **兵种造型方向**（细节版造型 + 简化版建模 / 卡通版）。——试点 P1 可以先按盾兵三视图做；但亡魂兵种建模前必须定。
 其余（剧情、地图风格、平衡）不阻塞，可以边做边定。
