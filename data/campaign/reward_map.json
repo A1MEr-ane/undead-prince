@@ -1,0 +1,236 @@
+{
+  "bay": {
+    "reward": "仅基础军团",
+    "category": "招募",
+    "grants_reward": false,
+    "note": "基础军团来自开局，不重复授奖。"
+  },
+  "wreck": {
+    "reward": "小艇：改善首次部署",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "light": {
+    "reward": "侦察：额外预览下一处遭遇",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "oar": {
+    "reward": "水手：额外招募选项",
+    "category": "招募",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "pilot": {
+    "reward": "引航：灵活布置登陆点",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "gate": {
+    "reward": "重装兵种或破甲增益",
+    "category": "招募",
+    "grants_reward": true,
+    "note": "以重装兵种作为本阶段占位收益。"
+  },
+  "yard": {
+    "reward": "攻城强化或护甲加固",
+    "category": "缝补",
+    "grants_reward": true,
+    "note": "护甲加固归入免费装备升级。"
+  },
+  "kings": {
+    "reward": "王室遗物：指挥或阵形增益",
+    "category": "遗物",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "roads": {
+    "reward": "船队预备：补充部署次数",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "lantern": {
+    "reward": "浅水艇：侧翼部署",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "west": {
+    "reward": "补给或一次装备修复",
+    "category": "魂火",
+    "grants_reward": true,
+    "note": "采用补给项，归入本局资源。"
+  },
+  "mill": {
+    "reward": "预备队：步兵补充选项",
+    "category": "招募",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "harvest": {
+    "reward": "口粮：遭遇之间恢复",
+    "category": "休整",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "granary": {
+    "reward": "补给增益或攻城专精",
+    "category": "魂火",
+    "grants_reward": true,
+    "note": "采用补给项，归入本局资源。"
+  },
+  "lock": {
+    "reward": "内河船：灵活部署",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "silent": {
+    "reward": "护符：有限抗圣光",
+    "category": "遗物",
+    "grants_reward": true,
+    "note": "有限护符归入本局被动遗物。"
+  },
+  "archive": {
+    "reward": "研究增益：提高冥火使用效率",
+    "category": "知识",
+    "grants_reward": true,
+    "note": "采用研究所得 K05 知识。"
+  },
+  "old": {
+    "reward": "指挥遗物",
+    "category": "遗物",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "orchard": {
+    "reward": "休整：选择轻量恢复增益",
+    "category": "休整",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "graves": {
+    "reward": "魂护或恢复",
+    "category": "休整",
+    "grants_reward": true,
+    "note": "采用恢复项。"
+  },
+  "abbey": {
+    "reward": "抗圣光增益或专精兵种",
+    "category": "旧部增益",
+    "grants_reward": true,
+    "note": "采用抗圣光增益项。"
+  },
+  "funeral": {
+    "reward": "冥火增益或防护",
+    "category": "旧部增益",
+    "grants_reward": true,
+    "note": "采用冥火增益项。"
+  },
+  "merchant": {
+    "reward": "无新构筑奖励；王都入口",
+    "category": "航海",
+    "grants_reward": false,
+    "note": "仅王都入口，不授予构筑奖励。"
+  },
+  "lion": {
+    "reward": "无新构筑奖励；王都入口",
+    "category": "航海",
+    "grants_reward": false,
+    "note": "仅王都入口，不授予构筑奖励。"
+  },
+  "provision": {
+    "reward": "无新构筑奖励；王都入口",
+    "category": "航海",
+    "grants_reward": false,
+    "note": "仅王都入口，不授予构筑奖励。"
+  },
+  "procession": {
+    "reward": "无新构筑奖励；王都入口",
+    "category": "航海",
+    "grants_reward": false,
+    "note": "仅王都入口，不授予构筑奖励。"
+  },
+  "sunhold": {
+    "reward": "结局，不是随机增益",
+    "category": "知识",
+    "grants_reward": false,
+    "note": "仅结局与宫廷知识，不授予随机构筑奖励。"
+  },
+  "northrelief": {
+    "reward": "船员或紧急补给",
+    "category": "招募",
+    "grants_reward": true,
+    "note": "采用船员项。"
+  },
+  "watchskerry": {
+    "reward": "反伏击：预览巡逻时序",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "saltmarket": {
+    "reward": "贸易储藏：两种补给增益择一",
+    "category": "魂火",
+    "grants_reward": true,
+    "note": "补给储藏归入本局资源。"
+  },
+  "foundry": {
+    "reward": "护甲或武器升级",
+    "category": "缝补",
+    "grants_reward": true,
+    "note": "按地点原文对应奖励类别。"
+  },
+  "banners": {
+    "reward": "阵形遗物或军心增益",
+    "category": "遗物",
+    "grants_reward": true,
+    "note": "采用阵形遗物项。"
+  },
+  "titheford": {
+    "reward": "招募或内河机动",
+    "category": "招募",
+    "grants_reward": true,
+    "note": "采用招募项。"
+  },
+  "barleyhall": {
+    "reward": "预备支援：选择补给契约",
+    "category": "魂火",
+    "grants_reward": true,
+    "note": "补给契约归入本局资源。"
+  },
+  "reedcross": {
+    "reward": "浅水机动或护符",
+    "category": "航海",
+    "grants_reward": true,
+    "note": "采用浅水机动项。"
+  },
+  "hospice": {
+    "reward": "恢复或有限护符",
+    "category": "休整",
+    "grants_reward": true,
+    "note": "采用恢复项。"
+  },
+  "winterpalace": {
+    "reward": "王朝遗物或研究增益",
+    "category": "遗物",
+    "grants_reward": true,
+    "note": "采用王朝遗物项。"
+  },
+  "oldbridge": {
+    "reward": "机动增益或防御阵形",
+    "category": "旧部增益",
+    "grants_reward": true,
+    "note": "采用机动增益项。"
+  },
+  "sealquay": {
+    "reward": "防护或冥火效率",
+    "category": "旧部增益",
+    "grants_reward": true,
+    "note": "采用防护增益项。"
+  }
+}
