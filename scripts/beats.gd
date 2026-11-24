@@ -6,8 +6,9 @@ extends RefCounted
 var offset := 0.0
 
 
-func _init() -> void:
-	offset = randf() * 100.0
+## 相位属于战斗逻辑：由主场景的模拟随机源传入，保证同种子可复现。
+func _init(rng: RandomNumberGenerator = null) -> void:
+	offset = (rng.randf() if rng != null else randf()) * 100.0
 
 
 func hz(period: float) -> bool:
