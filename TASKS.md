@@ -30,9 +30,11 @@
 | T24 | 工程移到 ~/Projects 并安装谷时定时任务（12:01、18:01） | Claude | — | — | 完成 |
 | T25 | 盾兵碎步走路 | Codex | codex/t25-walk | tools/blender/, assets/ | 已合并 |
 | T28 | 航海图与回溯闭环（第一阶段 E00/E01，战斗用桩） | Codex | codex/t28-campaign | scripts/campaign/, scenes/campaign.tscn, data/campaign/ | 进行中 |
+| T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 进行中 |
+| T29 | 航海图难度颜色、首领据点覆盖、局外成长数据（依赖 T28） | 待定 | — | data/campaign/, scripts/campaign/ | 待办 |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
 
 ## 待用户决定
-- canon 审阅的三项决定（docs/canon-review.md 第 4 节）
+- 开发期剧本语言：中文为主还是英文原稿
 - 剧情大纲第 8 节、兵种设计第六节的问题
 - 大地图风格（沙盘 / 羊皮纸）
