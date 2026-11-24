@@ -7,7 +7,7 @@ import bpy
 import numpy as np
 from mathutils import Vector
 
-from common import PARTS, PART_SIZE, write_png
+from common import PARTS, PART_SIZE, read_png, write_png
 from preview import rgb, decode, contact_sheet, background, paste, label, linear_to_srgb
 from build_swordsman import OBJECTS, apply_pose
 
@@ -16,10 +16,11 @@ def colour(value):
     return rgb(value.lstrip('#'))
 
 
-def paint_tile(look):
+def paint_tile(look, proportions):
     tile=np.zeros((PART_SIZE,PART_SIZE,4),np.uint8)
     tile[...,3]=255
-    yy,xx=np.mgrid[0:64,0:64]
+    aa=4
+    yy,xx=np.mgrid[0:64*aa,0:64*aa]/aa
     u=np.clip((xx-4)/56,0,1)
     v=np.clip((63-yy-4)/56,0,1)
     x,y=2*u-1,2*v-1
@@ -33,6 +34,15 @@ def paint_tile(look):
         if name in ('boots','leather','shield_back'):
             factor=np.where(v<.26,.85,np.where(v>.72,1.06,1.))
         c=base[None,None,:]*factor[...,None]
+        if name=='skin':
+            from chibi_body import face_uv
+            ink=colour(look['eye'])
+            for eye_u,eye_v in face_uv(proportions):
+                du,dv=u-eye_u,v-eye_v
+                eyes=(du/.026)**2+(dv/.057)**2 <= 1
+                slope=-.22 if eye_u<.5 else .22
+                brows=(np.abs(du)<.060)&(np.abs(dv-.095-slope*du)<.017)
+                c[eyes|brows]=ink
         if name=='leather':
             c[v>.68]=colour(look['hair'])*np.where(u[v>.68,None]<.4,.86,1.)
         if name=='shield_face':
@@ -54,7 +64,8 @@ def paint_tile(look):
             c[stripe]=bend
             c[stripe & (x<-.20)]=bend*.88
         row=(3-cy)*64
-        tile[row:row+64,cx*64:cx*64+64,:3]=np.round(np.clip(c,0,1)*255).astype(np.uint8)
+        resolved=c.reshape(64,aa,64,aa,3).mean(axis=(1,3))
+        tile[row:row+64,cx*64:cx*64+64,:3]=np.round(np.clip(resolved,0,1)*255).astype(np.uint8)
     return tile
 
 
@@ -62,7 +73,7 @@ def create_previews(atlas, metadata, output, spec):
     prefix=spec['id']
     looks=[(key,value) for key,value in spec['looks'].items() if isinstance(value,dict)]
     assert 1 <= len(looks) <= 4, 'The v1 part texture has four appearance slots'
-    paints=[paint_tile(value) for _,value in looks]
+    paints=[paint_tile(value,spec['proportions']) for _,value in looks]
     # Keep the existing 2x2 texture contract; unused slots repeat the first look.
     slots=(paints+[paints[0]]*4)[:4]
     parts=np.concatenate([np.concatenate(slots[:2],axis=1),np.concatenate(slots[2:],axis=1)],axis=0)
@@ -139,7 +150,10 @@ def render_views(rig, recipe, output, threads):
     equipment=[ob for ob in OBJECTS if ob.name.startswith(('shield_','sword_','pommel'))]
     for ob in equipment:
         ob.hide_render=True
-    apply_pose(rig,dict(wrist_l=(0,-.55,.82),wrist_r=(0,.55,.82)),skeleton_fn=recipe.skeleton)
+    H=recipe.height
+    # Relax the short arms to an A pose using the same proportions as the body.
+    apply_pose(rig,dict(wrist_l=(.01*H,-.29*H,recipe.h['belt']-.025*H),
+                        wrist_r=(.01*H,.29*H,recipe.h['belt']-.025*H)),skeleton_fn=recipe.skeleton)
     with tempfile.TemporaryDirectory(prefix=prefix+'-views-') as directory:
         for view,position in (('front',(8,0,1.06)),('side',(0,-8,1.06)),('back',(-8,0,1.06)),
                               ('equipped',(5,-8,2.3)), ('equipped_side',(0,-8,1.06))):
@@ -162,3 +176,16 @@ def render_views(rig, recipe, output, threads):
             write_png(output/f'{prefix}_view_{view}.png',np.round(linear_to_srgb(rgb_linear)*255).astype(np.uint8))
             bpy.data.images.remove(image)
             print('MODEL_VIEW',view,flush=True)
+
+
+def create_comparison(old_image, output, prefix):
+    """Preserve the actual v4 render supplied before rebuilding the current asset."""
+    old=read_png(old_image)
+    new=read_png(output/f'{prefix}_view_equipped_side.png')
+    assert old.shape==new.shape==(768,768,3), 'Compare the same ordinary side view'
+    canvas=background(1536,818)
+    label(canvas,'OLD V4',24,15,3)
+    label(canvas,'B / 2.3 HEADS / HEAD 44 / LEGS 22',792,15,2)
+    canvas[50:,:768]=old
+    canvas[50:,768:]=new
+    write_png(output/f'{prefix}_comparison_v4_B.png',canvas)

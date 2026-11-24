@@ -49,7 +49,7 @@ def verify(output, check_rig=True, spec_path=None):
     assert start == 69
     bbox = metadata['frames'][0]['alpha_bbox']
     assert size - bbox[3] in (1, 2, 3), bbox
-    assert .66 <= (bbox[3] - bbox[1]) / size <= .74, bbox
+    assert (.60 if recipe else .66) <= (bbox[3] - bbox[1]) / size <= (.65 if recipe else .74), bbox
     assert metadata['animations']['attack']['events']['hit'] == .333
     assert metadata['animations']['attack']['source_sample_times'][4] == .333
     paint = read_png(output / metadata['part_texture']['image'])
@@ -63,7 +63,7 @@ def verify(output, check_rig=True, spec_path=None):
         for i, look in enumerate(expected):
             assert (output / f'{prefix}_preview_{look}.png').is_file()
             x,y=(i%2)*256,(i//2)*256
-            assert np.array_equal(paint[y:y+256,x:x+256], paint_tile(recipe.spec['looks'][look]))
+            assert np.array_equal(paint[y:y+256,x:x+256], paint_tile(recipe.spec['looks'][look],recipe.spec['proportions']))
         for name in ('uv', 'shading'):
             assert (output / f'{prefix}_preview_{name}.png').is_file()
         for name in ('front', 'side', 'back', 'equipped', 'equipped_side'):
@@ -81,6 +81,7 @@ def verify(output, check_rig=True, spec_path=None):
             assert stats['triangles'] <= recipe.spec['triangle_budget']['max']
             validate_spec_model(recipe, rig, OBJECTS)
             validate_shield_poses(recipe, rig, OBJECTS)
+            validate_chibi_poses(recipe, rig, OBJECTS)
         else:
             rig, stats = build()
             assert 300 <= stats['polygons'] <= 800 and stats['triangles'] <= 800
@@ -175,13 +176,43 @@ def validate_spec_model(recipe, rig, objects):
     h = recipe.h
     def zs(name):
         return [v.co.z for v in by_name[name].data.vertices]
-    for measured, expected in ((max(zs('helmet_dome')),h['helmet_top']),
-                               (min(zs('helmet_brim')),h['helmet_brim']),
-                               (min(zs('head')),h['chin']),
-                               (min(zs('split_tabard_skirt')),h['tunic_hem']),
-                               (max(zs('boot_cuff_l')),h['boot_top']),
-                               (max(zs('tabard_body')),h['shoulder'])):
-        assert abs(measured-expected) < 1e-5, (measured,expected)
+    from chibi_body import face_uv
+    # Resolve the painted eye centre through real mesh UVs, rather than merely
+    # repeating the input eye landmark. Barycentric interpolation handles facets.
+    from common import map_uv
+    head=by_name['head'].data
+    eye_uv=Vector((*map_uv('skin',face_uv(recipe.spec['proportions'])[0]),0))
+    eye_z=None
+    head.calc_loop_triangles()
+    for tri in head.loop_triangles:
+        uvs=[Vector((*head.uv_layers.active.data[i].uv,0)) for i in tri.loops]
+        weights=barycentric_transform(eye_uv,*uvs,Vector((1,0,0)),Vector((0,1,0)),Vector((0,0,1)))
+        if min(weights)>=-1e-6:
+            eye_z=sum(head.vertices[i].co.z*w for i,w in zip(tri.vertices,weights))
+            break
+    assert eye_z is not None, 'Eye paint has no head surface'
+    measured=dict(helmet_top=max(zs('helmet_dome')),helmet_brim=min(zs('helmet_brim')),
+        chin=min(zs('head')),eye=eye_z,tunic_hem=min(zs('split_tabard_skirt')),
+        boot_top=max(zs('boot_cuff_l')),shoulder=max(zs('tabard_body')),
+        belt=sum(zs('belt'))/len(zs('belt')),crotch=recipe.skeleton({})['thigh_l'][0].z)
+    # Normalize to the measured sole-to-helmet height; a differently sized model
+    # cannot pass by just copying the specification or recipe.height.
+    ground=min(zs('boot_l')+zs('boot_r'))
+    height=measured['helmet_top']-ground
+    ratios={key:(value-ground)/height for key,value in measured.items()}
+    expected=recipe.spec['proportions']['landmarks_from_ground']
+    errors={key:abs(ratios[key]/value-1) for key,value in expected.items()}
+    assert max(errors.values())<=.10, ('landmarks differ >10%',ratios,errors)
+    def span(name,axis):
+        values=[v.co[axis] for v in by_name[name].data.vertices]
+        return max(values)-min(values)
+    widths=dict(head=span('helmet_brim',1)/height,
+        shoulders=(max(v.co.y for v in by_name['upper_arm_r'].data.vertices)-
+                   min(v.co.y for v in by_name['upper_arm_l'].data.vertices))/height,
+        foot_length=span('boot_l',0)/height,hand_diameter=span('fist_l',2)/height)
+    assert all(abs(value/recipe.spec['proportions']['widths'][key]-1)<=.10 for key,value in widths.items()), widths
+    print('SPEC_PROPORTIONS',recipe.spec['id'],json.dumps(dict(landmarks=ratios,widths=widths,
+        max_relative_error=max(errors.values()),head_ratio=1-ratios['chin'],leg_ratio=ratios['crotch']),sort_keys=True),flush=True)
     assert 'shield_boss' not in by_name
     assert len(by_name['helmet_dome'].data.vertices) == recipe.parts['helmet']['sides']*3
     diameter = max(zs('shield_rim'))-min(zs('shield_rim'))
@@ -192,6 +223,45 @@ def validate_spec_model(recipe, rig, objects):
     validate_spec_walk(recipe, rig)
     print('SPEC_MODEL', recipe.spec['id'],
           'triangles='+str(sum(sum(len(p.vertices)-2 for p in ob.data.polygons) for ob in objects)), flush=True)
+
+
+def validate_chibi_poses(recipe, rig, objects):
+    """Check the actual baked sword against the larger head at all output times."""
+    from mathutils.bvhtree import BVHTree
+    scene=bpy.context.scene
+    by_name={ob.name:ob for ob in objects}
+    samples=0
+    for name,_,duration,_,events in ANIMATIONS:
+        action=bpy.data.actions[name]
+        rig.animation_data.action=action
+        rig.animation_data.action_slot=action.slots[0]
+        for t in sorted(set(list(action['sample_times'])+list(events.values()))):
+            frame=t*1000+1
+            scene.frame_set(int(frame),subframe=frame%1)
+            graph=bpy.context.evaluated_depsgraph_get()
+            blade=by_name['sword_blade'].evaluated_get(graph)
+            points=[blade.matrix_world@v.co for v in blade.data.vertices]
+            for piece in ('head','helmet_dome','helmet_brim','nasal_guard'):
+                ob=by_name[piece].evaluated_get(graph)
+                tree=BVHTree.FromPolygons([ob.matrix_world@v.co for v in ob.data.vertices],
+                    [list(p.vertices) for p in ob.data.polygons])
+                for edge in blade.data.edges:
+                    a,b=(points[i] for i in edge.vertices)
+                    delta=b-a
+                    hit=tree.ray_cast(a,delta.normalized(),delta.length)
+                    assert hit[0] is None, (name,t,'sword intersects',piece)
+            samples+=1
+    # The authored transitions share complete joint positions at their boundaries.
+    def joints(name,t,duration):
+        return recipe.skeleton(recipe.pose_parameters(name,t,duration))
+    for a,b in ((joints('fall',.35,.35),joints('sit',0,1.)),
+                (joints('sit',0,1.),joints('rise',0,.833)),
+                (joints('rise',.833,.833),joints('idle',0,.667))):
+        assert max((a[key][i]-b[key][i]).length for key in a for i in (0,1))<1e-5
+    rig.animation_data.action=bpy.data.actions['idle']
+    rig.animation_data.action_slot=bpy.data.actions['idle'].slots[0]
+    scene.frame_set(1)
+    print('SPEC_CHIBI_POSES',recipe.spec['id'],'sword_head_clear_samples='+str(samples),'transitions_close=True',flush=True)
 
 
 def validate_spec_walk(recipe, rig):
