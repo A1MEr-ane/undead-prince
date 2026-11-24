@@ -16,6 +16,16 @@ uniform float depth_nudge = 0.08;
 // 脚下陷进草里：精灵底部按草量混成草色
 uniform vec3 feet_color : source_color = vec3(0.36, 0.47, 0.25);
 uniform float feet_height = 0.13;
+// 两种图集格式共用本着色器（默认值 = 程序化精灵）：
+// v_up：RG 的 V 轴向上（Blender 管线），部位分区从左下角编号
+// light_mode：0 = 程序化精灵的明暗曲线；1 = Blender 管线约定的"部位色 × 2B"
+// stain_mask：哪些部位分区会沾血（按 4×4 分区编号的位掩码）；eye_cell：眼睛所在分区
+// blood_from_alpha：部位贴图 alpha 存了血迹噪声时用它，否则用按部位坐标生成的固定噪声
+uniform bool v_up = false;
+uniform int light_mode = 0;
+uniform int stain_mask = 79;
+uniform int eye_cell = 8;
+uniform bool blood_from_alpha = true;
 
 instance uniform float frame = 0.0;
 instance uniform float flip = 0.0;
@@ -53,22 +63,28 @@ void fragment() {
 	float coverage = texture(atlas_coverage, atlas_uv).a;
 	float look = clamp(floor(palette_row + 0.5), 0.0, look_grid.x * look_grid.y - 1.0);
 	vec2 look_cell = vec2(mod(look, look_grid.x), floor(look / look_grid.x));
-	vec4 material = texture(parts, (look_cell + t.rg) / look_grid);
-	float light = t.b <= 0.5 ? 0.6 + t.b * 0.8 : 0.7 + t.b * 0.6;
+	vec2 part_uv = v_up ? vec2(t.r, 1.0 - t.g) : t.rg;
+	vec4 material = texture(parts, (look_cell + part_uv) / look_grid);
+	float light = light_mode == 1 ? 2.0 * t.b : (t.b <= 0.5 ? 0.6 + t.b * 0.8 : 0.7 + t.b * 0.6);
 	vec3 col = material.rgb * light;
 
 	// Alpha in the part sheet is a stable, smooth blood field, not opacity.
 	// Its coordinates follow each body part; no TIME or screen-space randomness.
-	ivec2 slot = ivec2(floor(t.rg * 4.0));
-	int part = slot.y * 4 + slot.x + 1;
-	bool stainable = part == 1 || part == 2 || part == 3 || part == 4 || part == 7;
+	ivec2 slot = ivec2(clamp(floor(t.rg * 4.0), vec2(0.0), vec2(3.0)));
+	int part_cell = slot.y * 4 + slot.x;
+	bool stainable = ((stain_mask >> part_cell) & 1) == 1;
 	float wound = sqrt(clamp(1.0 - health, 0.0, 1.0));
-	float blood = smoothstep(1.02 - wound * 0.82, 1.10 - wound * 0.82, material.a);
+	float field = material.a;
+	if (!blood_from_alpha) {
+		vec2 q = floor(t.rg * 48.0);
+		field = fract(sin(dot(q, vec2(12.9898, 78.233))) * 43758.5453);
+	}
+	float blood = smoothstep(1.02 - wound * 0.82, 1.10 - wound * 0.82, field);
 	if (stainable) {
 		col = mix(col, col * vec3(0.37, 0.055, 0.075), blood * 0.92);
 	}
 	// Spectral eyes retain their bright cyan-green color in the baked shadows.
-	if (part == 9 && look >= 2.0) {
+	if (part_cell == eye_cell && look >= 2.0) {
 		col = material.rgb * 1.2;
 	}
 	float feet = clamp((UV.y - (1.0 - feet_height)) / feet_height, 0.0, 1.0);

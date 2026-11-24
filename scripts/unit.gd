@@ -35,6 +35,10 @@ var shadow: MeshInstance3D
 var ring: MeshInstance3D
 var anims: Dictionary
 var fall_frames := PackedInt32Array()
+# 精灵集：direct=true 时动画表里有与片段同名的动画（Blender 管线），直接按名字和 JSON 时长播放
+var sprite_direct := false
+var sprite_lens := {}
+var sprite_loops := {}
 
 # 数值
 var max_hp := 1.0
@@ -126,7 +130,11 @@ func setup(p_main, p_squad, p_faction: int, palette_row: int, pos: Vector3, stat
 	terrain = p_main.terrain
 	squad = p_squad
 	faction = p_faction
-	anims = p_main.anims
+	var sp: Dictionary = p_main.sprite_sets[stats.get("sprite", "proc")]
+	anims = sp["anims"]
+	sprite_direct = sp["direct"]
+	sprite_lens = sp["lens"]
+	sprite_loops = sp["loops"]
 	max_hp = stats.get("hp", 1.0)
 	hp = max_hp
 	max_speed = stats.get("speed", 2.0)
@@ -142,14 +150,15 @@ func setup(p_main, p_squad, p_faction: int, palette_row: int, pos: Vector3, stat
 	beats = Beats.new()
 	idle_offset = randf()
 	# 倒下：受击后仰 → 跪 → 坐 → 躺（借用已有帧）
-	var hit: Vector2i = anims["hit"]
-	var getup: Vector2i = anims["getup"]
-	var down: Vector2i = anims["down"]
-	fall_frames = PackedInt32Array([hit.x, getup.x + mini(2, getup.y - 1), getup.x + mini(1, getup.y - 1), down.x])
+	if not sprite_direct:
+		var hit: Vector2i = anims["hit"]
+		var getup: Vector2i = anims["getup"]
+		var down: Vector2i = anims["down"]
+		fall_frames = PackedInt32Array([hit.x, getup.x + mini(2, getup.y - 1), getup.x + mini(1, getup.y - 1), down.x])
 
 	mesh = MeshInstance3D.new()
 	mesh.mesh = p_main.unit_quad
-	mesh.material_override = p_main.unit_material
+	mesh.material_override = sp["material"]
 	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	mesh.custom_aabb = AABB(Vector3(-1, -0.5, -1), Vector3(2, 2.5, 2))
 	add_child(mesh)
@@ -637,6 +646,8 @@ func play(clip: String, start_norm: float = 0.0) -> void:
 
 
 func _clip_len(clip: String) -> float:
+	if sprite_direct and sprite_lens.has(clip):
+		return sprite_lens[clip]
 	if clip == "fall":
 		return 0.35
 	if clip == "walk":
@@ -655,6 +666,11 @@ func anim_done() -> bool:
 func _current_frame() -> int:
 	var clip_len := _clip_len(anim_name)
 	var k := anim_t / clip_len
+	if sprite_direct and anims.has(anim_name):
+		var d: Vector2i = anims[anim_name]
+		if sprite_loops.get(anim_name, false):
+			k = fposmod(k, 1.0)
+		return d.x + clampi(int(k * d.y), 0, d.y - 1)
 	if anim_name == "fall":
 		return fall_frames[mini(int(k * fall_frames.size()), fall_frames.size() - 1)]
 	var sprite_anim := "walk" if anim_name == "walk" else String(CLIPS[anim_name][0])

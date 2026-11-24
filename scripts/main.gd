@@ -35,6 +35,7 @@ var time := 0.0
 var selected = null
 
 var anims: Dictionary
+var sprite_sets := {}   # 名字 → {material, anims, lens, loops, direct}
 var unit_material: ShaderMaterial
 var unit_quad: QuadMesh
 var shadow_mesh: PlaneMesh
@@ -205,6 +206,10 @@ func _setup_assets() -> void:
 	unit_material.set_shader_parameter("look_grid", Vector2(SpriteFactory.LOOK_GRID))
 	unit_material.set_shader_parameter("atlas_grid", res["grid"])
 	unit_material.set_shader_parameter("quad_size", Unit.QUAD)
+	sprite_sets["proc"] = {"material": unit_material, "anims": anims, "lens": {}, "loops": {}, "direct": false}
+	var shield := _load_blender_sprites("k2_shieldman")
+	if not shield.is_empty():
+		sprite_sets["shieldman"] = shield
 	unit_quad = QuadMesh.new()
 	unit_quad.size = Vector2(Unit.QUAD, Unit.QUAD)
 	unit_quad.center_offset = Vector3(0, Unit.QUAD * 0.5, 0)
@@ -241,6 +246,49 @@ func _setup_assets() -> void:
 	marker.mesh = mm
 	marker.visible = false
 	add_child(marker)
+
+
+## 读取 Blender 管线产出的 UV 精灵（docs/sprite-pipeline.md）：图集 + 部位贴图 + JSON 动画表。
+## 用 Image.load_from_file 直接读原始 PNG，绕过导入设置（数据图不能做 sRGB 或压缩）。
+func _load_blender_sprites(id: String) -> Dictionary:
+	var dir := "res://assets/sprites/"
+	var json_path := ProjectSettings.globalize_path(dir + id + "_uv.json")
+	if not FileAccess.file_exists(json_path):
+		push_warning("缺少精灵：" + json_path)
+		return {}
+	var meta: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(json_path))
+	var atlas := Image.load_from_file(ProjectSettings.globalize_path(dir + String(meta["image"])))
+	var parts := Image.load_from_file(ProjectSettings.globalize_path(dir + String(meta["part_texture"]["image"])))
+	var atlas_tex := ImageTexture.create_from_image(atlas)
+	var mat := ShaderMaterial.new()
+	mat.shader = load("res://shaders/unit.gdshader")
+	mat.set_shader_parameter("atlas", atlas_tex)
+	mat.set_shader_parameter("atlas_coverage", atlas_tex)
+	mat.set_shader_parameter("parts", ImageTexture.create_from_image(parts))
+	var grid: Array = meta["part_texture"]["grid"]
+	mat.set_shader_parameter("look_grid", Vector2(grid[0], grid[1]))
+	mat.set_shader_parameter("atlas_grid", Vector2(meta["columns"], meta["rows"]))
+	mat.set_shader_parameter("quad_size", Unit.QUAD)
+	mat.set_shader_parameter("v_up", true)
+	mat.set_shader_parameter("light_mode", 1)
+	mat.set_shader_parameter("blood_from_alpha", false)
+	# 沾血分区：皮肤、头盔、外衣、衣边、袖子、裤子（按左下角起的 4×4 分区编号）
+	var stain := 0
+	for name in ["skin", "helmet", "tunic", "cloth_trim", "sleeves", "trousers"]:
+		var c: Array = meta["part_texture"]["regions"][name]["cell"]
+		stain |= 1 << (int(c[1]) * 4 + int(c[0]))
+	mat.set_shader_parameter("stain_mask", stain)
+	var eye: Array = meta["part_texture"]["regions"]["eye"]["cell"]
+	mat.set_shader_parameter("eye_cell", int(eye[1]) * 4 + int(eye[0]))
+	var a := {}
+	var lens := {}
+	var loops := {}
+	for name in meta["animations"]:
+		var an: Dictionary = meta["animations"][name]
+		a[name] = Vector2i(int(an["start_frame"]), int(an["frame_count"]))
+		lens[name] = float(an["duration"])
+		loops[name] = bool(an["loop"])
+	return {"material": mat, "anims": a, "lens": lens, "loops": loops, "direct": true}
 
 
 func _make_palette() -> Image:
@@ -415,8 +463,10 @@ func _spawn_armies() -> void:
 	face_down.y = 0.0
 	var s1 := _make_squad("亡魂一队", 0, 2, 9, pa, true, {"hp": 1.0, "damage": 1.0, "knockback": 1.0, "stun": 1.0}, -face_down)
 	var s2 := _make_squad("亡魂二队", 0, 3, 9, pb, true, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1}, -face_down)
-	_make_squad("王旗卫队", 1, 1, 8, flag_pos + face_down.normalized() * 0.4, false, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1}, face_down)
-	_make_squad("山腰民兵", 1, 0, 8, mid, false, {"hp": 0.6, "damage": 1.0, "knockback": 1.0, "stun": 1.0}, face_down)
+	var kingdom_sprite := "shieldman" if sprite_sets.has("shieldman") else "proc"
+	var kingdom_look := 0 if kingdom_sprite == "shieldman" else 1
+	_make_squad("王旗卫队", 1, kingdom_look, 8, flag_pos + face_down.normalized() * 0.4, false, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1, "sprite": kingdom_sprite}, face_down)
+	_make_squad("山腰民兵", 1, 0, 8, mid, false, {"hp": 0.6, "damage": 1.0, "knockback": 1.0, "stun": 1.0, "sprite": kingdom_sprite}, face_down)
 	player_squads = [s1, s2]
 
 
