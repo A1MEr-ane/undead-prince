@@ -40,7 +40,10 @@
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
 | T67 | 原型 A：灰盒夜袭攻城（攻占主堡、冥火部署、自主单位、守军调度、5 分钟到破晓、5 个策略机器人） | Codex | codex/t67-siege-proto | proto/siege/ | 进行中 |
-| T68 | 攻城原型策略矩阵与参数扫描 | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 待办（依赖 T67） |
+| T69 | 原型 A 最小修正（援军默认关、倒计时、胜负状态机、规则补强、第 6 策略） | Codex | codex/t69-siege-fixes | proto/siege/ | 待办（依赖 T67） |
+| T68 | 攻城原型策略矩阵与参数扫描（按审查修订） | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 待办（依赖 T69） |
+| T70 | 镜头 A/B：固定 / 四朝向 / 360° | Codex | codex/t70-camera-ab | proto/siege/camera/ | 待办（依赖 T69），用户看后决定 |
+| T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
 | T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
 | T60 | T19 前置：批量模拟、统计、异常检测工具 | DSH | dsh/t60-sim-tools | tools/sim/ | 已合并 |
