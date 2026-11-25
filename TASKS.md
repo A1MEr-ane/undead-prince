@@ -39,8 +39,8 @@
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
-| T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 排队（01:30 起） |
-| T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 待办（依赖 T65） |
+| T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
+| T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
 | T60 | T19 前置：批量模拟、统计、异常检测工具 | DSH | dsh/t60-sim-tools | tools/sim/ | 已合并 |
 | T61 | 战斗系统基线测试（寻路、碰撞、攻击、行为、性能） | DSH | dsh/t61-battle-baseline | tests/ | 已合并 |
 | T62 | 战役状态与结局逻辑测试 + 未实现部分测试规格 | DSH | dsh/t62-campaign-endings | tests/, docs/test-specs/ | 已合并 |

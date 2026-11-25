@@ -2,7 +2,7 @@
 id: T65
 title: 战斗 bug 修复：1.2 米站立僵持、拼刀进度差、蛇形末行偏移
 owner: codex
-status: queued
+status: parked
 branch: codex/t65-battle-fixes
 worktree: ../亡魂王子-t65
 allowed: [scripts/swordsman.gd, scripts/squad.gd, scripts/unit.gd, tests/test_battle_baseline.gd, tests/run_tests.gd]

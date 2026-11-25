@@ -2,7 +2,7 @@
 id: T66
 title: 修复僵持后重跑守军参数扫描（T49 续）
 owner: dsh
-status: blocked   # 等 T65 合并后改成 queued
+status: parked
 branch: dsh/t66-defender-resweep
 worktree: ../亡魂王子-t66
 allowed: [scripts/squad.gd, scripts/main.gd, data/battles/, reports/agents/]
