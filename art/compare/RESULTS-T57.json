@@ -1,0 +1,1011 @@
+{
+  "schema_version": 1,
+  "task_id": "T57",
+  "title": "立绘高级化对比：3 种风格 × 3 个角色",
+  "executor": "codex",
+  "branch": "codex/t57-portrait-compare",
+  "status": "review_required",
+  "execution_status": "completed",
+  "started_at": "2026-11-25T05:50:18.760Z",
+  "generation_finished_at": "2026-11-25T06:07:40.004Z",
+  "method": {
+    "tool": "image_gen.imagegen (built-in)",
+    "mode": "style-transfer with one character reference per call",
+    "prompt_policy": "9 份提示词原样全文传入，含末尾换行；无改写、补充或纠错提示。",
+    "postprocessing": "无重绘、翻转、裁切、调色或缩放；入选图只移动原生 PNG。"
+  },
+  "counts": {
+    "requested_assets": 9,
+    "generated_candidates": 18,
+    "selected": 9,
+    "alternates": 9,
+    "generation_calls": 18,
+    "generation_failures": 0,
+    "generation_retries": 0,
+    "rate_limit_events": 0,
+    "max_consecutive_generation_failures": 0,
+    "auxiliary_validation_repairs": 1,
+    "retry_limit": 2
+  },
+  "format_check": {
+    "requested_px": [
+      1024,
+      1280
+    ],
+    "actual_px": [
+      1122,
+      1402
+    ],
+    "exact_pixels_match": false,
+    "approximately_four_to_five": true,
+    "notes": "内置工具所有返回图均为 1122×1402，约 4:5；未改变原提示词，也未进行二次像素修改。需要 Lead 确认该尺寸对比稿是否可接受。"
+  },
+  "cross_style_review": {
+    "status": "pass",
+    "evidence": "同一角色内，A 为节制暗轮廓与水粉块面，B 为无漫画描边的柔和电影雾光，C 为细密排线与墨蓝大暗块。三角色的同风格渲染方向一致，三种风格可明显区分。"
+  },
+  "issues": [
+    {
+      "severity": "review",
+      "code": "NATIVE_DIMENSIONS",
+      "description": "全部图为内置工具原生 1122×1402，未达到提示词指定的精确 1024×1280。"
+    },
+    {
+      "severity": "note",
+      "code": "C_PALETTE_TENSION",
+      "description": "C 保留参考角色紫披风/红绶带等身份色，配色并非严格仅提示词所列四种色值；伯纳德甲面高光偏旧纸色。"
+    },
+    {
+      "severity": "note",
+      "code": "BERNARD_CROP_AND_GESTURE",
+      "description": "伯纳德 A/B/C 入选图都保留盾牌，魂剑未进入所选半身画面；B/C 有轻微摊掌动作，符合原提示词礼貌劝阻姿态。"
+    },
+    {
+      "severity": "delivery",
+      "code": "GIT_SANDBOX_LOCK",
+      "description": "fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t57/index.lock': Operation not permitted"
+    }
+  ],
+  "validation": {
+    "required_command": "test -f art/compare/RESULTS-T57.json",
+    "required_command_exit_code": 0,
+    "artifact_integrity": "18 PNG 的签名、逐块 CRC、zlib 解压数据长度与扫描行过滤类型检查通过。",
+    "prompt_integrity": "9 份原文件全文与 sha256 均与登记一致；每张候选的参考列表只有对应角色自己的参考图。",
+    "auxiliary_attempts": [
+      {
+        "command": "python3 + PIL image inspection",
+        "exit_code": 1,
+        "reason": "ModuleNotFoundError: No module named 'PIL'"
+      },
+      {
+        "command": "python3 standard-library PNG CRC/zlib validator",
+        "exit_code": 0,
+        "reason": "改用标准库，无新增依赖。"
+      }
+    ],
+    "runtime_screenshot": "未截图：任务为独立立绘对比生成，未接入游戏；18 张实际生成预览均已逐张查看。",
+    "artifact_validation": {
+      "exit_code": 0,
+      "output": "PASS: 9 selected + 9 alternate unique PNGs; 9 verbatim prompt hashes match; one correct character reference per candidate; image hashes and sizes match.\nNOTICE: native images 1122x1402; exact 1024x1280 is not met and is registered for review.\nTotal PNG bytes: 48054908\n"
+    },
+    "scope": "仅 art/compare/ 与任务特别要求的 reports/agents/T57.md；未修改 forbidden。"
+  },
+  "usage": {
+    "image_generations": 18,
+    "billed_cost": null,
+    "quota": null,
+    "notes": "内置工具未提供费用、token 或剩余额度数据。"
+  },
+  "items": [
+    {
+      "id": "EDMUND_A",
+      "character": "EDMUND",
+      "style": "A",
+      "style_name": "精炼墨线",
+      "selected_variant": 1,
+      "selected_path": "art/compare/EDMUND_A.png",
+      "alternate_path": "art/compare/alt/EDMUND_A_v2.png",
+      "selection_reason": "半身构图与右侧留白更完整；轮廓虚实、护甲笔触和克制表情较平衡。第二版较紧，顶部魂火被截。",
+      "prompt": {
+        "path": "art/prompts/compare/EDMUND_A.txt",
+        "sha256": "ba62baff2b5d7e53c9b704dd7a833e2dc0726c056015afb68ac2b8394183948c",
+        "used_verbatim": true,
+        "text": "STYLE A \"Refined ink\": Premium hand-painted character portrait for a narrative game. Mature, realistic adult proportions and believable faces with subtle, restrained acting. Confident dark contour lines that vary from hairline-thin to bold, used sparingly where form turns, never a uniform cartoon outline. Painterly gouache rendering with soft-to-hard edge control: crisp edges on the face, crown and hands, lost edges where the figure melts into shadow. One motivated key light, deep shadow covering half the figure, a thin precise rim light. Restrained palette: ink-navy and charcoal darks, one warm or cyan accent, small gold details. Generous negative space; the figure is composed like an editorial poster, not centered like a snapshot. Fine material detail on metal, cloth and skin, but calm overall.\nSUBJECT: Edmund, 26, assassinated royal naval prince returned as undead. Lean, angular, tired handsome face, swept dark hair, strong brows. His anatomical LEFT half of the face (viewer right) is bare skull with a turquoise flame in the eye socket; the other half is human. A narrow gold crown visibly snapped at the front. Worn ivory-white plate armour with aged gold trim, a torn purple cape, the hilt of a soulfire sword at his shoulder. Expression: controlled resolve.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass",
+          "evidence": "右半骷髅脸、青绿眼火、前部断冠、象牙金边甲、破紫披风及肩后剑柄均可见。",
+          "notes": []
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "不均匀暗轮廓结合不透明手绘笔触，面甲硬边与阴影失边并存。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "半身裁切，未见多余肢体；手与脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "pass",
+          "evidence": "观众右半脸为裸露骷髅，眼窝有青绿魂火。"
+        },
+        "edmund_front_crown_break": {
+          "status": "pass",
+          "evidence": "金冠前部有清楚的断裂缺口。"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": true,
+          "path": "art/compare/EDMUND_A.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-3da1ee6e-60d3-4578-b905-20fb143b33f9.png",
+          "generated_at": "2026-11-25T05:51:35.265Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "6b8c97f4d50e6cfa9f82ce7d6fa82c5ff39ee6bd4cbea0bb540a51d70897c894",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2194058,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        },
+        {
+          "variant": 2,
+          "selected": false,
+          "path": "art/compare/alt/EDMUND_A_v2.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-e8667645-75d5-4207-9b9f-4c53e78024b3.png",
+          "generated_at": "2026-11-25T05:52:28.377Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "0b3a0cf5e0656ca91e2ab7eaa92badfc32ee68b3274d2f5f48edd94850ee3b06",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2214761,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "EDMUND_B",
+      "character": "EDMUND",
+      "style": "B",
+      "style_name": "电影光影",
+      "selected_variant": 2,
+      "selected_path": "art/compare/EDMUND_B.png",
+      "alternate_path": "art/compare/alt/EDMUND_B_v1.png",
+      "selection_reason": "断冠前口更清楚；表情收敛，右侧暗部留白、暖色体积光与青绿魂火层次更完整。首版面部皮肤质感较写实粗粝。",
+      "prompt": {
+        "path": "art/prompts/compare/EDMUND_B.txt",
+        "sha256": "4a5ee8fee674c03444ee6208ae69312b6ae5dba3ccfe08e5c07fcdfbb5d2202d",
+        "used_verbatim": true,
+        "text": "STYLE B \"Cinematic chiaroscuro\": Luminous painted portrait with a film still's lighting. Realistic adult proportions, refined elegant faces, wind-moved hair and cloth. Soft painterly rendering with crisp silhouette edges and no comic outlines. A single strong light source through haze, volumetric light and drifting particles (ash, sea spray, embers) catching the light; most of the frame in deep atmospheric shadow; highlights only on the face, crown or blade. Muted desaturated cool shadows against warm or cyan light, one saturated accent.\nSUBJECT: Edmund, 26, assassinated royal naval prince returned as undead. Lean, angular, tired handsome face, swept dark hair, strong brows. His anatomical LEFT half of the face (viewer right) is bare skull with a turquoise flame in the eye socket; the other half is human. A narrow gold crown visibly snapped at the front. Worn ivory-white plate armour with aged gold trim, a torn purple cape, the hilt of a soulfire sword at his shoulder. Expression: controlled resolve.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass",
+          "evidence": "观众右半骷髅、金冠前端断口、深发、象牙金边甲、破紫披风、锚扣与肩后剑柄一致。",
+          "notes": []
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "无明显漫画外描线，雾中斜射光与悬浮颗粒、柔和明暗体积，和 A 的干笔墨线有区分。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "半身裁切，未见多余肢体；手与脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "pass",
+          "evidence": "观众右半脸为裸露骷髅，眼窝有青绿魂火。"
+        },
+        "edmund_front_crown_break": {
+          "status": "pass",
+          "evidence": "金冠前部有清楚的断裂缺口。"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": false,
+          "path": "art/compare/alt/EDMUND_B_v1.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-27e14ecd-5268-4c8d-b4b6-8b9e75410297.png",
+          "generated_at": "2026-11-25T05:53:17.825Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "1f5b169a2b5e3e14b094b4396d8c6e2983eef8718e83acedd7a9d10d804b93ac",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2130199,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        },
+        {
+          "variant": 2,
+          "selected": true,
+          "path": "art/compare/EDMUND_B.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-f3ed8045-d52c-4abd-8a49-70df976850c2.png",
+          "generated_at": "2026-11-25T05:54:18.042Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "167774401eff1a761920b6474286efdcdecf4ed3248c743f39c629681d633acb",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2206081,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "EDMUND_C",
+      "character": "EDMUND",
+      "style": "C",
+      "style_name": "铜版海图",
+      "selected_variant": 2,
+      "selected_path": "art/compare/EDMUND_C.png",
+      "alternate_path": "art/compare/alt/EDMUND_C_v1.png",
+      "selection_reason": "断冠与头部轮廓更简洁，脸和甲片刻线节奏更均匀，青绿火焰更收束。",
+      "prompt": {
+        "path": "art/prompts/compare/EDMUND_C.txt",
+        "sha256": "572ea03a3f0f0ab783ebb9e7ffada9988511e28b4296ea7807727c34032173b2",
+        "used_verbatim": true,
+        "text": "STYLE C \"Engraved sea-chart\": Striking graphic portrait inspired by old copperplate engravings and naval charts, reinterpreted as a modern game illustration. Mature, realistic adult anatomy. Form built with fine engraved hatching and cross-hatching in deep ink-navy, large flat shapes of shadow, a very limited palette: aged paper ivory, ink navy, burnished gold, plus ONE glowing accent (cyan-green soulfire for the undead, warm sun-gold for the living). Precise, elegant, austere; strong silhouette; subtle paper grain. No soft airbrush, no cartoon shapes.\nSUBJECT: Edmund, 26, assassinated royal naval prince returned as undead. Lean, angular, tired handsome face, swept dark hair, strong brows. His anatomical LEFT half of the face (viewer right) is bare skull with a turquoise flame in the eye socket; the other half is human. A narrow gold crown visibly snapped at the front. Worn ivory-white plate armour with aged gold trim, a torn purple cape, the hilt of a soulfire sword at his shoulder. Expression: controlled resolve.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass_with_notes",
+          "evidence": "右侧半骷髅、前方断冠、深发、象牙金边板甲、低饱和紫披风、肩后魂剑剑柄一致。",
+          "notes": [
+            "依原角色保留低饱和紫披风，因此并非严格仅四种色值；这是原提示词有限配色和保持服装颜色两项要求之间的张力。"
+          ]
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "交叉排线塑形、墨蓝大暗块、旧纸象牙与金色主调，青绿魂火点亮；与 A/B 明显不同。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "半身裁切，未见多余肢体；手与脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "pass",
+          "evidence": "观众右半脸为裸露骷髅，眼窝有青绿魂火。"
+        },
+        "edmund_front_crown_break": {
+          "status": "pass",
+          "evidence": "金冠前部有清楚的断裂缺口。"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": false,
+          "path": "art/compare/alt/EDMUND_C_v1.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-d29845d0-0314-4745-9290-2f078d0fb202.png",
+          "generated_at": "2026-11-25T05:55:19.513Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "72f281a4183518624de7082a73b14e79f8930c1dee52e847c0677456b9981b0a",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3746800,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        },
+        {
+          "variant": 2,
+          "selected": true,
+          "path": "art/compare/EDMUND_C.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-0d07547e-7d15-4d01-91d0-8457ae74c4e8.png",
+          "generated_at": "2026-11-25T05:56:17.310Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE-UNDEAD/turnaround.png"
+          ],
+          "sha256": "3d2b4eacb4d7fccc6dca66278d4a30d3037e1c9432d9273b931a8a3e1f6d2f82",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3698975,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ELEANOR_A",
+      "character": "ELEANOR",
+      "style": "A",
+      "style_name": "精炼墨线",
+      "selected_variant": 2,
+      "selected_path": "art/compare/ELEANOR_A.png",
+      "alternate_path": "art/compare/alt/ELEANOR_A_v1.png",
+      "selection_reason": "面部表情更沉静，右侧暗部留白更干净，双手、补帆船和书的接触关系较清楚。",
+      "prompt": {
+        "path": "art/prompts/compare/ELEANOR_A.txt",
+        "sha256": "884539f6729e82577d90033548d077ffc22471cb1d086b73f76022e411df8b65",
+        "used_verbatim": true,
+        "text": "STYLE A \"Refined ink\": Premium hand-painted character portrait for a narrative game. Mature, realistic adult proportions and believable faces with subtle, restrained acting. Confident dark contour lines that vary from hairline-thin to bold, used sparingly where form turns, never a uniform cartoon outline. Painterly gouache rendering with soft-to-hard edge control: crisp edges on the face, crown and hands, lost edges where the figure melts into shadow. One motivated key light, deep shadow covering half the figure, a thin precise rim light. Restrained palette: ink-navy and charcoal darks, one warm or cyan accent, small gold details. Generous negative space; the figure is composed like an editorial poster, not centered like a snapshot. Fine material detail on metal, cloth and skin, but calm overall.\nSUBJECT: Eleanor, 20, the young Queen: dark pinned-up hair with loose strands, strong brows, sharp intelligent eyes, slim gold crown with one red stone, ivory court gown with a crimson diagonal sash, holding a small repaired wooden toy boat against her waist. Expression: composed, watchful, unreadable.\nACCENT LIGHT: warm ivory-gold.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass",
+          "evidence": "深色盘发、浓眉、单红宝石金冠、象牙宫装与金边、绯红斜绶带、修补玩具船和原参考书均保留。",
+          "notes": []
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "粗细有别的暗轮廓、服装水粉块面、面部硬边和背景失边，暖金单侧光。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "一手托船、一手抱书，共两只手；手指受道具遮挡处未见额外结构，脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": false,
+          "path": "art/compare/alt/ELEANOR_A_v1.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-a242192f-9aff-46fb-8db7-51c08b110db9.png",
+          "generated_at": "2026-11-25T05:57:17.336Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "eb43469e7f0341ac3a971bbeac67fb1c313a75ac0f52d367dce43ea238f81cea",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2192106,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        },
+        {
+          "variant": 2,
+          "selected": true,
+          "path": "art/compare/ELEANOR_A.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-e98eeead-2688-4e1e-9461-e4878f48848c.png",
+          "generated_at": "2026-11-25T05:57:54.093Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "d80277f9e1c14078b238765f4932071a489c55af7e716ac82224436510e376de",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2140889,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ELEANOR_B",
+      "character": "ELEANOR",
+      "style": "B",
+      "style_name": "电影光影",
+      "selected_variant": 2,
+      "selected_path": "art/compare/ELEANOR_B.png",
+      "alternate_path": "art/compare/alt/ELEANOR_B_v1.png",
+      "selection_reason": "保留单颗红宝石，排除首版冠侧新增小红石；目光、船帆补丁、手持书关系清楚。",
+      "prompt": {
+        "path": "art/prompts/compare/ELEANOR_B.txt",
+        "sha256": "fa9fc653674061cacd8034dd3e2014d4321f2fb3b783ffae18af0d770841ae44",
+        "used_verbatim": true,
+        "text": "STYLE B \"Cinematic chiaroscuro\": Luminous painted portrait with a film still's lighting. Realistic adult proportions, refined elegant faces, wind-moved hair and cloth. Soft painterly rendering with crisp silhouette edges and no comic outlines. A single strong light source through haze, volumetric light and drifting particles (ash, sea spray, embers) catching the light; most of the frame in deep atmospheric shadow; highlights only on the face, crown or blade. Muted desaturated cool shadows against warm or cyan light, one saturated accent.\nSUBJECT: Eleanor, 20, the young Queen: dark pinned-up hair with loose strands, strong brows, sharp intelligent eyes, slim gold crown with one red stone, ivory court gown with a crimson diagonal sash, holding a small repaired wooden toy boat against her waist. Expression: composed, watchful, unreadable.\nACCENT LIGHT: warm ivory-gold.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass",
+          "evidence": "原参考盘发、浓眉、单石金冠、象牙宫装、红斜绶带、补帆船和书一致。",
+          "notes": []
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "暖光穿雾、受光飞发、轻微颗粒与柔和绘画体积，无 A 的明显轮廓笔线。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "一手托船、一手抱书，共两只手；手指受道具遮挡处未见额外结构，脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": false,
+          "path": "art/compare/alt/ELEANOR_B_v1.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-79059816-252c-4a1b-acbc-6ee891958fb1.png",
+          "generated_at": "2026-11-25T05:58:50.527Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "27fef2b6cd08858063fc77db419b77a7ab63a7be3f75dd2aec6758b1b771bb63",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2147422,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "冠侧多出一颗小红石，与单红石要求有偏差，未入选。"
+            ]
+          }
+        },
+        {
+          "variant": 2,
+          "selected": true,
+          "path": "art/compare/ELEANOR_B.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-9574f606-bcca-461d-85d3-54bcd599458c.png",
+          "generated_at": "2026-11-25T05:59:45.655Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "f6befb7271756ede9e5ec2cb92b1fd86e56db1fd9449282952eaaed01702c078",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2171385,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "ELEANOR_C",
+      "character": "ELEANOR",
+      "style": "C",
+      "style_name": "铜版海图",
+      "selected_variant": 1,
+      "selected_path": "art/compare/ELEANOR_C.png",
+      "alternate_path": "art/compare/alt/ELEANOR_C_v2.png",
+      "selection_reason": "五官更接近参考，脸部和双手刻线较细，头顶及右侧留白较第二版宽松。",
+      "prompt": {
+        "path": "art/prompts/compare/ELEANOR_C.txt",
+        "sha256": "f4ea5ea0c1a2aa2d666bb5bdb9db06b0460a4217bb1ba36a36a59c510b8488ac",
+        "used_verbatim": true,
+        "text": "STYLE C \"Engraved sea-chart\": Striking graphic portrait inspired by old copperplate engravings and naval charts, reinterpreted as a modern game illustration. Mature, realistic adult anatomy. Form built with fine engraved hatching and cross-hatching in deep ink-navy, large flat shapes of shadow, a very limited palette: aged paper ivory, ink navy, burnished gold, plus ONE glowing accent (cyan-green soulfire for the undead, warm sun-gold for the living). Precise, elegant, austere; strong silhouette; subtle paper grain. No soft airbrush, no cartoon shapes.\nSUBJECT: Eleanor, 20, the young Queen: dark pinned-up hair with loose strands, strong brows, sharp intelligent eyes, slim gold crown with one red stone, ivory court gown with a crimson diagonal sash, holding a small repaired wooden toy boat against her waist. Expression: composed, watchful, unreadable.\nACCENT LIGHT: warm ivory-gold.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass_with_notes",
+          "evidence": "盘发、浓眉、单红石金冠、象牙金边宫装、红斜绶带、补帆船和书保留。",
+          "notes": [
+            "为保持角色服装身份保留红绶带与宝石，船身也保留少量原参考蓝色，调色并非严格仅四种色值。"
+          ]
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "密排线与交叉刻线塑形，墨蓝阴影、象牙纸色与金线，暖金边缘点光；无软喷枪体积。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "一手托船、一手抱书，共两只手；手指受道具遮挡处未见额外结构，脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": true,
+          "path": "art/compare/ELEANOR_C.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-baf3c27d-5a01-4ab8-85b2-8f7a366a2a60.png",
+          "generated_at": "2026-11-25T06:00:24.685Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "d9afa9cc9fb98f26026143f7628d6860af4f1b786ff2ac7ad831ff5495f0797a",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3392865,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        },
+        {
+          "variant": 2,
+          "selected": false,
+          "path": "art/compare/alt/ELEANOR_C_v2.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-ac1d0293-f4d1-4939-99fe-24e5a333afdf.png",
+          "generated_at": "2026-11-25T06:01:23.623Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+          ],
+          "sha256": "c431c2906b5c37e5151b30e42decd03ef447fd2a7cdd970ac291402b3088e405",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3671468,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "BERNARD_A",
+      "character": "BERNARD",
+      "style": "A",
+      "style_name": "精炼墨线",
+      "selected_variant": 1,
+      "selected_path": "art/compare/BERNARD_A.png",
+      "alternate_path": "art/compare/alt/BERNARD_A_v2.png",
+      "selection_reason": "站姿和盾上手甲更接近原参考，未额外引入第二版的举手动作；目缝、甲面和头盔在深暗部仍清楚。",
+      "prompt": {
+        "path": "art/prompts/compare/BERNARD_A.txt",
+        "sha256": "7cf14a14233d6cfb5eac221c70f6c719094cef66b2e12b94a12d134b2c72d229",
+        "used_verbatim": true,
+        "text": "STYLE A \"Refined ink\": Premium hand-painted character portrait for a narrative game. Mature, realistic adult proportions and believable faces with subtle, restrained acting. Confident dark contour lines that vary from hairline-thin to bold, used sparingly where form turns, never a uniform cartoon outline. Painterly gouache rendering with soft-to-hard edge control: crisp edges on the face, crown and hands, lost edges where the figure melts into shadow. One motivated key light, deep shadow covering half the figure, a thin precise rim light. Restrained palette: ink-navy and charcoal darks, one warm or cyan accent, small gold details. Generous negative space; the figure is composed like an editorial poster, not centered like a snapshot. Fine material detail on metal, cloth and skin, but calm overall.\nSUBJECT: Captain Bernard, undead captain of the guard: broad, battered steel-grey plate, enclosed naval great-helm with a narrow visor slit glowing cyan-green, scratched crown insignia, purple cloak, the top edge of a dented shield. Posture: steady, loyal, about to disagree politely.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass_with_notes",
+          "evidence": "封闭海军大盔、狭窄青绿目缝、钢灰破旧板甲、皇冠胸徽、紫披风、圆形披风扣和金边皇冠盾一致。",
+          "notes": [
+            "持剑手与剑在半身裁切范围之外，未额外补入武器。"
+          ]
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "干笔水粉甲面、节制的暗轮廓、暖主光与细青绿轮廓光，暗部失边。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "扶盾手与可见自由手/手臂无额外肢体；脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": true,
+          "path": "art/compare/BERNARD_A.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-afa3dea8-27b7-48ae-9f19-ba209b54e9d7.png",
+          "generated_at": "2026-11-25T06:02:10.629Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "e52f90b22a8c873251836aefd3c01450cc01224ba815dd30aab2afe67508b4f7",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2119186,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        },
+        {
+          "variant": 2,
+          "selected": false,
+          "path": "art/compare/alt/BERNARD_A_v2.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-e7bf618d-d014-4be1-a783-7cf7ef8d6e0a.png",
+          "generated_at": "2026-11-25T06:03:12.533Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "e689538bb0db80b3986c7be09772705ba4a5654fd23ff2b9c477fd3d91b2e798",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2233063,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "BERNARD_B",
+      "character": "BERNARD",
+      "style": "B",
+      "style_name": "电影光影",
+      "selected_variant": 1,
+      "selected_path": "art/compare/BERNARD_B.png",
+      "alternate_path": "art/compare/alt/BERNARD_B_v2.png",
+      "selection_reason": "扶盾手与盾沿关系清楚，青绿侧后光和雾中颗粒明确。第二版左手抬起后盾牌支撑关系不如首版清晰。",
+      "prompt": {
+        "path": "art/prompts/compare/BERNARD_B.txt",
+        "sha256": "a3a52ce625d9a42beab08d17c606d28566f825b29da2fdd5b5d4b81259d166ae",
+        "used_verbatim": true,
+        "text": "STYLE B \"Cinematic chiaroscuro\": Luminous painted portrait with a film still's lighting. Realistic adult proportions, refined elegant faces, wind-moved hair and cloth. Soft painterly rendering with crisp silhouette edges and no comic outlines. A single strong light source through haze, volumetric light and drifting particles (ash, sea spray, embers) catching the light; most of the frame in deep atmospheric shadow; highlights only on the face, crown or blade. Muted desaturated cool shadows against warm or cyan light, one saturated accent.\nSUBJECT: Captain Bernard, undead captain of the guard: broad, battered steel-grey plate, enclosed naval great-helm with a narrow visor slit glowing cyan-green, scratched crown insignia, purple cloak, the top edge of a dented shield. Posture: steady, loyal, about to disagree politely.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass_with_notes",
+          "evidence": "封闭大盔、青绿目缝、钢灰旧甲、金色磨损皇冠胸徽与盾徽、破紫披风和圆扣保留。",
+          "notes": [
+            "自由手改为摊掌的轻微劝阻姿态，符合原提示词姿态要求；剑不在本版半身画面内。"
+          ]
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "雾中青绿体积斜光、漂浮颗粒、柔和绘画明暗与受风披风，无明显漫画外描线。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "扶盾手与可见自由手/手臂无额外肢体；脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": true,
+          "path": "art/compare/BERNARD_B.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-60003d83-45d1-4493-89eb-9f4852fbc947.png",
+          "generated_at": "2026-11-25T06:03:57.773Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "958c95a1565a6c9325cf45d97e733f306bb08bb935d32ba2bde664982e24b172",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2150531,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": []
+          }
+        },
+        {
+          "variant": 2,
+          "selected": false,
+          "path": "art/compare/alt/BERNARD_B_v2.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-0ada772d-eac5-43e1-947c-4874953fe7d1.png",
+          "generated_at": "2026-11-25T06:04:36.066Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "e76d032914935acf3e4179c0413a54622240c70eb89c06abfcb85fd26c2c8821",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 2140376,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "左手抬起后盾牌支撑关系较弱，未入选。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "BERNARD_C",
+      "character": "BERNARD",
+      "style": "C",
+      "style_name": "铜版海图",
+      "selected_variant": 1,
+      "selected_path": "art/compare/BERNARD_C.png",
+      "alternate_path": "art/compare/alt/BERNARD_C_v2.png",
+      "selection_reason": "摊掌语气比第二版竖指更克制，盾沿手甲和磨损皇冠徽更清楚，较符合忠诚而礼貌劝阻的状态。",
+      "prompt": {
+        "path": "art/prompts/compare/BERNARD_C.txt",
+        "sha256": "8f471336620eee61943b577c6c78a36998560667108353d53d20f96a17f77cbb",
+        "used_verbatim": true,
+        "text": "STYLE C \"Engraved sea-chart\": Striking graphic portrait inspired by old copperplate engravings and naval charts, reinterpreted as a modern game illustration. Mature, realistic adult anatomy. Form built with fine engraved hatching and cross-hatching in deep ink-navy, large flat shapes of shadow, a very limited palette: aged paper ivory, ink navy, burnished gold, plus ONE glowing accent (cyan-green soulfire for the undead, warm sun-gold for the living). Precise, elegant, austere; strong silhouette; subtle paper grain. No soft airbrush, no cartoon shapes.\nSUBJECT: Captain Bernard, undead captain of the guard: broad, battered steel-grey plate, enclosed naval great-helm with a narrow visor slit glowing cyan-green, scratched crown insignia, purple cloak, the top edge of a dented shield. Posture: steady, loyal, about to disagree politely.\nACCENT LIGHT: cyan-green soulfire.\nFORMAT: dialogue half-body portrait, vertical 4:5 (1024x1280), cropped at the waist, three-quarter view toward the viewer, plain dark background suited to sitting beside a dialogue box. NEGATIVE: absolutely no text, letters, logos or watermarks; no chibi, no cute or childlike faces, no low-poly, no 3D render look, no plastic shine; no names of existing games, studios or artists.\nREFERENCE IMAGES: attached is this character's current approved design sheet. Keep the identity, costume, colours and props exactly; change ONLY the rendering style as described.\n"
+      },
+      "reference_images": [
+        "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+      ],
+      "self_check": {
+        "identity_and_costume": {
+          "status": "pass_with_notes",
+          "evidence": "封闭海军大盔、青绿狭目缝、旧板甲、皇冠胸徽、紫披风、圆扣及金边皇冠盾保留。",
+          "notes": [
+            "保留低饱和紫披风和纸色甲面高光；C 的有限配色会使钢灰甲更接近旧纸色。",
+            "自由手改为轻微摊掌的劝阻姿态；持剑手与剑未进入本版半身画面。"
+          ]
+        },
+        "style": {
+          "status": "pass",
+          "evidence": "精细金属排线与交叉刻线、墨蓝大暗块、象牙纸色和金色点缀，青绿发光目缝；与 A/B 明确区分。"
+        },
+        "no_text": {
+          "status": "pass",
+          "evidence": "已查看实际生成图，未见文字、字母、签名或水印。"
+        },
+        "no_extra_hands_or_feet": {
+          "status": "pass",
+          "evidence": "扶盾手与可见自由手/手臂无额外肢体；脚不在画面内。"
+        },
+        "edmund_viewer_right_skull": {
+          "status": "not_applicable"
+        },
+        "edmund_front_crown_break": {
+          "status": "not_applicable"
+        }
+      },
+      "candidates": [
+        {
+          "variant": 1,
+          "selected": true,
+          "path": "art/compare/BERNARD_C.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-fc284890-56d8-4a99-8f12-678911537db1.png",
+          "generated_at": "2026-11-25T06:05:22.972Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "917fa8999a8f21ac10dd48f815ea94d22ee949aec2eac1f216d7e7e9b0b95a0c",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3628490,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        },
+        {
+          "variant": 2,
+          "selected": false,
+          "path": "art/compare/alt/BERNARD_C_v2.png",
+          "generation_source": "/Users/cyy/.codex/generated_images/01a21140-d0fd-75f3-b53e-11ed237cc21e/exec-3172f342-b6b6-453d-ad3e-4c5056386f41.png",
+          "generated_at": "2026-11-25T06:06:04.456Z",
+          "reference_images": [
+            "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+          ],
+          "sha256": "4d4e37b3f7fd250acd32117aa95014544d8ed8bfadef898dcff16c0d6a34751c",
+          "size_px": [
+            1122,
+            1402
+          ],
+          "bytes": 3876253,
+          "format": "PNG",
+          "integrity": "CRC and zlib scanline layout passed",
+          "visual_review": {
+            "inspected": true,
+            "method": "逐张查看内置工具实际生成预览",
+            "no_text": true,
+            "no_extra_hands_or_feet": true,
+            "notes": [
+              "依角色身份保留低饱和服装色，非严格仅四种色值；甲面高光偏旧纸色。"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-11-25T06:09:20.904Z",
+  "elapsed_minutes": 19.04,
+  "git_delivery": {
+    "branch": "codex/t57-portrait-compare",
+    "status": "commit_blocked_at_staging",
+    "attempted_command": "git add -- art/compare/ reports/agents/T57.md",
+    "exit_code": 128,
+    "error": "fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t57/index.lock': Operation not permitted",
+    "staged_files": 0,
+    "commit_created": false,
+    "changes_retained": true,
+    "next_step": "Lead 在具备主仓库 worktree 元数据写权限的环境中暂存并提交这两个交付路径。"
+  }
+}
