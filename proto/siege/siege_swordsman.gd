@@ -89,7 +89,7 @@ func evaluate_new_state() -> void:
 	if u.sliding.active:
 		recover.set_true()
 		return
-	if stamina > 0.1:
+	if stamina > cfg.resume_stamina:
 		for f in adjacent:
 			if not _valid(f):
 				continue
@@ -112,7 +112,7 @@ func on_proximity(other) -> void:
 	if d > cfg.proximity_radius:
 		return
 	var inner: float = u.radius + range_() + other.radius
-	other.intimidate(_remap(d, inner, 1.0, 1.0, 0.0), 0.0)
+	other.intimidate(_remap(d, inner, cfg.proximity_radius, 1.0, 0.0), 0.0)
 
 
 func _update_stamina() -> void:
@@ -153,25 +153,25 @@ func _idle_update() -> void:
 
 func _ready_update() -> void:
 	stamina = move_toward(stamina, 1.0, AgentState.dt * cfg.recover_stamina_per_second)
-	var od: Vector3 = u.order_dir * _remap(u.order_dist, 1.0, 0.0, 0.1, 1.0)
+	var od: Vector3 = u.order_dir * _remap(u.order_dist, cfg.order_slow_distance, 0.0, cfg.minimum_order_speed, 1.0)
 	u.walk_dir = od * clampf(stamina, 0.0, 1.0)
 	if u.hard_int > 0.0:
-		u.walk_dir -= u.enemy_dir * u.hard_int * 2.0
+		u.walk_dir -= u.enemy_dir * u.hard_int * cfg.hard_intimidation_scale
 	if u.soft_int > 0.0:
-		var k: float = u.soft_int * lerpf(1.4, 0.9, u.friend_ratio()) * lerpf(1.4, 0.9, stamina)
+		var k: float = u.soft_int * lerpf(cfg.soft_intimidation_range[0], cfg.soft_intimidation_range[1], u.friend_ratio()) * lerpf(cfg.soft_intimidation_range[0], cfg.soft_intimidation_range[1], stamina)
 		var back: Vector3 = -u.enemy_dir * k
-		if u.order_dist < 2.0:
-			back = _clamp_to_dir(back, od, 0.5)
+		if u.order_dist < cfg.intimidation_order_distance:
+			back = _clamp_to_dir(back, od, cfg.retreat_clamp)
 		u.walk_dir += back
 	else:
-		u.walk_dir -= u.enemy_dir * _remap(u.enemy_dist, 0.1, 0.4, 1.0, 0.0)
+		u.walk_dir -= u.enemy_dir * _remap(u.enemy_dist, cfg.backoff_distance[0], cfg.backoff_distance[1], 1.0, 0.0)
 
 	if u.beats.hz(cfg.think_period):
 		var e = u.enemy
 		if _valid(e) and (e.enemy == u or not e.enemy_dangerous) and stamina > 0.0:
-			var face_off: bool = (u.order_dist_to(e.nav_pos) < 1.0 or u.intimidated()) and u.order_dist < 0.5 and e.order_dist < 0.2
-			var blocking: bool = (u.enemy_dist < 1.0 or u.intimidated()) and u.enemy_dir.dot(u.order_dir) > 0.0 \
-				and u.order_dist_to(e.nav_pos) < u.order_dist + 0.5
+			var face_off: bool = (u.order_dist_to(e.nav_pos) < cfg.faceoff_target_distance or u.intimidated()) and u.order_dist < cfg.faceoff_self_distance and e.order_dist < cfg.faceoff_enemy_distance
+			var blocking: bool = (u.enemy_dist < cfg.blocking_distance or u.intimidated()) and u.enemy_dir.dot(u.order_dir) > 0.0 \
+				and u.order_dist_to(e.nav_pos) < u.order_dist + cfg.blocking_margin
 			if face_off or blocking:
 				pursue()
 				return
@@ -183,7 +183,7 @@ func _ready_update() -> void:
 			hunting.set_true()
 			return
 	var look: Vector3 = u.order_dir
-	if u.enemy_dir.dot(u.order_dir) > 0.0 or u.intimidated() or u.enemy_dist < 2.0:
+	if u.enemy_dir.dot(u.order_dir) > 0.0 or u.intimidated() or u.enemy_dist < cfg.look_enemy_distance:
 		look = u.enemy_dir
 	if look.length() < 0.01:
 		look = u.slot_look
@@ -193,7 +193,7 @@ func _ready_update() -> void:
 func _should_hunt(victim, hunt_dist: float) -> bool:
 	if not _valid(victim) or victim.dangerous:
 		return false
-	if victim == u.enemy and u.enemy_dist < hunt_dist * 0.5 and u.enemy_dir.dot(u.order_dir) > 0.0:
+	if victim == u.enemy and u.enemy_dist < hunt_dist * cfg.hunt_distance_scale and u.enemy_dir.dot(u.order_dir) > 0.0:
 		return true
 	return u.order_dist_to(victim.nav_pos) < hunt_dist
 
@@ -212,9 +212,9 @@ func _broadcast_pursuit(dir: Vector3) -> int:
 		var b = f.brain
 		if not b.ready.active or b.stamina < 0.0:
 			continue
-		if dir.normalized().dot(f.enemy_dir.normalized()) < 0.1:
+		if dir.normalized().dot(f.enemy_dir.normalized()) < cfg.broadcast_dot_threshold:
 			continue
-		if f.order_dist > 1.0 and f.order_dir.dot(f.enemy_dir) < 0.0:
+		if f.order_dist > cfg.broadcast_order_distance and f.order_dir.dot(f.enemy_dir) < 0.0:
 			continue
 		b.pursuing.set_true()
 		count += 1 + b._broadcast_pursuit(u.enemy_dir)
@@ -223,14 +223,14 @@ func _broadcast_pursuit(dir: Vector3) -> int:
 
 ## 被冲锋：体力够就反冲锋，并带动邻居
 func on_pursued(pursuer) -> void:
-	if stamina < 0.2 or not ready.active:
+	if stamina < cfg.counter_min_stamina or not ready.active:
 		return
 	if not u.terrain.line_clear(u.nav_pos, pursuer.nav_pos):
 		return
 	if u.order_dir.dot(u.enemy_dir) < 0.0:
 		return
 	_broadcast_pursuit(u.enemy_dir)
-	if ready.active and stamina > 0.3:
+	if ready.active and stamina > cfg.counter_start_stamina:
 		pursuing.set_true()
 		u.main.note("counter")
 
@@ -248,12 +248,12 @@ func _pursuit_update() -> void:
 	u.look(u.enemy_dir)
 	var e = u.enemy
 	if _valid(e):
-		u.walk_dir += e.order_dir_at(u.nav_pos) * 0.3
-		if u.enemy_dist < 0.2 + u.radius + e.radius + range_():
+		u.walk_dir += e.order_dir_at(u.nav_pos) * cfg.pursuit_follow_weight
+		if u.enemy_dist < cfg.counter_contact_margin + u.radius + e.radius + range_():
 			e.brain.on_pursued(u)
 		if try_attack(e):
 			return
-	elif u.enemy_dist > 1.0 + stamina:
+	elif u.enemy_dist > cfg.pursuit_lost_distance + stamina:
 		ready.set_true()
 
 
@@ -345,7 +345,7 @@ func modify_attack(atk: Dictionary) -> void:
 		var pos: Vector3 = (u.nav_pos + a.u.nav_pos) * 0.5 + Vector3(0, 0.25, 0)
 		u.main.spawn_spark(pos)
 		u.main.note("clash")
-		a.u.deal_damage({"damage": 0.0, "knockback": knockback, "stun": 1.0, "launch": 0.0,
+		a.u.deal_damage({"damage": 0.0, "knockback": knockback, "stun": cfg.clash_stun, "launch": 0.0,
 			"dir": -atk.dir, "attacker": self, "clash": true})
 		return
 	if a != null and a.get_script() == get_script():
@@ -355,7 +355,7 @@ func modify_attack(atk: Dictionary) -> void:
 			atk["parried"] = true
 			u.main.spawn_spark(u.nav_pos + Vector3(0, 0.25, 0) - atk.dir * 0.08)
 			u.main.note("parry")
-		elif front > 0.5:
+		elif front > cfg.shield_front_dot:
 			atk["shield_fx"] = true
 
 

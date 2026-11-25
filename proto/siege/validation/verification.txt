@@ -1,0 +1,40 @@
+Command: tools/verify/proto_siege.sh --out=proto/siege/results/t67-final-verify
+SIEGE_FEATURES PASS
+DETERMINISTIC main_gate seed=1 won=False method=none casualties={'defender': 35, 'ghost': 78}
+DETERMINISTIC main_gate seed=2 won=False method=none casualties={'defender': 35, 'ghost': 80}
+DETERMINISTIC highland seed=1 won=False method=none casualties={'defender': 39, 'ghost': 87}
+DETERMINISTIC highland seed=2 won=False method=none casualties={'defender': 28, 'ghost': 112}
+DETERMINISTIC feint seed=1 won=False method=none casualties={'defender': 20, 'ghost': 111}
+DETERMINISTIC feint seed=2 won=False method=none casualties={'defender': 5, 'ghost': 114}
+DETERMINISTIC waves seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 42}
+DETERMINISTIC waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 26}
+DETERMINISTIC idle seed=1 won=False method=none casualties={'defender': 11, 'ghost': 20}
+DETERMINISTIC idle seed=2 won=False method=none casualties={'defender': 9, 'ghost': 20}
+SIEGE_VERIFY PASS runs=10 repeats=10 seconds=297.52 summary=proto/siege/results/t67-final-verify/summary.md
+
+Command: proto/siege/run_matrix.sh --seeds=1 --start-seed=3 --out=proto/siege/results/t67-third-seed
+MATRIX main_gate seed=3 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 68}
+MATRIX highland seed=3 won=True method=keep_retreat casualties={'defender': 42, 'ghost': 67}
+MATRIX feint seed=3 won=False method=none casualties={'defender': 10, 'ghost': 113}
+MATRIX waves seed=3 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 40}
+MATRIX idle seed=3 won=False method=none casualties={'defender': 21, 'ghost': 20}
+SIEGE_MATRIX PASS runs=5 repeats=0 seconds=85.66 summary=proto/siege/results/t67-third-seed/summary.md
+
+Merged final evidence: 5 strategies x seeds 1,2,3 = 15 unique runs.
+Full stdout/stderr and engine logs remain under ignored proto/siege/results/.
+
+Additional feature checks (including congestion/rerouting and dispatch after losses):
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SIEGE_FEATURES PASS navigation/capture/retreat/economy/director/end_conditions/view_startup
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
+
+PARAM_OVERRIDE PASS night=3 defenders=1 cave=off reinforcements=off
+
+python3 -m py_compile proto/siege/run_matrix.py: exit 0
+bash -n proto/siege/run_matrix.sh proto/siege/capture_all.sh tools/verify/proto_siege.sh: exit 0
+git diff --check: exit 0
+
+git add -- proto/siege/ tools/verify/proto_siege.sh: exit 128
+fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t67/index.lock': Operation not permitted

@@ -1,0 +1,629 @@
+{
+  "simulation": {
+    "step": 0.03333333333333333,
+    "night_seconds": 300,
+    "headless_steps_per_frame": 180,
+    "max_frame_steps": 240,
+    "max_frame_delta": 0.25
+  },
+  "economy": {
+    "initial": 70,
+    "capacity": 100,
+    "unit_cost": 5,
+    "regen_curve": [
+      [
+        0,
+        1.1
+      ],
+      [
+        0.5,
+        1.55
+      ],
+      [
+        0.8,
+        2.4
+      ],
+      [
+        1,
+        3.3
+      ]
+    ],
+    "kill_reward_enabled": false,
+    "kill_reward": 2,
+    "deploy_interval": 0.16,
+    "wave_gap_seconds": 4,
+    "rally_cost": 8,
+    "rally_seconds": 18,
+    "rally_radius": 16
+  },
+  "capture": {
+    "seconds": 9,
+    "defender_seconds": 9,
+    "expanded_deployment": false
+  },
+  "map": {
+    "width": 56,
+    "depth": 48,
+    "base_height": 0.3,
+    "highland_height": 1.25,
+    "keep_height": 0.65,
+    "land_rects": [
+      [
+        4,
+        36,
+        48,
+        10
+      ],
+      [
+        26,
+        28,
+        7,
+        10
+      ],
+      [
+        8,
+        27,
+        4,
+        11
+      ],
+      [
+        4,
+        19,
+        10,
+        10
+      ],
+      [
+        15,
+        14,
+        33,
+        14
+      ],
+      [
+        25,
+        4,
+        15,
+        11
+      ],
+      [
+        13,
+        23,
+        3,
+        3
+      ],
+      [
+        47,
+        18,
+        3,
+        3
+      ]
+    ],
+    "highland_rect": [
+      4,
+      19,
+      10,
+      10
+    ],
+    "keep_rect": [
+      25,
+      4,
+      15,
+      10
+    ],
+    "wall_rects": [
+      [
+        14,
+        14,
+        1,
+        15
+      ],
+      [
+        14,
+        28,
+        34,
+        1
+      ]
+    ],
+    "gate_rect": [
+      27,
+      28,
+      4,
+      1
+    ],
+    "weak_rect": [
+      14,
+      23,
+      1,
+      3
+    ],
+    "deploy_rect": [
+      4,
+      38,
+      48,
+      7
+    ],
+    "cave_enabled": true,
+    "cave_a": [
+      45,
+      37
+    ],
+    "cave_b": [
+      21,
+      20
+    ],
+    "cave_travel_seconds": 2.5,
+    "cave_capacity": 2,
+    "zones": [
+      {
+        "id": "coast",
+        "label": "COAST / 海岸",
+        "center": [
+          28,
+          39
+        ],
+        "rects": [
+          [
+            0,
+            29,
+            56,
+            19
+          ]
+        ],
+        "min_garrison": 2
+      },
+      {
+        "id": "highland",
+        "label": "HIGHLAND / 高地",
+        "center": [
+          9,
+          24
+        ],
+        "rects": [
+          [
+            0,
+            0,
+            14,
+            29
+          ]
+        ],
+        "min_garrison": 3
+      },
+      {
+        "id": "plaza",
+        "label": "PLAZA / 外城",
+        "center": [
+          31,
+          20
+        ],
+        "rects": [
+          [
+            14,
+            14,
+            42,
+            15
+          ]
+        ],
+        "min_garrison": 4
+      },
+      {
+        "id": "keep",
+        "label": "KEEP / 主堡",
+        "center": [
+          32,
+          9
+        ],
+        "rects": [
+          [
+            14,
+            0,
+            42,
+            14
+          ]
+        ],
+        "min_garrison": 5
+      }
+    ],
+    "routes": {
+      "main": [
+        [
+          29,
+          34
+        ],
+        [
+          29,
+          29
+        ],
+        [
+          31,
+          20
+        ],
+        [
+          32,
+          9
+        ]
+      ],
+      "side": [
+        [
+          9,
+          31
+        ],
+        [
+          9,
+          24
+        ],
+        [
+          15,
+          24
+        ],
+        [
+          31,
+          20
+        ],
+        [
+          32,
+          9
+        ]
+      ],
+      "cave": [
+        [
+          45,
+          37
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          31,
+          20
+        ],
+        [
+          32,
+          9
+        ]
+      ]
+    },
+    "port": [
+      46,
+      19
+    ],
+    "boat": [
+      50,
+      19
+    ],
+    "flow_infinity": 1000000000,
+    "flow_cache_limit": 180,
+    "line_sample_step": 0.22,
+    "cave_entry_radius": 0.8,
+    "path_arrival_radius": 0.22,
+    "direct_path_radius": 2
+  },
+  "structures": {
+    "gate_hp": 34,
+    "weak_hp": 24,
+    "damage_per_second": 1.8,
+    "attack_range": 1.15,
+    "gate_open_seconds": 4,
+    "gate_safe_radius": 3,
+    "gate_auto_open": true
+  },
+  "units": {
+    "ghost": {
+      "hp": 1.0,
+      "speed": 2,
+      "damage": 1,
+      "radius": 0.18,
+      "knockback": 0.65,
+      "stun": 0.3
+    },
+    "shield": {
+      "hp": 1.0,
+      "speed": 1.6,
+      "damage": 1,
+      "radius": 0.2,
+      "knockback": 0.7,
+      "stun": 0.3
+    },
+    "archer": {
+      "hp": 0.6,
+      "speed": 1.5,
+      "damage": 0.65,
+      "radius": 0.17,
+      "knockback": 0.15,
+      "stun": 0.1,
+      "range": 9,
+      "cooldown": 2.8,
+      "accuracy": 0.8,
+      "melee_damage": 0.5
+    },
+    "cavalry": {
+      "hp": 1.3,
+      "speed": 2.5,
+      "damage": 1.3,
+      "radius": 0.23,
+      "knockback": 1,
+      "stun": 0.4
+    }
+  },
+  "combat": {
+    "sense_radius": 10,
+    "chase_radius": 2.7,
+    "defender_leash": 4,
+    "separation_strength": 3,
+    "separation_radius": 0.52,
+    "contact_slack": 0.025,
+    "velocity_decay": 8,
+    "knockback_scale": 0.65,
+    "shield_damage_scale": 0.7,
+    "arrow_shield_scale": 0.65,
+    "hop_height": 0.09,
+    "hop_frequency": 5,
+    "animation_lengths": {
+      "idle": 0.667,
+      "attack": 0.6,
+      "clash": 0.35,
+      "parry": 0.65
+    },
+    "brain_seed_phase_range": 100,
+    "spatial_cell_size": 3,
+    "max_separation_speed": 1.2,
+    "sense_seconds": 0.125,
+    "threat_decay": 6
+  },
+  "brain": {
+    "attack_cost": 0.5,
+    "hit_time": 0.333,
+    "parry_window": [
+      0.08,
+      0.45
+    ],
+    "reach_radius_scale": 0.7,
+    "proximity_radius": 1,
+    "stamina_share": 0.1,
+    "adjacent_period": 0.125,
+    "adjacent_radius_sq": 1,
+    "adjacent_count": 3,
+    "idle_enemy_distance": 4,
+    "recover_stamina_per_second": 1,
+    "think_period": 0.5,
+    "hunt_distance": 2,
+    "hunt_follow_distance": 3,
+    "pursuit_stamina_per_second": 0.3,
+    "pursuit_max_distance": 2,
+    "clash_stamina_cost": 0.5,
+    "clash_phase_window": 0.4,
+    "death_stamina_loss": 0.3,
+    "resume_stamina": 0.1,
+    "order_slow_distance": 1,
+    "minimum_order_speed": 0.1,
+    "hard_intimidation_scale": 2,
+    "soft_intimidation_range": [
+      1.4,
+      0.9
+    ],
+    "intimidation_order_distance": 2,
+    "retreat_clamp": 0.5,
+    "backoff_distance": [
+      0.1,
+      0.4
+    ],
+    "faceoff_target_distance": 1,
+    "faceoff_self_distance": 0.5,
+    "faceoff_enemy_distance": 0.2,
+    "blocking_distance": 1,
+    "blocking_margin": 0.5,
+    "look_enemy_distance": 2,
+    "hunt_distance_scale": 0.5,
+    "broadcast_dot_threshold": 0.1,
+    "broadcast_order_distance": 1,
+    "counter_min_stamina": 0.2,
+    "counter_start_stamina": 0.3,
+    "pursuit_follow_weight": 0.3,
+    "counter_contact_margin": 0.2,
+    "pursuit_lost_distance": 1,
+    "clash_stun": 1,
+    "shield_front_dot": 0.5
+  },
+  "targeting": {
+    "think_seconds": 0.75,
+    "distance_weight": 1,
+    "value_weight": 4,
+    "congestion_weight": 1.5,
+    "route_commitment": 7,
+    "rally_weight": 40,
+    "route_waypoint_radius": 1.35,
+    "route_crowd_threshold": 7,
+    "reroute_after_seconds": 3,
+    "reroute_cooldown_seconds": 8,
+    "crowd_radius": 2.2,
+    "values": {
+      "gate": 2,
+      "weak": 2.3,
+      "archer": 4,
+      "zone": 2.5,
+      "keep": 5
+    },
+    "congestion_seconds": 3
+  },
+  "director": {
+    "think_seconds": 1,
+    "dispatch_delay": 5,
+    "dispatch_cooldown": 6,
+    "threat_per_ghost": 1,
+    "proximity_weight": 2,
+    "threat_radius": 12,
+    "threat_threshold": 3,
+    "support_batch": 3,
+    "busy_enemy_radius": 2.5,
+    "reserve_home": "keep",
+    "retake_bias": 4,
+    "garrison_spacing": 0.7,
+    "arrival_radius": 2,
+    "gate_trigger_radius": 2.5,
+    "formation_columns": 3
+  },
+  "garrisons": [
+    {
+      "zone": "coast",
+      "kind": "shield",
+      "count": 3,
+      "anchor": [
+        29,
+        34
+      ]
+    },
+    {
+      "zone": "highland",
+      "kind": "shield",
+      "count": 3,
+      "anchor": [
+        9,
+        27
+      ]
+    },
+    {
+      "zone": "highland",
+      "kind": "archer",
+      "count": 6,
+      "anchor": [
+        8,
+        23
+      ]
+    },
+    {
+      "zone": "plaza",
+      "kind": "shield",
+      "count": 9,
+      "anchor": [
+        30,
+        23
+      ]
+    },
+    {
+      "zone": "keep",
+      "kind": "shield",
+      "count": 7,
+      "anchor": [
+        32,
+        11
+      ]
+    },
+    {
+      "zone": "keep",
+      "kind": "cavalry",
+      "count": 6,
+      "anchor": [
+        34,
+        8
+      ],
+      "reserve": true
+    }
+  ],
+  "reinforcements": {
+    "enabled": true,
+    "seconds_before_dawn": 60,
+    "spawn": [
+      33,
+      4
+    ],
+    "units": [
+      {
+        "kind": "shield",
+        "count": 5
+      },
+      {
+        "kind": "cavalry",
+        "count": 3
+      }
+    ]
+  },
+  "strategies": {
+    "names": [
+      "main_gate",
+      "highland",
+      "feint",
+      "waves",
+      "idle"
+    ],
+    "deploy_points": {
+      "main": [
+        29,
+        41
+      ],
+      "side": [
+        9,
+        41
+      ],
+      "cave": [
+        45,
+        41
+      ]
+    },
+    "lane_spread": 1.8,
+    "continuous_batch": 6,
+    "feint_divisor": 5,
+    "feint_main_count": 1,
+    "idle_seconds_before_dawn": 90,
+    "wave_routes": [
+      "main",
+      "side",
+      "cave"
+    ],
+    "early_archer_seconds": 120,
+    "idle_release_seconds": 10
+  },
+  "metrics": {
+    "acceptable_congestion_per_deployed": 0.5,
+    "idle_win_rate_gap": 0.15,
+    "minimum_strategy_win_rate": 0.3,
+    "minimum_distinct_winning_strategies": 3
+  },
+  "view": {
+    "window_size": [
+      1440,
+      900
+    ],
+    "camera_focus": [
+      27,
+      0,
+      25
+    ],
+    "camera_size": 56,
+    "camera_distance": 75,
+    "camera_pitch": 52,
+    "camera_yaw": 0,
+    "rotation_speed": 1.3,
+    "drag_speed": 0.008,
+    "zoom_factor": 1.1,
+    "zoom_limits": [
+      25,
+      85
+    ],
+    "wall_height": 1.9,
+    "unit_height": 0.65,
+    "cavalry_height": 0.95,
+    "debug_visible": false,
+    "night_color": "#101f38",
+    "dawn_color": "#d3dedb",
+    "ghost_color": "#6bf2c2",
+    "shield_color": "#ecad7d",
+    "archer_color": "#f8d884",
+    "cavalry_color": "#c8a0ea",
+    "screen_tint_alpha": 0.12,
+    "hud_font_size": 18,
+    "debug_font_size": 15,
+    "capture_font_size": 16,
+    "shot_times": [
+      3,
+      150,
+      285
+    ],
+    "simulation_speed": 1,
+    "capture_speed": 16,
+    "unit_radius_scale": 1.5
+  },
+  "retreat": {
+    "boat_depart_seconds": 45,
+    "boarding_radius": 1.2,
+    "pursuit_radius": 60
+  }
+}

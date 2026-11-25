@@ -1,0 +1,1 @@
+{"simulation": {"night_seconds": 3}, "garrisons": [{"zone": "keep", "kind": "shield", "count": 1, "anchor": [32, 9]}], "reinforcements": {"enabled": false}, "map": {"cave_enabled": false}, "economy": {"kill_reward_enabled": true}}
