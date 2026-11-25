@@ -72,7 +72,10 @@ func poll() -> void:
 			var key := "%s:%s:%s" % [d.time, d.from, d.to]
 			if not seen.has(key):
 				seen[key] = true
-				add_alert(d.to, "reinforcement", "%s增援出发 → %s" % [cfg.zones[d.from].label, cfg.zones[d.to].label], d.time)
+				var message := "%s增援出发 → %s" % [cfg.zones[d.from].label, cfg.zones[d.to].label]
+				add_alert(d.from, "reinforcement", message, d.time)
+				if d.to != d.from:
+					add_alert(d.to, "reinforcement", message, d.time)
 	while topology_cursor < world.terrain.topology_events.size():
 		var e: Dictionary = world.terrain.topology_events[topology_cursor]
 		topology_cursor += 1

@@ -15,6 +15,8 @@ godot --path . proto/siege/camera/siege_camera.tscn -- --camera_transition=cut
 godot --path . proto/siege/camera/siege_camera.tscn -- --camera_mode=continuous
 # 镜头与输入边界测试，不要求窗口
 godot --headless --path . --script proto/siege/camera/test_camera.gd
+# 完整回放：原无头入口 vs 两组实际显示节点；完整 SIEGE 行必须逐字一致
+python3 proto/siege/camera/verify_replay.py
 # 串行录制相同策略、种子的 A/B PNG 序列，并拍四个机位静帧
 python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
 ```
@@ -22,7 +24,7 @@ python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
 - `1–4` 分别跳海岸、高地、外城广场、主堡；也可点右上总览或底部战区标签。固定模式不响应旋转，`WASD` 或右键/中键拖动可小范围平移，滚轮只在本机位的有限范围缩放。连续模式保留 `Q/E` 与拖动旋转，也能按战区定位。
 - 亡魂默认已选中。左键长按只向**当前战区、画面内的合法部署地面**投兵。默认只有海岸能部署；切换、展开总览、鼠标进入 UI 或拖动时禁止部署，松开鼠标会结束长按。`F+左键` 仍通过原接口付费集结，`Space` 跳过撤退，`R` 重开。
 - `Tab` 展开/收起全屏战术图，`F3` 开关原调试面板，`C` 对比 0.2 秒推移与直切。总览消费鼠标事件，只跳转、不投兵；显示实际区内人数、实际仍在行军的守军箭头、视口边界、旗帜归属、门墙状态、冥火和倒计时。山洞转移中的单位暂不计入区内人数。
-- 离屏受伤、增援出发、破门/破墙、攻占和失守会进入提醒日志；底部标签闪烁，左侧最多显示三个战区的一行可点击提示，跳转抵达后确认。受伤提示每区冷却 8 秒，同批同路线增援合并，重要状态优先保留到查看。当前增援提示挂在**目的战区**，正文包含来源与目的地。
+- 离屏受伤、增援出发、破门/破墙、攻占和失守会进入提醒日志；底部标签闪烁，左侧最多显示三个战区的一行可点击提示，跳转抵达后确认。受伤提示每区冷却 8 秒，同批同路线增援合并，重要状态优先保留到查看。增援同时提醒**来源和目的战区**，两端独立确认；当前正在查看的战区无需闪烁，正文包含来源与目的地。
 - 手工机位在 `camera/map_camera.json` 的 `map.camera.zones` 中：`focus` 为世界坐标 `[x,y,z]`，`yaw/pitch` 为度，`distance` 与它们共同决定位置，`size` 为正交尺寸，另有平移与缩放限制。显示层默认读取此文件，不回写模拟参数；可用原 `--params=覆盖.json` 覆盖 `map.camera`，或用 `--camera_mode=zones/continuous`、`--camera_transition=slide/cut`、`--zone=coast/highland/plaza/keep` 选择实验。
 - T69 没有正式单位精灵；实验入口用一张带鼻尖/武器的程序侧影、脚底锚点和相对镜头左右翻转检查表现。两组都使用同样的侧影。墙和地形继续正常遮挡，没有透视显示单位的特殊处理。正式精灵仍需另行验收。
 
@@ -44,7 +46,7 @@ proto/siege/run_matrix.sh --seeds=3 --out=proto/siege/results/smoke
 # 参数覆盖文件可以只包含要修改的字段（字典递归合并，数组整体替换）
 proto/siege/run_matrix.sh --params=/tmp/variant.json --seeds=20 --out=proto/siege/results/variant
 
-# 固定验收：机制检查 + 6 种策略 × 2 个种子，每局重复一次比较完整 JSON
+# 固定验收：机制检查 + 24 局 + 镜头功能 + 显示节点完整回放对照
 tools/verify/proto_siege.sh
 
 # 实际窗口截图；按模拟时间 3 / 150 / 285 秒，种子 1
@@ -157,3 +159,7 @@ proto/siege/capture_all.sh --speed=16
 窗口与无头都调用 `siege.gd.simulate()`；胜负、资源、出生/伤亡、攻占、破墙、调度使用同一固定步长（默认 1/30 秒）与独立模拟 RNG。窗口把输入变成意图/队列，在逻辑步执行。展示用上一步/当前单位位置和累加器比例插值，不回写模拟；船移动和天色也只读取模拟时间。跨平台逐位一致未承诺。
 
 `world.hooks.subscribe(event, Callable)` 预留六种事件：`spawn`、`hurt`、`near_death`、`kill`、`death`、`resource_changed`。载荷包含单位/来源或资源前后值，以及逻辑步号。濒死在血量越过最大血量 25% 时触发（含致命伤），不附加任何规则效果。同一同步调用链不重复派发同名事件，深度上限 8；结束后新的顶层事件仍可触发。测试覆盖“击杀→生成→击杀”和固定输入时序，不实现增益、复生或构筑。
+
+T70 的 `camera/verify_replay.py` 已接入固定验收，显式使用相同 `feint / seed 7 / --params` 分别运行原无头场景和 `zones`、`continuous` 显示节点回放。显示回放保持模拟固定步长，独立改变显示 delta、插值、推移/直切和总览状态，每三步刷新一次；比较完整 `SIEGE` 行的 UTF-8 字节，不忽略任何字段，不加浮点容差。证据在验收输出目录的 `camera/` 下。此项构造真实显示节点，但不启用 GPU 渲染，不能代替桌面截图。
+
+不要直接把 `world.result()` 内存字典与 `JSON.parse_string()` 读取的日志字典做相等验收：JSON 数字的十进制序列化/解析可能改变 double 的最低位，解析还会把整数变成 float；即使两次模拟的原始日志逐字一致，解析后的字典也可能不与内存字典相等。回放脚本会额外打印往返诊断，正式通过条件始终是两个原始 `SIEGE` 行逐字一致。
