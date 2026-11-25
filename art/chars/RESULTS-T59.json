@@ -1,0 +1,1268 @@
+[
+  {
+    "id": "CHAR-EARL",
+    "kind": "hero",
+    "file": "art/chars/CHAR-EARL/hero.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-EARL__hero.txt",
+    "alts": [
+      "art/chars/CHAR-EARL/alt/hero-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟圆脸；变化墨线、面手清晰，暖主光、暗衣大明暗及细金色边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "卷翘髭须、灰鬓、毛领海军蓝外套、棕背心、金链和红斜绶带一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "圆腹、短颈、厚手，坐姿宽厚。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "靠软椅，双脚置货箱；一手捏币、一手接币，账簿和关印就近放置。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于hero。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字；双手双靴可辨，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第二版腹部、双靴与数钱动作更清楚；账簿和关印保留为就近道具。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-c2575057-1c36-4065-837e-0039eb61ae5f.png",
+        "destination": "art/chars/CHAR-EARL/alt/hero-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-6d990ce2-e58a-48f7-bbcd-f7741195e637.png",
+        "destination": "art/chars/CHAR-EARL/hero.png"
+      }
+    ],
+    "prompt_sha256": "f6662de101ff39119e0a24124d8aec933fa0b047c0226bdaf4a67f91a42bf26c",
+    "identity_reference": "art/chars/CHAR-EARL/v1/hero.png",
+    "identity_reference_sha256": "79f4e51c8175b6054f478bde2c6c9d7615a011a71d4bd5adb3fba23ad9b8c64a",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "25669857a0cfe2fe841886d5dd83613680f709d7bb3a5a21dc9bb16a6c5a3abf",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-EARL",
+    "kind": "turnaround",
+    "file": "art/chars/CHAR-EARL/turnaround.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-EARL__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-EARL/alt/turnaround-T59-a1-v2.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟比例、面料笔触及转折墨线；暖金主光、大片深蓝暗部。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "髭须、灰鬓、毛领蓝棕外套、金链、红斜绶带及船徽一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "宽躯干、短颈，侧面腹部前凸；肥胖程度较坐姿主图收敛。"
+      },
+      "4_pose": {
+        "status": "not_applicable",
+        "evidence": "三视图使用中性站姿。"
+      },
+      "5_turnaround": {
+        "status": "pass",
+        "evidence": "三视图等高、共用地线且空手；侧视向右，道具独立右列。正面头部略向侧转，供Lead复核。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "仅角色名及FRONT/SIDE/BACK/PROPS标注；未见多余肢体。"
+      }
+    },
+    "selection_reason": "第一版腹部轮廓、背面服装和道具分组更清晰。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-4eab42cf-27fa-420c-a5bd-2423c6351048.png",
+        "destination": "art/chars/CHAR-EARL/turnaround.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-10028263-e1d9-48d5-afa7-4802b3911919.png",
+        "destination": "art/chars/CHAR-EARL/alt/turnaround-T59-a1-v2.png"
+      }
+    ],
+    "prompt_sha256": "c1a8c1a289287ebb529fd264af6aa513fe2f8971d40b24dfddcac45193966482",
+    "identity_reference": "art/chars/CHAR-EARL/v1/hero.png",
+    "identity_reference_sha256": "79f4e51c8175b6054f478bde2c6c9d7615a011a71d4bd5adb3fba23ad9b8c64a",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "3582e7be2e4bc6beeb7ed5b4753a44027452bea30604fa4def76a7c9130df96d",
+    "selected_generation_index": 1,
+    "selected_attempt": 1,
+    "review_notes": [
+      "正面头部略侧转，肥胖程度较坐姿主图收敛。",
+      "工具原生输出1672x941，未达到提示词写明的2048x1152；未缩放或重绘。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-EARL",
+    "kind": "expressions",
+    "file": "art/chars/CHAR-EARL/expressions.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-EARL__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-EARL/alt/expressions-T59-a1-v2.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "脸部细节、疏密墨线和毛领笔触清晰；暖金主光及大面积深暗服装。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "灰鬓、卷髭、毛领蓝棕外套、红绶带、金链船徽、账簿和关印一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "短颈宽身，厚手，腹部圆厚。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "左侧迎客摊手、中间抬印且挺身、右侧缩肩侧身抱账簿；笑容僵住和汗珠可辨。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于expressions。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字；三个角色各双手，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第一版身体朝向与肩背收缩差异比第二版明显，情绪递进清楚。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-a42e4d1b-afc8-4a12-a143-37f191c9bf65.png",
+        "destination": "art/chars/CHAR-EARL/expressions.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-bdb9659d-a1d0-4f95-bcc7-9b5b089ba0f6.png",
+        "destination": "art/chars/CHAR-EARL/alt/expressions-T59-a1-v2.png"
+      }
+    ],
+    "prompt_sha256": "6be54b6c02e0f4b68e6b4b673a2b9057e85a317b1ecfad426f4cbc8b029413f5",
+    "identity_reference": "art/chars/CHAR-EARL/v1/hero.png",
+    "identity_reference_sha256": "79f4e51c8175b6054f478bde2c6c9d7615a011a71d4bd5adb3fba23ad9b8c64a",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "3508bb48cebddd128357e5e1798553f81391cca796e3d2b0c550081769b6eacf",
+    "selected_generation_index": 1,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "kind": "hero",
+    "file": "art/chars/CHAR-COUNTESS/hero.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-COUNTESS__hero.txt",
+    "alts": [
+      "art/chars/CHAR-COUNTESS/alt/hero-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟脸部与细节笔触，转折墨线有粗细；左上暖光，右侧与背景为大暗部。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "实用布帽、棕发、赭黄橄榄长裙、红绶带、麦穗胸章、钥匙及蜡板一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "瘦长躯干、长颈、尖瘦脸和骨感前臂；轮廓与伯爵明显不同。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "大步穿行粮仓，左手夹蜡板，右手明确指向粮袋；钥匙和衣摆随步伐摆动。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于hero。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字，两手双脚齐全，未见额外肢体。"
+      }
+    },
+    "selection_reason": "第二版瘦长轮廓、前进步势和指物手势更明确。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-57e33e0a-8f68-4653-8051-551448472eb7.png",
+        "destination": "art/chars/CHAR-COUNTESS/alt/hero-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-5eca1fb0-10b8-4626-9851-12a335ea7aca.png",
+        "destination": "art/chars/CHAR-COUNTESS/hero.png"
+      }
+    ],
+    "prompt_sha256": "b1ffdc464fbd9587a2fa36e6a623b4dae7754e7ebe9b88fdc4bfb935524e2ad1",
+    "identity_reference": "art/chars/CHAR-COUNTESS/v1/hero.png",
+    "identity_reference_sha256": "bb6cab2f9e685698056dda48a44eb3fca1a21688478ae100ee252aedf77d108d",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "f938f6be3c3f6e1eb3415daa86118e3ef497183fda720c0c03210a199d54ed31",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "kind": "turnaround",
+    "file": "art/chars/CHAR-COUNTESS/turnaround.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-COUNTESS__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-COUNTESS/alt/turnaround-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "暖主光和暗部控制一致；布料有笔触，脸手与服饰转折使用疏密墨线。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "布帽、麦穗胸章、橄榄赭黄裙、红绶带、腰钥匙与旧图一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "高挑窄身、长颈、细骨感前臂；未被画成丰满标准身材。"
+      },
+      "4_pose": {
+        "status": "not_applicable",
+        "evidence": "不适用于turnaround。"
+      },
+      "5_turnaround": {
+        "status": "pass",
+        "evidence": "三视图等高共地线、空手；侧面向右，钥匙、蜡板笔及粮袋独立。正面头部略转侧。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "只有姓名与FRONT/SIDE/BACK/PROPS；未见多余四肢。"
+      }
+    },
+    "selection_reason": "第二版身形更细长，标签清晰，道具组完整。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-5fc057b5-5202-4c94-932d-6ce2da45a445.png",
+        "destination": "art/chars/CHAR-COUNTESS/alt/turnaround-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-4fcb583c-8268-427d-b52c-bd4c017927ba.png",
+        "destination": "art/chars/CHAR-COUNTESS/turnaround.png"
+      }
+    ],
+    "prompt_sha256": "658cf5213d847c7ee81086a8166044792117c69ac85d448e06dfc92cdde9dfd4",
+    "identity_reference": "art/chars/CHAR-COUNTESS/v1/hero.png",
+    "identity_reference_sha256": "bb6cab2f9e685698056dda48a44eb3fca1a21688478ae100ee252aedf77d108d",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "6ca0e96684d37f6d41921276701ee0597c86e8e4c21f4f18ae47d452db834ed0",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [
+      "正面头部略侧转。",
+      "工具原生输出1672x941，未达到提示词写明的2048x1152；未缩放或重绘。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-COUNTESS",
+    "kind": "expressions",
+    "file": "art/chars/CHAR-COUNTESS/expressions.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-COUNTESS__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-COUNTESS/alt/expressions-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟骨相，脸手边缘清楚，服饰暗部连成大块；金色细轮廓光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "布帽、棕发、麦穗胸章、赭黄橄榄衣、红绶带、蜡板与钥匙一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "窄肩长颈、瘦长前臂和骨感手指，保持高瘦轮廓。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "左侧抬手发令、中间抱臂抬颏、右侧收肩歪头以指贴颏；头倾、肩线和手势不同。右侧眉眼显露恐惧。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于expressions。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字，三组均为两臂双手，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第二版右侧眉眼更能读出恐惧，三种手势和头部姿态区分清楚。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-95d7483d-3d1d-4de9-83a5-6bdcf08335a7.png",
+        "destination": "art/chars/CHAR-COUNTESS/alt/expressions-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-ac33ca01-5054-4a5a-bc65-0edde6e3fc13.png",
+        "destination": "art/chars/CHAR-COUNTESS/expressions.png"
+      }
+    ],
+    "prompt_sha256": "759be202b34d7e206c8d7f590e1d2afa604859f846a8319fb02fd63ef0c75a1a",
+    "identity_reference": "art/chars/CHAR-COUNTESS/v1/hero.png",
+    "identity_reference_sha256": "bb6cab2f9e685698056dda48a44eb3fca1a21688478ae100ee252aedf77d108d",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "55afa40a9f1dc147aa4dd65ccea05647cbcbff53510011538ec42592e5097ec8",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "kind": "hero",
+    "file": "art/chars/CHAR-ARCHBISHOP/hero.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-ARCHBISHOP__hero.txt",
+    "alts": [
+      "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a1-v1.png",
+      "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a1-v2.png",
+      "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a2-v1.png",
+      "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a2-v2.png",
+      "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a3-v2.png"
+    ],
+    "attempts": 3,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟衰老骨相、疏密墨线与布料笔触；单一窗光、半脸暗影、金色窄边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "白金法衣、八芒太阳、高冠、红披带、旧祈祷书与系绳官印一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "狭长消瘦脸、细颈骨感手指、前屈肩背；跪姿仍保持高瘦上身。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "独跪暗礼拜堂，低头双手合握祈祷书，脸的一侧在暗部。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于hero。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "partial",
+        "evidence": "无文字及多余肢体；第三次第一版可见后方一只靴子，另一只仍被袍摆遮住，未完全满足FORMAT中的feet visible。"
+      }
+    },
+    "selection_reason": "第三次第一版终于露出后方靴子；跪姿和消瘦轮廓清楚。另一脚遮挡作为已知不足，六版全部保留。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-8839d7de-39eb-42fd-870e-934f6deda610.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-bc87dc09-0e70-43f6-a9e2-3a6b8b641488.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a1-v2.png"
+      },
+      {
+        "attempt": 2,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-18af7837-cd3b-424c-95bf-1c763b4205e7.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a2-v1.png"
+      },
+      {
+        "attempt": 2,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-0bcd8fef-8eea-4d90-a45a-b12e43bab549.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a2-v2.png"
+      },
+      {
+        "attempt": 3,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-1ffcbc0d-c47c-48b1-9459-c45700f58782.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/hero.png"
+      },
+      {
+        "attempt": 3,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-4ca94084-61fc-46e7-8790-1915cae43816.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/hero-T59-a3-v2.png"
+      }
+    ],
+    "prompt_sha256": "3fe756a5a12e40b5201f75bb795cc30c6d9bfd32044c3ae1a6bf2ca3ebde1c57",
+    "identity_reference": "art/chars/CHAR-ARCHBISHOP/v1/hero.png",
+    "identity_reference_sha256": "1cf4a83f7f3e1c8f03fb9c77f0225cc072fadb8ca6c995d1b846c27aa78de7c1",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 6,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 6,
+    "output_is_original": false,
+    "output_sha256": "85b2319bd8a2f3c4f5decd8ee7908a93642444efe3f83c8354926e183167d4ab",
+    "selected_generation_index": 5,
+    "selected_attempt": 3,
+    "review_notes": [
+      "三次共六版后，选版仅露一只后方靴子，另一脚仍被袍摆遮住。"
+    ],
+    "quality_status": "partial"
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "kind": "turnaround",
+    "file": "art/chars/CHAR-ARCHBISHOP/turnaround.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-ARCHBISHOP__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-ARCHBISHOP/alt/turnaround-T59-a1-v2.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "白金衣料笔触、面部骨相和疏密墨线；暖边光与袍褶暗部统一。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "灰白发、高冠、八芒太阳白金法衣、红披带、旧书、官印一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "高瘦、细长颈和骨感手；侧面背线轻弯，年老微驼表现较弱，需Lead复核。"
+      },
+      "4_pose": {
+        "status": "not_applicable",
+        "evidence": "不适用于turnaround。"
+      },
+      "5_turnaround": {
+        "status": "pass",
+        "evidence": "三视图等高共地线、空手，正侧背视向清楚；书、官印与小铃独立右列。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "仅姓名和视图标签，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第一版肩身较窄，正侧背关系及三件道具完整；微驼表现偏弱已记录。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-9965aa42-3e9e-49d5-abcf-a3051dfea76e.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/turnaround.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-f08134ab-0d76-491c-953f-4d2ba2d94f2d.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/turnaround-T59-a1-v2.png"
+      }
+    ],
+    "prompt_sha256": "071384a6a338c4b86c361b9ce3f55716106176815e36f6afe67d7cc0ba6ea136",
+    "identity_reference": "art/chars/CHAR-ARCHBISHOP/v1/hero.png",
+    "identity_reference_sha256": "1cf4a83f7f3e1c8f03fb9c77f0225cc072fadb8ca6c995d1b846c27aa78de7c1",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "4837a8a6236533e7998997d8dda49bbb1d638121f1975a2f2ed41c15d8e87aef",
+    "selected_generation_index": 1,
+    "selected_attempt": 1,
+    "review_notes": [
+      "年老微驼的表现偏弱。",
+      "工具原生输出1672x941，未达到提示词写明的2048x1152；未缩放或重绘。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-ARCHBISHOP",
+    "kind": "expressions",
+    "file": "art/chars/CHAR-ARCHBISHOP/expressions.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-ARCHBISHOP__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-ARCHBISHOP/alt/expressions-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟衰老面部、变化墨线、精细手部与袍褶笔触；暖主光、暗部和细金边光一致。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "高冠、灰白发、白金八芒太阳法衣、红披带、旧书及官印一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "狭长脸与颈、骨感手，低头图明显收肩前屈。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "左侧双手静抱书、身体侧向；中间躯干较正、抬双指裁断；右侧低头歪身以手扶额。三种手势与头倾不同。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于expressions。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字；各两臂双手，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第二版平静、裁断与私下愧疚的姿态递进清楚，肩线角度更有区别。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-452381b5-9b71-452d-9be8-41f0f992614b.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/alt/expressions-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-99471fab-b23a-4169-acd5-e6a60d43df4f.png",
+        "destination": "art/chars/CHAR-ARCHBISHOP/expressions.png"
+      }
+    ],
+    "prompt_sha256": "08027ebb68f380d15521b7fe927d18074a21b8b5ebdd577f5d5f0bdc56ab6149",
+    "identity_reference": "art/chars/CHAR-ARCHBISHOP/v1/hero.png",
+    "identity_reference_sha256": "1cf4a83f7f3e1c8f03fb9c77f0225cc072fadb8ca6c995d1b846c27aa78de7c1",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "b438994a3750ed1b49e201c4d764062f0f0c56a6859a201d04fb95442f2f5b3f",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "kind": "hero",
+    "file": "art/chars/CHAR-MARSHAL/hero.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-MARSHAL__hero.txt",
+    "alts": [
+      "art/chars/CHAR-MARSHAL/alt/hero-T59-a1-v2.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟老兵脸、变化墨线与金属笔触；左侧暖主光、深蓝大片暗部、细金色边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "灰短发短胡、方正素钢甲、海军蓝披风、红绶带、军旗与佩剑一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "厚肩宽躯干、壮实四肢；站距宽，弓腿表现偏轻，需Lead复核。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "城垛前双手叠在木制练习剑柄上，目光朝海；披风沉重下垂。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于hero。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字，双手双靴清楚，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第一版肩部更厚实、人物占幅与双手木剑动作更明确，背景较克制。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-57af4247-6506-4831-b2a3-5384318447f3.png",
+        "destination": "art/chars/CHAR-MARSHAL/hero.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-0eda6b97-1354-4842-a4e2-4d153f66a925.png",
+        "destination": "art/chars/CHAR-MARSHAL/alt/hero-T59-a1-v2.png"
+      }
+    ],
+    "prompt_sha256": "88c8b797d9bee7e7c2c6e63dc22a95b7e1f845140d06f8441955d50c7a472371",
+    "identity_reference": "art/chars/CHAR-MARSHAL/v1/hero.png",
+    "identity_reference_sha256": "de260b81d5bb89daedcf14d17a41b17d1e8a2556cf903491467f61b3247adb04",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "41d15f982a1f095a48bb0fc13e7d4cfa89bf08e4fd5872dfbd47d5804c0cea30",
+    "selected_generation_index": 1,
+    "selected_attempt": 1,
+    "review_notes": [
+      "弓腿的表现偏轻。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "kind": "turnaround",
+    "file": "art/chars/CHAR-MARSHAL/turnaround.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-MARSHAL__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-MARSHAL/alt/turnaround-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟比例、疏密墨线与金属笔触；暖主光、暗蓝披风大暗部和窄金边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "灰发短胡、素钢甲、海军蓝披风、红绶带及军旗、两类剑与身份参考一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "厚肩、宽甲胄和较深躯干；腿略外开，弓腿特征较弱，需Lead复核。"
+      },
+      "4_pose": {
+        "status": "not_applicable",
+        "evidence": "不适用于turnaround。"
+      },
+      "5_turnaround": {
+        "status": "pass",
+        "evidence": "三个视图等高共地线、手中无物；侧面向右。军旗、实剑、木制练习剑独立右列；腰上佩剑按服装保留。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "只有姓名与视图标签；未见多余肢体。"
+      }
+    },
+    "selection_reason": "第二版侧面躯干厚度和宽肩较清楚，道具分组完整。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-c2bcebe5-1f54-4bf5-9c7c-1bafe0deec02.png",
+        "destination": "art/chars/CHAR-MARSHAL/alt/turnaround-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-8f2e9ceb-280d-4906-9636-e919617f613f.png",
+        "destination": "art/chars/CHAR-MARSHAL/turnaround.png"
+      }
+    ],
+    "prompt_sha256": "2770c7c3fe2e34cbcf10f3437f068d69be172dc53eed8cd78021006310c66f20",
+    "identity_reference": "art/chars/CHAR-MARSHAL/v1/hero.png",
+    "identity_reference_sha256": "de260b81d5bb89daedcf14d17a41b17d1e8a2556cf903491467f61b3247adb04",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "d2fa56e95a86e7d2579e05c364b5f1b77924e0a916fbbd079bfb2e834ec6b41b",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [
+      "弓腿的表现偏轻。",
+      "工具原生输出1672x941，未达到提示词写明的2048x1152；未缩放或重绘。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-MARSHAL",
+    "kind": "expressions",
+    "file": "art/chars/CHAR-MARSHAL/expressions.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-MARSHAL__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-MARSHAL/alt/expressions-T59-a1-v2.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟老兵面部、金属笔触与疏密转折墨线；暖主光、大片暗披风、窄金边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "灰短发短胡、方钢甲、蓝披风、红绶带、两种佩剑与参考一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "宽肩厚躯干、粗壮前臂；半身图不适用腿型检查。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "左侧抱臂正视、中间转身伸手张口喝令、右侧低头一手掩口另一手握剑柄；身体角度和手势不同，右侧悲痛克制。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于expressions。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字，三组双臂双手，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第一版肩部厚重、身体角度差异明确，第三表情的掩饰悲痛更克制。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-facd2261-8d04-45f6-9fac-68fb607c82a6.png",
+        "destination": "art/chars/CHAR-MARSHAL/expressions.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-741f9f7e-7e59-431e-858c-e143d426475d.png",
+        "destination": "art/chars/CHAR-MARSHAL/alt/expressions-T59-a1-v2.png"
+      }
+    ],
+    "prompt_sha256": "7db675d5bb4dcee92c67cad651f205415c11e620d39ef35c21bf55392ec5c555",
+    "identity_reference": "art/chars/CHAR-MARSHAL/v1/hero.png",
+    "identity_reference_sha256": "de260b81d5bb89daedcf14d17a41b17d1e8a2556cf903491467f61b3247adb04",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "b31ce92371ae696a7cf10f40159b8450bff21a48419294cf6fdfd1047c223f5c",
+    "selected_generation_index": 1,
+    "selected_attempt": 1,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "kind": "hero",
+    "file": "art/chars/CHAR-CHANCELLOR/hero.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-CHANCELLOR__hero.txt",
+    "alts": [
+      "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a1-v1.png",
+      "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a1-v2.png",
+      "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a2-v1.png",
+      "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a2-v2.png",
+      "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a3-v2.png"
+    ],
+    "attempts": 3,
+    "selected_variant": 1,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟脸部、疏密墨线、暗色袍料笔触；单一左上暖主光、大片炭灰暗部与细金边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "银发无须、酒红炭灰官袍、细金链红条、印匣和捆扎文书与旧图一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "窄肩窄躯干，动作小，重心稳定；单图无外部身高参照。"
+      },
+      "4_pose": {
+        "status": "pass",
+        "evidence": "一手扶椅背，另一手拈密信一角；身体静止，坐者未出现。"
+      },
+      "5_turnaround": {
+        "status": "not_applicable",
+        "evidence": "不适用于hero。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "无文字、无额外人物，双手双靴完整，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第三次第一版同时满足扶椅背、拈信角、单人物与双脚可见；前两轮含坐者肩背或缺少扶椅动作。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-d347df54-c5b9-47c7-8586-b36c4d960d43.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-ef143016-89f9-4337-8e4d-703a692c1753.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a1-v2.png"
+      },
+      {
+        "attempt": 2,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-dd99e265-a36c-4db6-9850-9d4e20f2c1f0.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a2-v1.png"
+      },
+      {
+        "attempt": 2,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-1366d916-5c67-40df-92ae-7cf16afeb556.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a2-v2.png"
+      },
+      {
+        "attempt": 3,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-48843b8e-2ed2-40e2-afb7-cc4aad82bf7a.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/hero.png"
+      },
+      {
+        "attempt": 3,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-7728312c-19cf-45c8-8bc9-e81ea31653d4.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/hero-T59-a3-v2.png"
+      }
+    ],
+    "prompt_sha256": "38c9e40d3e528217344e23947af80fa958b06d85852f82e03e073117cc1be491",
+    "identity_reference": "art/chars/CHAR-CHANCELLOR/v1/hero.png",
+    "identity_reference_sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 6,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 6,
+    "output_is_original": false,
+    "output_sha256": "f480e0f1e041bc93e99a8a52de96433796e20018f18f85a329408bc8066c6043",
+    "selected_generation_index": 5,
+    "selected_attempt": 3,
+    "review_notes": [],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "kind": "turnaround",
+    "file": "art/chars/CHAR-CHANCELLOR/turnaround.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-CHANCELLOR__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-CHANCELLOR/alt/turnaround-T59-a1-v1.png"
+    ],
+    "attempts": 1,
+    "selected_variant": 2,
+    "checklist": {
+      "1_style": {
+        "status": "pass",
+        "evidence": "成熟骨相、疏密墨线与袍料笔触；单一暖光、炭灰暗部和细金边光。"
+      },
+      "2_identity": {
+        "status": "pass",
+        "evidence": "银发无须、酒红炭灰官袍、红条细金链、印匣、捆扎文书和王冠印记一致。"
+      },
+      "3_build": {
+        "status": "pass",
+        "evidence": "窄肩窄身、整齐站姿；中等身高没有跨角色比例尺可独立验证。"
+      },
+      "4_pose": {
+        "status": "not_applicable",
+        "evidence": "不适用于turnaround。"
+      },
+      "5_turnaround": {
+        "status": "pass",
+        "evidence": "正侧背三视图等高共地线且空手；侧面向右；印匣、文书及王印独立右列。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "pass",
+        "evidence": "仅姓名与FRONT/SIDE/BACK/PROPS标注，未见多余肢体。"
+      }
+    },
+    "selection_reason": "第二版正面更正、窄身轮廓清楚，道具完整。",
+    "variants": [
+      {
+        "attempt": 1,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-85572be1-4bb8-49ac-b8a8-e1288c525241.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/turnaround-T59-a1-v1.png"
+      },
+      {
+        "attempt": 1,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a21162-52ef-7791-847c-a51d004101ac/exec-70eb1ae0-74ae-4c13-b9d2-b2ba708bd8fc.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/turnaround.png"
+      }
+    ],
+    "prompt_sha256": "937c38da26359831f46ff8aeacbef395a06d5a418cd2686c6555301f0a752c98",
+    "identity_reference": "art/chars/CHAR-CHANCELLOR/v1/hero.png",
+    "identity_reference_sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "generation_tool": "built-in image_gen",
+    "generation_calls": 2,
+    "status": "in_review",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "generation_status": "generated",
+    "generation_calls_successful": 2,
+    "output_is_original": false,
+    "output_sha256": "b52dd269fa8338a5ab5d3cd0f6144a3578d3b4e240b9616602c74f8f1dc2c5f7",
+    "selected_generation_index": 2,
+    "selected_attempt": 1,
+    "review_notes": [
+      "中等身高在单独图页内没有跨角色比例尺，无法独立验证。",
+      "工具原生输出1672x941，未达到提示词写明的2048x1152；未缩放或重绘。"
+    ],
+    "quality_status": "self_checked_pending_lead_review"
+  },
+  {
+    "id": "CHAR-CHANCELLOR",
+    "kind": "expressions",
+    "file": "art/chars/CHAR-CHANCELLOR/expressions.png",
+    "prompt_file": "art/prompts/rendered_v2/CHAR-CHANCELLOR__expressions.txt",
+    "prompt_sha256": "d205e68d0ff4a8567ca1ea3efb77b387e8d83674fa1745d64b678e98027a65b6",
+    "identity_reference": "art/chars/CHAR-CHANCELLOR/v1/hero.png",
+    "identity_reference_sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4",
+    "alts": [],
+    "attempts": 1,
+    "selected_variant": null,
+    "variants": [],
+    "checklist": {
+      "1_style": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      },
+      "2_identity": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      },
+      "3_build": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      },
+      "4_pose": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      },
+      "5_turnaround": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      },
+      "6_prince": {
+        "status": "not_applicable",
+        "evidence": "本任务不含王子。"
+      },
+      "7_text_anatomy": {
+        "status": "not_checked",
+        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+      }
+    },
+    "status": "in_review",
+    "generation_status": "blocked_usage_limit",
+    "generation_tool": "built-in image_gen",
+    "generation_calls_requested": 2,
+    "generation_calls_successful": 0,
+    "generation_error": {
+      "type": "usage_limit_reached",
+      "http_status": 429,
+      "reset_at_utc": "2026-11-25T17:18:32Z",
+      "reset_at_singapore": "2026-11-26T01:18:32+08:00",
+      "resets_in_seconds": 36537,
+      "reason": "每日额度恢复时间超过任务300分钟时限。"
+    },
+    "output_is_original": true,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "selection_reason": "额度达到每日上限，未产出两版，未选版；旧图保留。",
+    "prompt_used_verbatim": true,
+    "style_references": [
+      "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+      "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
+    ],
+    "output_sha256": "d9de72af938968362fd2f85858b5e2415184a07115a487a2a9cb84cef9af1bdc",
+    "review_notes": [],
+    "quality_status": "pending_generation"
+  }
+]
