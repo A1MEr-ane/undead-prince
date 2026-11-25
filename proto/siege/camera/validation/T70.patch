@@ -1,0 +1,1210 @@
+diff --git a/proto/siege/README.md b/proto/siege/README.md
+index fea64c3..cfb44a5 100644
+--- a/proto/siege/README.md
++++ b/proto/siege/README.md
+@@ -2,6 +2,34 @@
+ 
+ 独立场景，无美术资产、增益或原项目入口改动。初值用于验证工具及交互，不代表正式平衡。
+ 
++## T70 镜头实验入口
++
++T70 使用独立场景，复用同一套五分钟模拟。原 `siege.tscn` 继续保持 T69 操作。下列命令均在仓库根目录运行：
++
++```sh
++# 主方案：战区固定机位，默认 0.2 秒推移
++godot --path . proto/siege/camera/siege_camera.tscn
++# 同一主方案直接切换；也可在游戏中按 C 切换
++godot --path . proto/siege/camera/siege_camera.tscn -- --camera_transition=cut
++# 连续 360° 对照
++godot --path . proto/siege/camera/siege_camera.tscn -- --camera_mode=continuous
++# 镜头与输入边界测试，不要求窗口
++godot --headless --path . --script proto/siege/camera/test_camera.gd
++# 串行录制相同策略、种子的 A/B PNG 序列，并拍四个机位静帧
++python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
++```
++
++- `1–4` 分别跳海岸、高地、外城广场、主堡；也可点右上总览或底部战区标签。固定模式不响应旋转，`WASD` 或右键/中键拖动可小范围平移，滚轮只在本机位的有限范围缩放。连续模式保留 `Q/E` 与拖动旋转，也能按战区定位。
++- 亡魂默认已选中。左键长按只向**当前战区、画面内的合法部署地面**投兵。默认只有海岸能部署；切换、展开总览、鼠标进入 UI 或拖动时禁止部署，松开鼠标会结束长按。`F+左键` 仍通过原接口付费集结，`Space` 跳过撤退，`R` 重开。
++- `Tab` 展开/收起全屏战术图，`F3` 开关原调试面板，`C` 对比 0.2 秒推移与直切。总览消费鼠标事件，只跳转、不投兵；显示实际区内人数、实际仍在行军的守军箭头、视口边界、旗帜归属、门墙状态、冥火和倒计时。山洞转移中的单位暂不计入区内人数。
++- 离屏受伤、增援出发、破门/破墙、攻占和失守会进入提醒日志；底部标签闪烁，左侧最多显示三个战区的一行可点击提示，跳转抵达后确认。受伤提示每区冷却 8 秒，同批同路线增援合并，重要状态优先保留到查看。当前增援提示挂在**目的战区**，正文包含来源与目的地。
++- 手工机位在 `camera/map_camera.json` 的 `map.camera.zones` 中：`focus` 为世界坐标 `[x,y,z]`，`yaw/pitch` 为度，`distance` 与它们共同决定位置，`size` 为正交尺寸，另有平移与缩放限制。显示层默认读取此文件，不回写模拟参数；可用原 `--params=覆盖.json` 覆盖 `map.camera`，或用 `--camera_mode=zones/continuous`、`--camera_transition=slide/cut`、`--zone=coast/highland/plaza/keep` 选择实验。
++- T69 没有正式单位精灵；实验入口用一张带鼻尖/武器的程序侧影、脚底锚点和相对镜头左右翻转检查表现。两组都使用同样的侧影。墙和地形继续正常遮挡，没有透视显示单位的特殊处理。正式精灵仍需另行验收。
++
++录制输出在 `shots/t70/zones/`、`continuous/` 和 `stills/<战区>/`，不提交图片。序列每秒模拟时间采样 10 帧（可调 1–60），不是桌面原生刷新率录像；`frames.jsonl` 记录每张对应的逻辑步、时间和战区。`--camera_patrol` 每 15 秒按 1–4 巡览，连续组缓慢旋转，仅用于重复观察。机器人照常在全图部署，镜头限制只约束手玩输入，避免改变同场回放。脚本比较两组完整 `SIEGE` JSON，任何差异都停止。
++
++`camera_metrics.json` 保存每次切换、各条提醒及确认时刻、显示层更新耗时（微秒）和实际帧间隔（毫秒）。自动巡览次数不能当作玩家平均切换次数；未确认提醒也不能直接当作玩家错过事件。录制时的帧间隔含截图开销，性能应关闭录制、`--speed=1` 单独测。当前执行环境无法连接 macOS 桌面，尚未生成 T70 实际截图，遮挡和帧时间仍需在有桌面会话的环境补验。
++
+ ```sh
+ # 手玩，默认五分钟；破晓前满足任一胜利条件即锁定
+ godot --path . proto/siege/siege.tscn
+diff --git a/proto/siege/camera/camera_view.gd b/proto/siege/camera/camera_view.gd
+new file mode 100644
+index 0000000..288d313
+--- /dev/null
++++ b/proto/siege/camera/camera_view.gd
+@@ -0,0 +1,367 @@
++extends "res://proto/siege/siege_view.gd"
++const Overview = preload("res://proto/siege/camera/overview.gd")
++const IDS := ["coast", "highland", "plaza", "keep"]
++var observer
++var cfg: Dictionary
++var mode := "zones"
++var transition_style := "slide"
++var active_zone := "coast"
++var pan := Vector2.ZERO
++var focus := Vector3.ZERO
++var pitch := 0.0
++var distance := 75.0
++var moving := false
++var move_elapsed := 0.0
++var start_transform := Transform3D.IDENTITY
++var target_transform := Transform3D.IDENTITY
++var start_size := 0.0
++var target_size := 0.0
++var overview
++var panel_style: StyleBoxFlat
++var zone_buttons: Array = []
++var notice_buttons: Array = []
++var mode_label: Label
++var viewport_size := Vector2(1440, 900)
++var expanded := false
++var patrol_index := -1
++var recorded_frames := 0
++var recording := false
++var frame_fps := 10.0
++var next_frame_time := 0.0
++var frame_manifest: FileAccess
++var side_texture: ImageTexture
++var sidesprites := {}
++
++func setup(world) -> void:
++	observer = world.camera_observer
++	cfg = observer.cfg
++	mode = observer.mode
++	transition_style = world.args.get("camera_transition", cfg.transition)
++	active_zone = observer.current
++	recording = world.args.has("camera_record")
++	frame_fps = clampf(float(world.args.get("camera_fps", "10")), 1, 60)
++	selected = true
++	load_pose(active_zone)
++	if mode == "continuous":
++		focus = vector3(world.params.view.camera_focus)
++		pitch = deg_to_rad(float(world.params.view.camera_pitch))
++		distance = float(world.params.view.camera_distance)
++		yaw = deg_to_rad(float(world.params.view.camera_yaw))
++		zoom = float(world.params.view.camera_size)
++	super.setup(world)
++	get_window().title = "T70 · 战区固定镜头 / 连续 360°"
++	# super.setup 初始化原镜头字段后，重新套用战区机位。
++	if mode == "zones": load_pose(active_zone)
++	update_camera()
++	build_ui()
++	build_side_texture()
++	if recording:
++		screenshot_dir = world.args.get("out", ProjectSettings.globalize_path("res://shots/t70/" + mode))
++		DirAccess.make_dir_recursive_absolute(screenshot_dir)
++		FileAccess.open(screenshot_dir.path_join(".gdignore"), FileAccess.WRITE).close()
++		frame_manifest = FileAccess.open(screenshot_dir.path_join("frames.jsonl"), FileAccess.WRITE)
++	if main.args.has("camera_still"):
++		shot_times = [0.1]
++	refresh()
++
++func vector3(a: Array) -> Vector3:
++	return Vector3(a[0], a[1], a[2])
++
++func load_pose(id: String) -> void:
++	var pose: Dictionary = cfg.zones[id]
++	focus = vector3(pose.focus)
++	yaw = deg_to_rad(float(pose.yaw))
++	pitch = deg_to_rad(float(pose.pitch))
++	distance = float(pose.distance)
++	zoom = float(pose.size)
++	pan = Vector2.ZERO
++
++func update_camera() -> void:
++	if camera == null: return
++	var center := focus + Vector3(pan.x, 0, pan.y)
++	camera.position = center + Vector3(sin(yaw) * cos(pitch), sin(pitch), cos(yaw) * cos(pitch)) * distance
++	camera.look_at(center, Vector3.UP)
++	camera.size = zoom
++
++func cancel_deploy() -> void:
++	deploying = false
++	if main != null: main.manual_deploy_held = false
++
++func select_zone(id: String, source := "keyboard") -> void:
++	if not IDS.has(id): return
++	cancel_deploy()
++	dragging = false
++	rally_mode = false
++	if mode == "zones" and id == active_zone and not moving:
++		observer.visit(id, source)
++		return
++	var old := camera.transform
++	var old_size := camera.size
++	active_zone = id
++	if mode == "zones":
++		load_pose(id)
++	else:
++		focus = main.zone_point(id)
++		pan = Vector2.ZERO
++	update_camera()
++	target_transform = camera.transform
++	target_size = camera.size
++	moving = transition_style == "slide"
++	move_elapsed = 0
++	start_transform = old
++	start_size = old_size
++	if moving:
++		camera.transform = old
++		camera.size = old_size
++	else:
++		observer.visit(id, source)
++	# 切换来源留在视图内，抵达时才确认提醒。
++	set_meta("switch_source", source)
++
++func set_overview(value: bool) -> void:
++	expanded = value
++	overview.expanded = value
++	cancel_deploy()
++	dragging = false
++	layout_ui()
++
++func build_ui() -> void:
++	panel_style = StyleBoxFlat.new()
++	panel_style.bg_color = Color(0.035, 0.065, 0.09, 0.97)
++	panel_style.border_color = Color("45615f")
++	panel_style.set_border_width_all(1)
++	panel_style.set_corner_radius_all(5)
++	var layer = hud.get_parent()
++	mode_label = Label.new()
++	mode_label.add_theme_font_size_override("font_size", 17)
++	layer.add_child(mode_label)
++	for i in IDS.size():
++		var id: String = IDS[i]
++		var button := Button.new()
++		button.add_theme_font_size_override("font_size", 16)
++		button.pressed.connect(func(): select_zone(id, "edge"))
++		layer.add_child(button)
++		zone_buttons.append(button)
++	for i in 3:
++		var button := Button.new()
++		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
++		button.add_theme_font_size_override("font_size", 16)
++		button.pressed.connect(func():
++			if button.has_meta("zone"): select_zone(button.get_meta("zone"), "alert"))
++		layer.add_child(button)
++		notice_buttons.append(button)
++	overview = Overview.new()
++	overview.view = self
++	layer.add_child(overview)
++	debug.position = Vector2(20, 350)
++	layout_ui()
++
++func layout_ui() -> void:
++	viewport_size = get_viewport().get_visible_rect().size
++	if overview == null: return
++	overview.position = Vector2(12, 12) if expanded else Vector2(viewport_size.x - 362, 12)
++	overview.size = viewport_size - Vector2(24, 24) if expanded else Vector2(350, 385)
++	for i in zone_buttons.size():
++		zone_buttons[i].position = Vector2(12 + i * (viewport_size.x - 24) / 4, viewport_size.y - 61)
++		zone_buttons[i].size = Vector2((viewport_size.x - 36) / 4, 49)
++		zone_buttons[i].visible = not expanded
++	for i in notice_buttons.size():
++		notice_buttons[i].position = Vector2(22, 220 + i * 36)
++		notice_buttons[i].size = Vector2(minf(600, viewport_size.x - 400), 32)
++	mode_label.position = Vector2(22, viewport_size.y - 91)
++	banner.position = Vector2(22, 164)
++	skip_button.position = Vector2(22, 190)
++
++func pointer_over_ui() -> bool:
++	var p := get_viewport().get_mouse_position()
++	if overview != null and overview.get_global_rect().has_point(p): return true
++	for button in zone_buttons + notice_buttons + [skip_button]:
++		if button.visible and button.get_global_rect().has_point(p): return true
++	return false
++
++func can_view_deploy(p: Vector3) -> bool:
++	if moving or expanded or pointer_over_ui() or dragging or main.finished: return false
++	if mode == "zones" and main.terrain.zone_at(p) != active_zone: return false
++	if camera.is_position_behind(p) or not Rect2(Vector2.ZERO, viewport_size).has_point(camera.unproject_position(p)): return false
++	return main.can_deploy(p)
++
++func _input(event: InputEvent) -> void:
++	# 即使松开事件被 UI 消费，也必须结束长按和拖动。
++	if event is InputEventMouseButton and not event.pressed:
++		if event.button_index == MOUSE_BUTTON_LEFT: cancel_deploy()
++		if event.button_index in [MOUSE_BUTTON_RIGHT, MOUSE_BUTTON_MIDDLE]: dragging = false
++
++func _unhandled_input(event: InputEvent) -> void:
++	if main == null: return
++	if event is InputEventKey and event.pressed and not event.echo:
++		if event.keycode >= KEY_1 and event.keycode <= KEY_4:
++			select_zone(IDS[event.keycode - KEY_1])
++			return
++		match event.keycode:
++			KEY_TAB: set_overview(not expanded)
++			KEY_F3: debug_visible = not debug_visible
++			KEY_F: rally_mode = true; cancel_deploy()
++			KEY_C:
++				transition_style = "cut" if transition_style == "slide" else "slide"
++			KEY_ESCAPE:
++				rally_mode = false
++				cancel_deploy()
++				set_overview(false)
++			KEY_SPACE: main.queue_input("skip_retreat")
++			KEY_R: get_tree().reload_current_scene()
++	if event is InputEventMouseButton:
++		if event.button_index == MOUSE_BUTTON_LEFT:
++			if event.pressed and not moving and not expanded and not pointer_over_ui():
++				if rally_mode:
++					main.queue_input("rally", mouse_world())
++					rally_mode = false
++				else:
++					deploying = can_view_deploy(mouse_world())
++		if moving or expanded: return
++		if event.button_index in [MOUSE_BUTTON_MIDDLE, MOUSE_BUTTON_RIGHT]:
++			dragging = event.pressed
++			cancel_deploy()
++		if event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
++			zoom *= 1 / float(main.params.view.zoom_factor) if event.button_index == MOUSE_BUTTON_WHEEL_UP else float(main.params.view.zoom_factor)
++			var limits: Array = cfg.zones[active_zone].zoom_limits if mode == "zones" else main.params.view.zoom_limits
++			zoom = clampf(zoom, limits[0], limits[1])
++			update_camera()
++	if event is InputEventMouseMotion and dragging and not moving and not expanded:
++		if mode == "continuous":
++			yaw -= event.relative.x * float(main.params.view.drag_speed)
++		else:
++			var right := Vector2(camera.basis.x.x, camera.basis.x.z).normalized()
++			var down := Vector2(camera.basis.y.x, camera.basis.y.z).normalized()
++			pan -= (right * event.relative.x + down * event.relative.y) * zoom / viewport_size.y
++			clamp_pan()
++		update_camera()
++
++func clamp_pan() -> void:
++	var limit: Array = cfg.zones[active_zone].pan_limit
++	pan = pan.clamp(-Vector2(limit[0], limit[1]), Vector2(limit[0], limit[1]))
++
++func _process(delta: float) -> void:
++	if main == null: return
++	if not main.finished and main.time > 1:
++		observer.frame_msec.append(delta * 1000)
++	if moving:
++		move_elapsed += delta
++		var t := clampf(move_elapsed / float(cfg.transition_seconds), 0, 1)
++		camera.transform = start_transform.interpolate_with(target_transform, smoothstep(0, 1, t))
++		camera.size = lerpf(start_size, target_size, t)
++		if t >= 1:
++			moving = false
++			observer.visit(active_zone, get_meta("switch_source", "keyboard"))
++	elif not expanded:
++		if mode == "continuous":
++			var rotation := float(int(Input.is_physical_key_pressed(KEY_E)) - int(Input.is_physical_key_pressed(KEY_Q)))
++			if main.args.has("camera_patrol"): rotation = 0.18
++			if rotation != 0:
++				yaw += rotation * delta * float(main.params.view.rotation_speed)
++				update_camera()
++		else:
++			var direction := Vector2(float(int(Input.is_physical_key_pressed(KEY_D)) - int(Input.is_physical_key_pressed(KEY_A))), float(int(Input.is_physical_key_pressed(KEY_S)) - int(Input.is_physical_key_pressed(KEY_W))))
++			if direction != Vector2.ZERO:
++				pan += direction.normalized() * delta * float(cfg.pan_speed)
++				clamp_pan()
++				update_camera()
++	if main.args.has("camera_patrol") and mode == "zones":
++		var index := floori(main.time / 15.0) % 4
++		if index != patrol_index:
++			patrol_index = index
++			select_zone(IDS[index], "scripted_patrol_15s")
++	main.manual_deploy_held = deploying and main.bot == null and can_view_deploy(mouse_world())
++	main.manual_deploy_pos = mouse_world()
++	for effect in arrow_meshes.duplicate():
++		effect.life -= delta
++		if effect.life <= 0:
++			effect.mesh.queue_free()
++			arrow_meshes.erase(effect)
++
++func build_side_texture() -> void:
++	# 不引入正式美术：单张有鼻尖/武器的灰盒侧影，仅用来观察左右翻转。
++	var image := Image.create(24, 32, false, Image.FORMAT_RGBA8)
++	image.fill(Color.TRANSPARENT)
++	for r in [Rect2i(7, 2, 10, 9), Rect2i(16, 6, 4, 3), Rect2i(5, 12, 12, 12), Rect2i(6, 24, 4, 8), Rect2i(13, 24, 4, 8), Rect2i(18, 12, 2, 15), Rect2i(16, 15, 7, 2)]:
++		image.fill_rect(r, Color.WHITE)
++	image.fill_rect(Rect2i(14, 5, 2, 2), Color("243e40"))
++	side_texture = ImageTexture.create_from_image(image)
++
++func refresh(alpha: float = 1.0) -> void:
++	var started := Time.get_ticks_usec()
++	super.refresh(alpha)
++	if overview == null: return
++	observer.poll()
++	if viewport_size != get_viewport().get_visible_rect().size: layout_ui()
++	for u in main.units:
++		if not unit_meshes.has(u.id): continue
++		var mesh: MeshInstance3D = unit_meshes[u.id]
++		if not sidesprites.has(u.id):
++			var sprite := Sprite3D.new()
++			sprite.texture = side_texture
++			sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
++			sprite.shaded = false
++			sprite.pixel_size = float(main.params.view.cavalry_height if u.kind == "cavalry" else main.params.view.unit_height) / 32.0
++			sprite.offset = Vector2(0, 16)
++			add_child(sprite)
++			sidesprites[u.id] = sprite
++		var sprite: Sprite3D = sidesprites[u.id]
++		sprite.visible = mesh.visible
++		sprite.position = mesh.position - Vector3(0, float(main.params.view.unit_height) * 0.5, 0)
++		sprite.modulate = mesh.material_override.albedo_color
++		var horizontal: float = u.facing.dot(camera.global_basis.x)
++		if absf(horizontal) > 0.08: sprite.flip_h = horizontal < 0
++		mesh.visible = false
++	preview.visible = preview.visible and not moving and not expanded and not pointer_over_ui()
++	if preview.visible and not rally_mode:
++		preview.material_override = material(Color(main.params.view.ghost_color) if can_view_deploy(mouse_world()) else Color("dc6f70"))
++	var remaining := ceili(maxf(0, float(main.params.simulation.night_seconds) - main.time))
++	hud.text = "T70 · %s  [%s / seed %d]    破晓 %02d:%02d\n冥火 %.0f / %.0f   亡魂 %d / 守军 %d\n1–4 战区 · 左键长按部署 · F+左键集结\n%s · 滚轮缩放\nTab 总览 · C 推移/直切 · F3 调试 · R 重开" % ["战区固定镜头" if mode == "zones" else "连续 360°", main.strategy, main.seed_value, remaining / 60, remaining % 60, main.fire, main.params.economy.capacity, main.spawned[0] - main.casualties[0], main.spawned[1] - main.casualties[1] - main.escaped, "WASD / 右键拖动小范围平移（朝向固定）" if mode == "zones" else "Q/E / 右键拖动连续旋转"]
++	mode_label.text = "%s · %s · 切换 %d 次%s" % [cfg.zones[active_zone].label, "0.2 秒推移" if transition_style == "slide" else "直接切换", observer.switches.size(), " · 切换中，禁止部署" if moving else ""]
++	for i in IDS.size():
++		var id: String = IDS[i]
++		var alert: bool = observer.latest.has(id)
++		var hint := ""
++		if alert: hint = " · " + observer.latest[id].message
++		zone_buttons[i].text = "%d %s  亡%d / 守%d%s" % [i + 1, cfg.zones[id].label, observer.counts[id][0], observer.counts[id][1], hint]
++		zone_buttons[i].modulate = Color("ffb879") if alert and sin(Time.get_ticks_msec() * 0.008) > 0 else Color("88f3cb") if id == active_zone else Color.WHITE
++	var pending: Array = observer.latest.values()
++	pending.sort_custom(func(a, b): return a.time > b.time)
++	for i in notice_buttons.size():
++		var button: Button = notice_buttons[i]
++		button.visible = i < pending.size() and not expanded
++		if button.visible:
++			var a: Dictionary = pending[i]
++			button.text = "[%s · %03ds] %s  → 查看" % [cfg.zones[a.zone].label, int(a.time), a.message]
++			button.set_meta("zone", a.zone)
++	overview.queue_redraw()
++	if not main.finished: observer.view_usec.append(Time.get_ticks_usec() - started)
++
++func next_shot_due() -> bool:
++	if recording: return main.time + 0.000001 >= next_frame_time
++	return super.next_shot_due()
++
++func capture_if_due() -> void:
++	if not recording:
++		if main.args.has("camera_still") and shot_index >= shot_times.size():
++			get_tree().quit()
++		else:
++			super.capture_if_due()
++		return
++	if shot_pending or capture_done or not next_shot_due(): return
++	shot_pending = true
++	await RenderingServer.frame_post_draw
++	var path := screenshot_dir.path_join("frame_%05d.png" % recorded_frames)
++	var error := get_viewport().get_texture().get_image().save_png(path)
++	if error != OK:
++		push_error("T70 screenshot failed: " + path)
++		get_tree().quit(3)
++		return
++	frame_manifest.store_line(JSON.stringify({"frame": recorded_frames, "time": main.time, "step": main.step_number, "zone": active_zone, "file": path.get_file()}))
++	frame_manifest.flush()
++	recorded_frames += 1
++	next_frame_time = recorded_frames / frame_fps
++	shot_pending = false
++	if main.result_printed:
++		capture_done = true
++		get_tree().quit()
+diff --git a/proto/siege/camera/camera_view.gd.uid b/proto/siege/camera/camera_view.gd.uid
+new file mode 100644
+index 0000000..42df270
+--- /dev/null
++++ b/proto/siege/camera/camera_view.gd.uid
+@@ -0,0 +1 @@
++uid://daus5k1rccfh6
+diff --git a/proto/siege/camera/capture.py b/proto/siege/camera/capture.py
+new file mode 100644
+index 0000000..903d922
+--- /dev/null
++++ b/proto/siege/camera/capture.py
+@@ -0,0 +1,73 @@
++#!/usr/bin/env python3
++"""串行录制同种子同策略的 A/B PNG 序列和四战区静帧；比较完整 SIEGE JSON。"""
++import argparse
++import json
++from pathlib import Path
++import subprocess
++import sys
++
++ROOT = Path(__file__).resolve().parents[3]
++SCENE = "proto/siege/camera/siege_camera.tscn"
++
++
++def run(args, label, flags):
++    folder = args.out / label
++    folder.mkdir(parents=True, exist_ok=True)
++    command = [args.godot, "--path", str(ROOT), "--log-file", str(folder / "engine.log"),
++               SCENE, "--", "--capture", f"--strategy={args.strategy}", f"--seed={args.seed}",
++               f"--out={folder}", f"--camera_out={folder}", *flags]
++    (folder / "command.json").write_text(json.dumps(command, ensure_ascii=False, indent=2))
++    try:
++        process = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=args.timeout)
++    except subprocess.TimeoutExpired as error:
++        output = error.stdout or b""
++        (folder / "stdout.log").write_text(output.decode(errors="replace") if isinstance(output, bytes) else output)
++        raise RuntimeError(f"{label} 窗口/渲染超时；保留日志，未生成画面不能算验收通过") from error
++    output = process.stdout + process.stderr
++    (folder / "stdout.log").write_text(output)
++    bad = [line for line in output.splitlines() if "SCRIPT ERROR" in line or line.startswith("ERROR:")]
++    bad = [line for line in bad if 'Condition "ret != noErr"' not in line]
++    if process.returncode or bad:
++        raise RuntimeError(f"{label} exit={process.returncode} errors={bad[:3]}")
++    frames = sorted(folder.glob("*.png"))
++    if not frames:
++        raise RuntimeError(f"{label} 没有实际 PNG")
++    rows = [json.loads(line[6:]) for line in output.splitlines() if line.startswith("SIEGE ")]
++    if "--camera_record" in flags:
++        if len(rows) != 1:
++            raise RuntimeError(f"{label} 结算记录数量不是 1")
++        (folder / "result.json").write_text(json.dumps(rows[0], ensure_ascii=False, indent=2))
++    print(f"CAPTURE {label} frames={len(frames)}", flush=True)
++    return rows[0] if rows else None
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--godot", default="godot")
++    parser.add_argument("--seed", type=int, default=7)
++    parser.add_argument("--strategy", default="feint")
++    parser.add_argument("--fps", type=int, default=10)
++    parser.add_argument("--timeout", type=float, default=900)
++    parser.add_argument("--out", type=Path, default=ROOT / "shots/t70")
++    args = parser.parse_args()
++    args.out = args.out.resolve()
++    args.out.mkdir(parents=True, exist_ok=True)
++    (args.out / ".gdignore").touch()
++    results = []
++    for mode in ["zones", "continuous"]:
++        results.append(run(args, mode, [f"--camera_mode={mode}", "--camera_record", "--camera_patrol",
++                                       f"--camera_fps={args.fps}", "--speed=1"]))
++    if results[0] != results[1]:
++        differences = [key for key in results[0] if results[0][key] != results[1].get(key)]
++        raise RuntimeError(f"ESCALATE: A/B 模拟结算不一致 {differences}；停止录制")
++    for zone in ["coast", "highland", "plaza", "keep"]:
++        run(args, f"stills/{zone}", ["--camera_mode=zones", f"--zone={zone}", "--camera_still", "--speed=1"])
++    print("CAMERA_CAPTURE PASS exact_result_match=true")
++
++
++if __name__ == "__main__":
++    try:
++        main()
++    except (RuntimeError, OSError) as error:
++        print(f"CAMERA_CAPTURE FAIL: {error}", file=sys.stderr)
++        sys.exit(1)
+diff --git a/proto/siege/camera/map_camera.json b/proto/siege/camera/map_camera.json
+new file mode 100644
+index 0000000..3eb2db6
+--- /dev/null
++++ b/proto/siege/camera/map_camera.json
+@@ -0,0 +1,18 @@
++{
++  "map": {
++    "camera": {
++      "mode": "zones",
++      "transition": "slide",
++      "transition_seconds": 0.2,
++      "initial_zone": "coast",
++      "pan_speed": 8.0,
++      "alert_cooldown": 8.0,
++      "zones": {
++        "coast": {"label": "海岸", "focus": [28, 0.3, 36], "yaw": 0, "pitch": 66, "distance": 75, "size": 43, "pan_limit": [4, 2], "zoom_limits": [38, 47]},
++        "highland": {"label": "高地", "focus": [11, 0.8, 25], "yaw": -38, "pitch": 62, "distance": 60, "size": 25, "pan_limit": [2, 2], "zoom_limits": [22, 28]},
++        "plaza": {"label": "外城广场", "focus": [31, 0.5, 22], "yaw": 8, "pitch": 66, "distance": 65, "size": 32, "pan_limit": [3, 2], "zoom_limits": [28, 36]},
++        "keep": {"label": "主堡", "focus": [33, 0.65, 11], "yaw": 24, "pitch": 62, "distance": 60, "size": 25, "pan_limit": [2, 2], "zoom_limits": [22, 28]}
++      }
++    }
++  }
++}
+diff --git a/proto/siege/camera/observer.gd b/proto/siege/camera/observer.gd
+new file mode 100644
+index 0000000..0b324b3
+--- /dev/null
++++ b/proto/siege/camera/observer.gd
+@@ -0,0 +1,107 @@
++extends RefCounted
++## 只读历史记录。hurt 回调即时记录，避免高倍速下遗漏两次 refresh 之间的伤亡。
++const DEFAULTS := "res://proto/siege/camera/map_camera.json"
++const IDS := ["coast", "highland", "plaza", "keep"]
++var world
++var cfg: Dictionary
++var mode := "zones"
++var current := "coast"
++var alerts: Array = []
++var switches: Array = []
++var latest := {}
++var counts := {}
++var seen := {}
++var last_attack := {}
++var decision_cursor := 0
++var topology_cursor := 0
++var saved := false
++var view_usec: Array = []
++var frame_msec: Array = []
++
++func setup(main) -> void:
++	world = main
++	cfg = JSON.parse_string(FileAccess.get_file_as_string(DEFAULTS)).map.camera
++	if world.params.map.has("camera"):
++		world.merge_params(cfg, world.params.map.camera)
++	mode = world.args.get("camera_mode", cfg.mode)
++	current = world.args.get("zone", cfg.initial_zone)
++	if not IDS.has(current): current = "coast"
++	for id in IDS:
++		counts[id] = [0, 0]
++		seen[id] = {"captures": 0, "losses": 0}
++	world.hooks.subscribe("hurt", on_hurt)
++
++func on_hurt(payload: Dictionary) -> void:
++	var zone: String = world.terrain.zone_at(payload.unit.nav_pos)
++	if world.time - float(last_attack.get(zone, -100.0)) < float(cfg.alert_cooldown):
++		return
++	last_attack[zone] = world.time
++	add_alert(zone, "attack", "遭到攻击", world.time)
++
++func add_alert(zone: String, kind: String, message: String, at: float) -> void:
++	var offscreen := zone != current
++	var item := {"zone": zone, "kind": kind, "message": message, "time": at,
++		"offscreen": offscreen, "acknowledged_at": -1.0 if offscreen else at}
++	alerts.append(item)
++	if offscreen:
++		var priority := {"attack": 0, "reinforcement": 1, "breach": 2, "capture": 3, "loss": 4}
++		if not latest.has(zone) or int(priority[kind]) >= int(priority[latest[zone].kind]):
++			latest[zone] = item
++
++func visit(zone: String, source: String) -> void:
++	if zone != current:
++		switches.append({"time": world.time, "from": current, "to": zone, "source": source})
++	current = zone
++	for item in alerts:
++		if item.zone == zone and float(item.acknowledged_at) < 0:
++			item.acknowledged_at = world.time
++	latest.erase(zone)
++
++func poll() -> void:
++	for id in IDS:
++		counts[id] = [0, 0]
++	for u in world.units:
++		if u.alive and not u.escaped and u.cave_until < 0:
++			var zone: String = world.terrain.zone_at(u.nav_pos)
++			counts[zone][u.faction] += 1
++	while decision_cursor < world.director.decisions.size():
++		var d: Dictionary = world.director.decisions[decision_cursor]
++		decision_cursor += 1
++		if d.event == "depart":
++			# 同批同路线出发合为一条提醒；箭头仍按实际行军单位绘制。
++			var key := "%s:%s:%s" % [d.time, d.from, d.to]
++			if not seen.has(key):
++				seen[key] = true
++				add_alert(d.to, "reinforcement", "%s增援出发 → %s" % [cfg.zones[d.from].label, cfg.zones[d.to].label], d.time)
++	while topology_cursor < world.terrain.topology_events.size():
++		var e: Dictionary = world.terrain.topology_events[topology_cursor]
++		topology_cursor += 1
++		if e.reason in ["gate_breached", "weak_wall_breached"]:
++			var zone := "plaza" if e.reason == "gate_breached" else "highland"
++			add_alert(zone, "breach", "城门被破" if e.reason == "gate_breached" else "薄弱城墙被破", e.time)
++	for id in IDS:
++		for field in ["captures", "losses"]:
++			var history: Array = world.zones[id][field]
++			while int(seen[id][field]) < history.size():
++				add_alert(id, "capture" if field == "captures" else "loss", "战区已攻占" if field == "captures" else "战区已失守", history[int(seen[id][field])])
++				seen[id][field] += 1
++
++func stats(values: Array) -> Dictionary:
++	if values.is_empty(): return {"samples": 0}
++	var ordered := values.duplicate()
++	ordered.sort()
++	var total := 0.0
++	for v in ordered: total += float(v)
++	return {"samples": ordered.size(), "mean": total / ordered.size(), "p95": ordered[mini(ordered.size() - 1, floori(ordered.size() * 0.95))], "max": ordered.back()}
++
++func save(directory: String) -> void:
++	saved = true
++	DirAccess.make_dir_recursive_absolute(directory)
++	var report := {"mode": mode, "seed": world.seed_value, "strategy": world.strategy,
++		"simulation_seconds": world.ended_at, "switches": switches, "switch_count": switches.size(),
++		"alerts": alerts, "unacknowledged": alerts.filter(func(a): return float(a.acknowledged_at) < 0).size(),
++		"view_update_usec": stats(view_usec), "frame_interval_msec": stats(frame_msec),
++		"headless": world.headless, "note": "自动巡览切换量不代表玩家均值；未确认提醒不等于玩家漏看。帧间隔含模拟/渲染/限帧/截图。"}
++	var stream := FileAccess.open(directory.path_join("camera_metrics.json"), FileAccess.WRITE)
++	if stream != null: stream.store_string(JSON.stringify(report, "\t"))
++	print("CAMERA_METRICS " + JSON.stringify({"mode": mode, "switches": switches.size(), "alerts": alerts.size(), "path": directory.path_join("camera_metrics.json")}))
+diff --git a/proto/siege/camera/observer.gd.uid b/proto/siege/camera/observer.gd.uid
+new file mode 100644
+index 0000000..b7ed6a3
+--- /dev/null
++++ b/proto/siege/camera/observer.gd.uid
+@@ -0,0 +1 @@
++uid://lfqloi5xh0dm
+diff --git a/proto/siege/camera/overview.gd b/proto/siege/camera/overview.gd
+new file mode 100644
+index 0000000..d2acd4d
+--- /dev/null
++++ b/proto/siege/camera/overview.gd
+@@ -0,0 +1,82 @@
++extends Control
++## 正交战术图。所有鼠标事件在 UI 层消费，点击只选择战区。
++var view
++var expanded := false
++var map_rect := Rect2()
++
++func _ready() -> void:
++	mouse_filter = Control.MOUSE_FILTER_STOP
++	gui_input.connect(on_input)
++
++func map_point(p: Vector3) -> Vector2:
++	return map_rect.position + Vector2(p.x / float(view.main.params.map.width), p.z / float(view.main.params.map.depth)) * map_rect.size
++
++func rectangle(r: Array) -> Rect2:
++	return Rect2(map_point(Vector3(r[0], 0, r[1])), Vector2(r[2] / float(view.main.params.map.width), r[3] / float(view.main.params.map.depth)) * map_rect.size)
++
++func text_at(p: Vector2, value: String, color := Color("d8e4e3"), font_size := 15) -> void:
++	draw_string(ThemeDB.fallback_font, p, value, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)
++
++func _draw() -> void:
++	if view == null: return
++	var world = view.main
++	var observer = view.observer
++	draw_style_box(view.panel_style, Rect2(Vector2.ZERO, size))
++	var remaining := ceili(maxf(0, float(world.params.simulation.night_seconds) - world.time))
++	text_at(Vector2(14, 25), "战场总览 · Tab %s" % ("收起" if expanded else "展开"), Color("f0ede0"), 18)
++	text_at(Vector2(14, 48), "冥火 %.0f / %.0f    破晓 %02d:%02d" % [world.fire, world.params.economy.capacity, remaining / 60, remaining % 60])
++	var available := size - Vector2(24, 136)
++	var scale_factor := minf(available.x / float(world.params.map.width), available.y / float(world.params.map.depth))
++	map_rect = Rect2(Vector2((size.x - float(world.params.map.width) * scale_factor) * 0.5, 62), Vector2(world.params.map.width, world.params.map.depth) * scale_factor)
++	draw_rect(map_rect, Color("203b50"))
++	for r in world.params.map.land_rects: draw_rect(rectangle(r), Color("526764"))
++	for id in observer.IDS:
++		var zone: Dictionary = observer.cfg.zones[id]
++		for z in world.params.map.zones:
++			if z.id != id: continue
++			for r in z.rects:
++				draw_rect(rectangle(r), Color(0.35, 0.85, 0.7, 0.10) if id == observer.current else Color(0.75, 0.75, 0.7, 0.035))
++		var p := map_point(world.zone_point(id))
++		var c := Color("71f4c8") if world.zones[id].owner == "ghost" else Color("ecc39a")
++		draw_circle(p, 5, c)
++		if observer.latest.has(id):
++			draw_arc(p, 10 + 2 * sin(Time.get_ticks_msec() * 0.008), 0, TAU, 24, Color("ffb87c"), 2)
++		text_at(p + Vector2(9, -5), "%d %s" % [observer.IDS.find(id) + 1, zone.label], c)
++		text_at(p + Vector2(9, 13), "亡%d / 守%d" % [observer.counts[id][0], observer.counts[id][1]], Color("ffffff"), 14)
++	for r in world.params.map.wall_rects: draw_rect(rectangle(r), Color("cbd0d2"))
++	var gate_color := Color("78e1b6") if world.terrain.gate_open else Color("e8b57e")
++	draw_rect(rectangle(world.params.map.gate_rect).grow(1), gate_color)
++	draw_rect(rectangle(world.params.map.weak_rect).grow(1), Color("78e1b6") if world.terrain.weak_broken else Color("ed8f88"))
++	if world.params.map.cave_enabled:
++		for endpoint in [world.params.map.cave_a, world.params.map.cave_b]:
++			draw_circle(map_point(world.terrain.vec(endpoint)), 4, Color("121829"))
++	var marching := {}
++	for u in world.sides[1].units:
++		if not u.alive or not u.marching or u.retreating: continue
++		var key: String = u.mission_from + ":" + u.assigned
++		if marching.has(key): continue
++		marching[key] = true
++		var a := map_point(u.nav_pos)
++		var b := map_point(world.zone_point(u.assigned))
++		var dir := (b - a).normalized()
++		draw_line(a, b, Color("ffcf75"), 2, true)
++		draw_colored_polygon(PackedVector2Array([b, b - dir.rotated(0.5) * 10, b - dir.rotated(-0.5) * 10]), Color("ffcf75"))
++	var corners := PackedVector2Array()
++	for corner in [Vector2.ZERO, Vector2(view.viewport_size.x, 0), view.viewport_size, Vector2(0, view.viewport_size.y), Vector2.ZERO]:
++		var hit = Plane(Vector3.UP, float(world.params.map.base_height)).intersects_ray(view.camera.project_ray_origin(corner), view.camera.project_ray_normal(corner))
++		if hit != null:
++			corners.append(map_point(Vector3(clampf(hit.x, 0, world.params.map.width), 0, clampf(hit.z, 0, world.params.map.depth))))
++	if corners.size() > 1: draw_polyline(corners, Color(0.5, 1, 0.9, 0.6), 1, true)
++	var y := size.y - 58
++	text_at(Vector2(14, y), "门 %s %.0f  ·  薄墙 %s %.0f" % ["破" if world.terrain.gate_broken else "开" if world.terrain.gate_open else "闭", maxf(0, world.gate_hp), "破" if world.terrain.weak_broken else "完整", maxf(0, world.weak_hp)])
++	text_at(Vector2(14, y + 22), "普通城墙：完整 · 行军箭头 %d 条" % marching.size())
++	text_at(Vector2(14, y + 44), "点击战区跳转 · 总览不可部署", Color("8caaa9"), 14)
++
++func on_input(event: InputEvent) -> void:
++	view.cancel_deploy()
++	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and map_rect.has_point(event.position):
++		var uv: Vector2 = (event.position - map_rect.position) / map_rect.size
++		var p := Vector3(uv.x * view.main.params.map.width, 0, uv.y * view.main.params.map.depth)
++		view.select_zone(view.main.terrain.zone_at(p), "overview")
++		if expanded: view.set_overview(false)
++	accept_event()
+diff --git a/proto/siege/camera/overview.gd.uid b/proto/siege/camera/overview.gd.uid
+new file mode 100644
+index 0000000..00c0f96
+--- /dev/null
++++ b/proto/siege/camera/overview.gd.uid
+@@ -0,0 +1 @@
++uid://b7cnt27l0wde8
+diff --git a/proto/siege/camera/siege_camera.gd b/proto/siege/camera/siege_camera.gd
+new file mode 100644
+index 0000000..bc3ca32
+--- /dev/null
++++ b/proto/siege/camera/siege_camera.gd
+@@ -0,0 +1,31 @@
++extends "res://proto/siege/siege.gd"
++## 独立入口，仅替换展示层；模拟、输入队列和调度沿用原实现。
++const CameraView = preload("res://proto/siege/camera/camera_view.gd")
++const Observer = preload("res://proto/siege/camera/observer.gd")
++var camera_observer
++
++func _ready() -> void:
++	super._ready()
++	if params.is_empty():
++		return
++	camera_observer = Observer.new()
++	camera_observer.setup(self)
++	if not headless:
++		remove_child(view)
++		view.free()
++		view = CameraView.new()
++		add_child(view)
++		view.setup(self)
++
++func _process(delta: float) -> void:
++	super._process(delta)
++	if camera_observer == null:
++		return
++	camera_observer.poll()
++	if result_printed and not camera_observer.saved:
++		camera_observer.save(args.get("camera_out", "res://shots/t70/" + camera_observer.mode))
++
++func _exit_tree() -> void:
++	if camera_observer != null:
++		camera_observer.world = null
++	super._exit_tree()
+diff --git a/proto/siege/camera/siege_camera.gd.uid b/proto/siege/camera/siege_camera.gd.uid
+new file mode 100644
+index 0000000..1291088
+--- /dev/null
++++ b/proto/siege/camera/siege_camera.gd.uid
+@@ -0,0 +1 @@
++uid://dnghlo37b4har
+diff --git a/proto/siege/camera/siege_camera.tscn b/proto/siege/camera/siege_camera.tscn
+new file mode 100644
+index 0000000..be4f873
+--- /dev/null
++++ b/proto/siege/camera/siege_camera.tscn
+@@ -0,0 +1,6 @@
++[gd_scene load_steps=2 format=3]
++
++[ext_resource type="Script" path="res://proto/siege/camera/siege_camera.gd" id="1"]
++
++[node name="SiegeCameraExperiment" type="Node3D"]
++script = ExtResource("1")
+diff --git a/proto/siege/camera/test_camera.gd b/proto/siege/camera/test_camera.gd
+new file mode 100644
+index 0000000..185d63e
+--- /dev/null
++++ b/proto/siege/camera/test_camera.gd
+@@ -0,0 +1,95 @@
++extends SceneTree
++const Scene = preload("res://proto/siege/camera/siege_camera.tscn")
++const CameraView = preload("res://proto/siege/camera/camera_view.gd")
++var failures: Array = []
++
++func _initialize() -> void:
++	call_deferred("run")
++
++func check(value: bool, description: String) -> void:
++	if not value:
++		failures.append(description)
++		printerr("CAMERA FAIL: " + description)
++
++func key(code: Key) -> InputEventKey:
++	var event := InputEventKey.new()
++	event.keycode = code
++	event.pressed = true
++	return event
++
++func run() -> void:
++	var world = Scene.instantiate()
++	root.add_child(world)
++	world.set_process(false)
++	var view = CameraView.new()
++	world.add_child(view)
++	view.setup(world)
++	view.set_process(false)
++	var observer = world.camera_observer
++	var coast: Vector3 = world.terrain.vec(world.params.strategies.deploy_points.main)
++	check(view.can_view_deploy(coast), "初始海岸机位可在可见部署区投兵")
++	var yaw: float = view.yaw
++	view._unhandled_input(key(KEY_Q))
++	view._unhandled_input(key(KEY_E))
++	check(view.yaw == yaw, "固定模式 Q/E 不改变朝向")
++	view._unhandled_input(key(KEY_2))
++	check(view.active_zone == "highland" and view.moving, "数字键 2 选择高地并推移")
++	check(not view.can_view_deploy(coast), "推移过程禁止部署")
++	view._process(0.2)
++	check(not view.moving and observer.current == "highland", "0.2 秒后抵达并确认当前战区")
++	check(not view.can_view_deploy(coast), "高地机位不能在海岸部署")
++	view.transition_style = "cut"
++	view.select_zone("coast", "test")
++	check(not view.moving and view.can_view_deploy(coast), "直切立即恢复海岸可部署状态")
++	view.deploying = true
++	world.manual_deploy_held = true
++	view.set_overview(true)
++	check(not view.deploying and not world.manual_deploy_held and not view.can_view_deploy(coast), "总览展开立即取消长按并禁止部署")
++	view.set_overview(false)
++	view.deploying = true
++	var release := InputEventMouseButton.new()
++	release.button_index = MOUSE_BUTTON_LEFT
++	release.pressed = false
++	view._input(release)
++	check(not view.deploying, "UI 消费事件前也能收到全局松开")
++	view.select_zone("keep", "test")
++	observer.on_hurt({"unit": world.units[0]})
++	check(observer.latest.has("coast"), "离屏受伤触发战区提示")
++	world.terrain.topology_events.append({"time": 1.0, "reason": "weak_wall_breached"})
++	world.director.decisions.append({"event": "depart", "time": 2.0, "from": "keep", "to": "plaza"})
++	world.zones.coast.captures.append(3.0)
++	world.zones.coast.losses.append(4.0)
++	observer.poll()
++	var kinds: Array = observer.alerts.map(func(a): return a.kind)
++	for kind in ["attack", "reinforcement", "breach", "capture", "loss"]:
++		check(kinds.has(kind), "提醒覆盖 " + kind)
++	check(observer.latest.coast.kind == "loss", "重要状态不会被低优先级攻击提示覆盖")
++	observer.on_hurt({"unit": world.units[0]})
++	check(observer.latest.coast.kind == "loss", "受伤冷却及优先级保留失守提示")
++	view.select_zone("coast", "test")
++	check(not observer.latest.has("coast"), "跳转确认该战区所有待看提醒")
++	var count: int = observer.alerts.size()
++	observer.poll()
++	check(observer.alerts.size() == count, "只读历史游标不重复派发提醒")
++	for id in view.IDS:
++		view.select_zone(id, "test")
++		var pose: Dictionary = view.cfg.zones[id]
++		check(is_equal_approx(view.camera.size, float(pose.size)), "机位缩放 " + id)
++		check(is_equal_approx(view.yaw, deg_to_rad(float(pose.yaw))), "机位朝向 " + id)
++	view.mode = "continuous"
++	var motion := InputEventMouseMotion.new()
++	motion.relative = Vector2(20, 0)
++	view.dragging = true
++	yaw = view.yaw
++	view._unhandled_input(motion)
++	check(view.yaw != yaw, "连续对照仍支持拖动旋转")
++	view.refresh()
++	for u in world.units:
++		if not view.sidesprites.has(u.id): continue
++		var sprite: Sprite3D = view.sidesprites[u.id]
++		check(is_equal_approx(sprite.position.y, u.nav_pos.y), "静止侧影脚底锚定单位地面高度")
++		check(sprite.billboard == BaseMaterial3D.BILLBOARD_ENABLED, "侧影始终朝向镜头")
++	view.free()
++	world.free()
++	print("CAMERA_FEATURES %s checks=deployment,transition,overview,alerts,poses,flip,grounding" % ("PASS" if failures.is_empty() else "FAIL"))
++	quit(0 if failures.is_empty() else 1)
+diff --git a/proto/siege/camera/test_camera.gd.uid b/proto/siege/camera/test_camera.gd.uid
+new file mode 100644
+index 0000000..d47c39b
+--- /dev/null
++++ b/proto/siege/camera/test_camera.gd.uid
+@@ -0,0 +1 @@
++uid://dspvo1jgbn23n
+diff --git a/proto/siege/camera/validation/capture-failure.txt b/proto/siege/camera/validation/capture-failure.txt
+new file mode 100644
+index 0000000..82c28b7
+--- /dev/null
++++ b/proto/siege/camera/validation/capture-failure.txt
+@@ -0,0 +1,7 @@
++CAMERA_CAPTURE FAIL: zones 窗口/渲染超时；保留日志，未生成画面不能算验收通过
++
++Initial direct window probe (tool stdout):
++Failure on line 688 ... _LSModifyNotification ...
++Connection Invalid error for service com.apple.hiservices-xpcservice.
++Error received in message reply handler: Connection invalid
++No PNG files were generated. headless uses dummy rendering only (godot --help).
+diff --git a/proto/siege/camera/validation/features.txt b/proto/siege/camera/validation/features.txt
+new file mode 100644
+index 0000000..1cbd48d
+--- /dev/null
++++ b/proto/siege/camera/validation/features.txt
+@@ -0,0 +1,5 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
++ERROR: Condition "ret != noErr" is true. Returning: ""
++   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
++CAMERA_FEATURES PASS checks=deployment,transition,overview,alerts,poses,flip,grounding
+diff --git a/proto/siege/camera/validation/git-stage-failure.txt b/proto/siege/camera/validation/git-stage-failure.txt
+new file mode 100644
+index 0000000..1ce2984
+--- /dev/null
++++ b/proto/siege/camera/validation/git-stage-failure.txt
+@@ -0,0 +1 @@
++fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t70/index.lock': Operation not permitted
+diff --git a/proto/siege/camera/validation/live-view-check.gd.txt b/proto/siege/camera/validation/live-view-check.gd.txt
+new file mode 100644
+index 0000000..accfd19
+--- /dev/null
++++ b/proto/siege/camera/validation/live-view-check.gd.txt
+@@ -0,0 +1,42 @@
++extends SceneTree
++const Scene = preload("res://proto/siege/camera/siege_camera.tscn")
++const CameraView = preload("res://proto/siege/camera/camera_view.gd")
++func _initialize():
++    call_deferred("run")
++func run():
++    var baseline = {}
++    for line in FileAccess.get_file_as_string("res://shots/t70/paired/baseline.log").split("\n"):
++        if line.begins_with("SIEGE "): baseline = JSON.parse_string(line.substr(6))
++    for mode in ["zones", "continuous"]:
++        var world = Scene.instantiate()
++        root.add_child(world)
++        world.set_process(false)
++        world.args.camera_mode = mode
++        world.camera_observer.mode = mode
++        var view = CameraView.new()
++        world.add_child(view)
++        view.setup(world)
++        world.view = view
++        view.set_process(false)
++        var last_zone = 0
++        while not world.finished and world.time < 350:
++            view._process(1.0 / 30)
++            if mode == "zones":
++                var index = floori(world.time / 15) % 4
++                if index != last_zone:
++                    last_zone = index
++                    view.select_zone(view.IDS[index], "test_replay")
++            else:
++                view.yaw += 0.001
++                view.update_camera()
++            world.simulate()
++            if world.step_number % 3 == 0: view.refresh()
++        var result = world.result()
++        if result != baseline:
++            printerr("ESCALATE: live view changed complete result " + mode)
++            world.free()
++            quit(1)
++            return
++        print("CAMERA_LIVE_VIEW PASS mode=%s steps=%d switches=%d" % [mode, world.step_number, world.camera_observer.switches.size()])
++        world.free()
++    quit()
+diff --git a/proto/siege/camera/validation/live-view-failure.txt b/proto/siege/camera/validation/live-view-failure.txt
+new file mode 100644
+index 0000000..efd7cdd
+--- /dev/null
++++ b/proto/siege/camera/validation/live-view-failure.txt
+@@ -0,0 +1,5 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
++ERROR: Condition "ret != noErr" is true. Returning: ""
++   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
++ESCALATE: live view changed complete result zones
+diff --git a/proto/siege/camera/validation/paired-summary.json b/proto/siege/camera/validation/paired-summary.json
+new file mode 100644
+index 0000000..49bf9ac
+--- /dev/null
++++ b/proto/siege/camera/validation/paired-summary.json
+@@ -0,0 +1,20 @@
++{
++  "test": "baseline_vs_zones_vs_continuous",
++  "seed": 7,
++  "strategy": "feint",
++  "headless": true,
++  "exact_result_match": true,
++  "fields_compared": 45,
++  "canonical_result_sha256": "66e934ffa6def8e24ebe0073c22cef2af8e40516c835cf0cb342c8b972c1a947",
++  "won": true,
++  "victory_time": 278.167,
++  "ended_at": 327.167,
++  "alerts": {
++    "attack": 36,
++    "reinforcement": 19,
++    "capture": 3,
++    "breach": 1,
++    "loss": 1
++  },
++  "note": "Headless observation only. No rendered frame time, occlusion assessment or player switch average."
++}
+diff --git a/proto/siege/camera/validation/parse.txt b/proto/siege/camera/validation/parse.txt
+new file mode 100644
+index 0000000..ac38e44
+--- /dev/null
++++ b/proto/siege/camera/validation/parse.txt
+@@ -0,0 +1 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+diff --git a/proto/siege/camera/validation/verification.txt b/proto/siege/camera/validation/verification.txt
+new file mode 100644
+index 0000000..48711d1
+--- /dev/null
++++ b/proto/siege/camera/validation/verification.txt
+@@ -0,0 +1,14 @@
++SIEGE_FEATURES PASS
++DETERMINISTIC main_gate seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 49}
++DETERMINISTIC main_gate seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 57}
++DETERMINISTIC highland seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 72}
++DETERMINISTIC highland seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 79}
++DETERMINISTIC feint seed=1 won=False method=none casualties={'defender': 8, 'ghost': 112}
++DETERMINISTIC feint seed=2 won=False method=none casualties={'defender': 9, 'ghost': 115}
++DETERMINISTIC waves seed=1 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 41}
++DETERMINISTIC waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 32}
++DETERMINISTIC idle seed=1 won=False method=none casualties={'defender': 21, 'ghost': 20}
++DETERMINISTIC idle seed=2 won=False method=none casualties={'defender': 14, 'ghost': 20}
++DETERMINISTIC late_batches seed=1 won=True method=keep_retreat casualties={'defender': 32, 'ghost': 30}
++DETERMINISTIC late_batches seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 43}
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=577.81 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/verify/summary.md
+diff --git a/reports/agents/T70.md b/reports/agents/T70.md
+new file mode 100644
+index 0000000..c219c97
+--- /dev/null
++++ b/reports/agents/T70.md
+@@ -0,0 +1,160 @@
++---
++task_id: T70
++executor: codex
++status: blocked
++summary: |
++  新增独立镜头实验入口：四战区固定机位、有限平移、0.2 秒推移/直切及连续 360° 对照。
++  实现常驻/全屏总览、跨区提醒、视角部署限制和程序侧影；未修改原模拟与调度文件。
++  原固定验证 24 局、镜头边界与三个无头入口对照通过；显示节点回放比较失败，触发升级并停止实现。
++  窗口录制因 macOS 桌面连接超时，尚无截图；遮挡、帧时间与玩家平均切换数未验收。
++artifacts:
++  - proto/siege/camera/siege_camera.tscn
++  - proto/siege/camera/map_camera.json
++  - proto/siege/camera/capture.py
++  - proto/siege/camera/validation/
++  - reports/agents/T70.md
++  - proto/siege/camera/validation/T70.patch
++  - branch: codex/t70-camera-ab (未提交，index.lock 被沙箱拒绝)
++validation:
++  camera_features: passed
++  paired_headless_complete_json: passed_45_fields
++  live_view_replay: failed_escalated_no_further_repair
++  proto_siege: passed_runs12_repeats12
++  screenshot_capture: blocked_by_desktop_environment
++issues:
++  - Git 暂存前置步骤无法创建主仓库 worktree 的 index.lock；未提交，已保留改动和补丁。
++  - 显示节点参与的回放直接结算比较失败，未定位字段；不能确认显示层路径不影响确定性。
++  - 未取得实际运行 PNG，不能认定视觉验收完成。
++  - 增援提醒目前挂在目的战区，正文标出来源；来源标签没有同步闪烁。
++  - 五分钟玩家切换均值、漏看事件与渲染帧时间须由手玩补验。
++usage: 会话未提供可取得的 token 额度或实际 API 费用；无付费外部服务调用。
++needs_claude: true
++reason: 先复核显示节点回放比较失败的原因并明确下一轮授权；当前按 escalate_if 停止。解除后仍需桌面截图与用户手玩。
++---
++
++## 结果：部分完成，触发升级后停止
++
++**阻塞原因：** 启用显示节点并逐逻辑步调用输入/镜头、定期刷新显示的完整回放，在 `zones` 组出现 `ESCALATE: live view changed complete result zones`。已立即停止实现和新的实验，没有第三轮自修。失败检查没有输出具体差异字段，尚未确认是显示层路径还是比较方法的问题；不能把它写成确定性验收通过。已启动的原固定验证仅继续收尾。
++
++已完成镜头实验的代码和无头功能验证。没有修改 `scripts/`、`shaders/`、`data/`、`docs/`、`tasks/`、`art/`、`assets/`、`project.godot` 或 `siege_director.gd`。交付报告是任务卡明确要求的 allowed 之外产物。Godot 导入产生的范围外 `.import`、`.uid` 和翻译缓存已还原/清理，最终仅提交授权内容。
++
++未取得实际画面，因此没有把本任务标为 passed。原场景入口继续保留，由实验场景继承原 `siege.gd`，初始化后仅替换 view。默认机位配置由显示层读取，不写回模拟参数；所有现有机器人仍按原接口在全图行动。
++
++## 改动
++
++- `camera/siege_camera.gd`、`.tscn`：独立实验入口；同一固定步长模拟、原输入队列和原调度，附加只读观测器。
++- `camera/map_camera.json`：`map.camera` 下的四组手工机位。位置由焦点、朝向、俯角和距离确定；每区配置有限平移和缩放范围。支持原 `--params` 的 `map.camera` 覆盖。
++- `camera/camera_view.gd`：数字键/总览/底部标签跳转；固定模式禁止旋转；0.2 秒推移与直接切换；总览和转场取消长按，当前战区与视口内合法地面才可部署；灰盒侧影只做相对镜头左右翻转，脚底锚定插值后地面位置。
++- `camera/overview.gd`：常驻角落地图与 Tab 全屏；各区实际人数、行军箭头、门墙状态、据点归属、冥火、倒计时与视口边界。所有鼠标事件由 UI 消费，总览点击只跳转。
++- `camera/observer.gd`：受伤同步钩子、既有调度/拓扑/占领历史；同批增援合并、受伤每区冷却 8 秒、重要事件优先保留。记录切换来源、提醒与确认时刻、显示更新耗时及帧间隔。只读模拟，不消耗模拟 RNG。
++- `camera/capture.py`：串行录两组相同种子/策略的 PNG 序列和四机位静帧；完整结算有差异就停止。默认按模拟时间采样 10 FPS，可调 1–60；不是桌面原生刷新率的每个渲染帧。
++- `camera/test_camera.gd`：输入边界、转场、总览、五类提醒、四机位、连续旋转、脚底锚点和 billboard 的无头检查。
++- `proto/siege/README.md`：实验入口、操作、参数、录制与指标口径。
++
++## 验证
++
++### 固定验证
++
++命令：`tools/verify/proto_siege.sh --out=shots/t70/verify`，退出码 0。机制检查通过；六种策略 × 两个种子，每局重复一次，共 24 局，完整 JSON 均一致。
++
++```text
++SIEGE_FEATURES PASS
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=577.81 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/verify/summary.md
++```
++
++证据：`proto/siege/camera/validation/verification.txt`；逐局原始日志与结果在 `shots/t70/verify/`，不入库。此套件验证原模拟，不能覆盖后述显示节点比较失败。
++
++### 镜头功能
++
++命令：`godot --headless --path . --script proto/siege/camera/test_camera.gd`
++
++```text
++CAMERA_FEATURES PASS checks=deployment,transition,overview,alerts,poses,flip,grounding
++```
++
++证据：`proto/siege/camera/validation/features.txt`。该测试检查 billboard、脚底锚点及旋转控制；没有渲染截图，不能证明侧影翻转视觉自然或墙后单位可读。
++
++### 完整结算对照
++
++分别启动原 `proto/siege/siege.tscn` 与实验入口的 `zones`、`continuous`，都使用 `--headless --strategy=feint --seed=7`，解析并比较完整 `SIEGE` 对象：
++
++```text
++CAMERA_PAIR baseline seed=7 strategy=feint ended=327.167 won=True
++CAMERA_PAIR zones seed=7 strategy=feint ended=327.167 won=True
++CAMERA_PAIR continuous seed=7 strategy=feint ended=327.167 won=True
++CAMERA_DETERMINISM PASS complete_json_equal=true fields=45
++```
++
++278.167 秒攻占主堡获胜，327.167 秒撤退表现结束。包括参数哈希、伤亡、随机战斗统计、派兵、拓扑、事件计数、输入记录、胜负等 45 个顶层字段完全一致。规范化结果 SHA256 为 `66e934ffa6def8e24ebe0073c22cef2af8e40516c835cf0cb342c8b972c1a947`。
++
++证据：`proto/siege/camera/validation/paired-summary.json`；完整日志和结果在未入库的 `shots/t70/paired/`。这项对照验证无头观测器；显示层完整回放检查另行记录，不把无头比较当作 GPU 渲染验收。
++
++### 显示节点完整回放：失败并升级
++
++用与前项相同的 seed/strategy，在 headless 中实际构造 CameraView，保持机器人与固定步长，调用镜头输入更新、15 秒巡览及每三步显示刷新，再直接比较 `world.result()` 与解析的基线对象。
++
++```text
++ESCALATE: live view changed complete result zones
++```
++
++此检查在第一组停止，没有继续 continuous 组，也没有重新运行或尝试修复。检查使用 GDScript Dictionary 直接比较，而前项使用 Python 解析后比较；失败未记录字段差异，需 Lead 复核比较方法及实际结算，不能据此断言已经证实战斗发生了什么变化。
++
++证据：`camera/validation/live-view-failure.txt`；一次性检查源码保留为 `camera/validation/live-view-check.gd.txt`。没有将该失败检查当作通过的测试。
++
++### 录制与截图
++
++命令：`python3 proto/siege/camera/capture.py --timeout=15`。
++
++```text
++CAMERA_CAPTURE FAIL: zones 窗口/渲染超时；保留日志，未生成画面不能算验收通过
++```
++
++直接启动原 T69 场景也未进入可用窗口，工具返回 `_LSModifyNotification` 与 `com.apple.hiservices-xpcservice` 的桌面连接错误。引擎帮助显示 headless 只有 dummy renderer，不能用它代替实际画面。证据：`proto/siege/camera/validation/capture-failure.txt`。
++
++**截图：未截图。** 预定路径是 `shots/t70/zones/frame_*.png`、`shots/t70/continuous/frame_*.png`、`shots/t70/stills/<coast|highland|plaza|keep>/`，目前没有这些 PNG。不要把目录或录制命令视为已生成产物。
++
++### 其他检查
++
++- GDScript 入口语法检查最终通过，证据 `camera/validation/parse.txt`。两轮自修分别补足显示层与总览层动态值的显式类型，已用完 `retry_limit=2`；此后不再开展代码自修。
++- `python3 -m py_compile proto/siege/camera/capture.py` 通过。
++- `git diff --check` 通过。运行日志中的已知 macOS 系统证书错误按原验收脚本规则排除；导入编辑器无法保存沙箱外设置的错误不属于固定验证运行。
++
++## 风险与已知不足
++
++| 要求的观察项 | 当前证据与结论 |
++|---|---|
++| 两组关键信息遮挡 | **未验证。** 四机位已手工设置，墙体保持正常深度遮挡。固定机位缩放比连续全图更近是参数事实，不能据此声称路线/墙后单位都清楚。需检查海岸两翼、高地弱墙背面、外城门后、主堡南入口及右上总览覆盖区域。 |
++| 五分钟平均切换次数 | **玩家均值未测。** 自动巡览每 15 秒按 1–4 循环，仅作重复观察。无头默认不巡览的 0 次不是玩家数据。实际手玩结算保存 `camera_metrics.json.switches`。 |
++| 是否漏掉重要事件 | **人的漏看情况未测。** seed 7 的只读观测捕获 60 条合并后事件：攻击 36、增援 19、攻占 3、破口 1、失守 1。功能测试覆盖五类提示、确认和历史去重；不据此声称玩家没有漏看。 |
++| 帧时间 | **未取得渲染数据。** 输出区分 `view_update_usec` 和 `frame_interval_msec` 的均值/P95/最大值；后者包含模拟、渲染、限帧和截图。录制与性能测量须分开，性能用 `--speed=1` 且关闭录制、串行运行。 |
++
++增援提示目前显示在目的战区，正文包含来源；如果“增援出发”必须同时闪烁来源标签，当前版本尚缺这一部分。每区只展示一条最高优先级提示，完整条目留在指标日志；受伤冷却会合并连续战斗，不能当成逐次攻击日志。
++
++当前侧影是代码生成的单张灰盒纹理，不是正式小兵资产。billboard 脚底锚点已做数值检查；每个实际机位下的翻转、接地观感与遮挡尚需截图检查。长提示文本在底部四按钮中的实际排版也未目测。
++
++显示节点回放比较失败已经按确定性风险触发 `escalate_if`。没有修改战斗逻辑来绕过该失败；需要 Lead 先复核，不应合并为已验收功能。
++
++## 未完成
++
++0. 复核显示节点完整回放比较失败；当前停止，不继续自修。
++1. 在有桌面的环境运行 `python3 proto/siege/camera/capture.py`，取得两组序列与四机位静帧并目测；本次没有生成图片。
++2. 若验收严格要求每个原生渲染帧，录制器还需改为原生固定 FPS 逐渲染帧输出；当前是按模拟时间采样序列。
++3. 对照遮挡、边界战斗与正式精灵；完成来源战区增援闪烁。
++4. 用户分别手玩两组，记录五分钟切换数、漏看事件与关闭录制时的帧时间，最终决定方案。
++
++## 疑问（需要用户或 Lead 决定的）
++
++- 需要先复核显示节点回放失败的差异字段、比较口径与影响范围，再决定是否继续本任务。
++
++- 主方案保留推移还是直切，以及四机位是否适合当前地图，交用户手玩决定。
++- 不需修改共享入口即可试用；是否以后把实验入口接成默认入口由 Lead 在视觉验收之后决定。
++
++## 提交状态
++
++当前分支为 `codex/t70-camera-ab`。尝试 `git add proto/siege/camera proto/siege/README.md reports/agents/T70.md` 时失败，尚未进入可提交状态：
++
++```text
++fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t70/index.lock': Operation not permitted
++```
++
++按任务卡要求保留工作区改动；没有请求提权或改动 Git 元数据权限。补丁保存到 `proto/siege/camera/validation/T70.patch`，补丁不包含自身。Lead 可在有写入权限的环境暂存这些授权文件和报告，提交信息结尾加 `Co-Authored-By: GPT-6 <noreply@openai.com>`。没有提交编号，也未推送或合并。

@@ -1,0 +1,7 @@
+CAMERA_CAPTURE FAIL: zones 窗口/渲染超时；保留日志，未生成画面不能算验收通过
+
+Initial direct window probe (tool stdout):
+Failure on line 688 ... _LSModifyNotification ...
+Connection Invalid error for service com.apple.hiservices-xpcservice.
+Error received in message reply handler: Connection invalid
+No PNG files were generated. headless uses dummy rendering only (godot --help).
