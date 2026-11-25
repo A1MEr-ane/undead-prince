@@ -9,6 +9,8 @@
 
 证据等级沿用任务书：LOCAL_CONFIRMED / PUBLIC_CONFIRMED / OBSERVED / HYPOTHESIS / UNKNOWN。
 
+> **2026-11-26 镜头**：用户提出用"战区固定视角 + 总览切换"代替旋转，正在用 T70 验证。如果采用，第 1 节里的连续旋转、翻转过渡、屋顶淡出降为可选；精灵、飞行物、特效的做法不变。见 `docs/map-design.md` 第 7 节。
+
 ## 第一屏：四个问题的直接回答
 
 1. **Bad North 的角色在 360° 环绕时怎么表现？**
