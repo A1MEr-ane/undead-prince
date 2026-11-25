@@ -2,7 +2,7 @@
 id: T69
 title: 原型 A 的最小修正（按技术审查）：援军默认关、显式倒计时、胜负状态机、单位与守军规则补强、第 6 个对照策略
 owner: codex
-status: blocked   # 等 T67 合并后改成 queued
+status: queued
 branch: codex/t69-siege-fixes
 worktree: ../亡魂王子-t69
 allowed: [proto/siege/, tools/verify/proto_siege.sh]

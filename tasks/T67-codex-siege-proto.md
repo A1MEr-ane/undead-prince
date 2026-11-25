@@ -2,7 +2,7 @@
 id: T67
 title: 原型 A：灰盒夜袭攻城（冥火部署、自主单位、守军跨区支援、5 分钟到破晓）
 owner: codex
-status: queued
+status: done
 branch: codex/t67-siege-proto
 worktree: ../亡魂王子-t67
 allowed: [proto/siege/, tools/verify/proto_siege.sh]
