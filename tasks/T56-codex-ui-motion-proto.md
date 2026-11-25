@@ -2,7 +2,7 @@
 id: T56
 title: UI 动效与转场原型（增益选择、对话、出航涨潮、败北钟声）+ 中文字体候选
 owner: codex
-status: queued
+status: done
 branch: codex/t56-ui-motion
 worktree: ../亡魂王子-t56
 allowed: [proto/ui_motion/, docs/research/FONT_CANDIDATES.md]
