@@ -17,6 +17,13 @@ var _arriving := false
 var _arrive_start := -1.0
 var _turns: Array = []   # [时刻, 单位]：到位后逐个转身
 
+# 守方联动：被下令增援后保持环形站位，直到本队自己接敌。
+const ENEMY_CONTACT := 4.0
+const RING_RADIUS := 1.8
+var reinforcing := false
+var _ring_center := Vector3.ZERO
+var _ring_radius := 0.0
+
 
 func alive_units() -> Array:
 	return units.filter(func(u): return is_instance_valid(u) and not u.removed and u.alive)
@@ -32,6 +39,75 @@ func center() -> Vector3:
 	return c / list.size()
 
 
+## 本队任一存活成员 4 米内是否有敌人。用精确距离而不是势力场采样，
+## 让 0.5 秒一次的联动判断不受信息扩散延迟影响。
+func has_enemy_within(radius: float) -> bool:
+	for u in alive_units():
+		for e in main.units:
+			if e == null or not is_instance_valid(e) or e.removed or not e.alive:
+				continue
+			if e.faction == faction:
+				continue
+			var dx: float = e.nav_pos.x - u.nav_pos.x
+			var dz: float = e.nav_pos.z - u.nav_pos.z
+			if dx * dx + dz * dz < radius * radius:
+				return true
+	return false
+
+
+func flat_distance_to(p: Vector3) -> float:
+	var c := center()
+	return Vector2(c.x - p.x, c.z - p.z).length()
+
+
+## 守方增援：在旗点周围按环形分配站位。face 是整队的最终朝向。
+func order_reinforce(flag: Vector3, face: Vector3 = Vector3.ZERO) -> void:
+	var list := alive_units()
+	if list.is_empty():
+		return
+	target_point = flag
+	if face.length_squared() > 1e-6:
+		final_look = Vector3(face.x, 0.0, face.z).normalized()
+	_ring_center = flag
+	_ring_radius = RING_RADIUS
+	_layout_ring()
+	var far := flat_distance_to(flag) > 1.5
+	for u in list:
+		u.slot_look = final_look
+	_arriving = far
+	_arrive_start = -1.0
+	_turns.clear()
+	reinforcing = true
+
+
+## 环形站位：n 个兵均匀落在旗点周围，间距不足时把半径撑大。
+func _layout_ring() -> void:
+	var list := alive_units()
+	var n := list.size()
+	if n == 0:
+		return
+	var circumference := maxf(TAU * _ring_radius, float(n) * list[0].radius * 2.0 * 2.2)
+	var r := circumference / TAU
+	var slots: Array[Vector3] = []
+	for i in n:
+		var ang := TAU * float(i) / float(n)
+		var p := _ring_center + Vector3(cos(ang), 0.0, sin(ang)) * r
+		if not terrain.is_walkable_at(p):
+			p = terrain.nearest_walkable(p)
+		slots.append(Vector3(p.x, terrain.height_at(p), p.z))
+	var free := list.duplicate()
+	for s in slots:
+		var best = null
+		var bd := 1e9
+		for u in free:
+			var d: float = u.nav_pos.distance_to(s)
+			if d < bd:
+				bd = d
+				best = u
+		best.slot = s
+		free.erase(best)
+
+
 ## 下令移动。face 为空时按行进方向决定最终朝向。
 func order_move(p: Vector3, face: Vector3 = Vector3.ZERO) -> void:
 	var travel := p - center()
@@ -41,6 +117,8 @@ func order_move(p: Vector3, face: Vector3 = Vector3.ZERO) -> void:
 	elif travel.length() > 0.3:
 		final_look = travel.normalized()
 	target_point = p
+	reinforcing = false
+	_ring_radius = 0.0
 	_layout()
 	# 行进途中先面朝来时方向，到位后再统一转身
 	var far := travel.length() > 1.5
@@ -143,7 +221,10 @@ func _update_arrival(list: Array) -> void:
 
 func report_dead(_u) -> void:
 	# 有人倒下：剩下的人重新排阵（不重置到位状态）
-	_layout()
+	if reinforcing:
+		_layout_ring()
+	else:
+		_layout()
 
 
 func set_selected(on: bool) -> void:
