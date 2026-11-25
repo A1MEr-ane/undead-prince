@@ -2,7 +2,7 @@
 id: T61
 title: 现有战斗系统基线测试：寻路、碰撞、攻击判定、兵种行为、性能
 owner: dsh
-status: queued
+status: done
 branch: dsh/t61-battle-baseline
 worktree: ../亡魂王子-t61
 allowed: [tests/test_battle_baseline.gd, tests/run_tests.gd, tools/sim/perf.sh, reports/agents/]

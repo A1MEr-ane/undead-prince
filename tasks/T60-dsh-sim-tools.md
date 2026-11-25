@@ -2,7 +2,7 @@
 id: T60
 title: T19 前置：批量模拟、统计与异常检测工具
 owner: dsh
-status: queued
+status: done
 branch: dsh/t60-sim-tools
 worktree: ../亡魂王子-t60
 allowed: [tools/sim/, tests/test_sim_tools.gd, tests/run_tests.gd]

@@ -2,7 +2,7 @@
 id: T62
 title: 战役状态与结局逻辑：补测试 + 未实现部分的测试规格
 owner: dsh
-status: queued
+status: done
 branch: dsh/t62-campaign-endings
 worktree: ../亡魂王子-t62
 allowed: [tests/test_campaign_flow.gd, tests/run_tests.gd, docs/test-specs/campaign-endings.md, reports/agents/]

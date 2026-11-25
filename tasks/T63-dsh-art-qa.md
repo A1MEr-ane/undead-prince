@@ -2,7 +2,7 @@
 id: T63
 title: 美术资产自动检查工具
 owner: dsh
-status: queued
+status: done
 branch: dsh/t63-art-qa
 worktree: ../亡魂王子-t63
 allowed: [tools/art/, reports/agents/]

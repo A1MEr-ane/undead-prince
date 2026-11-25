@@ -2,7 +2,7 @@
 id: T64
 title: T45 前置：Blender 精灵管线端到端小规模验证
 owner: dsh
-status: queued
+status: done
 branch: dsh/t64-sprite-e2e
 worktree: ../亡魂王子-t64
 allowed: [tools/blender/, assets/sprites/e2e/, reports/agents/, shots/]
