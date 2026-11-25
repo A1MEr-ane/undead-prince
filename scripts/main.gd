@@ -4,6 +4,7 @@ extends Node3D
 ## --zoom=距离；--yaw=度；--focus=x,z；--dump_atlas 导出精灵图集预览。
 
 const SLOW := 0.3
+const BATTLE_DIR := "res://data/battles"
 const FOG_COLOR := Color(0.75, 0.76, 0.78)
 const CAM_PITCH := 30.0
 # 模拟固定步长：战斗结果只取决于种子和步数，不受无头/有窗口的帧率影响。
@@ -74,7 +75,13 @@ var banner: Label
 var flag_pos := Vector3.ZERO
 var flag_cloth: MeshInstance3D
 var capture := 0.0
+var capture_player_radius := 0.0
+var capture_defender_radius := 0.0
+var capture_time := 1.0
+var capture_decay := 0.0
 var game_over := false
+
+var battle := {}
 
 var args := {}
 var shots: Array = []
@@ -85,6 +92,11 @@ var last_ticks := 0
 
 func _ready() -> void:
 	_parse_args()
+	battle = _load_battle(String(args["battle"]))
+	if battle.is_empty():
+		push_error("无法读取战斗配置：" + String(args["battle"]))
+		get_tree().quit(1)
+		return
 	var seed_value := int(args.get("seed", "7"))
 	seed(seed_value)
 	sim_rng.seed = seed_value
@@ -147,9 +159,24 @@ func _parse_args() -> void:
 	for a in OS.get_cmdline_user_args():
 		var kv := a.trim_prefix("--").split("=", true, 1)
 		args[kv[0]] = kv[1] if kv.size() > 1 else "1"
+	if not args.has("battle"):
+		args["battle"] = "proto"
 	if args.has("shots"):
 		for s in String(args["shots"]).split(","):
 			shots.append(float(s))
+
+
+## 战斗配置只描述一场战斗（守军、站位、夺旗规则），不参与随机数。
+func _load_battle(id: String) -> Dictionary:
+	var path := BATTLE_DIR.path_join(id + ".json")
+	if not FileAccess.file_exists(path):
+		push_error("找不到战斗配置：" + path)
+		return {}
+	var data = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if typeof(data) != TYPE_DICTIONARY:
+		push_error("战斗配置不是 JSON 对象：" + path)
+		return {}
+	return data
 
 
 # ---------- 环境 ----------
@@ -459,8 +486,9 @@ func _spawn_armies() -> void:
 	var pa := terrain.tile_center(a)
 	var pb := terrain.tile_center(b)
 	var mid := terrain.nearest_walkable(flag_pos.lerp((pa + pb) * 0.5, 0.5))
+	var anchors := {"beach_left": pa, "beach_right": pb, "flag": flag_pos, "mid": mid}
 
-	terrain.add_trees(7, [flag_pos, pa, pb, mid], 2.5)
+	terrain.add_trees(int(battle["trees"]), [flag_pos, pa, pb, mid], 2.5)
 	terrain.bake_light()
 	_build_flag()
 
@@ -468,16 +496,35 @@ func _spawn_armies() -> void:
 	presence[0].setup(terrain, 0)
 	presence[1].setup(terrain, 1)
 
+	var rule: Dictionary = battle["capture"]
+	capture_player_radius = float(rule["player_radius"])
+	capture_defender_radius = float(rule["defender_radius"])
+	capture_time = float(rule["time"])
+	capture_decay = float(rule["decay"])
+
 	# 数值参照规格第 12 节：普通剑兵一刀死，战斗靠招架、拼刀、威慑和体力拉开
 	var face_down := (pa + pb) * 0.5 - flag_pos
 	face_down.y = 0.0
-	var s1 := _make_squad("亡魂一队", 0, 2, 9, pa, true, {"hp": 1.0, "damage": 1.0, "knockback": 1.0, "stun": 1.0}, -face_down)
-	var s2 := _make_squad("亡魂二队", 0, 3, 9, pb, true, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1}, -face_down)
-	var kingdom_sprite := "shieldman" if sprite_sets.has("shieldman") else "proc"
-	var kingdom_look := 0 if kingdom_sprite == "shieldman" else 1
-	_make_squad("王旗卫队", 1, kingdom_look, 8, flag_pos + face_down.normalized() * 0.4, false, {"hp": 1.0, "damage": 1.2, "knockback": 1.5, "stun": 1.1, "sprite": kingdom_sprite}, face_down)
-	_make_squad("山腰民兵", 1, 0, 8, mid, false, {"hp": 0.6, "damage": 1.0, "knockback": 1.0, "stun": 1.0, "sprite": kingdom_sprite}, face_down)
-	player_squads = [s1, s2]
+	for entry in battle["squads"]:
+		var faction := int(entry["faction"])
+		var look := int(entry["look"])
+		var stats: Dictionary = entry["stats"].duplicate()
+		if faction == 1:
+			# 王国的精灵来源保持现状：有 Blender 盾兵用盾兵，否则用程序图。
+			var kingdom_sprite := "shieldman" if sprite_sets.has("shieldman") else "proc"
+			stats["sprite"] = kingdom_sprite
+			if kingdom_sprite == "proc":
+				look = 1
+		var pos: Vector3 = anchors[String(entry["anchor"])]
+		if entry.has("toward_beach"):
+			pos += face_down.normalized() * float(entry["toward_beach"])
+		if entry.has("offset"):
+			var off: Array = entry["offset"]
+			pos += Vector3(float(off[0]), float(off[1]), float(off[2]))
+		var face := face_down if faction == 1 else -face_down
+		var sq := _make_squad(String(entry["title"]), faction, look, int(entry["count"]), pos, bool(entry["is_player"]), stats, face)
+		if bool(entry["is_player"]):
+			player_squads.append(sq)
 
 
 func _best_beach(list: Array[Vector2i], pred: Callable) -> Vector2i:
@@ -760,15 +807,15 @@ func _check_goal(delta: float) -> void:
 		var d := Vector2(u.position.x - flag_pos.x, u.position.z - flag_pos.z).length()
 		if u.faction == 0:
 			any_p = true
-			if d < 1.3:
+			if d < capture_player_radius:
 				near_p = true
-		elif d < 2.5:
+		elif d < capture_defender_radius:
 			near_d = true
 	if near_p and not near_d:
 		capture += delta
 	else:
-		capture = max(0.0, capture - delta * 0.5)
-	if capture >= 3.0:
+		capture = maxf(0.0, capture - delta * capture_decay)
+	if capture >= capture_time:
 		game_over = true
 		banner.text = "王旗已夺取"
 		(flag_cloth.material_override as ShaderMaterial).set_shader_parameter("albedo_color", Vector3(0.3, 0.2, 0.36))
@@ -881,7 +928,7 @@ func _update_ui() -> void:
 	else:
 		lines.append("1 / 2 或点击小兵选队 · Q/E 旋转 · 滚轮缩放 · R 重开")
 	if capture > 0.0 and not game_over:
-		lines.append("夺旗 %d%%" % int(capture / 3.0 * 100.0))
+		lines.append("夺旗 %d%%" % int(capture / capture_time * 100.0))
 	label.text = "\n".join(lines)
 
 
