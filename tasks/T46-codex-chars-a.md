@@ -2,7 +2,7 @@
 id: T46
 title: 按 Claude 提示词重画人物 A：王室、渡魂人、旧部（29 张）
 owner: codex
-status: queued
+status: done
 branch: codex/t46-chars-a
 worktree: ../亡魂王子-t46
 images: [/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png, /Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png, /Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png]

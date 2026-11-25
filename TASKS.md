@@ -39,7 +39,7 @@
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T48 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
 | T49 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型 | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |
-| T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 排队（Codex 额度 23:54 恢复后自动启动） |
+| T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 已合并（Codex 自判 5 张不合格，Lead 复审均可用） |
 | T47 | 按 Claude 提示词重画仇人 + 兵种阵容（18 张） | Codex | codex/t47-chars-b | art/chars/, art/units/ | 已合并（抽查通过） |
 | T43 | 开发者设定集（网页） | Claude（内容、文案、版式）；脚本负责出图和生成页面 | — | — | 待办（依赖全部美术） |
 | T44 | 局内新画风落地（按 FLEET_ART_TECH_DECISION 第 3 节）+ 战役接入真实战斗 | Codex | — | scripts/, shaders/ | 待办（依赖 T49 实验结果与兵种图审批） |
