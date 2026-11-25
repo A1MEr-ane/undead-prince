@@ -39,6 +39,11 @@
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
+| T60 | T19 前置：批量模拟、统计、异常检测工具 | DSH | dsh/t60-sim-tools | tools/sim/ | 谷时排队 |
+| T61 | 战斗系统基线测试（寻路、碰撞、攻击、行为、性能） | DSH | dsh/t61-battle-baseline | tests/ | 谷时排队 |
+| T62 | 战役状态与结局逻辑测试 + 未实现部分测试规格 | DSH | dsh/t62-campaign-endings | tests/, docs/test-specs/ | 谷时排队 |
+| T63 | 美术资产自动检查工具 | DSH | dsh/t63-art-qa | tools/art/ | 谷时排队 |
+| T64 | T45 前置：Blender 精灵管线端到端小规模验证 | DSH | dsh/t64-sprite-e2e | tools/blender/, assets/sprites/e2e/ | 谷时排队 |
 | T58 | 立绘 A 风格重画：王室、渡魂人、旧部（30 张） | Codex | codex/t58-chars-v2a | art/chars/ | 进行中 |
 | T59 | 立绘 A 风格重画：五名仇人（15 张） | Codex | codex/t59-chars-v2b | art/chars/ | 进行中 |
 | T57 | 立绘高级化对比：3 风格 × 3 角色 | Codex | codex/t57-portrait-compare | art/compare/ | 进行中 |
@@ -53,10 +58,10 @@
 | T30 | 旧部概念图 P0：玛蒂尔达、奥斯温、皮普 | Codex | codex/t30-crew-art | art/canon/ | 已合并（3 张均通过） |
 | T29 | 航海图难度颜色、首领据点覆盖、敌情记忆与残响 | Codex | codex/t29-difficulty | data/campaign/, scripts/campaign/ | 已合并（UI 待按新画风重做） |
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
-| T48 | 战斗配置数据化（行为不变，同种子结果逐字一致） | DSH | dsh/t48-battle-data | scripts/main.gd, data/battles/, tests/ | 谷时排队（claude.ai 会话写卡） |
-| T49 | 守军联动 + 夺旗条件 + 24 组参数扫描（T19 第一步） | DSH | dsh/t49-defender-balance | scripts/squad.gd, scripts/main.gd, data/battles/ | 待办（依赖 T48 合并） |
-| T50 | 增益表转数据文件 + 校验测试 | DSH | dsh/t50-boons-data | data/boons/, tests/ | 谷时排队（claude.ai 会话写卡） |
-| T51 | 战役数据一致性检查 + 走廊难度分布报告 | DSH | dsh/t51-campaign-check | tests/, reports/ | 谷时排队（claude.ai 会话写卡） |
+| T48 | 战斗配置数据化（行为不变，同种子结果逐字一致） | DSH | dsh/t48-battle-data | scripts/main.gd, data/battles/, tests/ | 已合并（verify 全过，结果逐字一致） |
+| T49 | 守军联动 + 夺旗条件 + 24 组参数扫描（T19 第一步） | DSH | dsh/t49-defender-balance | scripts/squad.gd, scripts/main.gd, data/battles/ | 谷时排队（T48 已合并） |
+| T50 | 增益表转数据文件 + 校验测试 | DSH | dsh/t50-boons-data | data/boons/, tests/ | 已合并 |
+| T51 | 战役数据一致性检查 + 走廊难度分布报告 | DSH | dsh/t51-campaign-check | tests/, reports/ | 已合并 |
 
 ## 待用户决定
 - 开发期剧本语言：中文为主还是英文原稿

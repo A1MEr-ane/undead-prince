@@ -2,7 +2,7 @@
 id: T49
 title: 守军联动与夺旗条件 + 参数扫描（T19 第一步）
 owner: dsh
-status: blocked   # 等 T48 合并到 main 后改成 queued
+status: queued
 branch: dsh/t49-defender-balance
 worktree: ../亡魂王子-t49
 allowed: [scripts/squad.gd, scripts/main.gd, data/battles/, reports/agents/]
