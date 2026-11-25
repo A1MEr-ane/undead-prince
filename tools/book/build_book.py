@@ -18,6 +18,13 @@ used = []
 def img(src_rel, name, width=1600):
     """把 art 下的 png 压成 jpg 放进 book/img，返回相对路径；源不存在返回 None。"""
     src = os.path.join(R, src_rel)
+    if src_rel.startswith('art/chars/'):
+        # 立绘优先用正在重画的 A 风格版本（T58/T59 工作目录），合并后自动回落到仓库内的文件
+        for wt in ('亡魂王子-t58', '亡魂王子-t59'):
+            alt = os.path.join(os.path.dirname(R), wt, src_rel)
+            if os.path.exists(alt) and os.path.isdir(os.path.join(os.path.dirname(alt), 'v1')):
+                src = alt
+                break
     if not os.path.exists(src):
         return None
     dst = os.path.join(IMG, name + '.jpg')
@@ -148,108 +155,149 @@ def section(id_, num, title, body, lead=''):
 parts = []
 TITLE_ZH = os.environ.get('BOOK_TITLE_ZH', '亡者归航')
 TITLE_EN = os.environ.get('BOOK_TITLE_EN', 'FLEET OF THE FALLEN')
-cover = img('art/style/prince_hero.png', 'cover', 1400)
+cover = img('art/chars/CHAR-PRINCE-UNDEAD/hero.png', 'cover', 1400) or img('art/style/prince_hero.png', 'cover', 1400)
 parts.append(f"""<header class="cover">
   <div class="cover-text">
-    <p class="eyebrow">开发者设定集 · 含剧透</p>
+    <p class="eyebrow">开发者设定集 · 含剧透 · 2026 年 11 月</p>
     <h1>{E(TITLE_ZH)}</h1>
     <p class="sub">{E(TITLE_EN)}</p>
-    <p class="cover-lead">舰队沉在沉钟湾，王都为叛徒败亡敲响钟声，妹妹戴上了王冠。直到有人在沉船之间点亮一盏灯。</p>
+    <p class="cover-lead">舰队沉在沉钟湾，王都为叛徒败亡敲响钟声，妹妹戴上了王冠。如今每到入夜，一支沉没的舰队从海面浮起。</p>
     <dl class="facts">
-      <div><dt>玩法</dt><dd>反向 Bad North：玩家是进攻方，登岛攻城</dd></div>
-      <div><dt>结构</dt><dd>肉鸽航路，每局失败或终局都回溯；只有王子记得</dd></div>
-      <div><dt>结局</dt><dd>王都三次决定，八种成功结局，另有真结局</dd></div>
+      <div><dt>玩法</dt><dd>夜间登陆攻城：用冥火召唤亡灵军团，天亮前攻下要塞</dd></div>
+      <div><dt>结构</dt><dd>沿航道向王都远征的肉鸽；失败或终局都会回溯，只有王子记得</dd></div>
+      <div><dt>结局</dt><dd>王都三次决定，八种成功结局，另有一个真结局</dd></div>
     </dl>
   </div>
-  {f'<img class="cover-art" src="{cover}" alt="亡魂王子埃德蒙">' if cover else ''}
+  {f'<img class="cover-art" src="{cover}" alt="亡灵王子埃德蒙">' if cover else ''}
 </header>""")
 
-# 01 一句话与支柱
-pillars = [('复仇', '五名仇人各有利益，不靠魔法也有完整的谋杀因果。'), ('亲情', '妹妹是合法女王、有自己意志，不是待救的物件。'),
-           ('军团', '旧部有人想冒险，有人只想安息；服役和强制是两回事。'), ('永昼', '王都的白昼靠消耗灵魂维持；终止它代价真实。')]
+# 01 核心
+pillars = [('复仇', '五名仇人各有利益，不靠魔法也有完整的谋杀因果。'), ('亲情', '妹妹是合法女王，有自己的意志，不是待救的物件。'),
+           ('军团', '旧部有人想冒险，有人只想安息；服役和强制是两回事。'), ('永昼', '王都的神迹和全国的冬恩，都靠消耗灵魂维持。')]
 parts.append(section('premise', '01', '核心', '<div class="pillars">' + ''.join(f'<div class="pillar"><h3>{a}</h3><p>{b}</p></div>' for a, b in pillars) + '</div>'
-    + fig('art/story/ART_B02_04/scene.png', 'story-flag', '最后的军旗：沉船之前', 'wide'),
-    '王子被自己的王国陷害而死，由渡魂人唤醒，率旧部亡魂攻回王都。每一局从沉钟湾出发；失败或终局，渡魂人都会把他带回原点。'))
+    + fig('art/story/ART_B02_04/scene.png', 'story-flag', '最后的军旗：沉船之前，王子拒绝独自登上救生艇', 'wide'),
+    '王子被自己的王国陷害而死。渡魂人在沉船之间点亮一盏灯，与他立下契约：他可以回来，率领旧部和亡魂向王都进军。每次失败或尘埃落定，契约都会把他带回同一个夜晚。'))
 
-# 02 世界的秘密
+# 02 世界
 world = """<div class="cols">
-<div><h3>永昼与秘印</h3><p>王都白昼王城没有黑夜，教会说这是神与王室的盟约。真相是一枚秘印：大寒冬时它靠残余冥火和少数自愿者救了城，此后宫廷一代代扩大需求，现在要定期消耗完整的灵魂。舰队的亡魂原本也要被送进去，渡魂人抢先截下了他们。</p></div>
-<div><h3>回溯</h3><p>锚点在沉船、国王病逝、妹妹加冕之后。只有王子记得经历过的历史，渡魂人知情，其他人全部重置。保留的是知识、航路和习得的技艺；军队、增益、文书和王都的决定都会清空。胜利不是解约条件，王子要到很后面才明白怎样不再回来。</p></div>
-</div>"""
-parts.append(section('world', '02', '世界的秘密', world))
+<div><h3>灵魂力量</h3><p>灵魂承载人格和记忆。人死后会留下一点残余冥火，它在没有日光的夜里能凝成形体，日出就散。王子的军团就由这些冥火召唤而成：战场上的士兵是死者的回声，没有人格，天亮即散；真正有名有姓的只有沉钟湾的旧部。</p>
+<p>强行抽取灵魂本身，能得到多得多的力量，代价是那个人被一点点磨掉，直到彻底消失。</p></div>
+<div><h3>两个太阳</h3><p>自然的太阳照常升落，世界有昼夜和四季。王都上空另有一轮苍白的环形光盘，那是太阳教会的神迹"永昼之日"，长明不熄，却没有热度。人造的光不算白天，所以王都在夜里同样可以攻打。</p>
+<p>永昼之日熄灭的那一天，王都会第一次迎来完整的黑夜，看见满天星。</p></div>
+</div>
+<h3>神迹与秘密</h3>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>百姓看到的</th><th>真相（只有少数人知道）</th></tr></thead><tbody>
+<tr><td>王都的永昼是神与王室立约的证明</td><td>光由秘印抽取的灵魂转化而来</td></tr>
+<tr><td>冬天教士从王都请回圣火，点燃各地教堂的圣火龛，这是神恩</td><td>圣火是灵魂之火；运圣火的船，回程装的是被截留的死者</td></tr>
+<tr><td>教会主持葬仪，登记亡者</td><td>部分葬仪把死者送往秘印</td></tr>
+<tr><td>亡灵是天谴</td><td>亡灵只是夜里凝成形体的残余冥火</td></tr>
+</tbody></table></div>
+<p class="note">全国都靠圣火过冬，但分得极不均匀：王都最暖，外岛和贫村只有一点。终止永昼意味着所有圣火龛在这个冬天之后不再点燃，代价由整个王国承担。</p>
+<h3>王子与他的军团</h3>
+<p>王子白天可以行走、谈判、出现在宫廷里，只是没有战斗的力量。他的军团只在夜里存在：日出时回声散去，旧部和舰队亡魂沉回船壳，整支舰队在水下随他航行，入夜再浮起。回溯只是王子和渡魂人之间的契约，与永昼无关。</p>
+<h3>宗教与王朝</h3>
+<p>太阳教会原本是水手的信仰，敬拜为航行指方向的太阳；王朝起于海上，旧纹章是星与浪。大寒冬时教会造出永昼，王室改用白底金八芒日以示立约。旧王庭的遗迹上刻的仍是星。</p>"""
+parts.append(section('world', '02', '世界', world))
 
-# 03 人物（只放核心）
+# 03 人物
 def card(cid, name, role, line, small=False):
     hero = img(f'art/chars/{cid}/hero.png', f'{cid}-hero', 700 if small else 900)
-    if not hero and cid == 'CHAR-PRINCE-UNDEAD':
-        hero = img('art/style/prince_hero.png', 'cover', 1400)
     art = f'<img src="{hero}" alt="{E(name)}" loading="lazy">' if hero else '<div class="noart">立绘待定</div>'
     return f'<article class="pcard{" small" if small else ""}">{art}<h4>{E(name)}</h4><p class="role">{E(role)}</p><p>{E(line)}</p></article>'
-core = [('CHAR-PRINCE-UNDEAD', '埃德蒙', '亡魂王子', '勇敢、爱美、不耐拖延。他签过一道伤害了百姓的征发令，也在沉船时拒绝独自逃生。容易把忠诚当成无限服从。'),
-        ('CHAR-QUEEN', '埃莉诺', '女王，20 岁', '会读宫廷账目，被议会控制但不糊涂。死者归来并不让她的王位失效。'),
-        ('CHAR-FERRYMAN', '渡魂人', '提灯的摆渡者', '维持死者渡海的秩序，知道被抹去的历史，却不是全知。身份到最后也不完全揭开。')]
-crew = [('CHAR-CAPTAIN', '伯纳德', '卫队长 · 阵线', '“请准许我提出异议，殿下。”'), ('CHAR-STITCHER', '玛蒂尔达', '军医 · 缝补', '“死了也不是乱扭的理由。”'),
-        ('CHAR-MAGE', '奥斯温', '法师 · 冥火', '“制度骇人，工程精妙。”'), ('CHAR-BUGLER', '皮普', '号手 · 号令', '“就是有几位分成了好几块。”')]
-foes = [('CHAR-EARL', '罗德里克伯爵', '盐市港', '出卖航线，护的是航运特权'), ('CHAR-COUNTESS', '阿格尼丝女伯爵', '万谷仓', '扣下补给，怕的是饥荒'),
-        ('CHAR-ARCHBISHOP', '安塞姆大主教', '苍白圣堂', '伪造判决，怕的是教会失信'), ('CHAR-MARSHAL', '休元帅', '锁海之门', '王子的剑术老师，封湾不救'),
+core = [('CHAR-PRINCE-UNDEAD', '埃德蒙', '亡灵王子', '勇敢、爱美、不耐拖延。他签过一道伤害了百姓的冬季征发令，也在沉船时拒绝独自逃生。容易把忠诚当成无限服从。'),
+        ('CHAR-QUEEN', '埃莉诺', '女王，20 岁', '会读宫廷账目，掌管各地冬恩的分配，却不知道圣火从哪里来。被议会控制，但不糊涂。'),
+        ('CHAR-FERRYMAN', '渡魂人', '提灯的摆渡者', '只渡人，不碰圣火，也不能熄灭永昼。知道被抹去的历史，却不是全知。身份到最后也不完全揭开。')]
+crew = [('CHAR-CAPTAIN', '伯纳德', '卫队长 · 整体战力', '“请准许我提出异议，殿下。”'), ('CHAR-STITCHER', '玛蒂尔达', '军医 · 兵种质变', '“死了也不是乱扭的理由。”'),
+        ('CHAR-MAGE', '奥斯温', '法师 · 冥火', '“制度骇人，工程精妙。”'), ('CHAR-BUGLER', '皮普', '号手 · 指挥', '“就是有几位分成了好几块。”')]
+foes = [('CHAR-EARL', '罗德里克伯爵', '盐市港', '他的船队运送圣火，也运送死者'), ('CHAR-COUNTESS', '阿格尼丝女伯爵', '万谷仓', '靠冬恩分配控制粮区，怕的是饥荒'),
+        ('CHAR-ARCHBISHOP', '安塞姆大主教', '苍白圣堂', '秘印的守护者，伪造了叛国判决'), ('CHAR-MARSHAL', '休元帅', '锁海之门', '王子的剑术老师，相信没有冬恩就会内乱'),
         ('CHAR-CHANCELLOR', '沃尔特宰相', '永昼王城', '组织阴谋，要的是联盟延续')]
 ch = '<div class="pgrid three">' + ''.join(card(*c) for c in core) + '</div>'
 ch += '<h3>沉钟湾旧部：增益的来源</h3><div class="pgrid four">' + ''.join(card(*c, small=True) for c in crew) + '</div>'
-ch += '<h3>五名仇人：每条走廊一个首领</h3><div class="pgrid five">' + ''.join(card(cid, n, f'首领据点 · {site}', why, small=True) for cid, n, site, why in foes) + '</div>'
+ch += '<h3>五名仇人：每条航线一个首领</h3><div class="pgrid five">' + ''.join(card(cid, n, f'首领据点 · {site}', why, small=True) for cid, n, site, why in foes) + '</div>'
 parts.append(section('cast', '03', '人物', ch))
 
-# 04 航路
+# 04 攻城
+siege = '<p>每场战斗都是一个夜晚：五分钟，从入夜打到破晓。王子手里没有预先编好的军队，只有<b>冥火</b>。</p>'
+siege += '''<div class="cols">
+<div><h3>冥火</h3><p>开局有一笔储备，随夜色回复，有储存上限，越接近黎明回复越快。召唤每种亡灵各有费用，长按就能连续部署；冥火也用来施放狂化、虚弱、轰击和集结。多召一队兵，还是留着施一个法术，是每一刻的取舍。</p></div>
+<div><h3>自主作战</h3><p>亡灵落地后自己选目标、走路线、交战。玩家决定的是在哪里、什么时候、投入多少、投入什么。集中突破、两翼夹击、佯攻、分批增援，都来自空间、时间和兵力的分配，而不是专门的按钮。</p></div>
+</div>'''
+siege += fig('art/style/battle_mock.png', 'battle', '局内画面样张：小兵带墨线外轮廓，亡灵是青绿边光，守军是暖金边光', 'wide')
+siege += '''<h3>一个夜晚的三段</h3>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>阶段</th><th>目的</th><th>可能的行动</th></tr></thead><tbody>
+<tr><td><b>初夜</b></td><td>准备战场</td><td>刺客切掉高地弓兵，巨人打开薄弱墙段，小股佯攻牵制</td></tr>
+<tr><td><b>中段</b></td><td>扩大战果</td><td>趁守军调动留下的空档绕侧，开辟第二战线</td></tr>
+<tr><td><b>黎明前</b></td><td>兑现构筑</td><td>冥火回复和亡灵战力到达顶峰，主力总攻</td></tr>
+</tbody></table></div>
+<p class="note">这不是脚本。守军的伤亡不补充，城墙的破口不修复，所以每一波都给下一波留下条件；构筑成型后，也可能一波就解决原本需要层层准备的防线。</p>
+<h3>守军会调兵</h3>
+<p>守军依托地形和要塞防守：盾兵守阵线，枪兵卡隘口，弓兵占高地，骑兵是机动预备队，神职者有范围攻击。各战区有最低驻防，威胁大了会派兵支援，但派兵有延迟、行军要真实走路。玩家可以看到援军的去向，并利用它离开后留下的空缺。</p>
+<h3>胜利</h3>
+<p>全歼守军；或者攻占主据点，迫使剩余守军跑去港口坐船撤离。天亮前两者都没做到，就是失败。</p>
+<h3>地形与要塞</h3>
+<p>自然地形没有血量，不可破坏，只决定通路和交战宽度。城墙和城门是主要的进攻思路，可以局部打破。大路适合主力展开，小路可以绕行，山洞是捷径。暗影刺客之类的兵种可以无视部分地形。</p>'''
+parts.append(section('siege', '04', '夜袭攻城', siege, '玩家站在进攻方。参考的是 Bad North 的微缩战场和低操作调度，以及部落冲突式的原子化部署和皇室战争式的资源回复。'))
+
+# 05 构筑
+UNITS6 = [('盾骷髅', '生存流', '最大生命 + 持续回血 + 减伤反伤：几只骷髅就能在正门拖住大批守军'),
+          ('暗影刺客', '渗透流', '特殊通行 + 潜行 + 击杀后重新潜行：越过常规通路，连续处理弓兵和神职者'),
+          ('巫妖', '控制流', '致盲 + 眩晕 + 控制扩散：让挤在城门的盾枪守军无法反击'),
+          ('狂战士', '濒死爆发流', '跳劈 + 不屈 + 击杀回血：构筑成型后连续跳入敌阵'),
+          ('死灵骑士', '冲锋流', '冲锋 + 践踏 + 再次突进：在开阔大路上追击转移中的守军'),
+          ('缝合巨人', '破城流', '强化耐久 + 范围震荡 + 破墙：前期打开侧墙，给主力更宽的交战面')]
+bd = '<p>远征前期要靠多兵种配合，后期可以围绕一两个兵种形成近乎"轮椅"的质变；混编、冥火经济、指挥法术也都是成型路线。</p>'
+bd += '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>兵种</th><th>方向</th><th>强化组合示例</th></tr></thead><tbody>' + ''.join(f'<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>' for a, b, c in UNITS6) + '</tbody></table></div>'
+bd += '''<h3>强化从哪来</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>旧部</th><th>方向</th></tr></thead><tbody>
+<tr><td><b>伯纳德</b></td><td>整体战力：前排、生存、全军属性</td></tr>
+<tr><td><b>奥斯温</b></td><td>冥火：储备、上限、回复、召唤费用，以及直接伤害法术</td></tr>
+<tr><td><b>皮普</b></td><td>指挥：狂化、虚弱、集结、调度</td></tr>
+<tr><td><b>玛蒂尔达</b></td><td>特定兵种的质变</td></tr>
+<tr><td><b>渡魂人</b></td><td>改变规则的馈赠，例如"开局冥火加倍，但夜里不再回复"，或"以战养战：只靠击杀获得冥火"</td></tr>
+</tbody></table></div>'''
+bd += fig('art/ui/ui_hub.png', 'hub', '沉钟湾据点：五位旧部站在浮起的旗舰甲板上', 'wide')
+bd += '<p class="note">跨越回溯保留的是王子学到的东西：指挥和召唤的技艺、打过的战场的敌情、对每位旧部的默契、走过的航路和证据的下落。士兵本身每一夜重新召唤。</p>'
+parts.append(section('build', '05', '构筑', bd))
+
+# 06 航路
 geo = fig('art/style/ui_chart.png', 'chart', '航海图：颜色是难度，紫色纹章是首领据点', 'wide')
-geo += '<p>38 个地点、75 条有向航线、四座王都城门。一局只走一条路。<b>路越短越难</b>：前几局要绕远路攒战力、收集证据；王子记住的敌情越多，后面越能走捷径。</p>'
-show = [('bay', '沉钟湾：据点，每局从这里出发'), ('ENV-GATE', '锁海之门：休元帅的双塔与铁链'), ('ENV-ABBEY', '苍白圣堂：钟楼与圣光'), ('ENV-SUNHOLD', '永昼王城：白石与不落的日光')]
-g = ''
-for eid, cap in show:
-    e = eid if eid.startswith('ENV-') else 'ENV-BAY'
-    p = img(f'art/env/{e}/site.png', f'site-{e}', 1200)
-    if p:
-        g += f'<figure><img src="{p}" alt="{E(cap)}" loading="lazy"><figcaption>{E(cap)}</figcaption></figure>'
-if g:
-    geo += f'<div class="gallery">{g}</div>'
-geo += '<p class="mat">七个地区：灰潮外岛 · 引航水域 · 松卫边境 · 金穗三角洲 · 盐沼海缘 · 旧王领 · 永昼盆地</p>'
-parts.append(section('atlas', '04', '王冠海航路', geo))
+geo += '<p>王冠海上 38 个地点、四座王都城门。一局沿一条航道向王都突破，五到七场攻城，中间穿插剧情地点；攻下一处只是打开下一段航道，不经营领土。<b>路越短越难</b>：前几局要绕远路攒构筑、收集证据，王子记住的敌情越多，后面越能走捷径。</p>'
+geo += '''<div class="tbl-wrap"><table class="tbl"><thead><tr><th>阶段</th><th>典型战场</th><th>规模</th></tr></thead><tbody>
+<tr><td>前期</td><td>渔村、灯塔、哨站</td><td>2–3 个战区，木栅或无墙</td></tr>
+<tr><td>中期</td><td>港口、城镇、修道院</td><td>4 个战区，城墙、城门、高地、山洞</td></tr>
+<tr><td>后期</td><td>要塞关口、永昼王城</td><td>5–6 个战区，两道防线</td></tr>
+</tbody></table></div>
+<p>战场按战区组织：海岸、高地、外城、主堡……每个战区有一个精心构图的固定视角，玩家在总览图上切换战区。王都的夜战最特别：永昼之日把整座城照得通明，亡灵失去夜色的掩护，守军的弓兵看得更远。</p>'''
+parts.append(section('atlas', '06', '王冠海航路', geo))
 
-# 05 玩法
-gp = '<ol class="flow"><li>沉钟湾：和旧部说话，用残响学技艺</li><li>航海图选路，下一站的奖励提前可见</li><li>登岛：部署 → 即时战斗 → 夺旗</li><li>王都：三次决定穿插在战斗之间</li><li>结局或失败 → 回溯</li></ol>'
-gp += fig('art/style/ui_boons.png', 'boons', '增益选择：伯纳德的三张卡', 'wide')
-gp += '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>旧部</th><th>改写的战场动作</th><th>给敌人的状态</th></tr></thead><tbody>' + ''.join(
-    f'<tr><td><b>{a}</b></td><td>{b}</td><td>{c}：{d}</td></tr>' for a, b, c, d, *_ in BOONS) + '</tbody></table></div>'
-gp += '<p class="note">增益只改看得见的事：推、撞、烧、落水、尸体起身。每局带走的是知识和技艺：敌情记忆让打过的岛变简单，旧部默契让增益更稳。</p>'
-parts.append(section('play', '05', '玩法', gp))
-
-# 06 兵种
-un = fig('art/units/undead_lineup.png', 'undead', '亡魂大军：死亡也会触发东西', 'wide') + fig('art/units/kingdom_lineup.png', 'kingdom', '王国守军：活人，白金日光', 'wide')
+# 07 兵种
+un = fig('art/units/undead_lineup.png', 'undead', '亡魂大军', 'wide') + fig('art/units/kingdom_lineup.png', 'kingdom', '王国守军：活人，白金日光', 'wide') + fig('art/units/chibi_lineup.png', 'chibi', '局内的 Q 版小兵：2.3 头身，墨线描边，阵营边光', 'wide')
 if un:
-    parts.append(section('units', '06', '兵种', un))
+    parts.append(section('units', '07', '兵种', un))
 
-# 07 结局
-end = """<ol class="flow"><li><b>王权</b>：坚持王位，或承认妹妹</li><li><b>军誓</b>：保留强制，或只留自愿者</li><li><b>永昼</b>：延续，或让太阳落下（第三阶段才开放）</li></ol>"""
+# 08 结局
+end = """<p>王都章节里，王子要作出三次决定，分开在三个场景里，每次都会改变接下来的战斗和剧情。</p>
+<ol class="flow"><li><b>王权</b>：坚持自己的王位，或承认妹妹的王冠</li><li><b>军誓</b>：保留对旧部的强制，或只留自愿者</li><li><b>永昼</b>：让秘印继续消耗灵魂，或终止它，让王都和全国的圣火一起熄灭</li></ol>"""
 end += '<div class="tbl-wrap"><table class="tbl endings"><thead><tr><th></th><th>结局</th><th>王权</th><th>军誓</th><th>永昼</th><th>渡魂人</th></tr></thead><tbody>'
 for eid, name, a, b, c, st, after, q in ENDINGS:
     end += f'<tr><td class="eid">{eid}</td><td><b>{name}</b></td><td>{a}</td><td>{b}</td><td>{c}</td><td class="q">{E(q)}</td></tr>'
 end += '</tbody></table></div>'
-end += '<p>开放顺序：第一次胜利只能是 E01；之后开放 E02–E04；查清秘印后开放 E05–E08。</p>'
-ec = ''
-for eid, name in [('E01', '灰烬王冠'), ('E08', '第一次日落'), ('TRUE', '最后的渡航')]:
-    p = img(f'art/story/ENDING-{eid}/ending.png', f'ending-{eid}', 1200)
-    if p:
-        ec += f'<figure><img src="{p}" alt="{name}" loading="lazy"><figcaption>{name}</figcaption></figure>'
-if ec:
-    end += f'<div class="gallery">{ec}</div>'
-end += '<h3>真结局</h3><p>亲眼看到秘印释放囚魂之后，王子才知道契约也能由自己放弃。下一次胜利后，他安排好继承、解除军誓，渡过灰海。演职员表，存档封存。</p>'
+end += '<p>开放顺序：第一次胜利只能是 E01；之后开放 E02–E04；查清秘印之后开放 E05–E08。"第一次日落"指的是永昼之日熄灭后，王都第一次迎来真正的黑夜和满天星。</p>'
+end += '<h3>真结局</h3><p>亲眼看到秘印释放囚魂之后，王子才第一次明白束缚可以被放下。解约的权利一直在他手里。下一次胜利后，他安排好继承、解除军誓，熄灭渡魂人的灯，渡过灰海。演职员表，存档封存。</p>'
 end += '<blockquote class="big">渡魂人：这盏灯一旦熄灭，就再没有回来的岸了。<br>埃德蒙：我知道。<br>渡魂人：那就上船吧。</blockquote>'
-parts.append(section('endings', '07', '结局', end))
+parts.append(section('endings', '08', '结局', end))
 
-# 08 美术
-art = fig('art/style/ui_dialogue.png', 'dialogue', '叙事层：手绘厚涂与粗墨线', 'wide') + fig('art/style/battle_mock.png', 'battle', '局内：同样的小兵，加墨线和阵营边光', 'wide')
-art += '<p>亡魂是青绿冥火，王国是白金日光。局内保留 3D 地形加精灵的做法，只改渲染。</p>'
-parts.append(section('art', '08', '美术方向', art))
-
-TOC = [('premise', '核心'), ('world', '世界'), ('cast', '人物'), ('atlas', '航路'), ('play', '玩法')] + ([('units', '兵种')] if un else []) + [('endings', '结局'), ('art', '美术')]
+# 09 美术
+art = fig('art/style/ui_dialogue.png', 'dialogue', '对话界面：半身立绘与暗化的场景', 'wide')
+art += '''<ul class="bullets">
+<li><b>人物立绘</b>：精炼墨线。成熟比例，墨线只在形体转折处出现，一个自然的主光源、大面积暗部、细轮廓光，构图像海报。</li>
+<li><b>结局插画</b>：史诗厚涂，强调光影、权力关系和氛围；画面上不放任何文字。</li>
+<li><b>光的语言</b>：亡灵是青绿冥火，王国是白金日光，永昼之日是苍白无热的光盘。</li>
+<li><b>UI</b>：深墨蓝漆面加一条细金线，克制，只有一种材质；转场只用三种：涨潮、钟声、提灯。</li>
+<li><b>局内</b>：3D 微缩地形加朝向镜头的小兵精灵，每个战区一个固定视角。</li>
+</ul>'''
+parts.append(section('art', '09', '美术方向', art))
+TOC = [('premise', '核心'), ('world', '世界'), ('cast', '人物'), ('siege', '攻城'), ('build', '构筑'), ('atlas', '航路')] + ([('units', '兵种')] if un else []) + [('endings', '结局'), ('art', '美术')]
 toc = ''.join(f'<a href="#{a}">{b}</a>' for a, b in TOC)
 
 CSS = open(os.path.join(os.path.dirname(__file__), 'book.css')).read()
