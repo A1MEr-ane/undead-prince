@@ -2,7 +2,7 @@
 id: T47
 title: 按 Claude 提示词重画人物 B：五名仇人 + 兵种阵容（18 张）
 owner: codex
-status: queued
+status: done
 branch: codex/t47-chars-b
 worktree: ../亡魂王子-t47
 images: [/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png, /Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png, /Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png]
