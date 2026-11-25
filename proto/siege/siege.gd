@@ -7,8 +7,27 @@ const Director = preload("res://proto/siege/siege_director.gd")
 const Bot = preload("res://proto/siege/siege_bot.gd")
 const View = preload("res://proto/siege/siege_view.gd")
 const State = preload("res://scripts/agent_state.gd")
+const Hooks = preload("res://proto/siege/siege_events.gd")
+const Metrics = preload("res://proto/siege/siege_metrics.gd")
+enum Outcome { ACTIVE, WON, LOST }
+enum Presentation { BATTLE, RETREAT, COMPLETE }
 const DEFAULT_PARAMS := "res://proto/siege/siege_params.json"
 
+var outcome := Outcome.ACTIVE
+var presentation := Presentation.BATTLE
+var hooks := Hooks.new()
+var manual_deploy_held := false
+var manual_deploy_pos := Vector3.ZERO
+var next_manual_deploy := 0.0
+var pending_inputs: Array = []
+var input_events: Array = []
+var route_observations := {}
+var map_metrics := {}
+var structure_work := {"gate": {"started_at": -1.0, "breached_at": -1.0, "active_seconds": 0.0, "attacker_seconds": 0.0}, "weak": {"started_at": -1.0, "breached_at": -1.0, "active_seconds": 0.0, "attacker_seconds": 0.0}}
+var recovery_events: Array = []
+var retreat_skipped := false
+var rally_origin := Vector3.ZERO
+var rally_members: Array = []
 var params: Dictionary
 var args := {}
 var terrain := Map.new()
@@ -97,6 +116,7 @@ func _ready() -> void:
 	State.now = 0
 	State.dt = float(params.simulation.step)
 	terrain.setup(params)
+	hooks.max_depth = int(params.events.max_depth)
 	gate_hp = float(params.structures.gate_hp)
 	weak_hp = float(params.structures.weak_hp)
 	fire = float(params.economy.initial)
@@ -104,8 +124,9 @@ func _ready() -> void:
 		zones[z.id] = {"owner": "defender", "progress": 0.0, "retake": 0.0, "captures": [], "losses": [], "contested_resets": []}
 	for group in params.garrisons:
 		for n in int(group.count):
-			var u = spawn(group.kind, 1, terrain.vec(group.anchor) + formation_offset(n), group.zone)
+			var u = spawn(group.kind, 1, terrain.vec(group.anchor) + formation_offset(n), group.zone, group.get("victory_eligible", true))
 			u.reserve = group.get("reserve", false)
+	map_metrics = Metrics.describe(self)
 	director.setup(self)
 	if strategy != "manual":
 		bot = Bot.new()
@@ -162,7 +183,7 @@ func _process(delta: float) -> void:
 		if capture_mode and view != null and view.next_shot_due():
 			break
 	if view != null:
-		view.refresh()
+		view.refresh(clampf(accumulator / float(params.simulation.step), 0, 1))
 	if finished and not result_printed:
 		final_result = result()
 		print("SIEGE " + JSON.stringify(final_result))
@@ -180,10 +201,20 @@ func simulate() -> void:
 	if finished:
 		return
 	var dt := float(params.simulation.step)
-	regenerate(dt)
-	if bot != null:
-		bot.tick()
+	if outcome == Outcome.ACTIVE:
+		regenerate(dt)
+		if manual_deploy_held and time >= next_manual_deploy:
+			queue_input("deploy", manual_deploy_pos)
+			next_manual_deploy = time + float(params.economy.deploy_interval)
+		apply_inputs()
+		if bot != null:
+			bot.tick()
+	elif presentation == Presentation.RETREAT:
+		apply_inputs()
+	if finished:
+		return
 	rebuild_spatial()
+	refresh_rally_members()
 	director.tick()
 	update_gate()
 	for u in units:
@@ -196,19 +227,76 @@ func simulate() -> void:
 			stage_defender_at_gate(u)
 		u.sense()
 	for u in units:
+		u.previous_pos = u.nav_pos
 		u.tick(dt)
+		observe_route(u)
 	rebuild_spatial()
-	attack_structures(dt)
-	update_captures(dt)
-	if not won and sides[1].units.filter(func(u): return u.alive).is_empty():
+	if outcome == Outcome.ACTIVE:
+		attack_structures(dt)
+		update_captures(dt)
+		resolve_outcome()
+	if presentation == Presentation.RETREAT:
+		update_retreat()
+
+func resolve_outcome() -> void:
+	if outcome != Outcome.ACTIVE:
+		return
+	if sides[1].units.filter(func(u): return effective_defender(u)).is_empty():
 		win("annihilation")
 		finish()
-	if retreat_started:
-		update_retreat()
-	if time >= float(params.simulation.night_seconds) and not finished:
+	elif time + 0.000001 >= float(params.simulation.night_seconds):
+		outcome = Outcome.LOST
 		finish()
 
+func effective_defender(u) -> bool:
+	return u.faction == 1 and u.victory_eligible and u.alive and not u.escaped and not u.retreating and terrain.battle_reachable(u.nav_pos)
+
+func queue_input(command: String, pos := Vector3.ZERO) -> void:
+	pending_inputs.append({"command": command, "pos": pos})
+
+func apply_inputs() -> void:
+	var commands := pending_inputs.duplicate()
+	pending_inputs.clear()
+	for input in commands:
+		var accepted := false
+		match input.command:
+			"deploy": accepted = deploy(input.pos)
+			"rally": accepted = rally(input.pos)
+			"skip_retreat":
+				if presentation == Presentation.RETREAT:
+					retreat_skipped = true
+					finish()
+					accepted = true
+		input_events.append({"step": step_number, "command": input.command, "point": [input.pos.x, input.pos.z], "accepted": accepted})
+
+func resource_event(before: float, reason: String) -> void:
+	if not is_equal_approx(before, fire):
+		hooks.publish("resource_changed", {"before": before, "after": fire, "delta": fire - before, "reason": reason, "step": step_number})
+
+func record_contact(ghost, defender) -> void:
+	if ghost.faction != 0 or defender.faction != 1:
+		return
+	if not route_observations.has(ghost.initial_route):
+		route_observations[ghost.initial_route] = {"first_contact": null, "first_keep_arrival": null}
+	var record: Dictionary = route_observations[ghost.initial_route]
+	if record.first_contact == null:
+		record.first_contact = {"at": snappedf(time, 0.001), "travel_seconds": snappedf(time - ghost.spawn_time, 0.001), "unit": ghost.id}
+
+func observe_route(u) -> void:
+	if u.faction != 0 or not u.alive:
+		return
+	if not route_observations.has(u.initial_route):
+		route_observations[u.initial_route] = {"first_contact": null, "first_keep_arrival": null}
+	var record: Dictionary = route_observations[u.initial_route]
+	if u.enemy != null:
+		var reach := float(params.units.archer.range) if u.enemy.kind == "archer" else float(params.combat.chase_radius)
+		if u.enemy_dist <= reach and terrain.line_clear(u.nav_pos, u.enemy.nav_pos):
+			record_contact(u, u.enemy)
+	if record.first_keep_arrival == null and terrain.zone_at(u.nav_pos) == "keep":
+		record.first_keep_arrival = {"at": snappedf(time, 0.001), "travel_seconds": snappedf(time - u.spawn_time, 0.001), "unit": u.id}
+
 func regenerate(dt: float) -> void:
+	var before := fire
 	var progress := time / float(params.simulation.night_seconds)
 	var curve: Array = params.economy.regen_curve
 	var rate := float(curve[-1][1])
@@ -220,13 +308,16 @@ func regenerate(dt: float) -> void:
 	fire_generated += amount
 	fire_wasted += maxf(0, fire + amount - float(params.economy.capacity))
 	fire = minf(float(params.economy.capacity), fire + amount)
+	resource_event(before, "regeneration")
 
-func spawn(kind: String, faction: int, pos: Vector3, zone: String):
+func spawn(kind: String, faction: int, pos: Vector3, zone: String, victory_eligible: bool = true):
 	var u = Soldier.new()
 	u.setup(self, units.size(), kind, faction, pos, zone)
+	u.victory_eligible = faction == 1 and victory_eligible
 	units.append(u)
 	sides[faction].units.append(u)
 	spawned[faction] += 1
+	hooks.publish("spawn", {"unit": u, "step": step_number})
 	return u
 
 func formation_offset(n: int) -> Vector3:
@@ -241,7 +332,7 @@ func zone_point(id: String) -> Vector3:
 	return Vector3.ZERO
 
 func can_deploy(pos: Vector3) -> bool:
-	if finished or retreat_started or not terrain.is_walkable_at(pos):
+	if outcome != Outcome.ACTIVE or finished or not terrain.is_walkable_at(pos):
 		return false
 	if terrain.in_rect(pos, params.map.deploy_rect):
 		return true
@@ -253,10 +344,13 @@ func deploy(pos: Vector3) -> bool:
 	var cost := float(params.economy.unit_cost)
 	if not can_deploy(pos) or fire < cost:
 		return false
+	var before := fire
 	fire -= cost
 	fire_spent += cost
+	resource_event(before, "deployment")
 	var u = spawn("ghost", 0, pos, "coast")
 	u.route = choose_route(u, false)
+	u.initial_route = u.route
 	if waves.is_empty() or time - last_deploy > float(params.economy.wave_gap_seconds):
 		waves.append({"start": snappedf(time, 0.001), "end": 0.0, "count": 0, "fire": 0.0, "routes": {"main": 0, "side": 0, "cave": 0}})
 	waves[-1].count += 1
@@ -268,14 +362,28 @@ func deploy(pos: Vector3) -> bool:
 
 func rally(pos: Vector3) -> bool:
 	var cost := float(params.economy.rally_cost)
-	if finished or retreat_started or fire < cost or not terrain.is_walkable_at(pos):
+	if outcome != Outcome.ACTIVE or finished or fire < cost or not terrain.is_walkable_at(pos):
 		return false
+	var before := fire
 	fire -= cost
 	fire_spent += cost
+	resource_event(before, "rally")
 	rally_pos = pos
+	rally_origin = pos
 	rally_until = time + float(params.economy.rally_seconds)
-	rally_events.append({"time": snappedf(time, 0.001), "point": [snappedf(pos.x, 0.01), snappedf(pos.z, 0.01)], "cost": cost})
+	refresh_rally_members()
+	for id in rally_members:
+		units[id].next_target = time
+	rally_events.append({"time": snappedf(time, 0.001), "point": [snappedf(pos.x, 0.01), snappedf(pos.z, 0.01)], "cost": cost, "radius": params.economy.rally_radius, "until": rally_until, "units": rally_members.duplicate()})
 	return true
+
+func refresh_rally_members() -> void:
+	rally_members.clear()
+	if rally_until <= time or outcome != Outcome.ACTIVE:
+		return
+	for u in sides[0].units:
+		if u.alive and u.cave_until < 0 and Vector2(u.nav_pos.x - rally_pos.x, u.nav_pos.z - rally_pos.z).length() <= float(params.economy.rally_radius):
+			rally_members.append(u.id)
 
 func choose_route(u, congestion_change: bool) -> String:
 	var scores := {}
@@ -313,9 +421,11 @@ func ghost_order(u) -> void:
 		return
 	if time >= u.next_target:
 		u.next_target = time + float(cfg.think_seconds)
-		if u.stage < 2 and time >= u.reroute_at and time - u.cell_since >= float(cfg.reroute_after_seconds) and nearby(u.nav_pos, float(cfg.crowd_radius), 0).size() > int(cfg.route_crowd_threshold):
+		if u.stage < 2 and u.reroutes < int(cfg.max_reroutes) and time >= u.reroute_at and time - u.cell_since >= float(cfg.reroute_after_seconds) and nearby(u.nav_pos, float(cfg.crowd_radius), 0).size() > int(cfg.route_crowd_threshold):
 			var alternative := choose_route(u, true)
 			if alternative != u.route:
+				if terrain.distance(u.nav_pos, terrain.vec(params.map.routes[alternative][0]), false) >= float(params.map.flow_infinity):
+					return
 				u.route = alternative
 				u.stage = 0
 				u.reroutes += 1
@@ -354,20 +464,37 @@ func ghost_order(u) -> void:
 				candidates = [{"pos": zone_point("plaza"), "value": float(cfg.values.zone), "kind": "flag"}]
 	for e in nearby(u.nav_pos, float(params.combat.chase_radius), 1):
 		if terrain.line_clear(u.nav_pos, e.nav_pos):
-			candidates.append({"pos": e.nav_pos, "value": float(cfg.values.archer if e.kind == "archer" else cfg.values.zone), "kind": e.kind})
-	if rally_until > time and Vector2(u.nav_pos.x - rally_pos.x, u.nav_pos.z - rally_pos.z).length() <= float(params.economy.rally_radius):
+			candidates.append({"pos": e.nav_pos, "value": float(cfg.values.archer if e.kind == "archer" else cfg.values.zone), "kind": e.kind, "id": e.id})
+	if rally_until > time and rally_members.has(u.id):
 		candidates.append({"pos": rally_pos, "value": float(cfg.rally_weight), "kind": "rally"})
 	var best := -INF
+	var chosen: Dictionary = {}
+	var current: Dictionary = {}
+	var current_score := -INF
 	for c in candidates:
 		var dist: float = terrain.distance(u.nav_pos, c.pos, false)
+		if dist >= float(params.map.flow_infinity):
+			continue
 		var crowded := nearby(c.pos, float(cfg.crowd_radius), 0).size()
 		var score := float(c.value) * float(cfg.value_weight) - dist * float(cfg.distance_weight) - crowded * float(cfg.congestion_weight)
+		var key: String = c.kind + ":" + str(c.get("id", terrain.tile(c.pos)))
+		c.key = key
+		if key == u.target_key:
+			current = c
+			current_score = score
 		if score > best:
 			best = score
-			u.slot = c.pos
-			u.objective = c.kind
-	if u.stage >= route.size() - 1:
-		u.slot = zone_point("keep") if u.objective == "flag" else u.slot
+			chosen = c
+	if chosen.is_empty():
+		return
+	if not current.is_empty() and chosen.kind != "rally" and (time < u.target_lock_until or best < current_score + float(cfg.switch_margin)):
+		chosen = current
+	if chosen.key != u.target_key:
+		u.target_key = chosen.key
+		u.target_lock_until = time + float(cfg.target_lock_seconds)
+		note("objective_switch")
+	u.slot = chosen.pos
+	u.objective = chosen.kind
 
 func rebuild_spatial() -> void:
 	spatial.clear()
@@ -415,22 +542,36 @@ func separation(u) -> Vector3:
 	return v.limit_length(float(params.combat.max_separation_speed))
 
 func attack_structures(dt: float) -> void:
+	var attackers := {"gate": 0, "weak": 0}
 	for u in sides[0].units:
 		if not u.alive or u.cave_until >= 0 or time < u.stun_until or u.enemy_dist < float(params.combat.chase_radius):
 			continue
 		if u.objective == "gate" and not terrain.gate_broken:
 			var gate: Array = params.map.gate_rect
 			if u.nav_pos.x >= gate[0] - float(params.structures.attack_range) and u.nav_pos.x <= gate[0] + gate[2] + float(params.structures.attack_range) and absf(u.nav_pos.z - float(gate[1]) - 0.5) < float(params.structures.attack_range):
-				gate_hp -= float(params.structures.damage_per_second) * dt
+				attackers.gate += 1
 		elif u.objective == "weak" and not terrain.weak_broken:
 			var weak: Array = params.map.weak_rect
 			if absf(u.nav_pos.x - float(weak[0]) - 0.5) < float(params.structures.attack_range) and u.nav_pos.z >= weak[1] - float(params.structures.attack_range) and u.nav_pos.z <= weak[1] + weak[3] + float(params.structures.attack_range):
-				weak_hp -= float(params.structures.damage_per_second) * dt
-	if gate_hp <= 0 and not terrain.gate_broken:
+				attackers.weak += 1
+	for kind in attackers:
+		var count: int = attackers[kind]
+		if count < (int(params.structures.weak_min_attackers) if kind == "weak" else 1):
+			continue
+		var work: Dictionary = structure_work[kind]
+		if work.started_at < 0:
+			work.started_at = maxf(0, time - dt)
+		work.active_seconds += dt
+		work.attacker_seconds += count * dt
+		if kind == "gate": gate_hp -= count * float(params.structures.damage_per_second) * dt
+		else: weak_hp -= count * float(params.structures.damage_per_second) * dt
+	if gate_hp <= 0.000001 and not terrain.gate_broken:
+		structure_work.gate.breached_at = time
 		terrain.gate_broken = true
 		terrain.gate_open = true
 		terrain.change(params.map.gate_rect, true, time, "gate_breached")
-	if weak_hp <= 0 and not terrain.weak_broken:
+	if weak_hp <= 0.000001 and not terrain.weak_broken:
+		structure_work.weak.breached_at = time
 		terrain.weak_broken = true
 		terrain.change(params.map.weak_rect, true, time, "weak_wall_breached")
 
@@ -466,7 +607,7 @@ func update_gate() -> void:
 			terrain.change(params.map.gate_rect, false, time, "defender_closed_gate")
 
 func update_captures(dt: float) -> void:
-	if retreat_started:
+	if outcome != Outcome.ACTIVE:
 		return
 	for z in params.map.zones:
 		var ghosts := 0
@@ -474,7 +615,7 @@ func update_captures(dt: float) -> void:
 		for u in units:
 			if u.alive and u.cave_until < 0 and terrain.zone_at(u.nav_pos) == z.id:
 				if u.faction == 0: ghosts += 1
-				else: guards += 1
+				elif effective_defender(u): guards += 1
 		var state: Dictionary = zones[z.id]
 		if state.owner == "defender":
 			if ghosts > 0 and guards == 0:
@@ -501,13 +642,15 @@ func update_captures(dt: float) -> void:
 				state.retake = 0.0
 
 func win(method: String) -> void:
-	if won:
+	if outcome != Outcome.ACTIVE:
 		return
+	outcome = Outcome.WON
 	won = true
 	victory_method = method
 	victory_time = time
 
 func start_retreat() -> void:
+	presentation = Presentation.RETREAT
 	retreat_started = true
 	retreat_at = time
 	boat_depart_at = time + float(params.retreat.boat_depart_seconds)
@@ -525,10 +668,13 @@ func start_retreat() -> void:
 func update_retreat() -> void:
 	var port: Vector3 = terrain.vec(params.map.port)
 	for u in sides[1].units:
-		if u.alive and Vector2(u.nav_pos.x - port.x, u.nav_pos.z - port.z).length() <= float(params.retreat.boarding_radius):
+		if time < boat_depart_at and u.alive and Vector2(u.nav_pos.x - port.x, u.nav_pos.z - port.z).length() <= float(params.retreat.boarding_radius):
 			u.leave_ship()
 			escaped += 1
-	if time >= boat_depart_at:
+	if time >= boat_depart_at + float(params.retreat.boat_sail_seconds):
+		finish()
+	elif params.retreat.skip_by_default or args.has("skip_retreat"):
+		retreat_skipped = true
 		finish()
 
 func on_death(u) -> void:
@@ -540,21 +686,27 @@ func on_death(u) -> void:
 			intercepted += 1
 		if params.economy.kill_reward_enabled:
 			var reward := float(params.economy.kill_reward)
+			var before := fire
 			fire_generated += reward
 			fire_wasted += maxf(0, fire + reward - float(params.economy.capacity))
 			fire = minf(float(params.economy.capacity), fire + reward)
+			resource_event(before, "kill_reward")
 
 func fire_arrow(archer, target) -> void:
 	if retreat_started or not target.alive:
 		return
+	record_contact(target, archer)
 	if sim_rng.randf() <= float(params.units.archer.accuracy):
 		var delta: Vector3 = target.nav_pos - archer.nav_pos
 		var cfg: Dictionary = params.units.archer
-		target.deal_damage({"damage": float(cfg.damage), "knockback": float(cfg.knockback), "stun": float(cfg.stun), "dir": Vector3(delta.x, 0, delta.z).normalized(), "arrow": true})
+		target.deal_damage({"damage": float(cfg.damage), "knockback": float(cfg.knockback), "stun": float(cfg.stun), "dir": Vector3(delta.x, 0, delta.z).normalized(), "arrow": true, "source": archer})
 	if view != null:
 		view.arrow(archer.nav_pos, target.nav_pos)
 
 func finish() -> void:
+	if finished:
+		return
+	presentation = Presentation.COMPLETE
 	finished = true
 	ended_at = time
 	if retreat_started:
@@ -570,13 +722,15 @@ func result() -> Dictionary:
 		resets[id] = zones[id].contested_resets
 	var early := archer_deaths.filter(func(t): return t <= float(params.strategies.early_archer_seconds)).size()
 	var configs := JSON.stringify(params, "", true, true)
-	return {"schema_version": 1, "seed": seed_value, "strategy": strategy, "params_sha256": configs.sha256_text(),
-		"won": won, "victory_method": victory_method, "victory_time": snappedf(victory_time, 0.001), "ended_at": snappedf(ended_at, 0.001),
+	return {"schema_version": 2, "seed": seed_value, "strategy": strategy, "params_sha256": configs.sha256_text(),
+		"outcome": Outcome.keys()[outcome], "presentation": Presentation.keys()[presentation], "won": won, "victory_method": victory_method, "victory_time": snappedf(victory_time, 0.001), "ended_at": snappedf(ended_at, 0.001),
 		"zone_captures": captures, "zone_losses": losses, "capture_resets": resets,
-		"retreat": {"started_at": snappedf(retreat_at, 0.001), "boat_depart_at": snappedf(boat_depart_at, 0.001), "escaped": escaped, "intercepted": intercepted, "stranded": stranded},
+		"retreat": {"skipped": retreat_skipped, "started_at": snappedf(retreat_at, 0.001), "boat_depart_at": snappedf(boat_depart_at, 0.001), "escaped": escaped, "intercepted": intercepted, "stranded": stranded},
 		"casualties": {"ghost": casualties[0], "defender": casualties[1]}, "spawned": {"ghost": spawned[0], "defender": spawned[1]},
 		"waves": waves, "rallies": rally_events, "fire_wasted": snappedf(fire_wasted, 0.001), "fire_generated": snappedf(fire_generated, 0.001), "fire_spent": snappedf(fire_spent, 0.001), "fire_remaining": snappedf(fire, 0.001),
-		"defender_dispatches": director.dispatches, "dispatch_decisions": director.decisions, "kingdom_reinforcements_arrived": director.reinforcements_arrived,
+		"structure_work": structure_work, "map_scale": map_metrics, "route_observations": route_observations, "recovery_events": recovery_events,
+		"input_events": input_events, "hook_counts": hooks.counts, "hook_suppressed": hooks.suppressed,
+		"zone_history": director.history, "defender_dispatches": director.dispatches, "dispatch_decisions": director.decisions, "kingdom_reinforcements_arrived": director.reinforcements_arrived,
 		"congestion_events": congestion, "travel_congestion_events": travel_congestion, "congestion_per_deployed": snappedf(float(congestion) / maxf(1, spawned[0] + spawned[1]), 0.0001),
 		"reroutes": reroutes, "cave_transits": cave_transits, "archer_kill_times": archer_deaths, "early_archer_kills": early,
 		"topology_events": terrain.topology_events, "flow_repairs": terrain.flow_repairs, "flow_relaxed_cells": terrain.repaired_cells, "combat_events": events,
@@ -592,6 +746,7 @@ func spawn_spark(_pos: Vector3) -> void:
 	pass
 
 func _exit_tree() -> void:
+	hooks.clear()
 	for u in units:
 		u.dispose()
 	for side in sides:

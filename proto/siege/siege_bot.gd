@@ -14,7 +14,7 @@ func setup(world, name: String) -> void:
 	strategy = name
 
 func tick() -> void:
-	if main.retreat_started:
+	if main.outcome != main.Outcome.ACTIVE:
 		return
 	var cfg: Dictionary = main.params.strategies
 	var eco: Dictionary = main.params.economy
@@ -28,11 +28,14 @@ func tick() -> void:
 	if strategy == "idle" and main.time > idle_end:
 		remaining = 0
 		return
+	if strategy == "late_batches" and main.time < float(cfg.late_start_seconds):
+		return
 	if remaining <= 0:
 		if strategy == "idle":
 			return
-		if strategy == "waves":
-			if main.fire < float(eco.capacity) - 0.000001:
+		if strategy in ["waves", "late_batches"]:
+			var threshold := float(eco.capacity) * (float(cfg.late_capacity_fraction) if strategy == "late_batches" else 1.0)
+			if main.fire < threshold - 0.000001:
 				return
 			remaining = floori(main.fire / float(eco.unit_cost))
 		else:

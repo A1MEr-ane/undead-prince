@@ -1,0 +1,7 @@
+godot --path . --rendering-method gl_compatibility --log-file /tmp/t69-window.engine.log proto/siege/siege.tscn -- --strategy=main_gate --seed=1 --capture --speed=16 --params=/tmp/t69-window-params.json --out=/Users/cyy/Projects/亡魂王子-t69/shots/t69
+timeout=30 seconds; no render completion observed
+2026-11-26 04:39:22.381 godot[54341:4107076] Failure on line 688 in function id scheduleApplicationNotification(LSNotificationCode, NSWorkspaceNotificationCenter *): noErr == _LSModifyNotification(notificationID, 1, &code, 0, NULL, NULL, NULL)
+2026-11-26 04:39:22.497 godot[54341:4107079] Connection Invalid error for service com.apple.hiservices-xpcservice.
+2026-11-26 04:39:22.497 godot[54341:4107076] Error received in message reply handler: Connection invalid
+
+Computer Use fallback: Computer Use was not approved to use Godot

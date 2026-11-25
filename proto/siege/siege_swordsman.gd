@@ -1,4 +1,5 @@
 extends RefCounted
+const AgentState = preload("res://scripts/agent_state.gd")
 ## 从 scripts/swordsman.gd 复制的剑盾兵状态逻辑；仅将调参入口改到 JSON。
 ## 剑盾兵大脑（规格 7）。状态挂在 Unit 的 Brain 节点下，互斥：
 ## 待机 Idle、备战 Ready、冲锋 Pursuing、狩猎 Hunting、攻击 Attack、拼刀 Clash、恢复 Recover、招架 Parry。
@@ -328,7 +329,7 @@ func _do_hit() -> void:
 		return
 	var dir: Vector3 = _flat(target.nav_pos - u.nav_pos).normalized()
 	var atk := {"damage": damage, "knockback": knockback, "stun": stun, "launch": 0.0,
-		"dir": dir, "attacker": self}
+		"dir": dir, "attacker": self, "source": u}
 	u.main.shake(0.03 * damage)
 	target.deal_damage(atk)
 

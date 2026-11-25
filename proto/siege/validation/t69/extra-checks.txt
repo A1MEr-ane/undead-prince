@@ -1,0 +1,3 @@
+REINFORCEMENT_CLI PASS [{"enabled": false, "spawned_defender": 1, "reinforcements_arrived": false, "ended_at": 3.0}, {"enabled": true, "spawned_defender": 9, "reinforcements_arrived": true, "ended_at": 3.0}]
+SUMMARY_COMPAT PASS existing five-strategy override
+STATIC PASS Python/Bash/diff

@@ -1,0 +1,1 @@
+{"simulation": {"night_seconds": 3}, "reinforcements": {"enabled": true, "seconds_before_dawn": 1}, "garrisons": [{"zone": "keep", "kind": "shield", "count": 1, "anchor": [32, 9]}]}
