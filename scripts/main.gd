@@ -79,6 +79,10 @@ var capture_player_radius := 0.0
 var capture_defender_radius := 0.0
 var capture_time := 1.0
 var capture_decay := 0.0
+var capture_contest_pause := false
+var reinforce_radius := 0.0
+var defender_face := Vector3.ZERO
+var reinforce_timer := 0.0
 var game_over := false
 
 var battle := {}
@@ -501,10 +505,14 @@ func _spawn_armies() -> void:
 	capture_defender_radius = float(rule["defender_radius"])
 	capture_time = float(rule["time"])
 	capture_decay = float(rule["decay"])
+	capture_contest_pause = bool(rule.get("contest_pause", false))
+	reinforce_radius = float(battle.get("reinforce_radius", 0.0))
+	reinforce_timer = 0.0
 
 	# 数值参照规格第 12 节：普通剑兵一刀死，战斗靠招架、拼刀、威慑和体力拉开
 	var face_down := (pa + pb) * 0.5 - flag_pos
 	face_down.y = 0.0
+	defender_face = face_down.normalized()
 	for entry in battle["squads"]:
 		var faction := int(entry["faction"])
 		var look := int(entry["look"])
@@ -746,6 +754,7 @@ func _simulate(delta: float) -> void:
 		u.tick(delta)
 	for sq in squads:
 		sq.tick()
+	_tick_defender_reinforcement(delta)
 	if args.has("trace") and floorf(time) != floorf(time - delta):
 		var parts := []
 		for sq in squads:
@@ -758,6 +767,34 @@ func _simulate(delta: float) -> void:
 
 func on_unit_removed(u) -> void:
 	units.erase(u)
+
+
+## 守方联动（0.5 秒一次）：任一守方部队接敌时，同阵营其他未接敌、
+## 且在 reinforce_radius 内的部队移动到旗点环形站位。0 表示关闭。
+func _tick_defender_reinforcement(delta: float) -> void:
+	if reinforce_radius <= 0.0:
+		return
+	reinforce_timer += delta
+	if reinforce_timer < 0.5 - 1e-9:
+		return
+	reinforce_timer -= 0.5
+	var engaged := false
+	for sq in squads:
+		if sq.is_player or sq.faction != 1:
+			continue
+		if sq.has_enemy_within(Squad.ENEMY_CONTACT):
+			engaged = true
+			break
+	if not engaged:
+		return
+	for sq in squads:
+		if sq.is_player or sq.faction != 1 or sq.reinforcing:
+			continue
+		if sq.has_enemy_within(Squad.ENEMY_CONTACT):
+			continue
+		if sq.flat_distance_to(flag_pos) > reinforce_radius:
+			continue
+		sq.order_reinforce(flag_pos, defender_face)
 
 
 func _update_camera(rdt: float) -> void:
@@ -813,6 +850,9 @@ func _check_goal(delta: float) -> void:
 			near_d = true
 	if near_p and not near_d:
 		capture += delta
+	elif capture_contest_pause and near_d:
+		# 争夺中：进度冻结，不衰减
+		pass
 	else:
 		capture = maxf(0.0, capture - delta * capture_decay)
 	if capture >= capture_time:

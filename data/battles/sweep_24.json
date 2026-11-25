@@ -1,0 +1,70 @@
+{
+  "trees": 7,
+  "reinforce_radius": 10.0,
+  "capture": {
+    "player_radius": 1.3,
+    "defender_radius": 3.5,
+    "time": 6.0,
+    "decay": 0.5,
+    "contest_pause": true
+  },
+  "squads": [
+    {
+      "title": "亡魂一队",
+      "faction": 0,
+      "look": 2,
+      "count": 9,
+      "anchor": "beach_left",
+      "stats": {
+        "hp": 1.0,
+        "damage": 1.0,
+        "knockback": 1.0,
+        "stun": 1.0
+      },
+      "is_player": true
+    },
+    {
+      "title": "亡魂二队",
+      "faction": 0,
+      "look": 3,
+      "count": 9,
+      "anchor": "beach_right",
+      "stats": {
+        "hp": 1.0,
+        "damage": 1.2,
+        "knockback": 1.5,
+        "stun": 1.1
+      },
+      "is_player": true
+    },
+    {
+      "title": "王旗卫队",
+      "faction": 1,
+      "look": 0,
+      "count": 8,
+      "anchor": "flag",
+      "toward_beach": 0.4,
+      "stats": {
+        "hp": 1.0,
+        "damage": 1.2,
+        "knockback": 1.5,
+        "stun": 1.1
+      },
+      "is_player": false
+    },
+    {
+      "title": "山腰民兵",
+      "faction": 1,
+      "look": 0,
+      "count": 8,
+      "anchor": "mid",
+      "stats": {
+        "hp": 0.6,
+        "damage": 1.0,
+        "knockback": 1.0,
+        "stun": 1.0
+      },
+      "is_player": false
+    }
+  ]
+}
