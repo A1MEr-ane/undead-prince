@@ -2,7 +2,7 @@
 id: T71
 title: 攻城原型性能压力测试（按审查第 5 节的测量规范）
 owner: dsh
-status: blocked   # 等 T69 合并后改成 queued
+status: running
 branch: dsh/t71-siege-perf
 worktree: ../亡魂王子-t71
 allowed: [proto/siege/perf/, reports/agents/]

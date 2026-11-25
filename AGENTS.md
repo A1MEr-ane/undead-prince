@@ -9,6 +9,9 @@
 | `docs/design.md` | 设计决策与待定项（【定】/【议】/【待定】） |
 | `docs/canon/` | **剧情与世界观基准**（用户提供的 ABC R1；先读 `shared/CANON-COMPACT.md`）。只读，改动需用户同意 |
 | `docs/canon-review.md` | Claude 对 canon 的审阅意见与待决事项 |
+| `docs/roadmap.md` | **开发路线图**：阶段 0、A–E，各阶段的问题、任务、出口 |
+| `docs/world-r2.md` | **世界观修订 R2**：双日、光热分离、冥火保密、王子昼行军团夜战、回溯私人契约；canon 的修订层 |
+| `docs/map-design.md` | 远征航图与攻城战场设计 |
 | `docs/siege-design.md` | **攻城玩法**：冥火原子化部署、夜间五分钟、守军调度的可行性与实现难度评估 |
 | `docs/gameplay-discussion-2026-11-26.md` | 用户与其他模型的玩法讨论原文（保留用户原话） |
 | `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |
@@ -31,7 +34,7 @@
 - **重点**：打磨并确立玩法，确保攻城战有足够的乐趣和可重复探索性。设计见 `docs/siege-design.md`。
 - **美术**：做完剧情宣传册（设定集）后暂时搁置。
 - **战斗数值和底层逻辑修复**不急，T65、T66 搁置。
-- 剧情以 `docs/canon/` 为准，玩法层见 `docs/roguelike.md`。
+- 剧情以 `docs/canon/` 为准，`docs/world-r2.md` 是修订层（冲突处以 R2 为准）；玩法见 `docs/siege-design.md`、`docs/roguelike.md`；路线图见 `docs/roadmap.md`。
 
 ## 已定（用户原话或明确决定）
 - 切入点是质感，不是玩法创新；操作简单、界面简单、带即时决策
