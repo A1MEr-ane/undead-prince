@@ -39,6 +39,7 @@
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
+| T57 | 立绘高级化对比：3 风格 × 3 角色 | Codex | codex/t57-portrait-compare | art/compare/ | 进行中 |
 | T56 | UI 动效与转场原型 + 中文字体候选 | Codex | codex/t56-ui-motion | proto/ui_motion/ | 进行中 |
 | T55 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型（原编号 T49 撞号） | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |
 | T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 已合并（Codex 自判 5 张不合格，Lead 复审均可用） |
