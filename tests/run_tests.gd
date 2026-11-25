@@ -10,6 +10,7 @@ const TestBoons = preload("res://tests/test_boons.gd")
 const TestCampaignData = preload("res://tests/test_campaign_data.gd")
 const TestSimTools = preload("res://tests/test_sim_tools.gd")
 const TestBattleBaseline = preload("res://tests/test_battle_baseline.gd")
+const TestCampaignFlow = preload("res://tests/test_campaign_flow.gd")
 
 
 func _init() -> void:
@@ -25,4 +26,5 @@ func _run_all() -> void:
 	failed += TestCampaignData.new().run_all()
 	failed += TestSimTools.new().run_all()
 	failed += TestBattleBaseline.new().run_all()
+	failed += TestCampaignFlow.new().run_all()
 	quit(1 if failed > 0 else 0)
