@@ -1,0 +1,3306 @@
+[
+  {
+    "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE-UNDEAD__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑轮廓与细内线清楚"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "盔甲、披风均为硬边平涂阴影"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "青绿轮廓光"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，象牙白盔甲突出"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年亡灵、半骷髅脸、破甲紫披风、魂火剑与独立断冠齐全"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正侧背等高、空手，姿势一致"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": true,
+        "note": "正面观众右半为骷髅，头戴金冠前端有断口"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "通过七项适用检查，选第 1 版；第 2 版为备选。",
+    "prompt_sha256": "539b3fa6c6d58c9be3cecd6513b8ea52baec8fde8f903eed1af62720022f488f",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-bef5a7c1-1378-4e62-820c-431aa05173bf.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-06157c02-eb62-4029-8b8c-f5039584f353.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "15c9c5a95c1573af4c8317c03ca0d0203299ce165fb9f41864ea1eb0c90d50c5"
+      }
+    ],
+    "alt_notes": {
+      "2": "合格备选；披风横向展开较大，首选版三视图占位更均匀"
+    }
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE-UNDEAD__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v1.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑外轮廓清楚，内结构线较细"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、盔甲及披风采用硬边明暗色块，无柔和渐变"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物右缘均有青绿魂火轮廓光"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物肤色和象牙甲为亮部"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "26 岁成年亡灵、观众右半骷髅及青绿眼焰、前方断冠、破损白金甲和紫披风均出现；半身像无需露出魂火剑。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图，不是三视图"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": true,
+        "note": "三张头像均为观众右半骷髅，金冠前方均有明显断口"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "按本轮第 5 条重审三版，半身像无需魂火剑。沿用第 2 版：冷怒表情最清晰，三表情区分明确。",
+    "prompt_sha256": "6013be09c3574daa49f733b1ae4c6ddefd73fbdfe2c7ec734641c5ffa8bd684e",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-fec4057e-f4e8-44c5-92d1-ce309be3da01.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "3ef1f8368a6361059ffa68fd4fd6745896460ed78834897631045d8543ac83a1"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-33ca4587-b812-4ef2-937f-9bdafc64f843.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "1b775dc4c826a75715e59cd661785fab8e42e3e378a2b9209f9ea36dca1d32fd"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e47-190b-7e93-b71a-0cb64eff7ac8/exec-79f0e700-c35d-47dd-a9d3-475b13e88ac2.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "f0c242ee39c95e139d2ece228653ca083cb6dc184d6d5757fdc29e2c68b69a9b"
+      }
+    ],
+    "alt_notes": {
+      "1": "按新版规则通过；冷怒表情较克制，留作备选。",
+      "3": "按新版规则通过；第二版冷怒的面部线条更清楚，留作备选。"
+    },
+    "resumed_review": {
+      "date": "2026-11-25",
+      "new_generations": 0,
+      "reviewed_variants": [
+        1,
+        2,
+        3
+      ],
+      "prop_rule": "表情图半身像没有道具仍通过"
+    }
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__hero.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/hero-v1.png",
+      "art/chars/CHAR-PRINCE/alt/hero-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑外轮廓清楚，内结构线更细。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸部、甲胄和披风阴影为硬边大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "暖金色轮廓光沿头发、肩甲和腿部边缘可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深海蓝背景，白金甲胄是画面主亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三版均将要求完好的紫披风画成破损下摆；第 1、3 版甲胄还有裂痕。成年活人、完整金冠、胸前完整冠徽及海图出现。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：本项为生前王子，提示词要求完整人脸和完整金冠，两者均出现。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 2,
+    "selection_note": "三版均未完全满足生前造型。第 2 版的甲胄最干净、胸徽与金冠完整，但披风下摆仍破损；保留供审查，不视为通过。按修订规则继续下一项。",
+    "prompt_sha256": "ffffb9010d2f480e9e40700ec75438fe9db1d29755dc55ad7cb1ef6ad894f640",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-e2427938-1eab-4736-b5c7-c4aa71da61cd.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "7339ad98c164c894c75179a9c1eb7cae0e66ea4bc4d7111feb31a16b677fba02"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-d416fa34-e3c3-4c66-8dc9-f47e2f580563.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE/alt/hero-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-fb405709-5130-4c16-ab0f-25977e143e85.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "162f1c97f97a93603951325bae2fb074513e42af6647d5aadb7352f7120d0e7a"
+      }
+    ],
+    "tool_errors": [
+      {
+        "date_utc": "2026-11-24 16:39 UTC",
+        "http_status": 429,
+        "type": "usage_limit_reached",
+        "reset_at_utc": "2026-11-24 17:17:36 UTC",
+        "image_produced": false
+      }
+    ],
+    "alt_notes": {
+      "1": "不通过：甲胄裂痕和破披风，不符合生前完好服装。",
+      "3": "不通过：破披风明显，甲胄有裂纹。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/turnaround-v2.png",
+      "art/chars/CHAR-PRINCE/alt/turnaround-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图外轮廓粗黑墨线清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "甲片、披风和脸采用硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "暖金色轮廓光沿三个人物轮廓可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，白金甲为最亮的主体。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三版均有破紫披风和甲胄裂纹，与生前的干净甲胄、完整披风不符；活人面孔、完整金冠、完整胸徽、独立海图和玩具船齐全。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视图等高同地线，双手空，站姿一致。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：生前王子要求两半人脸和完整金冠。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 1,
+    "selection_note": "三版正侧背及独立道具均完整，但都未满足生前完好服装：紫披风有破口，甲胄出现裂纹。第 1 版三视图高度和排版最整齐，暂留供审查，不验收通过。",
+    "prompt_sha256": "d8d3ec2f4ba94a00e7cf3faf4659528b5bcbd3a42d49b9cf015a1b213684681f",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-215cbade-cb29-4464-b61b-86ba2122b554.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "5a76f96371e33cffd39daf07c4ddb9a23db7f880de439f53a1381dd5820a45ff"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-4b02e449-ee1e-4e4f-8a63-e6b1a95d98c0.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "f39425b10d6a120b301a5e04ce64f4285b89be73390d8af4e31aa344baf986fe"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE/alt/turnaround-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-0bfff0d5-3b05-4b47-a7ae-f4f3f2191b37.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "e285e779946217d2cc424ec416ead56a143ee5d4caa3ad97ae6df84fe6dcb959"
+      }
+    ],
+    "alt_notes": {
+      "2": "不通过：披风破洞明显，甲片有裂纹。",
+      "3": "不通过：披风仍破损，甲胄仍有裂纹。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-PRINCE/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-PRINCE__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发、脸及肩甲轮廓粗黑清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、披风及白甲均用硬边平涂大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "暖金色轮廓光沿头发和肩部外缘可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深海蓝底，人物脸与白金甲最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "25 岁活人，双侧人脸、完整窄金冠、完整冠徽、白金军官甲和紫披风可见；三表情为自信、开怀大笑、急躁皱眉；半身像不要求道具。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情半身像。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：生前王子按提示词为完整人脸、完整金冠。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "选第 2 版，胸甲大形更完整干净，三种表情区分明确；可见披风范围没有主立绘那样的下摆破洞。半身像未画到的道具不纳入检查。",
+    "prompt_sha256": "98f5d09ed59b4915a3249cf91c2c1e572826fa4fe3d68bd8d9473c225c808e12",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-382117f7-c450-45d7-8fec-36f8abc84f80.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "8faa7d2b9cef39475d48499cb7c1ecc499c7af56e42e86e4e702081641939996"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-740796e4-7810-4eb6-985f-d6b05edee13d.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "29bb6db787d2a2b48422fdf39ac351c4d79f602293f45d94b954781d35e1f294"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；第 2 版胸甲主色块更干净，首选第 2 版。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__hero.txt",
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/hero-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物粗黑外轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "裙褶、脸和头发均为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发与裙侧有暖金轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，象牙裙与肤色最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "年轻成年活人女王、盘起黑发与强眉、单颗红石细金冠、金边象牙长袖宫廷裙、深红斜绶、修补玩具船和账本齐全。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版宫廷长裙和实用长袖更准确，修补玩具船与账本清楚，选作主版。",
+    "prompt_sha256": "525601f32c9db91f3aa490175d2b522b2a02af6eac23ca9f0f61075c9d07b1e7",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-955d32f2-29de-4180-a2b6-276945f4c930.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "03ed6be1fc463223362d40acf8546c757fe047e596299d777a556356a9b3ce7b"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-df75e3c3-8c0c-4310-9d70-272a70d0c5b6.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "alt_notes": {
+      "1": "袖部和领部偏甲胄，第 2 版更符合宫廷长裙。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "服装上半身明显甲胄化。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/turnaround-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "衣裙和头发外轮廓有粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "裙褶为硬边大色块阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发、肩、裙边有暖金侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深海蓝背景，象牙衣裙为人物主要亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "年轻活人女王，盘发强眉、单红石金冠、象牙金边长袖裙、红斜绶齐全；修补木船、账本、王冠在右边独立列出。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背等高同地线，姿势一致，双手空。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版正视更准确，独立船模修补清楚，三视等高空手，选第 2 版。",
+    "prompt_sha256": "690e383cd3e035432fbe32aac6a1f93a76cd6c3ec3334c9ddfdba6485673d900",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-c78d3334-2426-44ff-9781-033ce5ec5585.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "1d55137b41610c8d22ff509c3e8cc27ab3ae0eecab45098febb306bd8813b37d"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-19416fb1-4b3f-45bf-93ac-d995a5330fc2.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "3598ecda21226d487faec3a84cbfe2664cd6a37c98dbda91dd655791469b2da4"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；正面头部稍偏转，第 2 版更正。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-QUEEN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-QUEEN__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物外轮廓粗黑，内结构线清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸与衣褶为硬边平涂明暗色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发和肩部外缘有暖金光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，脸和象牙裙最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "年轻活人女王、盘起黑发强眉、红石细金冠、金边象牙长袖裙和红斜绶齐全；冷静、怀疑、温柔三表情清楚，半身像道具不作必需。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版更贴近布质长袖宫廷裙，三表情和红石金冠清楚，选第 2 版。",
+    "prompt_sha256": "209680704442a0ac1c77de29b8481d8cacf038f29f8462fc014488859f6891c8",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-64bdc724-63c0-4d15-875d-2311172be40c.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "5def2ba57460512aa3672618c4c45e13a57476eaaf9c3eed88de652d3fd90893"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-51d9ce72-a84c-4024-ac00-905e0ff7be8a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "01718eb265fb7af699ed6c0df000d89616d7f7e5b6023228e52bd85e96975c50"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；肩袖造型偏硬，第 2 版更像布质宫廷服。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__hero.txt",
+    "alts": [
+      "art/chars/CHAR-FERRYMAN/alt/hero-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "粗黑外轮廓清楚，内线较细。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "祭服褶皱为硬边平涂大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "青绿色轮廓光沿兜帽、袖口及衣摆清晰可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深海蓝底，灰金祭服与灯焰构成人物亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "无脸黑兜帽、黑灰层叠祭服与金色波纹边、漂浮透明衣摆、无脚，木桨与铁灯笼青焰齐全。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版；波纹饰边、灯笼与悬浮衣摆更清楚。",
+    "prompt_sha256": "31ab4b8e708927a70e6acf5a80969a05c9f87f521f26e82606bfb2a67de3d641",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-FERRYMAN/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-08f0e36e-f64e-47dd-9eb1-ee6ba33e1d97.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "6aafbd40ca6a90e4f26e927e31f392b07fa0883f5b7fc45859f9774ecc771eee"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-FERRYMAN/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c81cb182-c7a4-4eaf-b1a7-80dd8ace617a.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T03:55:18.332648+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-FERRYMAN/alt/turnaround-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "三个人物的外轮廓粗黑墨线清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "祭服阴影由硬边大色块构成。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图均有青绿色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，灰金衣纹和青绿轮廓为主体亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "无脸兜帽、黑灰祭服、波纹金边、透明悬浮衣摆及无脚特征齐全；桨、青焰灯在右侧独立绘出。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高，同一悬浮基线、站姿一致且空手。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，三视顶部和悬浮高度更齐。",
+    "prompt_sha256": "5bd0f9377271cf139de1214e36e6df21f64bfd306031428ef70bce823348938b",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-FERRYMAN/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-1ee2bd6b-cb8f-4c19-a5e5-daf709cb8111.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "181f46d9fe4882c987871a57f011a3379d091abe3f7741f6291c15de25a9a17b"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-FERRYMAN/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-42c1ce50-169c-4c2e-8b18-b729894ec0e7.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "5fa3cc8c3f9b32b760236435bb27899a139fc66c6d8ba3718809d3e0cb823911"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T03:57:15.742702+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-FERRYMAN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-FERRYMAN/alt/expressions-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "兜帽、袖口和人物外缘有粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "衣褶为硬边黑灰色块，无柔和渐变阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三个人物均有青绿色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物灰金衣纹和灯光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "无脸兜帽、金边黑灰祭服明确；静候、前倾、转身及灯焰强弱区分清楚。表情图不强制道具，但本图有桨灯。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图；格式偏全身，未严格腰部裁切，另记风险。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版七项适用清单均通过，选第 1 版，三种灯焰强弱更清楚。两版构图均偏全身，未严格腰部裁切，需 Lead 复审。",
+    "prompt_sha256": "cf5df00663590d839384af84eaa09413a0c75a7b6a729d5500c74e4550f75889",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-FERRYMAN/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-0b1a67cf-b484-4dc1-976f-1d2630f113be.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "8bfdba6acad2d8b50bbc9f49ecad20d4ae5e003ae876efe6666a63ff6ec5c861"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-FERRYMAN/alt/expressions-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-4f85248e-ebb7-4bd8-adae-bce29184e131.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "ad3a49741e6a94e63a02b9fe4431c267eacd92b790ecd3c2c7041b3a6f227001"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": [],
+        "format_note": "偏全身，未严格腰部裁切"
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": [],
+        "format_note": "偏全身，未严格腰部裁切"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T03:59:34.188084+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-KING/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__hero.txt",
+    "alts": [
+      "art/chars/CHAR-KING/alt/hero-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "王冠、人物和长袍外缘有粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、长袍及紫披肩均用硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "暖金轮廓光沿头发、肩部和袍边可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "背景深蓝，人物白金衣袍和肤色是主要亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "约55岁活人，宽脸强眉、黑银胡须、疲惫眼神、白金宫袍、紫披肩、重太阳项章与厚冠齐全，坐朴素王座，一手按膝上封蜡文书，一手握扶手。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，宽厚老年面部与疲惫神态更贴近提示词。",
+    "prompt_sha256": "b79855e8e0795524c13aaba26e5ca164a1ab85141fa5a00d21ea8af63a066cd5",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-KING/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c4e15d1c-9951-4785-b615-14cd4fa6e534.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-KING/alt/hero-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-d35dceba-e132-4985-a8b1-8f8e4cab9ec5.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "7c6a0ba521455574b9fcd57e74634e5f8954197ca789c29f2e48e796633ced21"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:01:29.552839+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-KING/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-KING/alt/turnaround-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图外轮廓粗黑清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "白袍与紫披肩的明暗为硬边大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视均有暖金色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，白金人物主体最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "中老年活人，黑银胡须、强眉、白金宫袍、紫披肩、太阳重项章和厚冠齐全；独立王室印章与封蜡诏令齐全。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，同站姿且空手。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，正面朝向更准确。",
+    "prompt_sha256": "6ce0db69d59829593816b292676f3e6d468efb4eac4e596412232117cdc493ea",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-KING/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-0969280c-7132-4a44-b624-b1da2968143b.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "0d3626a40093566abf7b26bab0fce2d51eee238f4ff438827544985e15e4b163"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-KING/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-7688b857-3869-4940-8d6f-1d25ab47188a.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "6082a91dd70408c4dd24c3f3eb0d7aa2df8a8726bccfd3f349ba5ba3c00b7d6e"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:03:33.075324+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-KING/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-KING__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-KING/alt/expressions-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物外轮廓粗黑清楚，脸部结构线更细。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "面部、白袍和紫披肩为硬边平涂明暗。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发和肩缘有暖金轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物脸和白金衣袍最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "中老年活人、黑银胡须、强眉、厚冠、白金宫袍、紫披肩和太阳项章齐全，尽责、命令、悔意三表情明确；半身像不要求道具。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "选第 1 版，宫廷袍服更明确。第 2 版胸部甲胄化，不通过第 5 项。",
+    "prompt_sha256": "3dadd98d43059267e232b1544d55e7c3c6450d8fc6af14f3b892859d32c8bb3e",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-KING/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-26c29061-9975-4192-beff-95933416dd07.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "9f4c30a8a135a018bf07ca70fa0f0db14a300ae4aa798655333a6d0e9d24a362"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-KING/alt/expressions-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-56fb05c3-87fa-4c82-81d1-c4b20576e1f3.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "ea5c9e36bad37b0075d5b85bf00817400151be11e91fb956662bb76f647513de"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "白金宫袍胸部被画成带冠徽的甲胄。"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:05:54.885194+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__hero.txt",
+    "alts": [
+      "art/chars/CHAR-MOTHER/alt/hero-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物和衣裙外缘粗黑墨线可见。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、长裙、披巾均为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物头发、肩和裙边有暖金轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝果园背景，人物奶油色长裙和肤色最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "约40岁成年活人、低束黑辫、温和面容、奶油色与海蓝灰裙、金波浪扣齐全；站果园持披巾向画外微笑。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "选第 1 版，面容更成熟且金波浪扣、披巾更清楚。第 2 版年龄表现偏年轻并多出王冠，留作备选。",
+    "prompt_sha256": "e2aa07f36b7504c8061e94d545db0326ef18b1d346437a176cec4a6c85ab5ed1",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MOTHER/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-41105da3-4f97-4519-98b5-ea23aeec1cb1.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "6f9f0dcc8bf62a7e565b28054e561bd8341c21e89b988c7e0bf91d7c6d98af9c"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MOTHER/alt/hero-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-a8ad0b99-d803-44c1-8b2d-92cc26ae307c.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "623a16682c1036d8714b85d69cfe56ed1967ed14e518765ddaabbd85aa361d3b"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "面容偏年轻，约40岁特征较弱。"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:07:42.632480+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-MOTHER/alt/turnaround-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视人物和衣裙粗黑外轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "长裙和披巾阴影为硬边平涂色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图均有暖金侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，人物奶油色衣裙与肤色为主要亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年活人母后，低黑辫、奶油及海蓝灰裙、波浪金扣齐全；右侧独立波浪扣和折叠披巾可见。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，空手且站姿一致。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，轮廓和金扣独立造型更清楚。",
+    "prompt_sha256": "4496645ed0d729f6f1ba0efaf8c9a5b419b61a4677f6441afb95b782ddfbd5f8",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MOTHER/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-37c9e563-f6d8-4b2e-a365-72449685632a.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "d50d1318a0a327fc52afab80ad5631c5b00641737d0f56a0a7e70719901e6bf0"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MOTHER/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-40dfc9c1-75c3-464c-90fc-7cd5b37bf4f8.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "45e169132b85f2aba3d6bd28d1722b0b844412e9d150708f4e715acfa4b68a5a"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:09:28.369692+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MOTHER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MOTHER__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-MOTHER/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发、脸和衣裙外缘有清楚粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "面部及衣褶均为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发和肩缘有暖金色侧光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物肤色和奶油色衣料最亮。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成熟成年活人母后，低黑辫、温和面容、奶油与海蓝灰服装及波浪金扣齐全；微笑、忍俊不禁、担忧区分明确，表情图不要求道具。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版，面容更成熟，无额外王冠，服装更接近主立绘。",
+    "prompt_sha256": "9bf219f575af3ba9e5a849917beb89d6f04ebcd418afe8f362151cdf2770cf59",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MOTHER/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-4f660f3c-cd94-415d-a111-36528260c0ad.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "5537b7fe0eea870dd6d58af40ed1f55adfe21028e18f3f95ca22fd7ff8d56fbf"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MOTHER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-e80067e8-1769-47c2-8581-573f34a10e16.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "e5e4f780267ecf3cdeceecb5ef6e5b9114373255bb880f07b88c0f387f30833c"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": [],
+        "note": "多出未要求的小冠，作为备选。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:11:16.080909+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__hero.txt",
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/hero-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头盔、甲胄和盾牌粗黑外轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "甲片、披风与盾面为硬边平涂明暗色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "头盔、肩、盾缘和腿部有青绿色轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，灰甲、冠徽和青光为人物亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "亡灵重装队长、封闭海军盔与青光狭缝、磨损钢灰板甲、划伤胸冠徽、紫披风及凹损圆角鸢盾齐全，站稳持盾、剑低垂，无角无刺。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版清单均通过，选第 2 版，圆角鸢盾和宽厚剪影更明确。两版均额外将剑画成魂火剑，提示词主立绘仅要求 sword，登记供复审。",
+    "prompt_sha256": "a0f94c0f8065b0fc2d7a74291dfe7f7f1e6aa0158dd53c12a1c68511680b153c",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c13561d6-c6bb-4c37-a5ce-79562b7738e9.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "8bf00406c08f1936e8879af16776f8771568bf8e84de76f965c960575207c0e1"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-6d726f6c-ea24-4b8d-b012-6db955025f38.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:13:47.533462+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/turnaround-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "甲胄、头盔及披风粗黑轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "甲片和披风为硬边平涂大色块阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视均有青绿色轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，灰钢甲和青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "亡灵队长宽厚体型、封闭青光狭缝头盔、钢灰旧甲、胸冠徽、紫披风齐全，无角无刺；凹损冠徽盾、普通海军剑、油布、名册均独立列出。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，站姿一致且空手。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版，正面头盔朝向更准，独立道具排布清楚。",
+    "prompt_sha256": "7d670e99f18fa3af1be95acbd08aeeedc4b780aaa1a598145817a046e8d73300",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-50606ea2-d3c4-4244-a7d9-a816dfb1bec6.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "f9d7ff926647596f31112bff07a8c99651b88ca8f1218770ee05dd27ab23672c"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-4720d253-264d-49f9-974c-5aca416507ce.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "2a603658e1e0719324f589dde9fb1b08a728898ada74f77b3d7e1d1cbcde51de"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:15:30.677758+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-CAPTAIN/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-CAPTAIN__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头盔、肩甲、手甲和盾牌外轮廓粗黑清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "盔甲及紫披风是硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物边缘均有青绿色轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，人物钢甲与眼缝青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "亡灵队长的封闭海军盔、青光狭缝、磨损钢甲、胸冠徽和紫披风齐全；立正、举手歪头异议、伸出盾臂三姿态清楚；表情图不强制盾牌，但本图已出现。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版，第三个状态伸出盾臂的动作更符合提示词。",
+    "prompt_sha256": "8a7434dcd8a810e8f3c76ff030f3acd362252161d95eba011b2acf964fb824c6",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-717ff122-7f6b-4489-a31a-230fdbffd5c8.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "9f053ad5ea80e09afc08780b3bfaf03c9929cd0b032e15221e545d70c3a52223"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-6599033e-9a53-4e9b-8e59-127c02765922.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "77c533908c6010fea98bd9a4f42a6a09e70567296abb84973acc147346b8e146"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:17:28.486436+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__hero.txt",
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/hero-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发、围裙、手套和人物外缘粗黑墨线清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸、衣褶及皮围裙均为硬边平涂明暗。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "淡青色轮廓光沿头发、手臂、器械与腿部可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，灰皮肤、裸骨与青线为人物亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年亡灵军医，扎起赤褐发、灰皮肤、颌颈整齐缝线、青绿眼光、裸骨手腕齐全；补丁皮围裙、褪色海军服、卷袖、工作手套与腰带器械卷可见，双手拉紧弯针和发光线，无血腥。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，裸骨手腕、缝线及器械卷更清楚。",
+    "prompt_sha256": "ec128a876c8251c332e8c750db4f09ffa33848d88569572209c1b5303b541568",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-9a0c29b9-4d9f-4c5e-9fb8-99f938e94448.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-STITCHER/alt/hero-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-3e5af7af-7000-416e-88e1-4bcee91a823d.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "2df0aa92ce1a9fa90bba738cc61174cab108036909976a26a1dccee279ddc6fd"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:19:32.064483+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/turnaround-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物和道具外缘粗黑轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "皮围裙、海军服与面部为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图均有淡青轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，人物灰皮肤、裸骨与青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年亡灵军医、赤褐束发、灰皮肤、颌颈缝线、青光眼、裸骨手腕、补丁围裙、卷袖海军服、手套和腰带器械卷齐全；弯针线、线轴、手术剪和器械卷独立列出。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，站姿一致且空手。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版，裸骨手腕和工作手套的关系更清楚。",
+    "prompt_sha256": "86c5c7e8698b59a72ac4883b4dc0d1364a9fa5c1bb673719aadc12f147390a6c",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-284b79e1-6f62-4fe4-a19b-96072a5d1b02.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "2a185fc4bbe379a2c92a725e6d0414961a242e186cee8844ce272f4b2dd5aee7"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-STITCHER/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-331ee192-498a-41d5-ae2b-5ac10f299885.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "bcefd47365dd89ee7fb41cb358ccc05f30f065c1ca4fc61d1b6b1e43d434ca5e"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": [],
+        "note": "裸骨侧手未戴工作手套，作为备选。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:22:11.046402+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-STITCHER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-STITCHER__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/expressions-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物外缘粗黑清楚，细内线表现颌颈缝合。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "灰脸、围裙和衣褶为硬边平涂大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三个人物都有淡青轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，灰皮肤、裸骨与发光线构成人物亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "成年亡灵军医、赤褐束发、灰肤、颌颈缝线、青光眼、裸骨手腕、补丁皮围裙、卷袖海军服、工作手套和器械卷齐全；专业兴趣、举指训斥、欣喜举线三状态清楚；表情图道具非必需。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 1,
+    "selection_note": "两版均通过，选第 1 版，三状态服装更连贯，未额外增加手持书本。",
+    "prompt_sha256": "8d1c6bf6628f32232482282e6027a74f26fb0330209f2f60dd0b9eac30e1b644",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-61209d79-8682-4fb9-8461-f60f14bc3278.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "26361dd2b05dc2df5ceb55ece4d7729bd778fa47baa666d247d4928920b37ea4"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-STITCHER/alt/expressions-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-3632cf8b-8af5-44bb-94a8-b3408b2bd758.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "6df0776de60fe989c9430ff5c30d5a257c2dfdc0a23564142594f7e2dadacfea"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:26:03.985825+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__hero.txt",
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/hero-v1.png",
+      "art/chars/CHAR-MAGE/alt/hero-v2.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "骷髅、衣袍和人物外缘粗黑轮廓可见。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "灰袍与兜帽明暗是硬边平涂大色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "青绿色侧缘光沿兜帽、肩、袍边和靴边可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，骷髅、石板图案和青光构成人物亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "瘦窄亡灵学者，骷髅脸与小青光眼、短褪蓝兜帽、灰长袍、皮腰带、骨手、裂石板和环绕图解纸片齐全；双脚落地，无冠无大杖。第 3 版仅两手，一手书写一手举指，石板悬胸前。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 3,
+    "selection_note": "前两版均出现多余第三只手，视觉质量不合格；第 3 版修正为两手，石板悬胸前，选第 3 版。额外紫布披肩留作风格偏差供复审。",
+    "prompt_sha256": "ef711f3ae39d485e9c64af84444d28b28b0a5f41c66e937188ae2a2954b03390",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-95834e58-9cf9-4326-b426-0231ab464bf4.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "23e98d629a8c4af49449d8f4a08a7039b1f4d38387554f6860444fe8f28185b6"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/alt/hero-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-dc4755f3-2506-4900-9d3f-b1be5f499f9c.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "ccd0da62f2ccd43d18ac86746f502d53e45b041d7cb3517591384f4e12093cd7"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-MAGE/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-d895d500-ba02-4a34-8430-11f87d2251b8.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [],
+        "quality_issues": [
+          "多余第三只手"
+        ]
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [],
+        "quality_issues": [
+          "多余第三只手"
+        ]
+      },
+      {
+        "variant": 3,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:29:51.484314+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/turnaround-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "骷髅、兜帽和衣袍外缘有粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "灰袍和蓝兜帽为硬边平涂明暗。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图均有青绿色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，骷髅、衣袍亮面与青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "瘦窄亡灵学者，骷髅脸与小青光眼、短褪蓝兜帽、灰长袍、皮带、骨手和漂浮图解纸片齐全；独立裂石板、三张图解纸和粉笔齐全，双脚落地，无冠无大杖。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，同姿势且空手。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "两版均通过，选第 2 版，正面更准确，道具完整。",
+    "prompt_sha256": "1162ed909da292db99ec02f7c150368dfa5d42cfac4d37c9c978962d4846fcb5",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-0694af57-9681-42a1-9930-e77362d6c8a6.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "656d8094b5f8ebd33023dbf0b6fbbbbb8d175b45308a5026ced904894dfe45ef"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-ec9f6786-0289-4791-bea9-b703cf6e5513.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "561fb83f312b7bf2a057dcd89d9084c268e57bbc204f6cd13bbc6c2fbb567b94"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:32:07.552866+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-MAGE/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-MAGE__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/expressions-v1.png",
+      "art/chars/CHAR-MAGE/alt/expressions-v2.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头部、兜帽与袍服粗黑外轮廓清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "脸部和袍服为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三个人物均有青绿色轮廓光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物灰骨肤色与青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三版均把默认表情画成带唇部软组织的干尸面孔，未明确表现提示词的骷髅脸；其余蓝兜帽、灰袍、皮带、亡灵眼光与三种情绪齐全。表情道具非必需。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 3,
+    "selection_note": "三版第 5 项均未过：默认表情面孔偏带软组织干尸，骷髅脸不够明确。保留第 3 版供审查，第三表情骨相较清楚。已达三次，不改提示词，继续下一项。",
+    "prompt_sha256": "7d4632dff552877f59eae18c853421f726c95671544dfdf7126c15b53b808bed",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-85afec01-4a2b-41c5-964c-08db5f61307b.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "825812ee309b20256c1d7a81ab2e0a43a02fc48809b7e07ad4c267bed51c80a5"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/alt/expressions-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c0acbc55-45ac-4399-94ff-829989d023df.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "694454e10f90db8ab906a7598eaba81c0ddacb50365174883f65b9402d82ba78"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-MAGE/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-ad569ff1-9b4d-41e7-8a10-c0e7dcd8d58c.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "152b50a85d5efa9ec730814f51a58514c32aca9f2660f2f92800a8ef2393799b"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "默认面孔有唇部软组织，偏干尸。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "默认面孔仍偏干尸。"
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "默认表情仍有唇部软组织，未明确骷髅脸。"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:35:44.966365+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/hero.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__hero.txt",
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/hero-v1.png",
+      "art/chars/CHAR-BUGLER/alt/hero-v2.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物、水手服和铜号外缘有粗黑墨线。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "灰脸、蓝服、领巾和铜号为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "青绿色轮廓光沿发缘、肩、手臂和腿部清晰可见。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝背景，人物灰脸、铜号与青光构成主要亮部。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
+        "applicable": true,
+        "note": "瘦长青年成年亡灵、乱棕发、灰肤、青绿眼、外露牙列与骨质下颌笑容可见；短海军水手外套宽领、锈红领巾、卷袖、腰带和靴齐全，大号铜号与破海军蓝断金冠旗齐全，跨步挥手。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：主立绘。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 3,
+    "selection_note": "选第 3 版，断冠旗徽和外露下颌可读，未复制整半脸骷髅；第 1 版旗徽未明确断裂，第 2 版额外半脸骷髅不符合角色差异。第 3 版铜号带活塞状细节，另记道具细节供复审。",
+    "prompt_sha256": "18c43671ce3c963f8c6230817eaca0863a95abb21e8d34f399335f2c9900f3f3",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-49a76d71-fe5c-410f-9c07-2e444666e94f.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "b44d62548181eaeb99cdaaced743ef4e9a8b848f5b28f613bded228f68e8da4b"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/alt/hero-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-5a23fea1-cf91-49c0-80da-1ed08f015ef8.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "1f44597c2c4a88ada3002fb7bf81264724926e6022d5d8e5da51924853b07966"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-BUGLER/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-a5125477-7e30-43f6-8356-3ece7768881b.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "旗上金冠没有明确断口。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "半脸骷髅造型偏离仅下颌裸骨。"
+      },
+      {
+        "variant": 3,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:39:38.043975+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/turnaround.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__turnaround.txt",
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/turnaround-v1.png",
+      "art/chars/CHAR-BUGLER/alt/turnaround-v2.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "人物、水手服和道具外轮廓粗黑清楚。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "蓝服、灰脸和铜号明暗为硬边平涂色块。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三视图均有青绿色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，人物灰脸、铜号与青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三版都借用了王子的半脸骷髅和单侧眼眶魂火，偏离皮普灰肤、双青绿眼、下颌裸骨的角色差异；其余成年比例、乱棕发、蓝水手服、红领巾、卷袖、腰带、靴与独立铜号、断冠破旗齐全。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": true,
+        "note": "正、朝右侧、背三视等高同地线，空手且站姿一致。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子；图中额外半脸骷髅归第 5 项失败。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 3,
+    "selection_note": "三版第 5 项均未过，均把皮普画成王子式半脸骷髅。保留第 3 版供审查，其下颌和道具相对清楚；达到三次上限，继续最后一项。",
+    "prompt_sha256": "58335bfd1ed8ff1cebd4007dc3c66f0ad0dd4353195cff1fad2b8bd27af0172d",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c0276f24-1cfa-445a-b6be-0ef58a34433b.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "eae0c01b9d28eb6e2b743a91ab565dc7b1d891649af5b80af0b5b3ee5e2a9939"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-f8241470-94fc-46e2-9196-7a54e1b18669.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "55c8922204805cc80223957fba82cab7f683151b1d5cdf8e7acd7916c034e536"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-BUGLER/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-b23b11b1-5f64-4971-85d5-ad8e6f3055b5.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "2603aab042cbf4de4d3f337d86c6258f846884ffc3b984100afe5bb322854146"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "王子式半脸骷髅。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "仍为半脸骷髅。"
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "仍有半脸骷髅及眼眶魂火。"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:43:02.856380+00:00"
+  },
+  {
+    "file": "art/chars/CHAR-BUGLER/expressions.png",
+    "prompt_file": "art/prompts/rendered/CHAR-BUGLER__expressions.txt",
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/expressions-v1.png",
+      "art/chars/CHAR-BUGLER/alt/expressions-v2.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": 1,
+        "criterion": "粗黑墨线外轮廓清楚可见",
+        "result": "通过",
+        "applicable": true,
+        "note": "头发、衣服和铜号外缘有清楚粗黑轮廓。"
+      },
+      {
+        "item": 2,
+        "criterion": "阴影是平涂大色块，没有柔和渐变",
+        "result": "通过",
+        "applicable": true,
+        "note": "面孔、水手服和铜号为硬边平涂阴影。"
+      },
+      {
+        "item": 3,
+        "criterion": "一侧有指定颜色的轮廓光",
+        "result": "通过",
+        "applicable": true,
+        "note": "三个人物有青绿色侧缘光。"
+      },
+      {
+        "item": 4,
+        "criterion": "背景暗，人物是画面里最亮的部分",
+        "result": "通过",
+        "applicable": true,
+        "note": "深蓝底，人物面孔、铜号和青光突出。"
+      },
+      {
+        "item": 5,
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "不通过",
+        "applicable": true,
+        "note": "不通过：三版均复制王子式半脸骷髅与单侧眼眶魂火，偏离皮普灰肤、双青绿眼及下颌裸骨的身份特征；成年比例、乱棕发、水手服、红领巾、卷袖和三表情齐全。半身像道具按新规则不作为强制要求。"
+      },
+      {
+        "item": 6,
+        "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：表情图。"
+      },
+      {
+        "item": 7,
+        "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
+        "result": "通过",
+        "applicable": false,
+        "note": "通过（不适用）：非王子；半脸骷髅问题归第 5 项失败。"
+      }
+    ],
+    "status": "in_review",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 3,
+    "selection_note": "三版第 5 项均未过，均复制王子式半脸骷髅。第 3 版三表情最清楚，保留供审查；已达三次上限，不改提示词。",
+    "prompt_sha256": "0924d1b7fc1f00e5312e0bf4cb103587da41780cfa7af4148b3438afe52decf6",
+    "prompt_verbatim": true,
+    "reference_images": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
+    ],
+    "tool": "built-in image_gen",
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-31575b2c-873d-4dd2-a384-40f5520aaeaa.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "8bfd50a6bff90e69b608f45223e6ce669bda4b633b6df019cf49a440bcb833fb"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/alt/expressions-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-c4992e4d-5518-4d0d-a308-90d1aae5d1af.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "6879f5a76272badfa9b81ada7f7e32fb749fa3fb752c873d1e5710af4eb204fc"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-BUGLER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a210d5-884b-7be1-a6f1-d7e29701a3f6/exec-0e07a9f8-d689-4110-958e-308a98f0b9af.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "9a2e603a06312eea54dc2819415995ab12b9b56fce5bb3a8baff4f2a73377710"
+      }
+    ],
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "王子式半脸骷髅。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "仍为半脸骷髅。"
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "仍为半脸骷髅。"
+      }
+    ],
+    "reviewed_at_utc": "2026-11-25T04:46:49.974379+00:00"
+  }
+]
