@@ -1,0 +1,212 @@
+{
+  "crew": "duo",
+  "crew_name_zh": "双人增益",
+  "status": null,
+  "boons": [
+    {
+      "id": "duo_charge_horn",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "冲锋号",
+      "effect_zh": "冲锋路线上的敌人获得惊惶",
+      "status": "panic",
+      "requires": [
+        "existing",
+        "morale"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "bernard",
+        "pip"
+      ],
+      "condition_zh": "伯纳德与皮普各有至少 1 个增益；冲锋路线上的敌人",
+      "source_zh": "号手和卫队长的口令配合"
+    },
+    {
+      "id": "duo_field_dressing",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "战地包扎",
+      "effect_zh": "在站位上的亡魂每 5 秒恢复 1 次被击倒的机会",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "interval": 5,
+        "revive_charges": 1
+      },
+      "crews": [
+        "bernard",
+        "matilda"
+      ],
+      "condition_zh": "伯纳德与玛蒂尔达各有至少 1 个增益；亡魂在站位上",
+      "source_zh": "军医与队长的争执：该不该把伤员留在阵上"
+    },
+    {
+      "id": "duo_burning_shield",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "燃盾",
+      "effect_zh": "破阵和冥燃同时在身上时，敌人被点燃并击飞",
+      "status": "soul_burn",
+      "requires": [
+        "existing",
+        "burning"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "bernard",
+        "oswin"
+      ],
+      "condition_zh": "伯纳德与奥斯温各有至少 1 个增益；目标同时带破阵和冥燃",
+      "source_zh": "—"
+    },
+    {
+      "id": "duo_soulfire_suture",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "冥火缝合",
+      "effect_zh": "重组起来的亡魂带冥燃光环",
+      "status": "soul_burn",
+      "requires": [
+        "corpse",
+        "burning"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "matilda",
+        "oswin"
+      ],
+      "condition_zh": "玛蒂尔达与奥斯温各有至少 1 个增益；重组起来的亡魂",
+      "source_zh": "两人都出身苍白圣堂系统"
+    },
+    {
+      "id": "duo_pieced_together",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "拼好了",
+      "effect_zh": "号点时，附近一具骨堆立即重组",
+      "status": null,
+      "requires": [
+        "existing",
+        "corpse"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "matilda",
+        "pip"
+      ],
+      "condition_zh": "玛蒂尔达与皮普各有至少 1 个增益；号点时有附近骨堆",
+      "source_zh": "皮普的笑话\"分成了好几块\""
+    },
+    {
+      "id": "duo_resonance",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "共鸣",
+      "effect_zh": "号点时，所有冥燃火焰扩大一圈",
+      "status": null,
+      "requires": [
+        "existing",
+        "burning"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "oswin",
+        "pip"
+      ],
+      "condition_zh": "奥斯温与皮普各有至少 1 个增益；号点时有冥燃火焰",
+      "source_zh": "—"
+    },
+    {
+      "id": "duo_send_off",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "送行",
+      "effect_zh": "被推下海的敌人，在下一场战斗以亡魂身份为你登场",
+      "status": null,
+      "requires": [
+        "existing",
+        "raise"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "ferryman",
+        "bernard"
+      ],
+      "condition_zh": "渡魂人与伯纳德各有至少 1 个增益；敌人被推下海",
+      "source_zh": "伯纳德的兄弟死于海上"
+    },
+    {
+      "id": "duo_pre_crossing_check",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "渡前检查",
+      "effect_zh": "带沉的敌人尸体招魂后成为巨人",
+      "status": null,
+      "requires": [
+        "corpse",
+        "raise"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "ferryman",
+        "matilda"
+      ],
+      "condition_zh": "渡魂人与玛蒂尔达各有至少 1 个增益；带沉的敌人尸体被招魂",
+      "source_zh": "—"
+    },
+    {
+      "id": "duo_interrupt_crossing",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "中断渡海",
+      "effect_zh": "带冥燃的敌人死后不留尸体，改为给王子回冥火能量",
+      "status": null,
+      "requires": [
+        "burning",
+        "corpse",
+        "prince_soulfire"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "crews": [
+        "ferryman",
+        "oswin"
+      ],
+      "condition_zh": "渡魂人与奥斯温各有至少 1 个增益；敌人带冥燃",
+      "source_zh": "秘印与回溯\"共享中断渡海的原理\"（canon）"
+    },
+    {
+      "id": "duo_scatter_horn_rehearsal",
+      "crew": "duo",
+      "slot": "duo",
+      "name_zh": "散队号 · 预演",
+      "effect_zh": "每场战斗结束时，额外获得 1 次 2 选 1 增益",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "extra_reward_choices": 1,
+        "reward_options": 2
+      },
+      "crews": [
+        "ferryman",
+        "pip"
+      ],
+      "condition_zh": "渡魂人与皮普各有至少 1 个增益；每场战斗结束时",
+      "source_zh": "皮普的愿望是自己决定何时吹散队号"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "crew": "matilda",
+  "crew_name_zh": "玛蒂尔达",
+  "status": {
+    "status_id": "stitch_line",
+    "name_zh": "缝线",
+    "effect_zh": "带缝线的敌人死后，尸体立刻可以被招魂，并且多一次骨堆重组。",
+    "params": {
+      "extra_reassembly": 1
+    }
+  },
+  "boons": [
+    {
+      "id": "matilda_sample",
+      "crew": "matilda",
+      "slot": "blade",
+      "name_zh": "取样",
+      "effect_zh": "普攻附带缝线",
+      "status": "stitch_line",
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {}
+    },
+    {
+      "id": "matilda_first_aid_station",
+      "crew": "matilda",
+      "slot": "formation",
+      "name_zh": "急救台",
+      "effect_zh": "队伍技能变成原地重组：附近倒下的己方骨堆立即站起",
+      "status": null,
+      "requires": [
+        "squad_skill",
+        "corpse"
+      ],
+      "requires_zh": "队伍技能、骨堆",
+      "params": {}
+    },
+    {
+      "id": "matilda_drag_corpse",
+      "crew": "matilda",
+      "slot": "march",
+      "name_zh": "拖尸",
+      "effect_zh": "部队移动时把路过的尸体拖到到位点，供招魂使用",
+      "status": null,
+      "requires": [
+        "corpse"
+      ],
+      "requires_zh": "尸体",
+      "params": {}
+    },
+    {
+      "id": "matilda_suture_round",
+      "crew": "matilda",
+      "slot": "soulfire",
+      "name_zh": "缝合弹",
+      "effect_zh": "王子技能命中的尸体缝成 1 个临时巨人，持续 10 秒",
+      "status": null,
+      "requires": [
+        "prince_soulfire",
+        "corpse"
+      ],
+      "requires_zh": "王子冥火、尸体",
+      "params": {
+        "giant_count": 1,
+        "duration": 10
+      }
+    },
+    {
+      "id": "matilda_improved_suture",
+      "crew": "matilda",
+      "slot": "raise",
+      "name_zh": "改良缝线",
+      "effect_zh": "招魂起来的亡魂多 1 点血量",
+      "status": null,
+      "requires": [
+        "raise"
+      ],
+      "requires_zh": "招魂",
+      "params": {
+        "bonus_hp": 1
+      }
+    },
+    {
+      "id": "matilda_spare_parts",
+      "crew": "matilda",
+      "slot": "passive",
+      "name_zh": "备用零件",
+      "effect_zh": "己方亡魂第一次被一刀斩杀时，改为倒地不死（每人一次）",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有（死亡、倒地）",
+      "params": {
+        "times_per_unit": 1
+      }
+    },
+    {
+      "id": "matilda_suture_length",
+      "crew": "matilda",
+      "slot": "passive",
+      "name_zh": "缝线长度",
+      "effect_zh": "骨堆重组时间缩短 40%",
+      "status": null,
+      "requires": [
+        "corpse"
+      ],
+      "requires_zh": "骨堆",
+      "params": {
+        "reassembly_time_reduction": 0.4
+      }
+    },
+    {
+      "id": "matilda_anatomy_lesson",
+      "crew": "matilda",
+      "slot": "passive",
+      "name_zh": "解剖课",
+      "effect_zh": "己方击杀的敌人掉落魂火 +1",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "局内货币",
+      "params": {
+        "soulfire_bonus": 1
+      }
+    },
+    {
+      "id": "matilda_hold_still",
+      "crew": "matilda",
+      "slot": "passive",
+      "name_zh": "别乱动",
+      "effect_zh": "己方亡魂眩晕时间缩短 30%",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有（眩晕）",
+      "params": {
+        "stun_time_reduction": 0.3
+      }
+    },
+    {
+      "id": "matilda_masterpiece",
+      "crew": "matilda",
+      "slot": "mastery",
+      "name_zh": "杰作",
+      "effect_zh": "每场战斗中第一个阵亡的己方亡魂，会作为巨人重新站起来。",
+      "status": null,
+      "requires": [
+        "corpse",
+        "raise"
+      ],
+      "requires_zh": null,
+      "params": {
+        "units_per_battle": 1
+      }
+    }
+  ]
+}
