@@ -6,6 +6,7 @@ const TestAgentState = preload("res://tests/test_agent_state.gd")
 const TestCampaign = preload("res://tests/test_campaign.gd")
 const TestBattles = preload("res://tests/test_battles.gd")
 const TestBoons = preload("res://tests/test_boons.gd")
+const TestCampaignData = preload("res://tests/test_campaign_data.gd")
 
 
 func _init() -> void:
@@ -14,4 +15,5 @@ func _init() -> void:
 	failed += TestCampaign.new().run_all()
 	failed += TestBattles.new().run_all()
 	failed += TestBoons.new().run_all()
+	failed += TestCampaignData.new().run_all()
 	quit(1 if failed > 0 else 0)
