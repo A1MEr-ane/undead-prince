@@ -41,9 +41,9 @@
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
 | T72 | 世界观 R2 写回 canon（中英双语，只改冲突句） | DSH | dsh/t72-canon-writeback | docs/canon/ | 谷时排队 |
 | T67 | 原型 A：灰盒夜袭攻城（攻占主堡、冥火部署、自主单位、守军调度、5 分钟到破晓、5 个策略机器人） | Codex | codex/t67-siege-proto | proto/siege/ | 已合并（初值：主门 33%、高地 33%、分波 100%、佯攻 0%、挂机 0%） |
-| T69 | 原型 A 最小修正（援军默认关、倒计时、胜负状态机、规则补强、第 6 策略） | Codex | codex/t69-siege-fixes | proto/siege/ | 进行中 |
-| T68 | 攻城原型策略矩阵与参数扫描（按审查修订） | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 待办（依赖 T69） |
-| T70 | 镜头：战区固定视角 + 总览切换（主方案）对比 360° | Codex | codex/t70-camera-ab | proto/siege/camera/ | 待办（依赖 T69），用户看后决定 |
+| T69 | 原型 A 最小修正（援军默认关、倒计时、胜负状态机、规则补强、第 6 策略） | Codex | codex/t69-siege-fixes | proto/siege/ | 已合并 |
+| T68 | 攻城原型策略矩阵与参数扫描（按审查修订） | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 谷时排队 |
+| T70 | 镜头：战区固定视角 + 总览切换（主方案）对比 360° | Codex | codex/t70-camera-ab | proto/siege/camera/ | 进行中 |
 | T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
 | T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
@@ -52,8 +52,8 @@
 | T62 | 战役状态与结局逻辑测试 + 未实现部分测试规格 | DSH | dsh/t62-campaign-endings | tests/, docs/test-specs/ | 已合并 |
 | T63 | 美术资产自动检查工具 | DSH | dsh/t63-art-qa | tools/art/ | 已合并 |
 | T64 | T45 前置：Blender 精灵管线端到端小规模验证 | DSH | dsh/t64-sprite-e2e | tools/blender/, assets/sprites/e2e/ | 已合并 |
-| T58 | 立绘 A 风格重画：王室、渡魂人、旧部（30 张） | Codex | codex/t58-chars-v2a | art/chars/ | 进行中 |
-| T59 | 立绘 A 风格重画：五名仇人（15 张） | Codex | codex/t59-chars-v2b | art/chars/ | 进行中 |
+| T58 | 立绘 A 风格重画：王室、渡魂人、旧部（30 张） | Codex | codex/t58-chars-v2a | art/chars/ | 已合并（5 张自查未过，待抽审） |
+| T59 | 立绘 A 风格重画：五名仇人（15 张） | Codex | codex/t59-chars-v2b | art/chars/ | 已合并 |
 | T57 | 立绘高级化对比：3 风格 × 3 角色 | Codex | codex/t57-portrait-compare | art/compare/ | 进行中 |
 | T56 | UI 动效与转场原型 + 中文字体候选 | Codex | codex/t56-ui-motion | proto/ui_motion/ | 已合并，待用户试玩校准 |
 | T55 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型（原编号 T49 撞号） | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |

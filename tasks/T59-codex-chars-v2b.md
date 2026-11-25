@@ -2,7 +2,7 @@
 id: T59
 title: 立绘 A 风格重画 2：五名仇人（15 张）
 owner: codex
-status: queued
+status: done
 branch: codex/t59-chars-v2b
 worktree: ../亡魂王子-t59
 images: [/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png, /Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png, /Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png]

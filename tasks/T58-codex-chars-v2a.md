@@ -2,7 +2,7 @@
 id: T58
 title: 立绘 A 风格重画 1：王室、渡魂人、旧部（30 张）
 owner: codex
-status: queued
+status: done
 branch: codex/t58-chars-v2a
 worktree: ../亡魂王子-t58
 images: [/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png, /Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png, /Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png]

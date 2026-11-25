@@ -2,7 +2,7 @@
 id: T70
 title: 镜头试验：战区固定视角 + 总览切换（主方案）对比连续 360°（在攻城原型里）
 owner: codex
-status: blocked   # 等 T69 合并后改成 queued
+status: queued
 branch: codex/t70-camera-ab
 worktree: ../亡魂王子-t70
 allowed: [proto/siege/camera/, proto/siege/README.md]
