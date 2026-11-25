@@ -85,6 +85,8 @@ reason: 只在 needs_claude 为 true 时填，写清要 Claude 决定什么
 - **执行者沙箱里提交不了**：现在由 `run_agent.sh` 在结束后代为提交 allowed 范围内的文件和报告；报告副本放 `reports/inbox/`（不入库），正式报告随分支合并。
 - **AI 生成的图不能直接当游戏素材**：游戏精灵需要多帧一致的侧面动画和"部位坐标"格式；概念图只用来定造型，之后出三视图 → Blender 建模 → 渲染管线（`tools/blender/`，在分支 codex/blender-sprites）。
 
+- **任务编号撞号**（2026-11-25）：桌面端 Lead 和 claude.ai 会话各自写卡，T48–T51 撞号，结果 Codex 的出图任务复用了 DSH 任务的 worktree，提交落到了别的分支。规则：新建任务卡前先 `ls tasks/` 取当前最大编号加一；worktree 路径必须和编号一致，启动前确认目录不存在或分支名一致。
+
 ## 7. 给其他 AI 的上下文注意
 - 不同 AI 读的入口不同：Claude 读 CLAUDE.md（已引用 AGENTS.md），Codex 读 AGENTS.md，DeepSeek 需要在简报里明确让它先读 AGENTS.md。
 - 上下文有限的模型（或网页版）：在简报里直接贴相关文档的段落，不要只给路径。

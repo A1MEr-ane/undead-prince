@@ -1,10 +1,10 @@
 ---
-id: T49
+id: T55
 title: 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型（独立测试场景）
 owner: codex
 status: queued
 branch: codex/t49-rotation-proto
-worktree: ../亡魂王子-t49
+worktree: ../亡魂王子-t55
 allowed: [proto/rotation/, tools/verify/proto_rotation.sh]
 forbidden: [scripts/, shaders/, scenes/, assets/, art/, docs/, tasks/, project.godot]
 verify: tools/verify/proto_rotation.sh

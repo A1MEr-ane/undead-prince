@@ -1,5 +1,5 @@
 ---
-id: T50
+id: T52
 title: 按 Claude 提示词生成剧情插画 8 张 + 结局图 10 张
 owner: codex
 status: done

@@ -34,12 +34,12 @@
 | T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 不采用（由 T46 重画） |
 | T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 不采用（由 T47 重画） |
 | T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 已合并（效果好，保留） |
-| T50 | 剧情插画 8 张、结局图（Claude 提示词） | Codex | codex/t50-story | art/story/ | 已合并剧情插画；结局图中途停止，E00–E05 仅占位 |
-| T51 | 结局插画按史诗风重画（STYLE_EPIC，E00–E08 + 真结局） | Codex（提示词 Claude） | — | art/story/ | 后期 |
+| T52 | 剧情插画 8 张、结局图（Claude 提示词；原编号 T50 与 DSH 任务撞号） | Codex | claude/t50-story-art | art/story/ | 已合并剧情插画；结局图中途停止，E00–E05 仅占位 |
+| T53 | 结局插画按史诗风重画（STYLE_EPIC，E00–E08 + 真结局） | Codex（提示词 Claude） | — | art/story/ | 后期 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
-| T48 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
-| T49 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型 | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |
+| T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
+| T55 | 实验 A：360° 连续旋转 + 飞行物 + 魔法特效原型（原编号 T49 撞号） | Codex | codex/t49-rotation-proto | proto/rotation/ | 排队 |
 | T46 | 按 Claude 提示词重画人物 A（29 张） | Codex | codex/t46-chars-a | art/chars/ | 已合并（Codex 自判 5 张不合格，Lead 复审均可用） |
 | T47 | 按 Claude 提示词重画仇人 + 兵种阵容（18 张） | Codex | codex/t47-chars-b | art/chars/, art/units/ | 已合并（抽查通过） |
 | T43 | 开发者设定集（网页） | Claude（内容、文案、版式）；脚本负责出图和生成页面 | — | — | 待办（依赖全部美术） |
@@ -51,8 +51,7 @@
 | T27 | Q 版身体模板 + B 比例（2.3 头身）盾兵 | Codex | codex/t27-chibi | tools/blender/, assets/ | 已合并，待用户看可爱度 |
 | T48 | 战斗配置数据化（行为不变，同种子结果逐字一致） | DSH | dsh/t48-battle-data | scripts/main.gd, data/battles/, tests/ | 谷时排队（claude.ai 会话写卡） |
 | T49 | 守军联动 + 夺旗条件 + 24 组参数扫描（T19 第一步） | DSH | dsh/t49-defender-balance | scripts/squad.gd, scripts/main.gd, data/battles/ | 待办（依赖 T48 合并） |
-| T50 | 剧情插画 8 张、结局图（Claude 提示词） | Codex | codex/t50-story | art/story/ | 已合并剧情插画；结局图中途停止，E00–E05 仅占位 |
-| T51 | 结局插画按史诗风重画（STYLE_EPIC，E00–E08 + 真结局） | Codex（提示词 Claude） | — | art/story/ | 后期 |
+| T50 | 增益表转数据文件 + 校验测试 | DSH | dsh/t50-boons-data | data/boons/, tests/ | 谷时排队（claude.ai 会话写卡） |
 | T51 | 战役数据一致性检查 + 走廊难度分布报告 | DSH | dsh/t51-campaign-check | tests/, reports/ | 谷时排队（claude.ai 会话写卡） |
 
 ## 待用户决定

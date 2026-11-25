@@ -1,10 +1,10 @@
 ---
-id: T48
+id: T54
 title: Bad North 本地取证：镜头、精灵、飞行物、特效、地形（只读调查）
 owner: codex
 status: queued
 branch: codex/t48-bn-evidence
-worktree: ../亡魂王子-t48
+worktree: ../亡魂王子-t54
 allowed: [docs/research/BAD_NORTH_LOCAL_FINDINGS.md, docs/research/BAD_NORTH_EVIDENCE_INDEX.md]
 forbidden: [scripts/, shaders/, scenes/, assets/, art/, tasks/, project.godot, docs/research/FLEET_ART_TECH_DECISION.md]
 verify: test -f docs/research/BAD_NORTH_EVIDENCE_INDEX.md
