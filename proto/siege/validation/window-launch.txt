@@ -1,0 +1,7 @@
+Command: godot --path . --rendering-method gl_compatibility --log-file /tmp/t67-window.log proto/siege/siege.tscn -- --strategy=main_gate --seed=1 --capture --speed=32
+Result: subprocess timeout after 100 seconds; no screenshots generated.
+2026-11-26 02:27:15.648 godot[45369:3967185] Failure on line 688 in function id scheduleApplicationNotification(LSNotificationCode, NSWorkspaceNotificationCenter *): noErr == _LSModifyNotification(notificationID, 1, &code, 0, NULL, NULL, NULL)
+2026-11-26 02:27:15.766 godot[45369:3967186] Connection Invalid error for service com.apple.hiservices-xpcservice.
+2026-11-26 02:27:15.766 godot[45369:3967185] Error received in message reply handler: Connection invalid
+
+CUA response: Computer Use was not approved to use Godot
