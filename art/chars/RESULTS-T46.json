@@ -37,7 +37,7 @@
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "通过",
         "applicable": true,
         "note": "成年亡灵、半骷髅脸、破甲紫披风、魂火剑与独立断冠齐全"
@@ -135,10 +135,10 @@
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
-        "result": "不通过",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
         "applicable": true,
-        "note": "不通过：三次均未出现 SUBJECT 指定的魂火剑；成年亡灵、骷髅侧、断冠、紫披风、破甲与三种表情可见"
+        "note": "26 岁成年亡灵、观众右半骷髅及青绿眼焰、前方断冠、破损白金甲和紫披风均出现；半身像无需露出魂火剑。"
       },
       {
         "item": 6,
@@ -157,9 +157,9 @@
     ],
     "status": "in_review",
     "generation_status": "generated",
-    "acceptance": "failed",
+    "acceptance": "passed",
     "selected_variant": 2,
-    "selection_note": "无完全合格版本；暂留第 2 版供 Lead 审查，不视为验收通过。",
+    "selection_note": "按本轮第 5 条重审三版，半身像无需魂火剑。沿用第 2 版：冷怒表情最清晰，三表情区分明确。",
     "prompt_sha256": "6013be09c3574daa49f733b1ae4c6ddefd73fbdfe2c7ec734641c5ffa8bd684e",
     "prompt_verbatim": true,
     "reference_images": [
@@ -201,506 +201,815 @@
       }
     ],
     "alt_notes": {
-      "1": "不合格：缺少魂火剑；愤怒表情比第 2 版克制",
-      "3": "不合格：仍缺少魂火剑；达到三次生成上限，触发 escalate_if"
+      "1": "按新版规则通过；冷怒表情较克制，留作备选。",
+      "3": "按新版规则通过；第二版冷怒的面部线条更清楚，留作备选。"
+    },
+    "resumed_review": {
+      "date": "2026-11-25",
+      "new_generations": 0,
+      "reviewed_variants": [
+        1,
+        2,
+        3
+      ],
+      "prop_rule": "表情图半身像没有道具仍通过"
     }
   },
   {
     "file": "art/chars/CHAR-PRINCE/hero.png",
     "prompt_file": "art/prompts/rendered/CHAR-PRINCE__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/hero-v1.png",
+      "art/chars/CHAR-PRINCE/alt/hero-v3.png"
+    ],
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "粗黑外轮廓清楚，内结构线更细。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "脸部、甲胄和披风阴影为硬边大色块。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "暖金色轮廓光沿头发、肩甲和腿部边缘可见。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深海蓝背景，白金甲胄是画面主亮部。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "不通过：三版均将要求完好的紫披风画成破损下摆；第 1、3 版甲胄还有裂痕。成年活人、完整金冠、胸前完整冠徽及海图出现。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：主立绘。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：本项为生前王子，提示词要求完整人脸和完整金冠，两者均出现。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 2,
+    "selection_note": "三版均未完全满足生前造型。第 2 版的甲胄最干净、胸徽与金冠完整，但披风下摆仍破损；保留供审查，不视为通过。按修订规则继续下一项。",
     "prompt_sha256": "ffffb9010d2f480e9e40700ec75438fe9db1d29755dc55ad7cb1ef6ad894f640",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-e2427938-1eab-4736-b5c7-c4aa71da61cd.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "7339ad98c164c894c75179a9c1eb7cae0e66ea4bc4d7111feb31a16b677fba02"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-d416fa34-e3c3-4c66-8dc9-f47e2f580563.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE/alt/hero-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-fb405709-5130-4c16-ab0f-25977e143e85.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "162f1c97f97a93603951325bae2fb074513e42af6647d5aadb7352f7120d0e7a"
+      }
+    ],
+    "tool_errors": [
+      {
+        "date_utc": "2026-11-24 16:39 UTC",
+        "http_status": 429,
+        "type": "usage_limit_reached",
+        "reset_at_utc": "2026-11-24 17:17:36 UTC",
+        "image_produced": false
+      }
+    ],
+    "alt_notes": {
+      "1": "不通过：甲胄裂痕和破披风，不符合生前完好服装。",
+      "3": "不通过：破披风明显，甲胄有裂纹。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-PRINCE/turnaround.png",
     "prompt_file": "art/prompts/rendered/CHAR-PRINCE__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/turnaround-v2.png",
+      "art/chars/CHAR-PRINCE/alt/turnaround-v3.png"
+    ],
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "三视图外轮廓粗黑墨线清楚。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "甲片、披风和脸采用硬边平涂阴影。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "暖金色轮廓光沿三个人物轮廓可见。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深蓝底，白金甲为最亮的主体。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "不通过：三版均有破紫披风和甲胄裂纹，与生前的干净甲胄、完整披风不符；活人面孔、完整金冠、完整胸徽、独立海图和玩具船齐全。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "正、朝右侧、背三视图等高同地线，双手空，站姿一致。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：生前王子要求两半人脸和完整金冠。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "failed",
+    "selected_variant": 1,
+    "selection_note": "三版正侧背及独立道具均完整，但都未满足生前完好服装：紫披风有破口，甲胄出现裂纹。第 1 版三视图高度和排版最整齐，暂留供审查，不验收通过。",
     "prompt_sha256": "d8d3ec2f4ba94a00e7cf3faf4659528b5bcbd3a42d49b9cf015a1b213684681f",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-215cbade-cb29-4464-b61b-86ba2122b554.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "5a76f96371e33cffd39daf07c4ddb9a23db7f880de439f53a1381dd5820a45ff"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/alt/turnaround-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-4b02e449-ee1e-4e4f-8a63-e6b1a95d98c0.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "f39425b10d6a120b301a5e04ce64f4285b89be73390d8af4e31aa344baf986fe"
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-PRINCE/alt/turnaround-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-0bfff0d5-3b05-4b47-a7ae-f4f3f2191b37.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "e285e779946217d2cc424ec416ead56a143ee5d4caa3ad97ae6df84fe6dcb959"
+      }
+    ],
+    "alt_notes": {
+      "2": "不通过：披风破洞明显，甲片有裂纹。",
+      "3": "不通过：披风仍破损，甲胄仍有裂纹。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 2,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      },
+      {
+        "variant": 3,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ]
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-PRINCE/expressions.png",
     "prompt_file": "art/prompts/rendered/CHAR-PRINCE__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-PRINCE/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "头发、脸及肩甲轮廓粗黑清楚。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "脸、披风及白甲均用硬边平涂大色块。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "暖金色轮廓光沿头发和肩部外缘可见。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深海蓝底，人物脸与白金甲最亮。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
-        "result": "不通过",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "25 岁活人，双侧人脸、完整窄金冠、完整冠徽、白金军官甲和紫披风可见；三表情为自信、开怀大笑、急躁皱眉；半身像不要求道具。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：表情半身像。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：生前王子按提示词为完整人脸、完整金冠。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "选第 2 版，胸甲大形更完整干净，三种表情区分明确；可见披风范围没有主立绘那样的下摆破洞。半身像未画到的道具不纳入检查。",
     "prompt_sha256": "98f5d09ed59b4915a3249cf91c2c1e572826fa4fe3d68bd8d9473c225c808e12",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-PRINCE/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-382117f7-c450-45d7-8fec-36f8abc84f80.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "8faa7d2b9cef39475d48499cb7c1ecc499c7af56e42e86e4e702081641939996"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-740796e4-7810-4eb6-985f-d6b05edee13d.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "29bb6db787d2a2b48422fdf39ac351c4d79f602293f45d94b954781d35e1f294"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；第 2 版胸甲主色块更干净，首选第 2 版。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-QUEEN/hero.png",
     "prompt_file": "art/prompts/rendered/CHAR-QUEEN__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/hero-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "人物粗黑外轮廓清楚。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "裙褶、脸和头发均为硬边平涂阴影。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "头发与裙侧有暖金轮廓光。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深蓝背景，象牙裙与肤色最亮。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
-        "result": "不通过",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "年轻成年活人女王、盘起黑发与强眉、单颗红石细金冠、金边象牙长袖宫廷裙、深红斜绶、修补玩具船和账本齐全。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：主立绘。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：非王子。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版宫廷长裙和实用长袖更准确，修补玩具船与账本清楚，选作主版。",
     "prompt_sha256": "525601f32c9db91f3aa490175d2b522b2a02af6eac23ca9f0f61075c9d07b1e7",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-955d32f2-29de-4180-a2b6-276945f4c930.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "03ed6be1fc463223362d40acf8546c757fe047e596299d777a556356a9b3ce7b"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-df75e3c3-8c0c-4310-9d70-272a70d0c5b6.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "alt_notes": {
+      "1": "袖部和领部偏甲胄，第 2 版更符合宫廷长裙。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "failed",
+        "failed_items": [
+          5
+        ],
+        "note": "服装上半身明显甲胄化。"
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-QUEEN/turnaround.png",
     "prompt_file": "art/prompts/rendered/CHAR-QUEEN__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/turnaround-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "衣裙和头发外轮廓有粗黑墨线。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "裙褶为硬边大色块阴影。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "头发、肩、裙边有暖金侧缘光。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深海蓝背景，象牙衣裙为人物主要亮部。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
-        "result": "不通过",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "年轻活人女王，盘发强眉、单红石金冠、象牙金边长袖裙、红斜绶齐全；修补木船、账本、王冠在右边独立列出。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "正、朝右侧、背等高同地线，姿势一致，双手空。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：非王子。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版正视更准确，独立船模修补清楚，三视等高空手，选第 2 版。",
     "prompt_sha256": "690e383cd3e035432fbe32aac6a1f93a76cd6c3ec3334c9ddfdba6485673d900",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/turnaround-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-c78d3334-2426-44ff-9781-033ce5ec5585.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "1d55137b41610c8d22ff509c3e8cc27ab3ae0eecab45098febb306bd8813b37d"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-19416fb1-4b3f-45bf-93ac-d995a5330fc2.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "3598ecda21226d487faec3a84cbfe2664cd6a37c98dbda91dd655791469b2da4"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；正面头部稍偏转，第 2 版更正。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-QUEEN/expressions.png",
     "prompt_file": "art/prompts/rendered/CHAR-QUEEN__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-QUEEN/alt/expressions-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "人物外轮廓粗黑，内结构线清楚。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "脸与衣褶为硬边平涂明暗色块。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "头发和肩部外缘有暖金光。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
-        "result": "不通过",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "深蓝底，脸和象牙裙最亮。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
-        "result": "不通过",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
+        "result": "通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "年轻活人女王、盘起黑发强眉、红石细金冠、金边象牙长袖裙和红斜绶齐全；冷静、怀疑、温柔三表情清楚，半身像道具不作必需。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：表情图。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
-        "result": "不通过",
+        "result": "通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "通过（不适用）：非王子。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
-    "acceptance": "not_checked",
-    "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "generation_status": "generated",
+    "acceptance": "passed",
+    "selected_variant": 2,
+    "selection_note": "第 2 版更贴近布质长袖宫廷裙，三表情和红石金冠清楚，选第 2 版。",
     "prompt_sha256": "209680704442a0ac1c77de29b8481d8cacf038f29f8462fc014488859f6891c8",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-QUEEN/alt/expressions-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-64bdc724-63c0-4d15-875d-2311172be40c.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "5def2ba57460512aa3672618c4c45e13a57476eaaf9c3eed88de652d3fd90893"
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-QUEEN/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-51d9ce72-a84c-4024-ac00-905e0ff7be8a.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "01718eb265fb7af699ed6c0df000d89616d7f7e5b6023228e52bd85e96975c50"
+      }
+    ],
+    "alt_notes": {
+      "1": "合格备选；肩袖造型偏硬，第 2 版更像布质宫廷服。"
+    },
+    "version_reviews": [
+      {
+        "variant": 1,
+        "acceptance": "passed",
+        "failed_items": []
+      },
+      {
+        "variant": 2,
+        "acceptance": "passed",
+        "failed_items": []
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-FERRYMAN/hero.png",
     "prompt_file": "art/prompts/rendered/CHAR-FERRYMAN__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-FERRYMAN/alt/hero-v1.png"
+    ],
+    "attempts": 1,
     "checklist": [
       {
         "item": 1,
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_started",
+    "generation_status": "generated_pending_review",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "已保存原始生成版本，等待两版视觉自查选版。",
     "prompt_sha256": "31ab4b8e708927a70e6acf5a80969a05c9f87f521f26e82606bfb2a67de3d641",
-    "prompt_verbatim": null,
+    "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
       "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
       "/Users/cyy/Projects/亡魂王子/art/ui/ui_hub.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": []
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-FERRYMAN/alt/hero-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a20e6c-2cdc-7f21-a429-f099d3960092/exec-08f0e36e-f64e-47dd-9eb1-ee6ba33e1d97.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "6aafbd40ca6a90e4f26e927e31f392b07fa0883f5b7fc45859f9774ecc771eee"
+      }
+    ]
   },
   {
     "file": "art/chars/CHAR-FERRYMAN/turnaround.png",
@@ -713,56 +1022,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "5bd0f9377271cf139de1214e36e6df21f64bfd306031428ef70bce823348938b",
     "prompt_verbatim": null,
     "reference_images": [
@@ -784,56 +1093,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "cf5df00663590d839384af84eaa09413a0c75a7b6a729d5500c74e4550f75889",
     "prompt_verbatim": null,
     "reference_images": [
@@ -855,56 +1164,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "b79855e8e0795524c13aaba26e5ca164a1ab85141fa5a00d21ea8af63a066cd5",
     "prompt_verbatim": null,
     "reference_images": [
@@ -926,56 +1235,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "6ce0db69d59829593816b292676f3e6d468efb4eac4e596412232117cdc493ea",
     "prompt_verbatim": null,
     "reference_images": [
@@ -997,56 +1306,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "3dadd98d43059267e232b1544d55e7c3c6450d8fc6af14f3b892859d32c8bb3e",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1068,56 +1377,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "e2aa07f36b7504c8061e94d545db0326ef18b1d346437a176cec4a6c85ab5ed1",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1139,56 +1448,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "4496645ed0d729f6f1ba0efaf8c9a5b419b61a4677f6441afb95b782ddfbd5f8",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1210,56 +1519,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "9bf219f575af3ba9e5a849917beb89d6f04ebcd418afe8f362151cdf2770cf59",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1281,56 +1590,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "a0f94c0f8065b0fc2d7a74291dfe7f7f1e6aa0158dd53c12a1c68511680b153c",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1352,56 +1661,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "7d670e99f18fa3af1be95acbd08aeeedc4b780aaa1a598145817a046e8d73300",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1423,56 +1732,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "8a7434dcd8a810e8f3c76ff030f3acd362252161d95eba011b2acf964fb824c6",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1494,56 +1803,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "ec128a876c8251c332e8c750db4f09ffa33848d88569572209c1b5303b541568",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1565,56 +1874,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "86c5c7e8698b59a72ac4883b4dc0d1364a9fa5c1bb673719aadc12f147390a6c",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1636,56 +1945,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "8d1c6bf6628f32232482282e6027a74f26fb0330209f2f60dd0b9eac30e1b644",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1707,56 +2016,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "ef711f3ae39d485e9c64af84444d28b28b0a5f41c66e937188ae2a2954b03390",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1778,56 +2087,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "1162ed909da292db99ec02f7c150368dfa5d42cfac4d37c9c978962d4846fcb5",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1849,56 +2158,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "7d4632dff552877f59eae18c853421f726c95671544dfdf7126c15b53b808bed",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1920,56 +2229,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "18c43671ce3c963f8c6230817eaca0863a95abb21e8d34f399335f2c9900f3f3",
     "prompt_verbatim": null,
     "reference_images": [
@@ -1991,56 +2300,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "58335bfd1ed8ff1cebd4007dc3c66f0ad0dd4353195cff1fad2b8bd27af0172d",
     "prompt_verbatim": null,
     "reference_images": [
@@ -2062,56 +2371,56 @@
         "criterion": "粗黑墨线外轮廓清楚可见",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 2,
         "criterion": "阴影是平涂大色块，没有柔和渐变",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 3,
         "criterion": "一侧有指定颜色的轮廓光",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 4,
         "criterion": "背景暗，人物是画面里最亮的部分",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 5,
-        "criterion": "提示词里的身份特征全部出现（年龄、服装、道具、亡灵或活人）",
+        "criterion": "提示词里的身份特征全部出现（年龄、服装、亡灵或活人）；道具仅检查主立绘和三视图，表情半身像可不出现道具",
         "result": "不通过",
         "applicable": true,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 6,
         "criterion": "三视图：正、侧、背三个视图等高、同姿势、空手",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       },
       {
         "item": 7,
         "criterion": "王子：左半边脸是骷髅（观众看是右半边），金冠前方有断口",
         "result": "不通过",
         "applicable": false,
-        "note": "未生成、未检查：前序图三次生成均缺少必需道具，触发停止条件。此值不代表已进行视觉验收。"
+        "note": "未生成、未检查；不通过仅表示尚无视觉验收证据。"
       }
     ],
     "status": "in_review",
     "generation_status": "not_started",
     "acceptance": "not_checked",
     "selected_variant": null,
-    "selection_note": "因任务卡 escalate_if 停止，未调用生图工具。",
+    "selection_note": "本轮续做待生成；先前停止原因已由任务卡新规则解除。",
     "prompt_sha256": "0924d1b7fc1f00e5312e0bf4cb103587da41780cfa7af4148b3438afe52decf6",
     "prompt_verbatim": null,
     "reference_images": [
