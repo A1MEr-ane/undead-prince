@@ -1,0 +1,666 @@
+[
+  {
+    "file": "art/story/ART_B02_01/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_01.txt",
+    "alts": [
+      "art/story/ART_B02_01/alt/scene-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗黑轮廓和硬边块面阴影；暖金边缘光。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "兄妹黑发浓眉、完整人脸，年龄差清楚；换为提示词指定便服。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "果园水渠、两艘木船、男孩推船和女孩系线均可见。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "树隙暖日光，无冥火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "未见文字或多余肢体。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_01.txt",
+    "prompt_sha256": "41c169962e1814725ff86b966a3ed4a3d972c3bc06291ebb3ba3c01d0a4ca56e",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+    ],
+    "selection_reason": "第二版女孩修船更专注，小船与兄妹形成明确焦点。",
+    "variant_notes": {
+      "1": "内容合格，女孩姿态较直、与水渠互动较弱。",
+      "2": "选中。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_02/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_02.txt",
+    "alts": [
+      "art/story/ART_B02_02/alt/scene-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线、平涂冷灰阴影，风格一致。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "父亲灰发胡须紫袍，兄妹黑发和象牙金服；生前均完整人脸。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "长桌、披肩空椅、国王桌尾、王子窗前、妹妹账簿均可见。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "高窗冷白日光，长硬阴影，无青绿火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "账簿仅细线，无可辨识文字；未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_02.txt",
+    "prompt_sha256": "a38b8531364ee439df1359d040e68e813c05bf212b3ed4e36f4656e1a27fe0d0",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png"
+    ],
+    "selection_reason": "第二版空椅和长桌的距离感更清楚。",
+    "review_notes": [
+      "妹妹面容略成熟，13岁年龄感交Lead复审。"
+    ],
+    "variant_notes": {
+      "1": "内容可用，妹妹同样略成熟。",
+      "2": "选中。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_03/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_03.txt",
+    "alts": [
+      "art/story/ART_B02_03/alt/scene-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗黑轮廓与平面阴影，人物匹配画风。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "国王保留灰发胡须与太阳徽，主教白金法冠红披肩；均完整人脸。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "国王签署、主教持印、霜窗和铜装置齐全。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": null,
+        "note": "原提示词明确装置青光，与清单冥火只在亡灵身上冲突；按原文保留。人物无青绿冥火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "纸面是不可辨认横向笔痕，无可读文字；未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_03.txt",
+    "prompt_sha256": "53dbc70d6652f5f7a61f238c29dfab0249be494a019708b5e96e55fdb727c9cf",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-ARCHBISHOP/hero.png"
+    ],
+    "selection_reason": "第一版人物身份正确；第二版把国王变成亡灵王子，淘汰。",
+    "variant_notes": {
+      "1": "选中；青色装置光为原文要求。",
+      "2": "不合格：国王变成右半骷髅王子。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_04/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_04.txt",
+    "alts": [
+      "art/story/ART_B02_04/alt/scene-v2.png",
+      "art/story/ART_B02_04/alt/scene-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗黑墨线、硬边阴影，风格一致。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": false,
+        "note": "三人均完整人脸且无冥火；三版王子披风均有裂口，未满足原文 intact purple cape。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": false,
+        "note": "伏击、燃船、敌舰、吹号、拒绝救生艇均清楚；三版旗帜布面均破损，保留冠徽完整版本。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "火橙逆光、冷闪电、生者金边，无青绿冥火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无可读文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_sha256": "412a531381aec74b0d97d0099bd42383eb182c21fe55803c6aefaecc30241bd4",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png"
+    ],
+    "selection_reason": "三版均有生前披风破损，第一版构图最紧凑，作为待修候选保留。",
+    "quality_status": "failed_after_3_versions",
+    "variant_notes": {
+      "1": "最佳候选；披风与旗帜有破口。",
+      "2": "同样披风与旗帜破损。",
+      "3": "同样披风与旗帜破损；达到三版上限。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_05/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_05.txt",
+    "alts": [
+      "art/story/ART_B02_05/alt/scene-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线、平涂硬阴影，人物最亮。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "女王黑发象牙金衣深红绶带，宰相银发黑衣酒红披肩，与参考一致。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "修补木船、墨水瓶、未拆黑缎封书及宰相桌边手势齐全。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "白色均匀窗光，生者暖边，无冥火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无可读文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_05.txt",
+    "prompt_sha256": "d609fffbbbbce3d9030a4cc0d779642781aec9a07b39e0ea494b09a0f4c899af",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CHANCELLOR/hero.png"
+    ],
+    "selection_reason": "第一版女王与宰相的姿态关系更自然。",
+    "variant_notes": {
+      "1": "选中。",
+      "2": "可用，女王双手指尖姿态更接近宰相参考，独立性较弱。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_06/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_06.txt",
+    "alts": [
+      "art/story/ART_B02_06/alt/scene-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线、硬边块面阴影，人物剪影清楚。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "王子观众右半骷髅、断冠紫披风；四位旧部各自服装道具可辨。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "宫廷广场、四官在前、亡灵成列，号角放低、缝补师抱臂、学者持板齐全。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "白昼宫殿，亡灵青绿边光，未见青火从建筑或生者发出。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "石板为图形，无可读文字；未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_06.txt",
+    "prompt_sha256": "47d7aac2f8d8f5231c5fb14e43c255b229ec9a218fa2b62c9c1651c86042dab2",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-STITCHER/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MAGE/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png"
+    ],
+    "selection_reason": "第二版后排兵员有不同朝向，群像层次更清楚。",
+    "variant_notes": {
+      "1": "人物与场景可用，但后排更像统一盔甲列队。",
+      "2": "选中。"
+    }
+  },
+  {
+    "file": "art/story/ART_B02_07/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_07.txt",
+    "alts": [
+      "art/story/ART_B02_07/alt/scene-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线和平面暗部，黑蓝海面留白清楚。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "无脸兜帽、黑金长袍、木桨与参考一致。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "仅渡魂人、木船、船首空座和单灯、远雾，焦点为空座。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": null,
+        "note": "原文指定青绿灯照空座；灯及反光不在亡灵身体上，是原文要求，与清单字面冲突。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无文字，仅两手持桨，无多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_07.txt",
+    "prompt_sha256": "5eed673641c0f4a53971b6d30d728fda27e44507402d43c7a54fd86c834012c7",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png"
+    ],
+    "selection_reason": "第二版持桨双手与等候姿态更自然。",
+    "variant_notes": {
+      "1": "构图可用，但桨近乎竖立。",
+      "2": "选中。"
+    }
+  },
+  {
+    "file": "art/story/ROYAL-FAMILY-PORTRAIT/scene.png",
+    "prompt_file": "art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "alts": [
+      "art/story/ROYAL-FAMILY-PORTRAIT/alt/scene-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "墨线、平涂金色光和清楚剪影，符合正式合影画风。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "国王灰发胡须紫袍、母后蓝灰披肩珍珠耳饰、王子完整人脸新制服、少女黑发红绶带均匹配。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "国王坐、母后扶肩、兄妹站立、妹妹抱船、八芒太阳齐全。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "全家暖金灯光，无冥火。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "prompt_sha256": "d73396854b698ce2479cf3a6dea75b7a570d5203e1ef7222df8128b7b9241271",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MOTHER/hero.png"
+    ],
+    "selection_reason": "第一版四人完整入镜，母后扶肩和妹妹抱船更清楚。",
+    "variant_notes": {
+      "1": "选中。",
+      "2": "可用，但下方截取更多，王子披风更接近成年参考。"
+    }
+  },
+  {
+    "file": "art/story/ENDING-E00/ending.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E00.txt",
+    "alts": [
+      "art/story/ENDING-E00/alt/ending-v2.png",
+      "art/story/ENDING-E00/alt/ending-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗黑墨线、硬边平涂阴影，画风一致。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": false,
+        "note": "渡魂人与参考一致，但三版均重复出前景渡魂人，另加王子和队长。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": false,
+        "note": "旗帜入水、松手魂火、远船齐全；额外群像占焦点，偏离单一沉旗叙事。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": false,
+        "note": "三版均有多处青灯/冥火；原文要求单青灯，未满足。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无可读文字，未见多余肢体。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E00.txt",
+    "prompt_sha256": "3cee2fc1d13607be4a665d92994c6ba11233c44b9533d43f4117fd620bbf0d51",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png"
+    ],
+    "selection_reason": "三版均失败；第一版沉没的旗帜与入水人物最明确，保留为待修候选。",
+    "quality_status": "failed_after_3_versions",
+    "variant_notes": {
+      "1": "最佳候选；额外前景渡魂人、王子、队长。",
+      "2": "同样重复人物；旗帜魂火过强。",
+      "3": "同样重复人物，还出现月亮和岸边坐姿；达到三版上限。"
+    }
+  },
+  {
+    "file": "art/story/ENDING-E01/ending.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E01.txt",
+    "alts": [
+      "art/story/ENDING-E01/alt/ending-v2.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线和大片硬边阴影，白宫与暗甲对比清楚。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "王子观众右半骷髅、断冠、象牙金甲紫披风；女王完整人脸红绶带；卫兵钢甲青光。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "王子坐白金王座、亡灵卫兵两侧列阵、妹妹独站高窗前半转背。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "硬白日光，青绿边光只在亡灵与其装备上。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E01.txt",
+    "prompt_sha256": "d35fd35e93307ff0c7ddfaf34c168df4531dbffe2af297f1939082b37bd00e9e",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+    ],
+    "selection_reason": "第一版没有额外魂火剑抢焦，寂静墓室感更强。",
+    "variant_notes": {
+      "1": "选中。",
+      "2": "内容可用，但新增魂火剑更显武力。"
+    }
+  },
+  {
+    "file": "art/story/ENDING-E02/ending.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E02.txt",
+    "alts": [
+      "art/story/ENDING-E02/alt/ending-v1.png"
+    ],
+    "attempts": 2,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗黑线、平涂硬阴影，冷白光与暗室层次清楚。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "亡灵王子与队长形象匹配，王子观众右半脸骷髅、前冠断口可见。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "两人站门口，右侧整排空甲架与挂钩，只有队长留下。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "狭窗冷白昼光，青绿在两位亡灵与其装备上。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无可读文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E02.txt",
+    "prompt_sha256": "ffcc92c1cc46a01aca491d1d4dce5bd7c46e654251a9227214bb69ded031f410",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png"
+    ],
+    "selection_reason": "第二版空甲架更连贯，王子垂手静立更符合失落气氛。",
+    "variant_notes": {
+      "1": "可用，王子张手与参考姿态接近。",
+      "2": "选中。"
+    }
+  },
+  {
+    "file": "art/story/ENDING-E03/ending.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E03.txt",
+    "alts": [
+      "art/story/ENDING-E03/alt/ending-v1.png",
+      "art/story/ENDING-E03/alt/ending-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线、硬边平涂，人物剪影清楚。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "女王完整脸红绶带、王子观众右半骷髅断冠紫披风，与参考一致。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": false,
+        "note": "女王坐王座、王子扶椅背、朝臣鞠躬齐全；三版都仍像向两人同时行礼，未明确只向王子。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "白昼宫殿，女王暖金边、王子青绿边。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": true,
+        "note": "无可读文字，未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 2,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E03.txt",
+    "prompt_sha256": "f091448f42c7a3bb106ad0cbc967b3b30f789028b804e866d2aa8eb0971a705f",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png"
+    ],
+    "selection_reason": "第二版王子更居主导、左侧朝臣更靠近王子；行礼对象仍歧义，保留为待修候选。",
+    "quality_status": "failed_after_3_versions",
+    "variant_notes": {
+      "1": "行礼朝向王座两人，含义不够明确。",
+      "2": "最佳候选；王子更主导，但仍有歧义。",
+      "3": "构图又接近两侧朝向王座，未解决；达到三版上限。"
+    }
+  },
+  {
+    "file": "art/story/ENDING-E04/ending.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E04.txt",
+    "alts": [
+      "art/story/ENDING-E04/alt/ending-v2.png",
+      "art/story/ENDING-E04/alt/ending-v3.png"
+    ],
+    "attempts": 3,
+    "checklist": [
+      {
+        "item": "粗黑墨线、平涂阴影，画风和人物参考一致",
+        "passed": true,
+        "note": "粗墨线、平涂硬阴影，人物和参考一致。"
+      },
+      {
+        "item": "人物脸、服装、颜色与参考一致；亡灵王子观众右半脸骷髅、前方断冠；生前完整人脸",
+        "passed": true,
+        "note": "王子右半骷髅与断冠、女王完整脸、皮普蓝衣红巾亡灵状态正确。"
+      },
+      {
+        "item": "场景与提示词一致，焦点清楚",
+        "passed": true,
+        "note": "港墙兄妹吃果、皮普吹号、远处离开人群、明亮城市与傍晚钟面齐全。"
+      },
+      {
+        "item": "光照与提示词、任务清单一致",
+        "passed": true,
+        "note": "第一版为明亮白昼，亡灵有青绿边光。"
+      },
+      {
+        "item": "没有文字，没有多余的手和脚",
+        "passed": false,
+        "note": "三版钟面均有罗马数字，违反无文字；未见多余手脚。"
+      }
+    ],
+    "status": "in_review",
+    "selected_version": 1,
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E04.txt",
+    "prompt_sha256": "570908c83d871b861f85290546f5ce285e0b9854309f2c94dd86e9111c9b4cb0",
+    "references": [
+      "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+      "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png"
+    ],
+    "selection_reason": "第一版傍晚钟面与白昼反差最明确、光更白；三版钟面均有数字，保留为待修候选。",
+    "quality_status": "failed_after_3_versions",
+    "variant_notes": {
+      "1": "最佳候选；钟面数字违反无文字。",
+      "2": "同样数字且指针接近12点。",
+      "3": "同样数字，光更暖；达到三版上限。"
+    }
+  }
+]
