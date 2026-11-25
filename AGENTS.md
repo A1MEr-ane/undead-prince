@@ -12,6 +12,7 @@
 | `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |
 | `docs/boons.md` | 五位旧部的增益表、双人增益、实现顺序 |
 | `docs/art-style.md` | **现行画风**：手绘墨线叙事风（立绘、UI、局内渲染方向、重生成批次） |
+| `docs/ui-motion.md` | UI 审美原则、转场与 UI 动效规格（学习 Hades 2） |
 | `docs/art-direction.md` | 小兵 Q 版比例规范与美术验收反馈 |
 | `docs/units.md` | 兵种设计（亡魂技能与死亡效果、守军职责、克制关系、招魂循环） |
 | `docs/badnorth-reference.md` | Bad North 技术拆解概要 |
