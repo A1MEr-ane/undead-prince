@@ -1,0 +1,76 @@
+# 兵种资产规格：亡魂小兵 E2E 验证件（T64，仅用于管线端到端验证）
+# 不是正式兵种，不进入平衡表；造型、配色只用来确认"新兵种从规格到游戏截图"整条链路。
+# 结构：沿用 chibi_body 的 15 骨骼 / 11 动作；E2E 配方只改暴露的骷髅头、短剑和小圆盾。
+
+id: undead_e2e
+faction: undead
+recipe: e2e_grunt              # build_shieldman.from_spec 按此字段路由到 build_e2e
+base_rig: tools/blender/build_swordsman.py
+
+proportions:
+  head_heads: 2.3
+  landmarks_from_ground:
+    boot_top: 0.11
+    crotch: 0.22
+    tunic_hem: 0.19
+    belt: 0.32
+    shoulder: 0.55
+    chin: 0.56
+    eye: 0.73
+    helmet_brim: 0.80        # 骷髅眉骨；没有头盔但沿用同一标志点契约
+    helmet_top: 1.00         # 颅顶
+  widths:
+    head: 0.42
+    shoulders: 0.44
+    foot_length: 0.14
+    hand_diameter: 0.11
+  lean_degrees: 1
+  shape_notes: 暴露骷髅头、无头盔无头发；大眼窝、三角形鼻腔、下颌与短牙；梨形破袍；小圆盾
+
+parts:
+  head:   {shape: 球状颅骨，眉骨与下颌分开, uv_part: skin}
+  eyes:   {shape: 两个大眼窝与嘴缝, uv_part: eye}
+  teeth:  {shape: 下颌与牙列, uv_part: helmet}
+  tunic:  {shape: 破损无袖罩袍，前后下摆开衩, uv_part: tunic}
+  sleeves: {shape: 长袖内衬, uv_part: sleeves}
+  collar: {shape: 高领一圈, uv_part: cloth_trim}
+  belt:   {shape: 细皮带 + 方扣, uv_part: leather, buckle_uv_part: belt_buckle}
+  legs:   {shape: 短裤腿, uv_part: trousers}
+  boots:  {shape: 短靴, uv_part: boots}
+  hands:  {shape: 骨手, uv_part: skin}
+  shield: {shape: 小圆盾，直径约 0.34 身高，厚 0.04，八棱边缘, face_uv_part: shield_face, rim_uv_part: shield_rim, back_uv_part: shield_back, diameter: 0.34, thickness: 0.04, sides: 12, face_yaw_degrees: 35}
+  sword:  {shape: 短剑，刃长约 0.30 身高, blade_uv_part: blade, guard_uv_part: metal, grip_uv_part: hilt, blade_length: 0.30}
+
+triangle_budget: {target: 400, max: 600}
+
+looks:
+  undead_e2e:            # 亡魂阵营占位配色：骨白、暗紫、旧铁
+    skull: true
+    skin: "#D8D2C0"
+    hair: "#3B3440"
+    helmet: "#C9C2AE"    # 下颌/牙列也走这个图块，保持 16 分区全用上
+    metal: "#6B6472"
+    tunic: "#3B3348"
+    sleeves: "#2A2438"
+    trousers: "#2A2438"
+    cloth_trim: "#5B4466"
+    leather: "#3A2C30"
+    boots: "#2A2226"
+    shield_face: {base: "#2A2434", emblem: 惨白骨环 "#D8D2C0" 约占盾面 60%, bend: 暗紫斜带 "#5B4466"}
+    shield_rim: "#6B6472"
+    shield_back: "#3A2C30"
+    blade: "#9AA0A8"
+    hilt: "#3A2C30"
+    eye: "#17131C"
+    painting: 骨面只保留大色块明暗，不做噪点纹理；眼窝和鼻腔必须清楚
+
+animation_notes:
+  walk: 沿用 chibi_body 小碎步，8 帧、.667 秒；头/躯干/盾/剑锁定
+  others: 沿用 T06 的 11 个动作名、帧数和事件时间
+
+acceptance:
+  automatic:
+    - tools/blender/validate.py 默认同时检查 T06、盾兵和本规格
+    - 三角面数在 triangle_budget 内；UV 16 分区全使用
+  visual_by_claude:
+    - 游戏截图里骨骼头、短剑、小圆盾能读出来

@@ -17,6 +17,12 @@ class Shieldman(ChibiBody):
         self.shoulder_offsets['r']=-.075*H
         self.neutral.update(wrist_l=(.255*H,-.235*H,self.h['belt']+.047*H),
                             wrist_r=(.075*H,.19*H,self.h['belt']+.045*H))
+        self.proportion_probes=dict(top='helmet_dome',brim='helmet_brim',head='head',
+            hem='split_tabard_skirt',boot_cuff='boot_cuff_l',shoulder='tabard_body',
+            belt='belt',boots=('boot_l','boot_r'),head_width='helmet_brim',
+            arms=('upper_arm_r','upper_arm_l'),foot='boot_l',hand='fist_l')
+        self.sword_obstacles=('head','helmet_dome','helmet_brim','nasal_guard')
+        self.face_full_head=False
 
     def pose_parameters(self, name, t, duration):
         p=super().pose_parameters(name,t,duration)
@@ -110,4 +116,10 @@ class Shieldman(ChibiBody):
 
 
 def from_spec(path):
-    return Shieldman(load_spec(path))
+    spec=load_spec(path)
+    # New equipment structures register a small recipe; same sword-and-shield
+    # structure keeps using this class through plain spec overrides.
+    if spec.get('recipe') == 'e2e_grunt':
+        from build_e2e import E2EGrunt
+        return E2EGrunt(spec)
+    return Shieldman(spec)

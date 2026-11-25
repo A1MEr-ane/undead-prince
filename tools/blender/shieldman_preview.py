@@ -34,15 +34,43 @@ def paint_tile(look, proportions):
         if name in ('boots','leather','shield_back'):
             factor=np.where(v<.26,.85,np.where(v>.72,1.06,1.))
         c=base[None,None,:]*factor[...,None]
-        if name=='skin':
-            from chibi_body import face_uv
+        skull=bool(look.get('skull'))
+        if skull and name=='helmet':
+            # The jaw samples the helmet island in the e2e recipe; dark columns
+            # break up the bone block into readable teeth in profile.
             ink=colour(look['eye'])
-            for eye_u,eye_v in face_uv(proportions):
+            tooth_gap=(v<.60)&((((u*9)%1.0)<.30))
+            c[tooth_gap]=ink
+        if name=='skin':
+            from chibi_body import face_uv, HEAD_UV_MIN
+            ink=colour(look['eye'])
+            eyes=face_uv(proportions,skull)
+            for eye_u,eye_v in eyes:
                 du,dv=u-eye_u,v-eye_v
-                eyes=(du/.026)**2+(dv/.057)**2 <= 1
-                slope=-.22 if eye_u<.5 else .22
-                brows=(np.abs(du)<.060)&(np.abs(dv-.095-slope*du)<.017)
-                c[eyes|brows]=ink
+                if skull:
+                    # Large, slightly tilted sockets; no brows on a skull.
+                    socket=(du/.052)**2+(dv/.067)**2 <= 1
+                    c[socket]=ink
+                else:
+                    eye=(du/.026)**2+(dv/.057)**2 <= 1
+                    slope=-.22 if eye_u<.5 else .22
+                    brow=(np.abs(du)<.060)&(np.abs(dv-.095-slope*du)<.017)
+                    c[eye|brow]=ink
+            if skull:
+                # Inverted triangular nasal cavity under the eye line.
+                h=proportions['landmarks_from_ground']
+                top=h['helmet_top']
+                eye_v=eyes[0][1]
+                nose_top, nose_bottom=eye_v-.075,eye_v-.185
+                t=(nose_top-v)/(nose_top-nose_bottom)
+                nose=(v<nose_top)&(v>nose_bottom)&(np.abs(u-.5)<(.010+.022*t))
+                c[nose]=ink
+                # A dark mouth with a few lighter tooth columns over the jaw.
+                teeth_v=HEAD_UV_MIN+(1-HEAD_UV_MIN)*((h['chin']+.055)-h['chin'])/(top-h['chin'])
+                mouth=(np.abs(v-teeth_v)<.022)&(np.abs(u-.5)<.105)
+                c[mouth]=ink
+                teeth=mouth&((((u-.5)*12)%1.0)<.55)
+                c[teeth]=base[None,:]*factor[teeth,None]
         if name=='leather':
             c[v>.68]=colour(look['hair'])*np.where(u[v>.68,None]<.4,.86,1.)
         if name=='shield_face':
