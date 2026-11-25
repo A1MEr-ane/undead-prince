@@ -1,0 +1,42 @@
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+/bin/bash: /Users/cyy/Documents/ChatGPT/亡魂王子/tools/agents/run_queue.sh: Operation not permitted
+2026-11-24 12:22:33 DSH 凭据可用
+2026-11-24 12:22:33 队列结束
+2026-11-24 18:01:04 DSH 凭据可用
+/Users/cyy/Projects/亡魂王子/tools/agents/run_queue.sh: line 32: id�: unbound variable
+2026-11-24 18:57:58 DSH 凭据可用
+2026-11-24 18:57:58 开始 T23（tasks/T23-dsh-determinism.md）
+tools/agents/run_agent.sh: line 1: 50752 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-24 19:14:56 结束 T23：failed（退出码 0）
+2026-11-24 19:14:56 队列结束
+2026-11-25 12:01:04 DSH 凭据可用
+2026-11-25 12:01:04 开始 T48（tasks/T48-dsh-battle-data.md）
+tools/agents/run_agent.sh: line 1: 96716 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 12:11:55 结束 T48：done（退出码 0）
+2026-11-25 12:11:55 开始 T50（tasks/T50-dsh-boons-data.md）
+tools/agents/run_agent.sh: line 1: 97850 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 12:19:51 结束 T50：done（退出码 0）
+2026-11-25 12:19:51 开始 T51（tasks/T51-dsh-campaign-data-check.md）
+tools/agents/run_agent.sh: line 1: 98581 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 12:25:15 结束 T51：done（退出码 0）
+2026-11-25 12:25:15 队列结束
+2026-11-25 18:01:06 DSH 凭据可用
+2026-11-25 18:01:06 开始 T49（tasks/T49-dsh-defender-balance.md）
+tools/agents/run_agent.sh: line 1: 18623 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 20:55:16 结束 T49：done（退出码 0）
+2026-11-25 20:55:16 开始 T60（tasks/T60-dsh-sim-tools.md）
+tools/agents/run_agent.sh: line 1: 22931 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 21:28:32 结束 T60：done（退出码 0）
+2026-11-25 21:28:32 开始 T61（tasks/T61-dsh-battle-baseline.md）
+tools/agents/run_agent.sh: line 1: 25509 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 21:49:07 结束 T61：done（退出码 0）
+2026-11-25 21:49:07 开始 T62（tasks/T62-dsh-campaign-endings.md）
+tools/agents/run_agent.sh: line 1: 27038 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 21:55:46 结束 T62：done（退出码 0）
+2026-11-25 21:55:46 开始 T63（tasks/T63-dsh-art-qa.md）
+tools/agents/run_agent.sh: line 1: 27554 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 22:07:55 结束 T63：done（退出码 0）
+2026-11-25 22:07:55 开始 T64（tasks/T64-dsh-sprite-e2e.md）
+tools/agents/run_agent.sh: line 1: 30598 Terminated: 15          ( sleep $((MAXMIN * 60)); kill "$pid" 2> /dev/null && echo "[run_agent] 超过 ${MAXMIN} 分钟被终止" >> "$LOG" )
+2026-11-25 22:28:25 结束 T64：done（退出码 0）
+2026-11-25 22:28:25 队列结束

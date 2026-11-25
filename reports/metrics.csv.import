@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dbpwmugte6aus"
+
+[deps]
+
+files=["res://reports/metrics.id.translation", "res://reports/metrics.owner.translation", "res://reports/metrics.exit.translation", "res://reports/metrics.wall.translation", "res://reports/metrics.usage.translation", "res://reports/metrics.report.translation"]
+
+source_file="res://reports/metrics.csv"
+dest_files=["res://reports/metrics.id.translation", "res://reports/metrics.owner.translation", "res://reports/metrics.exit.translation", "res://reports/metrics.wall.translation", "res://reports/metrics.usage.translation", "res://reports/metrics.report.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
