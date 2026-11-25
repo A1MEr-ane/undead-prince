@@ -4,10 +4,12 @@ extends SceneTree
 
 const TestAgentState = preload("res://tests/test_agent_state.gd")
 const TestCampaign = preload("res://tests/test_campaign.gd")
+const TestCampaignData = preload("res://tests/test_campaign_data.gd")
 
 
 func _init() -> void:
 	var suite = TestAgentState.new()
 	var failed: int = suite.run_all()
 	failed += TestCampaign.new().run_all()
+	failed += TestCampaignData.new().run_all()
 	quit(1 if failed > 0 else 0)
