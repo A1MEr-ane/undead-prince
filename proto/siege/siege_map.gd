@@ -17,6 +17,7 @@ var weak_broken := false
 var flow_repairs := 0
 var repaired_cells := 0
 var topology_events: Array = []
+var battle_cells := {}
 
 func setup(params: Dictionary) -> void:
 	cfg = params.map
@@ -33,6 +34,33 @@ func setup(params: Dictionary) -> void:
 	cave_a = index(tile(vec(cfg.cave_a)))
 	cave_b = index(tile(vec(cfg.cave_b)))
 	cave_cost = float(cfg.cave_travel_seconds) * float(params.units.ghost.speed)
+	# 关卡可战斗区域允许经过可破门/薄弱墙；普通墙仍阻断。
+	var frontier: Array = []
+	var openings := rect_cells(cfg.gate_rect) + rect_cells(cfg.weak_rect)
+	for t in rect_cells(cfg.deploy_rect):
+		if walkable(t):
+			battle_cells[index(t)] = true
+			frontier.append(index(t))
+	var cursor := 0
+	while cursor < frontier.size():
+		var i: int = frontier[cursor]
+		cursor += 1
+		var t := Vector2i(i % width, i / width)
+		var adjacent: Array = []
+		for delta in DIRS:
+			adjacent.append(t + delta)
+		if cfg.cave_enabled and i in [cave_a, cave_b]:
+			adjacent.append(tile(point(cave_b if i == cave_a else cave_a)))
+		for q in adjacent:
+			if q.x < 0 or q.y < 0 or q.x >= width or q.y >= depth:
+				continue
+			var j := index(q)
+			if land[j] != 0 and (blocked[j] == 0 or openings.has(q)) and not battle_cells.has(j):
+				battle_cells[j] = true
+				frontier.append(j)
+
+func battle_reachable(p: Vector3) -> bool:
+	return is_walkable_at(p) and battle_cells.has(index(tile(p)))
 
 static func vec(a: Array) -> Vector3:
 	return Vector3(float(a[0]) + 0.5, 0, float(a[1]) + 0.5)

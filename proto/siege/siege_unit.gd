@@ -19,6 +19,22 @@ var kind: String
 var hp: float
 var radius: float
 var speed: float
+var previous_pos := Vector3.ZERO
+var spawn_time := 0.0
+var initial_route := "main"
+var victory_eligible := false
+var target_key := ""
+var target_lock_until := 0.0
+var enemy_lock_until := 0.0
+var mission_lock_until := 0.0
+var mission_from := ""
+var departed_at := -1.0
+var expected_arrival := -1.0
+var progress_at := 0.0
+var progress_pos := Vector3.ZERO
+var recovery_until := -1.0
+var recovery_pos := Vector3.ZERO
+var damage_in_progress := false
 var alive := true
 var escaped := false
 var reserve := false
@@ -87,6 +103,10 @@ func setup(world, unit_id: int, type: String, side: int, pos: Vector3, zone: Str
 	speed = float(stats.speed)
 	nav_pos = terrain.nearest(pos)
 	nav_pos.y = terrain.height_at(nav_pos)
+	previous_pos = nav_pos
+	progress_pos = nav_pos
+	spawn_time = main.time
+	progress_at = main.time
 	slot = nav_pos
 	anchor = nav_pos
 	beats.offset = main.sim_rng.randf() * float(main.params.combat.brain_seed_phase_range)
@@ -113,7 +133,13 @@ func sense() -> void:
 		return
 	if main.time >= next_sense:
 		next_sense = main.time + float(main.params.combat.sense_seconds)
-		enemy = main.nearest_enemy(self)
+		var candidate = main.nearest_enemy(self)
+		var valid: bool = enemy != null and enemy.alive and enemy.cave_until < 0 and Vector2(enemy.nav_pos.x - nav_pos.x, enemy.nav_pos.z - nav_pos.z).length() <= float(main.params.combat.sense_radius) and terrain.line_clear(nav_pos, enemy.nav_pos)
+		if not valid or (candidate != null and candidate != enemy and main.time >= enemy_lock_until and nav_pos.distance_to(candidate.nav_pos) + float(main.params.targeting.enemy_switch_margin) < nav_pos.distance_to(enemy.nav_pos)):
+			if candidate != enemy:
+				main.note("enemy_switch")
+			enemy = candidate
+			enemy_lock_until = main.time + float(main.params.targeting.enemy_lock_seconds)
 	if enemy != null and enemy.alive and enemy.cave_until < 0:
 		var delta: Vector3 = enemy.nav_pos - nav_pos
 		delta.y = 0
@@ -127,6 +153,7 @@ func sense() -> void:
 		enemy_dangerous = false
 	order_dist = Vector2(slot.x - nav_pos.x, slot.z - nav_pos.z).length()
 	order_dir = terrain.direction(nav_pos, slot, false)
+	recover_navigation()
 	soft_int = move_toward(soft_int, 0, State.dt * float(main.params.combat.threat_decay))
 	hard_int = move_toward(hard_int, 0, State.dt * float(main.params.combat.threat_decay))
 	if enemy != null and not enemy.retreating:
@@ -138,6 +165,7 @@ func tick(dt: float) -> void:
 	if cave_until >= 0:
 		if main.time >= cave_until:
 			nav_pos = cave_exit
+			previous_pos = nav_pos
 			nav_pos.y = terrain.height_at(nav_pos)
 			cave_until = -1
 			stage = maxi(stage, 2)
@@ -190,6 +218,36 @@ func tick(dt: float) -> void:
 		if order_dist > float(main.params.director.arrival_radius) and enemy == null and not retreating:
 			main.travel_congestion += 1
 
+func recover_navigation() -> void:
+	var cfg: Dictionary = main.params.targeting
+	if nav_pos.distance_to(progress_pos) >= float(cfg.progress_epsilon) or order_dist <= float(main.params.director.arrival_radius) or enemy != null:
+		progress_pos = nav_pos
+		progress_at = main.time
+		return
+	if main.time < recovery_until:
+		order_dir = terrain.direction(nav_pos, recovery_pos)
+		return
+	if main.time - progress_at < float(cfg.stuck_seconds):
+		return
+	var f: Dictionary = terrain.field(slot, false)
+	var here: int = terrain.index(terrain.tile(nav_pos))
+	var best := INF
+	var chosen := Vector3.ZERO
+	for edge in terrain.neighbors(here, false):
+		var p: Vector3 = terrain.point(edge[0])
+		if f.dist[edge[0]] >= float(main.params.map.flow_infinity) or f.dist[edge[0]] > f.dist[here] + 1:
+			continue
+		var score: float = f.dist[edge[0]] + main.nearby(p, float(cfg.crowd_radius), faction).size() * float(cfg.congestion_weight)
+		if score < best:
+			best = score
+			chosen = p
+	if best < INF:
+		recovery_pos = chosen
+		recovery_until = main.time + float(cfg.stuck_seconds)
+		order_dir = terrain.direction(nav_pos, chosen)
+		main.recovery_events.append({"time": snappedf(main.time, 0.001), "unit": id, "from": [nav_pos.x, nav_pos.z], "to": [chosen.x, chosen.z]})
+	progress_at = main.time
+
 func move_safe(pos: Vector3, delta: Vector3) -> Vector3:
 	for d in [delta, Vector3(delta.x, 0, 0), Vector3(0, 0, delta.z)]:
 		var q: Vector3 = pos + d
@@ -198,8 +256,13 @@ func move_safe(pos: Vector3, delta: Vector3) -> Vector3:
 	return pos
 
 func deal_damage(atk: Dictionary) -> void:
-	if not alive:
+	if not alive or damage_in_progress:
 		return
+	damage_in_progress = true
+	var before := hp
+	var source = atk.get("source")
+	if source != null:
+		main.record_contact(self if faction == 0 else source, source if faction == 0 else self)
 	if not retreating and kind != "archer" and not atk.get("arrow", false):
 		brain.modify_attack(atk)
 	var damage: float = atk.damage
@@ -209,10 +272,18 @@ func deal_damage(atk: Dictionary) -> void:
 	velocity += atk.dir * float(atk.knockback) * float(main.params.combat.knockback_scale)
 	if damage > 0:
 		stun_until = main.time + float(atk.stun)
+		main.hooks.publish("hurt", {"unit": self, "source": atk.get("source"), "damage": damage, "step": main.step_number})
+		var threshold := float(main.params.units[kind].hp) * float(main.params.events.near_death_fraction)
+		if before > threshold and hp <= threshold:
+			main.hooks.publish("near_death", {"unit": self, "source": atk.get("source"), "step": main.step_number})
 	if hp <= 0:
 		alive = false
 		dead.set_true()
 		main.on_death(self)
+		main.hooks.publish("death", {"unit": self, "source": atk.get("source"), "step": main.step_number})
+		if atk.get("source") != null:
+			main.hooks.publish("kill", {"unit": atk.source, "victim": self, "step": main.step_number})
+	damage_in_progress = false
 
 func leave_ship() -> void:
 	alive = false

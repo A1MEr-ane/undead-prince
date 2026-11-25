@@ -304,7 +304,8 @@
     "attack_range": 1.15,
     "gate_open_seconds": 4,
     "gate_safe_radius": 3,
-    "gate_auto_open": true
+    "gate_auto_open": true,
+    "weak_min_attackers": 1
   },
   "units": {
     "ghost": {
@@ -442,7 +443,14 @@
       "zone": 2.5,
       "keep": 5
     },
-    "congestion_seconds": 3
+    "congestion_seconds": 3,
+    "target_lock_seconds": 2.0,
+    "switch_margin": 3.0,
+    "enemy_lock_seconds": 1.0,
+    "enemy_switch_margin": 0.75,
+    "max_reroutes": 1,
+    "stuck_seconds": 2.0,
+    "progress_epsilon": 0.15
   },
   "director": {
     "think_seconds": 1,
@@ -458,7 +466,10 @@
     "garrison_spacing": 0.7,
     "arrival_radius": 2,
     "gate_trigger_radius": 2.5,
-    "formation_columns": 3
+    "formation_columns": 3,
+    "global_perception": false,
+    "perception_radius": 12.0,
+    "mission_lock_seconds": 12.0
   },
   "garrisons": [
     {
@@ -518,7 +529,7 @@
     }
   ],
   "reinforcements": {
-    "enabled": true,
+    "enabled": false,
     "seconds_before_dawn": 60,
     "spawn": [
       33,
@@ -541,7 +552,8 @@
       "highland",
       "feint",
       "waves",
-      "idle"
+      "idle",
+      "late_batches"
     ],
     "deploy_points": {
       "main": [
@@ -568,7 +580,9 @@
       "cave"
     ],
     "early_archer_seconds": 120,
-    "idle_release_seconds": 10
+    "idle_release_seconds": 10,
+    "late_start_seconds": 60,
+    "late_capacity_fraction": 0.6
   },
   "metrics": {
     "acceptable_congestion_per_deployed": 0.5,
@@ -622,6 +636,12 @@
   "retreat": {
     "boat_depart_seconds": 45,
     "boarding_radius": 1.2,
-    "pursuit_radius": 60
+    "pursuit_radius": 60,
+    "boat_sail_seconds": 4.0,
+    "skip_by_default": false
+  },
+  "events": {
+    "max_depth": 8,
+    "near_death_fraction": 0.25
   }
 }

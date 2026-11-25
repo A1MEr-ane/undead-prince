@@ -50,14 +50,21 @@ def execute(godot, args, log, timeout):
 
 
 def validate(row, params):
-    required = {"seed", "strategy", "params_sha256", "won", "victory_method", "victory_time", "ended_at", "zone_captures", "zone_losses", "retreat", "casualties", "spawned", "waves", "fire_wasted", "fire_generated", "fire_spent", "fire_remaining", "defender_dispatches", "congestion_events", "early_archer_kills", "archer_kill_times"}
+    required = {"seed", "strategy", "params_sha256", "won", "victory_method", "victory_time", "ended_at", "zone_captures", "zone_losses", "retreat", "casualties", "spawned", "waves", "fire_wasted", "fire_generated", "fire_spent", "fire_remaining", "defender_dispatches", "congestion_events", "early_archer_kills", "archer_kill_times", "outcome", "map_scale", "route_observations", "zone_history", "hook_counts", "structure_work"}
     if missing := required - row.keys():
         raise RuntimeError(f"SIEGE 缺字段: {missing}")
+    if not params["reinforcements"]["enabled"] and row["kingdom_reinforcements_arrived"]:
+        raise RuntimeError("无援军基线出现王国援军")
     if row["won"] != (row["victory_method"] in {"annihilation", "keep_retreat"}):
         raise RuntimeError("胜负与胜利方式矛盾")
-    if not 0 < row["ended_at"] <= params["simulation"]["night_seconds"] + params["simulation"]["step"]:
+    limit = params["simulation"]["night_seconds"] + params["simulation"]["step"]
+    if row["victory_method"] == "keep_retreat":
+        limit += params["retreat"]["boat_depart_seconds"] + params["retreat"]["boat_sail_seconds"]
+    if not 0 < row["ended_at"] <= limit:
         raise RuntimeError("非法结束时间")
-    if row["won"] and not 0 <= row["victory_time"] <= row["ended_at"]:
+    if row["outcome"] != ("WON" if row["won"] else "LOST"):
+        raise RuntimeError("胜负终态不一致")
+    if row["won"] and not 0 <= row["victory_time"] <= min(row["ended_at"], params["simulation"]["night_seconds"] + params["simulation"]["step"]):
         raise RuntimeError("非法胜利用时")
     for side in ["ghost", "defender"]:
         if not 0 <= row["casualties"][side] <= row["spawned"][side]:
@@ -96,7 +103,7 @@ def summary(rows, params):
     def fmt(value):
         return "—" if value is None else f"{value:.1f}"
 
-    text = ["# T67 攻城策略矩阵", "", f"参数 SHA256（Godot 合并后）: `{rows[0]['params_sha256']}`", "", "胜利用时只统计胜局，攻占用时只统计攻占主堡胜局；伤亡、冥火溢出和拥堵为每局均值。数据不代表平衡验收通过。", "", "| 策略 | N | 胜率 | 全歼/攻占 | 胜利/攻占用时 s | 亡魂/守军伤亡 | 冥火浪费 | 同格>3s | 行军堵塞 | 改道 |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    text = ["# T69 攻城策略矩阵", "", f"参数 SHA256（Godot 合并后）: `{rows[0]['params_sha256']}`", "", "胜利用时只统计胜局，攻占用时只统计攻占主堡胜局；伤亡、冥火溢出和拥堵为每局均值。数据不代表平衡验收通过。", "", "| 策略 | N | 胜率 | 全歼/攻占 | 胜利/攻占用时 s | 亡魂/守军伤亡 | 冥火浪费 | 同格>3s | 行军堵塞 | 改道 |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     rates = {}
     methods = set()
     for name in params["strategies"]["names"]:
@@ -111,7 +118,7 @@ def summary(rows, params):
     metrics = params["metrics"]
     viable = sum(rate >= metrics["minimum_strategy_win_rate"] for rate in rates.values())
     gap = min(rates["feint"], rates["waves"]) - rates["idle"]
-    text += ["", "## 四个验证目标的观测", "", f"1. ≥{metrics['minimum_strategy_win_rate']:.0%} 的策略：{viable} / 目标 {metrics['minimum_distinct_winning_strategies']}；观测到的胜利方式：{', '.join(sorted(methods)) or '无'}。用 `won`、`victory_method`、`waves[].routes` 分别区分胜率、胜法、路线。", f"2. min(佯攻, 分波) − 挂机：{gap:.0%}；初始判据 ≥{metrics['idle_win_rate_gap']:.0%}。", "3. 早期击杀弓兵分组（相关性；策略/种子会混杂，因果结论需 T68 做配对参数实验）：", "", "| 早期弓兵击杀 | N | 胜率 |", "|---|---:|---:|"]
+    text += ["", "## 四个验证目标的观测", "", f"1. ≥{metrics['minimum_strategy_win_rate']:.0%} 的策略：{viable} / 目标 {metrics['minimum_distinct_winning_strategies']}；观测到的胜利方式：{', '.join(sorted(methods)) or '无'}。用 `won`、`victory_method`、`waves[].routes` 分别区分胜率、胜法、路线。", f"2. min(佯攻, 分波) − 挂机：{gap:.0%}；初始判据 ≥{metrics['idle_win_rate_gap']:.0%}。", (f"晚开始分批 vs 挂机：{rates['late_batches']:.0%} vs {rates['idle']:.0%}。" if "late_batches" in rates else "本次策略列表未运行晚开始分批对照。"), "3. 早期击杀弓兵分组（相关性；策略/种子会混杂，因果结论需 T68 做配对参数实验）：", "", "| 早期弓兵击杀 | N | 胜率 |", "|---|---:|---:|"]
     for early in [True, False]:
         group = [r for r in rows if (r["early_archer_kills"] > 0) == early]
         rate = mean(group, lambda r: int(r["won"]))
@@ -129,7 +136,7 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument("--godot", default=os.environ.get("GODOT", "godot"))
     parser.add_argument("--timeout", type=float, default=300)
-    parser.add_argument("--verify", action="store_true", help="5×2 各重复一次，完整 JSON 必须一致")
+    parser.add_argument("--verify", action="store_true", help="6×2 各重复一次，完整 JSON 必须一致")
     args = parser.parse_args()
     if args.seeds <= 0:
         parser.error("--seeds 必须为正")

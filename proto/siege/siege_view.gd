@@ -9,6 +9,8 @@ var hud: Label
 var debug: Label
 var banner: Label
 var preview: MeshInstance3D
+var rally_area: MeshInstance3D
+var skip_button: Button
 var rally_marker: MeshInstance3D
 var unit_meshes := {}
 var flags := {}
@@ -22,7 +24,6 @@ var dragging := false
 var deploying := false
 var selected := false
 var rally_mode := false
-var next_deploy := 0.0
 var debug_visible := false
 var shot_times: Array = []
 var shot_index := 0
@@ -61,7 +62,7 @@ func setup(world) -> void:
 	if DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(Vector2i(int(cfg.window_size[0]), int(cfg.window_size[1])))
-		get_window().title = "T67 · Siege / 灰盒夜袭攻城"
+		get_window().title = "T69 · Siege / 灰盒夜袭攻城"
 	yaw = deg_to_rad(float(cfg.camera_yaw))
 	zoom = float(cfg.camera_size)
 	debug_visible = cfg.debug_visible
@@ -88,21 +89,36 @@ func setup(world) -> void:
 	hud.add_theme_font_size_override("font_size", int(cfg.hud_font_size))
 	layer.add_child(hud)
 	debug = Label.new()
-	debug.position = Vector2(22, 156)
+	debug.position = Vector2(22, 200)
 	debug.add_theme_font_size_override("font_size", int(cfg.debug_font_size))
 	layer.add_child(debug)
 	banner = Label.new()
-	banner.position = Vector2(660, 22)
+	banner.position = Vector2(920, 180)
 	banner.add_theme_font_size_override("font_size", int(cfg.hud_font_size))
 	layer.add_child(banner)
+	skip_button = Button.new()
+	skip_button.position = Vector2(920, 250)
+	skip_button.text = "跳过撤退 [Space]"
+	skip_button.pressed.connect(func(): main.queue_input("skip_retreat"))
+	layer.add_child(skip_button)
 	preview = box(self, Vector3.ZERO, Vector3(1.2, 0.07, 1.2), Color(cfg.ghost_color))
 	preview.visible = false
 	rally_marker = box(self, Vector3.ZERO, Vector3(1.5, 0.08, 1.5), Color("f4eea0"))
 	rally_marker.visible = false
+	rally_area = MeshInstance3D.new()
+	var ring := ImmediateMesh.new()
+	ring.surface_begin(Mesh.PRIMITIVE_LINE_STRIP, material(Color("f4eea0")))
+	for n in 97:
+		var angle := TAU * n / 96.0
+		ring.surface_add_vertex(Vector3(cos(angle), 0, sin(angle)) * float(main.params.economy.rally_radius))
+	ring.surface_end()
+	rally_area.mesh = ring
+	add_child(rally_area)
 	if main.capture_mode:
 		shot_times = main.params.view.shot_times.duplicate()
-		screenshot_dir = main.args.get("out", ProjectSettings.globalize_path("res://shots/t67"))
+		screenshot_dir = main.args.get("out", ProjectSettings.globalize_path("res://proto/siege/results/captures"))
 		DirAccess.make_dir_recursive_absolute(screenshot_dir)
+		FileAccess.open(screenshot_dir.path_join(".gdignore"), FileAccess.WRITE).close()
 	refresh()
 
 func build_map() -> void:
@@ -196,13 +212,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_F: rally_mode = true; deploying = false
 			KEY_TAB: debug_visible = not debug_visible
 			KEY_ESCAPE: rally_mode = false; deploying = false; selected = false
+			KEY_SPACE: main.queue_input("skip_retreat")
 			KEY_R: get_tree().reload_current_scene()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_RIGHT:
 			dragging = event.pressed
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and rally_mode:
-				main.rally(mouse_world())
+				main.queue_input("rally", mouse_world())
 				rally_mode = false
 			else:
 				deploying = event.pressed and selected
@@ -223,16 +240,15 @@ func _process(delta: float) -> void:
 	if rotation != 0:
 		yaw += rotation * delta * float(main.params.view.rotation_speed)
 		update_camera()
-	if deploying and main.bot == null and main.time >= next_deploy:
-		main.deploy(mouse_world())
-		next_deploy = main.time + float(main.params.economy.deploy_interval)
+	main.manual_deploy_held = deploying and main.bot == null
+	main.manual_deploy_pos = mouse_world()
 	for effect in arrow_meshes.duplicate():
 		effect.life -= delta
 		if effect.life <= 0:
 			effect.mesh.queue_free()
 			arrow_meshes.erase(effect)
 
-func refresh() -> void:
+func refresh(alpha: float = 1.0) -> void:
 	var cfg: Dictionary = main.params.view
 	var progress := clampf(main.time / float(main.params.simulation.night_seconds), 0, 1)
 	var sky := Color(cfg.night_color).lerp(Color(cfg.dawn_color), pow(progress, 2))
@@ -256,7 +272,8 @@ func refresh() -> void:
 		var mesh: MeshInstance3D = unit_meshes[u.id]
 		mesh.visible = true
 		var hop := absf(sin(u.walked * float(cfg.get("hop_frequency", main.params.combat.hop_frequency)) * PI)) * float(main.params.combat.hop_height)
-		mesh.position = u.nav_pos + Vector3(0, float(cfg.unit_height) * 0.5 + hop, 0)
+		mesh.material_override = material(Color("f4eea0") if main.outcome == main.Outcome.ACTIVE and main.rally_until > main.time and main.rally_members.has(u.id) else Color(cfg[u.kind + "_color"]))
+		mesh.position = u.previous_pos.lerp(u.nav_pos, alpha) + Vector3(0, float(cfg.unit_height) * 0.5 + hop, 0)
 		mesh.rotation.y = atan2(u.facing.x, u.facing.z)
 	gate.visible = not main.terrain.gate_open
 	weak.visible = not main.terrain.weak_broken
@@ -266,11 +283,19 @@ func refresh() -> void:
 	preview.visible = (selected or rally_mode) and main.bot == null and not main.finished
 	preview.position = p + Vector3(0, 0.08, 0)
 	preview.material_override = material(Color("f4eea0") if rally_mode else Color(cfg.ghost_color) if main.can_deploy(p) else Color("dc6f70"))
-	rally_marker.visible = main.rally_until > main.time
-	rally_marker.position = main.rally_pos + Vector3(0, 0.1, 0)
+	rally_marker.visible = main.rally_until > main.time and main.outcome == main.Outcome.ACTIVE
+	rally_marker.position = main.rally_pos + Vector3(0, main.terrain.height_at(main.rally_pos) + 0.1, 0)
+	rally_area.visible = rally_marker.visible or rally_mode
+	var ring_pos: Vector3 = p if rally_mode else main.rally_origin
+	rally_area.position = ring_pos + Vector3(0, 1.4, 0)
+	skip_button.visible = main.presentation == main.Presentation.RETREAT
 	var ghosts: int = main.sides[0].units.filter(func(u): return u.alive).size()
 	var guards: int = main.sides[1].units.filter(func(u): return u.alive).size()
-	hud.text = "T67 · GREYBOX NIGHT SIEGE    [%s / seed %d]\n冥火 %.0f / %.0f    亡魂 %d    守军 %d\n1 选择亡魂 · 左键长按部署 · F+左键集结 (%.0f 冥火)\nQ/E 或右键/中键拖动旋转 · 滚轮缩放 · Tab 调试 · R 重开\n绿色：部署区/亡魂    橙：盾兵    黄：弓兵    紫：骑兵" % [main.strategy, main.seed_value, main.fire, main.params.economy.capacity, ghosts, guards, main.params.economy.rally_cost]
+	var seconds := ceili(maxf(0, float(main.params.simulation.night_seconds) - main.time))
+	var rally_text := "集结：未激活"
+	if rally_marker.visible:
+		rally_text = "集结：剩余 %.1f 秒 · 范围 %.0f 格 · %d 名受令（黄）" % [main.rally_until - main.time, main.params.economy.rally_radius, main.rally_members.size()]
+	hud.text = "T69 · GREYBOX NIGHT SIEGE    [%s / seed %d]   破晓倒计时 %02d:%02d\n冥火 %.0f / %.0f    亡魂 %d    守军 %d\n1 选择亡魂 · 左键长按部署 · F+左键集结 (%.0f 冥火)\nQ/E 或右键/中键拖动旋转 · 滚轮缩放 · Tab 调试 · R 重开\n绿色：部署区/亡魂    橙：盾兵    黄：弓兵/受令    紫：骑兵\n%s" % [main.strategy, main.seed_value, seconds / 60, seconds % 60, main.fire, main.params.economy.capacity, ghosts, guards, main.params.economy.rally_cost, rally_text]
 	debug.visible = debug_visible
 	if debug_visible:
 		var text := "DEBUG · t=%.1f · gate=%.1f weak=%.1f · dispatch=%d\n" % [main.time, maxf(0, main.gate_hp), maxf(0, main.weak_hp), main.director.dispatches]
@@ -283,14 +308,14 @@ func refresh() -> void:
 		debug.text = text
 	if main.won:
 		banner.text = "胜利 · " + ("全歼守军" if main.victory_method == "annihilation" else "主堡攻占，守军撤退")
-		if main.retreat_started:
+		if main.presentation == main.Presentation.RETREAT:
 			banner.text += "\n登船 %d · 截杀 %d" % [main.escaped, main.intercepted]
 	elif main.finished:
 		banner.text = "破晓 · 攻城失败"
 	else:
 		banner.text = ""
 	if main.retreat_started and main.time >= main.boat_depart_at:
-		boat.position.x = main.terrain.vec(main.params.map.boat).x + (main.time - main.boat_depart_at) * 0.8
+		boat.position.x = main.terrain.vec(main.params.map.boat).x + minf(main.time - main.boat_depart_at, float(main.params.retreat.boat_sail_seconds)) * 2.5
 
 func arrow(a: Vector3, b: Vector3) -> void:
 	var mesh := box(self, (a + b) * 0.5 + Vector3.UP, Vector3(0.05, 0.05, a.distance_to(b)), Color("e8ddad"))
