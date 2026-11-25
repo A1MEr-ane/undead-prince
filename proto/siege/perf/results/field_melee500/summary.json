@@ -1,0 +1,190 @@
+{
+  "runs": 1,
+  "ok": 1,
+  "failed": 0,
+  "seconds": 12.8,
+  "command": "python3 proto/siege/perf/run_perf.py --scenarios melee --units 500 --modes sim --samples 60 --phase --out proto/siege/perf/results/field_melee500",
+  "environment": {
+    "adapter": "",
+    "build": "debug",
+    "cpu": "Apple M1",
+    "cpu_count": 8,
+    "driver": "metal",
+    "godot": "4.7.2-stable (official)",
+    "nodes": 4,
+    "os": "macOS 26.6.2",
+    "rendering_method": "forward_plus",
+    "static_memory_mb": 46.4,
+    "texture": [
+      0,
+      0
+    ],
+    "viewport": [
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0
+    ]
+  },
+  "rows": [
+    {
+      "active": {
+        "max": 500,
+        "mean": 500.0,
+        "min": 500
+      },
+      "breach_sample": -1,
+      "breach_sim_seconds": -1.0,
+      "camera_moves": 0,
+      "casualties": [
+        0,
+        0
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 366,
+        "counter": 1,
+        "parry": 100,
+        "pursue": 91
+      },
+      "dispatches": 0,
+      "draw_calls": {},
+      "ended_at": -1.0,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 46.4,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "flow_relaxed_cells": 0,
+      "flow_repairs": 0,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "map_stat": {
+        "change_calls": 0,
+        "change_max_us": 0,
+        "change_us": 0,
+        "direction_calls": 62000,
+        "direction_us": 223052,
+        "distance_calls": 0,
+        "distance_us": 0,
+        "field_build_us": 8891,
+        "field_builds": 2,
+        "field_calls": 35781,
+        "field_hit_us": 67877,
+        "field_hits": 35779,
+        "field_us": 76768
+      },
+      "mode": "sim",
+      "natural": false,
+      "params_sha256": "ffa9c2770c74a5a39919d04d1b887a45e56ab0e660112c8cd1c196e21f56d95a",
+      "phase": {
+        "bot": {
+          "max_ms": 0.003,
+          "mean_ms": 0.0008
+        },
+        "captures": {
+          "max_ms": 2.928,
+          "mean_ms": 2.82
+        },
+        "director": {
+          "max_ms": 0.047,
+          "mean_ms": 0.0387
+        },
+        "end_checks": {
+          "max_ms": 0.004,
+          "mean_ms": 0.0011
+        },
+        "gate": {
+          "max_ms": 0.006,
+          "mean_ms": 0.0014
+        },
+        "orders": {
+          "max_ms": 1.148,
+          "mean_ms": 1.0643
+        },
+        "orders_sense": {
+          "max_ms": 70.439,
+          "mean_ms": 57.0903
+        },
+        "regenerate": {
+          "max_ms": 0.007,
+          "mean_ms": 0.003
+        },
+        "sense_nearby": {
+          "max_ms": 69.954,
+          "mean_ms": 55.9577
+        },
+        "spatial_build_1": {
+          "max_ms": 0.487,
+          "mean_ms": 0.242
+        },
+        "spatial_build_2": {
+          "max_ms": 0.284,
+          "mean_ms": 0.2431
+        },
+        "structures": {
+          "max_ms": 0.109,
+          "mean_ms": 0.0855
+        },
+        "unit_tick_move_combat": {
+          "max_ms": 42.549,
+          "mean_ms": 39.1231
+        }
+      },
+      "phase_mode": true,
+      "phase_steps": 124,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "sample_sim_seconds": 4.0,
+      "samples": 60,
+      "scenario": "melee",
+      "schema": 1,
+      "sim_ms": {
+        "max": 219.348,
+        "mean": 198.966,
+        "p50": 195.6,
+        "p95": 215.811,
+        "p99": 219.348
+      },
+      "spawned": [
+        250,
+        250
+      ],
+      "state_hash": "f7feafceabc51804cab078bb42ecc1b83c22f14078dbfc29058475ac78b9e0e0",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "manual",
+      "topology_events": 0,
+      "units_target": 500,
+      "victory_method": "perf_hold",
+      "won": true,
+      "ok": true,
+      "seconds": 12.78,
+      "tag": "melee_500_sim_phase",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t71 --log-file /Users/cyy/Projects/亡魂王子-t71/proto/siege/perf/results/field_melee500/raw/melee_500_sim_phase.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=500 --perf_samples=60 --perf_phase=true --perf_out=/Users/cyy/Projects/亡魂王子-t71/proto/siege/perf/results/field_melee500/raw/melee_500_sim_phase.json"
+    }
+  ]
+}

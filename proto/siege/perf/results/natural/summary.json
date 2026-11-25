@@ -1,0 +1,388 @@
+{
+  "runs": 4,
+  "rows": [
+    {
+      "active": {
+        "max": 54,
+        "mean": 28.9,
+        "min": 20
+      },
+      "breach_sample": 595,
+      "breach_sim_seconds": 39.67,
+      "camera_moves": 0,
+      "casualties": [
+        35,
+        34
+      ],
+      "cave_inside_max": 2,
+      "cave_transits": 21,
+      "combat_events": {
+        "clash": 23,
+        "parry": 9,
+        "pursue": 13
+      },
+      "dispatches": 22,
+      "draw_calls": {},
+      "ended_at": 244.7,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 31.3,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "flow_relaxed_cells": 23243,
+      "flow_repairs": 2,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "f15bda5d8d2b764b6efae16509d2e9bdf696096873dcab2dc0e3991a8f527840",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "sample_sim_seconds": 244.6,
+      "samples": 3669,
+      "scenario": "natural",
+      "schema": 1,
+      "sim_ms": {
+        "max": 117.132,
+        "mean": 5.823,
+        "p50": 3.559,
+        "p95": 14.016,
+        "p99": 20.55
+      },
+      "spawned": [
+        60,
+        34
+      ],
+      "state_hash": "0e0ab2ebc0c253678ca2f920e3ac98bd986aa63ee08ac885c6ab699cb14c0b8d",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "tag": "natural_waves_sim",
+      "cmd": "godot --headless --path . --log-file proto/siege/perf/results/natural/raw/natural_waves_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=waves --perf_mode=sim --perf_scenario=natural --perf_natural=true --perf_samples=4500 --perf_out=proto/siege/perf/results/natural/raw/natural_waves_sim.json"
+    },
+    {
+      "active": {
+        "max": 54,
+        "mean": 28.9,
+        "min": 20
+      },
+      "breach_sample": 595,
+      "breach_sim_seconds": 39.67,
+      "camera_moves": 0,
+      "casualties": [
+        35,
+        34
+      ],
+      "cave_inside_max": 2,
+      "cave_transits": 21,
+      "combat_events": {
+        "clash": 23,
+        "parry": 9,
+        "pursue": 13
+      },
+      "dispatches": 22,
+      "draw_calls": {
+        "max": 193,
+        "p50": 157,
+        "p95": 187
+      },
+      "ended_at": 244.7,
+      "environment": {
+        "adapter": "Apple M1 (Apple7)",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 202,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 134.2,
+        "texture": [
+          1440,
+          900
+        ],
+        "viewport": [
+          1440,
+          900
+        ],
+        "window": [
+          1440,
+          900
+        ]
+      },
+      "flow_relaxed_cells": 23243,
+      "flow_repairs": 2,
+      "frame_ms": {
+        "max": 113.231,
+        "mean": 10.056,
+        "p50": 8.559,
+        "p95": 16.494,
+        "p99": 21.716
+      },
+      "frames_over_16_7": 141,
+      "frames_over_33_3": 2,
+      "mode": "render",
+      "natural": true,
+      "params_sha256": "f15bda5d8d2b764b6efae16509d2e9bdf696096873dcab2dc0e3991a8f527840",
+      "phase_mode": false,
+      "refresh_ms": {
+        "max": 0.307,
+        "mean": 0.117,
+        "p50": 0.113,
+        "p95": 0.154,
+        "p99": 0.192
+      },
+      "residual_ms": {
+        "max": 111.328,
+        "mean": 4.366,
+        "p50": 4.654,
+        "p95": 5.812,
+        "p99": 10.075
+      },
+      "sample_sim_seconds": 244.6,
+      "samples": 3669,
+      "scenario": "natural",
+      "schema": 1,
+      "sim_ms": {
+        "max": 112.833,
+        "mean": 5.713,
+        "p50": 3.35,
+        "p95": 14.223,
+        "p99": 20.147
+      },
+      "spawned": [
+        60,
+        34
+      ],
+      "state_hash": "0e0ab2ebc0c253678ca2f920e3ac98bd986aa63ee08ac885c6ab699cb14c0b8d",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "tag": "natural_waves_render",
+      "cmd": "godot --disable-vsync --path . --log-file proto/siege/perf/results/natural/raw/natural_waves_render.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=waves --perf_mode=render --perf_scenario=natural --perf_natural=true --perf_samples=4500 --perf_out=proto/siege/perf/results/natural/raw/natural_waves_render.json"
+    },
+    {
+      "active": {
+        "max": 46,
+        "mean": 19.41,
+        "min": 10
+      },
+      "breach_sample": 209,
+      "breach_sim_seconds": 13.93,
+      "camera_moves": 0,
+      "casualties": [
+        42,
+        34
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 29,
+        "counter": 2,
+        "parry": 20,
+        "pursue": 8
+      },
+      "dispatches": 21,
+      "draw_calls": {},
+      "ended_at": 208.07,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 31.3,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "flow_relaxed_cells": 7590,
+      "flow_repairs": 1,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "f15bda5d8d2b764b6efae16509d2e9bdf696096873dcab2dc0e3991a8f527840",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "sample_sim_seconds": 207.93,
+      "samples": 3119,
+      "scenario": "natural",
+      "schema": 1,
+      "sim_ms": {
+        "max": 59.194,
+        "mean": 5.078,
+        "p50": 3.445,
+        "p95": 12.381,
+        "p99": 17.729
+      },
+      "spawned": [
+        54,
+        34
+      ],
+      "state_hash": "c4aa9be13ba155ffefb28cfb97fad0a0e68243cd7b78847c539ed04f3787ae56",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "main_gate",
+      "topology_events": 1,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "tag": "natural_main_gate_sim",
+      "cmd": "godot --headless --path . --log-file proto/siege/perf/results/natural/raw/natural_main_gate_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=main_gate --perf_mode=sim --perf_scenario=natural --perf_natural=true --perf_samples=4500 --perf_out=proto/siege/perf/results/natural/raw/natural_main_gate_sim.json"
+    },
+    {
+      "active": {
+        "max": 46,
+        "mean": 19.41,
+        "min": 10
+      },
+      "breach_sample": 209,
+      "breach_sim_seconds": 13.93,
+      "camera_moves": 0,
+      "casualties": [
+        42,
+        34
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 29,
+        "counter": 2,
+        "parry": 20,
+        "pursue": 8
+      },
+      "dispatches": 21,
+      "draw_calls": {
+        "max": 185,
+        "p50": 150,
+        "p95": 181
+      },
+      "ended_at": 208.07,
+      "environment": {
+        "adapter": "Apple M1 (Apple7)",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 196,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 134.1,
+        "texture": [
+          1440,
+          900
+        ],
+        "viewport": [
+          1440,
+          900
+        ],
+        "window": [
+          1440,
+          900
+        ]
+      },
+      "flow_relaxed_cells": 7590,
+      "flow_repairs": 1,
+      "frame_ms": {
+        "max": 59.536,
+        "mean": 9.431,
+        "p50": 8.525,
+        "p95": 14.606,
+        "p99": 18.144
+      },
+      "frames_over_16_7": 38,
+      "frames_over_33_3": 1,
+      "mode": "render",
+      "natural": true,
+      "params_sha256": "f15bda5d8d2b764b6efae16509d2e9bdf696096873dcab2dc0e3991a8f527840",
+      "phase_mode": false,
+      "refresh_ms": {
+        "max": 0.446,
+        "mean": 0.129,
+        "p50": 0.124,
+        "p95": 0.204,
+        "p99": 0.25
+      },
+      "residual_ms": {
+        "max": 55.503,
+        "mean": 4.693,
+        "p50": 5.214,
+        "p95": 6.757,
+        "p99": 12.003
+      },
+      "sample_sim_seconds": 207.93,
+      "samples": 3119,
+      "scenario": "natural",
+      "schema": 1,
+      "sim_ms": {
+        "max": 59.144,
+        "mean": 4.783,
+        "p50": 2.966,
+        "p95": 12.386,
+        "p99": 16.653
+      },
+      "spawned": [
+        54,
+        34
+      ],
+      "state_hash": "c4aa9be13ba155ffefb28cfb97fad0a0e68243cd7b78847c539ed04f3787ae56",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "main_gate",
+      "topology_events": 1,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "tag": "natural_main_gate_render",
+      "cmd": "godot --disable-vsync --path . --log-file proto/siege/perf/results/natural/raw/natural_main_gate_render.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=main_gate --perf_mode=render --perf_scenario=natural --perf_natural=true --perf_samples=4500 --perf_out=proto/siege/perf/results/natural/raw/natural_main_gate_render.json"
+    }
+  ],
+  "command": "python3 proto/siege/perf/run_natural (inline; see report)"
+}
