@@ -17,10 +17,15 @@ PI = math.pi
 HEAD_UV_MIN = .30
 
 
-def face_uv(proportions):
-    """Eye centres in the head's reserved skin subrectangle (local island UV)."""
+def face_uv(proportions, full_head=False):
+    """Eye centres in the head's reserved skin subrectangle (local island UV).
+
+    full_head is for exposed skulls, where the painted skin region runs all the
+    way from chin to crown instead of stopping under a helmet brim.
+    """
     h=proportions['landmarks_from_ground']
-    v=HEAD_UV_MIN+(1-HEAD_UV_MIN)*(h['eye']-h['chin'])/(h['helmet_brim']+.06-h['chin'])
+    top=h['helmet_top'] if full_head else h['helmet_brim']+.06
+    v=HEAD_UV_MIN+(1-HEAD_UV_MIN)*(h['eye']-h['chin'])/(top-h['chin'])
     # Front cheeks share a frontal projection: round vertical eyes in front,
     # with only the near eye visible in the pure side silhouette.
     return ((.27,v),(.73,v))
@@ -246,7 +251,9 @@ class ChibiBody:
         ob=base.mesh(name,verts,faces,[[(.3,.06),(.7,.06),(.5,.20)]]*20,part,bone,far,smooth=True)
         return ob
 
-    def body_model(self):
+    def body_model(self, exposed_head=False):
+        """Build the shared body. exposed_head keeps the whole cranium and omits
+        the hair, ears and mouth so a skull recipe can replace them."""
         h,H=self.h,self.height
         # Pear outline: progressively wider towards the hem, without a pinched waist.
         self.profile('tabard_body',[(h['belt'],self.ring(.133*H,.163*H,sides=6)),
@@ -268,9 +275,10 @@ class ChibiBody:
             (self.width['head']*.46,self.width['head']*.45,self.head_radius),self.part('head'),'head',sides=8,bands=6)
         bm=bmesh.new()
         bm.from_mesh(head.data)
-        # The upper cap is completely inside the helmet, including in animations.
-        bmesh.ops.delete(bm,geom=[f for f in bm.faces if min(v.co.z for v in f.verts)>h['helmet_brim']],context='FACES')
-        bm.to_mesh(head.data)
+        if not exposed_head:
+            # The upper cap is completely inside the helmet, including in animations.
+            bmesh.ops.delete(bm,geom=[f for f in bm.faces if min(v.co.z for v in f.verts)>h['helmet_brim']],context='FACES')
+            bm.to_mesh(head.data)
         bm.free()
         from common import map_uv
         for polygon in head.data.polygons:
@@ -281,33 +289,34 @@ class ChibiBody:
                 u=(.5+.46*point.y/(self.width['head']*.45)) if front else .06
                 v=HEAD_UV_MIN+(1-HEAD_UV_MIN)*(point.z-h['chin'])/(2*self.head_radius)
                 head.data.uv_layers.active.data[index].uv=map_uv('skin',(u,v))
-        # Rear hair follows the spherical head rather than forming a vertical box.
-        vertices=[]
-        for j in (2,3,4,5):
-            angle=-PI/2+PI*j/6
-            z=self.head_centre+self.head_radius*math.sin(angle)
-            r=math.cos(angle)*1.015
-            vertices += [(H*.008+self.width['head']*.466*r*math.cos(PI/2+i*PI/4),
-                          self.width['head']*.456*r*math.sin(PI/2+i*PI/4),z) for i in range(5)]
-        faces=[(j*5+i,j*5+i+1,(j+1)*5+i+1,(j+1)*5+i) for j in range(3) for i in range(4)]
-        base.mesh('short_hair',vertices,faces,[[(0,.76),(1,.76),(1,.98),(0,.98)]]*12,'leather','head')
-        for side,sign in (('l',-1),('r',1)):
-            ear=base.ellipsoid('ear_'+side,(-.012*H,sign*self.width['head']*.446,h['eye']-.045*H),
-                (.039*H,.027*H,.047*H),self.part('head'),'head',sides=6,bands=2)
-            # Poles along depth leave a round hexagonal ear in the side silhouette.
-            c=V((-.012*H,sign*self.width['head']*.446,h['eye']-.045*H))
-            for vertex in ear.data.vertices:
-                q=vertex.co-c
-                vertex.co=c+V((q.x,-q.z*.027/.047,q.y*.047/.027))
-            self.remap_v(ear,.02,.22)
-        # Small mouth remains in the existing eye island; eyes and brows are skin paint.
-        z=h['eye']-.081*H
-        # Front face is piecewise planar along the sphere's latitude bands.
-        lat=(z-self.head_centre)/self.head_radius
-        r=(1+(1-math.sqrt(.75))*lat/.5) if lat<0 else 1
-        x=.008*H+self.width['head']*.46*r+.001*H
-        verts=[(x,y,z+dz) for y,dz in ((-.017*H,-.002*H),(.017*H,-.002*H),(.017*H,.002*H),(-.017*H,.002*H))]
-        base.mesh('mouth',verts,[(0,1,2,3)],[[(0,0),(1,0),(1,1),(0,1)]],self.part('eyes'),'head')
+        if not exposed_head:
+            # Rear hair follows the spherical head rather than forming a vertical box.
+            vertices=[]
+            for j in (2,3,4,5):
+                angle=-PI/2+PI*j/6
+                z=self.head_centre+self.head_radius*math.sin(angle)
+                r=math.cos(angle)*1.015
+                vertices += [(H*.008+self.width['head']*.466*r*math.cos(PI/2+i*PI/4),
+                              self.width['head']*.456*r*math.sin(PI/2+i*PI/4),z) for i in range(5)]
+            faces=[(j*5+i,j*5+i+1,(j+1)*5+i+1,(j+1)*5+i) for j in range(3) for i in range(4)]
+            base.mesh('short_hair',vertices,faces,[[(0,.76),(1,.76),(1,.98),(0,.98)]]*12,'leather','head')
+            for side,sign in (('l',-1),('r',1)):
+                ear=base.ellipsoid('ear_'+side,(-.012*H,sign*self.width['head']*.446,h['eye']-.045*H),
+                    (.039*H,.027*H,.047*H),self.part('head'),'head',sides=6,bands=2)
+                # Poles along depth leave a round hexagonal ear in the side silhouette.
+                c=V((-.012*H,sign*self.width['head']*.446,h['eye']-.045*H))
+                for vertex in ear.data.vertices:
+                    q=vertex.co-c
+                    vertex.co=c+V((q.x,-q.z*.027/.047,q.y*.047/.027))
+                self.remap_v(ear,.02,.22)
+            # Small mouth remains in the existing eye island; eyes and brows are skin paint.
+            z=h['eye']-.081*H
+            # Front face is piecewise planar along the sphere's latitude bands.
+            lat=(z-self.head_centre)/self.head_radius
+            r=(1+(1-math.sqrt(.75))*lat/.5) if lat<0 else 1
+            x=.008*H+self.width['head']*.46*r+.001*H
+            verts=[(x,y,z+dz) for y,dz in ((-.017*H,-.002*H),(.017*H,-.002*H),(.017*H,.002*H),(-.017*H,.002*H))]
+            base.mesh('mouth',verts,[(0,1,2,3)],[[(0,0),(1,0),(1,1),(0,1)]],self.part('eyes'),'head')
         for side in ('l','r'):
             far=side=='r'
             for segment,part,radius in (('thigh_',self.part('legs'),.047*H),('shin_',self.part('legs'),.045*H),

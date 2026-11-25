@@ -173,6 +173,7 @@ def verify(output, check_rig=True, spec_path=None):
 def validate_spec_model(recipe, rig, objects):
     """Measure the built meshes and the baked walk, beyond checking config data."""
     by_name = {ob.name: ob for ob in objects}
+    probes = recipe.proportion_probes
     h = recipe.h
     def zs(name):
         return [v.co.z for v in by_name[name].data.vertices]
@@ -180,8 +181,9 @@ def validate_spec_model(recipe, rig, objects):
     # Resolve the painted eye centre through real mesh UVs, rather than merely
     # repeating the input eye landmark. Barycentric interpolation handles facets.
     from common import map_uv
-    head=by_name['head'].data
-    eye_uv=Vector((*map_uv('skin',face_uv(recipe.spec['proportions'])[0]),0))
+    head=by_name[probes['head']].data
+    eye_uv=Vector((*map_uv('skin',face_uv(recipe.spec['proportions'],
+        getattr(recipe,'face_full_head',False))[0]),0))
     eye_z=None
     head.calc_loop_triangles()
     for tri in head.loop_triangles:
@@ -191,13 +193,13 @@ def validate_spec_model(recipe, rig, objects):
             eye_z=sum(head.vertices[i].co.z*w for i,w in zip(tri.vertices,weights))
             break
     assert eye_z is not None, 'Eye paint has no head surface'
-    measured=dict(helmet_top=max(zs('helmet_dome')),helmet_brim=min(zs('helmet_brim')),
-        chin=min(zs('head')),eye=eye_z,tunic_hem=min(zs('split_tabard_skirt')),
-        boot_top=max(zs('boot_cuff_l')),shoulder=max(zs('tabard_body')),
-        belt=sum(zs('belt'))/len(zs('belt')),crotch=recipe.skeleton({})['thigh_l'][0].z)
+    measured=dict(helmet_top=max(zs(probes['top'])),helmet_brim=min(zs(probes['brim'])),
+        chin=min(zs(probes['head'])),eye=eye_z,tunic_hem=min(zs(probes['hem'])),
+        boot_top=max(zs(probes['boot_cuff'])),shoulder=max(zs(probes['shoulder'])),
+        belt=sum(zs(probes['belt']))/len(zs(probes['belt'])),crotch=recipe.skeleton({})['thigh_l'][0].z)
     # Normalize to the measured sole-to-helmet height; a differently sized model
     # cannot pass by just copying the specification or recipe.height.
-    ground=min(zs('boot_l')+zs('boot_r'))
+    ground=min(z for name in probes['boots'] for z in zs(name))
     height=measured['helmet_top']-ground
     ratios={key:(value-ground)/height for key,value in measured.items()}
     expected=recipe.spec['proportions']['landmarks_from_ground']
@@ -206,15 +208,16 @@ def validate_spec_model(recipe, rig, objects):
     def span(name,axis):
         values=[v.co[axis] for v in by_name[name].data.vertices]
         return max(values)-min(values)
-    widths=dict(head=span('helmet_brim',1)/height,
-        shoulders=(max(v.co.y for v in by_name['upper_arm_r'].data.vertices)-
-                   min(v.co.y for v in by_name['upper_arm_l'].data.vertices))/height,
-        foot_length=span('boot_l',0)/height,hand_diameter=span('fist_l',2)/height)
+    widths=dict(head=span(probes['head_width'],1)/height,
+        shoulders=(max(v.co.y for v in by_name[probes['arms'][0]].data.vertices)-
+                   min(v.co.y for v in by_name[probes['arms'][1]].data.vertices))/height,
+        foot_length=span(probes['foot'],0)/height,hand_diameter=span(probes['hand'],2)/height)
     assert all(abs(value/recipe.spec['proportions']['widths'][key]-1)<=.10 for key,value in widths.items()), widths
     print('SPEC_PROPORTIONS',recipe.spec['id'],json.dumps(dict(landmarks=ratios,widths=widths,
         max_relative_error=max(errors.values()),head_ratio=1-ratios['chin'],leg_ratio=ratios['crotch']),sort_keys=True),flush=True)
     assert 'shield_boss' not in by_name
-    assert len(by_name['helmet_dome'].data.vertices) == recipe.parts['helmet']['sides']*3
+    if 'helmet_dome' in by_name:
+        assert len(by_name['helmet_dome'].data.vertices) == recipe.parts['helmet']['sides']*3
     diameter = max(zs('shield_rim'))-min(zs('shield_rim'))
     assert abs(diameter-recipe.parts['shield']['diameter']*recipe.height) < 1e-5
     assert by_name['shield_front']['bone'] == 'hand_l' and not by_name['shield_front']['far_side']
@@ -241,7 +244,8 @@ def validate_chibi_poses(recipe, rig, objects):
             graph=bpy.context.evaluated_depsgraph_get()
             blade=by_name['sword_blade'].evaluated_get(graph)
             points=[blade.matrix_world@v.co for v in blade.data.vertices]
-            for piece in ('head','helmet_dome','helmet_brim','nasal_guard'):
+            for piece in getattr(recipe, 'sword_obstacles',
+                    ('head', 'helmet_dome', 'helmet_brim', 'nasal_guard')):
                 ob=by_name[piece].evaluated_get(graph)
                 tree=BVHTree.FromPolygons([ob.matrix_world@v.co for v in ob.data.vertices],
                     [list(p.vertices) for p in ob.data.polygons])
@@ -392,11 +396,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=OUTPUT)
     parser.add_argument('--artifacts-only', action='store_true')
-    parser.add_argument('--spec', type=Path, help='Only validate this spec asset; default validates T06 and k2_shieldman')
+    parser.add_argument('--spec', type=Path, help='Only validate this spec asset; default validates T06, k2_shieldman and the T64 e2e unit')
     args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
     if args.spec:
         verify(args.output, not args.artifacts_only, args.spec)
     else:
         verify(args.output, not args.artifacts_only)
-        from asset_spec import DEFAULT_SPEC
+        from asset_spec import DEFAULT_SPEC, E2E_SPEC
         verify(args.output, not args.artifacts_only, DEFAULT_SPEC)
+        if E2E_SPEC.is_file():
+            verify(E2E_SPEC.parent, not args.artifacts_only, E2E_SPEC)

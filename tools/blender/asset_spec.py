@@ -11,6 +11,8 @@ import re
 from common import PARTS, ROOT
 
 DEFAULT_SPEC = ROOT / 'assets/specs/k2_shieldman.yml'
+E2E_DIR = ROOT / 'assets/sprites/e2e'
+E2E_SPEC = E2E_DIR / 'undead_grunt.yml'
 
 
 def _uncomment(line):

@@ -1,0 +1,115 @@
+{
+  "task": "T64",
+  "spec": "assets/sprites/e2e/undead_grunt.yml",
+  "generated_at": "2026-11-25T22:25:28+0800",
+  "total_seconds": 49.36,
+  "ok": true,
+  "steps": [
+    {
+      "name": "build_e2e",
+      "command": [
+        "blender",
+        "-b",
+        "--factory-startup",
+        "--python-exit-code",
+        "1",
+        "-P",
+        "tools/blender/render_sprites.py",
+        "--",
+        "--spec",
+        "assets/sprites/e2e/undead_grunt.yml",
+        "--output",
+        "assets/sprites/e2e",
+        "--supersample",
+        "8"
+      ],
+      "seconds": 24.11,
+      "exit": 0,
+      "output_tail": [
+        "00:19.859  render           | Saved: '<tmp>'",
+        "MODEL_VIEW equipped",
+        "00:22.825  render           | Saved: '<tmp>'",
+        "MODEL_VIEW equipped_side",
+        "COMPLETE {\"covered_pixels\": 40018, \"antialiased_pixels\": 10523, \"shade_range\": [27, 255], \"all_frames_inside_cell\": true, \"uv_islands_valid\": true, \"transparent_rgb_zero\": true} 21.9s",
+        "Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:31:21)",
+        "",
+        "Blender quit"
+      ]
+    },
+    {
+      "name": "validate_e2e_only",
+      "command": [
+        "blender",
+        "-b",
+        "--factory-startup",
+        "--python-exit-code",
+        "1",
+        "-P",
+        "tools/blender/validate.py",
+        "--",
+        "--spec",
+        "assets/sprites/e2e/undead_grunt.yml",
+        "--output",
+        "assets/sprites/e2e"
+      ],
+      "seconds": 3.83,
+      "exit": 0,
+      "output_tail": [
+        "SPEC_WALK undead_e2e {\"body_bob\": 0.0, \"foot_lift\": {\"l\": 0.04400002956390381, \"r\": 0.044000014662742615}, \"foot_travel\": {\"l\": 0.08799999579787254, \"r\": 0.08800000324845314}, \"height\": 1.92, \"left_contact_frame\": 4, \"right_contact_frame\": 0, \"stance_drift\": [2.3868036984862905e-07, 3.29514509253144e-07], \"upper_matrix_delta\": 0.0}",
+        "SPEC_MODEL undead_e2e triangles=528",
+        "SPEC_SHIELD undead_e2e idle_yaw=35.0 parry_yaw=11.6 side_visible_min={\"upper_tunic\": 51, \"far_shoulder\": 3, \"leg_l\": 11, \"boot_l\": 16, \"leg_r\": 1, \"boot_r\": 1}",
+        "SPEC_CHIBI_POSES undead_e2e sword_head_clear_samples=72 transitions_close=True",
+        "VALIDATED undead_e2e {\"covered_pixels\": 40018, \"antialiased_pixels\": 10523, \"shade_range\": [27, 255], \"all_frames_inside_cell\": true, \"uv_islands_valid\": true, \"transparent_rgb_zero\": true, \"standing_alpha_bbox\": [24, 21, 49, 62], \"ray_samples\": 99, \"ray_uv_error_p90\": 0.00174, \"ray_shade_error_p90\": 0.00169, \"model\": {\"objects\": 31, \"bones\": 15, \"polygons\": 288, \"triangles\": 528}, \"loops_close\": true, \"walk_legs_alternate\": true, \"exact_hit_pose\": true}",
+        "Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:31:21)",
+        "",
+        "Blender quit"
+      ]
+    },
+    {
+      "name": "validate_fixed_suite",
+      "command": [
+        "blender",
+        "-b",
+        "--factory-startup",
+        "--python-exit-code",
+        "1",
+        "-P",
+        "tools/blender/validate.py"
+      ],
+      "seconds": 7.45,
+      "exit": 0,
+      "output_tail": [
+        "SPEC_WALK undead_e2e {\"body_bob\": 0.0, \"foot_lift\": {\"l\": 0.04400002956390381, \"r\": 0.044000014662742615}, \"foot_travel\": {\"l\": 0.08799999579787254, \"r\": 0.08800000324845314}, \"height\": 1.92, \"left_contact_frame\": 4, \"right_contact_frame\": 0, \"stance_drift\": [2.3868036984862905e-07, 3.29514509253144e-07], \"upper_matrix_delta\": 0.0}",
+        "SPEC_MODEL undead_e2e triangles=528",
+        "SPEC_SHIELD undead_e2e idle_yaw=35.0 parry_yaw=11.6 side_visible_min={\"upper_tunic\": 51, \"far_shoulder\": 3, \"leg_l\": 11, \"boot_l\": 16, \"leg_r\": 1, \"boot_r\": 1}",
+        "SPEC_CHIBI_POSES undead_e2e sword_head_clear_samples=72 transitions_close=True",
+        "VALIDATED undead_e2e {\"covered_pixels\": 40018, \"antialiased_pixels\": 10523, \"shade_range\": [27, 255], \"all_frames_inside_cell\": true, \"uv_islands_valid\": true, \"transparent_rgb_zero\": true, \"standing_alpha_bbox\": [24, 21, 49, 62], \"ray_samples\": 99, \"ray_uv_error_p90\": 0.00174, \"ray_shade_error_p90\": 0.00169, \"model\": {\"objects\": 31, \"bones\": 15, \"polygons\": 288, \"triangles\": 528}, \"loops_close\": true, \"walk_legs_alternate\": true, \"exact_hit_pose\": true}",
+        "Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:31:21)",
+        "",
+        "Blender quit"
+      ]
+    },
+    {
+      "name": "godot_shader_capture",
+      "command": [
+        "godot",
+        "--path",
+        ".",
+        "-s",
+        "assets/sprites/e2e/capture.gd"
+      ],
+      "seconds": 13.97,
+      "exit": 0,
+      "output_tail": [
+        "T64 SHOT <repo>/shots/t64/e2e_game_angle.png 1600x700",
+        "T64 SHOTS OK",
+        "ERROR: Failed to open 'user://logs/godot2026-11-25T22.25.14.log'.",
+        "   at: copy (core/io/dir_access.cpp:429)",
+        "ERROR: Failed to open log file for writing: user://logs/godot.log",
+        "   at: rotate_file (core/io/logger.cpp:169)",
+        "ERROR: Condition \"f.is_null()\" is true.",
+        "   at: _save_to_cache (servers/rendering/renderer_rd/shader_rd.cpp:696)"
+      ]
+    }
+  ]
+}
