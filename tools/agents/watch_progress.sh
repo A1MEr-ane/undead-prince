@@ -7,7 +7,7 @@ cd "$(dirname "$0")/../.." || exit 1
 INT=${1:-3600}
 ROOT=$PWD
 while true; do
-  wts=$(pgrep -fl "exec -C $ROOT-t" | grep -o "$ROOT-t[0-9]*" | sort -u)
+  wts=$(pgrep -fl "exec -C $ROOT-t" | grep -oE "$ROOT-t[0-9]+( |$)" | tr -d " " | sort -u)
   if [ -z "$wts" ]; then echo "$(date '+%F %T') DONE 没有在跑的任务"; tail -3 reports/metrics.csv; exit 0; fi
   stalled=""
   for wt in $wts; do
