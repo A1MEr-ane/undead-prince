@@ -1,0 +1,850 @@
+[
+  {
+    "id": "ART_B02_01",
+    "version": 1,
+    "file": "art/story/ART_B02_01/alt/scene-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-dbcb0c63-6d16-44cc-b324-5fec568c297d.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_01.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_01.txt",
+    "prompt_sha256": "41c169962e1814725ff86b966a3ed4a3d972c3bc06291ebb3ba3c01d0a4ca56e",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "6ee5f7c2005213d5da11d6f46d2f03592c48530086fd5b6076f3f7bbd35e9544"
+  },
+  {
+    "id": "ART_B02_01",
+    "version": 2,
+    "file": "art/story/ART_B02_01/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-986b7c3d-3bd2-4b83-856e-c5d2e43ddcb7.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_01.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_01.txt",
+    "prompt_sha256": "41c169962e1814725ff86b966a3ed4a3d972c3bc06291ebb3ba3c01d0a4ca56e",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "43f5edd3b9c0fad1a099516cc65e98b778dd441a4faf26254cb6664577347c2c"
+  },
+  {
+    "id": "ART_B02_02",
+    "version": 1,
+    "file": "art/story/ART_B02_02/alt/scene-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-197f34ab-9e8b-4853-b130-cefe5ceb66a9.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_02.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_02.txt",
+    "prompt_sha256": "a38b8531364ee439df1359d040e68e813c05bf212b3ed4e36f4656e1a27fe0d0",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      }
+    ],
+    "sha256": "a446e45b722772d891062bb25d35275c0d16f0cf4a0e2114565dc15c941bd026"
+  },
+  {
+    "id": "ART_B02_02",
+    "version": 2,
+    "file": "art/story/ART_B02_02/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-87beb09c-5296-4ce6-9bb2-480cb38931f9.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_02.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_02.txt",
+    "prompt_sha256": "a38b8531364ee439df1359d040e68e813c05bf212b3ed4e36f4656e1a27fe0d0",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      }
+    ],
+    "sha256": "44768be4b22f516e3204ba9e15cafaa9d7844922d0dd4d073e233d81434f137d"
+  },
+  {
+    "id": "ART_B02_03",
+    "version": 1,
+    "file": "art/story/ART_B02_03/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-eccc1017-7a7c-45f7-aac2-c1a59c70cd80.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_03.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_03.txt",
+    "prompt_sha256": "53dbc70d6652f5f7a61f238c29dfab0249be494a019708b5e96e55fdb727c9cf",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-ARCHBISHOP/hero.png",
+        "sha256": "1cf4a83f7f3e1c8f03fb9c77f0225cc072fadb8ca6c995d1b846c27aa78de7c1"
+      }
+    ],
+    "sha256": "3e8af86c05838e9419ec265544410ecc31cfa07fb7d664d6e9c9bb6dd3130c33"
+  },
+  {
+    "id": "ART_B02_03",
+    "version": 2,
+    "file": "art/story/ART_B02_03/alt/scene-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-a660711b-bd7b-4f24-aa75-a2c3839ca7dc.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_03.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_03.txt",
+    "prompt_sha256": "53dbc70d6652f5f7a61f238c29dfab0249be494a019708b5e96e55fdb727c9cf",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-ARCHBISHOP/hero.png",
+        "sha256": "1cf4a83f7f3e1c8f03fb9c77f0225cc072fadb8ca6c995d1b846c27aa78de7c1"
+      }
+    ],
+    "sha256": "290d4a835e55dc0724cbf801415ac3f96b4adb3371169c652d0b15351c120e46"
+  },
+  {
+    "id": "ART_B02_04",
+    "version": 1,
+    "file": "art/story/ART_B02_04/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-9e780040-2569-4eae-8a8f-0ee314cc2e37.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_sha256": "412a531381aec74b0d97d0099bd42383eb182c21fe55803c6aefaecc30241bd4",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "6e6a550d23d0b035588eceb614d193871eba4eb38482781033a53d6a2f6c0c62"
+  },
+  {
+    "id": "ART_B02_04",
+    "version": 2,
+    "file": "art/story/ART_B02_04/alt/scene-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-821ba66f-d36f-4fb9-b466-79c303532901.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_sha256": "412a531381aec74b0d97d0099bd42383eb182c21fe55803c6aefaecc30241bd4",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "b4fa657178e8c6aee21bb7cedc9746b58338d932322ec0e7ccfddefa84f34bbc"
+  },
+  {
+    "id": "ART_B02_05",
+    "version": 1,
+    "file": "art/story/ART_B02_05/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-47e35083-e3ff-45c4-a23f-86a9a34c1134.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_05.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_05.txt",
+    "prompt_sha256": "d609fffbbbbce3d9030a4cc0d779642781aec9a07b39e0ea494b09a0f4c899af",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CHANCELLOR/hero.png",
+        "sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4"
+      }
+    ],
+    "sha256": "fba092dde226ee4ec8def732becec8461f38910fc4eb6dec0f95e9634d1b414a"
+  },
+  {
+    "id": "ART_B02_04",
+    "version": 3,
+    "file": "art/story/ART_B02_04/alt/scene-v3.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-b429c19f-0733-4c48-a20d-434ee4ea4b4c.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_04.txt",
+    "prompt_sha256": "412a531381aec74b0d97d0099bd42383eb182c21fe55803c6aefaecc30241bd4",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "c91f933c1a957fd6b79e88972733fc9bcbc80795fc0f81c034034fa1418618ac"
+  },
+  {
+    "id": "ART_B02_05",
+    "version": 2,
+    "file": "art/story/ART_B02_05/alt/scene-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-89d570a7-72cf-4d9d-a797-7a3df5dc4e12.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_05.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_05.txt",
+    "prompt_sha256": "d609fffbbbbce3d9030a4cc0d779642781aec9a07b39e0ea494b09a0f4c899af",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CHANCELLOR/hero.png",
+        "sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4"
+      }
+    ],
+    "sha256": "043fd4e6b450f73989aef146865d639bbdf8d3f12dc6bb3db360abb2051e0d75"
+  },
+  {
+    "id": "ART_B02_06",
+    "version": 1,
+    "file": "art/story/ART_B02_06/alt/scene-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-d48f842a-9b15-4e42-8e00-1a0afd60573d.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_06.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_06.txt",
+    "prompt_sha256": "47d7aac2f8d8f5231c5fb14e43c255b229ec9a218fa2b62c9c1651c86042dab2",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+        "sha256": "fbe237e661df69648da1b421075ca46340ce2439ec3aa9b9cd7dc539c1f80d67"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-STITCHER/hero.png",
+        "sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MAGE/hero.png",
+        "sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "6de14772610e4b59caff80fd0c0bafe8d57fdcb7cb948baaf88e24559b39909d"
+  },
+  {
+    "id": "ART_B02_06",
+    "version": 2,
+    "file": "art/story/ART_B02_06/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-56f7bc91-66c4-4120-8419-ff53dec1f283.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_06.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_06.txt",
+    "prompt_sha256": "47d7aac2f8d8f5231c5fb14e43c255b229ec9a218fa2b62c9c1651c86042dab2",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+        "sha256": "fbe237e661df69648da1b421075ca46340ce2439ec3aa9b9cd7dc539c1f80d67"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-STITCHER/hero.png",
+        "sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MAGE/hero.png",
+        "sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "f0a66a828c9e019774221b17c20c61d3878927dea6da344dd9ecfcbe9ae30db9"
+  },
+  {
+    "id": "ART_B02_07",
+    "version": 1,
+    "file": "art/story/ART_B02_07/alt/scene-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-59d9f131-df28-4c90-a857-eaded0bfcfa0.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_07.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_07.txt",
+    "prompt_sha256": "5eed673641c0f4a53971b6d30d728fda27e44507402d43c7a54fd86c834012c7",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png",
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "sha256": "903580456934e5ffec64c16ae7eda8591bf51206014d8522de6292b37e11c526"
+  },
+  {
+    "id": "ART_B02_07",
+    "version": 2,
+    "file": "art/story/ART_B02_07/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-a161c0a6-c60e-4d4b-9269-9fbd7c1aed8c.png",
+    "prompt_file": "art/prompts/rendered/STORY__ART_B02_07.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ART_B02_07.txt",
+    "prompt_sha256": "5eed673641c0f4a53971b6d30d728fda27e44507402d43c7a54fd86c834012c7",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png",
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "sha256": "a848c036fa97406d68ceafb68a1c879184cecafc554c6ec85701c83353b568b3"
+  },
+  {
+    "id": "ROYAL-FAMILY-PORTRAIT",
+    "version": 1,
+    "file": "art/story/ROYAL-FAMILY-PORTRAIT/scene.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-0194008c-7112-4cc4-82ff-ddb7c9e6a1f6.png",
+    "prompt_file": "art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "prompt_sha256": "d73396854b698ce2479cf3a6dea75b7a570d5203e1ef7222df8128b7b9241271",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+        "sha256": "fbe237e661df69648da1b421075ca46340ce2439ec3aa9b9cd7dc539c1f80d67"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MOTHER/hero.png",
+        "sha256": "6f9f0dcc8bf62a7e565b28054e561bd8341c21e89b988c7e0bf91d7c6d98af9c"
+      }
+    ],
+    "sha256": "f3109c53c4380270bb96c69646ffb26715de47ad0b8ccc3bba70d75385129b98"
+  },
+  {
+    "id": "ROYAL-FAMILY-PORTRAIT",
+    "version": 2,
+    "file": "art/story/ROYAL-FAMILY-PORTRAIT/alt/scene-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-66e3574d-4efc-4e74-b1df-4c4b4c2dc348.png",
+    "prompt_file": "art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/STORY__ROYAL-FAMILY-PORTRAIT.txt",
+    "prompt_sha256": "d73396854b698ce2479cf3a6dea75b7a570d5203e1ef7222df8128b7b9241271",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子-t50/art/story/references/style-references.png",
+        "sha256": "fbe237e661df69648da1b421075ca46340ce2439ec3aa9b9cd7dc539c1f80d67"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-PRINCE/hero.png",
+        "sha256": "497097d64a8c13447f8486b902e059075092bca8917b775fba4b95eff17a447d"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-KING/hero.png",
+        "sha256": "d7e05c6cea4f1e84b2e300deef77238260149fa5608f99c97fe30e8b33f0e0f2"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-MOTHER/hero.png",
+        "sha256": "6f9f0dcc8bf62a7e565b28054e561bd8341c21e89b988c7e0bf91d7c6d98af9c"
+      }
+    ],
+    "sha256": "5d5654da21508df47e2c88790327b38754f6f3d152abe9a731182b4f5dcb56b9"
+  },
+  {
+    "id": "ENDING-E00",
+    "version": 1,
+    "file": "art/story/ENDING-E00/ending.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-6337a31b-06ac-4179-9edf-e3d3134659a3.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E00.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E00.txt",
+    "prompt_sha256": "3cee2fc1d13607be4a665d92994c6ba11233c44b9533d43f4117fd620bbf0d51",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png",
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "sha256": "5a925aa941371184eee0768b6207e891c22fbd448edec700a87b4ebaac714dbe"
+  },
+  {
+    "id": "ENDING-E00",
+    "version": 2,
+    "file": "art/story/ENDING-E00/alt/ending-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-86ca8454-06a2-4fed-9404-7b1ba3dca91e.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E00.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E00.txt",
+    "prompt_sha256": "3cee2fc1d13607be4a665d92994c6ba11233c44b9533d43f4117fd620bbf0d51",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png",
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "sha256": "a0602e613eeb97a117a60f93da6b192c132d45f69822e9081fb5a9d2f3fba3e4"
+  },
+  {
+    "id": "ENDING-E00",
+    "version": 3,
+    "file": "art/story/ENDING-E00/alt/ending-v3.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-3b251ebd-ea62-47f9-97a9-3f094c7bbe96.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E00.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E00.txt",
+    "prompt_sha256": "3cee2fc1d13607be4a665d92994c6ba11233c44b9533d43f4117fd620bbf0d51",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-FERRYMAN/hero.png",
+        "sha256": "846a23645e732514f5ab80a5ba006e8a8675796f87793e712ab35d7c471e80d4"
+      }
+    ],
+    "sha256": "0d2d3d49bc70b192f8160eb021a025a059d22d2411e070a827c575c5ee77be4c"
+  },
+  {
+    "id": "ENDING-E01",
+    "version": 1,
+    "file": "art/story/ENDING-E01/ending.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-cd1ebde5-9934-4400-ab20-594c5f9631e7.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E01.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E01.txt",
+    "prompt_sha256": "d35fd35e93307ff0c7ddfaf34c168df4531dbffe2af297f1939082b37bd00e9e",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "63a89a566ecb0c5034ad7bc99271e028e4f331892cbfeafd08ee2544ac1d217d"
+  },
+  {
+    "id": "ENDING-E01",
+    "version": 2,
+    "file": "art/story/ENDING-E01/alt/ending-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-eff7c37d-d71c-4294-87f3-1a42666945a3.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E01.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E01.txt",
+    "prompt_sha256": "d35fd35e93307ff0c7ddfaf34c168df4531dbffe2af297f1939082b37bd00e9e",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "7dd852a33a19842fce2adb1b12ced1fe6af6dfeacc5d2dfd7a5004a1d9b6c64f"
+  },
+  {
+    "id": "ENDING-E02",
+    "version": 1,
+    "file": "art/story/ENDING-E02/alt/ending-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-9e2b5437-542f-416c-b9ab-e5346e094750.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E02.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E02.txt",
+    "prompt_sha256": "ffcc92c1cc46a01aca491d1d4dce5bd7c46e654251a9227214bb69ded031f410",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      }
+    ],
+    "sha256": "2667cfb6c1e8a810d3268cfa6e1a9736ec6db14ace1ccd01c9dca2739668b424"
+  },
+  {
+    "id": "ENDING-E02",
+    "version": 2,
+    "file": "art/story/ENDING-E02/ending.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-9abf20aa-6d5e-4c77-af7c-7a9542218e5f.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E02.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E02.txt",
+    "prompt_sha256": "ffcc92c1cc46a01aca491d1d4dce5bd7c46e654251a9227214bb69ded031f410",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-CAPTAIN/hero.png",
+        "sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a"
+      }
+    ],
+    "sha256": "0d7141f3f0df876ec63f717f9f0f404c56c4445b3f005f8ce4d8c1ce685a4824"
+  },
+  {
+    "id": "ENDING-E03",
+    "version": 1,
+    "file": "art/story/ENDING-E03/alt/ending-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-967aa6a0-72d2-4944-bf3e-1b48e2257181.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E03.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E03.txt",
+    "prompt_sha256": "f091448f42c7a3bb106ad0cbc967b3b30f789028b804e866d2aa8eb0971a705f",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "30972c2997a48a492e8c6252f22feff2bbcc8b09bfd82327a9a76aa19e0b2a11"
+  },
+  {
+    "id": "ENDING-E03",
+    "version": 2,
+    "file": "art/story/ENDING-E03/ending.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-9f4d65f7-a7ed-4a5f-9b90-035b3499f4db.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E03.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E03.txt",
+    "prompt_sha256": "f091448f42c7a3bb106ad0cbc967b3b30f789028b804e866d2aa8eb0971a705f",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "7ce3799f2f54a17709a5a597acc17eefac2ece1eea0c0bc91a2b18fed000a823"
+  },
+  {
+    "id": "ENDING-E04",
+    "version": 1,
+    "file": "art/story/ENDING-E04/ending.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-ae48c63c-1555-4056-b0e2-66d8cb936a9d.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E04.txt",
+    "prompt_sha256": "570908c83d871b861f85290546f5ce285e0b9854309f2c94dd86e9111c9b4cb0",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "7b32af259a6b95c3254a8a50c9128dbc7ba83af21e07e519a3c599c4bcb6ca59"
+  },
+  {
+    "id": "ENDING-E03",
+    "version": 3,
+    "file": "art/story/ENDING-E03/alt/ending-v3.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-aafd9c19-8737-4828-8ba1-d0a65a9e5b3c.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E03.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E03.txt",
+    "prompt_sha256": "f091448f42c7a3bb106ad0cbc967b3b30f789028b804e866d2aa8eb0971a705f",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      }
+    ],
+    "sha256": "78c462f19cb02cb0eee11ff0ff19d6937575062ea8945d8ff7e8b4fcce3d7c33"
+  },
+  {
+    "id": "ENDING-E04",
+    "version": 2,
+    "file": "art/story/ENDING-E04/alt/ending-v2.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-329b1ef9-1fee-4f7c-a91b-9620cc77f3be.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E04.txt",
+    "prompt_sha256": "570908c83d871b861f85290546f5ce285e0b9854309f2c94dd86e9111c9b4cb0",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "4dc95e4aded36702fb58c8fb8821b07d9a3e5d5f42c88101cf8863dd3cb1bbf2"
+  },
+  {
+    "id": "ENDING-E04",
+    "version": 3,
+    "file": "art/story/ENDING-E04/alt/ending-v3.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-8f7f4679-1581-45a6-9f62-83936fc6119a.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E04.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E04.txt",
+    "prompt_sha256": "570908c83d871b861f85290546f5ce285e0b9854309f2c94dd86e9111c9b4cb0",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-QUEEN/hero.png",
+        "sha256": "f04a9dd1552b7a837fb055038cb3b1ebf3caf29c3d700af8b441e1eecf1c6090"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/chars/CHAR-BUGLER/hero.png",
+        "sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639"
+      }
+    ],
+    "sha256": "56a18b9d6c69c4af7e84f3dffbd1fd78bbeaef42a6d4749c1aac2e33541cf5f5"
+  },
+  {
+    "id": "ENDING-E05",
+    "version": 1,
+    "file": "art/story/ENDING-E05/alt/ending-v1.png",
+    "source": "/Users/cyy/.codex/generated_images/01a2110c-9ce9-7980-9ba2-53b6185491b2/exec-64ff4235-0c38-431c-b2b3-5f2ce271a4c3.png",
+    "prompt_file": "art/prompts/rendered/ENDING__E05.txt",
+    "prompt_source_path": "/Users/cyy/Projects/亡魂王子/art/prompts/rendered/ENDING__E05.txt",
+    "prompt_sha256": "2f0182e461a166ed010eb0e3fbcc9e9cee4d84aa641c53a614aabb259e529b5e",
+    "references": [
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png",
+        "sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
+      },
+      {
+        "path": "/Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png",
+        "sha256": "3efb0967a72ae3ab5c292c40f36ab73684bdc72431a2a4945ad5f942e3336ee0"
+      }
+    ],
+    "sha256": "6d3c5b914945efa338b0269b8ac314ba875cbd9c73b1f432185c13d8747924a6"
+  }
+]
