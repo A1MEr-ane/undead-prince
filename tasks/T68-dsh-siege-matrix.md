@@ -2,7 +2,7 @@
 id: T68
 title: 灰盒攻城原型的策略矩阵与参数扫描（T67 续）
 owner: dsh
-status: queued
+status: running
 branch: dsh/t68-siege-matrix
 worktree: ../亡魂王子-t68
 allowed: [proto/siege/params/, reports/agents/]

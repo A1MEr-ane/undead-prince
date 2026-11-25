@@ -6,12 +6,28 @@ status: queued
 branch: codex/t70-camera-ab
 worktree: ../亡魂王子-t70
 allowed: [proto/siege/camera/, proto/siege/README.md]
-forbidden: [scripts/, shaders/, data/, docs/, tasks/, art/, assets/, project.godot, proto/siege/siege_director.gd]
+forbidden: [scripts/, shaders/, data/, docs/, tasks/, art/, assets/, project.godot]
 verify: tools/verify/proto_siege.sh
 retry_limit: 2
 max_minutes: 120
 escalate_if: [镜头改动影响战斗逻辑或确定性]
 ---
+
+## 续做（Lead 2026-11-26）
+上一轮因为"显示节点参与回放时，`zones` 组结果变了"而按规则停下，这是正确的。本轮授权：
+1. 定位原因。常见的可疑点：
+   - 显示层读写了模拟状态
+   - 战区判定依赖节点树里的节点（例如 Area3D 重叠查询），而不是纯数据
+   - 显示刷新改变了遍历顺序
+   - 用了 `_process` 的 delta
+2. 修好，原则是**模拟和显示分离**：
+   - 模拟只依赖固定步长和种子。
+   - 显示只读模拟状态。
+   - 可以改 `siege_director.gd` 等模拟文件，但只能做分离所需的最小改动。
+   - 修完要证明 `proto_siege.sh` 的 24 局结果和修之前**逐字一致**（无显示模式不应受影响）。
+3. 加一项验证：开启显示节点回放和无头回放的完整结果必须逐字一致，加进 `proto_siege.sh`。
+4. 顺手修：增援提醒在来源战区的标签上也要闪烁。
+5. 截图由 Lead 在桌面补拍，你不用再尝试。
 
 ## 目标
 用户 2026-11-26 提出新方向：**不做四个朝向，改成在地图上切换战场的不同区域，每个区域只保留一个固定的总览视角。** 把这个做成主方案，连续 360° 留作对照。**不改战斗逻辑**（模拟照常覆盖整张地图）。
