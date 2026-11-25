@@ -1202,67 +1202,102 @@
     "prompt_sha256": "d205e68d0ff4a8567ca1ea3efb77b387e8d83674fa1745d64b678e98027a65b6",
     "identity_reference": "art/chars/CHAR-CHANCELLOR/v1/hero.png",
     "identity_reference_sha256": "acce7766b3e0f8108bb3c6aebe13073469434b2ff91d90dad2d6be7c6f0dc8b4",
-    "alts": [],
-    "attempts": 1,
-    "selected_variant": null,
-    "variants": [],
+    "alts": [
+      "art/chars/CHAR-CHANCELLOR/alt/expressions-T59-a2-v1.png"
+    ],
+    "attempts": 2,
+    "selected_variant": 2,
+    "variants": [
+      {
+        "attempt": 2,
+        "variant": 1,
+        "source": "/Users/cyy/.codex/generated_images/01a2141c-eb4e-7953-8650-600435c14672/exec-0b36e286-ebbb-401f-8782-a3d70e855c92.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/alt/expressions-T59-a2-v1.png"
+      },
+      {
+        "attempt": 2,
+        "variant": 2,
+        "source": "/Users/cyy/.codex/generated_images/01a2141c-eb4e-7953-8650-600435c14672/exec-9371599c-b352-49ec-8d08-d82aba65931f.png",
+        "destination": "art/chars/CHAR-CHANCELLOR/expressions.png"
+      }
+    ],
     "checklist": {
       "1_style": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "pass",
+        "evidence": "成熟骨相、眼周细纹，转折处疏密墨线与布料笔触；左上暖主光、大片炭灰暗部与细金边光。"
       },
       "2_identity": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "pass",
+        "evidence": "银发无须、窄脸、酒红炭灰官袍、红条金链、封印匣和捆扎文书与v1身份参考一致。"
       },
       "3_build": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "pass",
+        "evidence": "窄肩窄躯干、整齐克制的姿态，与伯爵宽厚及元帅重肩轮廓不同；半身图不能独立核验中等身高。"
       },
       "4_pose": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "pass",
+        "evidence": "左侧近正面抱文书、中间稍侧转扶下巴并横臂、右侧更侧转抬下巴摊手；耐心、薄笑、冷蔑依次可辨，身体角度变化较克制。"
       },
       "5_turnaround": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "not_applicable",
+        "evidence": "不适用于expressions。"
       },
       "6_prince": {
         "status": "not_applicable",
         "evidence": "本任务不含王子。"
       },
       "7_text_anatomy": {
-        "status": "not_checked",
-        "evidence": "本轮未得到生成结果；保留任务开始前旧图。"
+        "status": "pass",
+        "evidence": "无文字、无水印；三名半身各两只手，未见额外肢体。"
       }
     },
     "status": "in_review",
-    "generation_status": "blocked_usage_limit",
+    "generation_status": "generated",
     "generation_tool": "built-in image_gen",
-    "generation_calls_requested": 2,
-    "generation_calls_successful": 0,
-    "generation_error": {
-      "type": "usage_limit_reached",
-      "http_status": 429,
-      "reset_at_utc": "2026-11-25T17:18:32Z",
-      "reset_at_singapore": "2026-11-26T01:18:32+08:00",
-      "resets_in_seconds": 36537,
-      "reason": "每日额度恢复时间超过任务300分钟时限。"
-    },
-    "output_is_original": true,
+    "generation_calls_requested": 4,
+    "generation_calls_successful": 2,
+    "output_is_original": false,
     "dimensions": [
       1536,
       1024
     ],
-    "selection_reason": "额度达到每日上限，未产出两版，未选版；旧图保留。",
+    "selection_reason": "额度恢复后的第二次尝试生成两版；选第二版，礼貌耐心、控制的薄笑和冷蔑更清楚，抱文书、扶下巴、摊手三种手势可辨；第一版保留在alt。",
     "prompt_used_verbatim": true,
     "style_references": [
       "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png"
     ],
-    "output_sha256": "d9de72af938968362fd2f85858b5e2415184a07115a487a2a9cb84cef9af1bdc",
-    "review_notes": [],
-    "quality_status": "pending_generation"
+    "output_sha256": "c0b412ff533d96968b4f766f7c917378acbe8a6ba37ee992378a9db8d3f738af",
+    "review_notes": [
+      "三张的头倾和肩线逐渐侧转，身体角度差异较克制；交Lead最终判断。"
+    ],
+    "quality_status": "self_checked_pending_lead_review",
+    "generation_history": [
+      {
+        "attempt": 1,
+        "generation_status": "blocked_usage_limit",
+        "generation_calls_requested": 2,
+        "generation_calls_successful": 0,
+        "error": {
+          "type": "usage_limit_reached",
+          "http_status": 429,
+          "reset_at_utc": "2026-11-25T17:18:32Z",
+          "reset_at_singapore": "2026-11-26T01:18:32+08:00",
+          "resets_in_seconds": 36537,
+          "reason": "每日额度恢复时间超过任务300分钟时限。"
+        }
+      },
+      {
+        "attempt": 2,
+        "generation_status": "generated",
+        "generation_calls_requested": 2,
+        "generation_calls_successful": 2,
+        "resumed_on": "2026-11-26"
+      }
+    ],
+    "selected_attempt": 2,
+    "selected_generation_index": 2,
+    "generation_calls": 4
   }
 ]
