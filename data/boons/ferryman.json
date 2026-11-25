@@ -1,0 +1,92 @@
+{
+  "crew": "ferryman",
+  "crew_name_zh": "渡魂人",
+  "status": {
+    "status_id": "sunk",
+    "name_zh": "沉",
+    "effect_zh": "带沉的敌人被击退时多退一截；落水必死，不能被岸边救起。",
+    "params": {}
+  },
+  "boons": [
+    {
+      "id": "ferryman_leave_a_seat",
+      "crew": "ferryman",
+      "slot": "passive",
+      "name_zh": "留一处空座",
+      "effect_zh": "一支覆灭的部队立刻在下一场战斗复归",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "reward_options": 2
+      },
+      "cost_zh": "下一个奖励只剩 2 选 1"
+    },
+    {
+      "id": "ferryman_check_knot",
+      "crew": "ferryman",
+      "slot": "passive",
+      "name_zh": "检查绳结",
+      "effect_zh": "所有亡魂的击退附带沉",
+      "status": "sunk",
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {},
+      "cost_zh": "己方落水的亡魂同样必死"
+    },
+    {
+      "id": "ferryman_one_path",
+      "crew": "ferryman",
+      "slot": "passive",
+      "name_zh": "你求的是一条路",
+      "effect_zh": "地图上多显示一层航路，可以看到两步之外",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "route_layers": 1,
+        "preview_steps": 2,
+        "soulfire_income_reduction": 0.2
+      },
+      "cost_zh": "本局魂火收入降低 20%"
+    },
+    {
+      "id": "ferryman_last_title",
+      "crew": "ferryman",
+      "slot": "passive",
+      "name_zh": "上一轮的头衔",
+      "effect_zh": "本局开局多 1 个随机增益，来自上一轮拿得最多的那位旧部",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "bonus_boons": 1
+      },
+      "cost_zh": "只能在开局拿"
+    },
+    {
+      "id": "ferryman_tide_gather",
+      "crew": "ferryman",
+      "slot": "passive",
+      "name_zh": "收潮",
+      "effect_zh": "王子倒下时不判负，全军撤回一次，本场战斗重开",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {
+        "triggers_per_run": 1
+      },
+      "cost_zh": "每局只能触发一次，触发后失去所有遗物"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "crew": "oswin",
+  "crew_name_zh": "奥斯温",
+  "status": {
+    "status_id": "soul_burn",
+    "name_zh": "冥燃",
+    "effect_zh": "持续掉血。带冥燃的敌人死亡时，会点燃周围 1 米内的敌人。",
+    "params": {
+      "radius": 1.0
+    }
+  },
+  "boons": [
+    {
+      "id": "oswin_ember_blade",
+      "crew": "oswin",
+      "slot": "blade",
+      "name_zh": "余烬刃",
+      "effect_zh": "普攻附带冥燃",
+      "status": "soul_burn",
+      "requires": [
+        "burning"
+      ],
+      "requires_zh": "燃烧",
+      "params": {}
+    },
+    {
+      "id": "oswin_ignite",
+      "crew": "oswin",
+      "slot": "formation",
+      "name_zh": "引燃",
+      "effect_zh": "队伍技能变成向前方扇形喷出冥火",
+      "status": null,
+      "requires": [
+        "squad_skill",
+        "burning"
+      ],
+      "requires_zh": "队伍技能、燃烧",
+      "params": {}
+    },
+    {
+      "id": "oswin_fire_trail",
+      "crew": "oswin",
+      "slot": "march",
+      "name_zh": "火径",
+      "effect_zh": "部队移动时留下冥火痕迹，3 秒内灼伤踩上去的敌人",
+      "status": null,
+      "requires": [
+        "burning"
+      ],
+      "requires_zh": "燃烧",
+      "params": {
+        "duration": 3
+      }
+    },
+    {
+      "id": "oswin_precise_calculation",
+      "crew": "oswin",
+      "slot": "soulfire",
+      "name_zh": "精密计算",
+      "effect_zh": "王子技能消耗降低 25%，落点更精确（范围缩小、伤害提高）",
+      "status": null,
+      "requires": [
+        "prince_soulfire"
+      ],
+      "requires_zh": "王子冥火",
+      "params": {
+        "cost_reduction": 0.25
+      }
+    },
+    {
+      "id": "oswin_residual_use",
+      "crew": "oswin",
+      "slot": "raise",
+      "name_zh": "残余利用",
+      "effect_zh": "招魂不消耗尸体，改为消耗场上的冥燃火焰",
+      "status": null,
+      "requires": [
+        "raise",
+        "burning"
+      ],
+      "requires_zh": "招魂、燃烧",
+      "params": {}
+    },
+    {
+      "id": "oswin_account_audit",
+      "crew": "oswin",
+      "slot": "passive",
+      "name_zh": "账目核查",
+      "effect_zh": "敌方首领或精英身上的状态持续时间翻倍",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {
+        "duration_multiplier": 2.0
+      }
+    },
+    {
+      "id": "oswin_engineering",
+      "crew": "oswin",
+      "slot": "passive",
+      "name_zh": "工程学",
+      "effect_zh": "冥火能量自然恢复速度提高 30%",
+      "status": null,
+      "requires": [
+        "prince_soulfire"
+      ],
+      "requires_zh": "王子冥火",
+      "params": {
+        "regen_bonus": 0.3
+      }
+    },
+    {
+      "id": "oswin_restricted_archive",
+      "crew": "oswin",
+      "slot": "passive",
+      "name_zh": "受限档案",
+      "effect_zh": "战斗开始时自动标出传令兵的位置",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "守军传令兵",
+      "params": {}
+    },
+    {
+      "id": "oswin_two_words",
+      "crew": "oswin",
+      "slot": "passive",
+      "name_zh": "两句话别混淆",
+      "effect_zh": "冥燃对建筑同样有效，可以点燃房屋和船（不算伤害平民，民房另算）",
+      "status": null,
+      "requires": [
+        "burning"
+      ],
+      "requires_zh": "燃烧、建筑",
+      "params": {}
+    },
+    {
+      "id": "oswin_engineering_marvel",
+      "crew": "oswin",
+      "slot": "mastery",
+      "name_zh": "工程精妙",
+      "effect_zh": "冥燃叠到 3 层时引爆：小范围击飞。",
+      "status": null,
+      "requires": [
+        "burning"
+      ],
+      "requires_zh": null,
+      "params": {
+        "stacks": 3
+      }
+    }
+  ]
+}

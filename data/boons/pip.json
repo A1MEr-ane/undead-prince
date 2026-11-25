@@ -1,0 +1,162 @@
+{
+  "crew": "pip",
+  "crew_name_zh": "皮普",
+  "status": {
+    "status_id": "panic",
+    "name_zh": "惊惶",
+    "effect_zh": "敌人士气检定变差。带惊惶的敌人死亡时，把惊惶传给附近同伴。",
+    "params": {}
+  },
+  "boons": [
+    {
+      "id": "pip_off_key",
+      "crew": "pip",
+      "slot": "blade",
+      "name_zh": "走调",
+      "effect_zh": "普攻附带惊惶",
+      "status": "panic",
+      "requires": [
+        "morale"
+      ],
+      "requires_zh": "士气",
+      "params": {}
+    },
+    {
+      "id": "pip_rally_horn",
+      "crew": "pip",
+      "slot": "formation",
+      "name_zh": "集结号",
+      "effect_zh": "队伍技能变成：全队体力回满，3 秒内移动速度翻倍",
+      "status": null,
+      "requires": [
+        "squad_skill",
+        "existing"
+      ],
+      "requires_zh": "队伍技能、现有（体力）",
+      "params": {
+        "duration": 3,
+        "speed_multiplier": 2.0
+      }
+    },
+    {
+      "id": "pip_charge_horn",
+      "crew": "pip",
+      "slot": "march",
+      "name_zh": "冲锋号",
+      "effect_zh": "每个号点，正在移动的部队向前冲一小段",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "号点、现有（冲锋）",
+      "params": {}
+    },
+    {
+      "id": "pip_echo",
+      "crew": "pip",
+      "slot": "soulfire",
+      "name_zh": "回声",
+      "effect_zh": "王子技能在下一个号点再释放一次，威力是 50%",
+      "status": null,
+      "requires": [
+        "prince_soulfire",
+        "existing"
+      ],
+      "requires_zh": "王子冥火、号点",
+      "params": {
+        "power_ratio": 0.5
+      }
+    },
+    {
+      "id": "pip_roll_call",
+      "crew": "pip",
+      "slot": "raise",
+      "name_zh": "点卯",
+      "effect_zh": "每个号点自动招魂 1 具尸体",
+      "status": null,
+      "requires": [
+        "raise",
+        "existing"
+      ],
+      "requires_zh": "招魂、号点",
+      "params": {
+        "corpse_count": 1
+      }
+    },
+    {
+      "id": "pip_everyone_here",
+      "crew": "pip",
+      "slot": "passive",
+      "name_zh": "全员到齐",
+      "effect_zh": "号点时，体力低于 0.3 的亡魂回满体力",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "号点、现有（体力）",
+      "params": {
+        "stamina_threshold": 0.3
+      }
+    },
+    {
+      "id": "pip_fear_of_quiet",
+      "crew": "pip",
+      "slot": "passive",
+      "name_zh": "怕安静",
+      "effect_zh": "场上没有战斗时，部队移动速度提高 40%",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {
+        "speed_bonus": 0.4
+      }
+    },
+    {
+      "id": "pip_joke_audience",
+      "crew": "pip",
+      "slot": "passive",
+      "name_zh": "笑话有听众",
+      "effect_zh": "敌人第一次溃逃时，整支守军队伍都获得惊惶",
+      "status": "panic",
+      "requires": [
+        "morale"
+      ],
+      "requires_zh": "士气",
+      "params": {
+        "trigger_times": 1
+      }
+    },
+    {
+      "id": "pip_want_to_see_capital",
+      "crew": "pip",
+      "slot": "passive",
+      "name_zh": "想看王都",
+      "effect_zh": "每通过一个地点，号点间隔缩短 0.1 秒，最低 3 秒（跨战斗累积）",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "号点",
+      "params": {
+        "interval_reduction": 0.1,
+        "minimum_interval": 3
+      }
+    },
+    {
+      "id": "pip_scatter_horn",
+      "crew": "pip",
+      "slot": "mastery",
+      "name_zh": "散队号",
+      "effect_zh": "号点时，所有带惊惶的敌人后退一步（硬威慑）。",
+      "status": null,
+      "requires": [
+        "existing",
+        "morale"
+      ],
+      "requires_zh": null,
+      "params": {}
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "crew": "bernard",
+  "crew_name_zh": "伯纳德",
+  "status": {
+    "status_id": "broken_formation",
+    "name_zh": "破阵",
+    "effect_zh": "敌人盾牌失效，格挡判定取消，持续 4 秒。",
+    "params": {
+      "duration": 4
+    }
+  },
+  "boons": [
+    {
+      "id": "bernard_shield_bash",
+      "crew": "bernard",
+      "slot": "blade",
+      "name_zh": "盾击",
+      "effect_zh": "普攻附带破阵",
+      "status": "broken_formation",
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有（格挡）",
+      "params": {}
+    },
+    {
+      "id": "bernard_shield_wall_advance",
+      "crew": "bernard",
+      "slot": "formation",
+      "name_zh": "方阵推进",
+      "effect_zh": "队伍技能变成持盾推进：正面挡箭，缓慢前进，推开路上的敌人",
+      "status": null,
+      "requires": [
+        "squad_skill"
+      ],
+      "requires_zh": "队伍技能",
+      "params": {}
+    },
+    {
+      "id": "bernard_charge_formation",
+      "crew": "bernard",
+      "slot": "march",
+      "name_zh": "冲阵",
+      "effect_zh": "部队到位时，第一个碰到的敌人被撞开并附带破阵",
+      "status": "broken_formation",
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有（到位、launch）",
+      "params": {}
+    },
+    {
+      "id": "bernard_banner_drop",
+      "crew": "bernard",
+      "slot": "soulfire",
+      "name_zh": "号旗落点",
+      "effect_zh": "王子技能落点附近的亡魂 5 秒内不受威慑、不被击退",
+      "status": null,
+      "requires": [
+        "prince_soulfire"
+      ],
+      "requires_zh": "王子冥火",
+      "params": {
+        "duration": 5
+      }
+    },
+    {
+      "id": "bernard_rejoin",
+      "crew": "bernard",
+      "slot": "raise",
+      "name_zh": "归队",
+      "effect_zh": "招魂起来的亡魂直接补进最近一支部队的空位，不另成一队",
+      "status": null,
+      "requires": [
+        "raise"
+      ],
+      "requires_zh": "招魂",
+      "params": {}
+    },
+    {
+      "id": "bernard_roll_call",
+      "crew": "bernard",
+      "slot": "passive",
+      "name_zh": "点名",
+      "effect_zh": "部队每阵亡 1 人，其余人伤害提高 10%，可叠加，本场有效",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {
+        "per_deaths": 1,
+        "damage_bonus": 0.1
+      }
+    },
+    {
+      "id": "bernard_veteran_position",
+      "crew": "bernard",
+      "slot": "passive",
+      "name_zh": "老兵站位",
+      "effect_zh": "在站位 1 米内的亡魂受到的击退减半",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {
+        "radius": 1.0,
+        "knockback_multiplier": 0.5
+      }
+    },
+    {
+      "id": "bernard_full_rank",
+      "crew": "bernard",
+      "slot": "passive",
+      "name_zh": "整排跟上",
+      "effect_zh": "冲锋传播的邻居数从 3 增加到 5",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有（冲锋传播）",
+      "params": {
+        "neighbors_before": 3,
+        "neighbors_after": 5
+      }
+    },
+    {
+      "id": "bernard_permission_to_object",
+      "crew": "bernard",
+      "slot": "passive",
+      "name_zh": "请准许异议",
+      "effect_zh": "部队被下令撤退时，先反冲一次，再执行撤退",
+      "status": null,
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": "现有",
+      "params": {}
+    },
+    {
+      "id": "bernard_iron_discipline",
+      "crew": "bernard",
+      "slot": "mastery",
+      "name_zh": "铁律",
+      "effect_zh": "破阵的敌人被击退时，撞到的同伴也会获得破阵。",
+      "status": "broken_formation",
+      "requires": [
+        "existing"
+      ],
+      "requires_zh": null,
+      "params": {}
+    }
+  ]
+}
