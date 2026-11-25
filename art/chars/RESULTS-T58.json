@@ -225,30 +225,30 @@
       "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-pre-resume.png",
       "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v1.png",
       "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png",
-      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v1.png"
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v2.png"
     ],
-    "attempts": 1,
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未通过",
+        "result": "通过",
         "applicable": true,
-        "note": "三次仍偏旧版硬边平涂与较密轮廓，未充分达到 A 样张的柔和厚涂和暗部控制"
+        "note": "较旧版减少硬轮廓，甲面有细笔触和暗部收边；三视图照明一致。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
         "result": "通过",
         "applicable": true,
-        "note": "白金旧甲、破紫披风、锚扣、魂火剑、深发与旧图一致"
+        "note": "旧白金甲、破紫披风、锚扣和深发一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
         "result": "通过",
         "applicable": true,
-        "note": "长肢、瘦腰保留"
+        "note": "长肢、瘦腰与消瘦脸保留。"
       },
       {
         "item": 4,
@@ -262,26 +262,26 @@
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "通过",
         "applicable": true,
-        "note": "正侧背等高，同地线，空手；道具独立"
+        "note": "三视图等高，同地线、空手，道具独立。"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "通过",
         "applicable": true,
-        "note": "正面观众右半裸骨和冥火，断冠清楚；侧背视图受视角遮挡"
+        "note": "正面观众右半为裸骨，露齿与眼窝冥火清楚，金冠前方断口可见；侧背受正常视角遮挡。"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
         "result": "通过",
         "applicable": true,
-        "note": "只有提示词允许的姓名和视图标注，未见多肢"
+        "note": "只有提示词允许的姓名和视图标注，无多肢。"
       }
     ],
     "status": "in_review",
-    "generation_status": "candidates_pending_review",
-    "acceptance": "incomplete",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
     "prompt_verbatim": true,
     "reference_images": [
@@ -295,24 +295,37 @@
     "generated_versions": [
       {
         "variant": 1,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v1.png",
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
         "source_file": "/Users/cyy/.codex/generated_images/01a2141c-9d20-76f3-90f2-ba3378bcd93a/exec-62c41a6f-cca6-4983-9978-493d55c2985d.png",
         "dimensions": [
           1672,
           941
         ],
         "sha256": "16968042569d7e47128765a2156ff9c737e095572a1997c9e5f22401bad0241f",
-        "review_role": "candidate",
+        "review_role": "selected",
+        "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-6d728459-bb25-4181-beec-e61751369493.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "65f484366ebe5a10ffdb846d54f865cedcfa811c1c4d14095c7154258bba0303",
+        "review_role": "alternative",
         "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
         "prompt_verbatim": true
       }
     ],
-    "selected_variant": null,
-    "selection_note": "选第 3 版，结构最稳定；三次均未充分达到 A 风格，交 Lead 复审。",
-    "successful_variants": 1,
-    "generation_calls": 1,
+    "selected_variant": 1,
+    "selection_note": "选新增参考后的第 1 版：甲面层次更丰富，骷髅眼窝和牙列清楚；第 2 版保留。",
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
-    "file_generation": "retained_previous_pending_review",
+    "file_generation": "t58_selected_new_image",
     "revision_history": [
       {
         "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
@@ -437,13 +450,15 @@
     ],
     "revision": "2026-11-26-skull-redraw",
     "additional_identity_reference_sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea",
-    "resume_generation_calls": 1
+    "resume_generation_calls": 2
   },
   {
     "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__expressions.txt",
     "alts": [
-      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-v2.png"
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-v2.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-pre-skull-resume.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-r2-v1.png"
     ],
     "attempts": 2,
     "checklist": [
@@ -452,28 +467,28 @@
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
         "result": "通过",
         "applicable": true,
-        "note": "面部细腻厚涂、暗部收边和细青绿边光符合 A"
+        "note": "面部细笔触、深暗部与青绿细边光接近 A 样张。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
         "result": "通过",
         "applicable": true,
-        "note": "白金甲紫披风、锚扣与旧图一致"
+        "note": "深发、白金旧甲、紫披风、锚扣一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
         "result": "通过",
         "applicable": true,
-        "note": "瘦长胸腰和消瘦脸部保留"
+        "note": "长颈、瘦腰与消瘦面部保留。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
         "result": "通过",
         "applicable": true,
-        "note": "三幅分别扶剑、俯身握剑摊手、倚靠托头；身体角度、头倾与手势各异"
+        "note": "三幅分别双手扶剑、前倾伸掌、倚剑托头；身体转向、头倾和手势不同，冷怒与疲惫半笑可辨。"
       },
       {
         "item": 5,
@@ -487,14 +502,14 @@
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "通过",
         "applicable": true,
-        "note": "三幅观众右半裸骨露齿、眼窝冥火、冠前断口均清楚"
+        "note": "三幅观众右侧均有额骨至下颌裸骨、外露牙列、燃烧空眼窝，冠前断口清楚。"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
         "result": "通过",
         "applicable": true,
-        "note": "没有文字，未见额外手脚"
+        "note": "无文字或多肢，手甲关节清晰。"
       }
     ],
     "status": "in_review",
@@ -506,43 +521,155 @@
       "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+      "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/prince_hero-style.png",
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
     ],
     "tool": "built-in image_gen",
     "generated_versions": [
       {
         "variant": 1,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-c2cc7a7d-7eb8-47ac-9fe7-4f28117ec90e.png",
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-r2-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-1fdfed2b-5b93-49c2-bc2c-3ab54c30b4d2.png",
         "dimensions": [
           1536,
           1024
         ],
-        "sha256": "d084e7e93a4b6740a4bd9bfacaf508b59a13036e90848ffcd25c1836881a9d84",
-        "review_role": "selected",
+        "sha256": "89bd17ac79e007fead50e57c8106ef69874e3ece26316e84f1c5655a443b72cd",
+        "review_role": "alternative",
         "prompt_sha256": "adc4723df3693cdfc2526574936f37ab406a23baa990b235d25c27a77def4e68",
         "prompt_verbatim": true
       },
       {
         "variant": 2,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-v2.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-1848de3c-65ff-473f-9925-d4dbdaf24fb1.png",
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-1220534e-0f05-4f76-af1e-8600687e530a.png",
         "dimensions": [
           1536,
           1024
         ],
-        "sha256": "ac67157c5ed25bcd5e8a13651edeeac0e66b50a6881e516c5fe4a7ad4f77bafb",
-        "review_role": "alternative",
+        "sha256": "7f9b986ff7db2776e4aad161d5c522d98ab35f196f8865fde62dc21fbb702059",
+        "review_role": "selected",
         "prompt_sha256": "adc4723df3693cdfc2526574936f37ab406a23baa990b235d25c27a77def4e68",
         "prompt_verbatim": true
       }
     ],
-    "selected_variant": 1,
-    "selection_note": "选第 1 版：三幅身体角度与手势差异大于第 2 版，冷怒和疲惫半笑清楚。",
+    "selected_variant": 2,
+    "selection_note": "选第 2 版：三幅半脸骷髅更完整，第三幅手没有遮住骨面，姿态和表情差异更清楚。",
     "successful_variants": 2,
     "generation_calls": 2,
     "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
-    "file_generation": "t58_selected_new_image"
+    "file_generation": "t58_selected_new_image",
+    "revision_history": [
+      {
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
+        "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__expressions.txt",
+        "alts": [
+          "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-v2.png"
+        ],
+        "attempts": 2,
+        "checklist": [
+          {
+            "item": 1,
+            "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
+            "result": "通过",
+            "applicable": true,
+            "note": "面部细腻厚涂、暗部收边和细青绿边光符合 A"
+          },
+          {
+            "item": 2,
+            "criterion": "身份和服装与旧身份图一致",
+            "result": "通过",
+            "applicable": true,
+            "note": "白金甲紫披风、锚扣与旧图一致"
+          },
+          {
+            "item": 3,
+            "criterion": "体型符合 BUILD，剪影有区别",
+            "result": "通过",
+            "applicable": true,
+            "note": "瘦长胸腰和消瘦脸部保留"
+          },
+          {
+            "item": 4,
+            "criterion": "动作符合 POSE；表情图身体角度和手势各异",
+            "result": "通过",
+            "applicable": true,
+            "note": "三幅分别扶剑、俯身握剑摊手、倚靠托头；身体角度、头倾与手势各异"
+          },
+          {
+            "item": 5,
+            "criterion": "三视图等高、空手，保留 BUILD 体型",
+            "result": "不适用",
+            "applicable": false,
+            "note": "本图类型不适用"
+          },
+          {
+            "item": 6,
+            "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
+            "result": "通过",
+            "applicable": true,
+            "note": "三幅观众右半裸骨露齿、眼窝冥火、冠前断口均清楚"
+          },
+          {
+            "item": 7,
+            "criterion": "无多余文字、手和脚",
+            "result": "通过",
+            "applicable": true,
+            "note": "没有文字，未见额外手脚"
+          }
+        ],
+        "status": "in_review",
+        "generation_status": "generated",
+        "acceptance": "passed",
+        "prompt_sha256": "adc4723df3693cdfc2526574936f37ab406a23baa990b235d25c27a77def4e68",
+        "prompt_verbatim": true,
+        "reference_images": [
+          "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+          "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
+        ],
+        "tool": "built-in image_gen",
+        "generated_versions": [
+          {
+            "variant": 1,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-pre-skull-resume.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-c2cc7a7d-7eb8-47ac-9fe7-4f28117ec90e.png",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "sha256": "d084e7e93a4b6740a4bd9bfacaf508b59a13036e90848ffcd25c1836881a9d84",
+            "review_role": "selected",
+            "prompt_sha256": "adc4723df3693cdfc2526574936f37ab406a23baa990b235d25c27a77def4e68",
+            "prompt_verbatim": true
+          },
+          {
+            "variant": 2,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-v2.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-1848de3c-65ff-473f-9925-d4dbdaf24fb1.png",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "sha256": "ac67157c5ed25bcd5e8a13651edeeac0e66b50a6881e516c5fe4a7ad4f77bafb",
+            "review_role": "alternative",
+            "prompt_sha256": "adc4723df3693cdfc2526574936f37ab406a23baa990b235d25c27a77def4e68",
+            "prompt_verbatim": true
+          }
+        ],
+        "selected_variant": 1,
+        "selection_note": "选第 1 版：三幅身体角度与手势差异大于第 2 版，冷怒和疲惫半笑清楚。",
+        "successful_variants": 2,
+        "generation_calls": 2,
+        "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
+        "file_generation": "t58_selected_new_image",
+        "archived_selected_file": "art/chars/CHAR-PRINCE-UNDEAD/alt/expressions-t58-pre-skull-resume.png"
+      }
+    ],
+    "revision": "2026-11-26-skull-redraw",
+    "resume_generation_calls": 2,
+    "additional_identity_reference_sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea"
   },
   {
     "file": "art/chars/CHAR-PRINCE/hero.png",
@@ -2048,61 +2175,61 @@
     "alts": [
       "art/chars/CHAR-MOTHER/alt/expressions-t58-v1.png"
     ],
-    "attempts": 2,
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "细墨线、面部笔触与大面积衣物暗部，暖金细边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "低辫深发、珍珠耳饰、波浪金扣、奶油色与海蓝灰衣装一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "肩胸和腰腹线条柔和，未画成瘦削体型；半身图无法验证身高。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "温和微笑双手叠放、侧身笑而托颌、前倾担忧摊手扶胸，身体角度和手势有差异。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "尚未完成两版生成和选版，正式文件仍为旧图"
+        "note": "无文字、多手或多脚。"
       }
     ],
     "status": "in_review",
-    "generation_status": "incomplete_one_variant",
-    "acceptance": "incomplete",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "0622ddc8e22d669faf91a69de9d78c9cb9118a6f819147a9ad273fcba930d36c",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2122,17 +2249,29 @@
           1024
         ],
         "sha256": "52d5af0c79482c2dd6f24ea0f2d2725bc639bf7a80ce03cc227f1f1e0f4e46d3",
-        "review_role": "candidate_unselected",
+        "review_role": "alternative",
+        "prompt_sha256": "0622ddc8e22d669faf91a69de9d78c9cb9118a6f819147a9ad273fcba930d36c",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MOTHER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-bf29e031-f095-49c6-8816-a43b2e29bcb4.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "c493a14dcf21740938ef4b6e9edafc02283a74639709fbbe52cc6ef1742b1352",
+        "review_role": "selected",
         "prompt_sha256": "0622ddc8e22d669faf91a69de9d78c9cb9118a6f819147a9ad273fcba930d36c",
         "prompt_verbatim": true
       }
     ],
-    "successful_variants": 1,
-    "generation_calls": 2,
+    "successful_variants": 2,
+    "generation_calls": 3,
     "identity_reference_sha256": "6f9f0dcc8bf62a7e565b28054e561bd8341c21e89b988c7e0bf91d7c6d98af9c",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
     "generation_errors": [
       {
         "variant": 2,
@@ -2147,8 +2286,10 @@
         "resets_in_seconds_at_error": 36875
       }
     ],
-    "selection_note": "第 1 版保存在 alt/expressions-t58-v1.png；第 2 版因额度失败，未完成两版比较，未覆盖正式文件。",
-    "candidate_review": {
+    "selection_note": "选第 2 版：面部年龄感、手部结构和担忧的演出更清楚；首版保留。",
+    "resume_generation_calls": 1,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
+    "previous_candidate_review": {
       "variant": 1,
       "file": "art/chars/CHAR-MOTHER/alt/expressions-t58-v1.png",
       "notes": [
@@ -2162,62 +2303,65 @@
   {
     "file": "art/chars/CHAR-CAPTAIN/hero.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-CAPTAIN__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/hero-t58-v1.png",
+      "art/chars/CHAR-CAPTAIN/alt/hero-t58-v2.png"
+    ],
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "甲面细笔触、稀疏墨线、左上主光与青绿细边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "未通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "未通过：旧甲、紫披风和冠盾一致，但摘盔后生成了参考中没有的活人人脸，身份无法验证。前两版均出现双头盔。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "宽肩厚胸、粗壮四肢和低跪姿形成方厚剪影。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "单膝跪地，头盔放腿上，一手油壶一手布擦拭，抬头看向观众。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字或额外肢体；第三版没有重复头盔。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "failed",
     "prompt_sha256": "abbb48468563e634468da40d6e65b9b5354fd8e8612392a0468da2445a6c72ea",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2227,74 +2371,118 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-CAPTAIN/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/alt/hero-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-8a5a5d3f-b2a6-46b5-b023-d6b0085ad183.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "cd4b07cba5d42ce64353b205edcddd99181e8379cfebcc57cc7033cb83d766f2",
+        "review_role": "alternative",
+        "prompt_sha256": "abbb48468563e634468da40d6e65b9b5354fd8e8612392a0468da2445a6c72ea",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/alt/hero-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-7ce1f53f-5838-4651-81dc-4ffb0c632e48.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "ac7f3e75948828c6f5b9f3e9465ce08dc2f5daeb0674db24cc53a23f739f1f12",
+        "review_role": "alternative",
+        "prompt_sha256": "abbb48468563e634468da40d6e65b9b5354fd8e8612392a0468da2445a6c72ea",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-CAPTAIN/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-561ff795-d888-43cb-8006-fe523e4f04ec.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "3b9bc9176303ea6ac82db9084067adfcd53675bc80c3b5a1199efc1726d8fa2e",
+        "review_role": "selected",
+        "prompt_sha256": "abbb48468563e634468da40d6e65b9b5354fd8e8612392a0468da2445a6c72ea",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 3,
+    "generation_calls": 3,
     "identity_reference_sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 3,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 3 版：动作最完整且无双头盔；提示词身份与摘盔动作冲突，露出未获身份参考确认的人脸，身份项未通过，需 Lead 决定。",
+    "resume_generation_calls": 3,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-CAPTAIN__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/turnaround-t58-v1.png",
+      "art/chars/CHAR-CAPTAIN/alt/turnaround-t58-v2.png"
+    ],
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "钢甲细笔触、稀疏转折墨线、大暗部和青绿轮廓光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "封闭海军盔、冠徽灰甲、紫披风、冠盾一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "未通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "未通过：三版均偏常规高壮长腿，未达到 BUILD 的方厚、低重心和极宽比例。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
-        "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "result": "不适用",
+        "applicable": false,
+        "note": "本图类型不适用"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
-        "result": "未完成",
+        "result": "未通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "未通过：三视图等高、空手且道具独立，但 BUILD 仍被标准英雄体型取代。"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "只有允许的姓名和视图标注，无额外肢体。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "failed",
     "prompt_sha256": "d783dca48220cb9907ba50974efd7d6a058d4c539aef330c4542570aad78d9fb",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2304,74 +2492,117 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-CAPTAIN/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/alt/turnaround-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-b86ed833-9c98-4d7f-9822-dd3cb3fe9011.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "4f6dae160e575c790f25b9b3157867f871609beb4bcd689f6ad42b00989e06d9",
+        "review_role": "alternative",
+        "prompt_sha256": "d783dca48220cb9907ba50974efd7d6a058d4c539aef330c4542570aad78d9fb",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/alt/turnaround-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-94b238a8-8d25-420d-adf2-28e17f4c9a59.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "036f8d99fff88f9f8b0947974dcf43aeffa2a7adf547458136b24fb98f983598",
+        "review_role": "alternative",
+        "prompt_sha256": "d783dca48220cb9907ba50974efd7d6a058d4c539aef330c4542570aad78d9fb",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-CAPTAIN/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-7928407a-3aac-48fd-a752-40e9bab34e2c.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "41e6b1d044688fd0922c80eb9c140bfd33c5ccbc1869b996462e8e72216faa03",
+        "review_role": "selected",
+        "prompt_sha256": "d783dca48220cb9907ba50974efd7d6a058d4c539aef330c4542570aad78d9fb",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 3,
+    "generation_calls": 3,
     "identity_reference_sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 3,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 3 版：胸腰略厚，结构清楚；三版体型均未达到 BUILD，达到三次上限，交 Lead 复审。",
+    "resume_generation_calls": 3,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-CAPTAIN/expressions.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-CAPTAIN__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-CAPTAIN/alt/expressions-t58-v2.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "深暗钢甲、紫披风笔触和青绿细边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "封闭窄眼缝盔、胸甲冠徽、披风和冠盾保留。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "肩胸宽厚，腰腹没有收成瘦削轮廓；半身图无法验证腿长和站立重心。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "立正扶盾、歪头举手异议、前倾伸臂提供增益，肩线和手势不同。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字，无多余肢体。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "1a0e9d77dc578708313dbe137b3a3eac2a3e50279ca6a2edd846d872e839a3c8",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2381,74 +2612,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-CAPTAIN/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-CAPTAIN/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-29865095-9b85-49b8-90e9-33c01f382dee.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "30f28770525ed666397d8b904de11423763a706cbc0c085f897446443a29c595",
+        "review_role": "selected",
+        "prompt_sha256": "1a0e9d77dc578708313dbe137b3a3eac2a3e50279ca6a2edd846d872e839a3c8",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-CAPTAIN/alt/expressions-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-b71d823b-96ce-4721-a220-7856b2bbdf46.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "3d90b5e652d76f0b343c7acd96582b70dd2d80f88e9026cbf347295701055188",
+        "review_role": "alternative",
+        "prompt_sha256": "1a0e9d77dc578708313dbe137b3a3eac2a3e50279ca6a2edd846d872e839a3c8",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "c5ac19960be838d09e83ad1cef862a06313d30ef5c5dea89283a2a6b7c9c349a",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 1,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 1 版：第三幅盾臂动作更打开，三种态度与头部角度更清楚；第 2 版保留。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-STITCHER/hero.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-STITCHER__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/hero-t58-v2.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "面部与手部清晰、衣物暗部收边，单侧暖光与细青边符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "赤褐束发、灰肤、颌颈缝线、骨腕和蓝衣补丁皮围裙一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "短躯干、宽跨坐、强壮前臂形成紧凑结实剪影。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "跨坐木箱，俯身咬线，一手持针一手固定膝上的病患骨臂，动作完整。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字、无额外自身肢体；膝上独立骨臂是提示词明确要求的病患道具。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "4840f552895fbc61ce8101046e124f2758eea2acd6465caf7bf041119993991f",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2458,74 +2719,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-STITCHER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-900a56f6-63e1-41ef-aeee-3e563c8b80ae.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "7ecb205bea45d2bbab3d77d99f2bc0169f30d2d4a6406f10a55f8df6b1e2b860",
+        "review_role": "selected",
+        "prompt_sha256": "4840f552895fbc61ce8101046e124f2758eea2acd6465caf7bf041119993991f",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-STITCHER/alt/hero-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-63d84e78-93f0-4015-a2aa-ce4b749469a2.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "4e06c9ea224c0e568d7b484d05dde468dd43e4f13e2d0d9ecb45c07518c14fd9",
+        "review_role": "alternative",
+        "prompt_sha256": "4840f552895fbc61ce8101046e124f2758eea2acd6465caf7bf041119993991f",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 1,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 1 版：病患骨手更明确，坐姿更稳，手套、针线和骨腕之间的结构清楚。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-STITCHER/turnaround.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-STITCHER__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/turnaround-t58-v3.png"
+    ],
+    "attempts": 3,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "细墨线、衣物笔触和灰蓝暗部符合 A，青边收敛。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "赤褐束发、灰肤缝线、骨腕、补丁围裙和工具腰带保持。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "未通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "未通过：两版仍偏修长，未充分达到 short、compact 的短壮体型。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
-        "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "result": "不适用",
+        "applicable": false,
+        "note": "本图类型不适用"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
-        "result": "未完成",
+        "result": "未通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "未通过：三视图等高、空手、同地线，道具独立，但体型仍被标准化。"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "仅允许的姓名与视图文字，无多余自身肢体。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "failed",
     "prompt_sha256": "32d8c79ceecc5faa529f2ea960f40f4fe1c9dd6e195fbb132fb752822f1b69ff",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2535,74 +2826,115 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-STITCHER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-eb7e9572-82db-491c-a732-13645f2c900a.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "cdfd732d53f8ef4c88683c697ad6e303880990144edd81a95f785b21e84443bb",
+        "review_role": "selected",
+        "prompt_sha256": "32d8c79ceecc5faa529f2ea960f40f4fe1c9dd6e195fbb132fb752822f1b69ff",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 3,
+        "file": "art/chars/CHAR-STITCHER/alt/turnaround-t58-v3.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-ac34569f-0a14-40a1-adb6-e7d875bc20db.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "1447569921a566540b6fe00bc5284993c747d512738c1677adb25bd308345556",
+        "review_role": "alternative",
+        "prompt_sha256": "32d8c79ceecc5faa529f2ea960f40f4fe1c9dd6e195fbb132fb752822f1b69ff",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 3,
     "identity_reference_sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 1,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 1 版：前臂更强壮，站姿更宽；共三次调用，一次服务审核拒绝、两版候选，体型项仍未通过。",
+    "resume_generation_calls": 3,
+    "generation_errors": [
+      {
+        "attempt": 2,
+        "code": "moderation_blocked",
+        "http_status": 400,
+        "request_id": "ca2f6346-3827-4fd7-a5e1-5d0b33bfa4fb",
+        "category": "violence",
+        "prompt_changed": false,
+        "note": "非写实亡灵角色三视图输入被拒；不改写提示词，最多再尝试一次。"
+      }
+    ],
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-STITCHER/expressions.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-STITCHER__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-STITCHER/alt/expressions-t58-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "面部细笔触、稀疏墨线、衣物深暗和细青边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "赤褐束发、灰肤、颌颈缝线、骨腕、补丁围裙与工具腰带保持。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "上身紧凑、前臂结实；半身图无法验证绝对身高和站距。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "持板记事、前倾抬指训斥、后仰微笑展示发光线，身体角度、头倾和手势各异。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字、无多肢；抬指和握线手结构清晰。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "f61255c674700713fd9c09841c1fc3def725c24e185f1dbe31db8b1db750873f",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2612,74 +2944,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-STITCHER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-STITCHER/alt/expressions-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-4a503b7d-9c82-4d35-9019-42399db9da13.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "ed510bba443503a335d8143480e0aacadc2386354b1064af0dd60aa33f3104eb",
+        "review_role": "alternative",
+        "prompt_sha256": "f61255c674700713fd9c09841c1fc3def725c24e185f1dbe31db8b1db750873f",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-STITCHER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-5e30a055-d0c1-4db1-9bfe-9b0b6b66986f.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "ca0026afc087e0bbd5d8c06b97694854d28575fb8848372b7a46aaeab97821cc",
+        "review_role": "selected",
+        "prompt_sha256": "f61255c674700713fd9c09841c1fc3def725c24e185f1dbe31db8b1db750873f",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "8dcd46052bbb6719e116f8709a66bfff205beba10b1de007b056f5dddd3ac826",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 2 版：训斥前倾更清楚，第三幅发光线和骨腕分离明确，手部结构稳定。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-MAGE/hero.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-MAGE__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/hero-t58-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骨面和长指清晰、衣物大暗部收边、细青绿边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骷髅眼火、蓝兜帽、灰袍皮带、紫布与石板延续身份。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "窄胸驼背、前伸长颈与极细长指，鸟形剪影明显。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "坐在书堆上俯身，石板放膝，一手托板一指点浮空图解，双脚着地。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无额外文字和多肢；纸片只含提示词要求的图解线点。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "81a57fe70c2db30b8f1c1cde62624b2efe787281bd0affc7a1164fbb2f7a4268",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2689,74 +3051,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-MAGE/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/hero-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-2b2b8cf7-513a-41ef-a97b-87d13a991138.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "b29f58f45b4dfeecab49f70099b1cbe411e2041275df5ed1224097a0709b0b4c",
+        "review_role": "alternative",
+        "prompt_sha256": "81a57fe70c2db30b8f1c1cde62624b2efe787281bd0affc7a1164fbb2f7a4268",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-3af994b2-af1b-421f-b764-8612bd9504be.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "8b020d5ff2a9551d40977721821bed66253307176482ba138678038a4181dfc5",
+        "review_role": "selected",
+        "prompt_sha256": "81a57fe70c2db30b8f1c1cde62624b2efe787281bd0affc7a1164fbb2f7a4268",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 2 版：颈部前伸和驼背更明确，手指与浮空图解关系清晰，双脚可见。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-MAGE/turnaround.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-MAGE__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/turnaround-t58-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骨面细线、袍面笔触与暗部收边符合 A；青绿细边控制稳定。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骷髅脸、短蓝兜帽、灰长袍、紫布和皮带保持。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "窄肩细长躯干、前探长颈和长骨指形成鸟形；肩背有轻弓，驼背程度弱于主立绘。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
-        "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "result": "不适用",
+        "applicable": false,
+        "note": "本图类型不适用"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "三视图等高同地线，空手，双脚着地；细长体型保持，道具独立。"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "只有允许的姓名与视图标注；纸上为指定图解，无多肢。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "6cbefcf54e87364ae07ddd4f4f36939bab9a79fd4aa9996657f37ffb32e48407",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2766,74 +3158,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-MAGE/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/turnaround-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-35c237b3-8df9-4e4f-a782-6b2712de5715.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "3d6578e64464e4d7b2808ae1ca7e6fb31e1c3e7f6fe9b02d78a2e35e5d838cc0",
+        "review_role": "alternative",
+        "prompt_sha256": "6cbefcf54e87364ae07ddd4f4f36939bab9a79fd4aa9996657f37ffb32e48407",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-5b827967-9aa3-413b-b0d3-5180f452771b.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "17f143f514969051b8bb10a4dd54941559ac6f64443645b484cc07f01c81175e",
+        "review_role": "selected",
+        "prompt_sha256": "6cbefcf54e87364ae07ddd4f4f36939bab9a79fd4aa9996657f37ffb32e48407",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 2 版：侧面前探颈和轻弓背较首版清楚，长指与三视比例一致；驼背程度仍较轻。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-MAGE/expressions.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-MAGE__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-MAGE/alt/expressions-t58-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骨面细线和袍面笔触、大暗部及细青绿边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "骷髅小眼火、短蓝帽、灰袍紫布与破石板一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "细长骨指、窄胸与前探长颈保留鸟形体态。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "托颌俯看分析、后仰张手反驳、前倾摊手展示发光图解，身体角度和手势各异。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无额外文字或多肢；纸片和石板仅有要求的几何图解。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "c9c681e77f8e5a4e1e790b89561c63d402e32780294a84f30ffd7510c0805251",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2843,74 +3265,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-MAGE/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-MAGE/alt/expressions-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-082cc08e-c162-43b4-99f1-b25890421e07.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "ff800398667ab58717aa49cf962bd68196d7df790bea60b49fdaf2afa0777eb5",
+        "review_role": "alternative",
+        "prompt_sha256": "c9c681e77f8e5a4e1e790b89561c63d402e32780294a84f30ffd7510c0805251",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-MAGE/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-fd5cc649-c7c8-46a7-a085-be68cd28aa52.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "76ce895922e083f80fcabbf92491197b9c81abd770d4288eccdabdd44cc89149",
+        "review_role": "selected",
+        "prompt_sha256": "c9c681e77f8e5a4e1e790b89561c63d402e32780294a84f30ffd7510c0805251",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "d70a3cbdcd4fa509c05761f002cbf90df050626454797dbd32d518181a777570",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 2 版：第三幅石板图解发光更贴合提供增益，手势和头倾区分清楚。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-BUGLER/hero.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-BUGLER__hero.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/hero-t58-v2.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "成熟青年比例，面部细笔触、衣物暗部与细青边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "乱棕发、灰肤、裸骨下颌、青眼、水手蓝短衣红领巾及冠旗铜号保持。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "细长四肢、突出的肘膝和松散坐姿，青年瘦长体态明显。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "坐栏杆垂腿，一手持绳悬甩铜号，另一手摊开，半转身向画外说笑。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字，无额外手脚，绳与铜号相连。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "357d553086dadf1f207b22559cf8eb74864846283e93b5110edde1d96d4969a1",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2920,74 +3372,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-BUGLER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/hero.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-36d22709-7c88-432c-804e-21ceab9453b8.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "5aa3d587532e2df7f06a040f56756112792065b2d437e1d0b953bb9e2d3c1971",
+        "review_role": "selected",
+        "prompt_sha256": "357d553086dadf1f207b22559cf8eb74864846283e93b5110edde1d96d4969a1",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/alt/hero-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-71162915-40ba-4b60-a071-e426eb2cf77e.png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "f842f156450a37c3812f04f3339c35182cf7f5bebdaef7422bb415796d2138af",
+        "review_role": "alternative",
+        "prompt_sha256": "357d553086dadf1f207b22559cf8eb74864846283e93b5110edde1d96d4969a1",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 1,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 1 版：半转身和摊手说笑更鲜明，绳悬铜号动作清楚；第 2 版留作更安静的备选。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-BUGLER/turnaround.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-BUGLER__turnaround.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/turnaround-t58-v1.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "成熟青年比例，细墨线与衣料笔触、大暗部、细青边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "乱棕发、灰肤裸骨下颌、青眼、蓝水手服红领巾与冠旗铜号一致。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "细长四肢、窄肩胸、突出的肘膝和松散姿态保留，未变成壮硕英雄身材。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
-        "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "result": "不适用",
+        "applicable": false,
+        "note": "本图类型不适用"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "三视图等高同地线、空手；瘦长体型一致，道具独立。"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "仅允许的姓名与视图标注，无多肢。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "3c6c3c4832b4751b597f47d0afe709a8ba0313f870163527fbc653a7be150805",
     "prompt_verbatim": true,
     "reference_images": [
@@ -2997,74 +3479,104 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-BUGLER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/alt/turnaround-t58-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-df63a5fa-1101-4202-bcac-b9462b0ee76c.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "e0b8de12d808c4f14548e93a5fb000d20520a8cf050bae71b555f38115c011bd",
+        "review_role": "alternative",
+        "prompt_sha256": "3c6c3c4832b4751b597f47d0afe709a8ba0313f870163527fbc653a7be150805",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/turnaround.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-dff1b04a-43a4-48ee-b165-bdc3917180a9.png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "sha256": "6342f6e2d2275f0c6a461d83b2f622b74a71d4f6a3a4bf3b204f8b84023b7569",
+        "review_role": "selected",
+        "prompt_sha256": "3c6c3c4832b4751b597f47d0afe709a8ba0313f870163527fbc653a7be150805",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 2,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 2 版：瘦长体态与肘膝更鲜明，三视图一致性更好。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   },
   {
     "file": "art/chars/CHAR-BUGLER/expressions.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-BUGLER__expressions.txt",
-    "alts": [],
-    "attempts": 0,
+    "alts": [
+      "art/chars/CHAR-BUGLER/alt/expressions-t58-v2.png"
+    ],
+    "attempts": 2,
     "checklist": [
       {
         "item": 1,
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "成熟青年比例，细墨线、面部笔触、深蓝暗部与细青边光符合 A。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "乱棕发、灰肤裸骨下颌、青眼、水手服红领巾和冠旗铜号一致；吹号时口部被号嘴遮挡。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "细长手臂、窄胸与松散肩姿保持瘦长青年体型。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "微笑扛号、仰头大笑摊手扶胸、侧身鼓腮双手吹短号，身体转向与手势各异。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "不适用",
         "applicable": false,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "本图类型不适用"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
-        "result": "未完成",
+        "result": "通过",
         "applicable": true,
-        "note": "未开始生成，正式文件仍为旧图"
+        "note": "无文字或额外手脚，铜号握持关系清楚。"
       }
     ],
     "status": "in_review",
-    "generation_status": "not_generated_quota_blocked",
-    "acceptance": "not_evaluated",
+    "generation_status": "generated",
+    "acceptance": "passed",
     "prompt_sha256": "d570dc9aafacb5409a68cadafe7d520d9e3e927d3d3e1f2afa9635d770dfc66f",
     "prompt_verbatim": true,
     "reference_images": [
@@ -3074,13 +3586,41 @@
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-BUGLER/v1/hero.png"
     ],
     "tool": "built-in image_gen",
-    "generated_versions": [],
-    "successful_variants": 0,
-    "generation_calls": 0,
+    "generated_versions": [
+      {
+        "variant": 1,
+        "file": "art/chars/CHAR-BUGLER/expressions.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-ddd9c7bd-6a3f-43bf-ad79-996225b674ef.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "9435ae791d943e0d9698d01f37fca5392119a39d812524d40611415503996d7b",
+        "review_role": "selected",
+        "prompt_sha256": "d570dc9aafacb5409a68cadafe7d520d9e3e927d3d3e1f2afa9635d770dfc66f",
+        "prompt_verbatim": true
+      },
+      {
+        "variant": 2,
+        "file": "art/chars/CHAR-BUGLER/alt/expressions-t58-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a21466-7163-7c40-8c9f-299cfae6b756/exec-b45c645b-2bad-4ff2-9f14-2a13013d10eb.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "sha256": "61ade9938b9dc92dbb793ed5a203109f9cafb480f9a49c643203481017722062",
+        "review_role": "alternative",
+        "prompt_sha256": "d570dc9aafacb5409a68cadafe7d520d9e3e927d3d3e1f2afa9635d770dfc66f",
+        "prompt_verbatim": true
+      }
+    ],
+    "successful_variants": 2,
+    "generation_calls": 2,
     "identity_reference_sha256": "0ec97fd4570f50cdf29a116e58eea186a14cee7a97ff86881a7774ff1f1c3639",
-    "blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限",
-    "selected_variant": null,
-    "file_generation": "retained_v1_original",
-    "selection_note": "生图额度阻塞，尚未生成。"
+    "selected_variant": 1,
+    "file_generation": "t58_selected_new_image",
+    "selection_note": "选第 1 版：大笑与吹短号两幅的动作关系更自然，第三幅双手握持铜号清楚；第二版中幅铜号悬置不够自然。",
+    "resume_generation_calls": 2,
+    "previous_blocked_reason": "内置生图每日额度用尽，重置时间超出任务 300 分钟时限"
   }
 ]
