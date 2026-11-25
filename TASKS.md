@@ -34,7 +34,7 @@
 | T33 | 新画风人物：据点旧部（4 人） | Codex | codex/t33-crew | art/chars/ | 不采用（由 T46 重画） |
 | T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 不采用（由 T47 重画） |
 | T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 已合并（效果好，保留） |
-| T36–T37 | 剧情插画 8 张、结局图 10 张（依赖人物审批；提示词由 Claude 写） | Codex | — | art/story/ | 待办 |
+| T50 | 剧情插画 8 张、结局图 10 张（Claude 提示词） | Codex | codex/t50-story | art/story/ | 进行中 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T48 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
