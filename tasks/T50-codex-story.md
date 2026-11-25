@@ -2,7 +2,7 @@
 id: T50
 title: 按 Claude 提示词生成剧情插画 8 张 + 结局图 10 张
 owner: codex
-status: queued
+status: done
 branch: codex/t50-story
 worktree: ../亡魂王子-t50
 images: [/Users/cyy/Projects/亡魂王子/art/style/prince_hero.png, /Users/cyy/Projects/亡魂王子/art/style/ui_dialogue.png]
