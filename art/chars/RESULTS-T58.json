@@ -3,7 +3,9 @@
     "file": "art/chars/CHAR-PRINCE-UNDEAD/hero.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__hero.txt",
     "alts": [
-      "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-v2.png"
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-pre-resume.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-v2.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-r2-v2.png"
     ],
     "attempts": 2,
     "checklist": [
@@ -12,49 +14,49 @@
         "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
         "result": "通过",
         "applicable": true,
-        "note": "成熟长身比例；面甲与手部清晰，披风暗部和青绿边光接近 A 样张"
+        "note": "成熟比例，甲面细笔触、暗部收边与细青绿轮廓光符合 A 样张。"
       },
       {
         "item": 2,
         "criterion": "身份和服装与旧身份图一致",
         "result": "通过",
         "applicable": true,
-        "note": "深发、白金旧甲、紫披风、魂火剑、锚形披风扣与旧图一致"
+        "note": "深发、白金旧甲、紫披风、锚扣和魂火剑保持身份。"
       },
       {
         "item": 3,
         "criterion": "体型符合 BUILD，剪影有区别",
         "result": "通过",
         "applicable": true,
-        "note": "修长四肢、腰部收窄"
+        "note": "长腿长臂、瘦腰和消瘦面部，符合高瘦统帅体型。"
       },
       {
         "item": 4,
         "criterion": "动作符合 POSE；表情图身体角度和手势各异",
         "result": "通过",
         "applicable": true,
-        "note": "湿坡迈步、持剑下垂、举掌止步；回头幅度较轻"
+        "note": "湿坡迈步、持剑低垂、另一手举掌止步；有回望，转头幅度偏轻。"
       },
       {
         "item": 5,
         "criterion": "三视图等高、空手，保留 BUILD 体型",
         "result": "不适用",
         "applicable": false,
-        "note": "本图不是三视图"
+        "note": "本图类型不适用"
       },
       {
         "item": 6,
         "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
         "result": "通过",
         "applicable": true,
-        "note": "正面观众右侧裸骨、露齿和燃烧眼窝清楚，冠前端断裂"
+        "note": "观众右半从额骨至下颌为裸骨，露齿、空眼窝冥火可辨；前冠有断口。"
       },
       {
         "item": 7,
         "criterion": "无多余文字、手和脚",
         "result": "通过",
         "applicable": true,
-        "note": "未见额外文字或多肢，举掌五指可辨"
+        "note": "无文字，无额外肢体；举掌五指清楚。"
       }
     ],
     "status": "in_review",
@@ -66,6 +68,7 @@
       "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+      "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/prince_hero-style.png",
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
     ],
     "tool": "built-in image_gen",
@@ -73,45 +76,158 @@
       {
         "variant": 1,
         "file": "art/chars/CHAR-PRINCE-UNDEAD/hero.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-b64772f6-9954-4bf1-8389-5b686c0fe6ef.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a2141c-9d20-76f3-90f2-ba3378bcd93a/exec-f1c7a2b9-315d-4b34-8bd7-dda018f87b1f.png",
         "dimensions": [
           1024,
           1536
         ],
-        "sha256": "6bc3c019cf20bd3e9df549c344a02189d14dcd0c9ae627b10df21c2d180ab789",
+        "sha256": "624decbfaeef5cc8def2c1a94a795497c2d1825631bbf784b88aef9c6fa4398e",
         "review_role": "selected",
         "prompt_sha256": "e7acff68750611e46b98be15a5122ece6a5e9064ec7796372da755655c232c6e",
         "prompt_verbatim": true
       },
       {
         "variant": 2,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-v2.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-c42af722-5c84-43da-932a-811f211152f4.png",
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-r2-v2.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a2141c-9d20-76f3-90f2-ba3378bcd93a/exec-e04ac465-0bcc-4b91-9ea9-de604bd703ae.png",
         "dimensions": [
           1024,
           1536
         ],
-        "sha256": "8c873f9df4c86c68f0d669d43773db56281392ef3e926f53a9ae351cafab6608",
+        "sha256": "2c48f06a4bf1144a5c98b25a814070f37d444967d6a81c01d51947ed4b6c49a2",
         "review_role": "alternative",
         "prompt_sha256": "e7acff68750611e46b98be15a5122ece6a5e9064ec7796372da755655c232c6e",
         "prompt_verbatim": true
       }
     ],
     "selected_variant": 1,
-    "selection_note": "选第 1 版：手部和脸部细节更稳，行进重心更清楚；第 2 版留作备选。",
+    "selection_note": "选本轮第 1 版：半脸裸骨、眼窝冥火和断冠清楚，举掌与下坡迈步完整；第 2 版背景增加军队剪影，作为备选。",
     "successful_variants": 2,
     "generation_calls": 2,
     "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
-    "file_generation": "t58_selected_new_image"
+    "file_generation": "t58_selected_new_image",
+    "revision_history": [
+      {
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/hero.png",
+        "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__hero.txt",
+        "alts": [
+          "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-v2.png"
+        ],
+        "attempts": 2,
+        "checklist": [
+          {
+            "item": 1,
+            "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
+            "result": "通过",
+            "applicable": true,
+            "note": "成熟长身比例；面甲与手部清晰，披风暗部和青绿边光接近 A 样张"
+          },
+          {
+            "item": 2,
+            "criterion": "身份和服装与旧身份图一致",
+            "result": "通过",
+            "applicable": true,
+            "note": "深发、白金旧甲、紫披风、魂火剑、锚形披风扣与旧图一致"
+          },
+          {
+            "item": 3,
+            "criterion": "体型符合 BUILD，剪影有区别",
+            "result": "通过",
+            "applicable": true,
+            "note": "修长四肢、腰部收窄"
+          },
+          {
+            "item": 4,
+            "criterion": "动作符合 POSE；表情图身体角度和手势各异",
+            "result": "通过",
+            "applicable": true,
+            "note": "湿坡迈步、持剑下垂、举掌止步；回头幅度较轻"
+          },
+          {
+            "item": 5,
+            "criterion": "三视图等高、空手，保留 BUILD 体型",
+            "result": "不适用",
+            "applicable": false,
+            "note": "本图不是三视图"
+          },
+          {
+            "item": 6,
+            "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
+            "result": "通过",
+            "applicable": true,
+            "note": "正面观众右侧裸骨、露齿和燃烧眼窝清楚，冠前端断裂"
+          },
+          {
+            "item": 7,
+            "criterion": "无多余文字、手和脚",
+            "result": "通过",
+            "applicable": true,
+            "note": "未见额外文字或多肢，举掌五指可辨"
+          }
+        ],
+        "status": "in_review",
+        "generation_status": "generated",
+        "acceptance": "passed",
+        "prompt_sha256": "e7acff68750611e46b98be15a5122ece6a5e9064ec7796372da755655c232c6e",
+        "prompt_verbatim": true,
+        "reference_images": [
+          "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+          "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
+        ],
+        "tool": "built-in image_gen",
+        "generated_versions": [
+          {
+            "variant": 1,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-pre-resume.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-b64772f6-9954-4bf1-8389-5b686c0fe6ef.png",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "sha256": "6bc3c019cf20bd3e9df549c344a02189d14dcd0c9ae627b10df21c2d180ab789",
+            "review_role": "selected",
+            "prompt_sha256": "e7acff68750611e46b98be15a5122ece6a5e9064ec7796372da755655c232c6e",
+            "prompt_verbatim": true
+          },
+          {
+            "variant": 2,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-v2.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-c42af722-5c84-43da-932a-811f211152f4.png",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "sha256": "8c873f9df4c86c68f0d669d43773db56281392ef3e926f53a9ae351cafab6608",
+            "review_role": "alternative",
+            "prompt_sha256": "e7acff68750611e46b98be15a5122ece6a5e9064ec7796372da755655c232c6e",
+            "prompt_verbatim": true
+          }
+        ],
+        "selected_variant": 1,
+        "selection_note": "选第 1 版：手部和脸部细节更稳，行进重心更清楚；第 2 版留作备选。",
+        "successful_variants": 2,
+        "generation_calls": 2,
+        "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
+        "file_generation": "t58_selected_new_image",
+        "archived_selected_file": "art/chars/CHAR-PRINCE-UNDEAD/alt/hero-t58-pre-resume.png"
+      }
+    ],
+    "revision": "2026-11-26-skull-redraw",
+    "additional_identity_reference_sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea",
+    "resume_generation_calls": 2
   },
   {
     "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
     "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__turnaround.txt",
     "alts": [
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-pre-resume.png",
       "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v1.png",
-      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png"
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png",
+      "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v1.png"
     ],
-    "attempts": 3,
+    "attempts": 1,
     "checklist": [
       {
         "item": 1,
@@ -164,64 +280,164 @@
       }
     ],
     "status": "in_review",
-    "generation_status": "generated",
-    "acceptance": "failed",
+    "generation_status": "candidates_pending_review",
+    "acceptance": "incomplete",
     "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
     "prompt_verbatim": true,
     "reference_images": [
       "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
       "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+      "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/prince_hero-style.png",
       "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
     ],
     "tool": "built-in image_gen",
     "generated_versions": [
       {
         "variant": 1,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v1.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-38249de1-3881-4a03-8084-14e515bfcc7f.png",
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-r2-v1.png",
+        "source_file": "/Users/cyy/.codex/generated_images/01a2141c-9d20-76f3-90f2-ba3378bcd93a/exec-62c41a6f-cca6-4983-9978-493d55c2985d.png",
         "dimensions": [
           1672,
           941
         ],
-        "sha256": "3b71e6d9929caae2c67cd6b3c4524e48d75c9da4aa86b058112ad602c56776be",
-        "review_role": "alternative",
-        "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
-        "prompt_verbatim": true
-      },
-      {
-        "variant": 2,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-ea9f6dcc-b8d1-438c-b1bc-5896d592934d.png",
-        "dimensions": [
-          1672,
-          941
-        ],
-        "sha256": "d6b98d7d34ed1915b5170bedc49a1efcf5d5d94cb8b21eb42d42dd49c1d6b6df",
-        "review_role": "alternative",
-        "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
-        "prompt_verbatim": true
-      },
-      {
-        "variant": 3,
-        "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
-        "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-d9bca383-3f17-4063-861b-63759c90df2d.png",
-        "dimensions": [
-          1672,
-          941
-        ],
-        "sha256": "bb06ec8c2dd5af8fc39f06e1d5e26d8ee6a53f4ad040c35518588676fd78c7d0",
-        "review_role": "selected",
+        "sha256": "16968042569d7e47128765a2156ff9c737e095572a1997c9e5f22401bad0241f",
+        "review_role": "candidate",
         "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
         "prompt_verbatim": true
       }
     ],
-    "selected_variant": 3,
+    "selected_variant": null,
     "selection_note": "选第 3 版，结构最稳定；三次均未充分达到 A 风格，交 Lead 复审。",
-    "successful_variants": 3,
-    "generation_calls": 3,
+    "successful_variants": 1,
+    "generation_calls": 1,
     "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
-    "file_generation": "t58_selected_new_image"
+    "file_generation": "retained_previous_pending_review",
+    "revision_history": [
+      {
+        "file": "art/chars/CHAR-PRINCE-UNDEAD/turnaround.png",
+        "prompt_file": "art/prompts/rendered_v2/CHAR-PRINCE-UNDEAD__turnaround.txt",
+        "alts": [
+          "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v1.png",
+          "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png"
+        ],
+        "attempts": 3,
+        "checklist": [
+          {
+            "item": 1,
+            "criterion": "A 风格：成熟比例、变化墨线、单主光、大暗部、细轮廓光",
+            "result": "未通过",
+            "applicable": true,
+            "note": "三次仍偏旧版硬边平涂与较密轮廓，未充分达到 A 样张的柔和厚涂和暗部控制"
+          },
+          {
+            "item": 2,
+            "criterion": "身份和服装与旧身份图一致",
+            "result": "通过",
+            "applicable": true,
+            "note": "白金旧甲、破紫披风、锚扣、魂火剑、深发与旧图一致"
+          },
+          {
+            "item": 3,
+            "criterion": "体型符合 BUILD，剪影有区别",
+            "result": "通过",
+            "applicable": true,
+            "note": "长肢、瘦腰保留"
+          },
+          {
+            "item": 4,
+            "criterion": "动作符合 POSE；表情图身体角度和手势各异",
+            "result": "不适用",
+            "applicable": false,
+            "note": "本图类型不适用"
+          },
+          {
+            "item": 5,
+            "criterion": "三视图等高、空手，保留 BUILD 体型",
+            "result": "通过",
+            "applicable": true,
+            "note": "正侧背等高，同地线，空手；道具独立"
+          },
+          {
+            "item": 6,
+            "criterion": "亡灵王子观众右半裸骷髅、眼窝冥火、金冠前方断口",
+            "result": "通过",
+            "applicable": true,
+            "note": "正面观众右半裸骨和冥火，断冠清楚；侧背视图受视角遮挡"
+          },
+          {
+            "item": 7,
+            "criterion": "无多余文字、手和脚",
+            "result": "通过",
+            "applicable": true,
+            "note": "只有提示词允许的姓名和视图标注，未见多肢"
+          }
+        ],
+        "status": "in_review",
+        "generation_status": "generated",
+        "acceptance": "failed",
+        "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
+        "prompt_verbatim": true,
+        "reference_images": [
+          "/Users/cyy/Projects/亡魂王子/art/compare/EDMUND_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/ELEANOR_A.png",
+          "/Users/cyy/Projects/亡魂王子/art/compare/BERNARD_A.png",
+          "/Users/cyy/Projects/亡魂王子-t58/art/chars/CHAR-PRINCE-UNDEAD/v1/turnaround.png"
+        ],
+        "tool": "built-in image_gen",
+        "generated_versions": [
+          {
+            "variant": 1,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v1.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-38249de1-3881-4a03-8084-14e515bfcc7f.png",
+            "dimensions": [
+              1672,
+              941
+            ],
+            "sha256": "3b71e6d9929caae2c67cd6b3c4524e48d75c9da4aa86b058112ad602c56776be",
+            "review_role": "alternative",
+            "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
+            "prompt_verbatim": true
+          },
+          {
+            "variant": 2,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-v2.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-ea9f6dcc-b8d1-438c-b1bc-5896d592934d.png",
+            "dimensions": [
+              1672,
+              941
+            ],
+            "sha256": "d6b98d7d34ed1915b5170bedc49a1efcf5d5d94cb8b21eb42d42dd49c1d6b6df",
+            "review_role": "alternative",
+            "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
+            "prompt_verbatim": true
+          },
+          {
+            "variant": 3,
+            "file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-pre-resume.png",
+            "source_file": "/Users/cyy/.codex/generated_images/01a21161-f091-7be2-a0ab-be2c11b62ace/exec-d9bca383-3f17-4063-861b-63759c90df2d.png",
+            "dimensions": [
+              1672,
+              941
+            ],
+            "sha256": "bb06ec8c2dd5af8fc39f06e1d5e26d8ee6a53f4ad040c35518588676fd78c7d0",
+            "review_role": "selected",
+            "prompt_sha256": "7d5d8a9959872cf130b83abcc94fcc6c4763e0a10cf47ea51bc91cac15ccec2d",
+            "prompt_verbatim": true
+          }
+        ],
+        "selected_variant": 3,
+        "selection_note": "选第 3 版，结构最稳定；三次均未充分达到 A 风格，交 Lead 复审。",
+        "successful_variants": 3,
+        "generation_calls": 3,
+        "identity_reference_sha256": "52444c31541ee8d49c5de785742356934640032d8171358da15982df214b9637",
+        "file_generation": "t58_selected_new_image",
+        "archived_selected_file": "art/chars/CHAR-PRINCE-UNDEAD/alt/turnaround-t58-pre-resume.png"
+      }
+    ],
+    "revision": "2026-11-26-skull-redraw",
+    "additional_identity_reference_sha256": "09217b4ab8091a8168f1a2bfe4a97a0268c5c8b92bd606cd3ace54c6745e94ea",
+    "resume_generation_calls": 1
   },
   {
     "file": "art/chars/CHAR-PRINCE-UNDEAD/expressions.png",
