@@ -9,6 +9,8 @@
 | `docs/design.md` | 设计决策与待定项（【定】/【议】/【待定】） |
 | `docs/canon/` | **剧情与世界观基准**（用户提供的 ABC R1；先读 `shared/CANON-COMPACT.md`）。只读，改动需用户同意 |
 | `docs/canon-review.md` | Claude 对 canon 的审阅意见与待决事项 |
+| `docs/siege-design.md` | **攻城玩法**：冥火原子化部署、夜间五分钟、守军调度的可行性与实现难度评估 |
+| `docs/gameplay-discussion-2026-11-26.md` | 用户与其他模型的玩法讨论原文（保留用户原话） |
 | `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |
 | `docs/boons.md` | 五位旧部的增益表、双人增益、实现顺序 |
 | `docs/art-style.md` | **现行画风**：手绘墨线叙事风（立绘、UI、局内渲染方向、重生成批次） |
