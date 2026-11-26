@@ -1,0 +1,6 @@
+{
+  "economy": {
+    "kill_reward_enabled": true,
+    "kill_reward": 2
+  }
+}

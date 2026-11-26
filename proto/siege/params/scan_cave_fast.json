@@ -1,0 +1,6 @@
+{
+  "map": {
+    "cave_capacity": 5,
+    "cave_travel_seconds": 1.0
+  }
+}

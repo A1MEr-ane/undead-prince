@@ -1,0 +1,34 @@
+{
+  "map": {
+    "zones": [
+      {
+        "id": "coast",
+        "label": "COAST / 海岸",
+        "center": [28, 39],
+        "rects": [[0, 29, 56, 19]],
+        "min_garrison": 3
+      },
+      {
+        "id": "highland",
+        "label": "HIGHLAND / 高地",
+        "center": [9, 24],
+        "rects": [[0, 0, 14, 29]],
+        "min_garrison": 5
+      },
+      {
+        "id": "plaza",
+        "label": "PLAZA / 外城",
+        "center": [31, 20],
+        "rects": [[14, 14, 42, 15]],
+        "min_garrison": 6
+      },
+      {
+        "id": "keep",
+        "label": "KEEP / 主堡",
+        "center": [32, 9],
+        "rects": [[14, 0, 42, 14]],
+        "min_garrison": 8
+      }
+    ]
+  }
+}
