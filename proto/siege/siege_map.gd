@@ -8,6 +8,8 @@ var depth: int
 var land := PackedByteArray()
 var blocked := PackedByteArray()
 var fields := {}
+var prebuilt := {}
+var adjacency: Array = []
 var cave_a: int
 var cave_b: int
 var cave_cost: float
@@ -34,6 +36,15 @@ func setup(params: Dictionary) -> void:
 	cave_a = index(tile(vec(cfg.cave_a)))
 	cave_b = index(tile(vec(cfg.cave_b)))
 	cave_cost = float(cfg.cave_travel_seconds) * float(params.units.ghost.speed)
+	adjacency.resize(land.size())
+	for i in land.size():
+		var edges := PackedInt32Array()
+		var t := Vector2i(i % width, i / width)
+		for delta in DIRS:
+			var q: Vector2i = t + delta
+			if q.x >= 0 and q.y >= 0 and q.x < width and q.y < depth and land[index(q)] != 0:
+				edges.append(index(q))
+		adjacency[i] = edges
 	# 关卡可战斗区域允许经过可破门/薄弱墙；普通墙仍阻断。
 	var frontier: Array = []
 	var openings := rect_cells(cfg.gate_rect) + rect_cells(cfg.weak_rect)
@@ -130,11 +141,9 @@ func nearest(p: Vector3) -> Vector3:
 
 func neighbors(i: int, cave: bool) -> Array:
 	var out: Array = []
-	var t := Vector2i(i % width, i / width)
-	for delta in DIRS:
-		var q: Vector2i = t + delta
-		if walkable(q):
-			out.append([index(q), 1.0])
+	for j in adjacency[i]:
+		if blocked[j] == 0:
+			out.append([j, 1.0])
 	if cave and cfg.cave_enabled:
 		if i == cave_a:
 			out.append([cave_b, cave_cost])
@@ -171,29 +180,91 @@ func _pop(heap: Array) -> Array:
 	return first
 
 func _propagate(f: Dictionary, heap: Array) -> int:
+	if not (f.cave and cfg.cave_enabled):
+		var integer_seeds := true
+		for item in heap:
+			if item[0] < float(cfg.flow_infinity) and item[0] != floorf(item[0]):
+				integer_seeds = false
+				break
+		if integer_seeds:
+			return _propagate_unit_edges(f, heap)
+	return _propagate_heap(f, heap)
+
+func _propagate_unit_edges(f: Dictionary, seeds: Array) -> int:
+	# 普通地面边权均为 1。按距离分层、层内按格号排序，与堆的 (距离, 格号) 次序一致。
+	var buckets := {}
+	var first := -1
+	var last := 0
+	for item in seeds:
+		if item[0] >= float(cfg.flow_infinity):
+			continue
+		var distance := int(item[0])
+		if not buckets.has(distance):
+			buckets[distance] = []
+		buckets[distance].append(item[1])
+		first = distance if first < 0 else mini(first, distance)
+		last = maxi(last, distance)
+	if first < 0:
+		return 0
+	var dist: PackedFloat64Array = f.dist
+	var next: PackedInt32Array = f.next
+	var count := 0
+	var cursor := first
+	while cursor <= last:
+		if not buckets.has(cursor):
+			cursor += 1
+			continue
+		var layer: Array = buckets[cursor]
+		buckets.erase(cursor)
+		layer.sort()
+		var d: float = cursor + 1.0
+		for i in layer:
+			if dist[i] != cursor:
+				continue
+			count += 1
+			for j in adjacency[i]:
+				if blocked[j] == 0 and d < dist[j]:
+					dist[j] = d
+					next[j] = i
+					if not buckets.has(cursor + 1):
+						buckets[cursor + 1] = []
+					buckets[cursor + 1].append(j)
+					last = maxi(last, cursor + 1)
+		cursor += 1
+	f.dist = dist
+	f.next = next
+	return count
+
+func _propagate_heap(f: Dictionary, heap: Array) -> int:
+	# PackedArray 放在局部变量中更新，避免每条边反复经 Dictionary 取写。
+	var dist: PackedFloat64Array = f.dist
+	var next: PackedInt32Array = f.next
+	var cave: bool = f.cave and cfg.cave_enabled
 	var count := 0
 	while not heap.is_empty():
 		var item := _pop(heap)
 		var i: int = item[1]
-		if item[0] != f.dist[i]:
+		if item[0] != dist[i]:
 			continue
 		count += 1
-		for edge in neighbors(i, f.cave):
-			var j: int = edge[0]
-			var d: float = item[0] + edge[1]
-			if d < f.dist[j]:
-				f.dist[j] = d
-				f.next[j] = i
+		var d: float = item[0] + 1.0
+		for j in adjacency[i]:
+			if blocked[j] == 0 and d < dist[j]:
+				dist[j] = d
+				next[j] = i
 				_push(heap, [d, j])
+		if cave and (i == cave_a or i == cave_b):
+			var j := cave_b if i == cave_a else cave_a
+			var cd: float = item[0] + cave_cost
+			if cd < dist[j]:
+				dist[j] = cd
+				next[j] = i
+				_push(heap, [cd, j])
+	f.dist = dist
+	f.next = next
 	return count
 
-func field(goal: Vector3, cave: bool) -> Dictionary:
-	var g := index(tile(nearest(goal)))
-	var key := "%d:%s" % [g, cave]
-	if fields.has(key):
-		return fields[key]
-	if fields.size() >= int(cfg.flow_cache_limit):
-		fields.erase(fields.keys()[0])
+func _build_field(g: int, cave: bool) -> Dictionary:
 	var dist := PackedFloat64Array()
 	dist.resize(land.size())
 	dist.fill(float(cfg.flow_infinity))
@@ -203,6 +274,31 @@ func field(goal: Vector3, cave: bool) -> Dictionary:
 	dist[g] = 0
 	var f := {"goal": g, "cave": cave, "dist": dist, "next": next}
 	_propagate(f, [[0.0, g]])
+	return f
+
+func prewarm(goal: Vector3, cave: bool = false) -> void:
+	var g := index(tile(nearest(goal)))
+	var key := "%d:%s" % [g, cave]
+	if fields.has(key) or prebuilt.has(key) or fields.size() + prebuilt.size() >= int(cfg.flow_cache_limit):
+		return
+	prebuilt[key] = _build_field(g, cave)
+
+func field(goal: Vector3, cave: bool) -> Dictionary:
+	var g := index(tile(nearest(goal)))
+	var key := "%d:%s" % [g, cave]
+	if fields.has(key):
+		return fields[key]
+	if fields.size() >= int(cfg.flow_cache_limit):
+		fields.erase(fields.keys()[0])
+	var f: Dictionary
+	if prebuilt.has(key):
+		f = prebuilt[key]
+		prebuilt.erase(key)
+	else:
+		# 预热项不占用正式 FIFO 插入位置，也不能挤掉已经使用的流场。
+		if fields.size() + prebuilt.size() >= int(cfg.flow_cache_limit):
+			prebuilt.erase(prebuilt.keys()[0])
+		f = _build_field(g, cave)
 	fields[key] = f
 	return f
 
@@ -230,9 +326,21 @@ func change(rect: Array, open: bool, at: float, reason: String) -> void:
 			changed.append(i)
 	if changed.is_empty():
 		return
+	# 拓扑改变后丢弃未使用的预热场，首次使用仍等价于当时完整构建。
+	prebuilt.clear()
 	var visits := 0
 	for f in fields.values():
 		var heap: Array = []
+		var affected := false
+		for i in changed:
+			if f.dist[i] < float(cfg.flow_infinity):
+				affected = true
+			if open:
+				for edge in neighbors(i, f.cave):
+					if f.dist[edge[0]] < float(cfg.flow_infinity):
+						affected = true
+		if not affected:
+			continue
 		if not open:
 			# 只失效穿过关门格的 successor 子树；其他距离保留。
 			var invalid := {}

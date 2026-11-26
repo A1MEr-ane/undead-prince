@@ -1,0 +1,13 @@
+MATRIX main_gate seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 49}
+MATRIX main_gate seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 57}
+MATRIX highland seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 72}
+MATRIX highland seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 79}
+MATRIX feint seed=1 won=False method=none casualties={'defender': 8, 'ghost': 112}
+MATRIX feint seed=2 won=False method=none casualties={'defender': 9, 'ghost': 115}
+MATRIX waves seed=1 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 41}
+MATRIX waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 32}
+MATRIX idle seed=1 won=False method=none casualties={'defender': 21, 'ghost': 20}
+MATRIX idle seed=2 won=False method=none casualties={'defender': 14, 'ghost': 20}
+MATRIX late_batches seed=1 won=True method=keep_retreat casualties={'defender': 32, 'ghost': 30}
+MATRIX late_batches seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 43}
+SIEGE_MATRIX PASS runs=12 repeats=0 seconds=236.89 summary=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/before-natural/summary.md

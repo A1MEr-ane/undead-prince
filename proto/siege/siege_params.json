@@ -366,6 +366,8 @@
     },
     "brain_seed_phase_range": 100,
     "spatial_cell_size": 3,
+    "near_cell_size": 1,
+    "sense_steps": 4,
     "max_separation_speed": 1.2,
     "sense_seconds": 0.125,
     "threat_decay": 6

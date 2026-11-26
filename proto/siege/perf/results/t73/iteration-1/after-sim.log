@@ -1,0 +1,34 @@
+march_100_sim samples=300 sim=23.809 frame=None first=7.403
+march_200_sim samples=300 sim=85.115 frame=None first=15.888
+march_300_sim samples=300 sim=181.698 frame=None first=25.52
+Traceback (most recent call last):
+  File "/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/compare_t73.py", line 53, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/compare_t73.py", line 35, in main
+    row = probe.run_one('godot', scenario, units, mode,
+                        probe.samples_for(scenario, units, args.samples),
+                        timeout=(args.render_timeout if mode == 'render' else 600), out_dir=args.out)
+  File "/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/run_perf.py", line 47, in run_one
+    proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=timeout)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 671, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 1395, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 2412, in _communicate
+    new_offset, completed = _communicate_io_posix(
+                            ~~~~~~~~~~~~~~~~~~~~~^
+        selector,
+        ^^^^^^^^^
+    ...<4 lines>...
+        endtime,
+        ^^^^^^^^
+        close_on_eof=True)
+        ^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 291, in _communicate_io_posix
+    ready = selector.select(remaining)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

@@ -1,0 +1,5 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
+FLOW_BENCH {"map":[56,48],"results":[{"build_ms":4.66,"change_ms":4.59,"fields":1,"relaxed_cells":665},{"build_ms":41.33,"change_ms":46.1,"fields":10,"relaxed_cells":6650},{"build_ms":124.37,"change_ms":134.96,"fields":30,"relaxed_cells":19638},{"build_ms":242.64,"change_ms":265.33,"fields":58,"relaxed_cells":37751},{"build_ms":420.59,"change_ms":456.35,"fields":99,"relaxed_cells":64899},{"build_ms":737.6,"change_ms":793.84,"fields":175,"relaxed_cells":113567}]}

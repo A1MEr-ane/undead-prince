@@ -1,0 +1,3841 @@
+{
+  "task_id": "T73",
+  "baseline_revision": "a058daa4737fab9cfc2cd12775bf487c1e8b498f",
+  "environment": {
+    "adapter": "",
+    "build": "debug",
+    "cpu": "Apple M1",
+    "cpu_count": 8,
+    "driver": "metal",
+    "godot": "4.7.2-stable (official)",
+    "nodes": 4,
+    "os": "macOS 26.6.2",
+    "rendering_method": "forward_plus",
+    "static_memory_mb": 29.7,
+    "texture": [
+      0,
+      0
+    ],
+    "viewport": [
+      0,
+      0
+    ],
+    "window": [
+      0,
+      0
+    ]
+  },
+  "scope": "headless simulation; 2 fixed steps per sample",
+  "window_measurement": {
+    "available": false,
+    "attempts_seconds": [
+      600.01,
+      20.01
+    ],
+    "retry": {
+      "tag": "march_100_render",
+      "ok": false,
+      "exit": -1,
+      "seconds": 20.01,
+      "error": "no PERF line",
+      "cmd": "godot --disable-vsync --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/render-check/raw/march_100_render.engine.log proto/siege/perf/results/t73/baseline_source/perf/perf_runner.tscn -- --strategy=manual --perf_mode=render --perf_scenario=march --perf_units=100 --perf_samples=60 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/render-check/raw/march_100_render.json"
+    }
+  },
+  "comparisons": [
+    {
+      "scenario": "march",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 111.41,
+        "mean": 19.383,
+        "p50": 20.295,
+        "p95": 24.121,
+        "p99": 48.415
+      },
+      "after_ms": {
+        "max": 19.467,
+        "mean": 13.706,
+        "p50": 14.807,
+        "p95": 17.407,
+        "p99": 17.798
+      },
+      "speedup_p50": 1.371,
+      "first_before_ms": 13.671,
+      "first_after_ms": 7.463,
+      "all_before_ms": {
+        "max": 111.41,
+        "mean": 19.335,
+        "p50": 20.285,
+        "p95": 24.121,
+        "p99": 48.415
+      },
+      "all_after_ms": {
+        "max": 19.467,
+        "mean": 13.666,
+        "p50": 14.804,
+        "p95": 17.407,
+        "p99": 17.798
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "bc9d15290c6ee989f6f8e05c03463911cacebb40d9a4cec6969affd7dd7d99ec",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "march",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 123.41,
+        "mean": 64.114,
+        "p50": 74.756,
+        "p95": 91.494,
+        "p99": 119.56
+      },
+      "after_ms": {
+        "max": 56.211,
+        "mean": 41.706,
+        "p50": 49.993,
+        "p95": 53.499,
+        "p99": 55.075
+      },
+      "speedup_p50": 1.495,
+      "first_before_ms": 29.602,
+      "first_after_ms": 16.283,
+      "all_before_ms": {
+        "max": 123.41,
+        "mean": 63.874,
+        "p50": 74.754,
+        "p95": 91.494,
+        "p99": 119.56
+      },
+      "all_after_ms": {
+        "max": 56.211,
+        "mean": 41.538,
+        "p50": 49.984,
+        "p95": 53.499,
+        "p99": 55.075
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "e5560cce7b6829091505f9f9e17e5cac9dff2c27a9055d7bde6f17a584667438",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "march",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 368.734,
+        "mean": 126.67,
+        "p50": 157.317,
+        "p95": 167.89,
+        "p99": 170.801
+      },
+      "after_ms": {
+        "max": 113.185,
+        "mean": 83.148,
+        "p50": 104.605,
+        "p95": 110.928,
+        "p99": 111.917
+      },
+      "speedup_p50": 1.504,
+      "first_before_ms": 50.517,
+      "first_after_ms": 25.654,
+      "all_before_ms": {
+        "max": 368.734,
+        "mean": 126.168,
+        "p50": 157.308,
+        "p95": 167.89,
+        "p99": 170.801
+      },
+      "all_after_ms": {
+        "max": 113.185,
+        "mean": 82.766,
+        "p50": 104.604,
+        "p95": 110.928,
+        "p99": 111.917
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "37e16cb93ce04e41c2b937ad1dbe3f028c05c6087206fa47e3dfe9eb25370fe9",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "march",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 516.855,
+        "mean": 319.129,
+        "p50": 420.32,
+        "p95": 443.37,
+        "p99": 449.838
+      },
+      "after_ms": {
+        "max": 411.796,
+        "mean": 201.09,
+        "p50": 266.423,
+        "p95": 284.672,
+        "p99": 295.044
+      },
+      "speedup_p50": 1.578,
+      "first_before_ms": 106.834,
+      "first_after_ms": 44.642,
+      "all_before_ms": {
+        "max": 516.855,
+        "mean": 317.726,
+        "p50": 420.175,
+        "p95": 443.37,
+        "p99": 449.838
+      },
+      "all_after_ms": {
+        "max": 411.796,
+        "mean": 200.054,
+        "p50": 265.714,
+        "p95": 284.672,
+        "p99": 295.044
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "8742d76bff4f59410277c04df8c391f2886424ce8cf87242df8d49b828f084d1",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "multi",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 25.354,
+        "mean": 12.144,
+        "p50": 12.091,
+        "p95": 14.131,
+        "p99": 14.573
+      },
+      "after_ms": {
+        "max": 20.811,
+        "mean": 8.725,
+        "p50": 8.738,
+        "p95": 9.836,
+        "p99": 10.545
+      },
+      "speedup_p50": 1.384,
+      "first_before_ms": 21.536,
+      "first_after_ms": 7.557,
+      "all_before_ms": {
+        "max": 25.354,
+        "mean": 12.168,
+        "p50": 12.091,
+        "p95": 14.16,
+        "p99": 14.847
+      },
+      "all_after_ms": {
+        "max": 20.811,
+        "mean": 8.717,
+        "p50": 8.725,
+        "p95": 9.836,
+        "p99": 10.545
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "20e23e0cac6ff65ed84dddd5e10ee7d0fde7f81b65bcc3a502a1716bcf115adf",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "multi",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 43.117,
+        "mean": 35.436,
+        "p50": 37.49,
+        "p95": 40.842,
+        "p99": 42.018
+      },
+      "after_ms": {
+        "max": 28.678,
+        "mean": 22.957,
+        "p50": 24.843,
+        "p95": 26.747,
+        "p99": 27.605
+      },
+      "speedup_p50": 1.509,
+      "first_before_ms": 35.767,
+      "first_after_ms": 16.777,
+      "all_before_ms": {
+        "max": 43.117,
+        "mean": 35.402,
+        "p50": 37.464,
+        "p95": 40.842,
+        "p99": 42.018
+      },
+      "all_after_ms": {
+        "max": 28.678,
+        "mean": 22.909,
+        "p50": 24.829,
+        "p95": 26.747,
+        "p99": 27.605
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "61a86dae499c84a2b360a261eff2a55498a65a8edea1c5745c0bddc4d0778179",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "multi",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 87.66,
+        "mean": 70.213,
+        "p50": 76.538,
+        "p95": 81.823,
+        "p99": 84.001
+      },
+      "after_ms": {
+        "max": 93.392,
+        "mean": 43.23,
+        "p50": 48.209,
+        "p95": 52.168,
+        "p99": 59.667
+      },
+      "speedup_p50": 1.588,
+      "first_before_ms": 55.462,
+      "first_after_ms": 23.602,
+      "all_before_ms": {
+        "max": 87.66,
+        "mean": 70.081,
+        "p50": 76.447,
+        "p95": 81.823,
+        "p99": 84.001
+      },
+      "all_after_ms": {
+        "max": 93.392,
+        "mean": 43.104,
+        "p50": 48.194,
+        "p95": 52.168,
+        "p99": 59.667
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "a7eac17ea34249929c411b61fa163206888c73acefc04d8682c8e0396e2bf7f7",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "multi",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 287.036,
+        "mean": 173.836,
+        "p50": 193.258,
+        "p95": 206.682,
+        "p99": 211.649
+      },
+      "after_ms": {
+        "max": 287.941,
+        "mean": 101.533,
+        "p50": 113.219,
+        "p95": 139.611,
+        "p99": 180.571
+      },
+      "speedup_p50": 1.707,
+      "first_before_ms": 109.156,
+      "first_after_ms": 39.44,
+      "all_before_ms": {
+        "max": 287.036,
+        "mean": 173.381,
+        "p50": 190.665,
+        "p95": 206.682,
+        "p99": 211.649
+      },
+      "all_after_ms": {
+        "max": 287.941,
+        "mean": 101.123,
+        "p50": 113.182,
+        "p95": 139.611,
+        "p99": 180.571
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "03630ceac5e26739079f42bceadc1092e98203d30ac802f72f68a6b7532f25ea",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "melee",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 22.714,
+        "mean": 18.972,
+        "p50": 18.972,
+        "p95": 20.339,
+        "p99": 21.059
+      },
+      "after_ms": {
+        "max": 21.401,
+        "mean": 17.417,
+        "p50": 17.306,
+        "p95": 19.221,
+        "p99": 20.567
+      },
+      "speedup_p50": 1.096,
+      "first_before_ms": 26.707,
+      "first_after_ms": 16.534,
+      "all_before_ms": {
+        "max": 26.707,
+        "mean": 19.001,
+        "p50": 18.974,
+        "p95": 20.343,
+        "p99": 21.506
+      },
+      "all_after_ms": {
+        "max": 21.401,
+        "mean": 17.415,
+        "p50": 17.306,
+        "p95": 19.221,
+        "p99": 20.567
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "694adaae409efc708317eb7d40615946f2ba56765730cc0522aa816b07952134",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "melee",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 56.23,
+        "mean": 45.412,
+        "p50": 45.393,
+        "p95": 51.091,
+        "p99": 54.447
+      },
+      "after_ms": {
+        "max": 138.809,
+        "mean": 38.684,
+        "p50": 36.974,
+        "p95": 46.976,
+        "p99": 53.533
+      },
+      "speedup_p50": 1.228,
+      "first_before_ms": 62.015,
+      "first_after_ms": 46.008,
+      "all_before_ms": {
+        "max": 62.015,
+        "mean": 45.486,
+        "p50": 45.398,
+        "p95": 51.28,
+        "p99": 55.575
+      },
+      "all_after_ms": {
+        "max": 138.809,
+        "mean": 38.73,
+        "p50": 36.995,
+        "p95": 46.976,
+        "p99": 53.533
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "74e08b25476bb5cf8cc5b86f7998ca18df02a3f8c6a7c9741ade34a7759ac65c",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "melee",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 102.813,
+        "mean": 88.277,
+        "p50": 86.699,
+        "p95": 95.956,
+        "p99": 98.54
+      },
+      "after_ms": {
+        "max": 172.079,
+        "mean": 72.871,
+        "p50": 70.204,
+        "p95": 87.684,
+        "p99": 147.887
+      },
+      "speedup_p50": 1.235,
+      "first_before_ms": 108.107,
+      "first_after_ms": 82.337,
+      "all_before_ms": {
+        "max": 108.107,
+        "mean": 88.367,
+        "p50": 86.738,
+        "p95": 95.983,
+        "p99": 101.662
+      },
+      "all_after_ms": {
+        "max": 172.079,
+        "mean": 72.925,
+        "p50": 70.244,
+        "p95": 87.684,
+        "p99": 147.887
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "8805ab61f46df84ae92506b6eb1d6461fa8463d54f8b5b0d29f2af470eee9753",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "melee",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 612.099,
+        "mean": 197.947,
+        "p50": 197.137,
+        "p95": 217.81,
+        "p99": 229.105
+      },
+      "after_ms": {
+        "max": 278.829,
+        "mean": 141.781,
+        "p50": 140.465,
+        "p95": 160.063,
+        "p99": 188.789
+      },
+      "speedup_p50": 1.403,
+      "first_before_ms": 221.092,
+      "first_after_ms": 161.339,
+      "all_before_ms": {
+        "max": 612.099,
+        "mean": 198.033,
+        "p50": 197.55,
+        "p95": 218.663,
+        "p99": 229.105
+      },
+      "all_after_ms": {
+        "max": 278.829,
+        "mean": 141.883,
+        "p50": 140.478,
+        "p95": 160.435,
+        "p99": 188.789
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "88e0067ceebd1cd31ec89b5c9aa9fbbfe45d890b22183797b5f72f244b0ebb8f",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "gate",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 411.756,
+        "mean": 19.383,
+        "p50": 17.623,
+        "p95": 20.542,
+        "p99": 38.644
+      },
+      "after_ms": {
+        "max": 20.742,
+        "mean": 15.853,
+        "p50": 15.755,
+        "p95": 18.009,
+        "p99": 19.513
+      },
+      "speedup_p50": 1.119,
+      "first_before_ms": 73.584,
+      "first_after_ms": 22.513,
+      "all_before_ms": {
+        "max": 411.756,
+        "mean": 19.562,
+        "p50": 17.624,
+        "p95": 20.575,
+        "p99": 39.726
+      },
+      "all_after_ms": {
+        "max": 22.513,
+        "mean": 15.882,
+        "p50": 15.777,
+        "p95": 18.321,
+        "p99": 19.847
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "5d4b138a952ac841bb49ce9054e11abdadea8a071f98efb31729e4ba54c8d067",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "gate",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 69.945,
+        "mean": 48.26,
+        "p50": 48.17,
+        "p95": 57.671,
+        "p99": 62.181
+      },
+      "after_ms": {
+        "max": 85.252,
+        "mean": 41.446,
+        "p50": 40.611,
+        "p95": 50.711,
+        "p99": 57.184
+      },
+      "speedup_p50": 1.186,
+      "first_before_ms": 109.136,
+      "first_after_ms": 55.578,
+      "all_before_ms": {
+        "max": 109.136,
+        "mean": 48.6,
+        "p50": 48.178,
+        "p95": 57.94,
+        "p99": 63.973
+      },
+      "all_after_ms": {
+        "max": 85.252,
+        "mean": 41.517,
+        "p50": 40.615,
+        "p95": 51.205,
+        "p99": 57.184
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "dd04e649fa6e7582a6990ca62574f3416966ccf7ed02f1235484e1dac34a5cb1",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "gate",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 262.031,
+        "mean": 95.349,
+        "p50": 94.602,
+        "p95": 105.221,
+        "p99": 111.516
+      },
+      "after_ms": {
+        "max": 315.304,
+        "mean": 81.3,
+        "p50": 77.707,
+        "p95": 105.088,
+        "p99": 169.58
+      },
+      "speedup_p50": 1.217,
+      "first_before_ms": 160.537,
+      "first_after_ms": 93.544,
+      "all_before_ms": {
+        "max": 262.031,
+        "mean": 95.633,
+        "p50": 94.669,
+        "p95": 106.014,
+        "p99": 115.756
+      },
+      "all_after_ms": {
+        "max": 315.304,
+        "mean": 81.373,
+        "p50": 77.883,
+        "p95": 105.088,
+        "p99": 169.58
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "8313f1fc1088a4c08bb3b537ebfd74b0cf0e6ebdab87c01d6f874ae45bfa97fa",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "gate",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 410.689,
+        "mean": 227.929,
+        "p50": 225.779,
+        "p95": 251.867,
+        "p99": 264.214
+      },
+      "after_ms": {
+        "max": 530.998,
+        "mean": 184.015,
+        "p50": 176.198,
+        "p95": 229.572,
+        "p99": 364.761
+      },
+      "speedup_p50": 1.281,
+      "first_before_ms": 299.711,
+      "first_after_ms": 220.952,
+      "all_before_ms": {
+        "max": 410.689,
+        "mean": 228.17,
+        "p50": 226.189,
+        "p95": 254.116,
+        "p99": 299.711
+      },
+      "all_after_ms": {
+        "max": 530.998,
+        "mean": 184.259,
+        "p50": 176.468,
+        "p95": 229.572,
+        "p99": 364.761
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "927e5f31ab952f5f22e1924e0352af555694939980ddb6e20fef4d5120bdead8",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "breach",
+      "units": 100,
+      "samples": 240,
+      "before_ms": {
+        "max": 31.569,
+        "mean": 21.139,
+        "p50": 21.479,
+        "p95": 24.465,
+        "p99": 26.15
+      },
+      "after_ms": {
+        "max": 171.072,
+        "mean": 17.078,
+        "p50": 16.401,
+        "p95": 20.064,
+        "p99": 25.994
+      },
+      "speedup_p50": 1.31,
+      "first_before_ms": 14.317,
+      "first_after_ms": 8.438,
+      "all_before_ms": {
+        "max": 31.569,
+        "mean": 21.071,
+        "p50": 21.472,
+        "p95": 24.465,
+        "p99": 26.15
+      },
+      "all_after_ms": {
+        "max": 171.072,
+        "mean": 17.009,
+        "p50": 16.362,
+        "p95": 20.064,
+        "p99": 25.994
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "d814e5c0edcd137cabbb0760078ab562aca85ffeea6ec5e426e7d6260ac5ed68",
+      "flow_relaxed_cells_before": 626,
+      "flow_relaxed_cells_after": 626
+    },
+    {
+      "scenario": "breach",
+      "units": 200,
+      "samples": 240,
+      "before_ms": {
+        "max": 308.326,
+        "mean": 72.373,
+        "p50": 75.954,
+        "p95": 80.583,
+        "p99": 84.621
+      },
+      "after_ms": {
+        "max": 156.729,
+        "mean": 52.42,
+        "p50": 53.904,
+        "p95": 58.085,
+        "p99": 113.743
+      },
+      "speedup_p50": 1.409,
+      "first_before_ms": 33.882,
+      "first_after_ms": 24.943,
+      "all_before_ms": {
+        "max": 308.326,
+        "mean": 72.04,
+        "p50": 75.951,
+        "p95": 80.583,
+        "p99": 84.621
+      },
+      "all_after_ms": {
+        "max": 156.729,
+        "mean": 52.186,
+        "p50": 53.863,
+        "p95": 58.085,
+        "p99": 113.743
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "8616604185105cef04a0dd4dcd157b52a028a6f8b0687f78f16510e0246f6961",
+      "flow_relaxed_cells_before": 626,
+      "flow_relaxed_cells_after": 626
+    },
+    {
+      "scenario": "breach",
+      "units": 300,
+      "samples": 240,
+      "before_ms": {
+        "max": 212.464,
+        "mean": 148.662,
+        "p50": 162.639,
+        "p95": 171.888,
+        "p99": 177.31
+      },
+      "after_ms": {
+        "max": 312.561,
+        "mean": 104.913,
+        "p50": 112.474,
+        "p95": 122.568,
+        "p99": 189.49
+      },
+      "speedup_p50": 1.446,
+      "first_before_ms": 57.199,
+      "first_after_ms": 32.484,
+      "all_before_ms": {
+        "max": 212.464,
+        "mean": 147.896,
+        "p50": 162.58,
+        "p95": 171.888,
+        "p99": 177.31
+      },
+      "all_after_ms": {
+        "max": 312.561,
+        "mean": 104.31,
+        "p50": 112.406,
+        "p95": 122.568,
+        "p99": 189.49
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "9423f6a97a20d78f316b378dcb85df55cee7681a485107ccfbd61436e4687bd5",
+      "flow_relaxed_cells_before": 626,
+      "flow_relaxed_cells_after": 626
+    },
+    {
+      "scenario": "breach",
+      "units": 500,
+      "samples": 240,
+      "before_ms": {
+        "max": 599.197,
+        "mean": 361.426,
+        "p50": 403.664,
+        "p95": 446.297,
+        "p99": 553.578
+      },
+      "after_ms": {
+        "max": 363.284,
+        "mean": 236.575,
+        "p50": 263.668,
+        "p95": 292.82,
+        "p99": 297.79
+      },
+      "speedup_p50": 1.531,
+      "first_before_ms": 120.323,
+      "first_after_ms": 61.057,
+      "all_before_ms": {
+        "max": 599.197,
+        "mean": 359.427,
+        "p50": 403.386,
+        "p95": 446.297,
+        "p99": 553.578
+      },
+      "all_after_ms": {
+        "max": 363.284,
+        "mean": 235.127,
+        "p50": 263.265,
+        "p95": 292.82,
+        "p99": 297.79
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "d0c6711a374bf25c72319c2751f6123a69230e46338c505a3b3219a5e8abd4b8",
+      "flow_relaxed_cells_before": 626,
+      "flow_relaxed_cells_after": 626
+    },
+    {
+      "scenario": "reinforce",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 30.588,
+        "mean": 10.797,
+        "p50": 10.539,
+        "p95": 14.322,
+        "p99": 14.643
+      },
+      "after_ms": {
+        "max": 13.082,
+        "mean": 8.899,
+        "p50": 8.658,
+        "p95": 12.709,
+        "p99": 12.953
+      },
+      "speedup_p50": 1.217,
+      "first_before_ms": 17.358,
+      "first_after_ms": 11.862,
+      "all_before_ms": {
+        "max": 30.588,
+        "mean": 10.815,
+        "p50": 10.539,
+        "p95": 14.337,
+        "p99": 14.939
+      },
+      "all_after_ms": {
+        "max": 13.082,
+        "mean": 8.907,
+        "p50": 8.658,
+        "p95": 12.709,
+        "p99": 12.953
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "6e182296bdadfd052fc99b1130dc943ecf78ad0083241572575f07a316ffc310",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "reinforce",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 47.087,
+        "mean": 29.661,
+        "p50": 28.681,
+        "p95": 44.368,
+        "p99": 45.372
+      },
+      "after_ms": {
+        "max": 115.561,
+        "mean": 24.413,
+        "p50": 21.907,
+        "p95": 38.208,
+        "p99": 64.951
+      },
+      "speedup_p50": 1.309,
+      "first_before_ms": 56.59,
+      "first_after_ms": 33.005,
+      "all_before_ms": {
+        "max": 56.59,
+        "mean": 29.728,
+        "p50": 28.681,
+        "p95": 44.391,
+        "p99": 45.434
+      },
+      "all_after_ms": {
+        "max": 115.561,
+        "mean": 24.417,
+        "p50": 21.907,
+        "p95": 38.208,
+        "p99": 64.951
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "903a8b946369f5d975551413c547445286b02d7bc91cf0ac61d8c312e7068bc6",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "reinforce",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 92.207,
+        "mean": 56.529,
+        "p50": 54.866,
+        "p95": 89.115,
+        "p99": 90.309
+      },
+      "after_ms": {
+        "max": 77.504,
+        "mean": 41.615,
+        "p50": 39.45,
+        "p95": 73.361,
+        "p99": 75.255
+      },
+      "speedup_p50": 1.391,
+      "first_before_ms": 93.407,
+      "first_after_ms": 60.901,
+      "all_before_ms": {
+        "max": 93.407,
+        "mean": 56.594,
+        "p50": 54.866,
+        "p95": 89.204,
+        "p99": 90.426
+      },
+      "all_after_ms": {
+        "max": 77.504,
+        "mean": 41.63,
+        "p50": 39.45,
+        "p95": 73.361,
+        "p99": 75.255
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "91ce688c0985fc6c4a94d56e5bd16a58269ea675fb895ba0d7afb90f557622f1",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "reinforce",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 227.942,
+        "mean": 135.279,
+        "p50": 132.065,
+        "p95": 224.753,
+        "p99": 227.225
+      },
+      "after_ms": {
+        "max": 291.19,
+        "mean": 94.811,
+        "p50": 88.83,
+        "p95": 181.406,
+        "p99": 189.514
+      },
+      "speedup_p50": 1.487,
+      "first_before_ms": 215.699,
+      "first_after_ms": 142.922,
+      "all_before_ms": {
+        "max": 227.942,
+        "mean": 135.373,
+        "p50": 132.065,
+        "p95": 224.753,
+        "p99": 227.225
+      },
+      "all_after_ms": {
+        "max": 291.19,
+        "mean": 94.814,
+        "p50": 88.83,
+        "p95": 181.406,
+        "p99": 189.514
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "0255bd276c257ed603dff6d353071973cc35bdb41d427dd4faff2d3de80fc4c5",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "cave",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 35.451,
+        "mean": 19.749,
+        "p50": 20.068,
+        "p95": 23.143,
+        "p99": 24.434
+      },
+      "after_ms": {
+        "max": 128.087,
+        "mean": 15.954,
+        "p50": 15.483,
+        "p95": 18.416,
+        "p99": 24.389
+      },
+      "speedup_p50": 1.296,
+      "first_before_ms": 15.682,
+      "first_after_ms": 9.99,
+      "all_before_ms": {
+        "max": 35.451,
+        "mean": 19.712,
+        "p50": 20.067,
+        "p95": 23.143,
+        "p99": 24.434
+      },
+      "all_after_ms": {
+        "max": 128.087,
+        "mean": 15.915,
+        "p50": 15.48,
+        "p95": 18.416,
+        "p99": 24.389
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "8abb1b2cc432b1c9ce438b78071f2f6c8faff51e0c77ed6c611f5a5efcbf3d10",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "cave",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 81.603,
+        "mean": 69.259,
+        "p50": 73.664,
+        "p95": 78.688,
+        "p99": 80.76
+      },
+      "after_ms": {
+        "max": 227.474,
+        "mean": 53.475,
+        "p50": 54.679,
+        "p95": 65.128,
+        "p99": 72.894
+      },
+      "speedup_p50": 1.347,
+      "first_before_ms": 35.51,
+      "first_after_ms": 22.563,
+      "all_before_ms": {
+        "max": 81.603,
+        "mean": 69.024,
+        "p50": 73.638,
+        "p95": 78.688,
+        "p99": 80.76
+      },
+      "all_after_ms": {
+        "max": 227.474,
+        "mean": 53.269,
+        "p50": 54.672,
+        "p95": 65.128,
+        "p99": 72.894
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "dfd30e7d3bfb2c4b8929b536248435f662eea269092ad514ef12dc9dbe1a16ed",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "cave",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 311.663,
+        "mean": 150.139,
+        "p50": 163.462,
+        "p95": 171.765,
+        "p99": 175.216
+      },
+      "after_ms": {
+        "max": 281.056,
+        "mean": 110.826,
+        "p50": 117.177,
+        "p95": 131.893,
+        "p99": 232.646
+      },
+      "speedup_p50": 1.395,
+      "first_before_ms": 62.149,
+      "first_after_ms": 39.851,
+      "all_before_ms": {
+        "max": 311.663,
+        "mean": 149.55,
+        "p50": 163.434,
+        "p95": 171.765,
+        "p99": 175.216
+      },
+      "all_after_ms": {
+        "max": 281.056,
+        "mean": 110.359,
+        "p50": 116.982,
+        "p95": 131.893,
+        "p99": 232.646
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "feee8e55c5964c5cf933f9948cd389b711c0928a5944e7257de09308cf0fb81f",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "cave",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 479.535,
+        "mean": 395.405,
+        "p50": 449.375,
+        "p95": 463.187,
+        "p99": 469.639
+      },
+      "after_ms": {
+        "max": 451.33,
+        "mean": 271.21,
+        "p50": 302.259,
+        "p95": 315.08,
+        "p99": 405.235
+      },
+      "speedup_p50": 1.487,
+      "first_before_ms": 141.379,
+      "first_after_ms": 81.626,
+      "all_before_ms": {
+        "max": 479.535,
+        "mean": 393.718,
+        "p50": 449.274,
+        "p95": 463.187,
+        "p99": 469.639
+      },
+      "all_after_ms": {
+        "max": 451.33,
+        "mean": 269.951,
+        "p50": 302.226,
+        "p95": 315.08,
+        "p99": 405.235
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "ebfff9b040053758842101964edbf5688caadc11e3ec6f1aef0a752082d93afa",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "dawn",
+      "units": 100,
+      "samples": 240,
+      "before_ms": {
+        "max": 100.944,
+        "mean": 19.799,
+        "p50": 19.124,
+        "p95": 20.414,
+        "p99": 39.741
+      },
+      "after_ms": {
+        "max": 279.524,
+        "mean": 18.38,
+        "p50": 17.084,
+        "p95": 18.242,
+        "p99": 32.025
+      },
+      "speedup_p50": 1.119,
+      "first_before_ms": 26.521,
+      "first_after_ms": 16.778,
+      "all_before_ms": {
+        "max": 100.944,
+        "mean": 19.824,
+        "p50": 19.128,
+        "p95": 20.422,
+        "p99": 39.741
+      },
+      "all_after_ms": {
+        "max": 279.524,
+        "mean": 18.379,
+        "p50": 17.084,
+        "p95": 18.302,
+        "p99": 32.025
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "2a73a43ef3cd5b1ac24de296469ee8a6bf4e21451564f76a9ad58bfe870a3e64",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "dawn",
+      "units": 200,
+      "samples": 240,
+      "before_ms": {
+        "max": 56.404,
+        "mean": 45.545,
+        "p50": 45.381,
+        "p95": 51.363,
+        "p99": 55.513
+      },
+      "after_ms": {
+        "max": 65.261,
+        "mean": 37.104,
+        "p50": 36.447,
+        "p95": 43.611,
+        "p99": 47.593
+      },
+      "speedup_p50": 1.245,
+      "first_before_ms": 62.583,
+      "first_after_ms": 45.433,
+      "all_before_ms": {
+        "max": 62.583,
+        "mean": 45.64,
+        "p50": 45.431,
+        "p95": 51.421,
+        "p99": 55.564
+      },
+      "all_after_ms": {
+        "max": 65.261,
+        "mean": 37.165,
+        "p50": 36.482,
+        "p95": 43.794,
+        "p99": 47.593
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "20b92f26c17d899ad36b8829f860f37916e13190dbe2ec30a7edee397c4d0241",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "dawn",
+      "units": 300,
+      "samples": 240,
+      "before_ms": {
+        "max": 107.448,
+        "mean": 87.782,
+        "p50": 86.795,
+        "p95": 94.989,
+        "p99": 101.135
+      },
+      "after_ms": {
+        "max": 231.506,
+        "mean": 69.008,
+        "p50": 67.22,
+        "p95": 76.528,
+        "p99": 101.805
+      },
+      "speedup_p50": 1.291,
+      "first_before_ms": 107.841,
+      "first_after_ms": 82.423,
+      "all_before_ms": {
+        "max": 107.841,
+        "mean": 87.896,
+        "p50": 86.869,
+        "p95": 95.611,
+        "p99": 102.307
+      },
+      "all_after_ms": {
+        "max": 231.506,
+        "mean": 69.104,
+        "p50": 67.259,
+        "p95": 78.049,
+        "p99": 101.805
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "db64e049ce7f5505c8a079bb614477c0c697ddeb67a51219373a99ce012f53e8",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "dawn",
+      "units": 500,
+      "samples": 240,
+      "before_ms": {
+        "max": 224.465,
+        "mean": 196.128,
+        "p50": 196.717,
+        "p95": 216.548,
+        "p99": 220.091
+      },
+      "after_ms": {
+        "max": 163.996,
+        "mean": 139.023,
+        "p50": 138.232,
+        "p95": 157.107,
+        "p99": 162.986
+      },
+      "speedup_p50": 1.423,
+      "first_before_ms": 222.84,
+      "first_after_ms": 153.878,
+      "all_before_ms": {
+        "max": 224.465,
+        "mean": 196.251,
+        "p50": 197.0,
+        "p95": 216.682,
+        "p99": 222.84
+      },
+      "all_after_ms": {
+        "max": 163.996,
+        "mean": 139.114,
+        "p50": 138.351,
+        "p95": 157.107,
+        "p99": 162.986
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "84382c48ebc8678fac4298cb1d98115c5e08e2db784a19bc51d10e7b7732d315",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "idle",
+      "units": 100,
+      "samples": 300,
+      "before_ms": {
+        "max": 10.434,
+        "mean": 8.772,
+        "p50": 8.766,
+        "p95": 9.746,
+        "p99": 10.191
+      },
+      "after_ms": {
+        "max": 124.202,
+        "mean": 6.515,
+        "p50": 5.972,
+        "p95": 6.21,
+        "p99": 12.698
+      },
+      "speedup_p50": 1.468,
+      "first_before_ms": 8.203,
+      "first_after_ms": 5.619,
+      "all_before_ms": {
+        "max": 10.434,
+        "mean": 8.772,
+        "p50": 8.766,
+        "p95": 9.746,
+        "p99": 10.191
+      },
+      "all_after_ms": {
+        "max": 124.202,
+        "mean": 6.51,
+        "p50": 5.969,
+        "p95": 6.21,
+        "p99": 12.698
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "585e9ab55f8251ac9a4c1692841716adefe3339ab99cf1ff57e66fc6801b718d",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "idle",
+      "units": 200,
+      "samples": 300,
+      "before_ms": {
+        "max": 25.697,
+        "mean": 23.14,
+        "p50": 23.129,
+        "p95": 24.335,
+        "p99": 24.844
+      },
+      "after_ms": {
+        "max": 14.338,
+        "mean": 12.253,
+        "p50": 12.155,
+        "p95": 12.822,
+        "p99": 13.469
+      },
+      "speedup_p50": 1.903,
+      "first_before_ms": 23.113,
+      "first_after_ms": 12.439,
+      "all_before_ms": {
+        "max": 25.697,
+        "mean": 23.142,
+        "p50": 23.129,
+        "p95": 24.335,
+        "p99": 24.844
+      },
+      "all_after_ms": {
+        "max": 14.338,
+        "mean": 12.254,
+        "p50": 12.158,
+        "p95": 12.822,
+        "p99": 13.469
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "ac1e5273bb34afed41f35eff178953393baa3347513178f31ad2afaebc9834cb",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "idle",
+      "units": 300,
+      "samples": 300,
+      "before_ms": {
+        "max": 54.682,
+        "mean": 42.975,
+        "p50": 42.902,
+        "p95": 45.698,
+        "p99": 46.816
+      },
+      "after_ms": {
+        "max": 74.845,
+        "mean": 18.909,
+        "p50": 18.325,
+        "p95": 21.059,
+        "p99": 22.579
+      },
+      "speedup_p50": 2.341,
+      "first_before_ms": 44.236,
+      "first_after_ms": 19.324,
+      "all_before_ms": {
+        "max": 54.682,
+        "mean": 42.991,
+        "p50": 42.951,
+        "p95": 45.875,
+        "p99": 46.816
+      },
+      "all_after_ms": {
+        "max": 74.845,
+        "mean": 18.911,
+        "p50": 18.326,
+        "p95": 21.059,
+        "p99": 22.579
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "088eca848071e8893d93974fcf34a2fd584a9b182058cabc13ff6c0690298300",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    },
+    {
+      "scenario": "idle",
+      "units": 500,
+      "samples": 300,
+      "before_ms": {
+        "max": 99.98,
+        "mean": 93.818,
+        "p50": 93.723,
+        "p95": 96.733,
+        "p99": 98.452
+      },
+      "after_ms": {
+        "max": 59.402,
+        "mean": 30.356,
+        "p50": 29.561,
+        "p95": 33.763,
+        "p99": 39.38
+      },
+      "speedup_p50": 3.17,
+      "first_before_ms": 92.126,
+      "first_after_ms": 29.849,
+      "all_before_ms": {
+        "max": 99.98,
+        "mean": 93.82,
+        "p50": 93.723,
+        "p95": 96.733,
+        "p99": 98.452
+      },
+      "all_after_ms": {
+        "max": 59.402,
+        "mean": 30.352,
+        "p50": 29.572,
+        "p95": 33.763,
+        "p99": 39.38
+      },
+      "battle_hash_equal": true,
+      "battle_hash": "a91a123af5e2466ffe41585f4b4544de64d800008f55dd49d91ddc5a3de50411",
+      "flow_relaxed_cells_before": 0,
+      "flow_relaxed_cells_after": 0
+    }
+  ],
+  "pressure_battle_equal_pairs": 36,
+  "natural_regression": {
+    "pairs": 12,
+    "equal_battle_results": 12,
+    "material_differences": [],
+    "rows": [
+      {
+        "strategy": "feint",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "feint",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "highland",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "highland",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "idle",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "idle",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "late_batches",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "late_batches",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "main_gate",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "main_gate",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "waves",
+        "seed": 1,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      },
+      {
+        "strategy": "waves",
+        "seed": 2,
+        "equal_battle_result": true,
+        "differences": {
+          "params_sha256": {
+            "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+            "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+          }
+        }
+      }
+    ]
+  },
+  "natural_driver_classic_sha256": "fe6dc7902fa240791c17de8ba66b800f39a7b5ab9b3a2d76a7d3df5bc33734f1",
+  "flows": {
+    "before": {
+      "map": [
+        56,
+        48
+      ],
+      "results": [
+        {
+          "build_ms": 4.66,
+          "change_ms": 4.59,
+          "fields": 1,
+          "relaxed_cells": 665
+        },
+        {
+          "build_ms": 41.33,
+          "change_ms": 46.1,
+          "fields": 10,
+          "relaxed_cells": 6650
+        },
+        {
+          "build_ms": 124.37,
+          "change_ms": 134.96,
+          "fields": 30,
+          "relaxed_cells": 19638
+        },
+        {
+          "build_ms": 242.64,
+          "change_ms": 265.33,
+          "fields": 58,
+          "relaxed_cells": 37751
+        },
+        {
+          "build_ms": 420.59,
+          "change_ms": 456.35,
+          "fields": 99,
+          "relaxed_cells": 64899
+        },
+        {
+          "build_ms": 737.6,
+          "change_ms": 793.84,
+          "fields": 175,
+          "relaxed_cells": 113567
+        }
+      ]
+    },
+    "after": {
+      "map": [
+        56,
+        48
+      ],
+      "results": [
+        {
+          "build_ms": 0.39,
+          "change_ms": 0.43,
+          "fields": 1,
+          "relaxed_cells": 665
+        },
+        {
+          "build_ms": 3.75,
+          "change_ms": 4.22,
+          "fields": 10,
+          "relaxed_cells": 6650
+        },
+        {
+          "build_ms": 11.34,
+          "change_ms": 12.43,
+          "fields": 30,
+          "relaxed_cells": 19638
+        },
+        {
+          "build_ms": 22.12,
+          "change_ms": 23.56,
+          "fields": 58,
+          "relaxed_cells": 37751
+        },
+        {
+          "build_ms": 37.24,
+          "change_ms": 40.55,
+          "fields": 99,
+          "relaxed_cells": 64899
+        },
+        {
+          "build_ms": 66.86,
+          "change_ms": 71.13,
+          "fields": 175,
+          "relaxed_cells": 113567
+        }
+      ]
+    }
+  },
+  "director": [
+    {
+      "units": 100,
+      "before": {
+        "baseline": true,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 42.96,
+            "ordered": 3,
+            "setup_ms": 180.882,
+            "units": 100
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 42.767,
+            "ordered": 3,
+            "setup_ms": 179.144,
+            "units": 100
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 43.156,
+            "ordered": 3,
+            "setup_ms": 179.484,
+            "units": 100
+          }
+        ]
+      },
+      "after": {
+        "baseline": false,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 4.752,
+            "ordered": 3,
+            "setup_ms": 81.999,
+            "units": 100
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 4.745,
+            "ordered": 3,
+            "setup_ms": 80.378,
+            "units": 100
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 37
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 38
+                  },
+                  {
+                    "estimated_arrival_at": 25.625,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 44
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 69.51,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  37,
+                  38,
+                  44
+                ]
+              }
+            ],
+            "director_ms": 4.765,
+            "ordered": 3,
+            "setup_ms": 80.021,
+            "units": 100
+          }
+        ]
+      },
+      "median_before_ms": 42.96,
+      "median_after_ms": 4.752
+    },
+    {
+      "units": 200,
+      "before": {
+        "baseline": true,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 86.874,
+            "ordered": 3,
+            "setup_ms": 185.846,
+            "units": 200
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 86.739,
+            "ordered": 3,
+            "setup_ms": 185.225,
+            "units": 200
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 86.438,
+            "ordered": 3,
+            "setup_ms": 184.738,
+            "units": 200
+          }
+        ]
+      },
+      "after": {
+        "baseline": false,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 9.405,
+            "ordered": 3,
+            "setup_ms": 87.482,
+            "units": 200
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 9.336,
+            "ordered": 3,
+            "setup_ms": 85.855,
+            "units": 200
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 79
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 89
+                  },
+                  {
+                    "estimated_arrival_at": 26.333,
+                    "from": "highland",
+                    "kind": "archer",
+                    "unit": 94
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 135.34,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  79,
+                  89,
+                  94
+                ]
+              }
+            ],
+            "director_ms": 9.331,
+            "ordered": 3,
+            "setup_ms": 85.757,
+            "units": 200
+          }
+        ]
+      },
+      "median_before_ms": 86.739,
+      "median_after_ms": 9.336
+    },
+    {
+      "units": 300,
+      "before": {
+        "baseline": true,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 128.395,
+            "ordered": 3,
+            "setup_ms": 219.485,
+            "units": 300
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 128.199,
+            "ordered": 3,
+            "setup_ms": 191.082,
+            "units": 300
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 128.586,
+            "ordered": 3,
+            "setup_ms": 190.38,
+            "units": 300
+          }
+        ]
+      },
+      "after": {
+        "baseline": false,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 14.026,
+            "ordered": 3,
+            "setup_ms": 93.143,
+            "units": 300
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 13.979,
+            "ordered": 3,
+            "setup_ms": 91.879,
+            "units": 300
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 133
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 109
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 121
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 198.81,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  133,
+                  109,
+                  121
+                ]
+              }
+            ],
+            "director_ms": 14.013,
+            "ordered": 3,
+            "setup_ms": 92.098,
+            "units": 300
+          }
+        ]
+      },
+      "median_before_ms": 128.395,
+      "median_after_ms": 14.013
+    },
+    {
+      "units": 500,
+      "before": {
+        "baseline": true,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 232.551,
+            "ordered": 3,
+            "setup_ms": 204.969,
+            "units": 500
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 232.209,
+            "ordered": 3,
+            "setup_ms": 203.606,
+            "units": 500
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 232.999,
+            "ordered": 3,
+            "setup_ms": 203.168,
+            "units": 500
+          }
+        ]
+      },
+      "after": {
+        "baseline": false,
+        "global_perception": true,
+        "repeats": [
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 23.523,
+            "ordered": 3,
+            "setup_ms": 104.661,
+            "units": 500
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 23.393,
+            "ordered": 3,
+            "setup_ms": 102.818,
+            "units": 500
+          },
+          {
+            "decisions": [
+              {
+                "depart_at": 5.0,
+                "event": "ordered",
+                "members": [
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 211
+                  },
+                  {
+                    "estimated_arrival_at": 24.375,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 212
+                  },
+                  {
+                    "estimated_arrival_at": 25.0,
+                    "from": "highland",
+                    "kind": "shield",
+                    "unit": 181
+                  }
+                ],
+                "reason": "perceived_threat",
+                "threat": 318.17,
+                "time": 0.0,
+                "to": "coast",
+                "units": [
+                  211,
+                  212,
+                  181
+                ]
+              }
+            ],
+            "director_ms": 23.599,
+            "ordered": 3,
+            "setup_ms": 102.836,
+            "units": 500
+          }
+        ]
+      },
+      "median_before_ms": 232.551,
+      "median_after_ms": 23.523
+    }
+  ],
+  "natural_seed7": [
+    {
+      "active": {
+        "max": 46,
+        "mean": 18.09,
+        "min": 7
+      },
+      "all_sim_ms": {
+        "max": 65.307,
+        "mean": 4.085,
+        "p50": 3.349,
+        "p95": 7.243,
+        "p99": 14.732
+      },
+      "battle_hash": "7c7fe66de8800d6bbc7c75bec1cfd8234db6a255b3a34a31c104fcd5b2e63803",
+      "breach_sample": 218,
+      "breach_sim_seconds": 14.53,
+      "camera_moves": 0,
+      "casualties": [
+        53,
+        34
+      ],
+      "cave_inside_max": 1,
+      "cave_transits": 1,
+      "combat_events": {
+        "clash": 49,
+        "counter": 2,
+        "enemy_switch": 553,
+        "objective_switch": 223,
+        "parry": 20,
+        "pursue": 16
+      },
+      "dispatches": 21,
+      "draw_calls": {},
+      "ended_at": 232.63,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 32.6,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 9.867,
+      "flow_relaxed_cells": 8216,
+      "flow_repairs": 1,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "1ed89ad969186a905015846adf9097a331e628cb6923b38cea56314a27c94f57",
+      "sample_sim_seconds": 232.53,
+      "samples": 3488,
+      "scenario": "main_gate",
+      "schema": 1,
+      "sim_ms": {
+        "max": 65.307,
+        "mean": 4.084,
+        "p50": 3.349,
+        "p95": 7.237,
+        "p99": 14.732
+      },
+      "spawned": [
+        60,
+        34
+      ],
+      "state_hash": "34f5b60fc8ce23ac0564f1c49568647ec4beb7ae0f726414c56c789aca8d35d4",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "main_gate",
+      "topology_events": 1,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 24.93,
+      "tag": "main_gate_0_sim",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-before/raw/main_gate_0_sim.engine.log proto/siege/perf/results/t73/baseline_source/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=main_gate --perf_units=0 --perf_samples=4500 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-before/raw/main_gate_0_sim.json --perf_natural=true --strategy=main_gate --seed=7",
+      "label": "before"
+    },
+    {
+      "active": {
+        "max": 46,
+        "mean": 18.09,
+        "min": 7
+      },
+      "all_sim_ms": {
+        "max": 13.317,
+        "mean": 3.793,
+        "p50": 3.323,
+        "p95": 7.216,
+        "p99": 7.784
+      },
+      "battle_hash": "7c7fe66de8800d6bbc7c75bec1cfd8234db6a255b3a34a31c104fcd5b2e63803",
+      "breach_sample": 218,
+      "breach_sim_seconds": 14.53,
+      "camera_moves": 0,
+      "casualties": [
+        53,
+        34
+      ],
+      "cave_inside_max": 1,
+      "cave_transits": 1,
+      "combat_events": {
+        "clash": 49,
+        "counter": 2,
+        "enemy_switch": 553,
+        "objective_switch": 223,
+        "parry": 20,
+        "pursue": 16
+      },
+      "dispatches": 21,
+      "draw_calls": {},
+      "ended_at": 232.63,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 33.2,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 3.573,
+      "flow_relaxed_cells": 8216,
+      "flow_repairs": 1,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "fe6dc7902fa240791c17de8ba66b800f39a7b5ab9b3a2d76a7d3df5bc33734f1",
+      "sample_sim_seconds": 232.53,
+      "samples": 3488,
+      "scenario": "main_gate",
+      "schema": 1,
+      "setup_ms": 73.982,
+      "sim_ms": {
+        "max": 13.317,
+        "mean": 3.794,
+        "p50": 3.323,
+        "p95": 7.216,
+        "p99": 7.784
+      },
+      "spawned": [
+        60,
+        34
+      ],
+      "state_hash": "ffbbe371eb591b97b9e355648f25960fef5cbb8b6e25f3e3eb8280dc1a3cfc2a",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "main_gate",
+      "topology_events": 1,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 24.62,
+      "tag": "main_gate_0_sim",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-after/raw/main_gate_0_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=main_gate --perf_units=0 --perf_samples=4500 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-after/raw/main_gate_0_sim.json --perf_natural=true --strategy=main_gate --seed=7",
+      "label": "after"
+    },
+    {
+      "active": {
+        "max": 54,
+        "mean": 22.87,
+        "min": 12
+      },
+      "all_sim_ms": {
+        "max": 75.466,
+        "mean": 5.031,
+        "p50": 3.503,
+        "p95": 9.418,
+        "p99": 18.242
+      },
+      "battle_hash": "da7f90be5f44d1831e4ac63e3411e4048a18df49a7ab04fefd6eb91066cd743b",
+      "breach_sample": 591,
+      "breach_sim_seconds": 39.4,
+      "camera_moves": 0,
+      "casualties": [
+        27,
+        33
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 19,
+        "counter": 3,
+        "enemy_switch": 619,
+        "objective_switch": 149,
+        "parry": 11,
+        "pursue": 15
+      },
+      "dispatches": 15,
+      "draw_calls": {},
+      "ended_at": 212.6,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 32.5,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 3.207,
+      "flow_relaxed_cells": 17585,
+      "flow_repairs": 2,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "fe70c8deb1e9776fcb47f2377aec5f8e0a4fbf70bc456d5d8427205eb60fdfa5",
+      "sample_sim_seconds": 212.47,
+      "samples": 3187,
+      "scenario": "waves",
+      "schema": 1,
+      "sim_ms": {
+        "max": 75.466,
+        "mean": 5.033,
+        "p50": 3.503,
+        "p95": 9.418,
+        "p99": 18.242
+      },
+      "spawned": [
+        40,
+        34
+      ],
+      "state_hash": "eb492d0ecc498d4e47a68e573f744d83fafe93becf6c8d3215e2f46f11573ca4",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 24.57,
+      "tag": "waves_0_sim",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-before/raw/waves_0_sim.engine.log proto/siege/perf/results/t73/baseline_source/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=waves --perf_units=0 --perf_samples=4500 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-before/raw/waves_0_sim.json --perf_natural=true --strategy=waves --seed=7",
+      "label": "before"
+    },
+    {
+      "active": {
+        "max": 54,
+        "mean": 22.87,
+        "min": 12
+      },
+      "all_sim_ms": {
+        "max": 125.335,
+        "mean": 4.027,
+        "p50": 3.285,
+        "p95": 7.287,
+        "p99": 13.05
+      },
+      "battle_hash": "da7f90be5f44d1831e4ac63e3411e4048a18df49a7ab04fefd6eb91066cd743b",
+      "breach_sample": 591,
+      "breach_sim_seconds": 39.4,
+      "camera_moves": 0,
+      "casualties": [
+        27,
+        33
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 19,
+        "counter": 3,
+        "enemy_switch": 619,
+        "objective_switch": 149,
+        "parry": 11,
+        "pursue": 15
+      },
+      "dispatches": 15,
+      "draw_calls": {},
+      "ended_at": 212.6,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 33.1,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 2.643,
+      "flow_relaxed_cells": 17585,
+      "flow_repairs": 2,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "0358d06741036a5714731e2f56e68c8b73bc780a42d4fa2f42791e3f876eaa81",
+      "sample_sim_seconds": 212.47,
+      "samples": 3187,
+      "scenario": "waves",
+      "schema": 1,
+      "setup_ms": 74.575,
+      "sim_ms": {
+        "max": 125.335,
+        "mean": 4.028,
+        "p50": 3.285,
+        "p95": 7.287,
+        "p99": 13.05
+      },
+      "spawned": [
+        40,
+        34
+      ],
+      "state_hash": "e9620a6785108c26ead22d7aed0d48430f377ada3a44530f9f4a6c51e19cdc97",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 23.47,
+      "tag": "waves_0_sim",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-after/raw/waves_0_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=waves --perf_units=0 --perf_samples=4500 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-after/raw/waves_0_sim.json --perf_natural=true --strategy=waves --seed=7",
+      "label": "after"
+    }
+  ],
+  "natural_waves_repeat": [
+    {
+      "active": {
+        "max": 54,
+        "mean": 22.87,
+        "min": 12
+      },
+      "all_sim_ms": {
+        "max": 29.169,
+        "mean": 3.878,
+        "p50": 3.26,
+        "p95": 6.584,
+        "p99": 11.825
+      },
+      "battle_hash": "da7f90be5f44d1831e4ac63e3411e4048a18df49a7ab04fefd6eb91066cd743b",
+      "breach_sample": 591,
+      "breach_sim_seconds": 39.4,
+      "camera_moves": 0,
+      "casualties": [
+        27,
+        33
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 19,
+        "counter": 3,
+        "enemy_switch": 619,
+        "objective_switch": 149,
+        "parry": 11,
+        "pursue": 15
+      },
+      "dispatches": 15,
+      "draw_calls": {},
+      "ended_at": 212.6,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 33.1,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 2.565,
+      "flow_relaxed_cells": 17585,
+      "flow_repairs": 2,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5",
+      "phase_mode": false,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "0358d06741036a5714731e2f56e68c8b73bc780a42d4fa2f42791e3f876eaa81",
+      "sample_sim_seconds": 212.47,
+      "samples": 3187,
+      "scenario": "waves",
+      "schema": 1,
+      "setup_ms": 73.497,
+      "sim_ms": {
+        "max": 29.169,
+        "mean": 3.878,
+        "p50": 3.261,
+        "p95": 6.584,
+        "p99": 11.825
+      },
+      "spawned": [
+        40,
+        34
+      ],
+      "state_hash": "e9620a6785108c26ead22d7aed0d48430f377ada3a44530f9f4a6c51e19cdc97",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 22.7,
+      "tag": "waves_0_sim",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-waves-repeat/raw/waves_0_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=waves --perf_units=0 --perf_samples=4500 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-waves-repeat/raw/waves_0_sim.json --perf_natural=true --strategy=waves --seed=7"
+    },
+    {
+      "active": {
+        "max": 54,
+        "mean": 22.87,
+        "min": 12
+      },
+      "all_sim_ms": {
+        "max": 72.407,
+        "mean": 3.95,
+        "p50": 3.364,
+        "p95": 6.707,
+        "p99": 11.967
+      },
+      "battle_hash": "da7f90be5f44d1831e4ac63e3411e4048a18df49a7ab04fefd6eb91066cd743b",
+      "breach_sample": 591,
+      "breach_sim_seconds": 39.4,
+      "camera_moves": 0,
+      "casualties": [
+        27,
+        33
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 19,
+        "counter": 3,
+        "enemy_switch": 619,
+        "objective_switch": 149,
+        "parry": 11,
+        "pursue": 15
+      },
+      "dispatches": 15,
+      "draw_calls": {},
+      "ended_at": 212.6,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 33.1,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 2.714,
+      "flow_relaxed_cells": 17585,
+      "flow_repairs": 2,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "map_stat": {
+        "change_calls": 2,
+        "change_max_us": 9376,
+        "change_us": 14222,
+        "direction_calls": 145999,
+        "direction_us": 718826,
+        "distance_calls": 3125,
+        "distance_us": 81431,
+        "field_build_us": 78727,
+        "field_builds": 90,
+        "field_calls": 51198,
+        "field_hit_us": 125196,
+        "field_hits": 51112,
+        "field_us": 202825
+      },
+      "mode": "sim",
+      "natural": true,
+      "params_sha256": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5",
+      "phase": {
+        "adjacent_query": {
+          "max_ms": 1.135,
+          "mean_ms": 0.0391
+        },
+        "bot": {
+          "max_ms": 3.477,
+          "mean_ms": 0.0071
+        },
+        "captures": {
+          "max_ms": 0.272,
+          "mean_ms": 0.0875
+        },
+        "director": {
+          "max_ms": 3.157,
+          "mean_ms": 0.0268
+        },
+        "end_checks": {
+          "max_ms": 0.244,
+          "mean_ms": 0.0457
+        },
+        "gate": {
+          "max_ms": 0.792,
+          "mean_ms": 0.0043
+        },
+        "orders": {
+          "max_ms": 12.251,
+          "mean_ms": 0.3865
+        },
+        "orders_sense": {
+          "max_ms": 14.868,
+          "mean_ms": 0.7674
+        },
+        "regenerate": {
+          "max_ms": 0.182,
+          "mean_ms": 0.0075
+        },
+        "sense_nearby": {
+          "max_ms": 14.429,
+          "mean_ms": 0.3699
+        },
+        "separation": {
+          "max_ms": 2.883,
+          "mean_ms": 0.1465
+        },
+        "spatial_build_1": {
+          "max_ms": 1.521,
+          "mean_ms": 0.0859
+        },
+        "spatial_build_2": {
+          "max_ms": 1.244,
+          "mean_ms": 0.0838
+        },
+        "structures": {
+          "max_ms": 9.416,
+          "mean_ms": 0.0132
+        },
+        "unit_tick_move_combat": {
+          "max_ms": 70.178,
+          "mean_ms": 0.842
+        }
+      },
+      "phase_mode": true,
+      "phase_steps": 6378,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "0358d06741036a5714731e2f56e68c8b73bc780a42d4fa2f42791e3f876eaa81",
+      "sample_sim_seconds": 212.47,
+      "samples": 3187,
+      "scenario": "waves",
+      "schema": 1,
+      "setup_ms": 73.796,
+      "sim_ms": {
+        "max": 72.407,
+        "mean": 3.95,
+        "p50": 3.364,
+        "p95": 6.707,
+        "p99": 11.967
+      },
+      "spawned": [
+        40,
+        34
+      ],
+      "state_hash": "e9620a6785108c26ead22d7aed0d48430f377ada3a44530f9f4a6c51e19cdc97",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "waves",
+      "topology_events": 2,
+      "units_target": 0,
+      "victory_method": "keep_retreat",
+      "won": true,
+      "ok": true,
+      "seconds": 22.8,
+      "tag": "waves_0_sim_phase",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-waves-repeat/raw/waves_0_sim_phase.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=waves --perf_units=0 --perf_samples=4500 --perf_phase=true --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/natural-waves-repeat/raw/waves_0_sim_phase.json --perf_natural=true --strategy=waves --seed=7"
+    }
+  ],
+  "phase_after": [
+    {
+      "active": {
+        "max": 300,
+        "mean": 300.0,
+        "min": 300
+      },
+      "all_sim_ms": {
+        "max": 182.426,
+        "mean": 84.473,
+        "p50": 105.116,
+        "p95": 111.575,
+        "p99": 114.083
+      },
+      "battle_hash": "37e16cb93ce04e41c2b937ad1dbe3f028c05c6087206fa47e3dfe9eb25370fe9",
+      "breach_sample": -1,
+      "breach_sim_seconds": -1.0,
+      "camera_moves": 0,
+      "casualties": [
+        0,
+        0
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {},
+      "dispatches": 0,
+      "draw_calls": {},
+      "ended_at": -1.0,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 38.9,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 26.333,
+      "flow_relaxed_cells": 0,
+      "flow_repairs": 0,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "map_stat": {
+        "change_calls": 0,
+        "change_max_us": 0,
+        "change_us": 0,
+        "direction_calls": 181200,
+        "direction_us": 627987,
+        "distance_calls": 0,
+        "distance_us": 0,
+        "field_build_us": 1946,
+        "field_builds": 5,
+        "field_calls": 47048,
+        "field_hit_us": 87469,
+        "field_hits": 47047,
+        "field_us": 87889
+      },
+      "mode": "sim",
+      "natural": false,
+      "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+      "phase": {
+        "adjacent_query": {
+          "max_ms": 0.386,
+          "mean_ms": 0.5163
+        },
+        "bot": {
+          "max_ms": 0.003,
+          "mean_ms": 0.0007
+        },
+        "captures": {
+          "max_ms": 0.555,
+          "mean_ms": 0.2865
+        },
+        "director": {
+          "max_ms": 0.011,
+          "mean_ms": 0.0029
+        },
+        "end_checks": {
+          "max_ms": 0.01,
+          "mean_ms": 0.0017
+        },
+        "gate": {
+          "max_ms": 0.058,
+          "mean_ms": 0.0013
+        },
+        "orders": {
+          "max_ms": 0.525,
+          "mean_ms": 0.1419
+        },
+        "orders_sense": {
+          "max_ms": 4.592,
+          "mean_ms": 1.8935
+        },
+        "regenerate": {
+          "max_ms": 0.017,
+          "mean_ms": 0.0076
+        },
+        "sense_nearby": {
+          "max_ms": 4.379,
+          "mean_ms": 1.7131
+        },
+        "separation": {
+          "max_ms": 28.554,
+          "mean_ms": 18.7378
+        },
+        "spatial_build_1": {
+          "max_ms": 2.097,
+          "mean_ms": 0.4579
+        },
+        "spatial_build_2": {
+          "max_ms": 1.776,
+          "mean_ms": 0.4627
+        },
+        "structures": {
+          "max_ms": 4.906,
+          "mean_ms": 0.1365
+        },
+        "unit_tick_move_combat": {
+          "max_ms": 86.609,
+          "mean_ms": 38.9826
+        }
+      },
+      "phase_mode": true,
+      "phase_steps": 604,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "bb523a58316ded82a10e213977f1d7ffe4c30a39ca0a03ed00383a362fd99aec",
+      "sample_sim_seconds": 20.0,
+      "samples": 300,
+      "scenario": "march",
+      "schema": 1,
+      "setup_ms": 80.707,
+      "sim_ms": {
+        "max": 182.426,
+        "mean": 84.854,
+        "p50": 105.121,
+        "p95": 111.575,
+        "p99": 114.083
+      },
+      "spawned": [
+        300,
+        0
+      ],
+      "state_hash": "bbc616d88e6be26a2ce5e894ff383d7c8c2caabaa32de7864b4df54351ffbfed",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "manual",
+      "topology_events": 0,
+      "units_target": 300,
+      "victory_method": "perf_hold",
+      "won": true,
+      "ok": true,
+      "seconds": 26.28,
+      "tag": "march_300_sim_phase",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/phase-after/raw/march_300_sim_phase.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=march --perf_units=300 --perf_samples=300 --perf_phase=true --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/phase-after/raw/march_300_sim_phase.json"
+    },
+    {
+      "active": {
+        "max": 300,
+        "mean": 300.0,
+        "min": 300
+      },
+      "all_sim_ms": {
+        "max": 89.358,
+        "mean": 69.464,
+        "p50": 67.831,
+        "p95": 76.053,
+        "p99": 84.045
+      },
+      "battle_hash": "8805ab61f46df84ae92506b6eb1d6461fa8463d54f8b5b0d29f2af470eee9753",
+      "breach_sample": -1,
+      "breach_sim_seconds": -1.0,
+      "camera_moves": 0,
+      "casualties": [
+        0,
+        0
+      ],
+      "cave_inside_max": 0,
+      "cave_transits": 0,
+      "combat_events": {
+        "clash": 2098,
+        "counter": 1,
+        "enemy_switch": 318,
+        "parry": 8,
+        "pursue": 155
+      },
+      "dispatches": 0,
+      "draw_calls": {},
+      "ended_at": -1.0,
+      "environment": {
+        "adapter": "",
+        "build": "debug",
+        "cpu": "Apple M1",
+        "cpu_count": 8,
+        "driver": "metal",
+        "godot": "4.7.2-stable (official)",
+        "nodes": 4,
+        "os": "macOS 26.6.2",
+        "rendering_method": "forward_plus",
+        "static_memory_mb": 38.9,
+        "texture": [
+          0,
+          0
+        ],
+        "viewport": [
+          0,
+          0
+        ],
+        "window": [
+          0,
+          0
+        ]
+      },
+      "first_sim_ms": 84.045,
+      "flow_relaxed_cells": 0,
+      "flow_repairs": 0,
+      "frame_ms": {},
+      "frames_over_16_7": 0,
+      "frames_over_33_3": 0,
+      "map_stat": {
+        "change_calls": 0,
+        "change_max_us": 0,
+        "change_us": 0,
+        "direction_calls": 181200,
+        "direction_us": 676622,
+        "distance_calls": 0,
+        "distance_us": 0,
+        "field_build_us": 1920,
+        "field_builds": 5,
+        "field_calls": 68757,
+        "field_hit_us": 129197,
+        "field_hits": 68756,
+        "field_us": 129596
+      },
+      "mode": "sim",
+      "natural": false,
+      "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+      "phase": {
+        "adjacent_query": {
+          "max_ms": 0.096,
+          "mean_ms": 0.635
+        },
+        "bot": {
+          "max_ms": 0.004,
+          "mean_ms": 0.0007
+        },
+        "captures": {
+          "max_ms": 0.815,
+          "mean_ms": 0.7028
+        },
+        "director": {
+          "max_ms": 0.041,
+          "mean_ms": 0.0233
+        },
+        "end_checks": {
+          "max_ms": 0.004,
+          "mean_ms": 0.0013
+        },
+        "gate": {
+          "max_ms": 0.004,
+          "mean_ms": 0.0011
+        },
+        "orders": {
+          "max_ms": 0.971,
+          "mean_ms": 0.7974
+        },
+        "orders_sense": {
+          "max_ms": 32.539,
+          "mean_ms": 18.0571
+        },
+        "regenerate": {
+          "max_ms": 0.034,
+          "mean_ms": 0.0064
+        },
+        "sense_nearby": {
+          "max_ms": 31.684,
+          "mean_ms": 17.2195
+        },
+        "separation": {
+          "max_ms": 0.504,
+          "mean_ms": 6.2913
+        },
+        "spatial_build_1": {
+          "max_ms": 1.149,
+          "mean_ms": 0.4874
+        },
+        "spatial_build_2": {
+          "max_ms": 0.598,
+          "mean_ms": 0.4865
+        },
+        "structures": {
+          "max_ms": 0.108,
+          "mean_ms": 0.0509
+        },
+        "unit_tick_move_combat": {
+          "max_ms": 34.729,
+          "mean_ms": 14.9124
+        }
+      },
+      "phase_mode": true,
+      "phase_steps": 604,
+      "refresh_ms": {},
+      "residual_ms": {},
+      "result_hash": "04f329cd337c5f3fb4bbe1d7b15704fa287679913f6d951727e90977c71b6b62",
+      "sample_sim_seconds": 20.0,
+      "samples": 300,
+      "scenario": "melee",
+      "schema": 1,
+      "setup_ms": 74.497,
+      "sim_ms": {
+        "max": 89.358,
+        "mean": 69.378,
+        "p50": 67.815,
+        "p95": 75.809,
+        "p99": 82.749
+      },
+      "spawned": [
+        150,
+        150
+      ],
+      "state_hash": "f95c365ef3fe042d47704fdd90661cb34c359c1cd1da5ef1c7a0e94d2e0d4c6c",
+      "step_seconds": 0.0333333333333333,
+      "steps_per_frame": 2,
+      "strategy": "manual",
+      "topology_events": 0,
+      "units_target": 300,
+      "victory_method": "perf_hold",
+      "won": true,
+      "ok": true,
+      "seconds": 21.39,
+      "tag": "melee_300_sim_phase",
+      "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/phase-after/raw/melee_300_sim_phase.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=300 --perf_samples=300 --perf_phase=true --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/phase-after/raw/melee_300_sim_phase.json"
+    }
+  ],
+  "audits": [
+    "T73_AUDIT PASS strategy=main_gate seed=1 steps=6948 exact_unit_state_and_rng=true finished_equal=true",
+    "T73_AUDIT PASS strategy=waves seed=2 steps=7448 exact_unit_state_and_rng=true finished_equal=true"
+  ],
+  "baseline_march_100_recheck_ms": {
+    "max": 52.093,
+    "mean": 18.507,
+    "p50": 19.985,
+    "p95": 23.535,
+    "p99": 24.891
+  },
+  "first_grid_iteration_ms": {
+    "100": {
+      "max": 29.935,
+      "mean": 20.73,
+      "p50": 23.809,
+      "p95": 27.726,
+      "p99": 28.014
+    },
+    "200": {
+      "max": 99.939,
+      "mean": 66.435,
+      "p50": 85.115,
+      "p95": 90.645,
+      "p99": 93.539
+    },
+    "300": {
+      "max": 202.533,
+      "mean": 134.576,
+      "p50": 181.698,
+      "p95": 191.169,
+      "p99": 193.367
+    }
+  },
+  "self_repairs": 3,
+  "validation": "tools/verify/proto_siege.sh --out proto/siege/perf/results/t73/verify-reviewed"
+}

@@ -20,9 +20,9 @@ OUT = PERF / "results"
 SCENARIOS = ["march", "multi", "melee", "gate", "breach", "reinforce", "cave", "dawn", "camera", "idle"]
 
 
-def run_one(godot, scenario, units, mode, samples, phase=False, timeout=300, out_dir=None):
+def run_one(godot, scenario, units, mode, samples, phase=False, timeout=300, out_dir=None, extra_args=None):
     tag = f"{scenario}_{units}_{mode}" + ("_phase" if phase else "")
-    out_dir = out_dir or OUT
+    out_dir = (out_dir or OUT).resolve()
     raw = out_dir / "raw"
     raw.mkdir(parents=True, exist_ok=True)
     log = raw / f"{tag}.engine.log"
@@ -35,6 +35,7 @@ def run_one(godot, scenario, units, mode, samples, phase=False, timeout=300, out
         f"--perf_phase={'true' if phase else 'false'}",
         f"--perf_out={raw / (tag + '.json')}",
     ]
+    args += extra_args or []
     cmd = [godot]
     if mode == "sim":
         cmd.append("--headless")
@@ -56,6 +57,13 @@ def run_one(godot, scenario, units, mode, samples, phase=False, timeout=300, out
     if code != 0 or not lines:
         return {"tag": tag, "ok": False, "exit": code, "seconds": round(elapsed, 2),
                 "error": "no PERF line" if not lines else f"exit={code}", "cmd": " ".join(cmd)}
+    bad = [line for line in (stdout + stderr).splitlines()
+           if ('SCRIPT ERROR' in line or 'Parse Error:' in line or line.startswith('ERROR:')
+               or 'ObjectDB instances leaked' in line)
+           and not line.startswith('ERROR: Condition "ret != noErr"')]
+    if bad:
+        return {"tag": tag, "ok": False, "exit": code, "seconds": round(elapsed, 2),
+                "error": "; ".join(bad[:5]), "cmd": " ".join(cmd)}
     data = json.loads(lines[-1][5:])
     data["ok"] = True
     data["seconds"] = round(elapsed, 2)
