@@ -1,0 +1,147 @@
+{
+  "task_id": "T79",
+  "executor": "codex",
+  "branch": "codex/t79-e06",
+  "status": "blocked",
+  "summary": {
+    "requested": 1,
+    "generated_variants": 0,
+    "selected_main_images": 0,
+    "passed": 0,
+    "blocked_ids": [
+      "E06"
+    ],
+    "note": "新版提示词缺失；未生成，未选版，未改动任何插画。指定verify只检查RESULTS存在，不表示插画任务通过。"
+  },
+  "blocked_input": {
+    "reason": "任务卡要求原样使用Claude已改为广场分发柴火的提示词，但实际文件仍是办公室签预算与账本；art/prompts/又在forbidden内。不能擅自改写，也不能按旧场景生成。",
+    "observed_scene": "SCENE: A plain stone office at night lit by candles. Edmund, crowned, signs a winter budget at a desk piled with ledgers; living clerks work around him; through the window the city shows ordinary scattered lamplight under a real night sky.",
+    "observed_world_rules": "WORLD RULES: The artificial Unending Day has been extinguished: there is NO ring of light, halo or second sun anywhere in the sky; only the natural sky. Every paper, ledger and document in the scene is blank or shows only illegible scribble marks, never letters. Undead glow cyan-green only; the living are lit by warm or natural light.",
+    "checked_sources": [
+      "当前worktree文件",
+      "git show main:art/prompts/rendered_endings/ENDING__E06.txt",
+      "/Users/cyy/Projects/亡魂王子/art/prompts/rendered_endings/ENDING__E06.txt"
+    ],
+    "prior_task_same_prompt": "RESULTS-T76.json中E06的prompt_sha256与当前文件相同；旧场景三版均因伪文字等问题未通过。",
+    "required_next_action": "Lead提供新版全文或更新本worktree的指定提示词文件后，再继续T79；执行者不修改forbidden路径。"
+  },
+  "generator": "未调用；拟使用built-in image_gen.imagegen",
+  "retry_policy": {
+    "max_generations_per_image": 3,
+    "generations": {
+      "E06": 0
+    },
+    "self_repair_retries": 0,
+    "exhausted_ids": [],
+    "escalate_condition": "连续5张按原提示词生成三次仍不合格",
+    "escalate_triggered": false,
+    "rate_limit_events": 0
+  },
+  "entries": [
+    {
+      "id": "E06",
+      "requested_output": "art/story/ENDING-E06/ending.png",
+      "file": null,
+      "prompt_file": "art/prompts/rendered_endings/ENDING__E06.txt",
+      "prompt_sha256": "11163957eeb0b3537a435d1fed4ba37eb4212560a94539e62c29f256e136b4f0",
+      "prompt_verbatim": null,
+      "references": [
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png"
+      ],
+      "reference_sha256": {
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png": "624decbfaeef5cc8def2c1a94a795497c2d1825631bbf784b88aef9c6fa4398e"
+      },
+      "attempts": 0,
+      "selected_version": null,
+      "variants": [],
+      "status": "blocked",
+      "main_image_existed_before": false,
+      "main_image_created": false,
+      "main_image_replaced": false,
+      "checklist": [
+        {
+          "item": 1,
+          "requirement": "没有任何文字、字母、签名、题字",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        },
+        {
+          "item": 2,
+          "requirement": "史诗厚涂：写实成人比例、体积光、大面积暗部，不是卡通或平涂",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        },
+        {
+          "item": 3,
+          "requirement": "构图体现权力关系（提示词里的 POWER AND COMPOSITION 一项）",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        },
+        {
+          "item": 4,
+          "requirement": "光照符合提示词：人造永昼只出现在提示词要求的画面里；冥火青绿只出现在亡灵身上",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        },
+        {
+          "item": 5,
+          "requirement": "人物身份与参考一致（王子在观众看来的右半边脸是骷髅，金冠断裂）",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        },
+        {
+          "item": 6,
+          "requirement": "没有多余的手脚",
+          "passed": null,
+          "status": "not_evaluated",
+          "note": "未生成图片；新版提示词缺失。"
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "imagegen_calls": 0,
+    "actual_api_cost": null,
+    "remaining_quota": null,
+    "note": "未调用生成工具，未取得费用或额度数据。"
+  },
+  "validation": {
+    "required_command": "test -f art/story/RESULTS-T79.json",
+    "required_exit_code": 0,
+    "integrity": [
+      "T79_INTEGRITY status=blocked generated=0 selected=0 checklist=6/6(not_evaluated)",
+      "T79_INTEGRITY other_9_endings=unchanged all_tracked_story_prompts_and_characters=unchanged",
+      "T79_INTEGRITY changed_files=2 scope=RESULTS_and_requested_report_only"
+    ],
+    "runtime_screenshot": null,
+    "runtime_status": "未截图：未生成新素材，未启动Godot。",
+    "unchanged_other_endings": {
+      "art/story/ENDING-E00/ending.png": "88c4300fc3a3cbaef4d9705f8503bc1d417cc7c52b974b8ce475a1ded53eb011",
+      "art/story/ENDING-E01/ending.png": "614094126f7d8b63c5e145fb2f0a1d9d44542bce9f5c3c04395dd455803e434e",
+      "art/story/ENDING-E02/ending.png": "c751c9b8c2828a47cb39b9a77af5116f42a33d2093e0c772124a21ea69a7f629",
+      "art/story/ENDING-E03/ending.png": "d1ac459a420be4adcf30c1ec2f8667a4a6d61b23343edbf303ff2aa93aa566b5",
+      "art/story/ENDING-E04/ending.png": "027d42c59e587bee28aed2b8507cdb63147df0bb6619116712733d8f8d46d07f",
+      "art/story/ENDING-E05/ending.png": "990a0a275f65e1d677dae1b19d3249c463ef75142db1df8d5a325331787cdfda",
+      "art/story/ENDING-E07/ending.png": "c3ee5bb2da43f533aa530b8ac4c2ff50f1dcfbd6edc72114a85800ca71d95086",
+      "art/story/ENDING-E08/ending.png": "5a446d281ef809112f9b3909f2bcec69ad62d97101f4c6e6e0fed54e39bb5895",
+      "art/story/ENDING-TRUE/ending.png": "cdd91edcc35cdafb2593dd6cd72e682b20552e2332585c984e98728cc4fd5ffd"
+    },
+    "scope": "仅art/story/RESULTS-T79.json及任务明确指定的reports/agents/T79.md；全部现有插画、提示词、参考图及代码保持原样。",
+    "commit_attempt": {
+      "status": "failed",
+      "branch": "codex/t79-e06",
+      "failed_at": "git add -- art/story/RESULTS-T79.json reports/agents/T79.md",
+      "exit_code": 128,
+      "error": "fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t79/index.lock': Operation not permitted",
+      "git_commit_executed": false,
+      "commit": null,
+      "changes_preserved": true,
+      "note": "暂存阶段失败，未尝试绕过权限限制；需要Lead代提交。"
+    }
+  }
+}
