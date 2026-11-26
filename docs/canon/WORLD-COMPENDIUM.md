@@ -81,13 +81,13 @@ Aldric knew how the system was supplied. Early in his reign he attempted to rest
 
 阿尔德里克知道燃料来源。执政初期曾试图限制为自愿献祭者，却在严冬和短缺后签署了允许截留获罪死者的例外条款。紧急状态结束后例外仍然保留。他爱子女和国家，但应为自己的决定及隐瞒负责。议会把例外扩大到整支舰队，以压制家属并利用亡魂。谋杀的主要动机仍是政治利益；将死者作为燃料是附加利用，不是阴谋唯一原因。
 
-Ending the Seal releases surviving captives; souls already consumed in the active history do not return. The capital loses artificial light and warmth, not the natural sun. The immediate cost is a return to seasonal shipping and the need for food reserves, alternate anchorages and heating. A prepared government can survive the transition, but cannot abolish the cost. A player who preserves the light can order reforms and a supply audit; these can affect epilogues, but a fully non-consuming, permanent replacement would contradict the present premise and is not an instant third option. A smaller temporary residual-energy system may be researched as a later epilogue prospect, not a completed solution.
+Ending the Seal releases surviving captives; souls already consumed in the active history do not return. The capital loses the light of the Unending Day and the warmth of the sacred flame, not the natural sun; the cost is nationwide. In the short term this means a return to seasonal shipping and the need for food reserves, alternate anchorages and ordinary fuel. A prepared government can survive the transition, but cannot abolish the cost. A player who preserves the light can order reforms and a supply audit; these can affect epilogues, but a fully non-consuming, permanent replacement would contradict the present premise and is not an instant third option. A smaller temporary residual-energy system may be researched as a later epilogue prospect, not a completed solution.
 
-终止秘印释放尚存囚魂；本轮已经耗尽的灵魂不会恢复。王都失去人工光热，不失去自然太阳。直接代价是季节性航运恢复，需要粮储、备用港口及供暖。准备充分的政府可以渡过转型，却不能取消代价。选择延续永昼的玩家可以下令改革和审计燃料来源，改变尾声；但不能立即通过无消耗的永久替代方案化解整个矛盾。小规模临时冥火设施可作为远期研究方向，而非已经完成的第三种解决方案。
+终止秘印释放尚存囚魂；本轮已经耗尽的灵魂不会恢复。王都失去永昼之日的光与圣火的供暖，不失去自然太阳；代价是全国性的。短期意味着季节性航运恢复，需要粮储、备用港口和普通燃料。准备充分的政府可以渡过转型，却不能取消代价。选择延续永昼的玩家可以下令改革和审计燃料来源，改变尾声；但不能立即通过无消耗的永久替代方案化解整个矛盾。小规模临时冥火设施可作为远期研究方向，而非已经完成的第三种解决方案。
 
-Necromancy normally uses residual soulfire to give a willing or unclaimed shade a body; routine troop summons are not a Seal-like destruction of persons. The original company's oath is a binding command that initially makes refusal impossible. Edmund can release that power without ending voluntary enlistment. Any optional civilian harvesting or explicit compulsion is clearly marked as a distinct action; ordinary combat is not a hidden morality tax. A soul does not disappear merely because its body is destroyed.
+Ordinary battlefield necromancy uses residual soulfire to shape echoes: the dead's form and skill, without a full person, dispersing at dawn and costing no one's soul. The old company are different: named souls bound by the original oath, which is a binding command that initially makes refusal impossible. Edmund can release that compulsion without ending voluntary enlistment. Any optional civilian harvesting or explicit compulsion is clearly marked as a distinct action; ordinary combat is not a hidden morality tax. A soul does not disappear merely because its body is destroyed.
 
-常规招魂使用残余冥火让愿意应召或尚未归属的亡魂获得实体，不像秘印一样消耗人格。基础部队的军誓具有约束力，最初不能拒绝命令。王子可以解除这种能力而保留自愿入伍。若玩法允许伤害平民收魂或额外强征，明确标记为独立行为，不以常规战斗暗扣善恶值。实体被毁不等于灵魂消亡。
+常规战场招魂以残余冥火凝成回声：借用死者生前的形与技艺，没有完整人格，天亮即散，不消耗任何人的灵魂。有名有姓的旧部则不同：他们是受最初军誓约束的具名灵魂；军誓具有强制力，最初不能拒绝命令。王子可以解除这种强制而保留自愿入伍。若玩法允许伤害平民收魂或额外强征，明确标记为独立行为，不以常规战斗暗扣善恶值。实体被毁不等于灵魂消亡。
 
 The death register records identities and claims; it has no magical control over names. Ordinary families' sea burial, shore lanterns and mourning customs remain distinct from the Church's hidden diversion of souls. / 死亡名册登记身份及权益，不能靠名字控制灵魂。普通人的海葬、岸灯与悼念习俗，与教会截留亡魂的秘密行为分开。
 
@@ -171,7 +171,7 @@ Several centuries before the anchor, island chiefs and estuary towns maintained 
 Successive rulers united the sea through alliances, tribute and force. The Iron Gate and old causeways became instruments of shared defence and royal revenue. Defeated houses often survived as chartered local elites. This explains why later councillors control institutions larger than their personal estates. / 历代君主通过联盟、贡赋和战争统一内海。锁海之门和古王堤成为共同海防与王家收入的工具。战败家族往往以拥有特许权的地方豪族身份存续。这解释了后来的议员何以掌管远超私人领地的机构。
 
 ### The Great Winter / 大寒冬
-A sequence of failed harvests and harbour closures threatened the court and the grain network. The first Seal at Sunhold was intended as an emergency measure, drawing on residual soulfire and voluntary contributions under the founding covenant. Its light and warmth were local, and relief still required ships and grain. The old royal household moved to the safer port. / 连续歉收与港口封闭危及宫廷及粮运网络。Sunhold的初代秘印原为紧急措施，依据初始盟约利用残余冥火及自愿献祭。其光热只覆盖局部，赈济仍需船粮。旧王庭迁往较安全的港口。
+A sequence of failed harvests and harbour closures threatened the court and the grain network. The first Seal at Sunhold was intended as an emergency measure, drawing on residual soulfire and voluntary contributions under the founding covenant. Its light was local, and its heat came only through the sacred flame it fed; relief still required ships and grain. The old royal household moved to the safer port. / 连续歉收与港口封闭危及宫廷及粮运网络。Sunhold的初代秘印原为紧急措施，依据初始盟约利用残余冥火及自愿献祭。其光只覆盖王都，热只经由它分出的圣火供给；赈济仍需船粮。旧王庭迁往较安全的港口。
 
 ### The Golden Harbour / 黄金港时代
 Merchants built warehouses beside the ice-resistant harbour. Royal offices moved east, and suppliers invested in one dependable terminus. The temporary exception became a permanent institution. The rest of the realm still experienced winter and darkness; prosperity was uneven. / 商人在不易封冻的港口旁修建货仓，王家机构东迁，供应者把投资集中在稳定终点。临时措施逐渐成为永久制度。王国其他地方仍经历黑夜和冬天，繁荣并不均等。
@@ -1425,9 +1425,9 @@ The northern ocean leads to outside trading partners and rivals; the eastern mou
 
 ### The Old Realm / 旧王领
 
-**Land and water.** Older dynastic lands on sheltered inner shores, away from the capital’s artificial warmth; old roads follow rivers and surviving ferry crossings.
+**Land and water.** Older dynastic lands on sheltered inner shores, away from the capital’s artificial daylight and the sacred-flame network; old roads follow rivers and surviving ferry crossings.
 
-**地理水系。** 内海避风岸线的古王领，远离王都人工光热；旧道沿河流及尚存渡口分布。
+**地理水系。** 内海避风岸线的古王领，远离王都的人造日光与圣火网络；旧道沿河流及尚存渡口分布。
 
 **History and institutions.** Before the Great Winter the royal household moved among residences. The Winter Palace was a principal seasonal seat, not necessarily a permanent capital in the modern sense. The court relocated to Sunhold when the Seal secured its harbour; some old estates remained productive.
 
@@ -1449,9 +1449,9 @@ The northern ocean leads to outside trading partners and rivals; the eastern mou
 
 **地理水系。** 东岸白崖脚下深水港，商贸、军事、粮运与礼仪入口各自分离。
 
-**History and institutions.** The Seal originally secured light and warmth during a catastrophic winter. Trade and administration migrated to the reliable harbour, where later rulers centralised privileges and records. The capital’s prosperity is genuine, but it depends on an increasingly coercive institution.
+**History and institutions.** The Seal originally secured light during a catastrophic winter; heat came from the sacred flame drawn from it. Trade and administration migrated to the reliable harbour, where later rulers centralised privileges and records. The capital’s prosperity is genuine, but it depends on an increasingly coercive institution.
 
-**历史制度。** 秘印最初在灾冬提供光热。贸易与行政逐渐迁往可靠港口，后世君主集中贸易特权和档案。王都繁荣确实存在，却依赖愈发强制的制度。
+**历史制度。** 秘印最初在灾冬提供光，热则由它分出的圣火供给。贸易与行政逐渐迁往可靠港口，后世君主集中贸易特权和档案。王都繁荣确实存在，却依赖愈发强制的制度。
 
 **Settlements.** Sunhold is the largest urban centre. Its four entry nodes represent waterfront approaches, not four independent towns.
 
@@ -1712,9 +1712,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→她以自己的名义执政→解除军誓→延续永昼。自愿同伴可留；王子不再主张继位，也不再强征，却仍由契约维持存在直至召回。
 
-**Aftermath:** Pip plays a dismissal call. The siblings spend an ordinary afternoon near the harbour; the city does not know evening. A bereaved family still awaits a missing person's release, revealing that personal reconciliation has not repaired the system.
+**Aftermath:** Pip plays a dismissal call. The siblings spend an ordinary afternoon near the harbour; the city has forgotten what darkness looks like. A bereaved family still awaits a missing person's release, revealing that personal reconciliation has not repaired the system.
 
-**尾声：** 皮普吹响散队号。兄妹在港口度过平常的一段时光，这座城却不知何为傍晚。一户家属仍等待失踪者解脱，显露个人和解没有改变整个制度。
+**尾声：** 皮普吹响散队号。兄妹在港口度过平常的一段时光，这座城早已忘了黑暗是什么样子。一户家属仍等待失踪者解脱，显露个人和解没有改变整个制度。
 
 **After Return:** “All hands home. Except the ones we haven't found.” / “弟兄们都到家了。除了那些我们还没找到的人。”
 

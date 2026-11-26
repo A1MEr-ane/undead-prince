@@ -300,9 +300,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→她以自己的名义执政→解除军誓→延续永昼。自愿同伴可留；王子不再主张继位，也不再强征，却仍由契约维持存在直至召回。
 
-**Aftermath:** Pip plays a dismissal call. The siblings spend an ordinary afternoon near the harbour; the city does not know evening. A bereaved family still awaits a missing person's release, revealing that personal reconciliation has not repaired the system.
+**Aftermath:** Pip plays a dismissal call. The siblings spend an ordinary afternoon near the harbour; the city has forgotten what darkness looks like. A bereaved family still awaits a missing person's release, revealing that personal reconciliation has not repaired the system.
 
-**尾声：** 皮普吹响散队号。兄妹在港口度过平常的一段时光，这座城却不知何为傍晚。一户家属仍等待失踪者解脱，显露个人和解没有改变整个制度。
+**尾声：** 皮普吹响散队号。兄妹在港口度过平常的一段时光，这座城早已忘了黑暗是什么样子。一户家属仍等待失踪者解脱，显露个人和解没有改变整个制度。
 
 **After Return:** “All hands home. Except the ones we haven't found.” / “弟兄们都到家了。除了那些我们还没找到的人。”
 

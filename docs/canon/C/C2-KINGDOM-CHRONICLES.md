@@ -22,7 +22,7 @@ Several centuries before the anchor, island chiefs and estuary towns maintained 
 Successive rulers united the sea through alliances, tribute and force. The Iron Gate and old causeways became instruments of shared defence and royal revenue. Defeated houses often survived as chartered local elites. This explains why later councillors control institutions larger than their personal estates. / 历代君主通过联盟、贡赋和战争统一内海。锁海之门和古王堤成为共同海防与王家收入的工具。战败家族往往以拥有特许权的地方豪族身份存续。这解释了后来的议员何以掌管远超私人领地的机构。
 
 ### The Great Winter / 大寒冬
-A sequence of failed harvests and harbour closures threatened the court and the grain network. The first Seal at Sunhold was intended as an emergency measure, drawing on residual soulfire and voluntary contributions under the founding covenant. Its light and warmth were local, and relief still required ships and grain. The old royal household moved to the safer port. / 连续歉收与港口封闭危及宫廷及粮运网络。Sunhold的初代秘印原为紧急措施，依据初始盟约利用残余冥火及自愿献祭。其光热只覆盖局部，赈济仍需船粮。旧王庭迁往较安全的港口。
+A sequence of failed harvests and harbour closures threatened the court and the grain network. The first Seal at Sunhold was intended as an emergency measure, drawing on residual soulfire and voluntary contributions under the founding covenant. Its light was local, and its heat came only through the sacred flame it fed; relief still required ships and grain. The old royal household moved to the safer port. / 连续歉收与港口封闭危及宫廷及粮运网络。Sunhold的初代秘印原为紧急措施，依据初始盟约利用残余冥火及自愿献祭。其光只覆盖王都，热只经由它分出的圣火供给；赈济仍需船粮。旧王庭迁往较安全的港口。
 
 ### The Golden Harbour / 黄金港时代
 Merchants built warehouses beside the ice-resistant harbour. Royal offices moved east, and suppliers invested in one dependable terminus. The temporary exception became a permanent institution. The rest of the realm still experienced winter and darkness; prosperity was uneven. / 商人在不易封冻的港口旁修建货仓，王家机构东迁，供应者把投资集中在稳定终点。临时措施逐渐成为永久制度。王国其他地方仍经历黑夜和冬天，繁荣并不均等。
@@ -140,9 +140,9 @@ The northern ocean leads to outside trading partners and rivals; the eastern mou
 
 ### The Old Realm / 旧王领
 
-**Land and water.** Older dynastic lands on sheltered inner shores, away from the capital’s artificial warmth; old roads follow rivers and surviving ferry crossings.
+**Land and water.** Older dynastic lands on sheltered inner shores, away from the capital’s artificial daylight and the sacred-flame network; old roads follow rivers and surviving ferry crossings.
 
-**地理水系。** 内海避风岸线的古王领，远离王都人工光热；旧道沿河流及尚存渡口分布。
+**地理水系。** 内海避风岸线的古王领，远离王都的人造日光与圣火网络；旧道沿河流及尚存渡口分布。
 
 **History and institutions.** Before the Great Winter the royal household moved among residences. The Winter Palace was a principal seasonal seat, not necessarily a permanent capital in the modern sense. The court relocated to Sunhold when the Seal secured its harbour; some old estates remained productive.
 
@@ -164,9 +164,9 @@ The northern ocean leads to outside trading partners and rivals; the eastern mou
 
 **地理水系。** 东岸白崖脚下深水港，商贸、军事、粮运与礼仪入口各自分离。
 
-**History and institutions.** The Seal originally secured light and warmth during a catastrophic winter. Trade and administration migrated to the reliable harbour, where later rulers centralised privileges and records. The capital’s prosperity is genuine, but it depends on an increasingly coercive institution.
+**History and institutions.** The Seal originally secured light during a catastrophic winter; heat came from the sacred flame drawn from it. Trade and administration migrated to the reliable harbour, where later rulers centralised privileges and records. The capital’s prosperity is genuine, but it depends on an increasingly coercive institution.
 
-**历史制度。** 秘印最初在灾冬提供光热。贸易与行政逐渐迁往可靠港口，后世君主集中贸易特权和档案。王都繁荣确实存在，却依赖愈发强制的制度。
+**历史制度。** 秘印最初在灾冬提供光，热则由它分出的圣火供给。贸易与行政逐渐迁往可靠港口，后世君主集中贸易特权和档案。王都繁荣确实存在，却依赖愈发强制的制度。
 
 **Settlements.** Sunhold is the largest urban centre. Its four entry nodes represent waterfront approaches, not four independent towns.
 
