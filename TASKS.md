@@ -35,7 +35,7 @@
 | T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 不采用（由 T47 重画） |
 | T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 已合并（效果好，保留） |
 | T52 | 剧情插画 8 张、结局图（Claude 提示词；原编号 T50 与 DSH 任务撞号） | Codex | claude/t50-story-art | art/story/ | 已合并剧情插画；结局图中途停止，E00–E05 仅占位 |
-| T53 | 结局插画按史诗风重画（STYLE_EPIC，E00–E08 + 真结局） | Codex（提示词 Claude） | — | art/story/ | 后期 |
+| T75 | 结局插画史诗风重画（10 张，无文字，Claude 提示词；原 T53） | Codex | codex/t75-endings-epic | art/story/ | 进行中 |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
