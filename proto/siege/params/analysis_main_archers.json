@@ -1,0 +1,24 @@
+{
+  "analysis": {
+    "enabled": true,
+    "route_values": {
+      "main": 2,
+      "side": 4,
+      "cave": 5
+    }
+  },
+  "strategies": {
+    "route_by_strategy": {
+      "main_gate": "main"
+    },
+    "archer_focus_by_strategy": {
+      "main_gate": true
+    }
+  },
+  "targeting": {
+    "values": {
+      "archer": 10
+    },
+    "max_reroutes": 0
+  }
+}

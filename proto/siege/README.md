@@ -163,3 +163,40 @@ proto/siege/capture_all.sh --speed=16
 T70 的 `camera/verify_replay.py` 已接入固定验收，显式使用相同 `feint / seed 7 / --params` 分别运行原无头场景和 `zones`、`continuous` 显示节点回放。显示回放保持模拟固定步长，独立改变显示 delta、插值、推移/直切和总览状态，每三步刷新一次；比较完整 `SIEGE` 行的 UTF-8 字节，不忽略任何字段，不加浮点容差。证据在验收输出目录的 `camera/` 下。此项构造真实显示节点，但不启用 GPU 渲染，不能代替桌面截图。
 
 不要直接把 `world.result()` 内存字典与 `JSON.parse_string()` 读取的日志字典做相等验收：JSON 数字的十进制序列化/解析可能改变 double 的最低位，解析还会把整数变成 float；即使两次模拟的原始日志逐字一致，解析后的字典也可能不与内存字典相等。回放脚本会额外打印往返诊断，正式通过条件始终是两个原始 `SIEGE` 行逐字一致。
+
+## T74：阶段 B 与 T68 新分析口径（默认均关闭）
+
+原始 `siege_params.json` 没有修改；不传覆盖文件时继续输出 schema 2，保持 T73 整条 `SIEGE` 行逐字一致。T68 的旧统计不能用于解释新实验：新分析输出 schema 3 / `metrics_version=T74-movement-intent-v1`，应从新基线重新采样。两个入口可分开使用：
+
+```sh
+# 只修正 T68 的路线/索敌与埋点，不开放新兵种、破墙或山洞权限
+godot --path . proto/siege/siege.tscn -- --params=res://proto/siege/params/analysis_v2.json
+# 开放阶段 B（同时使用新分析口径）
+godot --path . proto/siege/siege.tscn -- --params=res://proto/siege/params/phase_b.json
+# 两个新机器人及等投入分波对照（种子 1–3 的烟测已接入固定验证）
+godot --headless --path . proto/siege/siege.tscn -- --params=res://proto/siege/params/phase_b.json --strategy=assassin_first --seed=1
+godot --headless --path . proto/siege/siege.tscn -- --params=res://proto/siege/params/phase_b.json --strategy=giant_breach --seed=1
+godot --headless --path . proto/siege/siege.tscn -- --params=res://proto/siege/params/phase_b.json --strategy=prep_control --seed=1
+```
+
+`phase_b.enabled` 为总开关；`assassin`、`giant`、`walls` 可分别关闭。阶段 B 覆盖文件包含兵种属性、三段墙和通路坐标，改参数时以它为起点。不要只传 `enabled=true`。不必修改原项目入口或正式战斗脚本。
+
+- 手玩原 `siege.tscn`：`1` 亡魂（5）、`2` 暗影刺客（20）、`3` 缝合巨人（30），或点底部费用卡片；左键长按使用当前兵种。卡片显示资源是否足够，点击卡片会停止正在进行的长按。阶段 B 请使用原 `siege.tscn`；T70 的底部战区按钮尚未适配新卡片位置，会遮盖卡片。
+- 刺客 0.75 HP、速度 2.6、近战伤害 4；不使用剑盾招架，能秒杀当前弓兵。紫色踏点标出唯一崖壁转移通路 `[12,37] -> [12,21]`，耗时 4 秒；普通兵不能选择 `cliff` 路线。转移期间离开可攻击空间，不占领据点，仍计入存活兵力。进入高地后先找可达的弓兵/神职者，清空后沿侧路推进；本图没有神职者。
+- 感知采用模拟规则：刺客出生未发现；有效守军距其不超过 `detection_radius=1.4` 格且 `terrain.line_clear`（二维陆地/墙体通视）时被发现。主动近战出手或受到正伤害也会暴露。发现永久保持，记录原因和时间。未发现者既不能被守军索敌，也不进入调度威胁；`global_perception=true` 仍不能看穿潜行。发现检查每个固定步在调度前执行；不依赖镜头、画面遮挡或听觉。
+- 巨人 18 HP、速度 1.05、结构伤害 14/秒；周围 1.6 格内至少三名守军时每 3.5 秒横扫，伤害 1.6。巨人可顶着近敌继续攻击指定墙体；普通兵有近敌时停止攻城。新兵种沿用原有受伤、击退、事件、死亡及占领/全歼规则。
+- 新可破墙为 `wall_west [26,28,1,1] / 60 HP`、`wall_east [31,28,2,1] / 75 HP`、`wall_highland [14,20,1,2] / 50 HP`，原弱墙保留。红色墙段被破坏后逐格开放，调用 T73 的 `terrain.change` 修复流场；其他墙和自然地形没有受击入口。选择 `breach:<墙 ID>` 路线后，单位先攻击该墙，再实际穿过破口推进主堡。
+- `phase_b.cave_permission` 可设 `all` / `undead` / `assassin`。`all` 下双方都能按寻路结果进洞，`undead` 仅进攻方，`assassin` 仅进攻方刺客；仍受原容量、转移时间、`map.cave_enabled` 约束。无权限者不能选山洞路线；参数变化后已有山洞路线也会改选合法路线。
+
+三个准备实验统一 `total_budget=120` 冥火，主力从 t=80 秒起每满 30 冥火分波，波间隔略大于 4 秒，按同一部署间隔投入；准备花费计入这 120。`assassin_first` 开局两刺客（40），主力走大路；`giant_breach` 开局两巨人（60）打西侧墙，主力也从该破口进入；`prep_control` 不准备，全预算用于大路亡魂。可以调整 `prep_*`、`main_start`、`main_wave_fire`、`total_budget`、`breach_target`，但正式比较必须核查实际 `fire_spent`。默认烟测强制三组实际投入均为 120；提前胜利或破晓未花完预算会直接验证失败，不把“相同上限”当成“相同实际投入”。这些小样本只确认工具可用，不证明准备攻势提高胜率。
+
+T68 的路线和目标参数现在独立：
+
+- `analysis.route_values` 只影响自主选路线，和 `targeting.values.archer` 无关。
+- 机器人可用 `strategies.route_by_strategy` 指定路线意图，例如 `{"main_gate":"main"}`；`archer_focus_by_strategy` 独立指定是否优先索敌弓兵。默认使用该机器人的部署路线意图，拥堵时仍保留原有有限改道。
+- 有效敌人评分为平面距离减去目标价值权重；弓兵偏好接入实际近敌选择与切换滞后，能在同一条路线改变到场后的作战目标。可用 `analysis_main_archers.json` / `analysis_main_no_archers.json` 做相同大路、不同目标偏好的配对实验。
+- 新拥堵口径：有移动意图、尚未到达，连续 `congestion_seconds`（3 秒）净位移不足 `progress_epsilon`（0.15 格）才计一次；有进展后可重新计数。排除站岗、近距离交战、攻击结构、眩晕、转移和撤退。慢速持续前进不会因为还在同一格而被计入。新口径同时用于 `congestion_events` / `travel_congestion_events`，分母仍为双方累计出生人数。
+- `phase_live_peaks` 记录初夜 `[0,120)`、中夜 `[120,240)`、黎明前 `[240,300]` 及撤退的双方/总数/各兵种存活峰值；包含转移中的活兵。各列独立取峰，不能把它们相加当同一时刻人数。
+- `route_choice_distribution` 按路线记录部署选择数、兵种分布和改道进入数；`unit_results` 记录各进攻兵种投入人数/冥火/伤亡/有效伤害/击杀/弓兵击杀/结构伤害/横扫次数，伤害按实际可扣血量截断。`assassination_events` 给出逐次关键目标击杀时间，`detection_events` 记录发现时间/原因，`cliff_transits` 统计攀崖次数；额外墙体在 `breakable_walls`，所有墙的开始/破口时间在 `structure_work`。
+
+固定验收追加 `test_phase_b.gd`、三种策略 × 三种子、每策略种子 1 的逐字复跑及六策略新分析基线。`validation/t74/default_before_hashes.json` 保存本任务开工前六策略 × 两种子的整行 SHA256 和来源提交；标准默认参数时会与本轮默认矩阵逐字哈希比较。新分析基线和阶段 B 结果写入验收输出目录的 `t74/`。

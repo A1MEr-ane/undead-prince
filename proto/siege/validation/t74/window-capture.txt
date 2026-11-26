@@ -1,0 +1,5 @@
+command: ['godot', '--path', '.', '--log-file', '/Users/cyy/Projects/亡魂王子-t74/proto/siege/results/t74-shots/window.engine.log', 'proto/siege/siege.tscn', '--', '--params=res://proto/siege/params/phase_b.json', '--strategy=giant_breach', '--seed=1', '--capture', '--speed=16', '--out=/Users/cyy/Projects/亡魂王子-t74/proto/siege/results/t74-shots']
+exit: timeout (45 seconds), process terminated
+2026-11-26 13:57:08.973 godot[80482:4479045] Failure on line 688 in function id scheduleApplicationNotification(LSNotificationCode, NSWorkspaceNotificationCenter *): noErr == _LSModifyNotification(notificationID, 1, &code, 0, NULL, NULL, NULL)
+2026-11-26 13:57:09.077 godot[80482:4479045] Error received in message reply handler: Connection invalid
+2026-11-26 13:57:09.077 godot[80482:4479048] Connection Invalid error for service com.apple.hiservices-xpcservice.

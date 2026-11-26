@@ -10,6 +10,14 @@ class ClockBeat:
 	func hz(period: float) -> bool:
 		return floorf((State.now + offset) / period) != floorf((State.now - State.dt + offset) / period)
 
+var detected := false
+var focus_archers := true
+var next_melee := 0.0
+var next_special := 0.0
+var transit_kind := "cave"
+var movement_since := -1.0
+var movement_origin := Vector3.ZERO
+var movement_reported := false
 var main
 var terrain
 var squad: Dictionary
@@ -136,8 +144,8 @@ func sense() -> void:
 		var steps := int(main.params.combat.get("sense_steps", ceili(float(main.params.combat.sense_seconds) / float(main.params.simulation.step))))
 		next_sense = main.time + (steps - 0.5) * float(main.params.simulation.step)
 		var candidate = main.nearest_enemy(self)
-		var valid: bool = enemy != null and enemy.alive and enemy.cave_until < 0 and Vector2(enemy.nav_pos.x - nav_pos.x, enemy.nav_pos.z - nav_pos.z).length() <= float(main.params.combat.sense_radius) and terrain.line_clear(nav_pos, enemy.nav_pos)
-		if not valid or (candidate != null and candidate != enemy and main.time >= enemy_lock_until and nav_pos.distance_to(candidate.nav_pos) + float(main.params.targeting.enemy_switch_margin) < nav_pos.distance_to(enemy.nav_pos)):
+		var valid: bool = enemy != null and enemy.alive and enemy.cave_until < 0 and (faction == 0 or main.phase_b.visible(enemy)) and Vector2(enemy.nav_pos.x - nav_pos.x, enemy.nav_pos.z - nav_pos.z).length() <= float(main.params.combat.sense_radius) and terrain.line_clear(nav_pos, enemy.nav_pos)
+		if not valid or (candidate != null and candidate != enemy and main.time >= enemy_lock_until and (main.phase_b.enemy_score(self, candidate) + float(main.params.targeting.enemy_switch_margin) < main.phase_b.enemy_score(self, enemy) if main.phase_b.analysis else nav_pos.distance_to(candidate.nav_pos) + float(main.params.targeting.enemy_switch_margin) < nav_pos.distance_to(enemy.nav_pos))):
 			if candidate != enemy:
 				main.note("enemy_switch")
 			enemy = candidate
@@ -154,7 +162,7 @@ func sense() -> void:
 		enemy_dir = Vector3.ZERO
 		enemy_dangerous = false
 	order_dist = Vector2(slot.x - nav_pos.x, slot.z - nav_pos.z).length()
-	order_dir = terrain.direction(nav_pos, slot, false)
+	order_dir = terrain.direction(nav_pos, slot, faction == 1 and main.phase_b.enabled and main.phase_b.can_cave(self))
 	recover_navigation()
 	soft_int = move_toward(soft_int, 0, State.dt * float(main.params.combat.threat_decay))
 	hard_int = move_toward(hard_int, 0, State.dt * float(main.params.combat.threat_decay))
@@ -170,7 +178,7 @@ func tick(dt: float) -> void:
 			previous_pos = nav_pos
 			nav_pos.y = terrain.height_at(nav_pos)
 			cave_until = -1
-			stage = maxi(stage, 2)
+			stage = 1 if transit_kind == "cliff" else maxi(stage, 2)
 		return
 	anim_t += dt
 	walk_dir = Vector3.ZERO
@@ -179,6 +187,8 @@ func tick(dt: float) -> void:
 		look(order_dir)
 	elif main.time < stun_until:
 		pass
+	elif main.phase_b.enabled and kind in ["assassin", "giant"]:
+		main.phase_b.special_tick(self)
 	elif kind == "archer" and enemy != null and enemy_dist > float(main.params.combat.chase_radius):
 		brain.stamina = 1
 		if enemy_dist <= float(main.params.units.archer.range) and terrain.line_clear(nav_pos, enemy.nav_pos):
@@ -212,13 +222,33 @@ func tick(dt: float) -> void:
 		cell = t
 		cell_since = main.time
 		congestion_reported = false
-	elif main.time - cell_since > float(main.params.targeting.congestion_seconds) and not congestion_reported:
+	elif not main.phase_b.analysis and main.time - cell_since > float(main.params.targeting.congestion_seconds) and not congestion_reported:
 		# 指标按“同格停留 >3 秒”原定义统计，另记移动需求，便于排除站岗/近战。
 		congestion_reported = true
 		congestion_count += 1
 		main.congestion += 1
 		if order_dist > float(main.params.director.arrival_radius) and enemy == null and not retreating:
 			main.travel_congestion += 1
+
+	if main.phase_b.analysis: movement_congestion()
+
+func movement_congestion() -> void:
+	var cfg: Dictionary = main.params.targeting
+	var engaging: bool = (enemy != null and enemy_dist <= float(main.params.combat.chase_radius)) or main.phase_b.at_structure(self)
+	var intent: bool = walk_dir.length_squared() > 0.0025 and order_dist > float(main.params.map.path_arrival_radius)
+	if not intent or engaging or retreating or main.time < stun_until or cave_until >= 0:
+		movement_since = -1
+		movement_reported = false
+		return
+	if movement_since < 0 or Vector2(nav_pos.x - movement_origin.x, nav_pos.z - movement_origin.z).length() >= float(cfg.progress_epsilon):
+		movement_origin = nav_pos
+		movement_since = main.time
+		movement_reported = false
+	elif not movement_reported and main.time - movement_since >= float(cfg.congestion_seconds):
+		movement_reported = true
+		congestion_count += 1
+		main.congestion += 1
+		main.travel_congestion += 1
 
 func recover_navigation() -> void:
 	var cfg: Dictionary = main.params.targeting
@@ -270,6 +300,7 @@ func deal_damage(atk: Dictionary) -> void:
 	var damage: float = atk.damage
 	if not retreating and kind == "shield" and (-atk.dir as Vector3).dot(facing) > 0.5:
 		damage *= float(main.params.combat.arrow_shield_scale if atk.get("arrow", false) else main.params.combat.shield_damage_scale)
+	main.phase_b.damage(self, source, damage)
 	hp -= damage
 	velocity += atk.dir * float(atk.knockback) * float(main.params.combat.knockback_scale)
 	if damage > 0:
@@ -282,6 +313,7 @@ func deal_damage(atk: Dictionary) -> void:
 		alive = false
 		dead.set_true()
 		main.on_death(self)
+		main.phase_b.killed(self, source)
 		main.hooks.publish("death", {"unit": self, "source": atk.get("source"), "step": main.step_number})
 		if atk.get("source") != null:
 			main.hooks.publish("kill", {"unit": atk.source, "victim": self, "step": main.step_number})

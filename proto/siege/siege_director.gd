@@ -172,6 +172,8 @@ func unit_order(u) -> void:
 			u.slot = u.enemy.nav_pos
 
 func perceived(ghost) -> bool:
+	if not main.phase_b.visible(ghost):
+		return false
 	if main.params.director.global_perception:
 		return true
 	for guard in main.sides[1].units:

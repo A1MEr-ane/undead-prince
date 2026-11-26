@@ -1,6 +1,8 @@
 extends Node3D
 ## 仅使用方块、圆柱和文字；该层不消耗模拟随机源。
 
+var unit_cards := {}
+var wall_meshes := {}
 var main
 var camera: Camera3D
 var environment: Environment
@@ -101,6 +103,26 @@ func setup(world) -> void:
 	skip_button.text = "跳过撤退 [Space]"
 	skip_button.pressed.connect(func(): main.queue_input("skip_retreat"))
 	layer.add_child(skip_button)
+	if main.phase_b.enabled:
+		selected = true
+		var cards := HBoxContainer.new()
+		cards.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+		cards.position = Vector2(22, float(cfg.window_size[1]) - 70)
+		layer.add_child(cards)
+		var index := 0
+		for kind in ["ghost", "assassin", "giant"]:
+			index += 1
+			if not main.phase_b.available(kind): continue
+			var button := Button.new()
+			var name: String = {"ghost": "亡魂", "assassin": "暗影刺客", "giant": "缝合巨人"}[kind]
+			button.text = "%d  %s · %.0f 冥火" % [index, name, main.phase_b.cost(kind)]
+			button.custom_minimum_size = Vector2(220, 48)
+			button.toggle_mode = true
+			button.focus_mode = Control.FOCUS_NONE
+			button.pressed.connect(select_kind.bind(kind))
+			cards.add_child(button)
+			unit_cards[kind] = button
+		select_kind("ghost")
 	preview = box(self, Vector3.ZERO, Vector3(1.2, 0.07, 1.2), Color(cfg.ghost_color))
 	preview.visible = false
 	rally_marker = box(self, Vector3.ZERO, Vector3(1.5, 0.08, 1.5), Color("f4eea0"))
@@ -135,10 +157,23 @@ func build_map() -> void:
 		box(self, Vector3(p.x, h * 0.5, p.z), Vector3(r[2], h, r[3]), Color(pair[1]))
 	var deploy: Array = map.deploy_rect
 	box(self, Vector3(deploy[0] + deploy[2] * 0.5, float(map.base_height) + 0.012, deploy[1] + deploy[3] * 0.5), Vector3(deploy[2], 0.02, deploy[3]), Color("38695f"))
+	var extra_cells := {}
+	if main.phase_b.enabled:
+		for id in main.phase_b.walls:
+			var r: Array = main.phase_b.walls[id].rect
+			for cell in main.terrain.rect_cells(r): extra_cells[cell] = true
+			wall_meshes[id] = box(self, Vector3(r[0] + r[2] * 0.5, float(main.params.view.wall_height) * 0.5, r[1] + r[3] * 0.5), Vector3(r[2], main.params.view.wall_height, r[3]), Color("cd8980"))
+			label3d(id + " / " + str(main.phase_b.walls[id].hp) + " HP", Vector3(r[0] + r[2] * 0.5, 3.5, r[1] + r[3] * 0.5), 26)
+		var entry: Vector3 = main.terrain.vec(main.phase_b.cfg.cliff_entry)
+		var exit: Vector3 = main.terrain.vec(main.phase_b.cfg.cliff_exit)
+		for n in 17:
+			var p: Vector3 = entry.lerp(exit, n / 16.0)
+			box(self, p + Vector3(0, 0.8 + n / 16.0, 0), Vector3(0.45, 0.12, 0.6), Color("b6a1f5"))
+		label3d("ASSASSIN CLIMB / 4s", entry + Vector3(0, 3, 0), 28)
 	for r in map.wall_rects:
 		for cell in main.terrain.rect_cells(r):
 			var p := Vector3(cell.x + 0.5, float(main.params.view.wall_height) * 0.5 + float(map.base_height), cell.y + 0.5)
-			if main.terrain.in_rect(p, map.gate_rect) or main.terrain.in_rect(p, map.weak_rect):
+			if extra_cells.has(cell) or main.terrain.in_rect(p, map.gate_rect) or main.terrain.in_rect(p, map.weak_rect):
 				continue
 			box(self, p, Vector3(0.96, main.params.view.wall_height, 0.96), Color("969b9e"))
 	var gr: Array = map.gate_rect
@@ -208,7 +243,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
-			KEY_1: selected = true; rally_mode = false
+			KEY_1: select_kind("ghost")
+			KEY_2: select_kind("assassin")
+			KEY_3: select_kind("giant")
 			KEY_F: rally_mode = true; deploying = false
 			KEY_TAB: debug_visible = not debug_visible
 			KEY_ESCAPE: rally_mode = false; deploying = false; selected = false
@@ -233,6 +270,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		yaw -= event.relative.x * float(main.params.view.drag_speed)
 		update_camera()
 
+func select_kind(kind: String) -> void:
+	if not main.phase_b.available(kind): return
+	main.selected_kind = kind
+	selected = true
+	rally_mode = false
+	deploying = false
+	for key in unit_cards: unit_cards[key].set_pressed_no_signal(key == kind)
+
 func _process(delta: float) -> void:
 	if main == null:
 		return
@@ -240,6 +285,8 @@ func _process(delta: float) -> void:
 	if rotation != 0:
 		yaw += rotation * delta * float(main.params.view.rotation_speed)
 		update_camera()
+	var over_ui := get_viewport().gui_get_hovered_control() != null
+	if main.phase_b.enabled and (over_ui or not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)): deploying = false
 	main.manual_deploy_held = deploying and main.bot == null
 	main.manual_deploy_pos = mouse_world()
 	for effect in arrow_meshes.duplicate():
@@ -277,6 +324,8 @@ func refresh(alpha: float = 1.0) -> void:
 		mesh.rotation.y = atan2(u.facing.x, u.facing.z)
 	gate.visible = not main.terrain.gate_open
 	weak.visible = not main.terrain.weak_broken
+	for id in wall_meshes: wall_meshes[id].visible = not main.phase_b.walls[id].broken
+	for kind in unit_cards: unit_cards[kind].modulate = Color.WHITE if main.fire >= main.phase_b.cost(kind) else Color("888888")
 	for id in flags:
 		flags[id].material_override = material(Color(cfg.ghost_color) if main.zones[id].owner == "ghost" else Color(cfg.shield_color))
 	var p := mouse_world()
@@ -296,6 +345,8 @@ func refresh(alpha: float = 1.0) -> void:
 	if rally_marker.visible:
 		rally_text = "集结：剩余 %.1f 秒 · 范围 %.0f 格 · %d 名受令（黄）" % [main.rally_until - main.time, main.params.economy.rally_radius, main.rally_members.size()]
 	hud.text = "T69 · GREYBOX NIGHT SIEGE    [%s / seed %d]   破晓倒计时 %02d:%02d\n冥火 %.0f / %.0f    亡魂 %d    守军 %d\n1 选择亡魂 · 左键长按部署 · F+左键集结 (%.0f 冥火)\nQ/E 或右键/中键拖动旋转 · 滚轮缩放 · Tab 调试 · R 重开\n绿色：部署区/亡魂    橙：盾兵    黄：弓兵/受令    紫：骑兵\n%s" % [main.strategy, main.seed_value, seconds / 60, seconds % 60, main.fire, main.params.economy.capacity, ghosts, guards, main.params.economy.rally_cost, rally_text]
+	if main.phase_b.enabled:
+		hud.text += "\n阶段 B · 1 亡魂 / 2 刺客 / 3 巨人 · 当前 %s (%.0f) · 山洞 %s" % [main.selected_kind, main.phase_b.cost(main.selected_kind), main.phase_b.cfg.cave_permission]
 	debug.visible = debug_visible
 	if debug_visible:
 		var text := "DEBUG · t=%.1f · gate=%.1f weak=%.1f · dispatch=%d\n" % [main.time, maxf(0, main.gate_hp), maxf(0, main.weak_hp), main.director.dispatches]
