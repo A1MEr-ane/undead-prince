@@ -1,0 +1,18 @@
+{
+  "targeting": {
+    "values": {
+      "archer": 10,
+      "gate": 2,
+      "weak": 2.3,
+      "zone": 2.5,
+      "keep": 5
+    }
+  },
+  "structures": {
+    "weak_hp": 16
+  },
+  "combat": {
+    "separation_radius": 0.8,
+    "max_separation_speed": 2.0
+  }
+}

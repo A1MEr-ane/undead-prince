@@ -1,0 +1,9 @@
+{
+  "reinforcements": {
+    "enabled": true,
+    "units": [
+      {"kind": "shield", "count": 3},
+      {"kind": "cavalry", "count": 2}
+    ]
+  }
+}

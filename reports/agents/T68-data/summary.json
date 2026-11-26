@@ -1,0 +1,3832 @@
+{
+  "baseline": {
+    "strategies": {
+      "main_gate": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 20
+        },
+        "victory_time_mean": 186.49,
+        "ghost_casualties_mean": 51.9,
+        "defender_casualties_mean": 34,
+        "ghost_spawned_mean": 63.65,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 266.82,
+        "fire_spent_mean": 318.25,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 18.57,
+        "waves_mean": 9.65,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 63.65,
+        "routes": {
+          "cave": 0,
+          "main": 1273,
+          "side": 0
+        },
+        "congestion_mean": 131,
+        "congestion_per_deployed_mean": 1.346,
+        "travel_congestion_mean": 2.05,
+        "recovery_events_mean": 26.7,
+        "objective_switch_mean": 200.15,
+        "reroutes_mean": 0.4,
+        "escaped_mean": 0,
+        "intercepted_mean": 3.3,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 8.25,
+        "dispatch_depart_mean": 20.55,
+        "dispatch_arrive_mean": 11.7,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 21.82,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 1.25,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "highland": {
+        "n": 20,
+        "wins": 18,
+        "win_rate": 0.9,
+        "win_ci95": [
+          0.699,
+          0.9721
+        ],
+        "methods": {
+          "keep_retreat": 18
+        },
+        "victory_time_mean": 240.35,
+        "ghost_casualties_mean": 71.1,
+        "defender_casualties_mean": 29.7,
+        "ghost_spawned_mean": 91.6,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 404.32,
+        "fire_spent_mean": 458.0,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.32,
+        "waves_mean": 14.35,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 91.6,
+        "routes": {
+          "cave": 0,
+          "main": 3,
+          "side": 1829
+        },
+        "congestion_mean": 219.45,
+        "congestion_per_deployed_mean": 1.733,
+        "travel_congestion_mean": 6.05,
+        "recovery_events_mean": 0.4,
+        "objective_switch_mean": 184,
+        "reroutes_mean": 0,
+        "escaped_mean": 3.35,
+        "intercepted_mean": 4.65,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 15.9,
+        "dispatch_depart_mean": 38.7,
+        "dispatch_arrive_mean": 24.7,
+        "dispatch_order_to_depart_mean": 2.9,
+        "dispatch_travel_mean": 56.16,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 1.05,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "feint": {
+        "n": 20,
+        "wins": 10,
+        "win_rate": 0.5,
+        "win_ci95": [
+          0.2993,
+          0.7007
+        ],
+        "methods": {
+          "keep_retreat": 10
+        },
+        "victory_time_mean": 225.81,
+        "ghost_casualties_mean": 89.6,
+        "defender_casualties_mean": 23.2,
+        "ghost_spawned_mean": 101.7,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 454.97,
+        "fire_spent_mean": 508.5,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.47,
+        "waves_mean": 15.95,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 101.7,
+        "routes": {
+          "cave": 1622,
+          "main": 412,
+          "side": 0
+        },
+        "congestion_mean": 250.15,
+        "congestion_per_deployed_mean": 1.86,
+        "travel_congestion_mean": 3.3,
+        "recovery_events_mean": 27.9,
+        "objective_switch_mean": 135.55,
+        "reroutes_mean": 0,
+        "escaped_mean": 0.05,
+        "intercepted_mean": 2.3,
+        "stranded_mean": 0.45,
+        "dispatch_ordered_mean": 15,
+        "dispatch_depart_mean": 36.2,
+        "dispatch_arrive_mean": 29.85,
+        "dispatch_order_to_depart_mean": 3.9,
+        "dispatch_travel_mean": 18.82,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.25,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            0,
+            "none"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "waves": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 20
+        },
+        "victory_time_mean": 177.71,
+        "ghost_casualties_mean": 34.45,
+        "defender_casualties_mean": 32.95,
+        "ghost_spawned_mean": 49,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 250.65,
+        "fire_spent_mean": 245.0,
+        "fire_wasted_mean": 0.02,
+        "fire_remaining_mean": 75.63,
+        "waves_mean": 2.45,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 49,
+        "routes": {
+          "cave": 218,
+          "main": 402,
+          "side": 360
+        },
+        "congestion_mean": 156.05,
+        "congestion_per_deployed_mean": 1.827,
+        "travel_congestion_mean": 2.65,
+        "recovery_events_mean": 0.5,
+        "objective_switch_mean": 172.25,
+        "reroutes_mean": 0.15,
+        "escaped_mean": 1.05,
+        "intercepted_mean": 3.05,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 9.4,
+        "dispatch_depart_mean": 21.3,
+        "dispatch_arrive_mean": 13.75,
+        "dispatch_order_to_depart_mean": 4.65,
+        "dispatch_travel_mean": 22.74,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 2.25,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "idle": {
+        "n": 20,
+        "wins": 2,
+        "win_rate": 0.1,
+        "win_ci95": [
+          0.0279,
+          0.301
+        ],
+        "methods": {
+          "keep_retreat": 2
+        },
+        "victory_time_mean": 258.72,
+        "ghost_casualties_mean": 19.7,
+        "defender_casualties_mean": 18.4,
+        "ghost_spawned_mean": 20,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 535.19,
+        "fire_spent_mean": 100.0,
+        "fire_wasted_mean": 405.19,
+        "fire_remaining_mean": 100.0,
+        "waves_mean": 1,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 20,
+        "routes": {
+          "cave": 0,
+          "main": 400,
+          "side": 0
+        },
+        "congestion_mean": 63.65,
+        "congestion_per_deployed_mean": 1.179,
+        "travel_congestion_mean": 1.7,
+        "recovery_events_mean": 0.9,
+        "objective_switch_mean": 57.05,
+        "reroutes_mean": 0.35,
+        "escaped_mean": 0.35,
+        "intercepted_mean": 0.55,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 5.75,
+        "dispatch_depart_mean": 14.5,
+        "dispatch_arrive_mean": 9.45,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 22.24,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            0,
+            "none"
+          ],
+          [
+            5,
+            0,
+            "none"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            0,
+            "none"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            0,
+            "none"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "late_batches": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 20
+        },
+        "victory_time_mean": 179.92,
+        "ghost_casualties_mean": 36.95,
+        "defender_casualties_mean": 33.65,
+        "ghost_spawned_mean": 50.75,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 253.07,
+        "fire_spent_mean": 253.75,
+        "fire_wasted_mean": 41.4,
+        "fire_remaining_mean": 27.92,
+        "waves_mean": 3.75,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 50.75,
+        "routes": {
+          "cave": 0,
+          "main": 1015,
+          "side": 0
+        },
+        "congestion_mean": 108.35,
+        "congestion_per_deployed_mean": 1.274,
+        "travel_congestion_mean": 2.45,
+        "recovery_events_mean": 0.8,
+        "objective_switch_mean": 143.05,
+        "reroutes_mean": 1.2,
+        "escaped_mean": 0.35,
+        "intercepted_mean": 3.4,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 6.7,
+        "dispatch_depart_mean": 16,
+        "dispatch_arrive_mean": 9.8,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 24.87,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.8,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      }
+    },
+    "gap_min_feint_waves_minus_idle": 0.4
+  },
+  "best_01_archer_high": {
+    "strategies": {
+      "main_gate": {
+        "n": 20,
+        "wins": 16,
+        "win_rate": 0.8,
+        "win_ci95": [
+          0.584,
+          0.9193
+        ],
+        "methods": {
+          "annihilation": 15,
+          "keep_retreat": 1
+        },
+        "victory_time_mean": 231.87,
+        "ghost_casualties_mean": 69,
+        "defender_casualties_mean": 32.75,
+        "ghost_spawned_mean": 91.2,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 401.61,
+        "fire_spent_mean": 456.0,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 15.61,
+        "waves_mean": 14.2,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 91.2,
+        "routes": {
+          "cave": 0,
+          "main": 154,
+          "side": 1670
+        },
+        "congestion_mean": 144.55,
+        "congestion_per_deployed_mean": 1.171,
+        "travel_congestion_mean": 2.55,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 227.2,
+        "reroutes_mean": 0,
+        "escaped_mean": 0,
+        "intercepted_mean": 0.15,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 7.55,
+        "dispatch_depart_mean": 20.55,
+        "dispatch_arrive_mean": 12.65,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 27.0,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 3.1,
+        "seeds": [
+          [
+            1,
+            1,
+            "annihilation"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "annihilation"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "annihilation"
+          ],
+          [
+            11,
+            1,
+            "annihilation"
+          ],
+          [
+            12,
+            1,
+            "annihilation"
+          ],
+          [
+            13,
+            1,
+            "annihilation"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            1,
+            "annihilation"
+          ],
+          [
+            18,
+            1,
+            "annihilation"
+          ],
+          [
+            19,
+            1,
+            "annihilation"
+          ],
+          [
+            20,
+            1,
+            "annihilation"
+          ]
+        ]
+      },
+      "highland": {
+        "n": 20,
+        "wins": 18,
+        "win_rate": 0.9,
+        "win_ci95": [
+          0.699,
+          0.9721
+        ],
+        "methods": {
+          "keep_retreat": 18
+        },
+        "victory_time_mean": 240.36,
+        "ghost_casualties_mean": 71,
+        "defender_casualties_mean": 29.7,
+        "ghost_spawned_mean": 91.65,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 404.33,
+        "fire_spent_mean": 458.25,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.08,
+        "waves_mean": 14.35,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 91.65,
+        "routes": {
+          "cave": 0,
+          "main": 0,
+          "side": 1833
+        },
+        "congestion_mean": 219.75,
+        "congestion_per_deployed_mean": 1.734,
+        "travel_congestion_mean": 6.05,
+        "recovery_events_mean": 0.4,
+        "objective_switch_mean": 183.95,
+        "reroutes_mean": 0,
+        "escaped_mean": 3.35,
+        "intercepted_mean": 4.65,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 15.9,
+        "dispatch_depart_mean": 38.7,
+        "dispatch_arrive_mean": 24.7,
+        "dispatch_order_to_depart_mean": 2.9,
+        "dispatch_travel_mean": 56.16,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 1.05,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "feint": {
+        "n": 20,
+        "wins": 8,
+        "win_rate": 0.4,
+        "win_ci95": [
+          0.2188,
+          0.6134
+        ],
+        "methods": {
+          "keep_retreat": 8
+        },
+        "victory_time_mean": 196.15,
+        "ghost_casualties_mean": 88.65,
+        "defender_casualties_mean": 21.1,
+        "ghost_spawned_mean": 101.1,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 452.31,
+        "fire_spent_mean": 505.5,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.81,
+        "waves_mean": 15.85,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 101.1,
+        "routes": {
+          "cave": 1614,
+          "main": 10,
+          "side": 398
+        },
+        "congestion_mean": 241.8,
+        "congestion_per_deployed_mean": 1.804,
+        "travel_congestion_mean": 4,
+        "recovery_events_mean": 7.35,
+        "objective_switch_mean": 127.05,
+        "reroutes_mean": 0,
+        "escaped_mean": 0.35,
+        "intercepted_mean": 1.45,
+        "stranded_mean": 1.15,
+        "dispatch_ordered_mean": 15.65,
+        "dispatch_depart_mean": 36.6,
+        "dispatch_arrive_mean": 30.1,
+        "dispatch_order_to_depart_mean": 3.5,
+        "dispatch_travel_mean": 18.64,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.15,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "waves": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 18,
+          "annihilation": 2
+        },
+        "victory_time_mean": 173.49,
+        "ghost_casualties_mean": 34.55,
+        "defender_casualties_mean": 32.05,
+        "ghost_spawned_mean": 49.35,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 242.56,
+        "fire_spent_mean": 246.75,
+        "fire_wasted_mean": 0.02,
+        "fire_remaining_mean": 65.79,
+        "waves_mean": 2.5,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 49.35,
+        "routes": {
+          "cave": 159,
+          "main": 15,
+          "side": 813
+        },
+        "congestion_mean": 147.75,
+        "congestion_per_deployed_mean": 1.79,
+        "travel_congestion_mean": 1.7,
+        "recovery_events_mean": 0.05,
+        "objective_switch_mean": 154.4,
+        "reroutes_mean": 0.85,
+        "escaped_mean": 1.95,
+        "intercepted_mean": 3.65,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 12.95,
+        "dispatch_depart_mean": 30.25,
+        "dispatch_arrive_mean": 20.2,
+        "dispatch_order_to_depart_mean": 1.53,
+        "dispatch_travel_mean": 24.62,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 5.2,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "annihilation"
+          ],
+          [
+            15,
+            1,
+            "annihilation"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "idle": {
+        "n": 20,
+        "wins": 0,
+        "win_rate": 0.0,
+        "win_ci95": [
+          0,
+          0.1611
+        ],
+        "methods": {},
+        "victory_time_mean": null,
+        "ghost_casualties_mean": 19.6,
+        "defender_casualties_mean": 10.25,
+        "ghost_spawned_mean": 20,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 547.54,
+        "fire_spent_mean": 100.0,
+        "fire_wasted_mean": 417.54,
+        "fire_remaining_mean": 100.0,
+        "waves_mean": 1,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 20,
+        "routes": {
+          "cave": 0,
+          "main": 13,
+          "side": 387
+        },
+        "congestion_mean": 78.1,
+        "congestion_per_deployed_mean": 1.446,
+        "travel_congestion_mean": 0.95,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 76.65,
+        "reroutes_mean": 0,
+        "escaped_mean": 0,
+        "intercepted_mean": 0,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 9.15,
+        "dispatch_depart_mean": 23.05,
+        "dispatch_arrive_mean": 15.4,
+        "dispatch_order_to_depart_mean": 4.23,
+        "dispatch_travel_mean": 24.14,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            0,
+            "none"
+          ],
+          [
+            5,
+            0,
+            "none"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            0,
+            "none"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            0,
+            "none"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            0,
+            "none"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "late_batches": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "annihilation": 19,
+          "keep_retreat": 1
+        },
+        "victory_time_mean": 210.71,
+        "ghost_casualties_mean": 41.25,
+        "defender_casualties_mean": 33.8,
+        "ghost_spawned_mean": 61.85,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 314.52,
+        "fire_spent_mean": 309.25,
+        "fire_wasted_mean": 41.4,
+        "fire_remaining_mean": 33.86,
+        "waves_mean": 4.55,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 61.85,
+        "routes": {
+          "cave": 0,
+          "main": 32,
+          "side": 1205
+        },
+        "congestion_mean": 119.65,
+        "congestion_per_deployed_mean": 1.262,
+        "travel_congestion_mean": 2.6,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 227.85,
+        "reroutes_mean": 0.05,
+        "escaped_mean": 0.2,
+        "intercepted_mean": 0,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 8.85,
+        "dispatch_depart_mean": 21.65,
+        "dispatch_arrive_mean": 12.45,
+        "dispatch_order_to_depart_mean": 4.26,
+        "dispatch_travel_mean": 25.88,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 3.95,
+        "seeds": [
+          [
+            1,
+            1,
+            "annihilation"
+          ],
+          [
+            2,
+            1,
+            "annihilation"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "annihilation"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "annihilation"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "annihilation"
+          ],
+          [
+            11,
+            1,
+            "annihilation"
+          ],
+          [
+            12,
+            1,
+            "annihilation"
+          ],
+          [
+            13,
+            1,
+            "annihilation"
+          ],
+          [
+            14,
+            1,
+            "annihilation"
+          ],
+          [
+            15,
+            1,
+            "annihilation"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "annihilation"
+          ],
+          [
+            18,
+            1,
+            "annihilation"
+          ],
+          [
+            19,
+            1,
+            "annihilation"
+          ],
+          [
+            20,
+            1,
+            "annihilation"
+          ]
+        ]
+      }
+    },
+    "gap_min_feint_waves_minus_idle": 0.4
+  },
+  "best_02_archer_sep": {
+    "strategies": {
+      "main_gate": {
+        "n": 20,
+        "wins": 17,
+        "win_rate": 0.85,
+        "win_ci95": [
+          0.6396,
+          0.9476
+        ],
+        "methods": {
+          "annihilation": 17
+        },
+        "victory_time_mean": 238.73,
+        "ghost_casualties_mean": 69.6,
+        "defender_casualties_mean": 32.9,
+        "ghost_spawned_mean": 92.4,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 408.69,
+        "fire_spent_mean": 462.0,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.69,
+        "waves_mean": 14.4,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 92.4,
+        "routes": {
+          "cave": 0,
+          "main": 131,
+          "side": 1717
+        },
+        "congestion_mean": 147,
+        "congestion_per_deployed_mean": 1.176,
+        "travel_congestion_mean": 2.25,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 228.75,
+        "reroutes_mean": 0,
+        "escaped_mean": 0,
+        "intercepted_mean": 0,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 7.55,
+        "dispatch_depart_mean": 20.55,
+        "dispatch_arrive_mean": 12.35,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 27.33,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 3.05,
+        "seeds": [
+          [
+            1,
+            1,
+            "annihilation"
+          ],
+          [
+            2,
+            1,
+            "annihilation"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "annihilation"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "annihilation"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "annihilation"
+          ],
+          [
+            11,
+            1,
+            "annihilation"
+          ],
+          [
+            12,
+            1,
+            "annihilation"
+          ],
+          [
+            13,
+            1,
+            "annihilation"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            1,
+            "annihilation"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            1,
+            "annihilation"
+          ],
+          [
+            19,
+            1,
+            "annihilation"
+          ],
+          [
+            20,
+            1,
+            "annihilation"
+          ]
+        ]
+      },
+      "highland": {
+        "n": 20,
+        "wins": 16,
+        "win_rate": 0.8,
+        "win_ci95": [
+          0.584,
+          0.9193
+        ],
+        "methods": {
+          "keep_retreat": 16
+        },
+        "victory_time_mean": 228.51,
+        "ghost_casualties_mean": 70.65,
+        "defender_casualties_mean": 29,
+        "ghost_spawned_mean": 90.35,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 397.58,
+        "fire_spent_mean": 451.75,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 15.83,
+        "waves_mean": 14.1,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 90.35,
+        "routes": {
+          "cave": 0,
+          "main": 0,
+          "side": 1807
+        },
+        "congestion_mean": 199.1,
+        "congestion_per_deployed_mean": 1.613,
+        "travel_congestion_mean": 6.7,
+        "recovery_events_mean": 0.45,
+        "objective_switch_mean": 180.75,
+        "reroutes_mean": 0,
+        "escaped_mean": 3.1,
+        "intercepted_mean": 4.1,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 15.55,
+        "dispatch_depart_mean": 37.85,
+        "dispatch_arrive_mean": 24.45,
+        "dispatch_order_to_depart_mean": 3.06,
+        "dispatch_travel_mean": 56.53,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.95,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "feint": {
+        "n": 20,
+        "wins": 7,
+        "win_rate": 0.35,
+        "win_ci95": [
+          0.1812,
+          0.5671
+        ],
+        "methods": {
+          "keep_retreat": 7
+        },
+        "victory_time_mean": 214.43,
+        "ghost_casualties_mean": 93.85,
+        "defender_casualties_mean": 21.3,
+        "ghost_spawned_mean": 105.3,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 474.79,
+        "fire_spent_mean": 526.5,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 18.29,
+        "waves_mean": 16.55,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 105.3,
+        "routes": {
+          "cave": 1680,
+          "main": 13,
+          "side": 413
+        },
+        "congestion_mean": 239.5,
+        "congestion_per_deployed_mean": 1.737,
+        "travel_congestion_mean": 3.8,
+        "recovery_events_mean": 8.2,
+        "objective_switch_mean": 131.5,
+        "reroutes_mean": 0,
+        "escaped_mean": 0.1,
+        "intercepted_mean": 0.85,
+        "stranded_mean": 1.4,
+        "dispatch_ordered_mean": 15.55,
+        "dispatch_depart_mean": 36.35,
+        "dispatch_arrive_mean": 30.45,
+        "dispatch_order_to_depart_mean": 3.73,
+        "dispatch_travel_mean": 18.87,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.05,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ],
+          [
+            11,
+            1,
+            "keep_retreat"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            0,
+            "none"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "waves": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 19,
+          "annihilation": 1
+        },
+        "victory_time_mean": 173.83,
+        "ghost_casualties_mean": 33.5,
+        "defender_casualties_mean": 32.7,
+        "ghost_spawned_mean": 48.05,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 240.36,
+        "fire_spent_mean": 240.25,
+        "fire_wasted_mean": 0.02,
+        "fire_remaining_mean": 70.09,
+        "waves_mean": 2.45,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 48.05,
+        "routes": {
+          "cave": 160,
+          "main": 14,
+          "side": 787
+        },
+        "congestion_mean": 148.6,
+        "congestion_per_deployed_mean": 1.826,
+        "travel_congestion_mean": 1.9,
+        "recovery_events_mean": 0.05,
+        "objective_switch_mean": 156.3,
+        "reroutes_mean": 0.85,
+        "escaped_mean": 1.3,
+        "intercepted_mean": 3.5,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 12.9,
+        "dispatch_depart_mean": 30.3,
+        "dispatch_arrive_mean": 21.4,
+        "dispatch_order_to_depart_mean": 1.07,
+        "dispatch_travel_mean": 23.93,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 5.3,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "annihilation"
+          ],
+          [
+            12,
+            1,
+            "keep_retreat"
+          ],
+          [
+            13,
+            1,
+            "keep_retreat"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "keep_retreat"
+          ],
+          [
+            17,
+            1,
+            "keep_retreat"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "keep_retreat"
+          ],
+          [
+            20,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "idle": {
+        "n": 20,
+        "wins": 2,
+        "win_rate": 0.1,
+        "win_ci95": [
+          0.0279,
+          0.301
+        ],
+        "methods": {
+          "keep_retreat": 2
+        },
+        "victory_time_mean": 296.98,
+        "ghost_casualties_mean": 19.1,
+        "defender_casualties_mean": 11.8,
+        "ghost_spawned_mean": 20,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 546.55,
+        "fire_spent_mean": 100.0,
+        "fire_wasted_mean": 416.55,
+        "fire_remaining_mean": 100.0,
+        "waves_mean": 1,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 20,
+        "routes": {
+          "cave": 0,
+          "main": 13,
+          "side": 387
+        },
+        "congestion_mean": 79.9,
+        "congestion_per_deployed_mean": 1.48,
+        "travel_congestion_mean": 0.7,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 79.55,
+        "reroutes_mean": 0,
+        "escaped_mean": 0.8,
+        "intercepted_mean": 0.45,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 9.25,
+        "dispatch_depart_mean": 23.25,
+        "dispatch_arrive_mean": 16.45,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 24.81,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            0,
+            "none"
+          ],
+          [
+            5,
+            0,
+            "none"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ],
+          [
+            11,
+            0,
+            "none"
+          ],
+          [
+            12,
+            0,
+            "none"
+          ],
+          [
+            13,
+            0,
+            "none"
+          ],
+          [
+            14,
+            1,
+            "keep_retreat"
+          ],
+          [
+            15,
+            0,
+            "none"
+          ],
+          [
+            16,
+            0,
+            "none"
+          ],
+          [
+            17,
+            0,
+            "none"
+          ],
+          [
+            18,
+            0,
+            "none"
+          ],
+          [
+            19,
+            0,
+            "none"
+          ],
+          [
+            20,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "late_batches": {
+        "n": 20,
+        "wins": 20,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.8389,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 5,
+          "annihilation": 15
+        },
+        "victory_time_mean": 204.06,
+        "ghost_casualties_mean": 38,
+        "defender_casualties_mean": 33.7,
+        "ghost_spawned_mean": 60.55,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 299.9,
+        "fire_spent_mean": 302.75,
+        "fire_wasted_mean": 41.4,
+        "fire_remaining_mean": 25.75,
+        "waves_mean": 4.45,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 60.55,
+        "routes": {
+          "cave": 0,
+          "main": 43,
+          "side": 1168
+        },
+        "congestion_mean": 130.3,
+        "congestion_per_deployed_mean": 1.386,
+        "travel_congestion_mean": 2.6,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 224.55,
+        "reroutes_mean": 0.35,
+        "escaped_mean": 0.3,
+        "intercepted_mean": 0.6,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 8.6,
+        "dispatch_depart_mean": 21.35,
+        "dispatch_arrive_mean": 12.65,
+        "dispatch_order_to_depart_mean": 4.37,
+        "dispatch_travel_mean": 26.27,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 4.05,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "annihilation"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "annihilation"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ],
+          [
+            11,
+            1,
+            "annihilation"
+          ],
+          [
+            12,
+            1,
+            "annihilation"
+          ],
+          [
+            13,
+            1,
+            "annihilation"
+          ],
+          [
+            14,
+            1,
+            "annihilation"
+          ],
+          [
+            15,
+            1,
+            "keep_retreat"
+          ],
+          [
+            16,
+            1,
+            "annihilation"
+          ],
+          [
+            17,
+            1,
+            "annihilation"
+          ],
+          [
+            18,
+            1,
+            "keep_retreat"
+          ],
+          [
+            19,
+            1,
+            "annihilation"
+          ],
+          [
+            20,
+            1,
+            "annihilation"
+          ]
+        ]
+      }
+    },
+    "gap_min_feint_waves_minus_idle": 0.25
+  },
+  "best_03_archer_weak16_sep": {
+    "strategies": {
+      "main_gate": {
+        "n": 10,
+        "wins": 10,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.7225,
+          1
+        ],
+        "methods": {
+          "annihilation": 10
+        },
+        "victory_time_mean": 225.18,
+        "ghost_casualties_mean": 61.4,
+        "defender_casualties_mean": 34,
+        "ghost_spawned_mean": 81.5,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 353.02,
+        "fire_spent_mean": 407.5,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 15.52,
+        "waves_mean": 12.6,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 81.5,
+        "routes": {
+          "cave": 0,
+          "main": 52,
+          "side": 763
+        },
+        "congestion_mean": 137.2,
+        "congestion_per_deployed_mean": 1.19,
+        "travel_congestion_mean": 3.1,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 215.7,
+        "reroutes_mean": 0,
+        "escaped_mean": 0,
+        "intercepted_mean": 0,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 7.8,
+        "dispatch_depart_mean": 21.2,
+        "dispatch_arrive_mean": 14,
+        "dispatch_order_to_depart_mean": 5.0,
+        "dispatch_travel_mean": 27.39,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 3.7,
+        "seeds": [
+          [
+            1,
+            1,
+            "annihilation"
+          ],
+          [
+            2,
+            1,
+            "annihilation"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "annihilation"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "annihilation"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "annihilation"
+          ]
+        ]
+      },
+      "highland": {
+        "n": 10,
+        "wins": 7,
+        "win_rate": 0.7,
+        "win_ci95": [
+          0.3968,
+          0.8922
+        ],
+        "methods": {
+          "keep_retreat": 7
+        },
+        "victory_time_mean": 210.91,
+        "ghost_casualties_mean": 71.6,
+        "defender_casualties_mean": 29.2,
+        "ghost_spawned_mean": 89.8,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 393.28,
+        "fire_spent_mean": 449.0,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 14.28,
+        "waves_mean": 14,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 89.8,
+        "routes": {
+          "cave": 0,
+          "main": 0,
+          "side": 898
+        },
+        "congestion_mean": 187.4,
+        "congestion_per_deployed_mean": 1.527,
+        "travel_congestion_mean": 5,
+        "recovery_events_mean": 0.5,
+        "objective_switch_mean": 184.9,
+        "reroutes_mean": 0,
+        "escaped_mean": 3.2,
+        "intercepted_mean": 5.2,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 15.4,
+        "dispatch_depart_mean": 37.2,
+        "dispatch_arrive_mean": 24,
+        "dispatch_order_to_depart_mean": 1.91,
+        "dispatch_travel_mean": 60.56,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 1,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "feint": {
+        "n": 10,
+        "wins": 4,
+        "win_rate": 0.4,
+        "win_ci95": [
+          0.1682,
+          0.6873
+        ],
+        "methods": {
+          "keep_retreat": 4
+        },
+        "victory_time_mean": 214.07,
+        "ghost_casualties_mean": 92.1,
+        "defender_casualties_mean": 20.8,
+        "ghost_spawned_mean": 103.2,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 462.45,
+        "fire_spent_mean": 516.0,
+        "fire_wasted_mean": 0.0,
+        "fire_remaining_mean": 16.45,
+        "waves_mean": 16.2,
+        "max_wave_mean": 12,
+        "deployment_peak_mean": 103.2,
+        "routes": {
+          "cave": 823,
+          "main": 8,
+          "side": 201
+        },
+        "congestion_mean": 233.4,
+        "congestion_per_deployed_mean": 1.722,
+        "travel_congestion_mean": 3.9,
+        "recovery_events_mean": 7.8,
+        "objective_switch_mean": 129.3,
+        "reroutes_mean": 0,
+        "escaped_mean": 0.2,
+        "intercepted_mean": 1.2,
+        "stranded_mean": 1,
+        "dispatch_ordered_mean": 15.6,
+        "dispatch_depart_mean": 35.9,
+        "dispatch_arrive_mean": 30.2,
+        "dispatch_order_to_depart_mean": 4.29,
+        "dispatch_travel_mean": 19.06,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0.1,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "waves": {
+        "n": 10,
+        "wins": 10,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.7225,
+          1
+        ],
+        "methods": {
+          "keep_retreat": 10
+        },
+        "victory_time_mean": 185.82,
+        "ghost_casualties_mean": 33.6,
+        "defender_casualties_mean": 33.2,
+        "ghost_spawned_mean": 52.4,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 261.8,
+        "fire_spent_mean": 262.0,
+        "fire_wasted_mean": 0.03,
+        "fire_remaining_mean": 69.78,
+        "waves_mean": 2.7,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 52.4,
+        "routes": {
+          "cave": 123,
+          "main": 10,
+          "side": 391
+        },
+        "congestion_mean": 191.3,
+        "congestion_per_deployed_mean": 2.217,
+        "travel_congestion_mean": 2.7,
+        "recovery_events_mean": 0.1,
+        "objective_switch_mean": 177.1,
+        "reroutes_mean": 1.6,
+        "escaped_mean": 0.8,
+        "intercepted_mean": 3.2,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 13.8,
+        "dispatch_depart_mean": 31.2,
+        "dispatch_arrive_mean": 22.1,
+        "dispatch_order_to_depart_mean": 0.97,
+        "dispatch_travel_mean": 24.29,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 5.1,
+        "seeds": [
+          [
+            1,
+            1,
+            "keep_retreat"
+          ],
+          [
+            2,
+            1,
+            "keep_retreat"
+          ],
+          [
+            3,
+            1,
+            "keep_retreat"
+          ],
+          [
+            4,
+            1,
+            "keep_retreat"
+          ],
+          [
+            5,
+            1,
+            "keep_retreat"
+          ],
+          [
+            6,
+            1,
+            "keep_retreat"
+          ],
+          [
+            7,
+            1,
+            "keep_retreat"
+          ],
+          [
+            8,
+            1,
+            "keep_retreat"
+          ],
+          [
+            9,
+            1,
+            "keep_retreat"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      },
+      "idle": {
+        "n": 10,
+        "wins": 0,
+        "win_rate": 0.0,
+        "win_ci95": [
+          0,
+          0.2775
+        ],
+        "methods": {},
+        "victory_time_mean": null,
+        "ghost_casualties_mean": 19.5,
+        "defender_casualties_mean": 10.5,
+        "ghost_spawned_mean": 20,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 547.54,
+        "fire_spent_mean": 100.0,
+        "fire_wasted_mean": 417.54,
+        "fire_remaining_mean": 100.0,
+        "waves_mean": 1,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 20,
+        "routes": {
+          "cave": 0,
+          "main": 9,
+          "side": 191
+        },
+        "congestion_mean": 79.5,
+        "congestion_per_deployed_mean": 1.472,
+        "travel_congestion_mean": 0.9,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 78.7,
+        "reroutes_mean": 0,
+        "escaped_mean": 0,
+        "intercepted_mean": 0,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 8.8,
+        "dispatch_depart_mean": 22.7,
+        "dispatch_arrive_mean": 16.6,
+        "dispatch_order_to_depart_mean": 4.2,
+        "dispatch_travel_mean": 25.39,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 0,
+        "seeds": [
+          [
+            1,
+            0,
+            "none"
+          ],
+          [
+            2,
+            0,
+            "none"
+          ],
+          [
+            3,
+            0,
+            "none"
+          ],
+          [
+            4,
+            0,
+            "none"
+          ],
+          [
+            5,
+            0,
+            "none"
+          ],
+          [
+            6,
+            0,
+            "none"
+          ],
+          [
+            7,
+            0,
+            "none"
+          ],
+          [
+            8,
+            0,
+            "none"
+          ],
+          [
+            9,
+            0,
+            "none"
+          ],
+          [
+            10,
+            0,
+            "none"
+          ]
+        ]
+      },
+      "late_batches": {
+        "n": 10,
+        "wins": 10,
+        "win_rate": 1.0,
+        "win_ci95": [
+          0.7225,
+          1
+        ],
+        "methods": {
+          "annihilation": 9,
+          "keep_retreat": 1
+        },
+        "victory_time_mean": 204.74,
+        "ghost_casualties_mean": 38.3,
+        "defender_casualties_mean": 33.8,
+        "ghost_spawned_mean": 60.8,
+        "defender_spawned_mean": 34,
+        "fire_generated_mean": 301.87,
+        "fire_spent_mean": 304.0,
+        "fire_wasted_mean": 41.4,
+        "fire_remaining_mean": 26.46,
+        "waves_mean": 4.4,
+        "max_wave_mean": 20,
+        "deployment_peak_mean": 60.8,
+        "routes": {
+          "cave": 0,
+          "main": 25,
+          "side": 583
+        },
+        "congestion_mean": 130.7,
+        "congestion_per_deployed_mean": 1.387,
+        "travel_congestion_mean": 2.9,
+        "recovery_events_mean": 0,
+        "objective_switch_mean": 229.2,
+        "reroutes_mean": 0.6,
+        "escaped_mean": 0.2,
+        "intercepted_mean": 0.4,
+        "stranded_mean": 0,
+        "dispatch_ordered_mean": 9,
+        "dispatch_depart_mean": 21.6,
+        "dispatch_arrive_mean": 13.4,
+        "dispatch_order_to_depart_mean": 4.48,
+        "dispatch_travel_mean": 25.75,
+        "kingdom_reinforcement_events": 0,
+        "early_archer_kills_mean": 4.2,
+        "seeds": [
+          [
+            1,
+            1,
+            "annihilation"
+          ],
+          [
+            2,
+            1,
+            "annihilation"
+          ],
+          [
+            3,
+            1,
+            "annihilation"
+          ],
+          [
+            4,
+            1,
+            "annihilation"
+          ],
+          [
+            5,
+            1,
+            "annihilation"
+          ],
+          [
+            6,
+            1,
+            "annihilation"
+          ],
+          [
+            7,
+            1,
+            "annihilation"
+          ],
+          [
+            8,
+            1,
+            "annihilation"
+          ],
+          [
+            9,
+            1,
+            "annihilation"
+          ],
+          [
+            10,
+            1,
+            "keep_retreat"
+          ]
+        ]
+      }
+    },
+    "gap_min_feint_waves_minus_idle": 0.4
+  },
+  "pairs": {
+    "highland_archer_forced_side": {
+      "archer_high": {
+        "n": 10,
+        "wins": 9,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 5,
+        "ghost_casualties_mean": 71.1
+      },
+      "archer_low": {
+        "n": 10,
+        "wins": 9,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 5,
+        "ghost_casualties_mean": 70.4
+      },
+      "paired": {
+        "1": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "2": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 1,
+          "off_early": 1
+        },
+        "3": {
+          "on_won": true,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "4": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 3
+        },
+        "5": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "6": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "7": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 3
+        },
+        "8": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 2,
+          "off_early": 2
+        },
+        "9": {
+          "on_won": false,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "10": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 1
+        }
+      }
+    },
+    "highland_archer_threat_forced_side": {
+      "archer_high": {
+        "n": 10,
+        "wins": 4,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 1,
+        "ghost_casualties_mean": 96.4
+      },
+      "archer_low": {
+        "n": 10,
+        "wins": 4,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 1,
+        "ghost_casualties_mean": 96.2
+      },
+      "paired": {
+        "1": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "2": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "3": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "4": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "5": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "6": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "7": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 1,
+          "off_early": 1
+        },
+        "8": {
+          "on_won": false,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "9": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "10": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        }
+      }
+    },
+    "highland_archer_unforced": {
+      "archer_high": {
+        "n": 10,
+        "wins": 9,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 5,
+        "ghost_casualties_mean": 71.1
+      },
+      "archer_low": {
+        "n": 10,
+        "wins": 6,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 4,
+        "ghost_casualties_mean": 84.7
+      },
+      "paired": {
+        "1": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 3
+        },
+        "2": {
+          "on_won": true,
+          "off_won": false,
+          "on_early": 1,
+          "off_early": 0
+        },
+        "3": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "4": {
+          "on_won": true,
+          "off_won": false,
+          "on_early": 3,
+          "off_early": 0
+        },
+        "5": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 3
+        },
+        "6": {
+          "on_won": true,
+          "off_won": false,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "7": {
+          "on_won": true,
+          "off_won": false,
+          "on_early": 3,
+          "off_early": 0
+        },
+        "8": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 2,
+          "off_early": 1
+        },
+        "9": {
+          "on_won": false,
+          "off_won": true,
+          "on_early": 0,
+          "off_early": 0
+        },
+        "10": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 3
+        }
+      }
+    },
+    "main_gate_archer": {
+      "archer_high": {
+        "n": 10,
+        "wins": 9,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 10,
+        "ghost_casualties_mean": 63.6
+      },
+      "archer_low": {
+        "n": 10,
+        "wins": 10,
+        "seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_positive": 7,
+        "ghost_casualties_mean": 48.5
+      },
+      "paired": {
+        "1": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 1,
+          "off_early": 0
+        },
+        "2": {
+          "on_won": false,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 1
+        },
+        "3": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 0
+        },
+        "4": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 6,
+          "off_early": 3
+        },
+        "5": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 3
+        },
+        "6": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 2
+        },
+        "7": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 3,
+          "off_early": 2
+        },
+        "8": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 1,
+          "off_early": 1
+        },
+        "9": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 6,
+          "off_early": 1
+        },
+        "10": {
+          "on_won": true,
+          "off_won": true,
+          "on_early": 6,
+          "off_early": 0
+        }
+      }
+    },
+    "highland_wall_16_vs_36": {
+      "weak16": {
+        "n": 10,
+        "wins": 9,
+        "ghost_casualties_mean": 65.4
+      },
+      "weak36": {
+        "n": 10,
+        "wins": 8,
+        "ghost_casualties_mean": 71.4
+      },
+      "paired": {
+        "1": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "2": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "3": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "4": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "5": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "6": {
+          "weak16_won": true,
+          "weak36_won": false
+        },
+        "7": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "8": {
+          "weak16_won": true,
+          "weak36_won": true
+        },
+        "9": {
+          "weak16_won": false,
+          "weak36_won": true
+        },
+        "10": {
+          "weak16_won": true,
+          "weak36_won": false
+        }
+      }
+    }
+  },
+  "reinforcement_control": {
+    "default_5shield_3cavalry": {
+      "main_gate": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 48,
+        "congestion_per_deployed_mean": 1.304
+      },
+      "highland": {
+        "n": 5,
+        "wins": 4,
+        "arrived": 3,
+        "ghost_casualties_mean": 74.4,
+        "congestion_per_deployed_mean": 1.608
+      },
+      "feint": {
+        "n": 5,
+        "wins": 2,
+        "arrived": 4,
+        "ghost_casualties_mean": 98.6,
+        "congestion_per_deployed_mean": 1.647
+      },
+      "waves": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 33.8,
+        "congestion_per_deployed_mean": 1.895
+      },
+      "idle": {
+        "n": 5,
+        "wins": 0,
+        "arrived": 5,
+        "ghost_casualties_mean": 20,
+        "congestion_per_deployed_mean": 1.306
+      },
+      "late_batches": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 36,
+        "congestion_per_deployed_mean": 1.336
+      }
+    },
+    "small_3shield_2cavalry": {
+      "main_gate": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 48,
+        "congestion_per_deployed_mean": 1.304
+      },
+      "highland": {
+        "n": 5,
+        "wins": 3,
+        "arrived": 3,
+        "ghost_casualties_mean": 77.2,
+        "congestion_per_deployed_mean": 1.55
+      },
+      "feint": {
+        "n": 5,
+        "wins": 2,
+        "arrived": 4,
+        "ghost_casualties_mean": 99.2,
+        "congestion_per_deployed_mean": 1.685
+      },
+      "waves": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 33.8,
+        "congestion_per_deployed_mean": 1.895
+      },
+      "idle": {
+        "n": 5,
+        "wins": 0,
+        "arrived": 5,
+        "ghost_casualties_mean": 20,
+        "congestion_per_deployed_mean": 1.288
+      },
+      "late_batches": {
+        "n": 5,
+        "wins": 5,
+        "arrived": 0,
+        "ghost_casualties_mean": 36,
+        "congestion_per_deployed_mean": 1.336
+      }
+    }
+  },
+  "verification": {
+    "task_verify": {
+      "command": "proto/siege/run_matrix.sh --seeds 3",
+      "exit": 0,
+      "runs": 18,
+      "seconds": 591.51
+    },
+    "best_repeats": {
+      "best_01": {
+        "runs": 12,
+        "repeats": 12,
+        "seconds": 694.95,
+        "all_json_equal": true
+      },
+      "best_02": {
+        "runs": 12,
+        "repeats": 12,
+        "seconds": 511.57,
+        "all_json_equal": true
+      },
+      "best_03": {
+        "runs": 12,
+        "repeats": 12,
+        "seconds": 699.0,
+        "all_json_equal": true
+      }
+    },
+    "param_hashes": {
+      "baseline": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+      "best_01": "d23eab3269fc275b41d7fcb0278196c4744e881bc34bda95e38f3c9ce060f2dd",
+      "best_02": "8acbb9c86bd2b222a727c046fce4963636b44e7fe8fb83d94f8774e18591a954",
+      "best_03": "7e4bfa603b809d765467bb3c5d40cdd8f63beb26a4a66437e1691dbcfd425dc8"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "targeting": {
+    "values": {
+      "archer": 10,
+      "gate": 0,
+      "weak": 2.3,
+      "zone": 2.5,
+      "keep": 0
+    }
+  }
+}

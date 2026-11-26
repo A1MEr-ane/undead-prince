@@ -1,0 +1,6 @@
+{
+  "combat": {
+    "separation_radius": 0.8,
+    "max_separation_speed": 2.0
+  }
+}

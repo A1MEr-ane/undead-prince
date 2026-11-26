@@ -1,0 +1,6 @@
+{
+  "strategies": {
+    "feint_divisor": 3,
+    "feint_main_count": 1
+  }
+}

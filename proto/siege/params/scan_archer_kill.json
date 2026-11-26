@@ -1,0 +1,15 @@
+{
+  "targeting": {
+    "values": {
+      "archer": 10,
+      "gate": 2,
+      "weak": 2.3,
+      "zone": 2.5,
+      "keep": 5
+    }
+  },
+  "economy": {
+    "kill_reward_enabled": true,
+    "kill_reward": 2
+  }
+}
