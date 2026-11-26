@@ -46,7 +46,8 @@
 | T70 | 镜头：战区固定视角 + 总览切换（主方案）对比 360° | Codex | codex/t70-camera-ab | proto/siege/camera/ | 已合并，待用户手玩选定 |
 | T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
-| T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | — | proto/siege/ | 搁置（阶段 B 前做；当前自然局规模够用） |
+| T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 进行中 |
+| T74 | 阶段 B 预备：暗影刺客、缝合巨人、可破墙段、山洞权限（默认关） | Codex | codex/t74-siege-phaseB | proto/siege/ | 待办（依赖 T73） |
 | T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
 | T60 | T19 前置：批量模拟、统计、异常检测工具 | DSH | dsh/t60-sim-tools | tools/sim/ | 已合并 |
 | T61 | 战斗系统基线测试（寻路、碰撞、攻击、行为、性能） | DSH | dsh/t61-battle-baseline | tests/ | 已合并 |
