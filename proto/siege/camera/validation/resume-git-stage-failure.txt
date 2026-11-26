@@ -1,0 +1,1 @@
+fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t70/index.lock': Operation not permitted

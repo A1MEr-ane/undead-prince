@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
+ROUNDTRIP source={"count":7,"sum":0.3,"whole":7.0} parsed={"count":7.0,"sum":0.3,"whole":7.0}
+ROUNDTRIP raw_equal=false serialized_equal=false
+ROUNDTRIP field=sum raw_type=float parsed_type=float raw=0.30000000000000004 parsed=0.29999999999999999 value_equal=false
+ROUNDTRIP field=count raw_type=int parsed_type=float raw=7.00000000000000000 parsed=7.00000000000000000 value_equal=true
+ROUNDTRIP field=whole raw_type=float parsed_type=float raw=7.00000000000000000 parsed=7.00000000000000000 value_equal=true

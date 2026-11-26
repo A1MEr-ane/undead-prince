@@ -1,0 +1,880 @@
+diff --git a/proto/siege/README.md b/proto/siege/README.md
+index cfb44a5..e76ab3e 100644
+--- a/proto/siege/README.md
++++ b/proto/siege/README.md
+@@ -15,6 +15,8 @@ godot --path . proto/siege/camera/siege_camera.tscn -- --camera_transition=cut
+ godot --path . proto/siege/camera/siege_camera.tscn -- --camera_mode=continuous
+ # 镜头与输入边界测试，不要求窗口
+ godot --headless --path . --script proto/siege/camera/test_camera.gd
++# 完整回放：原无头入口 vs 两组实际显示节点；完整 SIEGE 行必须逐字一致
++python3 proto/siege/camera/verify_replay.py
+ # 串行录制相同策略、种子的 A/B PNG 序列，并拍四个机位静帧
+ python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
+ ```
+@@ -22,7 +24,7 @@ python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
+ - `1–4` 分别跳海岸、高地、外城广场、主堡；也可点右上总览或底部战区标签。固定模式不响应旋转，`WASD` 或右键/中键拖动可小范围平移，滚轮只在本机位的有限范围缩放。连续模式保留 `Q/E` 与拖动旋转，也能按战区定位。
+ - 亡魂默认已选中。左键长按只向**当前战区、画面内的合法部署地面**投兵。默认只有海岸能部署；切换、展开总览、鼠标进入 UI 或拖动时禁止部署，松开鼠标会结束长按。`F+左键` 仍通过原接口付费集结，`Space` 跳过撤退，`R` 重开。
+ - `Tab` 展开/收起全屏战术图，`F3` 开关原调试面板，`C` 对比 0.2 秒推移与直切。总览消费鼠标事件，只跳转、不投兵；显示实际区内人数、实际仍在行军的守军箭头、视口边界、旗帜归属、门墙状态、冥火和倒计时。山洞转移中的单位暂不计入区内人数。
+-- 离屏受伤、增援出发、破门/破墙、攻占和失守会进入提醒日志；底部标签闪烁，左侧最多显示三个战区的一行可点击提示，跳转抵达后确认。受伤提示每区冷却 8 秒，同批同路线增援合并，重要状态优先保留到查看。当前增援提示挂在**目的战区**，正文包含来源与目的地。
++- 离屏受伤、增援出发、破门/破墙、攻占和失守会进入提醒日志；底部标签闪烁，左侧最多显示三个战区的一行可点击提示，跳转抵达后确认。受伤提示每区冷却 8 秒，同批同路线增援合并，重要状态优先保留到查看。增援同时提醒**来源和目的战区**，两端独立确认；当前正在查看的战区无需闪烁，正文包含来源与目的地。
+ - 手工机位在 `camera/map_camera.json` 的 `map.camera.zones` 中：`focus` 为世界坐标 `[x,y,z]`，`yaw/pitch` 为度，`distance` 与它们共同决定位置，`size` 为正交尺寸，另有平移与缩放限制。显示层默认读取此文件，不回写模拟参数；可用原 `--params=覆盖.json` 覆盖 `map.camera`，或用 `--camera_mode=zones/continuous`、`--camera_transition=slide/cut`、`--zone=coast/highland/plaza/keep` 选择实验。
+ - T69 没有正式单位精灵；实验入口用一张带鼻尖/武器的程序侧影、脚底锚点和相对镜头左右翻转检查表现。两组都使用同样的侧影。墙和地形继续正常遮挡，没有透视显示单位的特殊处理。正式精灵仍需另行验收。
+ 
+@@ -44,7 +46,7 @@ proto/siege/run_matrix.sh --seeds=3 --out=proto/siege/results/smoke
+ # 参数覆盖文件可以只包含要修改的字段（字典递归合并，数组整体替换）
+ proto/siege/run_matrix.sh --params=/tmp/variant.json --seeds=20 --out=proto/siege/results/variant
+ 
+-# 固定验收：机制检查 + 6 种策略 × 2 个种子，每局重复一次比较完整 JSON
++# 固定验收：机制检查 + 24 局 + 镜头功能 + 显示节点完整回放对照
+ tools/verify/proto_siege.sh
+ 
+ # 实际窗口截图；按模拟时间 3 / 150 / 285 秒，种子 1
+@@ -157,3 +159,7 @@ proto/siege/capture_all.sh --speed=16
+ 窗口与无头都调用 `siege.gd.simulate()`；胜负、资源、出生/伤亡、攻占、破墙、调度使用同一固定步长（默认 1/30 秒）与独立模拟 RNG。窗口把输入变成意图/队列，在逻辑步执行。展示用上一步/当前单位位置和累加器比例插值，不回写模拟；船移动和天色也只读取模拟时间。跨平台逐位一致未承诺。
+ 
+ `world.hooks.subscribe(event, Callable)` 预留六种事件：`spawn`、`hurt`、`near_death`、`kill`、`death`、`resource_changed`。载荷包含单位/来源或资源前后值，以及逻辑步号。濒死在血量越过最大血量 25% 时触发（含致命伤），不附加任何规则效果。同一同步调用链不重复派发同名事件，深度上限 8；结束后新的顶层事件仍可触发。测试覆盖“击杀→生成→击杀”和固定输入时序，不实现增益、复生或构筑。
++
++T70 的 `camera/verify_replay.py` 已接入固定验收，显式使用相同 `feint / seed 7 / --params` 分别运行原无头场景和 `zones`、`continuous` 显示节点回放。显示回放保持模拟固定步长，独立改变显示 delta、插值、推移/直切和总览状态，每三步刷新一次；比较完整 `SIEGE` 行的 UTF-8 字节，不忽略任何字段，不加浮点容差。证据在验收输出目录的 `camera/` 下。此项构造真实显示节点，但不启用 GPU 渲染，不能代替桌面截图。
++
++不要直接把 `world.result()` 内存字典与 `JSON.parse_string()` 读取的日志字典做相等验收：JSON 数字的十进制序列化/解析可能改变 double 的最低位，解析还会把整数变成 float；即使两次模拟的原始日志逐字一致，解析后的字典也可能不与内存字典相等。回放脚本会额外打印往返诊断，正式通过条件始终是两个原始 `SIEGE` 行逐字一致。
+diff --git a/proto/siege/camera/observer.gd b/proto/siege/camera/observer.gd
+index 0b324b3..2f12fed 100644
+--- a/proto/siege/camera/observer.gd
++++ b/proto/siege/camera/observer.gd
+@@ -72,7 +72,10 @@ func poll() -> void:
+ 			var key := "%s:%s:%s" % [d.time, d.from, d.to]
+ 			if not seen.has(key):
+ 				seen[key] = true
+-				add_alert(d.to, "reinforcement", "%s增援出发 → %s" % [cfg.zones[d.from].label, cfg.zones[d.to].label], d.time)
++				var message := "%s增援出发 → %s" % [cfg.zones[d.from].label, cfg.zones[d.to].label]
++				add_alert(d.from, "reinforcement", message, d.time)
++				if d.to != d.from:
++					add_alert(d.to, "reinforcement", message, d.time)
+ 	while topology_cursor < world.terrain.topology_events.size():
+ 		var e: Dictionary = world.terrain.topology_events[topology_cursor]
+ 		topology_cursor += 1
+diff --git a/proto/siege/camera/test_camera.gd b/proto/siege/camera/test_camera.gd
+index 185d63e..1db577b 100644
+--- a/proto/siege/camera/test_camera.gd
++++ b/proto/siege/camera/test_camera.gd
+@@ -60,6 +60,7 @@ func run() -> void:
+ 	world.zones.coast.captures.append(3.0)
+ 	world.zones.coast.losses.append(4.0)
+ 	observer.poll()
++	check(observer.latest.has("plaza") and not observer.latest.has("keep"), "增援目的区闪烁，当前来源区无需离屏提醒")
+ 	var kinds: Array = observer.alerts.map(func(a): return a.kind)
+ 	for kind in ["attack", "reinforcement", "breach", "capture", "loss"]:
+ 		check(kinds.has(kind), "提醒覆盖 " + kind)
+@@ -68,6 +69,11 @@ func run() -> void:
+ 	check(observer.latest.coast.kind == "loss", "受伤冷却及优先级保留失守提示")
+ 	view.select_zone("coast", "test")
+ 	check(not observer.latest.has("coast"), "跳转确认该战区所有待看提醒")
++	world.director.decisions.append({"event": "depart", "time": 5.0, "from": "keep", "to": "plaza"})
++	observer.poll()
++	check(observer.latest.has("keep") and observer.latest.has("plaza"), "离屏增援来源和目的标签同时闪烁")
++	view.select_zone("keep", "test")
++	check(not observer.latest.has("keep") and observer.latest.has("plaza"), "查看来源不清除目的区的待看提醒")
+ 	var count: int = observer.alerts.size()
+ 	observer.poll()
+ 	check(observer.alerts.size() == count, "只读历史游标不重复派发提醒")
+diff --git a/reports/agents/T70.md b/reports/agents/T70.md
+index c219c97..6a417a3 100644
+--- a/reports/agents/T70.md
++++ b/reports/agents/T70.md
+@@ -1,160 +1,181 @@
+ ---
+ task_id: T70
+ executor: codex
+-status: blocked
++status: review_required
+ summary: |
+-  新增独立镜头实验入口：四战区固定机位、有限平移、0.2 秒推移/直切及连续 360° 对照。
+-  实现常驻/全屏总览、跨区提醒、视角部署限制和程序侧影；未修改原模拟与调度文件。
+-  原固定验证 24 局、镜头边界与三个无头入口对照通过；显示节点回放比较失败，触发升级并停止实现。
+-  窗口录制因 macOS 桌面连接超时，尚无截图；遮挡、帧时间与玩家平均切换数未验收。
++  续做已定位旧回放误报：内存 Dictionary 与 JSON 解析结果直接比较，受到 double 最低位和数字类型变化影响。
++  两组实际显示节点完整回放与原无头入口逐字一致；未修改模拟、战斗或调度文件。
++  增援来源及目的标签均可提醒并独立确认，显示回放检查已接入 proto_siege.sh。
++  修前/修后 24 局完整原始结算及 results.jsonl 逐字一致，扩展 proto_siege.sh 全部通过。
++  桌面截图和用户手玩按授权交 Lead，最终镜头方案仍待用户决定。
++  Git 暂存被沙箱拒绝创建 index.lock；未提交，保留工作区改动及完整补丁。
+ artifacts:
+   - proto/siege/camera/siege_camera.tscn
+-  - proto/siege/camera/map_camera.json
+-  - proto/siege/camera/capture.py
+-  - proto/siege/camera/validation/
++  - proto/siege/camera/replay.gd
++  - proto/siege/camera/verify_replay.py
++  - proto/siege/camera/validation/resume-*
++  - tools/verify/proto_siege.sh
+   - reports/agents/T70.md
+-  - proto/siege/camera/validation/T70.patch
+-  - branch: codex/t70-camera-ab (未提交，index.lock 被沙箱拒绝)
++  - proto/siege/camera/validation/resume-T70.patch
++  - branch: codex/t70-camera-ab
+ validation:
++  proto_siege_before: passed_runs12_repeats12
++  proto_siege_after: passed_runs12_repeats12_and_camera_replay
++  before_after_24_byte_comparison: passed_24_raw_SIEGE_lines_and_results_jsonl
+   camera_features: passed
+-  paired_headless_complete_json: passed_45_fields
+-  live_view_replay: failed_escalated_no_further_repair
+-  proto_siege: passed_runs12_repeats12
+-  screenshot_capture: blocked_by_desktop_environment
++  displayed_vs_headless_complete_SIEGE: passed_zones_and_continuous_byte_equal
++  parse_and_python_compile: passed
++  screenshots: delegated_to_lead_not_attempted
+ issues:
+-  - Git 暂存前置步骤无法创建主仓库 worktree 的 index.lock；未提交，已保留改动和补丁。
+-  - 显示节点参与的回放直接结算比较失败，未定位字段；不能确认显示层路径不影响确定性。
+-  - 未取得实际运行 PNG，不能认定视觉验收完成。
+-  - 增援提醒目前挂在目的战区，正文标出来源；来源标签没有同步闪烁。
+-  - 五分钟玩家切换均值、漏看事件与渲染帧时间须由手玩补验。
++  - 遮挡、精灵实际观感及真实渲染帧时间待 Lead 桌面截图和手玩验收。
++  - 五分钟玩家平均切换数与漏看事件尚无实测，最终镜头方案由用户手玩决定。
++  - 沙箱拒绝创建主仓库 worktree 的 index.lock，本轮无法暂存或提交。
+ usage: 会话未提供可取得的 token 额度或实际 API 费用；无付费外部服务调用。
+ needs_claude: true
+-reason: 先复核显示节点回放比较失败的原因并明确下一轮授权；当前按 escalate_if 停止。解除后仍需桌面截图与用户手玩。
++reason: 在有 Git 元数据写入权限的环境提交本轮改动，并按续做安排补拍和组织手玩；不需要额外的模拟改动授权。
+ ---
+ 
+-## 结果：部分完成，触发升级后停止
++## 结果：续做工程完成，视觉与手玩待验收
+ 
+-**阻塞原因：** 启用显示节点并逐逻辑步调用输入/镜头、定期刷新显示的完整回放，在 `zones` 组出现 `ESCALATE: live view changed complete result zones`。已立即停止实现和新的实验，没有第三轮自修。失败检查没有输出具体差异字段，尚未确认是显示层路径还是比较方法的问题；不能把它写成确定性验收通过。已启动的原固定验证仅继续收尾。
++已解除上一轮显示节点回放检查的阻塞。原实现的四战区机位、推移/直切、有限平移、总览、部署限制、侧影及连续 360° 对照均保留，使用入口见 `proto/siege/README.md`。
+ 
+-已完成镜头实验的代码和无头功能验证。没有修改 `scripts/`、`shaders/`、`data/`、`docs/`、`tasks/`、`art/`、`assets/`、`project.godot` 或 `siege_director.gd`。交付报告是任务卡明确要求的 allowed 之外产物。Godot 导入产生的范围外 `.import`、`.uid` 和翻译缓存已还原/清理，最终仅提交授权内容。
++**本轮没有修改模拟文件。** 检查 `siege.gd`、`siege_director.gd`、`siege_map.gd`、`siege_view.gd` 和观测器后，未发现本次回放中的显示状态污染模拟。新增验证直接构造实际 CameraView 并运行完整战斗，不把“不创建显示节点”的无头对照当作显示路径验收。
+ 
+-未取得实际画面，因此没有把本任务标为 passed。原场景入口继续保留，由实验场景继承原 `siege.gd`，初始化后仅替换 view。默认机位配置由显示层读取，不写回模拟参数；所有现有机器人仍按原接口在全图行动。
++修改范围为原 allowed 内文件、续做第 3 项明确要求的 `tools/verify/proto_siege.sh`，以及任务指定的本报告。没有修改其他 forbidden 文件；续做允许的模拟文件最小分离改动无需使用。
+ 
+ ## 改动
+ 
+-- `camera/siege_camera.gd`、`.tscn`：独立实验入口；同一固定步长模拟、原输入队列和原调度，附加只读观测器。
+-- `camera/map_camera.json`：`map.camera` 下的四组手工机位。位置由焦点、朝向、俯角和距离确定；每区配置有限平移和缩放范围。支持原 `--params` 的 `map.camera` 覆盖。
+-- `camera/camera_view.gd`：数字键/总览/底部标签跳转；固定模式禁止旋转；0.2 秒推移与直接切换；总览和转场取消长按，当前战区与视口内合法地面才可部署；灰盒侧影只做相对镜头左右翻转，脚底锚定插值后地面位置。
+-- `camera/overview.gd`：常驻角落地图与 Tab 全屏；各区实际人数、行军箭头、门墙状态、据点归属、冥火、倒计时与视口边界。所有鼠标事件由 UI 消费，总览点击只跳转。
+-- `camera/observer.gd`：受伤同步钩子、既有调度/拓扑/占领历史；同批增援合并、受伤每区冷却 8 秒、重要事件优先保留。记录切换来源、提醒与确认时刻、显示更新耗时及帧间隔。只读模拟，不消耗模拟 RNG。
+-- `camera/capture.py`：串行录两组相同种子/策略的 PNG 序列和四机位静帧；完整结算有差异就停止。默认按模拟时间采样 10 FPS，可调 1–60；不是桌面原生刷新率的每个渲染帧。
+-- `camera/test_camera.gd`：输入边界、转场、总览、五类提醒、四机位、连续旋转、脚底锚点和 billboard 的无头检查。
+-- `proto/siege/README.md`：实验入口、操作、参数、录制与指标口径。
++- `camera/observer.gd`：同批同路线增援分别给来源和目的战区提醒；两端独立确认，当前正在查看的战区不产生离屏闪烁。保留提醒优先级和原历史去重。
++- `camera/test_camera.gd`：增加当前来源不闪烁、离屏两端提醒、查看来源后目的提醒仍保留的检查。
++- `camera/replay.gd`：固定步长推进完整模拟；实际创建显示节点，独立循环使用 1/144、1/20、0.2、1/60 秒的显示 delta；每三步刷新并改变插值比例。每 15 秒巡览战区，交替推移/直切，展开/收起总览；连续组另持续旋转。输出完整原始 `SIEGE` 和旧比较方法的往返诊断。
++- `camera/verify_replay.py`：复用现有矩阵运行器的超时及日志错误检查；显式传入相同 `feint / seed 7 / --params`，依次比较原无头入口与两组显示节点回放的完整原始 `SIEGE` 行。无字段过滤、数值容差或 JSON 重新格式化。差异会列出字段并立即失败。
++- `tools/verify/proto_siege.sh`：先运行镜头功能与显示回放，再运行原机制检查和 24 局矩阵；任一步失败即退出，原矩阵流程未变。
++- `proto/siege/README.md`：更新增援双端提醒、回放命令与比较口径。
++- `camera/validation/resume-*`：本轮日志和摘要；原 `live-view-failure.txt`、`T70.patch` 等保留为上一轮历史证据，不代表本轮状态。
+ 
+ ## 验证
+ 
+-### 固定验证
++### 原误报定位
+ 
+-命令：`tools/verify/proto_siege.sh --out=shots/t70/verify`，退出码 0。机制检查通过；六种策略 × 两个种子，每局重复一次，共 24 局，完整 JSON 均一致。
++旧检查对 `world.result()` 与 `JSON.parse_string()` 读取的基线直接做 Dictionary 比较。本轮同一份真实结算自行序列化再解析，复现：
+ 
+ ```text
+-SIEGE_FEATURES PASS
+-SIEGE_VERIFY PASS runs=12 repeats=12 seconds=577.81 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/verify/summary.md
++raw_dictionary_equal=false
++.victory_time raw=278.16700000000003001 parsed=278.16699999999997317
+ ```
+ 
+-证据：`proto/siege/camera/validation/verification.txt`；逐局原始日志与结果在 `shots/t70/verify/`，不入库。此套件验证原模拟，不能覆盖后述显示节点比较失败。
+-
+-### 镜头功能
++两份数值输出到日志都是 `278.167`，但内存 double 最低位不同。JSON 解析还会把 int 转为 float，嵌套字典比较也会受影响。最小例子 `0.1 + 0.2` 同样能复现，见 `resume-roundtrip.txt`。因此旧字典比较失败不能证明模拟发生变化；正式验收改为比较两次模拟输出的完整原始行。
+ 
+-命令：`godot --headless --path . --script proto/siege/camera/test_camera.gd`
++另一个已消除的风险：旧一次性脚本没有内置策略参数，依赖启动命令传入；基线明确是 `feint / seed 7`，无头入口未指定策略时默认 `waves`。上一轮未保留完整启动命令，不能断言当时实际误用了策略。本轮三个进程均显式传同一组参数。
+ 
+-```text
+-CAMERA_FEATURES PASS checks=deployment,transition,overview,alerts,poses,flip,grounding
+-```
++### 修前 24 局基线
+ 
+-证据：`proto/siege/camera/validation/features.txt`。该测试检查 billboard、脚底锚点及旋转控制；没有渲染截图，不能证明侧影翻转视觉自然或墙后单位可读。
++在任何实现修改前启动原命令：
+ 
+-### 完整结算对照
++```sh
++tools/verify/proto_siege.sh --out=shots/t70/resume-before
++```
+ 
+-分别启动原 `proto/siege/siege.tscn` 与实验入口的 `zones`、`continuous`，都使用 `--headless --strategy=feint --seed=7`，解析并比较完整 `SIEGE` 对象：
++退出码 0，关键输出：
+ 
+ ```text
+-CAMERA_PAIR baseline seed=7 strategy=feint ended=327.167 won=True
+-CAMERA_PAIR zones seed=7 strategy=feint ended=327.167 won=True
+-CAMERA_PAIR continuous seed=7 strategy=feint ended=327.167 won=True
+-CAMERA_DETERMINISM PASS complete_json_equal=true fields=45
++SIEGE_FEATURES PASS
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=588.13 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/resume-before/summary.md
+ ```
+ 
+-278.167 秒攻占主堡获胜，327.167 秒撤退表现结束。包括参数哈希、伤亡、随机战斗统计、派兵、拓扑、事件计数、输入记录、胜负等 45 个顶层字段完全一致。规范化结果 SHA256 为 `66e934ffa6def8e24ebe0073c22cef2af8e40516c835cf0cb342c8b972c1a947`。
++证据：`camera/validation/resume-before.txt`；完整 24 份单局日志及矩阵结果在未入库的 `shots/t70/resume-before/`。基线代码为本轮起点提交 `3ac62ec`；运行期间没有修改其使用的模拟、原显示层或验证脚本。
+ 
+-证据：`proto/siege/camera/validation/paired-summary.json`；完整日志和结果在未入库的 `shots/t70/paired/`。这项对照验证无头观测器；显示层完整回放检查另行记录，不把无头比较当作 GPU 渲染验收。
++### 两组实际显示节点完整回放
+ 
+-### 显示节点完整回放：失败并升级
+-
+-用与前项相同的 seed/strategy，在 headless 中实际构造 CameraView，保持机器人与固定步长，调用镜头输入更新、15 秒巡览及每三步显示刷新，再直接比较 `world.result()` 与解析的基线对象。
++本轮扩展验收已执行以下步骤：
+ 
+ ```text
+-ESCALATE: live view changed complete result zones
++CAMERA_FEATURES PASS
++CAMERA_REPLAY PASS mode=zones seed=7 strategy=feint byte_equal=true sha256=f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d
++CAMERA_REPLAY PASS mode=continuous seed=7 strategy=feint byte_equal=true sha256=f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d
+ ```
+ 
+-此检查在第一组停止，没有继续 continuous 组，也没有重新运行或尝试修复。检查使用 GDScript Dictionary 直接比较，而前项使用 Python 解析后比较；失败未记录字段差异，需 Lead 复核比较方法及实际结算，不能据此断言已经证实战斗发生了什么变化。
++三组完整原始行各 108,690 UTF-8 字节，45 个顶层字段，逐字一致。两组显示回放均运行 9,815 个逻辑步、3,272 次显示刷新；278.167 秒占堡获胜，327.167 秒结束。SHA256 针对原始 `SIEGE` 行（不含换行），与上一轮规范化 JSON 的哈希口径不同。
++
++证据：`camera/validation/resume-replay-summary.json`、`resume-live-view.txt`；完整原始日志在 `shots/t70/resume-after/camera/`。这里的 21 次自动巡览切换仅是测试动作，不作为玩家平均切换数。
+ 
+-证据：`camera/validation/live-view-failure.txt`；一次性检查源码保留为 `camera/validation/live-view-check.gd.txt`。没有将该失败检查当作通过的测试。
++### 修后完整套件及逐字基线比较
+ 
+-### 录制与截图
++命令：
+ 
+-命令：`python3 proto/siege/camera/capture.py --timeout=15`。
++```sh
++tools/verify/proto_siege.sh --out=shots/t70/resume-after
++```
++
++退出码 0，镜头功能、两组显示回放、原机制检查和 24 局矩阵全部通过：
+ 
+ ```text
+-CAMERA_CAPTURE FAIL: zones 窗口/渲染超时；保留日志，未生成画面不能算验收通过
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=629.62 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/resume-after/summary.md
++CAMERA_BASELINE PASS runs=24 byte_equal=true results_jsonl_byte_equal=true combined_sha256=9c19917c11a894c8a4549dcb636f5ce3180c590f21fd07787cfdb0e1b1ea11a4
+ ```
+ 
+-直接启动原 T69 场景也未进入可用窗口，工具返回 `_LSModifyNotification` 与 `com.apple.hiservices-xpcservice` 的桌面连接错误。引擎帮助显示 headless 只有 dummy renderer，不能用它代替实际画面。证据：`proto/siege/camera/validation/capture-failure.txt`。
++逐文件提取六策略 × 两种子 × 原局/重复局的 24 条完整原始 `SIEGE` 行（含换行），修前/修后逐字一致；另比较两份 `results.jsonl` 的全部字节，也一致。没有过滤字段、重新格式化或使用浮点容差。
+ 
+-**截图：未截图。** 预定路径是 `shots/t70/zones/frame_*.png`、`shots/t70/continuous/frame_*.png`、`shots/t70/stills/<coast|highland|plaza|keep>/`，目前没有这些 PNG。不要把目录或录制命令视为已生成产物。
++证据：`camera/validation/resume-after.txt`、`resume-baseline-comparison.txt`、`resume-baseline-comparison.json`。JSON 摘要记录 24 份文件名、字节数、修前/修后各自 SHA256；完整日志在 `shots/t70/resume-before/`、`shots/t70/resume-after/`。
+ 
+ ### 其他检查
+ 
+-- GDScript 入口语法检查最终通过，证据 `camera/validation/parse.txt`。两轮自修分别补足显示层与总览层动态值的显式类型，已用完 `retry_limit=2`；此后不再开展代码自修。
+-- `python3 -m py_compile proto/siege/camera/capture.py` 通过。
+-- `git diff --check` 通过。运行日志中的已知 macOS 系统证书错误按原验收脚本规则排除；导入编辑器无法保存沙箱外设置的错误不属于固定验证运行。
++- `godot --headless --path . --script proto/siege/camera/test_camera.gd`：通过，含增援来源提醒回归；日志 `resume-features.txt`。
++- `godot --headless --path . --script proto/siege/camera/replay.gd --check-only`：退出码 0；日志 `resume-parse.txt`。
++- `python3 -m py_compile proto/siege/camera/verify_replay.py proto/siege/camera/capture.py`：通过。
++- `bash -n tools/verify/proto_siege.sh`、`git diff --check`：通过。
++- Godot 已知 macOS 证书查询错误由原矩阵运行器的精确规则排除，没有忽略新的脚本错误或泄漏。
++- 本轮未发生验证失败后的自修，`retry_limit=2` 尚未使用；未触发新的确定性升级条件。
+ 
+-## 风险与已知不足
++### 截图及报告观察项
+ 
+-| 要求的观察项 | 当前证据与结论 |
+-|---|---|
+-| 两组关键信息遮挡 | **未验证。** 四机位已手工设置，墙体保持正常深度遮挡。固定机位缩放比连续全图更近是参数事实，不能据此声称路线/墙后单位都清楚。需检查海岸两翼、高地弱墙背面、外城门后、主堡南入口及右上总览覆盖区域。 |
+-| 五分钟平均切换次数 | **玩家均值未测。** 自动巡览每 15 秒按 1–4 循环，仅作重复观察。无头默认不巡览的 0 次不是玩家数据。实际手玩结算保存 `camera_metrics.json.switches`。 |
+-| 是否漏掉重要事件 | **人的漏看情况未测。** seed 7 的只读观测捕获 60 条合并后事件：攻击 36、增援 19、攻占 3、破口 1、失守 1。功能测试覆盖五类提示、确认和历史去重；不据此声称玩家没有漏看。 |
+-| 帧时间 | **未取得渲染数据。** 输出区分 `view_update_usec` 和 `frame_interval_msec` 的均值/P95/最大值；后者包含模拟、渲染、限帧和截图。录制与性能测量须分开，性能用 `--speed=1` 且关闭录制、串行运行。 |
++**本轮未截图、未尝试打开窗口**，遵照续做第 5 项交 Lead 在桌面补拍。已有录制命令保持可用：
++
++```sh
++python3 proto/siege/camera/capture.py --seed=7 --strategy=feint --fps=10
++```
+ 
+-增援提示目前显示在目的战区，正文包含来源；如果“增援出发”必须同时闪烁来源标签，当前版本尚缺这一部分。每区只展示一条最高优先级提示，完整条目留在指标日志；受伤冷却会合并连续战斗，不能当成逐次攻击日志。
++预期路径：`shots/t70/zones/`、`shots/t70/continuous/` 和 `shots/t70/stills/<coast|highland|plaza|keep>/`。这些是待生成产物，不能当成已有截图。
+ 
+-当前侧影是代码生成的单张灰盒纹理，不是正式小兵资产。billboard 脚底锚点已做数值检查；每个实际机位下的翻转、接地观感与遮挡尚需截图检查。长提示文本在底部四按钮中的实际排版也未目测。
++| 观察项 | 本轮结论与后续验收 |
++|---|---|
++| 关键信息遮挡 | 未取得实际画面。需检查海岸两翼、高地薄墙背面、外城门后、主堡入口和总览覆盖区域；不凭机位参数宣称无遮挡。 |
++| 左右翻转与接地 | 既有数值检查通过；实际机位下的侧影观感、深度遮挡待截图。 |
++| 五分钟平均切换次数 | 未取得玩家数据；自动巡览切换不计入该指标。手玩结束读取 `camera_metrics.json.switches`。 |
++| 是否漏看重要事件 | 五类提醒与来源/目的双端独立确认测试通过；玩家是否漏看仍需实测。 |
++| 帧时间 | 本轮 headless 显示节点检查不能提供真实 GPU 渲染帧时间；合成显示 delta 也不能当帧率。桌面关闭录制、`--speed=1` 串行测量。 |
++
++## 风险与已知不足
+ 
+-显示节点回放比较失败已经按确定性风险触发 `escalate_if`。没有修改战斗逻辑来绕过该失败；需要 Lead 先复核，不应合并为已验收功能。
++- 显示完整回放检查固定覆盖 `feint / seed 7`；保留了完整默认战斗及撤退阶段，不代表穷举所有参数变体。
++- 本轮只补提醒事件；标签实际闪烁、长文本排版和遮挡仍需 Lead 目测。
++- 现有录制是按模拟时间采样 PNG（默认 10 FPS），不等同于每个桌面原生渲染帧；图片未生成。
++- 正式精灵尚未接入，当前仍为实验用程序侧影。
+ 
+ ## 未完成
+ 
+-0. 复核显示节点完整回放比较失败；当前停止，不继续自修。
+-1. 在有桌面的环境运行 `python3 proto/siege/camera/capture.py`，取得两组序列与四机位静帧并目测；本次没有生成图片。
+-2. 若验收严格要求每个原生渲染帧，录制器还需改为原生固定 FPS 逐渲染帧输出；当前是按模拟时间采样序列。
+-3. 对照遮挡、边界战斗与正式精灵；完成来源战区增援闪烁。
+-4. 用户分别手玩两组，记录五分钟切换数、漏看事件与关闭录制时的帧时间，最终决定方案。
++1. Lead 补拍 A/B 序列及四机位静帧，检查遮挡、翻转、接地和布局。
++2. 用户手玩两组，记录切换次数、漏看事件和真实帧时间，选择固定视角/连续镜头及推移/直切。
++3. Lead 在能写入主仓库 Git 元数据的环境暂存并提交本轮改动；当前沙箱不允许创建 index.lock。
+ 
+ ## 疑问（需要用户或 Lead 决定的）
+ 
+-- 需要先复核显示节点回放失败的差异字段、比较口径与影响范围，再决定是否继续本任务。
+-
+-- 主方案保留推移还是直切，以及四机位是否适合当前地图，交用户手玩决定。
+-- 不需修改共享入口即可试用；是否以后把实验入口接成默认入口由 Lead 在视觉验收之后决定。
++无新的实现阻塞。最终镜头方案和机位质量按原任务交用户手玩决定；是否接成默认入口由 Lead 决定。
+ 
+ ## 提交状态
+ 
+-当前分支为 `codex/t70-camera-ab`。尝试 `git add proto/siege/camera proto/siege/README.md reports/agents/T70.md` 时失败，尚未进入可提交状态：
++工作分支 `codex/t70-camera-ab`，起点为上一轮提交 `3ac62ec`。本轮执行：
++
++```sh
++git add -- proto/siege/camera proto/siege/README.md tools/verify/proto_siege.sh reports/agents/T70.md
++```
++
++失败（退出码 128）：
+ 
+ ```text
+ fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t70/index.lock': Operation not permitted
+ ```
+ 
+-按任务卡要求保留工作区改动；没有请求提权或改动 Git 元数据权限。补丁保存到 `proto/siege/camera/validation/T70.patch`，补丁不包含自身。Lead 可在有写入权限的环境暂存这些授权文件和报告，提交信息结尾加 `Co-Authored-By: GPT-6 <noreply@openai.com>`。没有提交编号，也未推送或合并。
++尚未进入可提交状态，没有本轮提交编号。按任务卡保留全部工作区改动，未请求提权、修改 Git 元数据权限或合并 main。错误证据为 `camera/validation/resume-git-stage-failure.txt`；完整补丁为 `camera/validation/resume-T70.patch`，包含本轮新增文件及报告，不包含补丁自身。
++
++Lead 可在有权限的环境直接暂存工作区，或从起点应用补丁；建议提交信息 `fix(siege): validate camera replays and alert reinforcement sources`，结尾附 `Co-Authored-By: GPT-6 <noreply@openai.com>`。
+diff --git a/tools/verify/proto_siege.sh b/tools/verify/proto_siege.sh
+index d880cc4..4cb6d8d 100755
+--- a/tools/verify/proto_siege.sh
++++ b/tools/verify/proto_siege.sh
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env bash
+ set -euo pipefail
+ TASK_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
++python3 "$TASK_ROOT/proto/siege/camera/verify_replay.py" "$@"
+ python3 "$TASK_ROOT/proto/siege/run_matrix.py" --verify "$@"
+ exit
+diff --git a/proto/siege/camera/replay.gd b/proto/siege/camera/replay.gd
+new file mode 100644
+index 0000000..e366747
+--- /dev/null
++++ b/proto/siege/camera/replay.gd
+@@ -0,0 +1,69 @@
++extends SceneTree
++## 在无渲染窗口的环境构造真实显示节点；固定步长模拟与显示 delta 独立推进。
++const Scene = preload("res://proto/siege/camera/siege_camera.tscn")
++const CameraView = preload("res://proto/siege/camera/camera_view.gd")
++
++func _initialize() -> void:
++	call_deferred("run")
++
++func first_float_difference(a, b, path: String = "") -> String:
++	if a is Dictionary and b is Dictionary:
++		for key in a:
++			var difference := first_float_difference(a[key], b[key], path + "." + str(key))
++			if not difference.is_empty(): return difference
++	elif a is Array and b is Array:
++		for i in a.size():
++			var difference := first_float_difference(a[i], b[i], path + "[%d]" % i)
++			if not difference.is_empty(): return difference
++	elif (a is float or a is int) and (b is float or b is int) and a != b:
++		return "%s raw=%.17f parsed=%.17f" % [path, a, b]
++	return ""
++
++func run() -> void:
++	var world = Scene.instantiate()
++	root.add_child(world)
++	world.set_process(false)
++	# 所有回放参数由同一个启动命令传入，禁止隐式拿 waves 与 feint 基线对比。
++	var view = CameraView.new()
++	world.add_child(view)
++	view.setup(world)
++	world.view = view
++	view.set_process(false)
++	var refreshes := 0
++	var delta_pattern := [1.0 / 144, 1.0 / 20, 0.2, 1.0 / 60]
++	var last_zone := -1
++	while not world.finished:
++		if world.step_number > ceili((float(world.params.simulation.night_seconds) + float(world.params.retreat.boat_depart_seconds) + float(world.params.retreat.boat_sail_seconds) + 1) / float(world.params.simulation.step)):
++			printerr("CAMERA_REPLAY FAIL: 未在夜长及撤退时限内结束")
++			world.free()
++			quit(1)
++			return
++		var index := floori(world.time / 15) % 4
++		if index != last_zone:
++			last_zone = index
++			view.transition_style = "slide" if index % 2 == 0 else "cut"
++			view.select_zone(view.IDS[index], "test_replay")
++		var delta: float = delta_pattern[world.step_number % delta_pattern.size()]
++		view._process(delta)
++		if view.mode == "continuous":
++			view.yaw += delta * 0.3
++			view.update_camera()
++		# 同时覆盖全屏总览和定期插值刷新；只改显示状态。
++		if world.step_number % 127 == 0:
++			view.set_overview(not view.expanded)
++		world.simulate()
++		if world.step_number % 3 == 0 or world.finished:
++			view.refresh(float(world.step_number % 7) / 6)
++			refreshes += 1
++	var result: Dictionary = world.result()
++	var serialized := JSON.stringify(result)
++	# 诊断旧检查：内存中的 double 与 JSON 往返后的数值不能用 Dictionary == 验收。
++	var parsed: Dictionary = JSON.parse_string(serialized)
++	var fields: Array = []
++	for field in result:
++		if result[field] != parsed[field]: fields.append(field)
++	print("CAMERA_ROUNDTRIP " + JSON.stringify({"raw_dictionary_equal": result == parsed, "reserialized_equal": serialized == JSON.stringify(parsed), "raw_different_fields": fields, "first_float_difference": first_float_difference(result, parsed)}))
++	print("CAMERA_REPLAY mode=%s seed=%d strategy=%s steps=%d refreshes=%d switches=%d" % [view.mode, world.seed_value, world.strategy, world.step_number, refreshes, world.camera_observer.switches.size()])
++	print("SIEGE " + serialized)
++	world.free()
++	quit()
+diff --git a/proto/siege/camera/replay.gd.uid b/proto/siege/camera/replay.gd.uid
+new file mode 100644
+index 0000000..3186510
+--- /dev/null
++++ b/proto/siege/camera/replay.gd.uid
+@@ -0,0 +1 @@
++uid://b0jov7etxjuwc
+diff --git a/proto/siege/camera/validation/resume-after.txt b/proto/siege/camera/validation/resume-after.txt
+new file mode 100644
+index 0000000..94faeba
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-after.txt
+@@ -0,0 +1,17 @@
++CAMERA_FEATURES PASS
++CAMERA_REPLAY PASS mode=zones seed=7 strategy=feint byte_equal=true sha256=f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d
++CAMERA_REPLAY PASS mode=continuous seed=7 strategy=feint byte_equal=true sha256=f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d
++SIEGE_FEATURES PASS
++DETERMINISTIC main_gate seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 49}
++DETERMINISTIC main_gate seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 57}
++DETERMINISTIC highland seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 72}
++DETERMINISTIC highland seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 79}
++DETERMINISTIC feint seed=1 won=False method=none casualties={'defender': 8, 'ghost': 112}
++DETERMINISTIC feint seed=2 won=False method=none casualties={'defender': 9, 'ghost': 115}
++DETERMINISTIC waves seed=1 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 41}
++DETERMINISTIC waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 32}
++DETERMINISTIC idle seed=1 won=False method=none casualties={'defender': 21, 'ghost': 20}
++DETERMINISTIC idle seed=2 won=False method=none casualties={'defender': 14, 'ghost': 20}
++DETERMINISTIC late_batches seed=1 won=True method=keep_retreat casualties={'defender': 32, 'ghost': 30}
++DETERMINISTIC late_batches seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 43}
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=629.62 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/resume-after/summary.md
+diff --git a/proto/siege/camera/validation/resume-baseline-comparison.json b/proto/siege/camera/validation/resume-baseline-comparison.json
+new file mode 100644
+index 0000000..bf0bf3e
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-baseline-comparison.json
+@@ -0,0 +1,181 @@
++{
++  "baseline_commit": "3ac62ec",
++  "before": "shots/t70/resume-before",
++  "after": "shots/t70/resume-after",
++  "comparison": "raw complete SIEGE bytes including newline",
++  "runs": 24,
++  "all_byte_equal": true,
++  "results_jsonl_byte_equal": true,
++  "combined_sha256": "9c19917c11a894c8a4549dcb636f5ce3180c590f21fd07787cfdb0e1b1ea11a4",
++  "results_jsonl_sha256": "006482e63d781759ef88e6608f435abb017c5f6443b045e8afc199012b07d89b",
++  "per_run": [
++    {
++      "log": "main_gate_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 71256,
++      "before_sha256": "2ca77945f6194ed5c84de26fb2deedc3955403f932469d4f7cee1c9243259079",
++      "after_sha256": "2ca77945f6194ed5c84de26fb2deedc3955403f932469d4f7cee1c9243259079"
++    },
++    {
++      "log": "main_gate_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 71256,
++      "before_sha256": "2ca77945f6194ed5c84de26fb2deedc3955403f932469d4f7cee1c9243259079",
++      "after_sha256": "2ca77945f6194ed5c84de26fb2deedc3955403f932469d4f7cee1c9243259079"
++    },
++    {
++      "log": "main_gate_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 73812,
++      "before_sha256": "1ef82e1eb7e035172b62542e585f6dc15b47923e59719c04974b757b222ef9c7",
++      "after_sha256": "1ef82e1eb7e035172b62542e585f6dc15b47923e59719c04974b757b222ef9c7"
++    },
++    {
++      "log": "main_gate_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 73812,
++      "before_sha256": "1ef82e1eb7e035172b62542e585f6dc15b47923e59719c04974b757b222ef9c7",
++      "after_sha256": "1ef82e1eb7e035172b62542e585f6dc15b47923e59719c04974b757b222ef9c7"
++    },
++    {
++      "log": "highland_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 102790,
++      "before_sha256": "04bee42c8f2564242e4e4d36704b5ea2174af1c8feae03a0ec8f22a1bcdaf05f",
++      "after_sha256": "04bee42c8f2564242e4e4d36704b5ea2174af1c8feae03a0ec8f22a1bcdaf05f"
++    },
++    {
++      "log": "highland_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 102790,
++      "before_sha256": "04bee42c8f2564242e4e4d36704b5ea2174af1c8feae03a0ec8f22a1bcdaf05f",
++      "after_sha256": "04bee42c8f2564242e4e4d36704b5ea2174af1c8feae03a0ec8f22a1bcdaf05f"
++    },
++    {
++      "log": "highland_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 113730,
++      "before_sha256": "f50013826e18842e112fa5f8820cb3eb87aa5276d7b083e23c23222d9623af7f",
++      "after_sha256": "f50013826e18842e112fa5f8820cb3eb87aa5276d7b083e23c23222d9623af7f"
++    },
++    {
++      "log": "highland_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 113730,
++      "before_sha256": "f50013826e18842e112fa5f8820cb3eb87aa5276d7b083e23c23222d9623af7f",
++      "after_sha256": "f50013826e18842e112fa5f8820cb3eb87aa5276d7b083e23c23222d9623af7f"
++    },
++    {
++      "log": "feint_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 115197,
++      "before_sha256": "97916d1196369fd5e39ddf3af097b6287d11ee4f03bb18425c7154caf2b36441",
++      "after_sha256": "97916d1196369fd5e39ddf3af097b6287d11ee4f03bb18425c7154caf2b36441"
++    },
++    {
++      "log": "feint_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 115197,
++      "before_sha256": "97916d1196369fd5e39ddf3af097b6287d11ee4f03bb18425c7154caf2b36441",
++      "after_sha256": "97916d1196369fd5e39ddf3af097b6287d11ee4f03bb18425c7154caf2b36441"
++    },
++    {
++      "log": "feint_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 119890,
++      "before_sha256": "26f72c93e6a8fdd4121951ac4f93fbc9121f268183b5439cb30430353bc68ff0",
++      "after_sha256": "26f72c93e6a8fdd4121951ac4f93fbc9121f268183b5439cb30430353bc68ff0"
++    },
++    {
++      "log": "feint_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 119890,
++      "before_sha256": "26f72c93e6a8fdd4121951ac4f93fbc9121f268183b5439cb30430353bc68ff0",
++      "after_sha256": "26f72c93e6a8fdd4121951ac4f93fbc9121f268183b5439cb30430353bc68ff0"
++    },
++    {
++      "log": "waves_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 77680,
++      "before_sha256": "fa8b3e0ccb3b3dff1df36a29767510c4b514ab2d6b4601fd903f990833ad5173",
++      "after_sha256": "fa8b3e0ccb3b3dff1df36a29767510c4b514ab2d6b4601fd903f990833ad5173"
++    },
++    {
++      "log": "waves_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 77680,
++      "before_sha256": "fa8b3e0ccb3b3dff1df36a29767510c4b514ab2d6b4601fd903f990833ad5173",
++      "after_sha256": "fa8b3e0ccb3b3dff1df36a29767510c4b514ab2d6b4601fd903f990833ad5173"
++    },
++    {
++      "log": "waves_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 72310,
++      "before_sha256": "cf0308862a83a6fb40bd3eaf70e8b42dc6c66a4d9c33e4090b920f596e119da2",
++      "after_sha256": "cf0308862a83a6fb40bd3eaf70e8b42dc6c66a4d9c33e4090b920f596e119da2"
++    },
++    {
++      "log": "waves_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 72310,
++      "before_sha256": "cf0308862a83a6fb40bd3eaf70e8b42dc6c66a4d9c33e4090b920f596e119da2",
++      "after_sha256": "cf0308862a83a6fb40bd3eaf70e8b42dc6c66a4d9c33e4090b920f596e119da2"
++    },
++    {
++      "log": "idle_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 97718,
++      "before_sha256": "15b546a56974db2bf6ddf49401aacb4cf4d7a99027b832b1d0ab24708edb739f",
++      "after_sha256": "15b546a56974db2bf6ddf49401aacb4cf4d7a99027b832b1d0ab24708edb739f"
++    },
++    {
++      "log": "idle_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 97718,
++      "before_sha256": "15b546a56974db2bf6ddf49401aacb4cf4d7a99027b832b1d0ab24708edb739f",
++      "after_sha256": "15b546a56974db2bf6ddf49401aacb4cf4d7a99027b832b1d0ab24708edb739f"
++    },
++    {
++      "log": "idle_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 97698,
++      "before_sha256": "a72658a38f2003f6d274de877f6743521137fbbbf7d017f91aac32a4d784590f",
++      "after_sha256": "a72658a38f2003f6d274de877f6743521137fbbbf7d017f91aac32a4d784590f"
++    },
++    {
++      "log": "idle_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 97698,
++      "before_sha256": "a72658a38f2003f6d274de877f6743521137fbbbf7d017f91aac32a4d784590f",
++      "after_sha256": "a72658a38f2003f6d274de877f6743521137fbbbf7d017f91aac32a4d784590f"
++    },
++    {
++      "log": "late_batches_1.log",
++      "byte_equal": true,
++      "bytes_including_newline": 52347,
++      "before_sha256": "941a53d3a6b9468c162bc49fdaa6257620de51f6d57e86915c1091fbc46452c3",
++      "after_sha256": "941a53d3a6b9468c162bc49fdaa6257620de51f6d57e86915c1091fbc46452c3"
++    },
++    {
++      "log": "late_batches_1_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 52347,
++      "before_sha256": "941a53d3a6b9468c162bc49fdaa6257620de51f6d57e86915c1091fbc46452c3",
++      "after_sha256": "941a53d3a6b9468c162bc49fdaa6257620de51f6d57e86915c1091fbc46452c3"
++    },
++    {
++      "log": "late_batches_2.log",
++      "byte_equal": true,
++      "bytes_including_newline": 74534,
++      "before_sha256": "b04f6204a305ae65535c70077a036377407098a96a135faff51008f99286456f",
++      "after_sha256": "b04f6204a305ae65535c70077a036377407098a96a135faff51008f99286456f"
++    },
++    {
++      "log": "late_batches_2_repeat.log",
++      "byte_equal": true,
++      "bytes_including_newline": 74534,
++      "before_sha256": "b04f6204a305ae65535c70077a036377407098a96a135faff51008f99286456f",
++      "after_sha256": "b04f6204a305ae65535c70077a036377407098a96a135faff51008f99286456f"
++    }
++  ]
++}
+diff --git a/proto/siege/camera/validation/resume-baseline-comparison.txt b/proto/siege/camera/validation/resume-baseline-comparison.txt
+new file mode 100644
+index 0000000..61f1516
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-baseline-comparison.txt
+@@ -0,0 +1 @@
++CAMERA_BASELINE PASS runs=24 byte_equal=true results_jsonl_byte_equal=true combined_sha256=9c19917c11a894c8a4549dcb636f5ce3180c590f21fd07787cfdb0e1b1ea11a4
+diff --git a/proto/siege/camera/validation/resume-before.txt b/proto/siege/camera/validation/resume-before.txt
+new file mode 100644
+index 0000000..abbf491
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-before.txt
+@@ -0,0 +1,14 @@
++SIEGE_FEATURES PASS
++DETERMINISTIC main_gate seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 49}
++DETERMINISTIC main_gate seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 57}
++DETERMINISTIC highland seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 72}
++DETERMINISTIC highland seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 79}
++DETERMINISTIC feint seed=1 won=False method=none casualties={'defender': 8, 'ghost': 112}
++DETERMINISTIC feint seed=2 won=False method=none casualties={'defender': 9, 'ghost': 115}
++DETERMINISTIC waves seed=1 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 41}
++DETERMINISTIC waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 32}
++DETERMINISTIC idle seed=1 won=False method=none casualties={'defender': 21, 'ghost': 20}
++DETERMINISTIC idle seed=2 won=False method=none casualties={'defender': 14, 'ghost': 20}
++DETERMINISTIC late_batches seed=1 won=True method=keep_retreat casualties={'defender': 32, 'ghost': 30}
++DETERMINISTIC late_batches seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 43}
++SIEGE_VERIFY PASS runs=12 repeats=12 seconds=588.13 summary=/Users/cyy/Projects/亡魂王子-t70/shots/t70/resume-before/summary.md
+diff --git a/proto/siege/camera/validation/resume-features.txt b/proto/siege/camera/validation/resume-features.txt
+new file mode 100644
+index 0000000..1cbd48d
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-features.txt
+@@ -0,0 +1,5 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
++ERROR: Condition "ret != noErr" is true. Returning: ""
++   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
++CAMERA_FEATURES PASS checks=deployment,transition,overview,alerts,poses,flip,grounding
+diff --git a/proto/siege/camera/validation/resume-git-stage-failure.txt b/proto/siege/camera/validation/resume-git-stage-failure.txt
+new file mode 100644
+index 0000000..1ce2984
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-git-stage-failure.txt
+@@ -0,0 +1 @@
++fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t70/index.lock': Operation not permitted
+diff --git a/proto/siege/camera/validation/resume-live-view.txt b/proto/siege/camera/validation/resume-live-view.txt
+new file mode 100644
+index 0000000..8020745
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-live-view.txt
+@@ -0,0 +1,4 @@
++CAMERA_ROUNDTRIP {"first_float_difference":".victory_time raw=278.16700000000003001 parsed=278.16699999999997317","raw_dictionary_equal":false,"raw_different_fields":["victory_time","ended_at","zone_captures","retreat","casualties","spawned","waves","fire_remaining","structure_work","map_scale","route_observations","recovery_events","hook_counts","zone_history","dispatch_decisions","topology_events","combat_events"],"reserialized_equal":false}
++CAMERA_REPLAY mode=zones seed=7 strategy=feint steps=9815 refreshes=3272 switches=21
++CAMERA_ROUNDTRIP {"first_float_difference":".victory_time raw=278.16700000000003001 parsed=278.16699999999997317","raw_dictionary_equal":false,"raw_different_fields":["victory_time","ended_at","zone_captures","retreat","casualties","spawned","waves","fire_remaining","structure_work","map_scale","route_observations","recovery_events","hook_counts","zone_history","dispatch_decisions","topology_events","combat_events"],"reserialized_equal":false}
++CAMERA_REPLAY mode=continuous seed=7 strategy=feint steps=9815 refreshes=3272 switches=21
+diff --git a/proto/siege/camera/validation/resume-parse.txt b/proto/siege/camera/validation/resume-parse.txt
+new file mode 100644
+index 0000000..ef295ec
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-parse.txt
+@@ -0,0 +1,2 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
+diff --git a/proto/siege/camera/validation/resume-replay-summary.json b/proto/siege/camera/validation/resume-replay-summary.json
+new file mode 100644
+index 0000000..db2a0ae
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-replay-summary.json
+@@ -0,0 +1,67 @@
++{
++  "strategy": "feint",
++  "seed": 7,
++  "comparison": "byte_equal_full_SIEGE_line",
++  "modes": {
++    "zones": {
++      "bytes": 108690,
++      "sha256": "f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d",
++      "roundtrip_diagnostic": [
++        {
++          "first_float_difference": ".victory_time raw=278.16700000000003001 parsed=278.16699999999997317",
++          "raw_dictionary_equal": false,
++          "raw_different_fields": [
++            "victory_time",
++            "ended_at",
++            "zone_captures",
++            "retreat",
++            "casualties",
++            "spawned",
++            "waves",
++            "fire_remaining",
++            "structure_work",
++            "map_scale",
++            "route_observations",
++            "recovery_events",
++            "hook_counts",
++            "zone_history",
++            "dispatch_decisions",
++            "topology_events",
++            "combat_events"
++          ],
++          "reserialized_equal": false
++        }
++      ]
++    },
++    "continuous": {
++      "bytes": 108690,
++      "sha256": "f6832d1c0390095ef583ea7f31014c48b3b8a8988c55f5881c09cee567dac90d",
++      "roundtrip_diagnostic": [
++        {
++          "first_float_difference": ".victory_time raw=278.16700000000003001 parsed=278.16699999999997317",
++          "raw_dictionary_equal": false,
++          "raw_different_fields": [
++            "victory_time",
++            "ended_at",
++            "zone_captures",
++            "retreat",
++            "casualties",
++            "spawned",
++            "waves",
++            "fire_remaining",
++            "structure_work",
++            "map_scale",
++            "route_observations",
++            "recovery_events",
++            "hook_counts",
++            "zone_history",
++            "dispatch_decisions",
++            "topology_events",
++            "combat_events"
++          ],
++          "reserialized_equal": false
++        }
++      ]
++    }
++  }
++}
+diff --git a/proto/siege/camera/validation/resume-roundtrip.txt b/proto/siege/camera/validation/resume-roundtrip.txt
+new file mode 100644
+index 0000000..d3190e5
+--- /dev/null
++++ b/proto/siege/camera/validation/resume-roundtrip.txt
+@@ -0,0 +1,9 @@
++Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
++
++ERROR: Condition "ret != noErr" is true. Returning: ""
++   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)
++ROUNDTRIP source={"count":7,"sum":0.3,"whole":7.0} parsed={"count":7.0,"sum":0.3,"whole":7.0}
++ROUNDTRIP raw_equal=false serialized_equal=false
++ROUNDTRIP field=sum raw_type=float parsed_type=float raw=0.30000000000000004 parsed=0.29999999999999999 value_equal=false
++ROUNDTRIP field=count raw_type=int parsed_type=float raw=7.00000000000000000 parsed=7.00000000000000000 value_equal=true
++ROUNDTRIP field=whole raw_type=float parsed_type=float raw=7.00000000000000000 parsed=7.00000000000000000 value_equal=true
+diff --git a/proto/siege/camera/verify_replay.py b/proto/siege/camera/verify_replay.py
+new file mode 100644
+index 0000000..d11fe85
+--- /dev/null
++++ b/proto/siege/camera/verify_replay.py
+@@ -0,0 +1,68 @@
++#!/usr/bin/env python3
++"""同策略同种子：原无头入口与两组真实显示节点回放，逐字比较完整 SIEGE。"""
++import argparse
++import hashlib
++import importlib.util
++import json
++import os
++from pathlib import Path
++import sys
++
++ROOT = Path(__file__).resolve().parents[3]
++spec = importlib.util.spec_from_file_location("siege_matrix", ROOT / "proto/siege/run_matrix.py")
++matrix = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(matrix)
++
++
++def result_line(output):
++    lines = [line for line in output.splitlines() if line.startswith("SIEGE ")]
++    if len(lines) != 1:
++        raise RuntimeError(f"要求恰好一行 SIEGE，得到 {len(lines)}")
++    return lines[0]
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--godot", default=os.environ.get("GODOT", "godot"))
++    parser.add_argument("--params", type=Path, default=matrix.DEFAULT_PARAMS)
++    parser.add_argument("--out", type=Path)
++    parser.add_argument("--timeout", type=float, default=300)
++    # 与矩阵脚本共享命令行；矩阵尺寸不改变本项固定 feint/seed7 回放。
++    parser.add_argument("--seeds", "-n", type=int, default=20)
++    parser.add_argument("--start-seed", type=int, default=1)
++    args = parser.parse_args()
++    out = (args.out or ROOT / "proto/siege/results/verify").resolve() / "camera"
++    out.mkdir(parents=True, exist_ok=True)
++    (out / ".gdignore").touch()
++    feature_output = matrix.execute(args.godot, ["--script", "proto/siege/camera/test_camera.gd"],
++                                    out / "features.log", args.timeout)
++    if "CAMERA_FEATURES PASS" not in feature_output:
++        raise RuntimeError("缺少镜头功能通过标记")
++    print("CAMERA_FEATURES PASS", flush=True)
++    flags = ["--", "--strategy=feint", "--seed=7", f"--params={args.params.resolve()}"]
++    baseline = result_line(matrix.execute(args.godot, [matrix.SCENE, *flags],
++                                          out / "headless.log", args.timeout))
++    summary = {"strategy": "feint", "seed": 7, "comparison": "byte_equal_full_SIEGE_line", "modes": {}}
++    for mode in ["zones", "continuous"]:
++        output = matrix.execute(args.godot, ["--script", "proto/siege/camera/replay.gd", *flags,
++                                             f"--camera_mode={mode}"], out / f"{mode}.log", args.timeout)
++        actual = result_line(output)
++        if actual != baseline:
++            expected_row, actual_row = json.loads(baseline[6:]), json.loads(actual[6:])
++            differences = [key for key in expected_row.keys() | actual_row.keys()
++                           if expected_row.get(key) != actual_row.get(key)]
++            raise RuntimeError(f"ESCALATE: 显示回放结果不一致 mode={mode} fields={differences}; logs={out}")
++        diagnostics = [json.loads(line.removeprefix("CAMERA_ROUNDTRIP ")) for line in output.splitlines()
++                       if line.startswith("CAMERA_ROUNDTRIP ")]
++        summary["modes"][mode] = {"bytes": len(actual.encode()), "sha256": hashlib.sha256(actual.encode()).hexdigest(),
++                                  "roundtrip_diagnostic": diagnostics}
++        print(f"CAMERA_REPLAY PASS mode={mode} seed=7 strategy=feint byte_equal=true sha256={summary['modes'][mode]['sha256']}", flush=True)
++    (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")
++
++
++if __name__ == "__main__":
++    try:
++        main()
++    except (OSError, ValueError, RuntimeError) as error:
++        print(f"CAMERA_REPLAY FAIL: {error}", file=sys.stderr)
++        sys.exit(1)

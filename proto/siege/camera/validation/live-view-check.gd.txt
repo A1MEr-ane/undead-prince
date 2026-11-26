@@ -1,0 +1,42 @@
+extends SceneTree
+const Scene = preload("res://proto/siege/camera/siege_camera.tscn")
+const CameraView = preload("res://proto/siege/camera/camera_view.gd")
+func _initialize():
+    call_deferred("run")
+func run():
+    var baseline = {}
+    for line in FileAccess.get_file_as_string("res://shots/t70/paired/baseline.log").split("\n"):
+        if line.begins_with("SIEGE "): baseline = JSON.parse_string(line.substr(6))
+    for mode in ["zones", "continuous"]:
+        var world = Scene.instantiate()
+        root.add_child(world)
+        world.set_process(false)
+        world.args.camera_mode = mode
+        world.camera_observer.mode = mode
+        var view = CameraView.new()
+        world.add_child(view)
+        view.setup(world)
+        world.view = view
+        view.set_process(false)
+        var last_zone = 0
+        while not world.finished and world.time < 350:
+            view._process(1.0 / 30)
+            if mode == "zones":
+                var index = floori(world.time / 15) % 4
+                if index != last_zone:
+                    last_zone = index
+                    view.select_zone(view.IDS[index], "test_replay")
+            else:
+                view.yaw += 0.001
+                view.update_camera()
+            world.simulate()
+            if world.step_number % 3 == 0: view.refresh()
+        var result = world.result()
+        if result != baseline:
+            printerr("ESCALATE: live view changed complete result " + mode)
+            world.free()
+            quit(1)
+            return
+        print("CAMERA_LIVE_VIEW PASS mode=%s steps=%d switches=%d" % [mode, world.step_number, world.camera_observer.switches.size()])
+        world.free()
+    quit()
