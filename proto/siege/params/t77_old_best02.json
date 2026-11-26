@@ -1,0 +1,35 @@
+{
+  "analysis": {
+    "enabled": true,
+    "route_values": {
+      "main": 2,
+      "side": 4,
+      "cave": 5
+    }
+  },
+  "strategies": {
+    "route_by_strategy": {},
+    "archer_focus_by_strategy": {},
+    "names": [
+      "main_gate",
+      "highland",
+      "feint",
+      "waves",
+      "idle",
+      "late_batches"
+    ]
+  },
+  "targeting": {
+    "values": {
+      "archer": 10,
+      "gate": 2,
+      "weak": 2.3,
+      "zone": 2.5,
+      "keep": 5
+    }
+  },
+  "combat": {
+    "separation_radius": 0.8,
+    "max_separation_speed": 2.0
+  }
+}

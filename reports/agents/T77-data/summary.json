@@ -1,0 +1,2169 @@
+{
+  "task": "T77",
+  "metric_version": "T74-movement-intent-v1",
+  "raw_root": "proto/siege/results/t77/",
+  "baseline": {
+    "default": {
+      "complete": true,
+      "params_sha_old": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "params_sha_prep": "8ee6ade0c60223d2fd25c0e7cb9b71ed10205540fadd980b0c0eb31c2baf9207",
+      "strategies": {
+        "main_gate": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 111.5,
+          "casualties_defender": 21.8,
+          "fire_spent": 600.0,
+          "fire_wasted": 0.0,
+          "deployed": 154,
+          "congestion_mean": 0.0659,
+          "congestion_median": 0.026,
+          "congestion_max": 0.3636,
+          "congestion_over_05": 0,
+          "congestion_events": 10.15,
+          "travel_mean": 0.0659,
+          "travel_events": 10.15,
+          "reroutes": 0.3,
+          "recovery_events": 41.7,
+          "early_archer_kills_mean": 0.7,
+          "early_archer_seeds": 14,
+          "all_archer_kills_mean": 0.7,
+          "routes": {
+            "cave": 0,
+            "main": 2400
+          },
+          "ghost_peak_early": 15.1,
+          "ghost_peak_middle": 9.8,
+          "ghost_peak_late": 11.65
+        },
+        "highland": {
+          "n": 20,
+          "wins": 8,
+          "rate": 0.4,
+          "ci95": [
+            0.2188,
+            0.6134
+          ],
+          "methods": {
+            "keep_retreat": 8
+          },
+          "annihilation": 0,
+          "capture": 8,
+          "victory_time_mean": 231.808,
+          "victory_time_median": 238.466,
+          "capture_time_mean": 231.808,
+          "casualties_ghost": 92.85,
+          "casualties_defender": 17.25,
+          "fire_spent": 525.0,
+          "fire_wasted": 0.0,
+          "deployed": 139,
+          "congestion_mean": 0.2281,
+          "congestion_median": 0.2451,
+          "congestion_max": 0.49,
+          "congestion_over_05": 0,
+          "congestion_events": 30.6,
+          "travel_mean": 0.2281,
+          "travel_events": 30.6,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.55,
+          "early_archer_seeds": 7,
+          "all_archer_kills_mean": 3.3,
+          "routes": {
+            "side": 2100
+          },
+          "ghost_peak_early": 12,
+          "ghost_peak_middle": 13.9,
+          "ghost_peak_late": 13.65
+        },
+        "feint": {
+          "n": 20,
+          "wins": 3,
+          "rate": 0.15,
+          "ci95": [
+            0.0524,
+            0.3604
+          ],
+          "methods": {
+            "keep_retreat": 3
+          },
+          "annihilation": 0,
+          "capture": 3,
+          "victory_time_mean": 159.067,
+          "victory_time_median": 107.767,
+          "capture_time_mean": 159.067,
+          "casualties_ghost": 103.7,
+          "casualties_defender": 13.3,
+          "fire_spent": 552.0,
+          "fire_wasted": 0.0,
+          "deployed": 144.4,
+          "congestion_mean": 0.5799,
+          "congestion_median": 0.4935,
+          "congestion_max": 1.3182,
+          "congestion_over_05": 10,
+          "congestion_events": 87.25,
+          "travel_mean": 0.5799,
+          "travel_events": 87.25,
+          "reroutes": 0,
+          "recovery_events": 31.1,
+          "early_archer_kills_mean": 0.1,
+          "early_archer_seeds": 1,
+          "all_archer_kills_mean": 0.9,
+          "routes": {
+            "cave": 1764,
+            "main": 444
+          },
+          "ghost_peak_early": 12.6,
+          "ghost_peak_middle": 6.3,
+          "ghost_peak_late": 9.4
+        },
+        "waves": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 193.774,
+          "victory_time_median": 169.317,
+          "capture_time_mean": 193.774,
+          "casualties_ghost": 58.3,
+          "casualties_defender": 30.85,
+          "fire_spent": 372.0,
+          "fire_wasted": 0.063,
+          "deployed": 108.4,
+          "congestion_mean": 0.3709,
+          "congestion_median": 0.3581,
+          "congestion_max": 0.5702,
+          "congestion_over_05": 2,
+          "congestion_events": 42.9,
+          "travel_mean": 0.3709,
+          "travel_events": 42.9,
+          "reroutes": 0.2,
+          "recovery_events": 0.35,
+          "early_archer_kills_mean": 2.35,
+          "early_archer_seeds": 18,
+          "all_archer_kills_mean": 5.4,
+          "routes": {
+            "cave": 368,
+            "main": 640,
+            "side": 480
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 16.85,
+          "ghost_peak_late": 14.4
+        },
+        "idle": {
+          "n": 20,
+          "wins": 2,
+          "rate": 0.1,
+          "ci95": [
+            0.0279,
+            0.301
+          ],
+          "methods": {
+            "keep_retreat": 2
+          },
+          "annihilation": 0,
+          "capture": 2,
+          "victory_time_mean": 258.717,
+          "victory_time_median": 258.717,
+          "capture_time_mean": 258.717,
+          "casualties_ghost": 19.7,
+          "casualties_defender": 18.4,
+          "fire_spent": 100.0,
+          "fire_wasted": 405.192,
+          "deployed": 54,
+          "congestion_mean": 0.0454,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "congestion_over_05": 0,
+          "congestion_events": 2.45,
+          "travel_mean": 0.0454,
+          "travel_events": 2.45,
+          "reroutes": 0.35,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0,
+          "early_archer_seeds": 0,
+          "all_archer_kills_mean": 0.55,
+          "routes": {
+            "cave": 0,
+            "main": 400
+          },
+          "ghost_peak_early": 0,
+          "ghost_peak_middle": 20,
+          "ghost_peak_late": 2.75
+        },
+        "late_batches": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 215.043,
+          "victory_time_median": 218.65,
+          "capture_time_mean": 215.043,
+          "casualties_ghost": 65,
+          "casualties_defender": 30.15,
+          "fire_spent": 395.25,
+          "fire_wasted": 41.403,
+          "deployed": 113.05,
+          "congestion_mean": 0.1493,
+          "congestion_median": 0.1248,
+          "congestion_max": 0.3333,
+          "congestion_over_05": 0,
+          "congestion_events": 16.05,
+          "travel_mean": 0.1493,
+          "travel_events": 16.05,
+          "reroutes": 0.35,
+          "recovery_events": 0.8,
+          "early_archer_kills_mean": 0.85,
+          "early_archer_seeds": 13,
+          "all_archer_kills_mean": 4.6,
+          "routes": {
+            "cave": 0,
+            "main": 1581
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 13.1,
+          "ghost_peak_late": 8.4
+        },
+        "assassin_first": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 117.498,
+          "victory_time_median": 124.15,
+          "capture_time_mean": 117.498,
+          "casualties_ghost": 11.4,
+          "casualties_defender": 27.85,
+          "fire_spent": 112.0,
+          "fire_wasted": 137.291,
+          "deployed": 50.4,
+          "congestion_mean": 0.1942,
+          "congestion_median": 0.1635,
+          "congestion_max": 0.4615,
+          "congestion_over_05": 0,
+          "congestion_events": 10.1,
+          "travel_mean": 0.1942,
+          "travel_events": 10.1,
+          "reroutes": 0.25,
+          "recovery_events": 2,
+          "early_archer_kills_mean": 6,
+          "early_archer_seeds": 20,
+          "all_archer_kills_mean": 6,
+          "routes": {
+            "cave": 0,
+            "cliff": 40,
+            "main": 288
+          },
+          "ghost_peak_early": 13.15,
+          "ghost_peak_middle": 5.5,
+          "ghost_peak_late": 0
+        },
+        "giant_breach": {
+          "n": 20,
+          "wins": 20,
+          "rate": 1.0,
+          "ci95": [
+            0.8389,
+            1.0
+          ],
+          "methods": {
+            "keep_retreat": 20
+          },
+          "annihilation": 0,
+          "capture": 20,
+          "victory_time_mean": 107.667,
+          "victory_time_median": 108.334,
+          "capture_time_mean": 107.667,
+          "casualties_ghost": 7.5,
+          "casualties_defender": 31.15,
+          "fire_spent": 120.0,
+          "fire_wasted": 7.604,
+          "deployed": 48,
+          "congestion_mean": 0.3052,
+          "congestion_median": 0.3021,
+          "congestion_max": 0.3958,
+          "congestion_over_05": 0,
+          "congestion_events": 14.65,
+          "travel_mean": 0.3052,
+          "travel_events": 14.65,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.15,
+          "early_archer_seeds": 2,
+          "all_archer_kills_mean": 3.15,
+          "routes": {
+            "breach:wall_west": 280
+          },
+          "ghost_peak_early": 13.2,
+          "ghost_peak_middle": 0,
+          "ghost_peak_late": 0
+        }
+      },
+      "target1": {
+        "strategies_over_30": [
+          "assassin_first",
+          "giant_breach",
+          "highland",
+          "late_batches",
+          "waves"
+        ],
+        "count": 5,
+        "methods": [
+          "keep_retreat"
+        ],
+        "routes": [
+          "breach:wall_west",
+          "cave",
+          "cliff",
+          "main",
+          "side"
+        ]
+      },
+      "target2": {
+        "idle": 0.1,
+        "min_feint_waves": 0.15,
+        "gap_pp": 5.0
+      }
+    },
+    "best01": {
+      "complete": true,
+      "params_sha_old": "0f840c7356da056dd60a35bb83569254561a3e88eb80704ce47e3138d7ee1707",
+      "params_sha_prep": "bc5584e88866e8961690a241f4c51aacc3501e94467cc325dc11fc29697f5489",
+      "strategies": {
+        "main_gate": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 111.5,
+          "casualties_defender": 21.8,
+          "fire_spent": 600.0,
+          "fire_wasted": 0.0,
+          "deployed": 154,
+          "congestion_mean": 0.0659,
+          "congestion_median": 0.026,
+          "congestion_max": 0.3636,
+          "congestion_over_05": 0,
+          "congestion_events": 10.15,
+          "travel_mean": 0.0659,
+          "travel_events": 10.15,
+          "reroutes": 0.3,
+          "recovery_events": 41.7,
+          "early_archer_kills_mean": 0.7,
+          "early_archer_seeds": 14,
+          "all_archer_kills_mean": 0.7,
+          "routes": {
+            "cave": 0,
+            "main": 2400
+          },
+          "ghost_peak_early": 15.1,
+          "ghost_peak_middle": 9.8,
+          "ghost_peak_late": 11.65
+        },
+        "highland": {
+          "n": 20,
+          "wins": 8,
+          "rate": 0.4,
+          "ci95": [
+            0.2188,
+            0.6134
+          ],
+          "methods": {
+            "keep_retreat": 8
+          },
+          "annihilation": 0,
+          "capture": 8,
+          "victory_time_mean": 231.808,
+          "victory_time_median": 238.466,
+          "capture_time_mean": 231.808,
+          "casualties_ghost": 92.85,
+          "casualties_defender": 17.35,
+          "fire_spent": 525.0,
+          "fire_wasted": 0.0,
+          "deployed": 139,
+          "congestion_mean": 0.2286,
+          "congestion_median": 0.2496,
+          "congestion_max": 0.49,
+          "congestion_over_05": 0,
+          "congestion_events": 30.65,
+          "travel_mean": 0.2286,
+          "travel_events": 30.65,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.55,
+          "early_archer_seeds": 7,
+          "all_archer_kills_mean": 3.3,
+          "routes": {
+            "side": 2100
+          },
+          "ghost_peak_early": 12,
+          "ghost_peak_middle": 13.9,
+          "ghost_peak_late": 13.65
+        },
+        "feint": {
+          "n": 20,
+          "wins": 3,
+          "rate": 0.15,
+          "ci95": [
+            0.0524,
+            0.3604
+          ],
+          "methods": {
+            "keep_retreat": 3
+          },
+          "annihilation": 0,
+          "capture": 3,
+          "victory_time_mean": 159.067,
+          "victory_time_median": 107.767,
+          "capture_time_mean": 159.067,
+          "casualties_ghost": 103.7,
+          "casualties_defender": 13.3,
+          "fire_spent": 552.0,
+          "fire_wasted": 0.0,
+          "deployed": 144.4,
+          "congestion_mean": 0.5799,
+          "congestion_median": 0.4935,
+          "congestion_max": 1.3182,
+          "congestion_over_05": 10,
+          "congestion_events": 87.25,
+          "travel_mean": 0.5799,
+          "travel_events": 87.25,
+          "reroutes": 0,
+          "recovery_events": 31.1,
+          "early_archer_kills_mean": 0.1,
+          "early_archer_seeds": 1,
+          "all_archer_kills_mean": 0.9,
+          "routes": {
+            "cave": 1764,
+            "main": 444
+          },
+          "ghost_peak_early": 12.6,
+          "ghost_peak_middle": 6.3,
+          "ghost_peak_late": 9.4
+        },
+        "waves": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 193.745,
+          "victory_time_median": 169.317,
+          "capture_time_mean": 193.745,
+          "casualties_ghost": 58.3,
+          "casualties_defender": 30.8,
+          "fire_spent": 372.0,
+          "fire_wasted": 0.063,
+          "deployed": 108.4,
+          "congestion_mean": 0.3696,
+          "congestion_median": 0.3514,
+          "congestion_max": 0.5702,
+          "congestion_over_05": 2,
+          "congestion_events": 42.8,
+          "travel_mean": 0.3696,
+          "travel_events": 42.8,
+          "reroutes": 0.2,
+          "recovery_events": 0.35,
+          "early_archer_kills_mean": 2.35,
+          "early_archer_seeds": 18,
+          "all_archer_kills_mean": 5.4,
+          "routes": {
+            "cave": 368,
+            "main": 640,
+            "side": 480
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 16.85,
+          "ghost_peak_late": 14.4
+        },
+        "idle": {
+          "n": 20,
+          "wins": 2,
+          "rate": 0.1,
+          "ci95": [
+            0.0279,
+            0.301
+          ],
+          "methods": {
+            "keep_retreat": 2
+          },
+          "annihilation": 0,
+          "capture": 2,
+          "victory_time_mean": 258.717,
+          "victory_time_median": 258.717,
+          "capture_time_mean": 258.717,
+          "casualties_ghost": 19.7,
+          "casualties_defender": 18.35,
+          "fire_spent": 100.0,
+          "fire_wasted": 405.192,
+          "deployed": 54,
+          "congestion_mean": 0.0454,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "congestion_over_05": 0,
+          "congestion_events": 2.45,
+          "travel_mean": 0.0454,
+          "travel_events": 2.45,
+          "reroutes": 0.35,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0,
+          "early_archer_seeds": 0,
+          "all_archer_kills_mean": 0.55,
+          "routes": {
+            "cave": 0,
+            "main": 400
+          },
+          "ghost_peak_early": 0,
+          "ghost_peak_middle": 20,
+          "ghost_peak_late": 2.75
+        },
+        "late_batches": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 215.043,
+          "victory_time_median": 218.65,
+          "capture_time_mean": 215.043,
+          "casualties_ghost": 65,
+          "casualties_defender": 30.15,
+          "fire_spent": 395.25,
+          "fire_wasted": 41.403,
+          "deployed": 113.05,
+          "congestion_mean": 0.1493,
+          "congestion_median": 0.1248,
+          "congestion_max": 0.3333,
+          "congestion_over_05": 0,
+          "congestion_events": 16.05,
+          "travel_mean": 0.1493,
+          "travel_events": 16.05,
+          "reroutes": 0.35,
+          "recovery_events": 0.8,
+          "early_archer_kills_mean": 0.85,
+          "early_archer_seeds": 13,
+          "all_archer_kills_mean": 4.6,
+          "routes": {
+            "cave": 0,
+            "main": 1581
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 13.1,
+          "ghost_peak_late": 8.4
+        },
+        "assassin_first": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 117.498,
+          "victory_time_median": 124.15,
+          "capture_time_mean": 117.498,
+          "casualties_ghost": 11.4,
+          "casualties_defender": 27.85,
+          "fire_spent": 112.0,
+          "fire_wasted": 137.291,
+          "deployed": 50.4,
+          "congestion_mean": 0.1942,
+          "congestion_median": 0.1635,
+          "congestion_max": 0.4615,
+          "congestion_over_05": 0,
+          "congestion_events": 10.1,
+          "travel_mean": 0.1942,
+          "travel_events": 10.1,
+          "reroutes": 0.25,
+          "recovery_events": 2,
+          "early_archer_kills_mean": 6,
+          "early_archer_seeds": 20,
+          "all_archer_kills_mean": 6,
+          "routes": {
+            "cave": 0,
+            "cliff": 40,
+            "main": 288
+          },
+          "ghost_peak_early": 13.15,
+          "ghost_peak_middle": 5.5,
+          "ghost_peak_late": 0
+        },
+        "giant_breach": {
+          "n": 20,
+          "wins": 20,
+          "rate": 1.0,
+          "ci95": [
+            0.8389,
+            1.0
+          ],
+          "methods": {
+            "keep_retreat": 20
+          },
+          "annihilation": 0,
+          "capture": 20,
+          "victory_time_mean": 107.667,
+          "victory_time_median": 108.334,
+          "capture_time_mean": 107.667,
+          "casualties_ghost": 7.5,
+          "casualties_defender": 31.15,
+          "fire_spent": 120.0,
+          "fire_wasted": 7.604,
+          "deployed": 48,
+          "congestion_mean": 0.3052,
+          "congestion_median": 0.3021,
+          "congestion_max": 0.3958,
+          "congestion_over_05": 0,
+          "congestion_events": 14.65,
+          "travel_mean": 0.3052,
+          "travel_events": 14.65,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.15,
+          "early_archer_seeds": 2,
+          "all_archer_kills_mean": 3.15,
+          "routes": {
+            "breach:wall_west": 280
+          },
+          "ghost_peak_early": 13.2,
+          "ghost_peak_middle": 0,
+          "ghost_peak_late": 0
+        }
+      },
+      "target1": {
+        "strategies_over_30": [
+          "assassin_first",
+          "giant_breach",
+          "highland",
+          "late_batches",
+          "waves"
+        ],
+        "count": 5,
+        "methods": [
+          "keep_retreat"
+        ],
+        "routes": [
+          "breach:wall_west",
+          "cave",
+          "cliff",
+          "main",
+          "side"
+        ]
+      },
+      "target2": {
+        "idle": 0.1,
+        "min_feint_waves": 0.15,
+        "gap_pp": 5.0
+      }
+    },
+    "best02": {
+      "complete": true,
+      "params_sha_old": "501aeba362026362731aae5e4f372a486a2c0d701d3b276f344f2f29a1a9b788",
+      "params_sha_prep": "5f3abeeec105217d6ed500078708560923a77da4668ace2ff20eaf25c7827318",
+      "strategies": {
+        "main_gate": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 111.2,
+          "casualties_defender": 21.7,
+          "fire_spent": 600.0,
+          "fire_wasted": 0.0,
+          "deployed": 154,
+          "congestion_mean": 0.0581,
+          "congestion_median": 0.0195,
+          "congestion_max": 0.3117,
+          "congestion_over_05": 0,
+          "congestion_events": 8.95,
+          "travel_mean": 0.0581,
+          "travel_events": 8.95,
+          "reroutes": 0.3,
+          "recovery_events": 41.7,
+          "early_archer_kills_mean": 0.7,
+          "early_archer_seeds": 14,
+          "all_archer_kills_mean": 0.7,
+          "routes": {
+            "cave": 0,
+            "main": 2400
+          },
+          "ghost_peak_early": 15.1,
+          "ghost_peak_middle": 9.9,
+          "ghost_peak_late": 11.7
+        },
+        "highland": {
+          "n": 20,
+          "wins": 7,
+          "rate": 0.35,
+          "ci95": [
+            0.1812,
+            0.5671
+          ],
+          "methods": {
+            "keep_retreat": 7
+          },
+          "annihilation": 0,
+          "capture": 7,
+          "victory_time_mean": 227.253,
+          "victory_time_median": 224.833,
+          "capture_time_mean": 227.253,
+          "casualties_ghost": 94.65,
+          "casualties_defender": 16.7,
+          "fire_spent": 531.0,
+          "fire_wasted": 0.0,
+          "deployed": 140.2,
+          "congestion_mean": 0.2339,
+          "congestion_median": 0.2208,
+          "congestion_max": 0.5455,
+          "congestion_over_05": 1,
+          "congestion_events": 32.15,
+          "travel_mean": 0.2339,
+          "travel_events": 32.15,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.55,
+          "early_archer_seeds": 7,
+          "all_archer_kills_mean": 3.15,
+          "routes": {
+            "side": 2124
+          },
+          "ghost_peak_early": 12,
+          "ghost_peak_middle": 13.7,
+          "ghost_peak_late": 12.65
+        },
+        "feint": {
+          "n": 20,
+          "wins": 4,
+          "rate": 0.2,
+          "ci95": [
+            0.0807,
+            0.416
+          ],
+          "methods": {
+            "keep_retreat": 4
+          },
+          "annihilation": 0,
+          "capture": 4,
+          "victory_time_mean": 179.3,
+          "victory_time_median": 168.683,
+          "capture_time_mean": 179.3,
+          "casualties_ghost": 101.45,
+          "casualties_defender": 15.15,
+          "fire_spent": 544.5,
+          "fire_wasted": 0.0,
+          "deployed": 142.9,
+          "congestion_mean": 0.5552,
+          "congestion_median": 0.4773,
+          "congestion_max": 1.1688,
+          "congestion_over_05": 8,
+          "congestion_events": 82.6,
+          "travel_mean": 0.5552,
+          "travel_events": 82.6,
+          "reroutes": 0,
+          "recovery_events": 31.15,
+          "early_archer_kills_mean": 0.2,
+          "early_archer_seeds": 2,
+          "all_archer_kills_mean": 1.35,
+          "routes": {
+            "cave": 1740,
+            "main": 438
+          },
+          "ghost_peak_early": 12.6,
+          "ghost_peak_middle": 6.95,
+          "ghost_peak_late": 9.1
+        },
+        "waves": {
+          "n": 20,
+          "wins": 16,
+          "rate": 0.8,
+          "ci95": [
+            0.584,
+            0.9193
+          ],
+          "methods": {
+            "keep_retreat": 16
+          },
+          "annihilation": 0,
+          "capture": 16,
+          "victory_time_mean": 163.973,
+          "victory_time_median": 169.533,
+          "capture_time_mean": 163.973,
+          "casualties_ghost": 44.9,
+          "casualties_defender": 31.85,
+          "fire_spent": 307.5,
+          "fire_wasted": 0.05,
+          "deployed": 95.5,
+          "congestion_mean": 0.3936,
+          "congestion_median": 0.3799,
+          "congestion_max": 1.0851,
+          "congestion_over_05": 3,
+          "congestion_events": 40.65,
+          "travel_mean": 0.3936,
+          "travel_events": 40.65,
+          "reroutes": 0.15,
+          "recovery_events": 0.35,
+          "early_archer_kills_mean": 2.6,
+          "early_archer_seeds": 18,
+          "all_archer_kills_mean": 5.65,
+          "routes": {
+            "cave": 304,
+            "main": 520,
+            "side": 406
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 16.1,
+          "ghost_peak_late": 8.3
+        },
+        "idle": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 20,
+          "casualties_defender": 15.7,
+          "fire_spent": 100.0,
+          "fire_wasted": 417.537,
+          "deployed": 54,
+          "congestion_mean": 0.0398,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "congestion_over_05": 0,
+          "congestion_events": 2.15,
+          "travel_mean": 0.0398,
+          "travel_events": 2.15,
+          "reroutes": 0.35,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0,
+          "early_archer_seeds": 0,
+          "all_archer_kills_mean": 0,
+          "routes": {
+            "cave": 0,
+            "main": 400
+          },
+          "ghost_peak_early": 0,
+          "ghost_peak_middle": 20,
+          "ghost_peak_late": 1.85
+        },
+        "late_batches": {
+          "n": 20,
+          "wins": 11,
+          "rate": 0.55,
+          "ci95": [
+            0.3421,
+            0.7418
+          ],
+          "methods": {
+            "keep_retreat": 11
+          },
+          "annihilation": 0,
+          "capture": 11,
+          "victory_time_mean": 208.97,
+          "victory_time_median": 215.667,
+          "capture_time_mean": 208.97,
+          "casualties_ghost": 70.1,
+          "casualties_defender": 28.45,
+          "fire_spent": 414.25,
+          "fire_wasted": 41.403,
+          "deployed": 116.85,
+          "congestion_mean": 0.1427,
+          "congestion_median": 0.1181,
+          "congestion_max": 0.3146,
+          "congestion_over_05": 0,
+          "congestion_events": 15.05,
+          "travel_mean": 0.1427,
+          "travel_events": 15.05,
+          "reroutes": 0.45,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0.65,
+          "early_archer_seeds": 11,
+          "all_archer_kills_mean": 3.95,
+          "routes": {
+            "cave": 0,
+            "main": 1657
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 14.2,
+          "ghost_peak_late": 7.8
+        },
+        "assassin_first": {
+          "n": 20,
+          "wins": 16,
+          "rate": 0.8,
+          "ci95": [
+            0.584,
+            0.9193
+          ],
+          "methods": {
+            "keep_retreat": 16
+          },
+          "annihilation": 0,
+          "capture": 16,
+          "victory_time_mean": 117.067,
+          "victory_time_median": 125.1,
+          "capture_time_mean": 117.067,
+          "casualties_ghost": 11.7,
+          "casualties_defender": 27.6,
+          "fire_spent": 112.0,
+          "fire_wasted": 98.83,
+          "deployed": 50.4,
+          "congestion_mean": 0.1846,
+          "congestion_median": 0.1538,
+          "congestion_max": 0.4423,
+          "congestion_over_05": 0,
+          "congestion_events": 9.6,
+          "travel_mean": 0.1846,
+          "travel_events": 9.6,
+          "reroutes": 0.25,
+          "recovery_events": 2,
+          "early_archer_kills_mean": 6,
+          "early_archer_seeds": 20,
+          "all_archer_kills_mean": 6,
+          "routes": {
+            "cave": 0,
+            "cliff": 40,
+            "main": 288
+          },
+          "ghost_peak_early": 13.15,
+          "ghost_peak_middle": 4.95,
+          "ghost_peak_late": 0
+        },
+        "giant_breach": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 106.067,
+          "victory_time_median": 109.767,
+          "capture_time_mean": 106.067,
+          "casualties_ghost": 9.4,
+          "casualties_defender": 28,
+          "fire_spent": 117.0,
+          "fire_wasted": 124.204,
+          "deployed": 47.4,
+          "congestion_mean": 0.2049,
+          "congestion_median": 0.2396,
+          "congestion_max": 0.375,
+          "congestion_over_05": 0,
+          "congestion_events": 9.8,
+          "travel_mean": 0.2049,
+          "travel_events": 9.8,
+          "reroutes": 0,
+          "recovery_events": 0.15,
+          "early_archer_kills_mean": 0.05,
+          "early_archer_seeds": 1,
+          "all_archer_kills_mean": 2,
+          "routes": {
+            "breach:wall_west": 268
+          },
+          "ghost_peak_early": 11.8,
+          "ghost_peak_middle": 0,
+          "ghost_peak_late": 0
+        }
+      },
+      "target1": {
+        "strategies_over_30": [
+          "assassin_first",
+          "giant_breach",
+          "highland",
+          "late_batches",
+          "waves"
+        ],
+        "count": 5,
+        "methods": [
+          "keep_retreat"
+        ],
+        "routes": [
+          "breach:wall_west",
+          "cave",
+          "cliff",
+          "main",
+          "side"
+        ]
+      },
+      "target2": {
+        "idle": 0.0,
+        "min_feint_waves": 0.2,
+        "gap_pp": 20.0
+      }
+    },
+    "best03": {
+      "complete": true,
+      "params_sha_old": "8c56a000f59deacba022709cbc5879dc841f1a7271a973f8e23c406ac2a8a4aa",
+      "params_sha_prep": "4ad495fa82fa7e87b9017cbb609548b35224709b55a78236b4db164a18cafd89",
+      "strategies": {
+        "main_gate": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 111.2,
+          "casualties_defender": 21.7,
+          "fire_spent": 600.0,
+          "fire_wasted": 0.0,
+          "deployed": 154,
+          "congestion_mean": 0.0581,
+          "congestion_median": 0.0195,
+          "congestion_max": 0.3117,
+          "congestion_over_05": 0,
+          "congestion_events": 8.95,
+          "travel_mean": 0.0581,
+          "travel_events": 8.95,
+          "reroutes": 0.3,
+          "recovery_events": 41.7,
+          "early_archer_kills_mean": 0.7,
+          "early_archer_seeds": 14,
+          "all_archer_kills_mean": 0.7,
+          "routes": {
+            "cave": 0,
+            "main": 2400
+          },
+          "ghost_peak_early": 15.1,
+          "ghost_peak_middle": 9.9,
+          "ghost_peak_late": 11.7
+        },
+        "highland": {
+          "n": 20,
+          "wins": 9,
+          "rate": 0.45,
+          "ci95": [
+            0.2582,
+            0.6579
+          ],
+          "methods": {
+            "keep_retreat": 9
+          },
+          "annihilation": 0,
+          "capture": 9,
+          "victory_time_mean": 238.178,
+          "victory_time_median": 236.6,
+          "capture_time_mean": 238.178,
+          "casualties_ghost": 90.6,
+          "casualties_defender": 17.85,
+          "fire_spent": 523.5,
+          "fire_wasted": 0.0,
+          "deployed": 138.7,
+          "congestion_mean": 0.2169,
+          "congestion_median": 0.1851,
+          "congestion_max": 0.507,
+          "congestion_over_05": 1,
+          "congestion_events": 28.75,
+          "travel_mean": 0.2169,
+          "travel_events": 28.75,
+          "reroutes": 0,
+          "recovery_events": 0,
+          "early_archer_kills_mean": 0.55,
+          "early_archer_seeds": 7,
+          "all_archer_kills_mean": 3.4,
+          "routes": {
+            "side": 2094
+          },
+          "ghost_peak_early": 12,
+          "ghost_peak_middle": 13.05,
+          "ghost_peak_late": 12.8
+        },
+        "feint": {
+          "n": 20,
+          "wins": 4,
+          "rate": 0.2,
+          "ci95": [
+            0.0807,
+            0.416
+          ],
+          "methods": {
+            "keep_retreat": 4
+          },
+          "annihilation": 0,
+          "capture": 4,
+          "victory_time_mean": 179.3,
+          "victory_time_median": 168.683,
+          "capture_time_mean": 179.3,
+          "casualties_ghost": 101.45,
+          "casualties_defender": 15.15,
+          "fire_spent": 544.5,
+          "fire_wasted": 0.0,
+          "deployed": 142.9,
+          "congestion_mean": 0.5552,
+          "congestion_median": 0.4773,
+          "congestion_max": 1.1688,
+          "congestion_over_05": 8,
+          "congestion_events": 82.6,
+          "travel_mean": 0.5552,
+          "travel_events": 82.6,
+          "reroutes": 0,
+          "recovery_events": 31.15,
+          "early_archer_kills_mean": 0.2,
+          "early_archer_seeds": 2,
+          "all_archer_kills_mean": 1.35,
+          "routes": {
+            "cave": 1740,
+            "main": 438
+          },
+          "ghost_peak_early": 12.6,
+          "ghost_peak_middle": 6.95,
+          "ghost_peak_late": 9.1
+        },
+        "waves": {
+          "n": 20,
+          "wins": 16,
+          "rate": 0.8,
+          "ci95": [
+            0.584,
+            0.9193
+          ],
+          "methods": {
+            "keep_retreat": 16
+          },
+          "annihilation": 0,
+          "capture": 16,
+          "victory_time_mean": 159.654,
+          "victory_time_median": 168.05,
+          "capture_time_mean": 159.654,
+          "casualties_ghost": 43.8,
+          "casualties_defender": 31.85,
+          "fire_spent": 298.25,
+          "fire_wasted": 0.048,
+          "deployed": 93.65,
+          "congestion_mean": 0.3752,
+          "congestion_median": 0.3355,
+          "congestion_max": 1.2021,
+          "congestion_over_05": 3,
+          "congestion_events": 38.45,
+          "travel_mean": 0.3752,
+          "travel_events": 38.45,
+          "reroutes": 0.15,
+          "recovery_events": 0.35,
+          "early_archer_kills_mean": 2.6,
+          "early_archer_seeds": 18,
+          "all_archer_kills_mean": 5.65,
+          "routes": {
+            "cave": 267,
+            "main": 520,
+            "side": 406
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 15.55,
+          "ghost_peak_late": 8.25
+        },
+        "idle": {
+          "n": 20,
+          "wins": 0,
+          "rate": 0.0,
+          "ci95": [
+            0.0,
+            0.1611
+          ],
+          "methods": {},
+          "annihilation": 0,
+          "capture": 0,
+          "victory_time_mean": null,
+          "victory_time_median": null,
+          "capture_time_mean": null,
+          "casualties_ghost": 20,
+          "casualties_defender": 15.7,
+          "fire_spent": 100.0,
+          "fire_wasted": 417.537,
+          "deployed": 54,
+          "congestion_mean": 0.0398,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "congestion_over_05": 0,
+          "congestion_events": 2.15,
+          "travel_mean": 0.0398,
+          "travel_events": 2.15,
+          "reroutes": 0.35,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0,
+          "early_archer_seeds": 0,
+          "all_archer_kills_mean": 0,
+          "routes": {
+            "cave": 0,
+            "main": 400
+          },
+          "ghost_peak_early": 0,
+          "ghost_peak_middle": 20,
+          "ghost_peak_late": 1.85
+        },
+        "late_batches": {
+          "n": 20,
+          "wins": 11,
+          "rate": 0.55,
+          "ci95": [
+            0.3421,
+            0.7418
+          ],
+          "methods": {
+            "keep_retreat": 11
+          },
+          "annihilation": 0,
+          "capture": 11,
+          "victory_time_mean": 208.97,
+          "victory_time_median": 215.667,
+          "capture_time_mean": 208.97,
+          "casualties_ghost": 70.1,
+          "casualties_defender": 28.45,
+          "fire_spent": 414.25,
+          "fire_wasted": 41.403,
+          "deployed": 116.85,
+          "congestion_mean": 0.1427,
+          "congestion_median": 0.1181,
+          "congestion_max": 0.3146,
+          "congestion_over_05": 0,
+          "congestion_events": 15.05,
+          "travel_mean": 0.1427,
+          "travel_events": 15.05,
+          "reroutes": 0.45,
+          "recovery_events": 0.9,
+          "early_archer_kills_mean": 0.65,
+          "early_archer_seeds": 11,
+          "all_archer_kills_mean": 3.95,
+          "routes": {
+            "cave": 0,
+            "main": 1657
+          },
+          "ghost_peak_early": 20,
+          "ghost_peak_middle": 14.2,
+          "ghost_peak_late": 7.8
+        },
+        "assassin_first": {
+          "n": 20,
+          "wins": 16,
+          "rate": 0.8,
+          "ci95": [
+            0.584,
+            0.9193
+          ],
+          "methods": {
+            "keep_retreat": 16
+          },
+          "annihilation": 0,
+          "capture": 16,
+          "victory_time_mean": 106.421,
+          "victory_time_median": 123.533,
+          "capture_time_mean": 106.421,
+          "casualties_ghost": 10.6,
+          "casualties_defender": 28.2,
+          "fire_spent": 104.0,
+          "fire_wasted": 96.07,
+          "deployed": 48.8,
+          "congestion_mean": 0.1721,
+          "congestion_median": 0.1538,
+          "congestion_max": 0.4423,
+          "congestion_over_05": 0,
+          "congestion_events": 8.95,
+          "travel_mean": 0.1721,
+          "travel_events": 8.95,
+          "reroutes": 0.15,
+          "recovery_events": 1.6,
+          "early_archer_kills_mean": 6,
+          "early_archer_seeds": 20,
+          "all_archer_kills_mean": 6,
+          "routes": {
+            "cave": 0,
+            "cliff": 40,
+            "main": 256
+          },
+          "ghost_peak_early": 11.9,
+          "ghost_peak_middle": 4,
+          "ghost_peak_late": 0
+        },
+        "giant_breach": {
+          "n": 20,
+          "wins": 14,
+          "rate": 0.7,
+          "ci95": [
+            0.481,
+            0.8545
+          ],
+          "methods": {
+            "keep_retreat": 14
+          },
+          "annihilation": 0,
+          "capture": 14,
+          "victory_time_mean": 106.067,
+          "victory_time_median": 109.767,
+          "capture_time_mean": 106.067,
+          "casualties_ghost": 9.4,
+          "casualties_defender": 28,
+          "fire_spent": 117.0,
+          "fire_wasted": 124.204,
+          "deployed": 47.4,
+          "congestion_mean": 0.2049,
+          "congestion_median": 0.2396,
+          "congestion_max": 0.375,
+          "congestion_over_05": 0,
+          "congestion_events": 9.8,
+          "travel_mean": 0.2049,
+          "travel_events": 9.8,
+          "reroutes": 0,
+          "recovery_events": 0.15,
+          "early_archer_kills_mean": 0.05,
+          "early_archer_seeds": 1,
+          "all_archer_kills_mean": 2,
+          "routes": {
+            "breach:wall_west": 268
+          },
+          "ghost_peak_early": 11.8,
+          "ghost_peak_middle": 0,
+          "ghost_peak_late": 0
+        }
+      },
+      "target1": {
+        "strategies_over_30": [
+          "assassin_first",
+          "giant_breach",
+          "highland",
+          "late_batches",
+          "waves"
+        ],
+        "count": 5,
+        "methods": [
+          "keep_retreat"
+        ],
+        "routes": [
+          "breach:wall_west",
+          "cave",
+          "cliff",
+          "main",
+          "side"
+        ]
+      },
+      "target2": {
+        "idle": 0.0,
+        "min_feint_waves": 0.2,
+        "gap_pp": 20.0
+      }
+    }
+  },
+  "target3": {
+    "main": {
+      "complete": true,
+      "n": 20,
+      "on": {
+        "n": 20,
+        "wins": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.1611
+        ],
+        "methods": {},
+        "annihilation": 0,
+        "capture": 0,
+        "victory_time_mean": null,
+        "victory_time_median": null,
+        "capture_time_mean": null,
+        "casualties_ghost": 111.6,
+        "casualties_defender": 21.7,
+        "fire_spent": 600.0,
+        "fire_wasted": 0.0,
+        "deployed": 154,
+        "congestion_mean": 0.0646,
+        "congestion_median": 0.026,
+        "congestion_max": 0.3636,
+        "congestion_over_05": 0,
+        "congestion_events": 9.95,
+        "travel_mean": 0.0646,
+        "travel_events": 9.95,
+        "reroutes": 0,
+        "recovery_events": 41.7,
+        "early_archer_kills_mean": 0.7,
+        "early_archer_seeds": 14,
+        "all_archer_kills_mean": 0.7,
+        "routes": {
+          "main": 2400
+        },
+        "ghost_peak_early": 15.2,
+        "ghost_peak_middle": 9.85,
+        "ghost_peak_late": 11.55
+      },
+      "off": {
+        "n": 20,
+        "wins": 19,
+        "rate": 0.95,
+        "ci95": [
+          0.7639,
+          0.9911
+        ],
+        "methods": {
+          "keep_retreat": 19
+        },
+        "annihilation": 0,
+        "capture": 19,
+        "victory_time_mean": 185.393,
+        "victory_time_median": 182.6,
+        "capture_time_mean": 185.393,
+        "casualties_ghost": 53.2,
+        "casualties_defender": 33.85,
+        "fire_spent": 331.25,
+        "fire_wasted": 0.0,
+        "deployed": 100.25,
+        "congestion_mean": 0.1787,
+        "congestion_median": 0.1598,
+        "congestion_max": 0.3571,
+        "congestion_over_05": 0,
+        "congestion_events": 19.35,
+        "travel_mean": 0.1787,
+        "travel_events": 19.35,
+        "reroutes": 0,
+        "recovery_events": 26.3,
+        "early_archer_kills_mean": 1.2,
+        "early_archer_seeds": 14,
+        "all_archer_kills_mean": 5.85,
+        "routes": {
+          "main": 1325
+        },
+        "ghost_peak_early": 15.2,
+        "ghost_peak_middle": 12.85,
+        "ghost_peak_late": 2.85
+      },
+      "rate_diff_pp": -95.0,
+      "discordant_on_only": 0,
+      "discordant_off_only": 19,
+      "mcnemar_p": 0.0
+    },
+    "side": {
+      "complete": true,
+      "n": 20,
+      "on": {
+        "n": 20,
+        "wins": 8,
+        "rate": 0.4,
+        "ci95": [
+          0.2188,
+          0.6134
+        ],
+        "methods": {
+          "keep_retreat": 8
+        },
+        "annihilation": 0,
+        "capture": 8,
+        "victory_time_mean": 231.808,
+        "victory_time_median": 238.466,
+        "capture_time_mean": 231.808,
+        "casualties_ghost": 92.85,
+        "casualties_defender": 17.35,
+        "fire_spent": 525.0,
+        "fire_wasted": 0.0,
+        "deployed": 139,
+        "congestion_mean": 0.2286,
+        "congestion_median": 0.2496,
+        "congestion_max": 0.49,
+        "congestion_over_05": 0,
+        "congestion_events": 30.65,
+        "travel_mean": 0.2286,
+        "travel_events": 30.65,
+        "reroutes": 0,
+        "recovery_events": 0,
+        "early_archer_kills_mean": 0.55,
+        "early_archer_seeds": 7,
+        "all_archer_kills_mean": 3.3,
+        "routes": {
+          "side": 2100
+        },
+        "ghost_peak_early": 12,
+        "ghost_peak_middle": 13.9,
+        "ghost_peak_late": 13.65
+      },
+      "off": {
+        "n": 20,
+        "wins": 18,
+        "rate": 0.9,
+        "ci95": [
+          0.699,
+          0.9721
+        ],
+        "methods": {
+          "keep_retreat": 18
+        },
+        "annihilation": 0,
+        "capture": 18,
+        "victory_time_mean": 242.083,
+        "victory_time_median": 266.8,
+        "capture_time_mean": 242.083,
+        "casualties_ghost": 72.1,
+        "casualties_defender": 30.15,
+        "fire_spent": 464.5,
+        "fire_wasted": 0.0,
+        "deployed": 126.9,
+        "congestion_mean": 0.2726,
+        "congestion_median": 0.2522,
+        "congestion_max": 0.5541,
+        "congestion_over_05": 1,
+        "congestion_events": 34.8,
+        "travel_mean": 0.2726,
+        "travel_events": 34.8,
+        "reroutes": 0,
+        "recovery_events": 0.5,
+        "early_archer_kills_mean": 0.95,
+        "early_archer_seeds": 8,
+        "all_archer_kills_mean": 5.5,
+        "routes": {
+          "side": 1858
+        },
+        "ghost_peak_early": 12,
+        "ghost_peak_middle": 15.15,
+        "ghost_peak_late": 19.15
+      },
+      "rate_diff_pp": -50.0,
+      "discordant_on_only": 1,
+      "discordant_off_only": 11,
+      "mcnemar_p": 0.0063
+    }
+  },
+  "target4": {
+    "default": {
+      "by_strategy": {
+        "main_gate": {
+          "congestion_mean": 0.0659,
+          "congestion_median": 0.026,
+          "congestion_max": 0.3636,
+          "runs_over_05": 0,
+          "travel_mean": 0.0659
+        },
+        "highland": {
+          "congestion_mean": 0.2281,
+          "congestion_median": 0.2451,
+          "congestion_max": 0.49,
+          "runs_over_05": 0,
+          "travel_mean": 0.2281
+        },
+        "feint": {
+          "congestion_mean": 0.5799,
+          "congestion_median": 0.4935,
+          "congestion_max": 1.3182,
+          "runs_over_05": 10,
+          "travel_mean": 0.5799
+        },
+        "waves": {
+          "congestion_mean": 0.3709,
+          "congestion_median": 0.3581,
+          "congestion_max": 0.5702,
+          "runs_over_05": 2,
+          "travel_mean": 0.3709
+        },
+        "idle": {
+          "congestion_mean": 0.0454,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "runs_over_05": 0,
+          "travel_mean": 0.0454
+        },
+        "late_batches": {
+          "congestion_mean": 0.1493,
+          "congestion_median": 0.1248,
+          "congestion_max": 0.3333,
+          "runs_over_05": 0,
+          "travel_mean": 0.1493
+        },
+        "assassin_first": {
+          "congestion_mean": 0.1942,
+          "congestion_median": 0.1635,
+          "congestion_max": 0.4615,
+          "runs_over_05": 0,
+          "travel_mean": 0.1942
+        },
+        "giant_breach": {
+          "congestion_mean": 0.3052,
+          "congestion_median": 0.3021,
+          "congestion_max": 0.3958,
+          "runs_over_05": 0,
+          "travel_mean": 0.3052
+        }
+      },
+      "strategies_over_05_mean": [
+        "feint"
+      ],
+      "runs_over_05": 12,
+      "runs": 160,
+      "worst": "feint",
+      "best": "idle"
+    },
+    "best01": {
+      "by_strategy": {
+        "main_gate": {
+          "congestion_mean": 0.0659,
+          "congestion_median": 0.026,
+          "congestion_max": 0.3636,
+          "runs_over_05": 0,
+          "travel_mean": 0.0659
+        },
+        "highland": {
+          "congestion_mean": 0.2286,
+          "congestion_median": 0.2496,
+          "congestion_max": 0.49,
+          "runs_over_05": 0,
+          "travel_mean": 0.2286
+        },
+        "feint": {
+          "congestion_mean": 0.5799,
+          "congestion_median": 0.4935,
+          "congestion_max": 1.3182,
+          "runs_over_05": 10,
+          "travel_mean": 0.5799
+        },
+        "waves": {
+          "congestion_mean": 0.3696,
+          "congestion_median": 0.3514,
+          "congestion_max": 0.5702,
+          "runs_over_05": 2,
+          "travel_mean": 0.3696
+        },
+        "idle": {
+          "congestion_mean": 0.0454,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "runs_over_05": 0,
+          "travel_mean": 0.0454
+        },
+        "late_batches": {
+          "congestion_mean": 0.1493,
+          "congestion_median": 0.1248,
+          "congestion_max": 0.3333,
+          "runs_over_05": 0,
+          "travel_mean": 0.1493
+        },
+        "assassin_first": {
+          "congestion_mean": 0.1942,
+          "congestion_median": 0.1635,
+          "congestion_max": 0.4615,
+          "runs_over_05": 0,
+          "travel_mean": 0.1942
+        },
+        "giant_breach": {
+          "congestion_mean": 0.3052,
+          "congestion_median": 0.3021,
+          "congestion_max": 0.3958,
+          "runs_over_05": 0,
+          "travel_mean": 0.3052
+        }
+      },
+      "strategies_over_05_mean": [
+        "feint"
+      ],
+      "runs_over_05": 12,
+      "runs": 160,
+      "worst": "feint",
+      "best": "idle"
+    },
+    "best02": {
+      "by_strategy": {
+        "main_gate": {
+          "congestion_mean": 0.0581,
+          "congestion_median": 0.0195,
+          "congestion_max": 0.3117,
+          "runs_over_05": 0,
+          "travel_mean": 0.0581
+        },
+        "highland": {
+          "congestion_mean": 0.2339,
+          "congestion_median": 0.2208,
+          "congestion_max": 0.5455,
+          "runs_over_05": 1,
+          "travel_mean": 0.2339
+        },
+        "feint": {
+          "congestion_mean": 0.5552,
+          "congestion_median": 0.4773,
+          "congestion_max": 1.1688,
+          "runs_over_05": 8,
+          "travel_mean": 0.5552
+        },
+        "waves": {
+          "congestion_mean": 0.3936,
+          "congestion_median": 0.3799,
+          "congestion_max": 1.0851,
+          "runs_over_05": 3,
+          "travel_mean": 0.3936
+        },
+        "idle": {
+          "congestion_mean": 0.0398,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "runs_over_05": 0,
+          "travel_mean": 0.0398
+        },
+        "late_batches": {
+          "congestion_mean": 0.1427,
+          "congestion_median": 0.1181,
+          "congestion_max": 0.3146,
+          "runs_over_05": 0,
+          "travel_mean": 0.1427
+        },
+        "assassin_first": {
+          "congestion_mean": 0.1846,
+          "congestion_median": 0.1538,
+          "congestion_max": 0.4423,
+          "runs_over_05": 0,
+          "travel_mean": 0.1846
+        },
+        "giant_breach": {
+          "congestion_mean": 0.2049,
+          "congestion_median": 0.2396,
+          "congestion_max": 0.375,
+          "runs_over_05": 0,
+          "travel_mean": 0.2049
+        }
+      },
+      "strategies_over_05_mean": [
+        "feint"
+      ],
+      "runs_over_05": 12,
+      "runs": 160,
+      "worst": "feint",
+      "best": "idle"
+    },
+    "best03": {
+      "by_strategy": {
+        "main_gate": {
+          "congestion_mean": 0.0581,
+          "congestion_median": 0.0195,
+          "congestion_max": 0.3117,
+          "runs_over_05": 0,
+          "travel_mean": 0.0581
+        },
+        "highland": {
+          "congestion_mean": 0.2169,
+          "congestion_median": 0.1851,
+          "congestion_max": 0.507,
+          "runs_over_05": 1,
+          "travel_mean": 0.2169
+        },
+        "feint": {
+          "congestion_mean": 0.5552,
+          "congestion_median": 0.4773,
+          "congestion_max": 1.1688,
+          "runs_over_05": 8,
+          "travel_mean": 0.5552
+        },
+        "waves": {
+          "congestion_mean": 0.3752,
+          "congestion_median": 0.3355,
+          "congestion_max": 1.2021,
+          "runs_over_05": 3,
+          "travel_mean": 0.3752
+        },
+        "idle": {
+          "congestion_mean": 0.0398,
+          "congestion_median": 0.037,
+          "congestion_max": 0.1667,
+          "runs_over_05": 0,
+          "travel_mean": 0.0398
+        },
+        "late_batches": {
+          "congestion_mean": 0.1427,
+          "congestion_median": 0.1181,
+          "congestion_max": 0.3146,
+          "runs_over_05": 0,
+          "travel_mean": 0.1427
+        },
+        "assassin_first": {
+          "congestion_mean": 0.1721,
+          "congestion_median": 0.1538,
+          "congestion_max": 0.4423,
+          "runs_over_05": 0,
+          "travel_mean": 0.1721
+        },
+        "giant_breach": {
+          "congestion_mean": 0.2049,
+          "congestion_median": 0.2396,
+          "congestion_max": 0.375,
+          "runs_over_05": 0,
+          "travel_mean": 0.2049
+        }
+      },
+      "strategies_over_05_mean": [
+        "feint"
+      ],
+      "runs_over_05": 12,
+      "runs": 160,
+      "worst": "feint",
+      "best": "idle"
+    }
+  },
+  "phase_b": {
+    "complete": true,
+    "strategies": {
+      "assassin_first": {
+        "n": 20,
+        "wins": 14,
+        "rate": 0.7,
+        "ci95": [
+          0.481,
+          0.8545
+        ],
+        "methods": {
+          "keep_retreat": 14
+        },
+        "annihilation": 0,
+        "capture": 14,
+        "victory_time_mean": 117.498,
+        "victory_time_median": 124.15,
+        "capture_time_mean": 117.498,
+        "casualties_ghost": 11.4,
+        "casualties_defender": 27.85,
+        "fire_spent": 112.0,
+        "fire_wasted": 137.291,
+        "deployed": 50.4,
+        "congestion_mean": 0.1942,
+        "congestion_median": 0.1635,
+        "congestion_max": 0.4615,
+        "congestion_over_05": 0,
+        "congestion_events": 10.1,
+        "travel_mean": 0.1942,
+        "travel_events": 10.1,
+        "reroutes": 0.25,
+        "recovery_events": 2,
+        "early_archer_kills_mean": 6,
+        "early_archer_seeds": 20,
+        "all_archer_kills_mean": 6,
+        "routes": {
+          "cave": 0,
+          "cliff": 40,
+          "main": 288
+        },
+        "ghost_peak_early": 13.15,
+        "ghost_peak_middle": 5.5,
+        "ghost_peak_late": 0,
+        "fire_spent_min": 40.0,
+        "fire_spent_max": 120.0,
+        "equal_120": 18,
+        "assassination_count_mean": 6,
+        "assassination_first_time_mean": 6.882,
+        "wall_west_breached": 0,
+        "wall_west_breach_time_mean": null,
+        "unit_results": {
+          "assassin": {
+            "archer_kills": 120,
+            "damage": 247.4,
+            "deaths": 38,
+            "deployed": 40,
+            "fire": 800.0,
+            "kills": 284,
+            "structure_damage": 336.0,
+            "sweeps": 0
+          },
+          "ghost": {
+            "archer_kills": 0,
+            "damage": 281.2,
+            "deaths": 190,
+            "deployed": 288,
+            "fire": 1440.0,
+            "kills": 273,
+            "structure_damage": 612.0,
+            "sweeps": 0
+          },
+          "giant": {
+            "archer_kills": 0,
+            "damage": 0.0,
+            "deaths": 0,
+            "deployed": 0,
+            "fire": 0.0,
+            "kills": 0,
+            "structure_damage": 0.0,
+            "sweeps": 0
+          }
+        },
+        "detections_mean": 2
+      },
+      "giant_breach": {
+        "n": 20,
+        "wins": 20,
+        "rate": 1.0,
+        "ci95": [
+          0.8389,
+          1.0
+        ],
+        "methods": {
+          "keep_retreat": 20
+        },
+        "annihilation": 0,
+        "capture": 20,
+        "victory_time_mean": 107.667,
+        "victory_time_median": 108.334,
+        "capture_time_mean": 107.667,
+        "casualties_ghost": 7.5,
+        "casualties_defender": 31.15,
+        "fire_spent": 120.0,
+        "fire_wasted": 7.604,
+        "deployed": 48,
+        "congestion_mean": 0.3052,
+        "congestion_median": 0.3021,
+        "congestion_max": 0.3958,
+        "congestion_over_05": 0,
+        "congestion_events": 14.65,
+        "travel_mean": 0.3052,
+        "travel_events": 14.65,
+        "reroutes": 0,
+        "recovery_events": 0,
+        "early_archer_kills_mean": 0.15,
+        "early_archer_seeds": 2,
+        "all_archer_kills_mean": 3.15,
+        "routes": {
+          "breach:wall_west": 280
+        },
+        "ghost_peak_early": 13.2,
+        "ghost_peak_middle": 0,
+        "ghost_peak_late": 0,
+        "fire_spent_min": 120.0,
+        "fire_spent_max": 120.0,
+        "equal_120": 20,
+        "assassination_count_mean": 0,
+        "assassination_first_time_mean": null,
+        "wall_west_breached": 20,
+        "wall_west_breach_time_mean": 15.272,
+        "unit_results": {
+          "assassin": {
+            "archer_kills": 0,
+            "damage": 0.0,
+            "deaths": 0,
+            "deployed": 0,
+            "fire": 0.0,
+            "kills": 0,
+            "structure_damage": 0.0,
+            "sweeps": 0
+          },
+          "ghost": {
+            "archer_kills": 63,
+            "damage": 111.2,
+            "deaths": 149,
+            "deployed": 240,
+            "fire": 1200.0,
+            "kills": 125,
+            "structure_damage": 0.0,
+            "sweeps": 0
+          },
+          "giant": {
+            "archer_kills": 0,
+            "damage": 522.6,
+            "deaths": 1,
+            "deployed": 40,
+            "fire": 1200.0,
+            "kills": 498,
+            "structure_damage": 1200.0,
+            "sweeps": 64
+          }
+        },
+        "detections_mean": 0
+      },
+      "prep_control": {
+        "n": 20,
+        "wins": 9,
+        "rate": 0.45,
+        "ci95": [
+          0.2582,
+          0.6579
+        ],
+        "methods": {
+          "keep_retreat": 9
+        },
+        "annihilation": 0,
+        "capture": 9,
+        "victory_time_mean": 131.57,
+        "victory_time_median": 131.367,
+        "capture_time_mean": 131.57,
+        "casualties_ghost": 20.25,
+        "casualties_defender": 23.2,
+        "fire_spent": 120.0,
+        "fire_wasted": 249.067,
+        "deployed": 58,
+        "congestion_mean": 0.1241,
+        "congestion_median": 0.0948,
+        "congestion_max": 0.2759,
+        "congestion_over_05": 0,
+        "congestion_events": 7.2,
+        "travel_mean": 0.1241,
+        "travel_events": 7.2,
+        "reroutes": 0.15,
+        "recovery_events": 55.45,
+        "early_archer_kills_mean": 0,
+        "early_archer_seeds": 0,
+        "all_archer_kills_mean": 2.3,
+        "routes": {
+          "cave": 0,
+          "main": 480
+        },
+        "ghost_peak_early": 22.3,
+        "ghost_peak_middle": 6.7,
+        "ghost_peak_late": 0,
+        "fire_spent_min": 120.0,
+        "fire_spent_max": 120.0,
+        "equal_120": 20,
+        "assassination_count_mean": 0,
+        "assassination_first_time_mean": null,
+        "wall_west_breached": 0,
+        "wall_west_breach_time_mean": null,
+        "unit_results": {
+          "assassin": {
+            "archer_kills": 0,
+            "damage": 0.0,
+            "deaths": 0,
+            "deployed": 0,
+            "fire": 0.0,
+            "kills": 0,
+            "structure_damage": 0.0,
+            "sweeps": 0
+          },
+          "ghost": {
+            "archer_kills": 46,
+            "damage": 474.6,
+            "deaths": 405,
+            "deployed": 480,
+            "fire": 2400.0,
+            "kills": 464,
+            "structure_damage": 680.0,
+            "sweeps": 0
+          },
+          "giant": {
+            "archer_kills": 0,
+            "damage": 0.0,
+            "deaths": 0,
+            "deployed": 0,
+            "fire": 0.0,
+            "kills": 0,
+            "structure_damage": 0.0,
+            "sweeps": 0
+          }
+        },
+        "detections_mean": 0
+      }
+    },
+    "n": 60,
+    "equal_actual_spend_seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20
+    ],
+    "paired": {
+      "assassin_first_vs_prep_control": {
+        "rate_a": 0.7,
+        "rate_control": 0.45,
+        "rate_diff_pp": 25.0,
+        "discordant_a_only": 7,
+        "discordant_control_only": 2,
+        "mcnemar_p": 0.1797
+      },
+      "giant_breach_vs_prep_control": {
+        "rate_a": 1.0,
+        "rate_control": 0.45,
+        "rate_diff_pp": 55.0,
+        "discordant_a_only": 11,
+        "discordant_control_only": 0,
+        "mcnemar_p": 0.001
+      }
+    },
+    "all_strategies_equal_spend": false
+  }
+}

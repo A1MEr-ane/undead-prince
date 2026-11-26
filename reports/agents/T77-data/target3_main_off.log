@@ -1,0 +1,21 @@
+MATRIX main_gate seed=1 won=True method=keep_retreat fire=300.0 casualties={'defender': 34, 'ghost': 49}
+MATRIX main_gate seed=2 won=True method=keep_retreat fire=270.0 casualties={'defender': 34, 'ghost': 46}
+MATRIX main_gate seed=3 won=True method=keep_retreat fire=420.0 casualties={'defender': 34, 'ghost': 66}
+MATRIX main_gate seed=4 won=True method=keep_retreat fire=300.0 casualties={'defender': 34, 'ghost': 46}
+MATRIX main_gate seed=5 won=True method=keep_retreat fire=270.0 casualties={'defender': 34, 'ghost': 43}
+MATRIX main_gate seed=6 won=True method=keep_retreat fire=240.0 casualties={'defender': 34, 'ghost': 37}
+MATRIX main_gate seed=7 won=True method=keep_retreat fire=240.0 casualties={'defender': 34, 'ghost': 40}
+MATRIX main_gate seed=8 won=True method=keep_retreat fire=300.0 casualties={'defender': 34, 'ghost': 52}
+MATRIX main_gate seed=9 won=True method=keep_retreat fire=360.0 casualties={'defender': 34, 'ghost': 56}
+MATRIX main_gate seed=10 won=True method=keep_retreat fire=360.0 casualties={'defender': 34, 'ghost': 57}
+MATRIX main_gate seed=11 won=True method=keep_retreat fire=330.0 casualties={'defender': 34, 'ghost': 54}
+MATRIX main_gate seed=12 won=True method=keep_retreat fire=270.0 casualties={'defender': 34, 'ghost': 41}
+MATRIX main_gate seed=13 won=True method=keep_retreat fire=270.0 casualties={'defender': 34, 'ghost': 44}
+MATRIX main_gate seed=14 won=True method=keep_retreat fire=355.0 casualties={'defender': 34, 'ghost': 55}
+MATRIX main_gate seed=15 won=True method=keep_retreat fire=210.0 casualties={'defender': 34, 'ghost': 32}
+MATRIX main_gate seed=16 won=True method=keep_retreat fire=480.0 casualties={'defender': 34, 'ghost': 76}
+MATRIX main_gate seed=17 won=False method=none fire=600.0 casualties={'defender': 31, 'ghost': 101}
+MATRIX main_gate seed=18 won=True method=keep_retreat fire=300.0 casualties={'defender': 34, 'ghost': 46}
+MATRIX main_gate seed=19 won=True method=keep_retreat fire=450.0 casualties={'defender': 34, 'ghost': 72}
+MATRIX main_gate seed=20 won=True method=keep_retreat fire=300.0 casualties={'defender': 34, 'ghost': 51}
+T77_MATRIX PASS runs=20 repeats=0 seconds=1158.53 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/main_off/summary.md

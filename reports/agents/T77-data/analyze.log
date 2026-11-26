@@ -1,0 +1,68 @@
+wrote /Users/cyy/Projects/亡魂王子-t77/reports/agents/T77-data/summary.json
+
+## baseline
+
+### default
+main_gate        n=20 win=  0.0% ci=   0-  16 cas= 111.5/ 21.8 cong=0.066 travel=0.066 early=0.70 peak=15.1
+highland         n=20 win= 40.0% ci=  22-  61 cas=  92.8/ 17.2 cong=0.228 travel=0.228 early=0.55 peak=12.0
+feint            n=20 win= 15.0% ci=   5-  36 cas= 103.7/ 13.3 cong=0.580 travel=0.580 early=0.10 peak=12.6
+waves            n=20 win= 70.0% ci=  48-  85 cas=  58.3/ 30.9 cong=0.371 travel=0.371 early=2.35 peak=20.0
+idle             n=20 win= 10.0% ci=   3-  30 cas=  19.7/ 18.4 cong=0.045 travel=0.045 early=0.00 peak=0.0
+late_batches     n=20 win= 70.0% ci=  48-  85 cas=  65.0/ 30.1 cong=0.149 travel=0.149 early=0.85 peak=20.0
+assassin_first   n=20 win= 70.0% ci=  48-  85 cas=  11.4/ 27.9 cong=0.194 travel=0.194 early=6.00 peak=13.2
+giant_breach     n=20 win=100.0% ci=  84- 100 cas=   7.5/ 31.1 cong=0.305 travel=0.305 early=0.15 peak=13.2
+target1 5 ['keep_retreat'] ['breach:wall_west', 'cave', 'cliff', 'main', 'side']
+target2 gap 5.0
+
+### best01
+main_gate        n=20 win=  0.0% ci=   0-  16 cas= 111.5/ 21.8 cong=0.066 travel=0.066 early=0.70 peak=15.1
+highland         n=20 win= 40.0% ci=  22-  61 cas=  92.8/ 17.4 cong=0.229 travel=0.229 early=0.55 peak=12.0
+feint            n=20 win= 15.0% ci=   5-  36 cas= 103.7/ 13.3 cong=0.580 travel=0.580 early=0.10 peak=12.6
+waves            n=20 win= 70.0% ci=  48-  85 cas=  58.3/ 30.8 cong=0.370 travel=0.370 early=2.35 peak=20.0
+idle             n=20 win= 10.0% ci=   3-  30 cas=  19.7/ 18.4 cong=0.045 travel=0.045 early=0.00 peak=0.0
+late_batches     n=20 win= 70.0% ci=  48-  85 cas=  65.0/ 30.1 cong=0.149 travel=0.149 early=0.85 peak=20.0
+assassin_first   n=20 win= 70.0% ci=  48-  85 cas=  11.4/ 27.9 cong=0.194 travel=0.194 early=6.00 peak=13.2
+giant_breach     n=20 win=100.0% ci=  84- 100 cas=   7.5/ 31.1 cong=0.305 travel=0.305 early=0.15 peak=13.2
+target1 5 ['keep_retreat'] ['breach:wall_west', 'cave', 'cliff', 'main', 'side']
+target2 gap 5.0
+
+### best02
+main_gate        n=20 win=  0.0% ci=   0-  16 cas= 111.2/ 21.7 cong=0.058 travel=0.058 early=0.70 peak=15.1
+highland         n=20 win= 35.0% ci=  18-  57 cas=  94.7/ 16.7 cong=0.234 travel=0.234 early=0.55 peak=12.0
+feint            n=20 win= 20.0% ci=   8-  42 cas= 101.5/ 15.2 cong=0.555 travel=0.555 early=0.20 peak=12.6
+waves            n=20 win= 80.0% ci=  58-  92 cas=  44.9/ 31.9 cong=0.394 travel=0.394 early=2.60 peak=20.0
+idle             n=20 win=  0.0% ci=   0-  16 cas=  20.0/ 15.7 cong=0.040 travel=0.040 early=0.00 peak=0.0
+late_batches     n=20 win= 55.0% ci=  34-  74 cas=  70.1/ 28.4 cong=0.143 travel=0.143 early=0.65 peak=20.0
+assassin_first   n=20 win= 80.0% ci=  58-  92 cas=  11.7/ 27.6 cong=0.185 travel=0.185 early=6.00 peak=13.2
+giant_breach     n=20 win= 70.0% ci=  48-  85 cas=   9.4/ 28.0 cong=0.205 travel=0.205 early=0.05 peak=11.8
+target1 5 ['keep_retreat'] ['breach:wall_west', 'cave', 'cliff', 'main', 'side']
+target2 gap 20.0
+
+### best03
+main_gate        n=20 win=  0.0% ci=   0-  16 cas= 111.2/ 21.7 cong=0.058 travel=0.058 early=0.70 peak=15.1
+highland         n=20 win= 45.0% ci=  26-  66 cas=  90.6/ 17.9 cong=0.217 travel=0.217 early=0.55 peak=12.0
+feint            n=20 win= 20.0% ci=   8-  42 cas= 101.5/ 15.2 cong=0.555 travel=0.555 early=0.20 peak=12.6
+waves            n=20 win= 80.0% ci=  58-  92 cas=  43.8/ 31.9 cong=0.375 travel=0.375 early=2.60 peak=20.0
+idle             n=20 win=  0.0% ci=   0-  16 cas=  20.0/ 15.7 cong=0.040 travel=0.040 early=0.00 peak=0.0
+late_batches     n=20 win= 55.0% ci=  34-  74 cas=  70.1/ 28.4 cong=0.143 travel=0.143 early=0.65 peak=20.0
+assassin_first   n=20 win= 80.0% ci=  58-  92 cas=  10.6/ 28.2 cong=0.172 travel=0.172 early=6.00 peak=11.9
+giant_breach     n=20 win= 70.0% ci=  48-  85 cas=   9.4/ 28.0 cong=0.205 travel=0.205 early=0.05 peak=11.8
+target1 5 ['keep_retreat'] ['breach:wall_west', 'cave', 'cliff', 'main', 'side']
+target2 gap 20.0
+
+## target3
+main: on 0/20 off 19/20 diff=-95.0pp b=0 c=19 p=0.0 early 0.70/1.20
+side: on 8/20 off 18/20 diff=-50.0pp b=1 c=11 p=0.0063 early 0.55/0.95
+
+## target4
+default over ['feint'] worst feint best idle
+best01 over ['feint'] worst feint best idle
+best02 over ['feint'] worst feint best idle
+best03 over ['feint'] worst feint best idle
+
+## phase_b True
+assassin_first   win= 70.0% time=117.498 cas=11.4/27.9 spent=112.0 [40.0,120.0] breach=None assass=6
+giant_breach     win=100.0% time=107.667 cas=7.5/31.1 spent=120.0 [120.0,120.0] breach=15.272 assass=0
+prep_control     win= 45.0% time=131.57 cas=20.2/23.2 spent=120.0 [120.0,120.0] breach=None assass=0
+equal spend seeds [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 20]
+paired {'assassin_first_vs_prep_control': {'rate_a': 0.7, 'rate_control': 0.45, 'rate_diff_pp': 25.0, 'discordant_a_only': 7, 'discordant_control_only': 2, 'mcnemar_p': 0.1797}, 'giant_breach_vs_prep_control': {'rate_a': 1.0, 'rate_control': 0.45, 'rate_diff_pp': 55.0, 'discordant_a_only': 11, 'discordant_control_only': 0, 'mcnemar_p': 0.001}}
