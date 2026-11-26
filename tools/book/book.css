@@ -126,3 +126,6 @@ html { scroll-behavior: smooth; }
 .pcard.small h4 { font-size: 17px; }
 .pcard.small p { font-size: 14px; color: var(--muted); }
 @media (max-width: 900px) { .pgrid.four, .pgrid.five { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pgrid.three { grid-template-columns: 1fr; } }
+
+.gallery.wide2 { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+@media (max-width: 760px) { .gallery.wide2 { grid-template-columns: 1fr; } }

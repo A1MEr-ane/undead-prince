@@ -282,6 +282,13 @@ end += '<div class="tbl-wrap"><table class="tbl endings"><thead><tr><th></th><th
 for eid, name, a, b, c, st, after, q in ENDINGS:
     end += f'<tr><td class="eid">{eid}</td><td><b>{name}</b></td><td>{a}</td><td>{b}</td><td>{c}</td><td class="q">{E(q)}</td></tr>'
 end += '</tbody></table></div>'
+ec = ''
+for eid, name in [('E01', '灰烬王冠'), ('E03', '冥夜摄政'), ('E04', '归途'), ('E08', '第一次日落'), ('TRUE', '最后的渡航')]:
+    p_ = img(f'art/story/ENDING-{eid}/ending.png', f'ending-{eid}', 1400)
+    if p_:
+        ec += f'<figure><img src="{p_}" alt="{name}" loading="lazy"><figcaption>{eid if eid != "TRUE" else "真结局"} · {name}</figcaption></figure>'
+if ec:
+    end += f'<div class="gallery wide2">{ec}</div>'
 end += '<p>开放顺序：第一次胜利只能是 E01；之后开放 E02–E04；查清秘印之后开放 E05–E08。"第一次日落"指的是永昼之日熄灭后，王都第一次迎来真正的黑夜和满天星。</p>'
 end += '<h3>真结局</h3><p>亲眼看到秘印释放囚魂之后，王子才第一次明白束缚可以被放下。解约的权利一直在他手里。下一次胜利后，他安排好继承、解除军誓，熄灭渡魂人的灯，渡过灰海。演职员表，存档封存。</p>'
 end += '<blockquote class="big">渡魂人：这盏灯一旦熄灭，就再没有回来的岸了。<br>埃德蒙：我知道。<br>渡魂人：那就上船吧。</blockquote>'
