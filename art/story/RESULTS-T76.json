@@ -1,0 +1,435 @@
+{
+  "task_id": "T76",
+  "executor": "codex",
+  "branch": "codex/t76-endings-fix",
+  "status": "review_required",
+  "summary": {
+    "requested": 3,
+    "generated_variants": 9,
+    "selected_main_images": 2,
+    "passed": 0,
+    "review_required": 2,
+    "failed": 1,
+    "passed_ids": [],
+    "review_required_ids": [
+      "E07",
+      "TRUE"
+    ],
+    "failed_ids": [
+      "E06"
+    ],
+    "note": "已完成原提示词生成、选版与登记；插画验收部分完成。两张优选仅供复核，未声明严格通过六项自查。"
+  },
+  "generator": "built-in image_gen.imagegen",
+  "prompt_policy": "逐字传入指定txt全文，无改写、无追加指令；仅传任务指定身份参考，不传旧结局图。原始PNG逐字节复制，主图未缩放、裁切、涂改或后处理。",
+  "retry_policy": {
+    "max_generations_per_image": 3,
+    "generations": {
+      "E06": 3,
+      "E07": 3,
+      "TRUE": 3
+    },
+    "exhausted_ids": [
+      "E06",
+      "E07",
+      "TRUE"
+    ],
+    "escalate_condition": "连续5张按原提示词生成三次仍不合格",
+    "escalate_triggered": false,
+    "note": "本轮仅3张，不到5张升级阈值；已停止生成。",
+    "rate_limit_events": 0
+  },
+  "checklist_items": {
+    "1": "没有任何文字、字母、签名、题字",
+    "2": "史诗厚涂：写实成人比例、体积光、大面积暗部，不是卡通或平涂",
+    "3": "构图体现权力关系（提示词里的 POWER AND COMPOSITION 一项）",
+    "4": "光照符合提示词：人造永昼只出现在提示词要求的画面里；冥火青绿只出现在亡灵身上",
+    "5": "人物身份与参考一致（王子在观众看来的右半边脸是骷髅，金冠断裂）",
+    "6": "没有多余的手脚"
+  },
+  "inspection_method": "9版原图逐张目视检查；另用sips在/tmp制作只供检查的局部裁片，复核E07三版及TRUE优选脸部。未修改源图或主图。非OCR、非自动解剖检测；passed:null表示不能确认，不能作通过计。",
+  "resolution": {
+    "requested": [
+      2048,
+      1152
+    ],
+    "actual_all": [
+      1672,
+      941
+    ],
+    "passed": false,
+    "note": "内置工具9版实际均为1672x941（近16:9）；保留原图，未放大伪装为目标分辨率。两张优选仍需Lead接受尺寸偏差。"
+  },
+  "usage": {
+    "imagegen_calls": 9,
+    "actual_api_cost": null,
+    "remaining_quota": null,
+    "note": "工具未返回费用或剩余额度；无频率限制。"
+  },
+  "entries": [
+    {
+      "id": "E06",
+      "requested_output": "art/story/ENDING-E06/ending.png",
+      "file": null,
+      "prompt_file": "art/prompts/rendered_endings/ENDING__E06.txt",
+      "prompt_sha256": "11163957eeb0b3537a435d1fed4ba37eb4212560a94539e62c29f256e136b4f0",
+      "prompt_verbatim": true,
+      "references": [
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png"
+      ],
+      "reference_sha256": {
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png": "624decbfaeef5cc8def2c1a94a795497c2d1825631bbf784b88aef9c6fa4398e"
+      },
+      "attempts": 3,
+      "selected_version": null,
+      "best_rejected_version": 3,
+      "main_image_existed_before": false,
+      "main_image_created": false,
+      "main_image_replaced": false,
+      "status": "failed",
+      "selection_reason": "三版都有伪文字，全部存alt；任务开始时本路径无主图，保持空缺。",
+      "variants": [
+        {
+          "id": "E06",
+          "version": 1,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-ced0e61e-0344-4580-a920-3253a4ef8ebd.png",
+          "selected": false,
+          "file": "art/story/ENDING-E06/alt/ending-t76-v1.png",
+          "sha256": "e72c9d99a292d9937d79a18dea09232d3816a65b38ff83e2baa31a327f7e2f68",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "不合格：签署页、前景账簿和书记员手持纸张都有成行伪文字；脸颊与下颌仍偏完整人脸。"
+        },
+        {
+          "id": "E06",
+          "version": 2,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-0b6725df-707e-4748-a543-71a108d8dcff.png",
+          "selected": false,
+          "file": "art/story/ENDING-E06/alt/ending-t76-v2.png",
+          "sha256": "937e85d191f7c2d7666d46f010a1c2807097405ded585d24052b7706b7130f33",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "不合格：左侧手持文件和桌面文件有密集伪文字；王子骷髅下半脸不足。"
+        },
+        {
+          "id": "E06",
+          "version": 3,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-89ff1ac3-e762-4e75-bbfd-02adbb2cbde8.png",
+          "selected": false,
+          "file": "art/story/ENDING-E06/alt/ending-t76-v3.png",
+          "sha256": "9861fd419add778545e591dfb5a83b26d781e36e9cf70942ae8e42ad9003ee9c",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "最佳落选：普通星夜和烛光成立，但前景、右侧卷宗仍有伪文字，王子下半脸未充分骷髅化。"
+        }
+      ],
+      "checklist": [
+        {
+          "item": 1,
+          "passed": false,
+          "status": "failed",
+          "note": "三版纸张均有成行伪文字，未通过绝对无文字要求。"
+        },
+        {
+          "item": 2,
+          "passed": true,
+          "status": "passed",
+          "note": "成人比例，烛光照亮尘埃、衣甲和石墙，大面积暗部，厚涂材质成立。"
+        },
+        {
+          "item": 3,
+          "passed": false,
+          "status": "failed",
+          "note": "平视工作室与周围书记员成立；王子仍居中放大，铠甲、烛台和墨水瓶也呈金色，未满足王冠为房内唯一金色及普通工作人员尺度。"
+        },
+        {
+          "item": 4,
+          "passed": true,
+          "status": "passed",
+          "note": "三版均为真实星夜和城市散落灯火，没有光环、第二太阳；暖烛光为主，微弱青绿源于王子。"
+        },
+        {
+          "item": 5,
+          "passed": false,
+          "status": "failed",
+          "note": "服装、紫披风和冠可辨，但观众右半脸主要是裂纹皮肤与青绿眼光，下颌、牙列没有清楚呈现参考中的骷髅半脸。"
+        },
+        {
+          "item": 6,
+          "passed": true,
+          "status": "passed",
+          "note": "目视未见多余手脚；远处书记员细节受尺寸限制。"
+        }
+      ],
+      "limitations": [
+        "达到三次上限，无合格主图。",
+        "提示词仍允许“blank or shows only illegible scribble marks”；它可能促使模型画出成行字迹，此为推断，未改提示词。"
+      ]
+    },
+    {
+      "id": "E07",
+      "requested_output": "art/story/ENDING-E07/ending.png",
+      "file": "art/story/ENDING-E07/ending.png",
+      "prompt_file": "art/prompts/rendered_endings/ENDING__E07.txt",
+      "prompt_sha256": "d6cf541678db3eb0feb9f012eb229774db4f902c95ee6587b0a6b81710678d33",
+      "prompt_verbatim": true,
+      "references": [
+        "art/chars/CHAR-QUEEN/hero.png",
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png"
+      ],
+      "reference_sha256": {
+        "art/chars/CHAR-QUEEN/hero.png": "2fc4c3648278b4be1839cf61a507930f0a51bc32b1939cbb573122abd068baf5",
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png": "624decbfaeef5cc8def2c1a94a795497c2d1825631bbf784b88aef9c6fa4398e"
+      },
+      "attempts": 3,
+      "selected_version": 1,
+      "best_rejected_version": null,
+      "main_image_existed_before": false,
+      "main_image_created": true,
+      "main_image_replaced": false,
+      "status": "review_required",
+      "selection_reason": "优选待复核：兄妹较小、崖壁和哨兵长列尺度最强，无光环无文字；局部看王子面部偏全骷髅，半脸边界和断冠不够清楚。",
+      "variants": [
+        {
+          "id": "E07",
+          "version": 1,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-0c44ec7b-a836-410f-b30b-10f2dfd2d380.png",
+          "selected": true,
+          "file": "art/story/ENDING-E07/ending.png",
+          "sha256": "c3ee5bb2da43f533aa530b8ac4c2ff50f1dcfbd6edc72114a85800ca71d95086",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "优选待复核：兄妹较小、崖壁和哨兵长列尺度最强，无光环无文字；局部看王子面部偏全骷髅，半脸边界和断冠不够清楚。"
+        },
+        {
+          "id": "E07",
+          "version": 2,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-a3963a0e-07b8-4575-9049-7ebeca181bcc.png",
+          "selected": false,
+          "file": "art/story/ENDING-E07/alt/ending-t76-v2.png",
+          "sha256": "5663fb81723a3f1e5579459cdce00d9ba005232ccc141fc3b718b508e137833f",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "落选：兄妹更大、额外城堡与物资占画面；脸部同样偏全骷髅。无光环、未见文字。"
+        },
+        {
+          "id": "E07",
+          "version": 3,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-6bd9743d-0422-4b05-8b7a-3e6593bca7d5.png",
+          "selected": false,
+          "file": "art/story/ENDING-E07/alt/ending-t76-v3.png",
+          "sha256": "1871c66c7f278c8d4c1ccfb551def3c3df4f520f8b4bb42e42ce675a40070163",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "落选：无光环、哨兵长列成立；兄妹比第一版更大，半脸骷髅边界仍不够准确，未解决身份疑点。"
+        }
+      ],
+      "checklist": [
+        {
+          "item": 1,
+          "passed": true,
+          "status": "passed",
+          "note": "三版均未见文字、字母、签名、题字。"
+        },
+        {
+          "item": 2,
+          "passed": true,
+          "status": "passed",
+          "note": "成人比例、厚涂海浪岩壁与衣甲，紫暮色及海雾光，大片暗崖与前景石滩。"
+        },
+        {
+          "item": 3,
+          "passed": true,
+          "status": "passed",
+          "note": "第一版最接近：崖顶哨兵如墙延伸至远方；兄妹隔着水线相对，在巨大崖壁前缩小。人物仍约占画高四成，离更远的小人物构图有余地。"
+        },
+        {
+          "item": 4,
+          "passed": true,
+          "status": "passed",
+          "note": "只有自然暮色和地平线单一自然夕阳；没有天空光环、第二太阳。女王为暖边光，青绿源自王子和亡灵哨兵，水面可见相应反射。"
+        },
+        {
+          "item": 5,
+          "passed": null,
+          "status": "review_required",
+          "note": "女王盘髻金冠、白金裙红披风，王子紫披风、甲胄及破损冠形可辨；放大后面部偏全骷髅，观众右半脸的分界及断冠缺口不够清楚，不能确认严格通过。"
+        },
+        {
+          "item": 6,
+          "passed": true,
+          "status": "passed",
+          "note": "未见多余手脚；哨兵为远景剪影，不声称完成自动解剖检测。"
+        }
+      ],
+      "limitations": [
+        "身份清单待复核，半脸边界和断冠缺口不够清楚。",
+        "优选只表示本轮相对最好，不等于验收通过。"
+      ]
+    },
+    {
+      "id": "TRUE",
+      "requested_output": "art/story/ENDING-TRUE/ending.png",
+      "file": "art/story/ENDING-TRUE/ending.png",
+      "prompt_file": "art/prompts/rendered_endings/ENDING__TRUE.txt",
+      "prompt_sha256": "39d9133f4560b1684c57827a07d8c1040adb2d193fc0fc7872f2bad88877ff32",
+      "prompt_verbatim": true,
+      "references": [
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png",
+        "art/chars/CHAR-FERRYMAN/hero.png",
+        "art/chars/CHAR-QUEEN/hero.png"
+      ],
+      "reference_sha256": {
+        "art/chars/CHAR-PRINCE-UNDEAD/hero.png": "624decbfaeef5cc8def2c1a94a795497c2d1825631bbf784b88aef9c6fa4398e",
+        "art/chars/CHAR-FERRYMAN/hero.png": "1932549c89d0a1dc216911a3a047dd63b3cbf2b2a87cbcfaecf67fcc230bc705",
+        "art/chars/CHAR-QUEEN/hero.png": "2fc4c3648278b4be1839cf61a507930f0a51bc32b1939cbb573122abd068baf5"
+      },
+      "attempts": 3,
+      "selected_version": 3,
+      "best_rejected_version": null,
+      "main_image_existed_before": false,
+      "main_image_created": true,
+      "main_image_replaced": false,
+      "status": "review_required",
+      "selection_reason": "优选待复核：无光环；青绿发光集中在灯笼，岸上亡灵未见青绿发光；低水面视角、半转身登船、手伸向灯顶成立。王子骷髅侧及断冠细节受转头遮挡。",
+      "variants": [
+        {
+          "id": "TRUE",
+          "version": 1,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-14b30b0d-c02e-4faa-89c6-72b43f88432a.png",
+          "selected": false,
+          "file": "art/story/ENDING-TRUE/alt/ending-t76-v1.png",
+          "sha256": "d2dfeb5a4603ef43242e5e884afa6a37dc8d97daa0a36b6c04bed84dfe6309b6",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "不合格：虽无天空光环，但王子与岸上亡灵仍有少量青绿残光，渡魂人主要在提灯。"
+        },
+        {
+          "id": "TRUE",
+          "version": 2,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-784c3e41-f248-480f-830e-6eda77224ad6.png",
+          "selected": false,
+          "file": "art/story/ENDING-TRUE/alt/ending-t76-v2.png",
+          "sha256": "92a616e94b2ffb8f413fea62bd53b5619c2c9c99f8bce93e60cfb3a4a0b90855",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "不合格：岸上亡灵眼部有明显青绿光，王子也有青绿残光；灯笼不是唯一青绿光源。"
+        },
+        {
+          "id": "TRUE",
+          "version": 3,
+          "source": "/Users/cyy/.codex/generated_images/01a21658-1d11-7250-9087-ddf448f19c1d/exec-1882f7d1-9ec7-4289-8003-452a4a7499c7.png",
+          "selected": true,
+          "file": "art/story/ENDING-TRUE/ending.png",
+          "sha256": "cdd91edcc35cdafb2593dd6cd72e682b20552e2332585c984e98728cc4fd5ffd",
+          "size": [
+            1672,
+            941
+          ],
+          "note": "优选待复核：无光环；青绿发光集中在灯笼，岸上亡灵未见青绿发光；低水面视角、半转身登船、手伸向灯顶成立。王子骷髅侧及断冠细节受转头遮挡。"
+        }
+      ],
+      "checklist": [
+        {
+          "item": 1,
+          "passed": true,
+          "status": "passed",
+          "note": "优选版未见文字、字母、签名、题字；船体只有装饰纹。"
+        },
+        {
+          "item": 2,
+          "passed": true,
+          "status": "passed",
+          "note": "成人比例、厚涂船木衣甲破袍，自然晨光穿海雾，暗船和远景明暗层次清楚。"
+        },
+        {
+          "item": 3,
+          "passed": true,
+          "status": "passed",
+          "note": "低水面广角，船在近景，女王与少数亡灵在岸上，王子半转身登船；渡魂人手伸向灯顶，动作更接近熄灯。"
+        },
+        {
+          "item": 4,
+          "passed": true,
+          "status": "passed",
+          "note": "第三版无光环或第二太阳，唯一天空光源为自然晨日；未见王子、岸上亡灵的青绿发光，青绿光源集中在灯内及近处受光和水面反射。王子旁是近白烟丝。"
+        },
+        {
+          "item": 5,
+          "passed": null,
+          "status": "review_required",
+          "note": "女王、无脸兜帽渡魂人、王子服饰可辨。王子骷髅侧因回头主要被鼻梁轮廓遮住，能见暗眼眶，完整半脸与金冠断口无法确认，需复核。"
+        },
+        {
+          "item": 6,
+          "passed": true,
+          "status": "passed",
+          "note": "未见多余手脚；王子一手扶船沿，渡魂人两手分别伸向灯顶和持桨，其他肢体有遮挡。"
+        }
+      ],
+      "limitations": [
+        "王子骷髅侧受转头遮挡，断冠缺口不清楚，身份清单待复核。",
+        "渡魂人的熄灯动作可见接近灯顶，但未明确画出拨灭机关。"
+      ]
+    }
+  ],
+  "validation": {
+    "required_command": "test -f art/story/RESULTS-T76.json",
+    "required_exit_code": 0,
+    "integrity": [
+      "T76_INTEGRITY entries=3 variants=9 main=2 passed=0 review=2 failed=1",
+      "T76_INTEGRITY prompt_hashes=3/3 references=3/3 copy_bytes=9/9 sizes=9/9(1672x941)",
+      "T76_INTEGRITY other_7_endings=unchanged prompt_and_reference_files=unchanged"
+    ],
+    "runtime_screenshot": null,
+    "runtime_attempt": {
+      "command": "godot --path /tmp/t76-art-preview --script /tmp/t76-art-preview/preview.gd --rendering-method gl_compatibility --resolution 1672x941 --position 0,0",
+      "status": "failed_no_screenshot",
+      "timeout_seconds": 25,
+      "observed_output": [
+        "timeout_after_25s",
+        "2026-11-26 13:43:59.618 godot[79685:4465764] Failure on line 688 in function id scheduleApplicationNotification(LSNotificationCode, NSWorkspaceNotificationCenter *): noErr == _LSModifyNotification(notificationID, 1, &code, 0, NULL, NULL, NULL)",
+        "2026-11-26 13:43:59.726 godot[79685:4465766] Connection Invalid error for service com.apple.hiservices-xpcservice.",
+        "2026-11-26 13:43:59.726 godot[79685:4465764] Error received in message reply handler: Connection invalid"
+      ],
+      "note": "临时独立Godot预览，没有修改游戏代码。窗口未启动、未生成截图，超时后由subprocess.run终止；未声称通过运行或集成验收。"
+    },
+    "unchanged_other_endings": {
+      "E00": "88c4300fc3a3cbaef4d9705f8503bc1d417cc7c52b974b8ce475a1ded53eb011",
+      "E01": "614094126f7d8b63c5e145fb2f0a1d9d44542bce9f5c3c04395dd455803e434e",
+      "E02": "c751c9b8c2828a47cb39b9a77af5116f42a33d2093e0c772124a21ea69a7f629",
+      "E03": "d1ac459a420be4adcf30c1ec2f8667a4a6d61b23343edbf303ff2aa93aa566b5",
+      "E04": "027d42c59e587bee28aed2b8507cdb63147df0bb6619116712733d8f8d46d07f",
+      "E05": "990a0a275f65e1d677dae1b19d3249c463ef75142db1df8d5a325331787cdfda",
+      "E08": "5a446d281ef809112f9b3909f2bcec69ad62d97101f4c6e6e0fed54e39bb5895"
+    },
+    "scope": "仅art/story/与用户明确指定的reports/agents/T76.md；其余7张主图逐字节对比HEAD保持不变。",
+    "commit_attempt": {
+      "status": "failed",
+      "branch": "codex/t76-endings-fix",
+      "failed_at": "git add -- <9张T76插画> art/story/RESULTS-T76.json reports/agents/T76.md",
+      "exit_code": 128,
+      "error": "fatal: Unable to create '/Users/cyy/Projects/亡魂王子/.git/worktrees/亡魂王子-t76/index.lock': Operation not permitted",
+      "commit": null,
+      "git_commit_executed": false,
+      "changes_preserved": true,
+      "note": "暂存阶段失败，未能执行git commit；未重试权限绕过，需Lead代提交。"
+    }
+  }
+}
