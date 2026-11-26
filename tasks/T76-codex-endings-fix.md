@@ -2,7 +2,7 @@
 id: T76
 title: 结局插画补画：E06、E07、真结局（修订后的提示词）
 owner: codex
-status: queued
+status: done
 branch: codex/t76-endings-fix
 worktree: ../亡魂王子-t76
 images: []

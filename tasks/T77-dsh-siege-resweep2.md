@@ -2,7 +2,7 @@
 id: T77
 title: 攻城原型第二轮矩阵（T74 之后）：目标 3、4 复测 + 阶段 B 新策略对照
 owner: dsh
-status: blocked   # 等 T74 合并后改成 queued
+status: queued
 branch: dsh/t77-siege-resweep2
 worktree: ../亡魂王子-t77
 allowed: [proto/siege/params/, reports/agents/]

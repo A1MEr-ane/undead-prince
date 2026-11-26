@@ -2,7 +2,7 @@
 id: T74
 title: 阶段 B 预备：暗影刺客、缝合巨人、可破墙段、山洞权限（开关控制，默认关）
 owner: codex
-status: queued
+status: done
 branch: codex/t74-siege-phaseB
 worktree: ../亡魂王子-t74
 allowed: [proto/siege/, tools/verify/proto_siege.sh]
