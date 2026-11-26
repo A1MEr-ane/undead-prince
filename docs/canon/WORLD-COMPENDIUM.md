@@ -20,13 +20,13 @@
 
 ## 2. The kingdom, succession and the Council / 王国、继承与议会
 
-**WORKING.** Alderreach is a northern maritime monarchy built around islands, sheltered sounds, rivers and a broken coast. Grain, timber, fish, iron, tolls and shipping sustain the realm. The crown relies on local lords for ships, provisions and soldiers. The capital, Sunhold, enjoys supernatural uninterrupted daylight and an unusually ice-free harbour; the rest of the kingdom has ordinary seasons, night and winter. The capital's advantage does not abolish its dependence on food, shipping, weather and labour elsewhere.
+**WORKING.** Alderreach is a northern maritime monarchy built around islands, sheltered sounds, rivers and a broken coast. Grain, timber, fish, iron, tolls and shipping sustain the realm. The crown relies on local lords for ships, provisions and soldiers. The capital, Sunhold, lies under the supernatural, uninterrupted light of the Unending Day and keeps an unusually ice-free harbour, warmed by the sacred flame; natural day and night still turn beyond the city, the Unending Day gives light but no heat, and the rest of the kingdom has ordinary seasons and winter, relying on sacred fire to survive the cold. The capital's advantage does not abolish its dependence on food, shipping, weather and labour elsewhere.
 
-**暂定。** 奥德里奇（Alderreach）为北方海洋君主国，拥有群岛、海峡、河道与曲折海岸。粮食、木材、渔业、铁、港税和航运支撑国家。王室依赖地方领主提供船只、军粮和士兵。王都 Sunhold（暂译白昼王城）拥有超自然的持续白昼及少结冰的港口；其他地方仍有正常昼夜、季节和寒冬。王都的优势不能替代其他地区的粮食、劳动力、航运及自然条件。
+**暂定。** 奥德里奇（Alderreach）为北方海洋君主国，拥有群岛、海峡、河道与曲折海岸。粮食、木材、渔业、铁、港税和航运支撑国家。王室依赖地方领主提供船只、军粮和士兵。王都 Sunhold（暂译白昼王城）处于永昼之日超自然的长明光照下，港口靠圣火供暖而少结冰；城外自然昼夜仍在，永昼之日只发光、不供热，其他地方仍有正常季节与寒冬，靠圣火过冬。王都的优势不能替代其他地区的粮食、劳动力、航运及自然条件。
 
-The royal arms are a gold eight-rayed sun on white. The regency adds a red bend to its banners; Edmund's personal arms bear a crown, now broken on the undead standard. Ordinary families believe the dead sail across the Grey Sea; they light shore lanterns, speak names and commit tokens to the water. The Church of the Sun administers official rites, records deaths and teaches that the capital's light is a divine covenant. Ordinary clergy can be compassionate without knowing its hidden machinery.
+The royal arms are a gold eight-rayed sun on white, adopted after the Unending Day; the dynasty's older arms were a guiding star above the waves (design pending). The regency adds a red bend to its banners; Edmund's personal arms bear a crown, now broken on the undead standard. Ordinary families believe the dead sail across the Grey Sea; they light shore lanterns, speak names and commit tokens to the water. The Church of the Sun administers official rites, records deaths and teaches that the capital's light is a divine covenant. Ordinary clergy can be compassionate without knowing its hidden machinery.
 
-王室纹章为白底金色八芒太阳；摄政议会在军旗上加红斜带；王子私人纹章为王冠，亡灵军旗上的王冠已破碎。百姓相信死者渡过灰海，习惯点岸灯、念姓名、将纪念物放入水中。太阳教会主持官方葬仪、登记死亡并宣扬永昼是神与王室的盟约。普通教士可以善良而并不知晓隐藏机制。
+王室纹章为白底金色八芒太阳，是永昼之后的纹章；王朝旧纹章为星与浪（图样待定）。摄政议会在军旗上加红斜带；王子私人纹章为王冠，亡灵军旗上的王冠已破碎。百姓相信死者渡过灰海，习惯点岸灯、念姓名、将纪念物放入水中。太阳教会主持官方葬仪、登记死亡并宣扬永昼是神与王室的盟约。普通教士可以善良而并不知晓隐藏机制。
 
 ### 2.1 Crown and regency / 王室与摄政议会
 
@@ -73,9 +73,9 @@ Edmund is innocent of treason, but his earlier warrant harmed people he meant to
 
 ## 4. Death, soulfire and the Unending Day / 死亡、冥火与永昼
 
-The founding winter closed several harbours, stranded grain ships and killed many. The first Seal was a temporary means of drawing residual soulfire and, when insufficient, accepting the deliberate sacrifice of a few dying volunteers. The city survived. Over generations the court expanded its demands: an ice-free harbour, protected winter stores, reliable shipping, then civic prestige. Residual soulfire is inadequate for continuous operation at the present scale. A soul is a person; the Seal binds a soul and gradually consumes its capacity to remain a person. It has no infinite fuel. At the present rate of use, regular consignments of newly dead are required. There is no precise universal conversion of souls to days; authoring must keep scarcity and depletion consistent.
+The founding winter closed several harbours, stranded grain ships and killed many. The first Seal was a temporary means of drawing residual soulfire and, when insufficient, accepting the deliberate sacrifice of a few dying volunteers. The city survived. Over generations the court expanded its demands: an ice-free harbour, protected winter stores, reliable shipping, then civic prestige. Each winter the churches of the realm received sacred fire from the capital; the public rite was a gift of divine grace, while the flame itself was drawn from the Seal. Residual soulfire is inadequate for continuous operation at the present scale. A soul is a person; the Seal binds a soul and gradually consumes its capacity to remain a person. It has no infinite fuel. At the present rate of use, regular consignments of newly dead are required. There is no precise universal conversion of souls to days; authoring must keep scarcity and depletion consistent.
 
-建立永昼的严冬封冻了数座港口，粮船滞留，大量百姓死亡。最初秘印是临时措施，抽取残余冥火，不足时接受少数临终者自愿献出的灵魂。城市得以存续。此后宫廷逐代扩大需求：不冻港、冬储、稳定航运，最后还有城市威望。残余冥火不足以按现有规模持续运转。灵魂是一个人；秘印束缚并逐渐消耗其保持人格的能力，燃料并非无限，现有规模必须定期补充死者。暂不设灵魂与天数的精确换算，但创作必须保持稀缺和消耗规律一致。
+建立永昼的严冬封冻了数座港口，粮船滞留，大量百姓死亡。最初秘印是临时措施，抽取残余冥火，不足时接受少数临终者自愿献出的灵魂。城市得以存续。此后宫廷逐代扩大需求：不冻港、冬储、稳定航运，最后还有城市威望。王都每年冬天还把圣火送往各地教堂：公开的说法是神恩下乡，火种实际由秘印分出。残余冥火不足以按现有规模持续运转。灵魂是一个人；秘印束缚并逐渐消耗其保持人格的能力，燃料并非无限，现有规模必须定期补充死者。暂不设灵魂与天数的精确换算，但创作必须保持稀缺和消耗规律一致。
 
 Aldric knew how the system was supplied. Early in his reign he attempted to restrict diversions to voluntary donors; a severe winter and a shortage led him to sign an exception for condemned dead. The exception outlived the emergency. He loved his children and his country, but bears responsibility for a policy he chose and concealed. The Council extended the exception to the entire fleet to silence its families and exploit the supply. Its motive for murder remains political; fuel is an additional use of the victims, not the sole explanation for the conspiracy.
 
@@ -113,9 +113,9 @@ Persistent unlocks are knowledge or reproducible spiritual techniques (otherwise
 
 契约支撑王子独立于秘印及强制军誓的存在；终止后二者不会让他消散。真结局是主动解除契约、渡过灰海，当前历史失去回溯并在他离去后延续，随后播放演职员表。完结存档可查阅，但不可开启出征；新存档回到原始锚点，不继承剧情知识、结局解锁或永久成长。不删存档，不暗中复活。
 
-**WORKING closure mechanism / 暂定解约机制：** the Seal and Return share the principle of interrupting passage, but neither powers the other. By witnessing a late history in which the Seal is stopped, Edmund learns how a binding can be released without consuming the person. The Ferryman can then explain the voluntary release clause of their pact. On a later successful run, before the closing tide, Edmund can explicitly relinquish it. He must settle the consequences of his departure first: if king, name a lawful successor; if still wielding the compulsory oath, release it, because it cannot be inherited by another commander. Voluntary units may remain. This is an irreversible coda to the already recorded E01–E08 outcome, not a fourth bit or a secret reclassification. E08 is the simplest emotional route, not a moral password. See the design document for concrete gates and branches.
+**WORKING closure mechanism / 暂定解约机制：** the Seal and the Return are separate bindings; neither powers the other, and ending the Day does not end the Return, destroy Edmund, or open the True Ending by itself. By witnessing the Seal release its captives, Edmund first understands that a binding can be laid down without consuming the person. This is a change of understanding, not a mechanical dependency: the right to release his pact has always been his, though he did not know it. The Ferryman can then explain the voluntary release clause of their pact. On a later successful run, before the closing tide, Edmund can explicitly relinquish it. He must settle the consequences of his departure first: if king, name a lawful successor; if still wielding the compulsory oath, release it, because it cannot be inherited by another commander. Voluntary units may remain. This is an irreversible coda to the already recorded E01–E08 outcome, not a fourth bit or a secret reclassification. E08 is the simplest emotional route, not a moral password. See the design document for concrete gates and branches.
 
-秘印与回溯共享中断渡海的原理，却不互相供能。王子亲历至少一次秘印被终止的未来后，掌握如何在不消耗人格的情况下解开束缚；渡魂人此后解释契约的自愿解约条款。在之后成功出征的收潮前，王子可以明确解除契约。必须先安排离去的后果：若为国王，指定合法继承安排；若仍持强制军誓，必须解除，因这种支配权不可由其他指挥者继承；自愿者仍可留下。这是真实发生的 E01–E08 之后不可逆的终章，不是第四维或偷偷重分类。E08 是情感上最直接的路线，不是道德密码。具体门槛与分支见剧情设计文档。
+秘印与回溯是两套彼此独立的束缚，互不供能；终止永昼既不会让回溯停止，也不会让王子消散，更不会自动进入真结局。王子在秘印前亲眼看到灵魂被释放，才第一次理解：束缚可以被放下，而不必消耗被束缚者。这是认知上的契机，不是机制上的依赖；解约的权利一直在王子手里，只是他此前不知道。渡魂人此后解释契约的自愿解约条款。在之后成功出征的收潮前，王子可以明确解除契约。必须先安排离去的后果：若为国王，指定合法继承安排；若仍持强制军誓，必须解除，因这种支配权不可由其他指挥者继承；自愿者仍可留下。这是真实发生的 E01–E08 之后不可逆的终章，不是第四维或偷偷重分类。E08 是情感上最直接的路线，不是道德密码。具体门槛与分支见剧情设计文档。
 
 The emotional cost is grief and accumulated responsibility, not a punishment meter. The Ferryman's knowledge is not omniscience. The player can decline closure and the tide recalls Edmund again until he is ready; after closure the current save is finished.
 
@@ -1724,9 +1724,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 坚持王位→确立统治→保留军誓→凭后期知识终止秘印。王子授权停机，再命令受束缚军团运粮守港；释放尚存囚魂，却保留军事强制。
 
-**Aftermath:** The first sunset falls over an undead king and working docks. Voluntary aid and compulsory labour are visibly different. Food shortages or effective reserves alter the immediate mood, not the core outcome.
+**Aftermath:** The first sunset after the Unending Day falls over an undead king and working docks. Across the realm, towns burn wood and peat for the first winter in living memory; the outer islands and the capital are at last equally cold and equally dark. Voluntary aid and compulsory labour are visibly different. Food shortages or effective reserves alter the immediate mood, not the core outcome.
 
-**尾声：** 首次日落照耀亡灵君主和仍在工作的码头。自愿支援与强制劳役有明确差异；粮食不足或储备充分改变当下氛围，不改结局组合。
+**尾声：** 永昼结束后的第一次日落照耀亡灵君主和仍在工作的码头。全国城镇在这个冬天第一次烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。自愿支援与强制劳役有明确差异；粮食不足或储备充分改变当下氛围，不改结局组合。
 
 **After Return:** “The sun went down. Your orders did not.” / “太阳落下了。你的命令却还没有结束。”
 
@@ -1736,9 +1736,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 坚持王位→取得认可的继承安排和有效行政→解除军誓→终止秘印。王子仍靠契约作为亡灵存在，只能依靠常规制度、自愿支持与紧急经济安排，而非超自然强制。
 
-**Aftermath:** The king signs a winter budget by candlelight. Eleanor can serve as an independent adviser, seek another life or disagree publicly. The kingdom faces a difficult transition; the name refers to its institutions, not a magically mortal Edmund.
+**Aftermath:** The king signs a winter budget by candlelight while towns across the realm burn wood and peat; the outer islands and the capital are at last equally cold and equally dark. Eleanor can serve as an independent adviser, seek another life or disagree publicly. The kingdom faces a difficult transition; the name refers to its institutions, not a magically mortal Edmund.
 
-**尾声：** 国王在烛光下签署冬季预算。妹妹可担任独立顾问、另寻生活或公开反对。王国经历艰难过渡；结局名称指国家制度回归凡世，并非王子突然变回活人。
+**尾声：** 国王在烛光下签署冬季预算，全国城镇烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。妹妹可担任独立顾问、另寻生活或公开反对。王国经历艰难过渡；结局名称指国家制度回归凡世，并非王子突然变回活人。
 
 **After Return:** “A kingdom that needs candles. Imagine the expense.” / “一个需要蜡烛的王国。想想那笔开销吧。”
 
@@ -1748,9 +1748,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→她解除摄政→保留军誓→共同安排并终止秘印。王子让亡灵军团守国、协助过冬；女王可附条件接受，或质疑仍在持续的强制，她仍是君主。
 
-**Aftermath:** The siblings meet on the shore at the end of the first winter preparations. Edmund promises to stand watch. An optional projected future shows a mortal sister growing old and an undead brother keeping watch, clearly labelled as a possibility, not remembered decades.
+**Aftermath:** The siblings meet on the shore at the end of the first winter preparations, while towns across the realm burn wood and peat and the outer islands and the capital are at last equally cold and equally dark. Edmund promises to stand watch. An optional projected future shows a mortal sister growing old and an undead brother keeping watch, clearly labelled as a possibility, not remembered decades.
 
-**尾声：** 首轮冬季准备结束时兄妹在岸边相见，王子承诺守望。可选的远期推演展示逐渐衰老的妹妹与亡灵兄长，须注明为可能未来，不是王子记得的数十年。
+**尾声：** 首轮冬季准备结束时兄妹在岸边相见，全国城镇烧起木柴和泥炭，外岛与王都终于一样冷、一样黑。王子承诺守望。可选的远期推演展示逐渐衰老的妹妹与亡灵兄长，须注明为可能未来，不是王子记得的数十年。
 
 **After Return:** “A long watch. I hope you remembered to ask for volunteers.” / “漫长的守望。希望你还记得问问谁愿意留下。”
 
@@ -1760,9 +1760,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→恢复她独立执政→解除军誓→经她同意并制定可行过冬安排，终止秘印。它是 E04 最直接的情感延续，但非唯一后期成功结局或终章门槛。
 
-**Aftermath:** Eleanor sees the colour leave the white city walls. Pip's horn sounds dismissal; those who volunteer remain free. The kingdom faces an uncertain winter. Edmund is still bound to Return until he has the separate knowledge and chooses release.
+**Aftermath:** The Unending Day goes out. After the natural sun sets, night falls completely over Sunhold for the first time, and the city sees a sky full of stars. Eleanor watches the white walls lose their colour. Pip's horn sounds dismissal; those who volunteer remain free. Across the realm, towns burn wood and peat; the outer islands and the capital are at last equally cold and equally dark. The kingdom faces an uncertain winter. Edmund is still bound to Return until he has the separate knowledge and chooses release.
 
-**尾声：** 妹妹看着白色城墙逐渐失去光彩，皮普吹响散队号，自愿留下者保持自由。王国面对未知寒冬；王子在掌握独立解约知识并选择解除之前仍受回溯束缚。
+**尾声：** 永昼之日熄灭。自然太阳落山后，王都第一次迎来完整的黑夜，第一次看见满天星。妹妹看着白色城墙逐渐失去光彩；皮普吹响散队号，自愿留下者保持自由。全国城镇烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。王国面对未知寒冬；王子在掌握独立解约知识并选择解除之前仍受回溯束缚。
 
 **After Return (if not yet final):** “It was a fine sunset. Pity no one else remembers it.” / “很美的一场日落。可惜没有别人记得。”
 
@@ -1774,9 +1774,9 @@ The pact recalls the Prince when a campaign fails or reaches its closing tide. E
 
 契约在讨伐失败或抵达战后收潮时召回王子。埃德蒙以为渡魂人给的是复仇机会，首胜才发现成功并非解约条款。渡魂人维护死者渡海，却不能直接干涉现世政权，也不知晓所有未来。他选择蒙冤的王室统帅，是因为被定罪舰队即将被截留，且王子有能力亲自到达设施。其身份及知情机制仍不公开。
 
-After witnessing the Seal release its captives in one late outcome, Edmund understands how a binding can be opened without destroying its subject. In the following anchor conversation the Ferryman explains that Edmund's own pact is similarly terminable by informed, voluntary relinquishment. The two bindings share a principle, not a fuel source. The Ferryman cannot revoke the pact for him; this must be Edmund's own act. No final test of moral purity is implied.
+After witnessing the Seal release its captives in one late outcome, Edmund first understands that a binding can be laid down without destroying its subject. The insight is a precedent in understanding, not a mechanism the two bindings share: the right to release his own pact has always been his, though he did not know it. In the following anchor conversation the Ferryman explains that Edmund's pact is terminable by informed, voluntary relinquishment. The Ferryman cannot revoke it for him; this must be Edmund's own act. No final test of moral purity is implied.
 
-亲历一次后期结局、见到秘印释放囚魂之后，埃德蒙理解如何在不消灭主体的情况下解除束缚。下一次锚点对话中，渡魂人解释王子自身的契约亦可经知情、自愿放弃而解除。两种束缚共享原理，但不共用燃料；渡魂人不能代为解除，须由王子自己完成。这并非道德纯洁测试。
+亲历一次后期结局、见到秘印释放囚魂之后，埃德蒙第一次理解：束缚可以被放下，而不必消灭被束缚者。这是认知上的先例，不是两套束缚共享的机制；解约的权利一直在王子手里，只是他此前不知道。下一次锚点对话中，渡魂人解释王子自身的契约亦可经知情、自愿放弃而解除；渡魂人不能代为解除，须由王子自己完成。这并非道德纯洁测试。
 
 > Edmund: “You never told me how to stop coming back.”
 >
