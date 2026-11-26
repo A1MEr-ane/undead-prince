@@ -52,10 +52,10 @@
     {
       "id": "E06",
       "cast": "Edmund (undead prince)",
-      "scene": "A plain stone office at night lit by candles. Edmund, crowned, signs a winter budget at a desk piled with ledgers; living clerks work around him; through the window the city shows ordinary scattered lamplight under a real night sky.",
-      "power": "eye-level, quiet; the crown is the only gold in a room of paper and wax; the king is just one worker among many.",
-      "light": "warm candlelight; real night outside; his soulfire subdued.",
-      "world": "The artificial Unending Day has been extinguished: there is NO ring of light, halo or second sun anywhere in the sky; only the natural sky. Every paper, ledger and document in the scene is blank or shows only illegible scribble marks, never letters."
+      "scene": "A winter night in a plain market square of the white city after the Unending Day has gone out. Edmund, crowned, stands among ordinary living townsfolk handing out split firewood from a cart; braziers burn in the square; the windows around show ordinary scattered lamplight under a real starry sky. No papers, books, signs or banners anywhere.",
+      "power": "eye-level, crowded and human; the crown is the only gold in the scene; the king works shoulder to shoulder with commoners, a little apart because of what he is.",
+      "light": "warm brazier and lamplight, real night sky with stars; his soulfire subdued.",
+      "world": "The artificial Unending Day has been extinguished: there is NO ring of light, halo or second sun anywhere in the sky; only the natural night sky. There is no writing anywhere in the image."
     },
     {
       "id": "E07",
