@@ -130,16 +130,43 @@ func _update_adjacent() -> void:
 	if not u.beats.hz(cfg.adjacent_period):
 		return
 	var cands: Array = []
-	for f in u.squad.units:
+	var closest: Array = []
+	var count := maxi(0, int(cfg.adjacent_count))
+	for f in u.main.adjacent_units(u, sqrt(float(cfg.adjacent_radius_sq))):
 		if f == u or not _valid(f):
 			continue
 		var d: float = (f.nav_pos - u.nav_pos).length_squared()
 		if d < cfg.adjacent_radius_sq:
-			cands.append([d, f])
-	cands.sort_custom(func(a, b): return a[0] < b[0])
+			var candidate := [d, f]
+			cands.append(candidate)
+			var slot := closest.size()
+			for i in closest.size():
+				if d < closest[i][0]:
+					slot = i
+					break
+			if slot < count:
+				closest.insert(slot, candidate)
+				if closest.size() > count:
+					closest.pop_back()
+	# 只有等距会依赖 Godot 非稳定排序的细节；这些情况沿用原完整排序。
+	var tied := false
+	for i in range(1, closest.size()):
+		if closest[i - 1][0] == closest[i][0]:
+			tied = true
+	if not closest.is_empty() and not tied:
+		var boundary_count := 0
+		for candidate in cands:
+			if candidate[0] == closest[-1][0]:
+				boundary_count += 1
+				if boundary_count > 1:
+					tied = true
+					break
+	if tied:
+		cands.sort_custom(func(a, b): return a[0] < b[0])
+		closest = cands.slice(0, count)
 	adjacent.clear()
-	for k in mini(int(cfg.adjacent_count), cands.size()):
-		adjacent.append(cands[k][1])
+	for candidate in closest:
+		adjacent.append(candidate[1])
 
 
 # ---------- 各状态 ----------

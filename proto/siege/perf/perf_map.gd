@@ -33,18 +33,22 @@ func direction(a: Vector3, b: Vector3, cave: bool = false) -> Vector3:
 	return out
 
 func field(goal: Vector3, cave: bool) -> Dictionary:
-	var before := fields.size()
+	var before: int = stat.field_builds
 	var t := Time.get_ticks_usec()
 	var out := super.field(goal, cave)
 	var elapsed := Time.get_ticks_usec() - t
 	stat.field_us += elapsed
 	stat.field_calls += 1
-	if fields.size() > before:
-		stat.field_builds += 1
-		stat.field_build_us += elapsed
-	else:
+	if stat.field_builds == before:
 		stat.field_hits += 1
 		stat.field_hit_us += elapsed
+	return out
+
+func _build_field(g: int, cave: bool) -> Dictionary:
+	var t := Time.get_ticks_usec()
+	var out := super._build_field(g, cave)
+	stat.field_builds += 1
+	stat.field_build_us += Time.get_ticks_usec() - t
 	return out
 
 func change(rect: Array, open: bool, at: float, reason: String) -> void:

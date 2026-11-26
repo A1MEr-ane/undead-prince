@@ -1,0 +1,3389 @@
+[
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 19.467,
+      "mean": 13.666,
+      "p50": 14.804,
+      "p95": 17.407,
+      "p99": 17.798
+    },
+    "battle_hash": "bc9d15290c6ee989f6f8e05c03463911cacebb40d9a4cec6969affd7dd7d99ec",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 7.463,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "march",
+    "schema": 1,
+    "setup_ms": 76.033,
+    "sim_ms": {
+      "max": 19.467,
+      "mean": 13.706,
+      "p50": 14.807,
+      "p95": 17.407,
+      "p99": 17.798
+    },
+    "spawned": [
+      100,
+      0
+    ],
+    "state_hash": "e2e6a4d336e53173f83f6ca7bcd815ffc2a8ee9648a705fcbbc8be6c60627e01",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 4.45,
+    "tag": "march_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=march --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 56.211,
+      "mean": 41.538,
+      "p50": 49.984,
+      "p95": 53.499,
+      "p99": 55.075
+    },
+    "battle_hash": "e5560cce7b6829091505f9f9e17e5cac9dff2c27a9055d7bde6f17a584667438",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 16.283,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "march",
+    "schema": 1,
+    "setup_ms": 74.831,
+    "sim_ms": {
+      "max": 56.211,
+      "mean": 41.706,
+      "p50": 49.993,
+      "p95": 53.499,
+      "p99": 55.075
+    },
+    "spawned": [
+      200,
+      0
+    ],
+    "state_hash": "f4cb18e9adb28ecd4ad1b8b6d447f6d2c67b68f0353c9f89628269275c52be8d",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 12.96,
+    "tag": "march_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=march --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 113.185,
+      "mean": 82.766,
+      "p50": 104.604,
+      "p95": 110.928,
+      "p99": 111.917
+    },
+    "battle_hash": "37e16cb93ce04e41c2b937ad1dbe3f028c05c6087206fa47e3dfe9eb25370fe9",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 25.654,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "march",
+    "schema": 1,
+    "setup_ms": 74.015,
+    "sim_ms": {
+      "max": 113.185,
+      "mean": 83.148,
+      "p50": 104.605,
+      "p95": 110.928,
+      "p99": 111.917
+    },
+    "spawned": [
+      300,
+      0
+    ],
+    "state_hash": "bbc616d88e6be26a2ce5e894ff383d7c8c2caabaa32de7864b4df54351ffbfed",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 25.44,
+    "tag": "march_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=march --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 411.796,
+      "mean": 200.054,
+      "p50": 265.714,
+      "p95": 284.672,
+      "p99": 295.044
+    },
+    "battle_hash": "8742d76bff4f59410277c04df8c391f2886424ce8cf87242df8d49b828f084d1",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 44.642,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "march",
+    "schema": 1,
+    "setup_ms": 74.397,
+    "sim_ms": {
+      "max": 411.796,
+      "mean": 201.09,
+      "p50": 266.423,
+      "p95": 284.672,
+      "p99": 295.044
+    },
+    "spawned": [
+      500,
+      0
+    ],
+    "state_hash": "d35d783741063b57a82a1c6373373cc3222e795a264637c0617375690c4d1b2f",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 60.92,
+    "tag": "march_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=march --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/march_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 20.811,
+      "mean": 8.717,
+      "p50": 8.725,
+      "p95": 9.836,
+      "p99": 10.545
+    },
+    "battle_hash": "20e23e0cac6ff65ed84dddd5e10ee7d0fde7f81b65bcc3a502a1716bcf115adf",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 7.557,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "multi",
+    "schema": 1,
+    "setup_ms": 74.239,
+    "sim_ms": {
+      "max": 20.811,
+      "mean": 8.725,
+      "p50": 8.738,
+      "p95": 9.836,
+      "p99": 10.545
+    },
+    "spawned": [
+      100,
+      0
+    ],
+    "state_hash": "1cf90be65565419726f1a18b2fe6ddefe00174d32d53da4f5474f4bbf73e9bc9",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 3.32,
+    "tag": "multi_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=multi --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 28.678,
+      "mean": 22.909,
+      "p50": 24.829,
+      "p95": 26.747,
+      "p99": 27.605
+    },
+    "battle_hash": "61a86dae499c84a2b360a261eff2a55498a65a8edea1c5745c0bddc4d0778179",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.8,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 16.777,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "multi",
+    "schema": 1,
+    "setup_ms": 74.672,
+    "sim_ms": {
+      "max": 28.678,
+      "mean": 22.957,
+      "p50": 24.843,
+      "p95": 26.747,
+      "p99": 27.605
+    },
+    "spawned": [
+      200,
+      0
+    ],
+    "state_hash": "e11d33febec0a02353c00b57c1c60e8248cb602984f6f08577bc0d714818b736",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 7.29,
+    "tag": "multi_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=multi --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 93.392,
+      "mean": 43.104,
+      "p50": 48.194,
+      "p95": 52.168,
+      "p99": 59.667
+    },
+    "battle_hash": "a7eac17ea34249929c411b61fa163206888c73acefc04d8682c8e0396e2bf7f7",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 39.0,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 23.602,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "multi",
+    "schema": 1,
+    "setup_ms": 73.295,
+    "sim_ms": {
+      "max": 93.392,
+      "mean": 43.23,
+      "p50": 48.209,
+      "p95": 52.168,
+      "p99": 59.667
+    },
+    "spawned": [
+      300,
+      0
+    ],
+    "state_hash": "02fef798e1c12fd847836149b95f555156f64dea6d95eca7102247e20b0d5f7b",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 13.44,
+    "tag": "multi_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=multi --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 287.941,
+      "mean": 101.123,
+      "p50": 113.182,
+      "p95": 139.611,
+      "p99": 180.571
+    },
+    "battle_hash": "03630ceac5e26739079f42bceadc1092e98203d30ac802f72f68a6b7532f25ea",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 39.44,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "multi",
+    "schema": 1,
+    "setup_ms": 74.487,
+    "sim_ms": {
+      "max": 287.941,
+      "mean": 101.533,
+      "p50": 113.219,
+      "p95": 139.611,
+      "p99": 180.571
+    },
+    "spawned": [
+      500,
+      0
+    ],
+    "state_hash": "5fe8e64ebb0ac37e9c55928fd393fd3c07edf16bfbb63a185f536798411607aa",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 31.23,
+    "tag": "multi_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=multi --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/multi_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 21.401,
+      "mean": 17.415,
+      "p50": 17.306,
+      "p95": 19.221,
+      "p99": 20.567
+    },
+    "battle_hash": "694adaae409efc708317eb7d40615946f2ba56765730cc0522aa816b07952134",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 315,
+      "enemy_switch": 100,
+      "parry": 3,
+      "pursue": 4
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 16.534,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "melee",
+    "schema": 1,
+    "setup_ms": 75.11,
+    "sim_ms": {
+      "max": 21.401,
+      "mean": 17.417,
+      "p50": 17.306,
+      "p95": 19.221,
+      "p99": 20.567
+    },
+    "spawned": [
+      50,
+      50
+    ],
+    "state_hash": "0cbf85aa8c1a8b38077c71631fa99ef0846b83793e84486a9b177e93df316194",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 5.95,
+    "tag": "melee_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 138.809,
+      "mean": 38.73,
+      "p50": 36.995,
+      "p95": 46.976,
+      "p99": 53.533
+    },
+    "battle_hash": "74e08b25476bb5cf8cc5b86f7998ca18df02a3f8c6a7c9741ade34a7759ac65c",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 826,
+      "enemy_switch": 213,
+      "parry": 18,
+      "pursue": 49
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.8,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 46.008,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "melee",
+    "schema": 1,
+    "setup_ms": 74.783,
+    "sim_ms": {
+      "max": 138.809,
+      "mean": 38.684,
+      "p50": 36.974,
+      "p95": 46.976,
+      "p99": 53.533
+    },
+    "spawned": [
+      100,
+      100
+    ],
+    "state_hash": "a5fbdcf91db7b92dc6724ea73e16e9a1a116e70e4f7914661084b52a30a2cb59",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 12.41,
+    "tag": "melee_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 172.079,
+      "mean": 72.925,
+      "p50": 70.244,
+      "p95": 87.684,
+      "p99": 147.887
+    },
+    "battle_hash": "8805ab61f46df84ae92506b6eb1d6461fa8463d54f8b5b0d29f2af470eee9753",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 2098,
+      "counter": 1,
+      "enemy_switch": 318,
+      "parry": 8,
+      "pursue": 155
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 82.337,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "melee",
+    "schema": 1,
+    "setup_ms": 74.355,
+    "sim_ms": {
+      "max": 172.079,
+      "mean": 72.871,
+      "p50": 70.204,
+      "p95": 87.684,
+      "p99": 147.887
+    },
+    "spawned": [
+      150,
+      150
+    ],
+    "state_hash": "f95c365ef3fe042d47704fdd90661cb34c359c1cd1da5ef1c7a0e94d2e0d4c6c",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 23.04,
+    "tag": "melee_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 278.829,
+      "mean": 141.883,
+      "p50": 140.478,
+      "p95": 160.435,
+      "p99": 188.789
+    },
+    "battle_hash": "88e0067ceebd1cd31ec89b5c9aa9fbbfe45d890b22183797b5f72f244b0ebb8f",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 2038,
+      "counter": 10,
+      "enemy_switch": 566,
+      "parry": 401,
+      "pursue": 453
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 161.339,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "melee",
+    "schema": 1,
+    "setup_ms": 74.333,
+    "sim_ms": {
+      "max": 278.829,
+      "mean": 141.781,
+      "p50": 140.465,
+      "p95": 160.063,
+      "p99": 188.789
+    },
+    "spawned": [
+      250,
+      250
+    ],
+    "state_hash": "f2d456d6e5cb9d6ab0001320c48a60456baa6e83fbde5dfdbdbafef30b0c532a",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 43.96,
+    "tag": "melee_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=melee --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/melee_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 22.513,
+      "mean": 15.882,
+      "p50": 15.777,
+      "p95": 18.321,
+      "p99": 19.847
+    },
+    "battle_hash": "5d4b138a952ac841bb49ce9054e11abdadea8a071f98efb31729e4ba54c8d067",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 57,
+      "enemy_switch": 160,
+      "parry": 106,
+      "pursue": 4
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 22.513,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "gate",
+    "schema": 1,
+    "setup_ms": 75.02,
+    "sim_ms": {
+      "max": 20.742,
+      "mean": 15.853,
+      "p50": 15.755,
+      "p95": 18.009,
+      "p99": 19.513
+    },
+    "spawned": [
+      60,
+      40
+    ],
+    "state_hash": "2aaf537011c4ca03646c95fea68ea67bb63a1a4588602a9add34225b3fe96b1d",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 5.6,
+    "tag": "gate_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=gate --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 85.252,
+      "mean": 41.517,
+      "p50": 40.615,
+      "p95": 51.205,
+      "p99": 57.184
+    },
+    "battle_hash": "dd04e649fa6e7582a6990ca62574f3416966ccf7ed02f1235484e1dac34a5cb1",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 184,
+      "counter": 1,
+      "enemy_switch": 388,
+      "parry": 157,
+      "pursue": 17
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 35.2,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 55.578,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "gate",
+    "schema": 1,
+    "setup_ms": 73.343,
+    "sim_ms": {
+      "max": 85.252,
+      "mean": 41.446,
+      "p50": 40.611,
+      "p95": 50.711,
+      "p99": 57.184
+    },
+    "spawned": [
+      120,
+      80
+    ],
+    "state_hash": "3490fd03a8b89dff76bd24baef720b5d118b5459018e75c31b2d3feec4ddd279",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 13.2,
+    "tag": "gate_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=gate --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 315.304,
+      "mean": 81.373,
+      "p50": 77.883,
+      "p95": 105.088,
+      "p99": 169.58
+    },
+    "battle_hash": "8313f1fc1088a4c08bb3b537ebfd74b0cf0e6ebdab87c01d6f874ae45bfa97fa",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 262,
+      "counter": 4,
+      "enemy_switch": 522,
+      "parry": 229,
+      "pursue": 18
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 39.1,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 93.544,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "gate",
+    "schema": 1,
+    "setup_ms": 74.648,
+    "sim_ms": {
+      "max": 315.304,
+      "mean": 81.3,
+      "p50": 77.707,
+      "p95": 105.088,
+      "p99": 169.58
+    },
+    "spawned": [
+      180,
+      120
+    ],
+    "state_hash": "b8307f5249bca44875b1b929e068ac0fbffa85e8d7cb8a374024a69276af3427",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 25.75,
+    "tag": "gate_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=gate --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 530.998,
+      "mean": 184.259,
+      "p50": 176.468,
+      "p95": 229.572,
+      "p99": 364.761
+    },
+    "battle_hash": "927e5f31ab952f5f22e1924e0352af555694939980ddb6e20fef4d5120bdead8",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 555,
+      "counter": 2,
+      "enemy_switch": 707,
+      "parry": 492,
+      "pursue": 26
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 220.952,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "gate",
+    "schema": 1,
+    "setup_ms": 91.757,
+    "sim_ms": {
+      "max": 530.998,
+      "mean": 184.015,
+      "p50": 176.198,
+      "p95": 229.572,
+      "p99": 364.761
+    },
+    "spawned": [
+      300,
+      200
+    ],
+    "state_hash": "a44c82a5221980b51c8e1098c3455f1b27e25d4ff2cae62afb91a0f0d7c607a8",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 56.89,
+    "tag": "gate_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=gate --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/gate_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 171.072,
+      "mean": 17.009,
+      "p50": 16.362,
+      "p95": 20.064,
+      "p99": 25.994
+    },
+    "battle_hash": "d814e5c0edcd137cabbb0760078ab562aca85ffeea6ec5e426e7d6260ac5ed68",
+    "breach_sample": 12,
+    "breach_sim_seconds": 0.8,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 8.438,
+    "flow_relaxed_cells": 626,
+    "flow_repairs": 1,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "dd3562599149a162814e85d2820ceff98165e731b10d83b98b606fe18360b9c5",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "breach",
+    "schema": 1,
+    "setup_ms": 74.62,
+    "sim_ms": {
+      "max": 171.072,
+      "mean": 17.078,
+      "p50": 16.401,
+      "p95": 20.064,
+      "p99": 25.994
+    },
+    "spawned": [
+      100,
+      0
+    ],
+    "state_hash": "e2998edabcc25ad45009dd1251efb95af66ab6096f5a8ba7e6bad8f9ff0788e0",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 1,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 5.04,
+    "tag": "breach_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=breach --perf_units=100 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 156.729,
+      "mean": 52.186,
+      "p50": 53.863,
+      "p95": 58.085,
+      "p99": 113.743
+    },
+    "battle_hash": "8616604185105cef04a0dd4dcd157b52a028a6f8b0687f78f16510e0246f6961",
+    "breach_sample": 6,
+    "breach_sim_seconds": 0.4,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.6,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 24.943,
+    "flow_relaxed_cells": 626,
+    "flow_repairs": 1,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "dd3562599149a162814e85d2820ceff98165e731b10d83b98b606fe18360b9c5",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "breach",
+    "schema": 1,
+    "setup_ms": 87.439,
+    "sim_ms": {
+      "max": 156.729,
+      "mean": 52.42,
+      "p50": 53.904,
+      "p95": 58.085,
+      "p99": 113.743
+    },
+    "spawned": [
+      200,
+      0
+    ],
+    "state_hash": "5d5309a429b5f584ea38dea3f08db403a86382b44c0aef3bafe0b981b2e35d3f",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 1,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 13.07,
+    "tag": "breach_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=breach --perf_units=200 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 312.561,
+      "mean": 104.31,
+      "p50": 112.406,
+      "p95": 122.568,
+      "p99": 189.49
+    },
+    "battle_hash": "9423f6a97a20d78f316b378dcb85df55cee7681a485107ccfbd61436e4687bd5",
+    "breach_sample": 5,
+    "breach_sim_seconds": 0.33,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.8,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 32.484,
+    "flow_relaxed_cells": 626,
+    "flow_repairs": 1,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "dd3562599149a162814e85d2820ceff98165e731b10d83b98b606fe18360b9c5",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "breach",
+    "schema": 1,
+    "setup_ms": 74.19,
+    "sim_ms": {
+      "max": 312.561,
+      "mean": 104.913,
+      "p50": 112.474,
+      "p95": 122.568,
+      "p99": 189.49
+    },
+    "spawned": [
+      300,
+      0
+    ],
+    "state_hash": "4f318c0bbe32b2a29a5b8a09c75d9bfbc9fe1154e23940953c9bd8086a3e1d62",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 1,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 25.73,
+    "tag": "breach_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=breach --perf_units=300 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 363.284,
+      "mean": 235.127,
+      "p50": 263.265,
+      "p95": 292.82,
+      "p99": 297.79
+    },
+    "battle_hash": "d0c6711a374bf25c72319c2751f6123a69230e46338c505a3b3219a5e8abd4b8",
+    "breach_sample": 3,
+    "breach_sim_seconds": 0.2,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.3,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 61.057,
+    "flow_relaxed_cells": 626,
+    "flow_repairs": 1,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "dd3562599149a162814e85d2820ceff98165e731b10d83b98b606fe18360b9c5",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "breach",
+    "schema": 1,
+    "setup_ms": 77.162,
+    "sim_ms": {
+      "max": 363.284,
+      "mean": 236.575,
+      "p50": 263.668,
+      "p95": 292.82,
+      "p99": 297.79
+    },
+    "spawned": [
+      500,
+      0
+    ],
+    "state_hash": "037c88d32b81e5fa661b972c58b6cd2c977f259f132f5080757afc4824252bd8",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 1,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 57.53,
+    "tag": "breach_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=breach --perf_units=500 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/breach_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 13.375,
+      "mean": 8.871,
+      "p50": 8.653,
+      "p95": 12.62,
+      "p99": 12.99
+    },
+    "battle_hash": "6e182296bdadfd052fc99b1130dc943ecf78ad0083241572575f07a316ffc310",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 11.878,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "reinforce",
+    "schema": 1,
+    "setup_ms": 74.151,
+    "sim_ms": {
+      "max": 13.375,
+      "mean": 8.863,
+      "p50": 8.653,
+      "p95": 12.62,
+      "p99": 12.99
+    },
+    "spawned": [
+      25,
+      75
+    ],
+    "state_hash": "4eec76914da442b30b9de87a27687a16b4fa91b565b245a8c3c708929626083e",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 3.11,
+    "tag": "reinforce_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=reinforce --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 38.56,
+      "mean": 22.565,
+      "p50": 21.578,
+      "p95": 37.175,
+      "p99": 37.985
+    },
+    "battle_hash": "903a8b946369f5d975551413c547445286b02d7bc91cf0ac61d8c312e7068bc6",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.8,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 33.178,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "reinforce",
+    "schema": 1,
+    "setup_ms": 75.011,
+    "sim_ms": {
+      "max": 38.56,
+      "mean": 22.547,
+      "p50": 21.578,
+      "p95": 37.175,
+      "p99": 37.985
+    },
+    "spawned": [
+      50,
+      150
+    ],
+    "state_hash": "9624643a274d54c25197de312ea8215b2051457c10534c617ec6c6e6a8052938",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 7.21,
+    "tag": "reinforce_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=reinforce --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 134.053,
+      "mean": 41.731,
+      "p50": 39.227,
+      "p95": 73.391,
+      "p99": 74.9
+    },
+    "battle_hash": "91ce688c0985fc6c4a94d56e5bd16a58269ea675fb895ba0d7afb90f557622f1",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 60.469,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "reinforce",
+    "schema": 1,
+    "setup_ms": 73.915,
+    "sim_ms": {
+      "max": 134.053,
+      "mean": 41.717,
+      "p50": 39.227,
+      "p95": 73.391,
+      "p99": 74.9
+    },
+    "spawned": [
+      75,
+      225
+    ],
+    "state_hash": "66788a4d67113c8a4882fe4246ee72cc7f142e497398f4c72e49b5dab724bac4",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 13.04,
+    "tag": "reinforce_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=reinforce --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 359.864,
+      "mean": 96.495,
+      "p50": 88.937,
+      "p95": 182.371,
+      "p99": 236.596
+    },
+    "battle_hash": "0255bd276c257ed603dff6d353071973cc35bdb41d427dd4faff2d3de80fc4c5",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 141.31,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "reinforce",
+    "schema": 1,
+    "setup_ms": 74.397,
+    "sim_ms": {
+      "max": 359.864,
+      "mean": 96.511,
+      "p50": 88.937,
+      "p95": 182.371,
+      "p99": 236.596
+    },
+    "spawned": [
+      125,
+      375
+    ],
+    "state_hash": "559980b4d6fa0c622e9c8929dc399d0425135e0bf627735b9b07c78208e0bc01",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 29.85,
+    "tag": "reinforce_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=reinforce --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/reinforce_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 99,
+      "mean": 98.05,
+      "min": 98
+    },
+    "all_sim_ms": {
+      "max": 128.087,
+      "mean": 15.915,
+      "p50": 15.48,
+      "p95": 18.416,
+      "p99": 24.389
+    },
+    "battle_hash": "8abb1b2cc432b1c9ce438b78071f2f6c8faff51e0c77ed6c611f5a5efcbf3d10",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 2,
+    "cave_transits": 16,
+    "combat_events": {
+      "objective_switch": 24
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 9.99,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "cave",
+    "schema": 1,
+    "setup_ms": 74.239,
+    "sim_ms": {
+      "max": 128.087,
+      "mean": 15.954,
+      "p50": 15.483,
+      "p95": 18.416,
+      "p99": 24.389
+    },
+    "spawned": [
+      100,
+      0
+    ],
+    "state_hash": "83c2bcb825348c60d9292e1643f0152189a9b4fd2a3f50307fec0946745af17b",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 5.58,
+    "tag": "cave_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=cave --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 198.05,
+      "min": 198
+    },
+    "all_sim_ms": {
+      "max": 227.474,
+      "mean": 53.269,
+      "p50": 54.672,
+      "p95": 65.128,
+      "p99": 72.894
+    },
+    "battle_hash": "dfd30e7d3bfb2c4b8929b536248435f662eea269092ad514ef12dc9dbe1a16ed",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 2,
+    "cave_transits": 16,
+    "combat_events": {
+      "objective_switch": 22
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 22.563,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "cave",
+    "schema": 1,
+    "setup_ms": 74.712,
+    "sim_ms": {
+      "max": 227.474,
+      "mean": 53.475,
+      "p50": 54.679,
+      "p95": 65.128,
+      "p99": 72.894
+    },
+    "spawned": [
+      200,
+      0
+    ],
+    "state_hash": "12f894e72fda50f7a6f7e92828dfb91ad6b4c44f6f2416ba7e1c20a05037b101",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 16.45,
+    "tag": "cave_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=cave --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 298.05,
+      "min": 298
+    },
+    "all_sim_ms": {
+      "max": 281.056,
+      "mean": 110.359,
+      "p50": 116.982,
+      "p95": 131.893,
+      "p99": 232.646
+    },
+    "battle_hash": "feee8e55c5964c5cf933f9948cd389b711c0928a5944e7257de09308cf0fb81f",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 2,
+    "cave_transits": 16,
+    "combat_events": {
+      "objective_switch": 22
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 39.851,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "cave",
+    "schema": 1,
+    "setup_ms": 76.007,
+    "sim_ms": {
+      "max": 281.056,
+      "mean": 110.826,
+      "p50": 117.177,
+      "p95": 131.893,
+      "p99": 232.646
+    },
+    "spawned": [
+      300,
+      0
+    ],
+    "state_hash": "9b57e46feb86c22623a627a232dc899861e3627a5d8f64d3443ea8acd1655058",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 33.76,
+    "tag": "cave_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=cave --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 498.05,
+      "min": 498
+    },
+    "all_sim_ms": {
+      "max": 451.33,
+      "mean": 269.951,
+      "p50": 302.226,
+      "p95": 315.08,
+      "p99": 405.235
+    },
+    "battle_hash": "ebfff9b040053758842101964edbf5688caadc11e3ec6f1aef0a752082d93afa",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 2,
+    "cave_transits": 16,
+    "combat_events": {
+      "objective_switch": 22
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 81.626,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "cave",
+    "schema": 1,
+    "setup_ms": 75.089,
+    "sim_ms": {
+      "max": 451.33,
+      "mean": 271.21,
+      "p50": 302.259,
+      "p95": 315.08,
+      "p99": 405.235
+    },
+    "spawned": [
+      500,
+      0
+    ],
+    "state_hash": "fdb4d88ee6c061d7f4b5229ac5fc868f17513587b2f27eb8b70db61d13847d61",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 82.32,
+    "tag": "cave_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=cave --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/cave_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 279.524,
+      "mean": 18.379,
+      "p50": 17.084,
+      "p95": 18.302,
+      "p99": 32.025
+    },
+    "battle_hash": "2a73a43ef3cd5b1ac24de296469ee8a6bf4e21451564f76a9ad58bfe870a3e64",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 260,
+      "enemy_switch": 100,
+      "parry": 2,
+      "pursue": 3
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 16.778,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "dawn",
+    "schema": 1,
+    "setup_ms": 75.395,
+    "sim_ms": {
+      "max": 279.524,
+      "mean": 18.38,
+      "p50": 17.084,
+      "p95": 18.242,
+      "p99": 32.025
+    },
+    "spawned": [
+      50,
+      50
+    ],
+    "state_hash": "171f775f409dc26bbe35a8fc55eb89115dd4d38ca20e814f85dd8c34e4518eaa",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 5.31,
+    "tag": "dawn_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=dawn --perf_units=100 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 65.261,
+      "mean": 37.165,
+      "p50": 36.482,
+      "p95": 43.794,
+      "p99": 47.593
+    },
+    "battle_hash": "20b92f26c17d899ad36b8829f860f37916e13190dbe2ec30a7edee397c4d0241",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 674,
+      "enemy_switch": 207,
+      "parry": 14,
+      "pursue": 44
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 45.433,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "dawn",
+    "schema": 1,
+    "setup_ms": 73.385,
+    "sim_ms": {
+      "max": 65.261,
+      "mean": 37.104,
+      "p50": 36.447,
+      "p95": 43.611,
+      "p99": 47.593
+    },
+    "spawned": [
+      100,
+      100
+    ],
+    "state_hash": "46202535909b17df3e87cd47297918d1d40416e4fa3cafdd9685f51406c9468c",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 9.36,
+    "tag": "dawn_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=dawn --perf_units=200 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 231.506,
+      "mean": 69.104,
+      "p50": 67.259,
+      "p95": 78.049,
+      "p99": 101.805
+    },
+    "battle_hash": "db64e049ce7f5505c8a079bb614477c0c697ddeb67a51219373a99ce012f53e8",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 1717,
+      "counter": 1,
+      "enemy_switch": 310,
+      "parry": 5,
+      "pursue": 129
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 82.423,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "dawn",
+    "schema": 1,
+    "setup_ms": 73.588,
+    "sim_ms": {
+      "max": 231.506,
+      "mean": 69.008,
+      "p50": 67.22,
+      "p95": 76.528,
+      "p99": 101.805
+    },
+    "spawned": [
+      150,
+      150
+    ],
+    "state_hash": "a18ffdcc339565c585f28a24e03e7b870849ff05087a863b11501ae53a12227d",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 17.19,
+    "tag": "dawn_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=dawn --perf_units=300 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 163.996,
+      "mean": 139.114,
+      "p50": 138.351,
+      "p95": 157.107,
+      "p99": 162.986
+    },
+    "battle_hash": "84382c48ebc8678fac4298cb1d98115c5e08e2db784a19bc51d10e7b7732d315",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {
+      "clash": 1654,
+      "counter": 10,
+      "enemy_switch": 556,
+      "parry": 319,
+      "pursue": 362
+    },
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 153.878,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 16.0,
+    "samples": 240,
+    "scenario": "dawn",
+    "schema": 1,
+    "setup_ms": 74.926,
+    "sim_ms": {
+      "max": 163.996,
+      "mean": 139.023,
+      "p50": 138.232,
+      "p95": 157.107,
+      "p99": 162.986
+    },
+    "spawned": [
+      250,
+      250
+    ],
+    "state_hash": "bb644be22a7b125a45084a4a25b5e2230a2256cd105da964eabbe1a982183c77",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 34.6,
+    "tag": "dawn_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=dawn --perf_units=500 --perf_samples=240 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/dawn_500_sim.json"
+  },
+  {
+    "active": {
+      "max": 100,
+      "mean": 100.0,
+      "min": 100
+    },
+    "all_sim_ms": {
+      "max": 124.202,
+      "mean": 6.51,
+      "p50": 5.969,
+      "p95": 6.21,
+      "p99": 12.698
+    },
+    "battle_hash": "585e9ab55f8251ac9a4c1692841716adefe3339ab99cf1ff57e66fc6801b718d",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 30.5,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 5.619,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "idle",
+    "schema": 1,
+    "setup_ms": 74.732,
+    "sim_ms": {
+      "max": 124.202,
+      "mean": 6.515,
+      "p50": 5.972,
+      "p95": 6.21,
+      "p99": 12.698
+    },
+    "spawned": [
+      100,
+      0
+    ],
+    "state_hash": "ff59fe4914324b923b10b54afb7361bb2732029b339b0a8aa6837a5cff3bdb90",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 100,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 2.82,
+    "tag": "idle_100_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_100_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=idle --perf_units=100 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_100_sim.json"
+  },
+  {
+    "active": {
+      "max": 200,
+      "mean": 200.0,
+      "min": 200
+    },
+    "all_sim_ms": {
+      "max": 14.338,
+      "mean": 12.254,
+      "p50": 12.158,
+      "p95": 12.822,
+      "p99": 13.469
+    },
+    "battle_hash": "ac1e5273bb34afed41f35eff178953393baa3347513178f31ad2afaebc9834cb",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 34.7,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 12.439,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "idle",
+    "schema": 1,
+    "setup_ms": 73.497,
+    "sim_ms": {
+      "max": 14.338,
+      "mean": 12.253,
+      "p50": 12.155,
+      "p95": 12.822,
+      "p99": 13.469
+    },
+    "spawned": [
+      200,
+      0
+    ],
+    "state_hash": "26a92b00512d75be292a64d8ce4211d3b53837470c1a7a9b735ddd57430f259e",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 200,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 4.07,
+    "tag": "idle_200_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_200_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=idle --perf_units=200 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_200_sim.json"
+  },
+  {
+    "active": {
+      "max": 300,
+      "mean": 300.0,
+      "min": 300
+    },
+    "all_sim_ms": {
+      "max": 74.845,
+      "mean": 18.911,
+      "p50": 18.326,
+      "p95": 21.059,
+      "p99": 22.579
+    },
+    "battle_hash": "088eca848071e8893d93974fcf34a2fd584a9b182058cabc13ff6c0690298300",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 38.9,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 19.324,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "idle",
+    "schema": 1,
+    "setup_ms": 75.316,
+    "sim_ms": {
+      "max": 74.845,
+      "mean": 18.909,
+      "p50": 18.325,
+      "p95": 21.059,
+      "p99": 22.579
+    },
+    "spawned": [
+      300,
+      0
+    ],
+    "state_hash": "636860afb8b304d079cdac272d9a248f6d4cf943a38f15cf6a981b3c7533ad23",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 300,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 6.12,
+    "tag": "idle_300_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_300_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=idle --perf_units=300 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_300_sim.json"
+  },
+  {
+    "active": {
+      "max": 500,
+      "mean": 500.0,
+      "min": 500
+    },
+    "all_sim_ms": {
+      "max": 59.402,
+      "mean": 30.352,
+      "p50": 29.572,
+      "p95": 33.763,
+      "p99": 39.38
+    },
+    "battle_hash": "a91a123af5e2466ffe41585f4b4544de64d800008f55dd49d91ddc5a3de50411",
+    "breach_sample": -1,
+    "breach_sim_seconds": -1.0,
+    "camera_moves": 0,
+    "casualties": [
+      0,
+      0
+    ],
+    "cave_inside_max": 0,
+    "cave_transits": 0,
+    "combat_events": {},
+    "dispatches": 0,
+    "draw_calls": {},
+    "ended_at": -1.0,
+    "environment": {
+      "adapter": "",
+      "build": "debug",
+      "cpu": "Apple M1",
+      "cpu_count": 8,
+      "driver": "metal",
+      "godot": "4.7.2-stable (official)",
+      "nodes": 4,
+      "os": "macOS 26.6.2",
+      "rendering_method": "forward_plus",
+      "static_memory_mb": 47.4,
+      "texture": [
+        0,
+        0
+      ],
+      "viewport": [
+        0,
+        0
+      ],
+      "window": [
+        0,
+        0
+      ]
+    },
+    "first_sim_ms": 29.849,
+    "flow_relaxed_cells": 0,
+    "flow_repairs": 0,
+    "frame_ms": {},
+    "frames_over_16_7": 0,
+    "frames_over_33_3": 0,
+    "mode": "sim",
+    "natural": false,
+    "params_sha256": "5f0c19915fc426d3a4bac639b11740696ce5d3b2353d284cf847012ed5ffb6dd",
+    "phase_mode": false,
+    "refresh_ms": {},
+    "residual_ms": {},
+    "sample_sim_seconds": 20.0,
+    "samples": 300,
+    "scenario": "idle",
+    "schema": 1,
+    "setup_ms": 73.244,
+    "sim_ms": {
+      "max": 59.402,
+      "mean": 30.356,
+      "p50": 29.561,
+      "p95": 33.763,
+      "p99": 39.38
+    },
+    "spawned": [
+      500,
+      0
+    ],
+    "state_hash": "bd4db732f46bcc9a0bd2d31b5ddca861295d546b6f58908267fcaf2b239b01eb",
+    "step_seconds": 0.0333333333333333,
+    "steps_per_frame": 2,
+    "strategy": "manual",
+    "topology_events": 0,
+    "units_target": 500,
+    "victory_method": "perf_hold",
+    "won": true,
+    "ok": true,
+    "seconds": 9.62,
+    "tag": "idle_500_sim",
+    "cmd": "godot --headless --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_500_sim.engine.log proto/siege/perf/perf_runner.tscn -- --strategy=manual --perf_mode=sim --perf_scenario=idle --perf_units=500 --perf_samples=300 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/after-sim/raw/idle_500_sim.json"
+  }
+]

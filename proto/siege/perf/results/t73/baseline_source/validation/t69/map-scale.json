@@ -1,0 +1,165 @@
+{
+  "defender_routes": [
+    {
+      "from": "coast",
+      "movement_distance": 34.0,
+      "seconds_by_kind": {
+        "archer": 22.667,
+        "cavalry": 13.6,
+        "shield": 21.25
+      },
+      "to": "highland"
+    },
+    {
+      "from": "coast",
+      "movement_distance": 19.235,
+      "seconds_by_kind": {
+        "archer": 12.824,
+        "cavalry": 7.694,
+        "shield": 12.022
+      },
+      "to": "plaza"
+    },
+    {
+      "from": "coast",
+      "movement_distance": 30.265,
+      "seconds_by_kind": {
+        "archer": 20.177,
+        "cavalry": 12.106,
+        "shield": 18.916
+      },
+      "to": "keep"
+    },
+    {
+      "from": "highland",
+      "movement_distance": 34.0,
+      "seconds_by_kind": {
+        "archer": 22.667,
+        "cavalry": 13.6,
+        "shield": 21.25
+      },
+      "to": "coast"
+    },
+    {
+      "from": "highland",
+      "movement_distance": 50.0,
+      "seconds_by_kind": {
+        "archer": 33.333,
+        "cavalry": 20.0,
+        "shield": 31.25
+      },
+      "to": "plaza"
+    },
+    {
+      "from": "highland",
+      "movement_distance": 62.0,
+      "seconds_by_kind": {
+        "archer": 41.333,
+        "cavalry": 24.8,
+        "shield": 38.75
+      },
+      "to": "keep"
+    },
+    {
+      "from": "plaza",
+      "movement_distance": 19.235,
+      "seconds_by_kind": {
+        "archer": 12.824,
+        "cavalry": 7.694,
+        "shield": 12.022
+      },
+      "to": "coast"
+    },
+    {
+      "from": "plaza",
+      "movement_distance": 50.0,
+      "seconds_by_kind": {
+        "archer": 33.333,
+        "cavalry": 20.0,
+        "shield": 31.25
+      },
+      "to": "highland"
+    },
+    {
+      "from": "plaza",
+      "movement_distance": 11.045,
+      "seconds_by_kind": {
+        "archer": 7.364,
+        "cavalry": 4.418,
+        "shield": 6.903
+      },
+      "to": "keep"
+    },
+    {
+      "from": "keep",
+      "movement_distance": 30.265,
+      "seconds_by_kind": {
+        "archer": 20.177,
+        "cavalry": 12.106,
+        "shield": 18.916
+      },
+      "to": "coast"
+    },
+    {
+      "from": "keep",
+      "movement_distance": 62.0,
+      "seconds_by_kind": {
+        "archer": 41.333,
+        "cavalry": 24.8,
+        "shield": 38.75
+      },
+      "to": "highland"
+    },
+    {
+      "from": "keep",
+      "movement_distance": 11.045,
+      "seconds_by_kind": {
+        "archer": 7.364,
+        "cavalry": 4.418,
+        "shield": 6.903
+      },
+      "to": "plaza"
+    }
+  ],
+  "grid_dimensions": [
+    56,
+    48
+  ],
+  "land_area": 1285,
+  "routes": {
+    "cave": {
+      "contact_seconds_no_combat": 12.0,
+      "enabled": true,
+      "keep_seconds_no_combat": 15.5,
+      "movement_distance": 26.0,
+      "obstacle_seconds_one_ghost": 0.0
+    },
+    "main": {
+      "contact_seconds_no_combat": 2.25,
+      "enabled": true,
+      "keep_seconds_no_combat": 17.5,
+      "movement_distance": 35.0,
+      "obstacle_seconds_one_ghost": 18.889
+    },
+    "side": {
+      "contact_seconds_no_combat": 4.25,
+      "enabled": true,
+      "keep_seconds_no_combat": 27.5,
+      "movement_distance": 55.0,
+      "obstacle_seconds_one_ghost": 13.333
+    }
+  },
+  "walkable_area_all_breached": 1282,
+  "walkable_area_closed": 1275,
+  "walkable_bounds_dimensions": [
+    48,
+    42
+  ],
+  "weak_wall": {
+    "damage_per_ghost_second": 1.8,
+    "hp": 24.0,
+    "minimum_attackers": 1.0,
+    "solo_seconds": 13.333,
+    "three_ghost_seconds": 4.444
+  }
+}

@@ -2,6 +2,7 @@ extends Node3D
 ## T67 独立灰盒场景；所有模拟只在固定步长内更新。
 
 const Map = preload("res://proto/siege/siege_map.gd")
+const Spatial = preload("res://proto/siege/siege_spatial.gd")
 const Soldier = preload("res://proto/siege/siege_unit.gd")
 const Director = preload("res://proto/siege/siege_director.gd")
 const Bot = preload("res://proto/siege/siege_bot.gd")
@@ -39,6 +40,8 @@ var art_rng := RandomNumberGenerator.new()
 var units: Array = []
 var sides: Array = [{"units": []}, {"units": []}]
 var spatial := {}
+var fine_spatial := Spatial.new()
+var spatial_counts := [0, 0]
 var zones := {}
 var seed_value := 7
 var strategy := "manual"
@@ -153,6 +156,9 @@ func validate_params() -> bool:
 	if params.economy.regen_curve.size() < 2 or float(params.capture.seconds) <= 0:
 		fail("回复曲线至少两个点；攻占秒数必须为正")
 		return false
+	if float(params.combat.get("near_cell_size", 1.0)) <= 0 or float(params.combat.spatial_cell_size) <= 0 or int(params.combat.get("sense_steps", 4)) < 1 or int(params.map.flow_cache_limit) < 1:
+		fail("空间网格、索敌步数与流场缓存上限必须为正")
+		return false
 	var previous := -1.0
 	for knot in params.economy.regen_curve:
 		if float(knot[0]) <= previous or float(knot[1]) < 0:
@@ -229,6 +235,7 @@ func simulate() -> void:
 	for u in units:
 		u.previous_pos = u.nav_pos
 		u.tick(dt)
+		fine_spatial.moved(u)
 		observe_route(u)
 	rebuild_spatial()
 	if outcome == Outcome.ACTIVE:
@@ -421,7 +428,7 @@ func ghost_order(u) -> void:
 		return
 	if time >= u.next_target:
 		u.next_target = time + float(cfg.think_seconds)
-		if u.stage < 2 and u.reroutes < int(cfg.max_reroutes) and time >= u.reroute_at and time - u.cell_since >= float(cfg.reroute_after_seconds) and nearby(u.nav_pos, float(cfg.crowd_radius), 0).size() > int(cfg.route_crowd_threshold):
+		if u.stage < 2 and u.reroutes < int(cfg.max_reroutes) and time >= u.reroute_at and time - u.cell_since >= float(cfg.reroute_after_seconds) and nearby_count(u.nav_pos, float(cfg.crowd_radius), 0) > int(cfg.route_crowd_threshold):
 			var alternative := choose_route(u, true)
 			if alternative != u.route:
 				if terrain.distance(u.nav_pos, terrain.vec(params.map.routes[alternative][0]), false) >= float(params.map.flow_infinity):
@@ -475,7 +482,7 @@ func ghost_order(u) -> void:
 		var dist: float = terrain.distance(u.nav_pos, c.pos, false)
 		if dist >= float(params.map.flow_infinity):
 			continue
-		var crowded := nearby(c.pos, float(cfg.crowd_radius), 0).size()
+		var crowded := nearby_count(c.pos, float(cfg.crowd_radius), 0)
 		var score := float(c.value) * float(cfg.value_weight) - dist * float(cfg.distance_weight) - crowded * float(cfg.congestion_weight)
 		var key: String = c.kind + ":" + str(c.get("id", terrain.tile(c.pos)))
 		c.key = key
@@ -498,6 +505,7 @@ func ghost_order(u) -> void:
 
 func rebuild_spatial() -> void:
 	spatial.clear()
+	spatial_counts = [0, 0]
 	var size := float(params.combat.spatial_cell_size)
 	for u in units:
 		if not u.alive or u.cave_until >= 0:
@@ -506,8 +514,14 @@ func rebuild_spatial() -> void:
 		if not spatial.has(key):
 			spatial[key] = []
 		spatial[key].append(u)
+		spatial_counts[u.faction] += 1
+	fine_spatial.rebuild(units, float(params.combat.get("near_cell_size", 1.0)), size, terrain.width)
 
 func nearby(p: Vector3, radius: float, faction: int) -> Array:
+	if spatial_counts[faction] == 0:
+		return []
+	if radius < float(params.combat.spatial_cell_size):
+		return fine_spatial.query(p, radius, faction)
 	var out: Array = []
 	var size := float(params.combat.spatial_cell_size)
 	for z in range(floori((p.z - radius) / size), floori((p.z + radius) / size) + 1):
@@ -517,28 +531,67 @@ func nearby(p: Vector3, radius: float, faction: int) -> Array:
 					out.append(u)
 	return out
 
+func nearby_count(p: Vector3, radius: float, faction: int) -> int:
+	if spatial_counts[faction] == 0:
+		return 0
+	if radius < float(params.combat.spatial_cell_size):
+		return fine_spatial.count(p, radius, faction)
+	return nearby(p, radius, faction).size()
+
+func adjacent_units(u, radius: float) -> Array:
+	if fine_spatial.keys.size() != units.size():
+		return u.squad.units
+	return fine_spatial.candidates(u.nav_pos, radius, u.faction, u.squad.units)
+
 func nearest_enemy(u, radius: float = -1):
 	var best = null
 	var distance := float(params.combat.sense_radius) if radius < 0 else radius
-	for e in nearby(u.nav_pos, distance, 1 - u.faction):
-		var d: float = Vector2(e.nav_pos.x - u.nav_pos.x, e.nav_pos.z - u.nav_pos.z).length()
-		if d < distance and terrain.line_clear(u.nav_pos, e.nav_pos):
-			distance = d
-			best = e
+	var faction: int = 1 - u.faction
+	if spatial_counts[faction] == 0:
+		return best
+	var p: Vector3 = u.nav_pos
+	var size := float(params.combat.spatial_cell_size)
+	var radius_sq := distance * distance
+	for z in range(floori((p.z - distance) / size), floori((p.z + distance) / size) + 1):
+		for x in range(floori((p.x - distance) / size), floori((p.x + distance) / size) + 1):
+			for e in spatial.get(Vector3i(x, faction, z), []):
+				if not e.alive or e.cave_until >= 0:
+					continue
+				var delta := Vector2(e.nav_pos.x - p.x, e.nav_pos.z - p.z)
+				if delta.length_squared() > radius_sq:
+					continue
+				var d := delta.length()
+				if d < distance and terrain.line_clear(p, e.nav_pos):
+					distance = d
+					best = e
 	return best
 
 func separation(u) -> Vector3:
 	var v := Vector3.ZERO
+	var p: Vector3 = u.nav_pos
+	var radius := float(params.combat.separation_radius)
+	var radius_sq := radius * radius
+	var size := float(params.combat.spatial_cell_size)
+	var slack := float(params.combat.contact_slack)
+	var strength := float(params.combat.separation_strength)
+	# 原粗格次序内直接累计分离力，省掉候选数组与第二次位置读取。
 	for faction in 2:
-		for other in nearby(u.nav_pos, float(params.combat.separation_radius), faction):
-			if other == u:
-				continue
-			var delta: Vector3 = u.nav_pos - other.nav_pos
-			delta.y = 0
-			var d := delta.length()
-			var desired: float = u.radius + other.radius + float(params.combat.contact_slack)
-			if d < desired:
-				v += (delta.normalized() if d > 0.000001 else Vector3.RIGHT * (1 if u.id > other.id else -1)) * (desired - d) * float(params.combat.separation_strength)
+		if spatial_counts[faction] == 0:
+			continue
+		for z in range(floori((p.z - radius) / size), floori((p.z + radius) / size) + 1):
+			for x in range(floori((p.x - radius) / size), floori((p.x + radius) / size) + 1):
+				for other in spatial.get(Vector3i(x, faction, z), []):
+					if other == u or not other.alive or other.cave_until >= 0:
+						continue
+					var q: Vector3 = other.nav_pos
+					if Vector2(q.x - p.x, q.z - p.z).length_squared() > radius_sq:
+						continue
+					var delta := p - q
+					delta.y = 0
+					var d := delta.length()
+					var desired: float = u.radius + other.radius + slack
+					if d < desired:
+						v += (delta.normalized() if d > 0.000001 else Vector3.RIGHT * (1 if u.id > other.id else -1)) * (desired - d) * strength
 	return v.limit_length(float(params.combat.max_separation_speed))
 
 func attack_structures(dt: float) -> void:
@@ -609,13 +662,22 @@ func update_gate() -> void:
 func update_captures(dt: float) -> void:
 	if outcome != Outcome.ACTIVE:
 		return
+	var counts := {}
 	for z in params.map.zones:
-		var ghosts := 0
-		var guards := 0
-		for u in units:
-			if u.alive and u.cave_until < 0 and terrain.zone_at(u.nav_pos) == z.id:
-				if u.faction == 0: ghosts += 1
-				elif effective_defender(u): guards += 1
+		counts[z.id] = [0, 0]
+	for u in units:
+		if not u.alive or u.cave_until >= 0:
+			continue
+		var zone: String = terrain.zone_at(u.nav_pos)
+		if counts.has(zone):
+			if u.faction == 0:
+				counts[zone][0] += 1
+			elif effective_defender(u):
+				counts[zone][1] += 1
+	for z in params.map.zones:
+		var ghosts: int = counts[z.id][0]
+		# 占堡可能在本循环中触发全军撤退；后续区域沿用原有效守军语义。
+		var guards: int = 0 if retreat_started else counts[z.id][1]
 		var state: Dictionary = zones[z.id]
 		if state.owner == "defender":
 			if ghosts > 0 and guards == 0:
@@ -752,6 +814,7 @@ func _exit_tree() -> void:
 	for side in sides:
 		side.units.clear()
 	spatial.clear()
+	fine_spatial.clear()
 	units.clear()
 	director.main = null
 	if bot != null:

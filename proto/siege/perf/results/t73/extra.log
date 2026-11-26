@@ -1,0 +1,35 @@
+START after-reinforce-reviewed.log
+END after-reinforce-reviewed.log exit=0
+START verify-reviewed.log
+END verify-reviewed.log exit=0
+START regression-reviewed.log
+END regression-reviewed.log exit=0
+START before-march-500-recheck.log
+END before-march-500-recheck.log exit=0
+START director-before-100.log
+END director-before-100.log exit=0
+START director-after-100.log
+END director-after-100.log exit=0
+START director-before-200.log
+END director-before-200.log exit=0
+START director-after-200.log
+END director-after-200.log exit=0
+START director-before-300.log
+END director-before-300.log exit=0
+START director-after-300.log
+END director-after-300.log exit=0
+START director-before-500.log
+END director-before-500.log exit=0
+START director-after-500.log
+END director-after-500.log exit=0
+NATURAL before main_gate {'max': 65.307, 'mean': 4.084, 'p50': 3.349, 'p95': 7.237, 'p99': 14.732}
+NATURAL after main_gate {'max': 13.317, 'mean': 3.794, 'p50': 3.323, 'p95': 7.216, 'p99': 7.784}
+NATURAL before waves {'max': 75.466, 'mean': 5.033, 'p50': 3.503, 'p95': 9.418, 'p99': 18.242}
+NATURAL after waves {'max': 125.335, 'mean': 4.028, 'p50': 3.285, 'p95': 7.287, 'p99': 13.05}
+PHASE march ok=True
+PHASE melee ok=True
+START audit-main_gate-1-final.log
+END audit-main_gate-1-final.log exit=0
+START audit-waves-2-final.log
+END audit-waves-2-final.log exit=0
+T73_EXTRA PASS

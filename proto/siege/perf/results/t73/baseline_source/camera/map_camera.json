@@ -1,0 +1,18 @@
+{
+  "map": {
+    "camera": {
+      "mode": "zones",
+      "transition": "slide",
+      "transition_seconds": 0.2,
+      "initial_zone": "coast",
+      "pan_speed": 8.0,
+      "alert_cooldown": 8.0,
+      "zones": {
+        "coast": {"label": "海岸", "focus": [28, 0.3, 36], "yaw": 0, "pitch": 66, "distance": 75, "size": 43, "pan_limit": [4, 2], "zoom_limits": [38, 47]},
+        "highland": {"label": "高地", "focus": [11, 0.8, 25], "yaw": -38, "pitch": 62, "distance": 60, "size": 25, "pan_limit": [2, 2], "zoom_limits": [22, 28]},
+        "plaza": {"label": "外城广场", "focus": [31, 0.5, 22], "yaw": 8, "pitch": 66, "distance": 65, "size": 32, "pan_limit": [3, 2], "zoom_limits": [28, 36]},
+        "keep": {"label": "主堡", "focus": [33, 0.65, 11], "yaw": 24, "pitch": 62, "distance": 60, "size": 25, "pan_limit": [2, 2], "zoom_limits": [22, 28]}
+      }
+    }
+  }
+}

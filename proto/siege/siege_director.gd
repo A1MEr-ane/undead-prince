@@ -19,6 +19,9 @@ func setup(world) -> void:
 	for zone in main.params.map.zones:
 		cooldown[zone.id] = 0.0
 		threats[zone.id] = 0.0
+		# 初始化阶段完成常用目标场；正式缓存仍按首次使用顺序插入。
+		main.terrain.prewarm(main.zone_point(zone.id))
+		travel_map.field(main.zone_point(zone.id), false)
 
 func record(event: Dictionary) -> void:
 	event.time = snappedf(main.time, 0.001)
@@ -119,11 +122,17 @@ func tick() -> void:
 			if available[u.assigned] <= 0:
 				continue
 			donors.append(u)
+		var distances := {}
+		var destination: Vector3 = main.zone_point(z.id)
 		donors.sort_custom(func(a, b):
 			if a.reserve != b.reserve:
 				return a.reserve
-			var da: float = main.terrain.distance(a.nav_pos, main.zone_point(z.id), false)
-			var db: float = main.terrain.distance(b.nav_pos, main.zone_point(z.id), false)
+			if not distances.has(a.id):
+				distances[a.id] = main.terrain.distance(a.nav_pos, destination, false)
+			if not distances.has(b.id):
+				distances[b.id] = main.terrain.distance(b.nav_pos, destination, false)
+			var da: float = distances[a.id]
+			var db: float = distances[b.id]
 			return a.id < b.id if da == db else da < db)
 		var selected: Array = []
 		var members: Array = []

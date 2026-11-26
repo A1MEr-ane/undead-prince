@@ -132,7 +132,9 @@ func sense() -> void:
 	if not alive or cave_until >= 0:
 		return
 	if main.time >= next_sense:
-		next_sense = main.time + float(main.params.combat.sense_seconds)
+		# 半步余量避免浮点边界令周期偶尔多等一步；首次随机相位沿用原参数。
+		var steps := int(main.params.combat.get("sense_steps", ceili(float(main.params.combat.sense_seconds) / float(main.params.simulation.step))))
+		next_sense = main.time + (steps - 0.5) * float(main.params.simulation.step)
 		var candidate = main.nearest_enemy(self)
 		var valid: bool = enemy != null and enemy.alive and enemy.cave_until < 0 and Vector2(enemy.nav_pos.x - nav_pos.x, enemy.nav_pos.z - nav_pos.z).length() <= float(main.params.combat.sense_radius) and terrain.line_clear(nav_pos, enemy.nav_pos)
 		if not valid or (candidate != null and candidate != enemy and main.time >= enemy_lock_until and nav_pos.distance_to(candidate.nav_pos) + float(main.params.targeting.enemy_switch_margin) < nav_pos.distance_to(enemy.nav_pos)):
@@ -237,7 +239,7 @@ func recover_navigation() -> void:
 		var p: Vector3 = terrain.point(edge[0])
 		if f.dist[edge[0]] >= float(main.params.map.flow_infinity) or f.dist[edge[0]] > f.dist[here] + 1:
 			continue
-		var score: float = f.dist[edge[0]] + main.nearby(p, float(cfg.crowd_radius), faction).size() * float(cfg.congestion_weight)
+		var score: float = f.dist[edge[0]] + main.nearby_count(p, float(cfg.crowd_radius), faction) * float(cfg.congestion_weight)
 		if score < best:
 			best = score
 			chosen = p
@@ -325,8 +327,8 @@ func intimidated() -> bool:
 	return soft_int + hard_int > 0
 
 func friend_ratio() -> float:
-	var friends: int = main.nearby(nav_pos, 1.0, faction).size()
-	var foes: int = main.nearby(nav_pos, 1.0, 1 - faction).size()
+	var friends: int = main.nearby_count(nav_pos, 1.0, faction)
+	var foes: int = main.nearby_count(nav_pos, 1.0, 1 - faction)
 	return float(friends) / maxf(1, friends + foes)
 
 func dispose() -> void:

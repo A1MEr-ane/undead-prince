@@ -3,7 +3,7 @@ extends Node3D
 ## 只测不改：不修改 proto/siege/*.gd；压力场景直接用 main.spawn() 摆放单位。
 ## 用法见 proto/siege/perf/README.md；命令行参数在 -- 之后。
 
-const BaseSiege = preload("res://proto/siege/siege.gd")
+const BaseSiege = preload("res://proto/siege/perf/perf_world.gd")
 const PhaseSiege = preload("res://proto/siege/perf/perf_siege.gd")
 
 var opts := {}
@@ -19,6 +19,7 @@ var phase_mode := false
 var natural := false
 var out_path := ""
 var seed_value := 7
+var setup_ms := 0.0
 
 var warm_i := 0
 var skip_left := 2
@@ -28,6 +29,7 @@ var done := false
 
 var frame_us: Array = []
 var sim_us: Array = []
+var all_sim_us: Array = []
 var refresh_us: Array = []
 var residual_us: Array = []
 var active: Array = []
@@ -56,12 +58,15 @@ func _ready() -> void:
 	out_path = str(opts.get("perf_out", ""))
 	seed_value = int(opts.get("perf_seed", "7"))
 
+	var setup_started := Time.get_ticks_usec()
 	var script = PhaseSiege if phase_mode else BaseSiege
 	main = script.new()
 	add_child(main)
+	setup_ms = float(Time.get_ticks_usec() - setup_started) / 1000.0
 	main.set_process(false)
-	main.seed_value = seed_value
-	main.sim_rng.seed = seed_value
+	if not natural:
+		main.seed_value = seed_value
+		main.sim_rng.seed = seed_value
 	view = main.view
 	if view != null:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
@@ -111,6 +116,8 @@ func _configure_stress() -> void:
 	main.victory_method = "perf_hold"
 
 func _clear_units() -> void:
+	for u in main.units:
+		u.dispose()
 	main.units.clear()
 	main.sides[0]["units"].clear()
 	main.sides[1]["units"].clear()
@@ -347,6 +354,7 @@ func _process(_delta: float) -> void:
 	for n in steps_per_frame:
 		main.simulate()
 	var t1 := Time.get_ticks_usec()
+	all_sim_us.append(t1 - t0)
 	if view != null:
 		view.refresh()
 	var t2 := Time.get_ticks_usec()
@@ -402,6 +410,14 @@ func _state_hash() -> String:
 	parts.append(JSON.stringify(main.result()))
 	return "\n".join(parts).sha256_text()
 
+func _battle_hash() -> String:
+	var rows: Array = []
+	for u in main.units:
+		rows.append([u.id, u.nav_pos, u.hp, u.alive, u.enemy.id if u.enemy != null else -1,
+			u.brain.stamina, u.slot, u.route, u.stage, u.target_key, u.anim_name, u.anim_t,
+			u.brain.adjacent.map(func(f): return f.id)])
+	return var_to_str([main.sim_rng.state, rows]).sha256_text()
+
 func _finish() -> void:
 	done = true
 	running = false
@@ -429,6 +445,9 @@ func _finish() -> void:
 		"cave_inside_max": cave_max,
 		"frame_ms": _ms(frame_us) if mode == "render" else {},
 		"sim_ms": _ms(sim_us),
+		"setup_ms": setup_ms,
+		"first_sim_ms": float(all_sim_us[0]) / 1000.0,
+		"all_sim_ms": _ms(all_sim_us),
 		"refresh_ms": _ms(refresh_us) if mode == "render" else {},
 		"residual_ms": _ms(residual_us) if mode == "render" else {},
 		"draw_calls": {
@@ -448,6 +467,8 @@ func _finish() -> void:
 		"topology_events": main.terrain.topology_events.size(),
 		"combat_events": main.events,
 		"state_hash": _state_hash(),
+		"battle_hash": _battle_hash(),
+		"result_hash": JSON.stringify(main.result()).sha256_text(),
 		"params_sha256": JSON.stringify(main.params, "", true, true).sha256_text(),
 		"environment": _environment(),
 	}

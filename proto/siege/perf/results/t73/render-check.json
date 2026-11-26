@@ -1,0 +1,8 @@
+{
+  "tag": "march_100_render",
+  "ok": false,
+  "exit": -1,
+  "seconds": 20.01,
+  "error": "no PERF line",
+  "cmd": "godot --disable-vsync --path /Users/cyy/Projects/亡魂王子-t73 --log-file /Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/render-check/raw/march_100_render.engine.log proto/siege/perf/results/t73/baseline_source/perf/perf_runner.tscn -- --strategy=manual --perf_mode=render --perf_scenario=march --perf_units=100 --perf_samples=60 --perf_phase=false --perf_out=/Users/cyy/Projects/亡魂王子-t73/proto/siege/perf/results/t73/render-check/raw/march_100_render.json"
+}

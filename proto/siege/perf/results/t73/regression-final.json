@@ -1,0 +1,139 @@
+{
+  "pairs": 12,
+  "equal_battle_results": 12,
+  "material_differences": [],
+  "rows": [
+    {
+      "strategy": "feint",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "feint",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "highland",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "highland",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "idle",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "idle",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "late_batches",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "late_batches",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "main_gate",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "main_gate",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "waves",
+      "seed": 1,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    },
+    {
+      "strategy": "waves",
+      "seed": 2,
+      "equal_battle_result": true,
+      "differences": {
+        "params_sha256": {
+          "before": "ff779132e0566fc61fe30fc9d4a1346001d08fcc98529018e71507e51e3ca009",
+          "after": "877faeb5e74bc8f0c3a324a01a7fd3756747501e1dd070d364d43aed0d1653b5"
+        }
+      }
+    }
+  ]
+}

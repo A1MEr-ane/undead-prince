@@ -1,0 +1,5 @@
+reinforce_100_sim samples=300 sim=8.658 frame=None first=11.862
+reinforce_200_sim samples=300 sim=21.907 frame=None first=33.005
+reinforce_300_sim samples=300 sim=39.45 frame=None first=60.901
+reinforce_500_sim samples=300 sim=88.83 frame=None first=142.922
+T73_PERF PASS runs=4
