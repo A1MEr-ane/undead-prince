@@ -2,7 +2,7 @@
 id: T72
 title: 把世界观修订 R2 写回 canon（中英双语，只改冲突句）
 owner: dsh
-status: queued
+status: done
 branch: dsh/t72-canon-writeback
 worktree: ../亡魂王子-t72
 allowed: [docs/canon/A/WORLD-BIBLE.md, docs/canon/A/NARRATIVE-DESIGN.md, docs/canon/shared/CANON-COMPACT.md, docs/canon/WORLD-COMPENDIUM.md, docs/canon/CHANGELOG-R2.md]

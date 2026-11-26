@@ -2,7 +2,7 @@
 id: T75
 title: 结局插画史诗风重画（10 张，Claude 提示词，画面无文字）
 owner: codex
-status: queued
+status: done
 branch: codex/t75-endings-epic
 worktree: ../亡魂王子-t75
 images: []

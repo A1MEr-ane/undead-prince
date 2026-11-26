@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: Eleanor sits on the throne; Edmund stands just behind it in shadow with one hand on the throne's back; in the foreground, courtiers bow toward him, not toward her.
 POWER AND COMPOSITION: the queen is in the light but the courtiers' bowed backs point to the shadowed figure behind her; Edmund's shadow falls across her.
 LIGHT: pale artificial day on the queen; Edmund lit only by his own cyan soulfire.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The capital Sunhold is lit by a second, artificial 'Unending Day': a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Eleanor, Edmund (undead prince)
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

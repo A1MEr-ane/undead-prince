@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: Night on Bellgrave Bay after defeat. The undead fleet's torn purple banner with a broken gold crown sinks slowly beneath black water. Far out, a single small boat with a lantern rows toward the viewer through fog.
 POWER AND COMPOSITION: the banner fills the foreground, half under water; the tiny lantern boat is the only point of hope, placed on the lower third; vast empty dark sea between them.
 LIGHT: near-black sea and sky, the lantern's cyan-green the only light, reflected in long ripples.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: This scene is far from the capital: NO ring of light, halo or second sun anywhere in the sky. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): the Ferryman
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: A rocky shore at dusk after the first winter preparations. Eleanor and Edmund face each other on the shingle; behind him a long line of undead sentinels stands along the cliff top watching the sea.
 POWER AND COMPOSITION: wide shot; the sentinels' silhouettes run the length of the cliff like a wall; the siblings small at the waterline between land and sea.
 LIGHT: natural violet dusk; warm rim on Eleanor, cyan on the undead.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The artificial Unending Day has been extinguished: there is NO ring of light, halo or second sun anywhere in the sky; only the natural sky. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Eleanor, Edmund (undead prince)
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

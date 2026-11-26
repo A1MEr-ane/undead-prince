@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: The white throne hall of Sunhold. Edmund sits on a high white-and-gold throne wearing his snapped crown; ranks of motionless undead guards line both sides; Eleanor stands far below and apart at a tall window, her back half turned.
 POWER AND COMPOSITION: low camera from the hall floor looking up the long stair to the throne; Edmund small but central and elevated; the guards repeat as dark silhouettes; Eleanor isolated at the edge of the frame.
 LIGHT: cold pale light from the Unending Day pours through high windows in shafts; cyan rim light on the undead; the throne hall feels like a tomb.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The capital Sunhold is lit by a second, artificial 'Unending Day': a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Edmund (undead prince), Eleanor
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: Evening on a harbour wall of the white city. Edmund and Eleanor sit side by side on the warm stone; nearby Pip plays a dismissal call toward undead figures walking away down the quay; the city behind them stays lit by the artificial day although the natural sun is setting at sea.
 POWER AND COMPOSITION: intimate wide shot; the siblings small against a huge sky split between the real sunset over the sea and the pale artificial glow over the city.
 LIGHT: two light sources in conflict: warm orange natural sunset on the sea side, cold white artificial day on the city side.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The capital Sunhold is lit by a second, artificial 'Unending Day': a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Eleanor, Edmund (undead prince), Pip
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

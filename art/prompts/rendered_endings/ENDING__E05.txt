@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: Sunhold at night after the Unending Day has gone out: a real dark sky full of stars for the first time. On the docks, lines of bound undead soldiers carry grain sacks; Edmund, crowned, watches from a high stair.
 POWER AND COMPOSITION: high angle from behind Edmund over the docks; the labouring lines below him like a machine; he is the only still figure.
 LIGHT: starlight and dock torches; cyan soulfire on every undead; no artificial day.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The artificial Unending Day has been extinguished: there is NO ring of light, halo or second sun anywhere in the sky; only the natural sky. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Edmund (undead prince)
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

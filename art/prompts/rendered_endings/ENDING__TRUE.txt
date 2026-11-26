@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: The last shore at dawn on a calm grey sea. Edmund steps into the Ferryman's small boat; the Ferryman reaches toward his lantern to put it out. On the shore behind, Eleanor and a few volunteer undead watch him go.
 POWER AND COMPOSITION: low wide shot from the water; the boat in the foreground; the watchers small on the shore; Edmund half-turned between the two.
 LIGHT: pale natural dawn breaking over the sea; the lantern the last cyan light in the image.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: This scene is far from the capital: NO ring of light, halo or second sun anywhere in the sky. The ONLY cyan-green light in the whole image is the small flame inside the Ferryman's lantern; Edmund's soulfire is already almost extinguished. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Edmund (undead prince), the Ferryman, Eleanor
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

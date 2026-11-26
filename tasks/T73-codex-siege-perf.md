@@ -2,7 +2,7 @@
 id: T73
 title: 攻城原型性能优化（近邻查询、索敌、流场增量重算、调度尖峰）
 owner: codex
-status: queued
+status: done
 branch: codex/t73-siege-perf
 worktree: ../亡魂王子-t73
 allowed: [proto/siege/, tools/verify/proto_siege.sh]

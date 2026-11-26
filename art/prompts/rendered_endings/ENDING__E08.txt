@@ -7,6 +7,6 @@ FORMAT: epic ending key art, landscape 16:9 (2048x1152), cinematic composition, 
 SCENE: Eleanor on a palace balcony watches the pale artificial sun fade and go out above the white city while the natural sun sets; for the first time the sky above Sunhold darkens fully and the first stars appear. Below in the courtyard Pip raises his bugle; undead walk out freely through an open gate toward the sea.
 POWER AND COMPOSITION: over-the-shoulder from behind Eleanor; the city spread below; the dying ring of light high in the sky is the focal point, with the first star beside it.
 LIGHT: the last of the artificial glow fading to nothing; deep blue dusk; warm orange on the horizon; the first stars.
-WORLD RULES: the natural sun rises and sets normally; the capital Sunhold is lit by a second, artificial 'Unending Day' — a pale, heatless ring of light hanging above the palace tower. Undead glow cyan-green only; the living are lit by warm or natural light.
+WORLD RULES: The artificial ring above Sunhold is fading out and almost gone in this moment. Undead glow cyan-green only; the living are lit by warm or natural light.
 CHARACTERS (match the attached reference sheets for faces and costume): Eleanor, Pip
 REFERENCE IMAGES: attached are character sheets for identity and costume only; render in the epic painted style described above, not in the style of the sheets.

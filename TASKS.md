@@ -35,19 +35,22 @@
 | T34 | 新画风人物：五名仇人 | Codex | codex/t34-council | art/chars/ | 不采用（由 T47 重画） |
 | T35 | 新画风 UI 套件与界面样张 | Codex | codex/t35-ui | art/ui/ | 已合并（效果好，保留） |
 | T52 | 剧情插画 8 张、结局图（Claude 提示词；原编号 T50 与 DSH 任务撞号） | Codex | claude/t50-story-art | art/story/ | 已合并剧情插画；结局图中途停止，E00–E05 仅占位 |
-| T75 | 结局插画史诗风重画（10 张，无文字，Claude 提示词；原 T53） | Codex | codex/t75-endings-epic | art/story/ | 进行中 |
+| T75 | 结局插画史诗风重画（10 张，无文字，Claude 提示词；原 T53） | Codex | codex/t75-endings-epic | art/story/ | 已合并 7 张（E06、E07、真结局转 T76） |
 | T38–T40 | 新画风场景：地区套件 7 + 地点 39 | Codex | — | art/env/ | 搁置（Codex 额度用尽未完成；地图可能重新设计，定稿后再出） |
 | T42 | 新画风兵种阵容（亡魂、王国、局内 Q 版） | Codex | codex/t42-units | art/units/ | 不采用（王子失去骷髅脸，由 T47 重画） |
 | T54 | Bad North 本地取证（镜头、精灵、飞行物、特效、地形；原编号 T48 撞号） | Codex | codex/t48-bn-evidence | docs/research/ | 排队 |
-| T72 | 世界观 R2 写回 canon（中英双语，只改冲突句） | DSH | dsh/t72-canon-writeback | docs/canon/ | 谷时排队 |
+| T72 | 世界观 R2 写回 canon（中英双语，只改冲突句） | DSH | dsh/t72-canon-writeback | docs/canon/ | 已合并 |
 | T67 | 原型 A：灰盒夜袭攻城（攻占主堡、冥火部署、自主单位、守军调度、5 分钟到破晓、5 个策略机器人） | Codex | codex/t67-siege-proto | proto/siege/ | 已合并（初值：主门 33%、高地 33%、分波 100%、佯攻 0%、挂机 0%） |
 | T69 | 原型 A 最小修正（援军默认关、倒计时、胜负状态机、规则补强、第 6 策略） | Codex | codex/t69-siege-fixes | proto/siege/ | 已合并 |
-| T68 | 攻城原型策略矩阵与参数扫描（按审查修订） | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 谷时排队 |
+| T68 | 攻城原型策略矩阵与参数扫描（按审查修订） | DSH | dsh/t68-siege-matrix | proto/siege/params/ | 已合并（目标 1、2 成立；3、4 卡在机制，转 T74） |
 | T70 | 镜头：战区固定视角 + 总览切换（主方案）对比 360° | Codex | codex/t70-camera-ab | proto/siege/camera/ | 已合并，待用户手玩选定 |
 | T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
-| T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 进行中 |
-| T74 | 阶段 B 预备：暗影刺客、缝合巨人、可破墙段、山洞权限（默认关） | Codex | codex/t74-siege-phaseB | proto/siege/ | 待办（依赖 T73） |
+| T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 已合并（破门流场 794→71 ms，调度尖峰 233→24 ms；300 单位仍超标） |
+| T76 | 结局插画补画 E06、E07、真结局（修订提示词） | Codex | codex/t76-endings-fix | art/story/ | 进行中 |
+| T77 | 攻城第二轮矩阵（目标 3、4 复测 + 阶段 B 对照） | DSH | dsh/t77-siege-resweep2 | proto/siege/params/ | 待办（依赖 T74） |
+| T78 | canon 第二轮写回（表格外残留） | DSH | dsh/t78-canon-writeback2 | docs/canon/ | 谷时排队 |
+| T74 | 阶段 B 预备：暗影刺客、缝合巨人、可破墙段、山洞权限（默认关） | Codex | codex/t74-siege-phaseB | proto/siege/ | 进行中（含 T68 后续：路线与目标解耦、拥堵口径） |
 | T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
 | T60 | T19 前置：批量模拟、统计、异常检测工具 | DSH | dsh/t60-sim-tools | tools/sim/ | 已合并 |
 | T61 | 战斗系统基线测试（寻路、碰撞、攻击、行为、性能） | DSH | dsh/t61-battle-baseline | tests/ | 已合并 |
