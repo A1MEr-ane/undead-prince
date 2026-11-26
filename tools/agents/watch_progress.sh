@@ -12,8 +12,8 @@ while true; do
   stalled=""
   for wt in $wts; do
     id=$(basename "$wt" | sed 's/.*-t/T/')
-    recent=$(find "$wt" -type f -not -path '*/.git/*' -newermt "-$((INT/60)) minutes" 2>/dev/null | head -1)
-    logrecent=$(find reports/inbox -name "${id}.log" -newermt "-$((INT/60)) minutes" 2>/dev/null | head -1)
+    recent=$(find "$wt" -type f -not -path '*/.git/*' -mmin -$((INT/60)) 2>/dev/null | head -1)
+    logrecent=$(find reports/inbox -name "${id}.log" -mmin -$((INT/60)) 2>/dev/null | head -1)
     imgs=$(find "$wt/art" -name '*.png' -not -path '*/alt/*' -not -path '*/v1/*' 2>/dev/null | wc -l | tr -d ' ')
     echo "$(date '+%F %T') $id 运行中，主图 ${imgs} 张，近 $((INT/60)) 分钟有更新：$([ -n "$recent$logrecent" ] && echo 是 || echo 否)"
     [ -z "$recent$logrecent" ] && stalled="$stalled $id"
