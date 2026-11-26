@@ -1,0 +1,19 @@
+{
+  "source_ref": "06a164548d3486c1fee369174be27fa9566d900b",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "comparison": "sha256 of full SIEGE line, excluding trailing newline",
+  "sha256": {
+    "feint/1": "909471f7bfbc9a4b21aba508467d1db31832199cdbe6d6fd0a7d008aacfc2216",
+    "feint/2": "f77913f2536627c078eb4d4670899c3098d2fd6878d1fe9d1f05bf72d64ed6d4",
+    "highland/1": "77f8b16681a865be798daeac2f1a4e0d44288c6870268da1e0a8e4cd5b30e26d",
+    "highland/2": "5b3bad405d081cfcce55f08eb364df3d7b9717b615e495aec95909f2a65b5a4e",
+    "idle/1": "5806ea4ab38b2e641f77ab2cc172f032919af3c567f53b6e5cba6dbc1ea0480c",
+    "idle/2": "4f098ce0e5f45365c06cf0f6fffeba54773556aba8557963647572dfc5618035",
+    "late_batches/1": "b09987fb7fd87b7a499f27b1e34df6a618a3b72f559ac11b8e346c699bb0caf1",
+    "late_batches/2": "49a2c427961ff5620fcc0ac25fba22a6da7a29eb3526ea343704ca8b26d1e407",
+    "main_gate/1": "5269afea05e0015fc1100bbf22eaec599b9b0ffc6de71dd184e53556fabf689e",
+    "main_gate/2": "be08662c4ff11219d48fd10879860313d18be1cca61e85988c5783f3288f30cd",
+    "waves/1": "caa195bd3da1aacbe4acf6993da023dd6ed0bd510e4ffc2db0e43c47205880f0",
+    "waves/2": "ce33e1560a66b3d2767e83c40505ce368b86360397aae3e3a2dd9032b1ec7881"
+  }
+}

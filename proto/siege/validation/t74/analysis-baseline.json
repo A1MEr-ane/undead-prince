@@ -1,0 +1,1027 @@
+{
+  "config": "proto/siege/params/analysis_v2.json",
+  "description": "新分析口径基线，六策略各 seed 1；旧 T68 样本不能并入。",
+  "raw_logs": "proto/siege/results/t74-final/t74/",
+  "rows": [
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "main_gate",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": false,
+      "victory_method": "none",
+      "victory_time": -1.0,
+      "ended_at": 300.0,
+      "spawned": {
+        "defender": 34,
+        "ghost": 120
+      },
+      "casualties": {
+        "defender": 21,
+        "ghost": 111
+      },
+      "fire_spent": 600.0,
+      "fire_wasted": 0.0,
+      "congestion_events": 4,
+      "travel_congestion_events": 4,
+      "congestion_per_deployed": 0.026,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 14,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 14,
+          "total": 46
+        },
+        "late": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 11,
+            "shield": 7
+          },
+          "defender": 13,
+          "ghost": 11,
+          "total": 24
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 10,
+            "shield": 7
+          },
+          "defender": 13,
+          "ghost": 10,
+          "total": 23
+        },
+        "retreat": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        }
+      },
+      "route_choice_distribution": {
+        "main": {
+          "by_kind": {
+            "ghost": 120
+          },
+          "deployed": 120,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 22.8,
+          "deaths": 111,
+          "deployed": 120,
+          "fire": 600.0,
+          "kills": 21,
+          "structure_damage": 34.0000000000001,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.43333333333333,
+          "attacker_seconds": 19.1,
+          "breached_at": 15.5333333333333,
+          "started_at": 12.1
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 6964,
+          "time": 15.533
+        }
+      ],
+      "full_siege_line_sha256": "dc1ef21bd84f6abdc074f5303c16f594a303850e85975573afe1b349cb6b6f91"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "highland",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 251.933,
+      "ended_at": 300.933,
+      "spawned": {
+        "defender": 34,
+        "ghost": 90
+      },
+      "casualties": {
+        "defender": 21,
+        "ghost": 80
+      },
+      "fire_spent": 450.0,
+      "fire_wasted": 0.0,
+      "congestion_events": 37,
+      "travel_congestion_events": 37,
+      "congestion_per_deployed": 0.2984,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 12,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 12,
+          "total": 46
+        },
+        "late": {
+          "by_kind": {
+            "archer": 3,
+            "cavalry": 4,
+            "ghost": 15,
+            "shield": 15
+          },
+          "defender": 22,
+          "ghost": 15,
+          "total": 34
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 5,
+            "ghost": 19,
+            "shield": 19
+          },
+          "defender": 30,
+          "ghost": 19,
+          "total": 45
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 2,
+            "cavalry": 4,
+            "ghost": 10,
+            "shield": 10
+          },
+          "defender": 16,
+          "ghost": 10,
+          "total": 26
+        }
+      },
+      "route_choice_distribution": {
+        "side": {
+          "by_kind": {
+            "ghost": 90
+          },
+          "deployed": 90,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 6,
+          "damage": 19.2,
+          "deaths": 80,
+          "deployed": 90,
+          "fire": 450.0,
+          "kills": 21,
+          "structure_damage": 24.0,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 3.36666666666666,
+          "attacker_seconds": 13.4333333333333,
+          "breached_at": 213.6,
+          "started_at": 210.233333333333
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 3795,
+          "time": 17.1
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 35.567
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 6925,
+          "time": 41.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 45.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 6925,
+          "time": 49.1
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 53.1
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 6925,
+          "time": 57.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 61.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 7551,
+          "time": 62.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 70.9
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 9429,
+          "time": 83.0
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 87.0
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 9429,
+          "time": 91.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 95.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 99.267
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 103.267
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 107.4
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 111.4
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 115.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 119.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 123.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 127.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 131.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 135.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10055,
+          "time": 139.5
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 143.5
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 10681,
+          "time": 146.067
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 150.767
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 11307,
+          "time": 154.9
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 158.9
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 11307,
+          "time": 162.667
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 166.667
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 12559,
+          "time": 170.633
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 174.633
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 12559,
+          "time": 178.6
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 182.6
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 13811,
+          "time": 186.567
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 190.567
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 13811,
+          "time": 194.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 198.533
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 13811,
+          "time": 202.5
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 206.5
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 14437,
+          "time": 210.467
+        },
+        {
+          "changed_cells": 3,
+          "reason": "weak_wall_breached",
+          "relaxed_cells": 10984,
+          "time": 213.6
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 6059,
+          "time": 214.467
+        },
+        {
+          "changed_cells": 4,
+          "reason": "retreat_gate_open",
+          "relaxed_cells": 10706,
+          "time": 251.933
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 10811,
+          "time": 251.967
+        }
+      ],
+      "full_siege_line_sha256": "15fb8feea8d84717ca5a656f3451c8702d6c3b0bfa8385be09db5ed1a96fe057"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "feint",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": false,
+      "victory_method": "none",
+      "victory_time": -1.0,
+      "ended_at": 300.0,
+      "spawned": {
+        "defender": 34,
+        "ghost": 120
+      },
+      "casualties": {
+        "defender": 4,
+        "ghost": 115
+      },
+      "fire_spent": 600.0,
+      "fire_wasted": 0.0,
+      "congestion_events": 151,
+      "travel_congestion_events": 151,
+      "congestion_per_deployed": 0.9805,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 12,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 12,
+          "total": 46
+        },
+        "late": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 5,
+            "ghost": 9,
+            "shield": 19
+          },
+          "defender": 30,
+          "ghost": 9,
+          "total": 39
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 5,
+            "ghost": 6,
+            "shield": 19
+          },
+          "defender": 30,
+          "ghost": 6,
+          "total": 36
+        },
+        "retreat": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        }
+      },
+      "route_choice_distribution": {
+        "cave": {
+          "by_kind": {
+            "ghost": 96
+          },
+          "deployed": 96,
+          "rerouted_in": 0
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 24
+          },
+          "deployed": 24,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 7.4,
+          "deaths": 115,
+          "deployed": 120,
+          "fire": 600.0,
+          "kills": 4,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 13614,
+          "time": 18.633
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 29.7
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 18739,
+          "time": 36.633
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 44.233
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 19365,
+          "time": 51.333
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 64.467
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 20030,
+          "time": 85.733
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 92.733
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 20030,
+          "time": 95.9
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 105.567
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 20656,
+          "time": 130.5
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 0,
+          "time": 138.133
+        }
+      ],
+      "full_siege_line_sha256": "a7e4bc5fa67ec4a5618a8555d5500fdd9fc8170eb5e74f654a3b7504b9b6ee09"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "waves",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 258.667,
+      "ended_at": 307.667,
+      "spawned": {
+        "defender": 34,
+        "ghost": 80
+      },
+      "casualties": {
+        "defender": 34,
+        "ghost": 72
+      },
+      "fire_spent": 400.0,
+      "fire_wasted": 0.039,
+      "congestion_events": 56,
+      "travel_congestion_events": 56,
+      "congestion_per_deployed": 0.4912,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 20,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 20,
+          "total": 54
+        },
+        "late": {
+          "by_kind": {
+            "archer": 1,
+            "cavalry": 1,
+            "ghost": 15,
+            "shield": 6
+          },
+          "defender": 8,
+          "ghost": 15,
+          "total": 23
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 3,
+            "cavalry": 3,
+            "ghost": 20,
+            "shield": 13
+          },
+          "defender": 19,
+          "ghost": 20,
+          "total": 35
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 1,
+            "cavalry": 1,
+            "ghost": 8,
+            "shield": 1
+          },
+          "defender": 3,
+          "ghost": 8,
+          "total": 11
+        }
+      },
+      "route_choice_distribution": {
+        "cave": {
+          "by_kind": {
+            "ghost": 20
+          },
+          "deployed": 20,
+          "rerouted_in": 0
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 40
+          },
+          "deployed": 40,
+          "rerouted_in": 0
+        },
+        "side": {
+          "by_kind": {
+            "ghost": 20
+          },
+          "deployed": 20,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 6,
+          "damage": 33.4,
+          "deaths": 72,
+          "deployed": 80,
+          "fire": 400.0,
+          "kills": 34,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 2.33333333333333,
+          "attacker_seconds": 19.2,
+          "breached_at": 39.4666666666667,
+          "started_at": 37.1333333333333
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 7590,
+          "time": 39.467
+        }
+      ],
+      "full_siege_line_sha256": "2c98677a88db3405281799a612ec516670b2320b103c2bffd8208b1d31641bdc"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "idle",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": false,
+      "victory_method": "none",
+      "victory_time": -1.0,
+      "ended_at": 300.0,
+      "spawned": {
+        "defender": 34,
+        "ghost": 20
+      },
+      "casualties": {
+        "defender": 21,
+        "ghost": 20
+      },
+      "fire_spent": 100.0,
+      "fire_wasted": 417.537,
+      "congestion_events": 0,
+      "travel_congestion_events": 0,
+      "congestion_per_deployed": 0.0,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 0,
+          "total": 34
+        },
+        "late": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 6,
+            "shield": 8
+          },
+          "defender": 14,
+          "ghost": 6,
+          "total": 20
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 20,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 20,
+          "total": 54
+        },
+        "retreat": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        }
+      },
+      "route_choice_distribution": {
+        "main": {
+          "by_kind": {
+            "ghost": 20
+          },
+          "deployed": 20,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 23.5,
+          "deaths": 20,
+          "deployed": 20,
+          "fire": 100.0,
+          "kills": 21,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 2.43333333333333,
+          "attacker_seconds": 18.9,
+          "breached_at": 223.9,
+          "started_at": 221.466666666667
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 6964,
+          "time": 223.9
+        }
+      ],
+      "full_siege_line_sha256": "548cd810a7900493b87b666e0bd0a583962e5f0af7f1b990c4e8191149779786"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "late_batches",
+      "params_sha256": "7808c49da79dfcc3419dd6e5ca12863a323eee4813c2302ed6727d4f86ac4a94",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 223.4,
+      "ended_at": 272.4,
+      "spawned": {
+        "defender": 34,
+        "ghost": 68
+      },
+      "casualties": {
+        "defender": 34,
+        "ghost": 52
+      },
+      "fire_spent": 340.0,
+      "fire_wasted": 41.403,
+      "congestion_events": 12,
+      "travel_congestion_events": 12,
+      "congestion_per_deployed": 0.1176,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 20,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 20,
+          "total": 54
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 5,
+            "ghost": 16,
+            "shield": 7
+          },
+          "defender": 12,
+          "ghost": 16,
+          "total": 22
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 3,
+            "ghost": 16
+          },
+          "defender": 3,
+          "ghost": 16,
+          "total": 19
+        }
+      },
+      "route_choice_distribution": {
+        "main": {
+          "by_kind": {
+            "ghost": 68
+          },
+          "deployed": 68,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "ghost": {
+          "archer_kills": 6,
+          "damage": 33.4,
+          "deaths": 52,
+          "deployed": 68,
+          "fire": 340.0,
+          "kills": 34,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        }
+      },
+      "structure_work": {
+        "gate": {
+          "active_seconds": 2.43333333333333,
+          "attacker_seconds": 18.9,
+          "breached_at": 73.9,
+          "started_at": 71.4666666666667
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 6964,
+          "time": 73.9
+        }
+      ],
+      "full_siege_line_sha256": "90dcd746d62762f7d791016b8bdacaf865836c6c2fe5a16b9ee8c05d707033f2"
+    }
+  ]
+}

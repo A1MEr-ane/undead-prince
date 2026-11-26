@@ -1,0 +1,1641 @@
+{
+  "description": "三策略各三种子，仅确认工具可用；每局实际投入 120，重复种子 1 完整 SIEGE 逐字一致。",
+  "raw_logs": "proto/siege/results/t74-final/t74/",
+  "rows": [
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "assassin_first",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 131.9,
+      "ended_at": 180.9,
+      "spawned": {
+        "defender": 34,
+        "ghost": 18
+      },
+      "casualties": {
+        "defender": 30,
+        "ghost": 13
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 27.604,
+      "congestion_events": 7,
+      "travel_congestion_events": 7,
+      "congestion_per_deployed": 0.1346,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "assassin": 2,
+            "cavalry": 6,
+            "ghost": 13,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 13,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "cavalry": 4,
+            "ghost": 7,
+            "shield": 8
+          },
+          "defender": 12,
+          "ghost": 7,
+          "total": 19
+        },
+        "retreat": {
+          "by_kind": {
+            "cavalry": 4,
+            "ghost": 5,
+            "shield": 3
+          },
+          "defender": 7,
+          "ghost": 5,
+          "total": 12
+        }
+      },
+      "route_choice_distribution": {
+        "cliff": {
+          "by_kind": {
+            "assassin": 2
+          },
+          "deployed": 2,
+          "rerouted_in": 0
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 16
+          },
+          "deployed": 16,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 6,
+          "damage": 9.2,
+          "deaths": 2,
+          "deployed": 2,
+          "fire": 40.0,
+          "kills": 11,
+          "structure_damage": 23.9999999999999,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 19.0,
+          "deaths": 11,
+          "deployed": 16,
+          "fire": 80.0,
+          "kills": 19,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [
+        {
+          "kind": "archer",
+          "time": 6.833,
+          "unit": 34,
+          "victim": 8
+        },
+        {
+          "kind": "archer",
+          "time": 7.2,
+          "unit": 35,
+          "victim": 7
+        },
+        {
+          "kind": "archer",
+          "time": 7.533,
+          "unit": 34,
+          "victim": 11
+        },
+        {
+          "kind": "archer",
+          "time": 7.933,
+          "unit": 35,
+          "victim": 10
+        },
+        {
+          "kind": "archer",
+          "time": 8.233,
+          "unit": 34,
+          "victim": 6
+        },
+        {
+          "kind": "archer",
+          "time": 8.633,
+          "unit": 35,
+          "victim": 9
+        }
+      ],
+      "detection_events": [
+        {
+          "reason": "guard_line_of_sight",
+          "time": 6.667,
+          "unit": 34
+        },
+        {
+          "reason": "guard_line_of_sight",
+          "time": 6.833,
+          "unit": 35
+        }
+      ],
+      "cliff_transits": 2,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.46666666666666,
+          "attacker_seconds": 18.9666666666667,
+          "breached_at": 95.7666666666667,
+          "started_at": 92.3
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 6.73333333333332,
+          "attacker_seconds": 13.3333333333333,
+          "breached_at": 28.2333333333333,
+          "started_at": 21.5
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 3,
+          "reason": "weak_breached",
+          "relaxed_cells": 16530,
+          "time": 28.233
+        },
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 14628,
+          "time": 95.767
+        }
+      ],
+      "full_siege_line_sha256": "4b5f86d693c89b187afaa9f9bfb66e74ebd73b282d06a49abba15dc3cfd25169"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 2,
+      "strategy": "assassin_first",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 131.0,
+      "ended_at": 180.0,
+      "spawned": {
+        "defender": 34,
+        "ghost": 18
+      },
+      "casualties": {
+        "defender": 30,
+        "ghost": 13
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 27.604,
+      "congestion_events": 9,
+      "travel_congestion_events": 9,
+      "congestion_per_deployed": 0.1731,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "assassin": 2,
+            "cavalry": 6,
+            "ghost": 11,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 11,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "cavalry": 3,
+            "ghost": 7,
+            "shield": 5
+          },
+          "defender": 8,
+          "ghost": 7,
+          "total": 15
+        },
+        "retreat": {
+          "by_kind": {
+            "cavalry": 3,
+            "ghost": 5,
+            "shield": 3
+          },
+          "defender": 6,
+          "ghost": 5,
+          "total": 11
+        }
+      },
+      "route_choice_distribution": {
+        "cave": {
+          "by_kind": {},
+          "deployed": 0,
+          "rerouted_in": 2
+        },
+        "cliff": {
+          "by_kind": {
+            "assassin": 2
+          },
+          "deployed": 2,
+          "rerouted_in": 0
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 16
+          },
+          "deployed": 16,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 6,
+          "damage": 15.5,
+          "deaths": 2,
+          "deployed": 2,
+          "fire": 40.0,
+          "kills": 17,
+          "structure_damage": 24.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 13.0,
+          "deaths": 11,
+          "deployed": 16,
+          "fire": 80.0,
+          "kills": 13,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [
+        {
+          "kind": "archer",
+          "time": 6.833,
+          "unit": 34,
+          "victim": 8
+        },
+        {
+          "kind": "archer",
+          "time": 7.333,
+          "unit": 35,
+          "victim": 7
+        },
+        {
+          "kind": "archer",
+          "time": 7.533,
+          "unit": 34,
+          "victim": 11
+        },
+        {
+          "kind": "archer",
+          "time": 8.033,
+          "unit": 35,
+          "victim": 10
+        },
+        {
+          "kind": "archer",
+          "time": 8.233,
+          "unit": 34,
+          "victim": 6
+        },
+        {
+          "kind": "archer",
+          "time": 8.733,
+          "unit": 35,
+          "victim": 9
+        }
+      ],
+      "detection_events": [
+        {
+          "reason": "guard_line_of_sight",
+          "time": 6.633,
+          "unit": 34
+        },
+        {
+          "reason": "guard_line_of_sight",
+          "time": 7.167,
+          "unit": 35
+        }
+      ],
+      "cliff_transits": 2,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.33333333333333,
+          "attacker_seconds": 19.1,
+          "breached_at": 99.1333333333333,
+          "started_at": 95.8
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 6.76666666666665,
+          "attacker_seconds": 13.3666666666666,
+          "breached_at": 28.3333333333333,
+          "started_at": 21.5666666666667
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 3,
+          "reason": "weak_breached",
+          "relaxed_cells": 17994,
+          "time": 28.333
+        },
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 21340,
+          "time": 99.133
+        }
+      ],
+      "full_siege_line_sha256": "78dfed53496d2953cf16ed3892e6ac6a39142e62811145fbe2f27915725350f7"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 3,
+      "strategy": "assassin_first",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 122.8,
+      "ended_at": 171.8,
+      "spawned": {
+        "defender": 34,
+        "ghost": 18
+      },
+      "casualties": {
+        "defender": 33,
+        "ghost": 7
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 27.604,
+      "congestion_events": 18,
+      "travel_congestion_events": 18,
+      "congestion_per_deployed": 0.3462,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "assassin": 2,
+            "cavalry": 6,
+            "ghost": 15,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 15,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "cavalry": 3,
+            "ghost": 11,
+            "shield": 3
+          },
+          "defender": 6,
+          "ghost": 11,
+          "total": 17
+        },
+        "retreat": {
+          "by_kind": {
+            "cavalry": 3,
+            "ghost": 11,
+            "shield": 3
+          },
+          "defender": 6,
+          "ghost": 11,
+          "total": 17
+        }
+      },
+      "route_choice_distribution": {
+        "cliff": {
+          "by_kind": {
+            "assassin": 2
+          },
+          "deployed": 2,
+          "rerouted_in": 0
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 16
+          },
+          "deployed": 16,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 6,
+          "damage": 12.5,
+          "deaths": 2,
+          "deployed": 2,
+          "fire": 40.0,
+          "kills": 14,
+          "structure_damage": 23.9999999999999,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 19.6,
+          "deaths": 5,
+          "deployed": 16,
+          "fire": 80.0,
+          "kills": 19,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [
+        {
+          "kind": "archer",
+          "time": 6.9,
+          "unit": 34,
+          "victim": 8
+        },
+        {
+          "kind": "archer",
+          "time": 7.2,
+          "unit": 35,
+          "victim": 11
+        },
+        {
+          "kind": "archer",
+          "time": 7.6,
+          "unit": 34,
+          "victim": 7
+        },
+        {
+          "kind": "archer",
+          "time": 7.933,
+          "unit": 35,
+          "victim": 10
+        },
+        {
+          "kind": "archer",
+          "time": 8.3,
+          "unit": 34,
+          "victim": 6
+        },
+        {
+          "kind": "archer",
+          "time": 8.633,
+          "unit": 35,
+          "victim": 9
+        }
+      ],
+      "detection_events": [
+        {
+          "reason": "guard_line_of_sight",
+          "time": 6.633,
+          "unit": 34
+        },
+        {
+          "reason": "guard_line_of_sight",
+          "time": 6.8,
+          "unit": 35
+        }
+      ],
+      "cliff_transits": 2,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.2,
+          "attacker_seconds": 19.2333333333334,
+          "breached_at": 94.6333333333333,
+          "started_at": 91.4333333333333
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 6.73333333333332,
+          "attacker_seconds": 13.3333333333333,
+          "breached_at": 29.7666666666667,
+          "started_at": 23.0333333333333
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 3,
+          "reason": "weak_breached",
+          "relaxed_cells": 17370,
+          "time": 29.767
+        },
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 18772,
+          "time": 94.633
+        }
+      ],
+      "full_siege_line_sha256": "41488d1b5f17df8ce60c8549a66d51429cb9dc75fbf2d111d94d113fb1730a10"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "giant_breach",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 108.233,
+      "ended_at": 157.267,
+      "spawned": {
+        "defender": 34,
+        "ghost": 14
+      },
+      "casualties": {
+        "defender": 31,
+        "ghost": 8
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 7.604,
+      "congestion_events": 14,
+      "travel_congestion_events": 14,
+      "congestion_per_deployed": 0.2917,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 11,
+            "giant": 2,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 13,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 4,
+            "giant": 2
+          },
+          "defender": 6,
+          "ghost": 6,
+          "total": 12
+        }
+      },
+      "route_choice_distribution": {
+        "breach:wall_west": {
+          "by_kind": {
+            "ghost": 12,
+            "giant": 2
+          },
+          "deployed": 14,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 3,
+          "damage": 5.4,
+          "deaths": 8,
+          "deployed": 12,
+          "fire": 60.0,
+          "kills": 6,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 26.2,
+          "deaths": 0,
+          "deployed": 2,
+          "fire": 60.0,
+          "kills": 25,
+          "structure_damage": 60.0,
+          "sweeps": 4
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 2.5,
+          "attacker_seconds": 4.30000000000001,
+          "breached_at": 15.4333333333333,
+          "started_at": 12.9333333333333
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 1,
+          "reason": "wall_west_breached",
+          "relaxed_cells": 21461,
+          "time": 15.433
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 7017,
+          "time": 37.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8202,
+          "time": 43.967
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 8265,
+          "time": 56.3
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8625,
+          "time": 62.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "retreat_gate_open",
+          "relaxed_cells": 9876,
+          "time": 108.233
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 10348,
+          "time": 108.267
+        }
+      ],
+      "full_siege_line_sha256": "79c14a95a6967f146700c8aa104832d0cf8e25796d92645108cc1fed69d2eeb8"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 2,
+      "strategy": "giant_breach",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 109.933,
+      "ended_at": 158.933,
+      "spawned": {
+        "defender": 34,
+        "ghost": 14
+      },
+      "casualties": {
+        "defender": 31,
+        "ghost": 7
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 7.604,
+      "congestion_events": 17,
+      "travel_congestion_events": 17,
+      "congestion_per_deployed": 0.3542,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 11,
+            "giant": 2,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 13,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 5,
+            "giant": 2
+          },
+          "defender": 6,
+          "ghost": 7,
+          "total": 13
+        }
+      },
+      "route_choice_distribution": {
+        "breach:wall_west": {
+          "by_kind": {
+            "ghost": 12,
+            "giant": 2
+          },
+          "deployed": 14,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 3,
+          "damage": 5.4,
+          "deaths": 7,
+          "deployed": 12,
+          "fire": 60.0,
+          "kills": 6,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 26.2,
+          "deaths": 0,
+          "deployed": 2,
+          "fire": 60.0,
+          "kills": 25,
+          "structure_damage": 60.0,
+          "sweeps": 3
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 2.53333333333333,
+          "attacker_seconds": 4.33333333333334,
+          "breached_at": 15.2333333333333,
+          "started_at": 12.7
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 1,
+          "reason": "wall_west_breached",
+          "relaxed_cells": 21461,
+          "time": 15.233
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 7017,
+          "time": 37.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8202,
+          "time": 43.967
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 8123,
+          "time": 55.3
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8635,
+          "time": 61.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "retreat_gate_open",
+          "relaxed_cells": 9258,
+          "time": 109.933
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 9683,
+          "time": 109.967
+        }
+      ],
+      "full_siege_line_sha256": "750199db838189f0d461f087d04a0a38697b6c172fc978f8ce962c5daf0dbcd0"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 3,
+      "strategy": "giant_breach",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 108.867,
+      "ended_at": 157.867,
+      "spawned": {
+        "defender": 34,
+        "ghost": 14
+      },
+      "casualties": {
+        "defender": 31,
+        "ghost": 8
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 7.604,
+      "congestion_events": 13,
+      "travel_congestion_events": 13,
+      "congestion_per_deployed": 0.2708,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 11,
+            "giant": 2,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 13,
+          "total": 36
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 6,
+            "ghost": 4,
+            "giant": 2
+          },
+          "defender": 6,
+          "ghost": 6,
+          "total": 12
+        }
+      },
+      "route_choice_distribution": {
+        "breach:wall_west": {
+          "by_kind": {
+            "ghost": 12,
+            "giant": 2
+          },
+          "deployed": 14,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 3,
+          "damage": 5.4,
+          "deaths": 8,
+          "deployed": 12,
+          "fire": 60.0,
+          "kills": 6,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 26.2,
+          "deaths": 0,
+          "deployed": 2,
+          "fire": 60.0,
+          "kills": 25,
+          "structure_damage": 60.0,
+          "sweeps": 4
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 2.5,
+          "attacker_seconds": 4.30000000000001,
+          "breached_at": 15.1,
+          "started_at": 12.6
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 1,
+          "reason": "wall_west_breached",
+          "relaxed_cells": 21461,
+          "time": 15.1
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 7017,
+          "time": 37.033
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8544,
+          "time": 43.967
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_opened_gate",
+          "relaxed_cells": 8265,
+          "time": 55.3
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 8625,
+          "time": 61.133
+        },
+        {
+          "changed_cells": 4,
+          "reason": "retreat_gate_open",
+          "relaxed_cells": 9662,
+          "time": 108.867
+        },
+        {
+          "changed_cells": 4,
+          "reason": "defender_closed_gate",
+          "relaxed_cells": 10125,
+          "time": 108.9
+        }
+      ],
+      "full_siege_line_sha256": "73a95aafe18fe0bceebe18c1dc033a2e5f84d3ec290ee736def3b1640a685565"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 1,
+      "strategy": "prep_control",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 134.667,
+      "ended_at": 183.667,
+      "spawned": {
+        "defender": 34,
+        "ghost": 24
+      },
+      "casualties": {
+        "defender": 32,
+        "ghost": 18
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 67.604,
+      "congestion_events": 5,
+      "travel_congestion_events": 5,
+      "congestion_per_deployed": 0.0862,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 23,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 23,
+          "total": 54
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 1,
+            "ghost": 9,
+            "shield": 8
+          },
+          "defender": 15,
+          "ghost": 9,
+          "total": 24
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 1,
+            "ghost": 6,
+            "shield": 3
+          },
+          "defender": 10,
+          "ghost": 6,
+          "total": 16
+        }
+      },
+      "route_choice_distribution": {
+        "main": {
+          "by_kind": {
+            "ghost": 24
+          },
+          "deployed": 24,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 6,
+          "damage": 31.1,
+          "deaths": 18,
+          "deployed": 24,
+          "fire": 120.0,
+          "kills": 32,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.0,
+          "attacker_seconds": 19.2,
+          "breached_at": 93.7333333333333,
+          "started_at": 90.7333333333333
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 21448,
+          "time": 93.733
+        }
+      ],
+      "full_siege_line_sha256": "02157ba373217dcbcbce74f34aa94a7292cac04a19baf9f9ffec189a25a0dd48"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 2,
+      "strategy": "prep_control",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": true,
+      "victory_method": "keep_retreat",
+      "victory_time": 133.867,
+      "ended_at": 182.867,
+      "spawned": {
+        "defender": 34,
+        "ghost": 24
+      },
+      "casualties": {
+        "defender": 29,
+        "ghost": 20
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 67.604,
+      "congestion_events": 4,
+      "travel_congestion_events": 4,
+      "congestion_per_deployed": 0.069,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 22,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 22,
+          "total": 53
+        },
+        "late": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 3,
+            "ghost": 8,
+            "shield": 8
+          },
+          "defender": 17,
+          "ghost": 8,
+          "total": 25
+        },
+        "retreat": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 3,
+            "ghost": 4,
+            "shield": 3
+          },
+          "defender": 12,
+          "ghost": 4,
+          "total": 16
+        }
+      },
+      "route_choice_distribution": {
+        "main": {
+          "by_kind": {
+            "ghost": 24
+          },
+          "deployed": 24,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 4,
+          "damage": 28.3,
+          "deaths": 20,
+          "deployed": 24,
+          "fire": 120.0,
+          "kills": 29,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.3,
+          "attacker_seconds": 18.9,
+          "breached_at": 94.2666666666667,
+          "started_at": 90.9666666666667
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 22729,
+          "time": 94.267
+        }
+      ],
+      "full_siege_line_sha256": "d8c6dfde784d0c555f9c49c13a6b23cd06b8579752d836a6ab6275800d68ddd5"
+    },
+    {
+      "schema_version": 3,
+      "metrics_version": "T74-movement-intent-v1",
+      "seed": 3,
+      "strategy": "prep_control",
+      "params_sha256": "ab6b25b10b7a671c1ac5c2e797c7e2761f4f302a5fee138230ae8b45be058de6",
+      "won": false,
+      "victory_method": "none",
+      "victory_time": -1.0,
+      "ended_at": 300.0,
+      "spawned": {
+        "defender": 34,
+        "ghost": 24
+      },
+      "casualties": {
+        "defender": 19,
+        "ghost": 24
+      },
+      "fire_spent": 120.0,
+      "fire_wasted": 397.537,
+      "congestion_events": 2,
+      "travel_congestion_events": 2,
+      "congestion_per_deployed": 0.0345,
+      "phase_live_peaks": {
+        "early": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 6,
+            "ghost": 17,
+            "shield": 22
+          },
+          "defender": 34,
+          "ghost": 17,
+          "total": 48
+        },
+        "late": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 2,
+            "shield": 7
+          },
+          "defender": 15,
+          "ghost": 0,
+          "total": 15
+        },
+        "middle": {
+          "by_kind": {
+            "archer": 6,
+            "cavalry": 2,
+            "ghost": 5,
+            "shield": 8
+          },
+          "defender": 16,
+          "ghost": 5,
+          "total": 21
+        },
+        "retreat": {
+          "by_kind": {},
+          "defender": 0,
+          "ghost": 0,
+          "total": 0
+        }
+      },
+      "route_choice_distribution": {
+        "cave": {
+          "by_kind": {},
+          "deployed": 0,
+          "rerouted_in": 3
+        },
+        "main": {
+          "by_kind": {
+            "ghost": 24
+          },
+          "deployed": 24,
+          "rerouted_in": 0
+        }
+      },
+      "unit_results": {
+        "assassin": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        },
+        "ghost": {
+          "archer_kills": 0,
+          "damage": 20.9,
+          "deaths": 24,
+          "deployed": 24,
+          "fire": 120.0,
+          "kills": 19,
+          "structure_damage": 34.0,
+          "sweeps": 0
+        },
+        "giant": {
+          "archer_kills": 0,
+          "damage": 0.0,
+          "deaths": 0,
+          "deployed": 0,
+          "fire": 0.0,
+          "kills": 0,
+          "structure_damage": 0.0,
+          "sweeps": 0
+        }
+      },
+      "assassination_events": [],
+      "detection_events": [],
+      "cliff_transits": 0,
+      "structure_work": {
+        "gate": {
+          "active_seconds": 3.73333333333333,
+          "attacker_seconds": 18.9,
+          "breached_at": 100.633333333333,
+          "started_at": 96.9
+        },
+        "wall_east": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_highland": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "wall_west": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        },
+        "weak": {
+          "active_seconds": 0.0,
+          "attacker_seconds": 0.0,
+          "breached_at": -1.0,
+          "started_at": -1.0
+        }
+      },
+      "topology_events": [
+        {
+          "changed_cells": 4,
+          "reason": "gate_breached",
+          "relaxed_cells": 23316,
+          "time": 100.633
+        }
+      ],
+      "full_siege_line_sha256": "1e3eb4c36711698241c6b55edd88bc1ab3316ee206905b668cc0e067c3f6e4fb"
+    }
+  ]
+}

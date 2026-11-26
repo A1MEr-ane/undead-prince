@@ -1,0 +1,5 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SIEGE_FEATURES PASS T69 outcome_priority/eligible_defenders/weak_wall/perception/mission_lock/target_lock/recovery/hooks/fixed_input/late_batches + T67 regression
+ERROR: Condition "ret != noErr" is true. Returning: ""
+   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)

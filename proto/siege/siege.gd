@@ -10,10 +10,13 @@ const View = preload("res://proto/siege/siege_view.gd")
 const State = preload("res://scripts/agent_state.gd")
 const Hooks = preload("res://proto/siege/siege_events.gd")
 const Metrics = preload("res://proto/siege/siege_metrics.gd")
+const PhaseB = preload("res://proto/siege/siege_phase_b.gd")
 enum Outcome { ACTIVE, WON, LOST }
 enum Presentation { BATTLE, RETREAT, COMPLETE }
 const DEFAULT_PARAMS := "res://proto/siege/siege_params.json"
 
+var phase_b := PhaseB.new()
+var selected_kind := "ghost"
 var outcome := Outcome.ACTIVE
 var presentation := Presentation.BATTLE
 var hooks := Hooks.new()
@@ -111,6 +114,9 @@ func _ready() -> void:
 		return
 	seed_value = int(args.get("seed", "7"))
 	strategy = args.get("strategy", "waves" if headless else "manual")
+	if strategy in ["assassin_first", "giant_breach", "prep_control"] and not params.get("phase_b", {}).get("enabled", false):
+		fail("准备策略需要开启 phase_b")
+		return
 	if strategy != "manual" and not params.strategies.names.has(strategy):
 		fail("未知策略: " + strategy)
 		return
@@ -119,6 +125,13 @@ func _ready() -> void:
 	State.now = 0
 	State.dt = float(params.simulation.step)
 	terrain.setup(params)
+	phase_b.setup(self)
+	if strategy == "assassin_first" and not phase_b.available("assassin"):
+		fail("刺客先手策略需要开启刺客")
+		return
+	if strategy == "giant_breach" and (not phase_b.available("giant") or not phase_b.walls.has(phase_b.cfg.breach_target)):
+		fail("巨人破墙策略需要开启巨人及指定可破墙")
+		return
 	hooks.max_depth = int(params.events.max_depth)
 	gate_hp = float(params.structures.gate_hp)
 	weak_hp = float(params.structures.weak_hp)
@@ -129,6 +142,7 @@ func _ready() -> void:
 		for n in int(group.count):
 			var u = spawn(group.kind, 1, terrain.vec(group.anchor) + formation_offset(n), group.zone, group.get("victory_eligible", true))
 			u.reserve = group.get("reserve", false)
+	phase_b.sample_peaks()
 	map_metrics = Metrics.describe(self)
 	director.setup(self)
 	if strategy != "manual":
@@ -159,6 +173,28 @@ func validate_params() -> bool:
 	if float(params.combat.get("near_cell_size", 1.0)) <= 0 or float(params.combat.spatial_cell_size) <= 0 or int(params.combat.get("sense_steps", 4)) < 1 or int(params.map.flow_cache_limit) < 1:
 		fail("空间网格、索敌步数与流场缓存上限必须为正")
 		return false
+	var b: Dictionary = params.get("phase_b", {})
+	if b.get("enabled", false):
+		if b.get("cave_permission", "all") not in ["all", "undead", "assassin"]:
+			fail("phase_b.cave_permission 必须为 all/undead/assassin")
+			return false
+		for key in ["cliff_entry", "cliff_exit", "cliff_seconds", "detection_radius", "total_budget", "main_wave_fire", "breakable_walls"]:
+			if not b.has(key):
+				fail("阶段 B 缺参数: " + key + "；请使用 params/phase_b.json")
+				return false
+		for kind in ["assassin", "giant"]:
+			if not params.units.has(kind) or float(params.units[kind].get("cost", 0)) <= 0 or float(params.units[kind].cost) > float(params.economy.capacity):
+				fail("阶段 B 兵种费用必须为正且不超过冥火上限")
+				return false
+		if float(b.cliff_seconds) <= 0 or float(b.detection_radius) <= 0 or float(b.main_wave_fire) < float(params.economy.unit_cost) or float(b.main_wave_fire) > float(params.economy.capacity):
+			fail("阶段 B 转移时间、感知半径或波次预算无效")
+			return false
+		var ids := ["gate", "weak"]
+		for wall in b.breakable_walls:
+			if ids.has(wall.id) or float(wall.hp) <= 0:
+				fail("可破墙 ID 重复或血量非正")
+				return false
+			ids.append(wall.id)
 	var previous := -1.0
 	for knot in params.economy.regen_curve:
 		if float(knot[0]) <= previous or float(knot[1]) < 0:
@@ -219,7 +255,9 @@ func simulate() -> void:
 		apply_inputs()
 	if finished:
 		return
+	phase_b.sample_peaks()
 	rebuild_spatial()
+	phase_b.update_detection()
 	refresh_rally_members()
 	director.tick()
 	update_gate()
@@ -231,6 +269,7 @@ func simulate() -> void:
 		else:
 			director.unit_order(u)
 			stage_defender_at_gate(u)
+			if phase_b.enabled: try_cave(u)
 		u.sense()
 	for u in units:
 		u.previous_pos = u.nav_pos
@@ -238,6 +277,7 @@ func simulate() -> void:
 		fine_spatial.moved(u)
 		observe_route(u)
 	rebuild_spatial()
+	phase_b.sample_peaks()
 	if outcome == Outcome.ACTIVE:
 		attack_structures(dt)
 		update_captures(dt)
@@ -267,14 +307,16 @@ func apply_inputs() -> void:
 	for input in commands:
 		var accepted := false
 		match input.command:
-			"deploy": accepted = deploy(input.pos)
+			"deploy": accepted = deploy(input.pos, selected_kind)
 			"rally": accepted = rally(input.pos)
 			"skip_retreat":
 				if presentation == Presentation.RETREAT:
 					retreat_skipped = true
 					finish()
 					accepted = true
-		input_events.append({"step": step_number, "command": input.command, "point": [input.pos.x, input.pos.z], "accepted": accepted})
+		var record := {"step": step_number, "command": input.command, "point": [input.pos.x, input.pos.z], "accepted": accepted}
+		if phase_b.enabled and input.command == "deploy": record.kind = selected_kind
+		input_events.append(record)
 
 func resource_event(before: float, reason: String) -> void:
 	if not is_equal_approx(before, fire):
@@ -347,22 +389,26 @@ func can_deploy(pos: Vector3) -> bool:
 		return zones[terrain.zone_at(pos)].owner == "ghost"
 	return false
 
-func deploy(pos: Vector3) -> bool:
-	var cost := float(params.economy.unit_cost)
+func deploy(pos: Vector3, kind: String = "ghost", route_hint: String = "", focus: bool = true) -> bool:
+	if not phase_b.available(kind):
+		return false
+	var cost := phase_b.cost(kind) if phase_b.enabled else float(params.economy.unit_cost)
 	if not can_deploy(pos) or fire < cost:
 		return false
 	var before := fire
 	fire -= cost
 	fire_spent += cost
 	resource_event(before, "deployment")
-	var u = spawn("ghost", 0, pos, "coast")
-	u.route = choose_route(u, false)
+	var u = spawn(kind, 0, pos, "coast")
+	u.focus_archers = focus
+	u.route = route_hint if phase_b.analysis and valid_route(u, route_hint) else choose_route(u, false)
 	u.initial_route = u.route
+	if phase_b.analysis: phase_b.deployed(u, cost)
 	if waves.is_empty() or time - last_deploy > float(params.economy.wave_gap_seconds):
 		waves.append({"start": snappedf(time, 0.001), "end": 0.0, "count": 0, "fire": 0.0, "routes": {"main": 0, "side": 0, "cave": 0}})
 	waves[-1].count += 1
 	waves[-1].fire += cost
-	waves[-1].routes[u.route] += 1
+	waves[-1].routes[u.route] = waves[-1].routes.get(u.route, 0) + 1
 	waves[-1].end = snappedf(time, 0.001)
 	last_deploy = time
 	return true
@@ -392,11 +438,35 @@ func refresh_rally_members() -> void:
 		if u.alive and u.cave_until < 0 and Vector2(u.nav_pos.x - rally_pos.x, u.nav_pos.z - rally_pos.z).length() <= float(params.economy.rally_radius):
 			rally_members.append(u.id)
 
+func valid_route(u, route: String) -> bool:
+	if route == "cliff":
+		return phase_b.enabled and u.kind == "assassin"
+	if route.begins_with("breach:"):
+		return phase_b.enabled and phase_b.walls.has(route.trim_prefix("breach:"))
+	return params.map.routes.has(route) and (route != "cave" or phase_b.can_cave(u))
+
+func try_cave(u) -> bool:
+	if not u.alive or u.cave_until >= 0 or not phase_b.can_cave(u):
+		return false
+	var i: int = terrain.index(terrain.tile(u.nav_pos))
+	if i not in [terrain.cave_a, terrain.cave_b]:
+		return false
+	var other: int = terrain.cave_b if i == terrain.cave_a else terrain.cave_a
+	if terrain.field(u.slot, true).next[i] != other:
+		return false
+	var count := 0
+	for unit in units:
+		if unit.cave_until >= 0 and unit.transit_kind == "cave": count += 1
+	if count >= int(params.map.cave_capacity):
+		return false
+	phase_b.start_transit(u, terrain.point(other), float(params.map.cave_travel_seconds), "cave")
+	return true
+
 func choose_route(u, congestion_change: bool) -> String:
 	var scores := {}
 	var cfg: Dictionary = params.targeting
 	for route in params.map.routes:
-		if route == "cave" and not params.map.cave_enabled:
+		if not valid_route(u, route):
 			continue
 		var first: Vector3 = terrain.vec(params.map.routes[route][0])
 		var distance: float = terrain.distance(u.nav_pos, first, false)
@@ -404,7 +474,7 @@ func choose_route(u, congestion_change: bool) -> String:
 		for f in sides[0].units:
 			if f.alive and f != u and f.route == route and f.stage < 2 and Vector2(f.nav_pos.x - first.x, f.nav_pos.z - first.z).length() <= float(cfg.crowd_radius):
 				crowd += 1
-		var value := float(cfg.values.gate if route == "main" else cfg.values.archer if route == "side" else cfg.values.keep)
+		var value := phase_b.route_value(route) if phase_b.analysis else float(cfg.values.gate if route == "main" else cfg.values.archer if route == "side" else cfg.values.keep)
 		var commitment := float(cfg.route_commitment) if route == u.route and not congestion_change else 0.0
 		# 同一登陆点的主路/侧路入口可以区分；高地尚存弓手时，侧路偏好更高。
 		scores[route] = value * float(cfg.value_weight) - distance * float(cfg.distance_weight) - crowd * float(cfg.congestion_weight) + commitment
@@ -423,6 +493,11 @@ func ghost_order(u) -> void:
 		var target = nearest_enemy(u, float(params.retreat.pursuit_radius))
 		u.slot = target.nav_pos if target != null else terrain.vec(params.map.port)
 		return
+	if phase_b.enabled:
+		if not valid_route(u, u.route):
+			u.route = choose_route(u, false)
+			u.stage = 0
+		if phase_b.special_order(u): return
 	var cfg: Dictionary = params.targeting
 	if time < u.next_target and u.objective != "cave":
 		return
@@ -434,6 +509,7 @@ func ghost_order(u) -> void:
 				if terrain.distance(u.nav_pos, terrain.vec(params.map.routes[alternative][0]), false) >= float(params.map.flow_infinity):
 					return
 				u.route = alternative
+				if phase_b.analysis: phase_b.choice(u, "reroute")
 				u.stage = 0
 				u.reroutes += 1
 				reroutes += 1
@@ -451,9 +527,12 @@ func ghost_order(u) -> void:
 			if f.cave_until >= 0:
 				travelers += 1
 		if Vector2(u.slot.x - u.nav_pos.x, u.slot.z - u.nav_pos.z).length() <= float(params.map.cave_entry_radius) and travelers < int(params.map.cave_capacity):
-			u.cave_until = time + float(params.map.cave_travel_seconds)
-			u.cave_exit = terrain.vec(params.map.cave_b)
-			cave_transits += 1
+			if phase_b.enabled:
+				phase_b.start_transit(u, terrain.vec(params.map.cave_b), float(params.map.cave_travel_seconds), "cave")
+			else:
+				u.cave_until = time + float(params.map.cave_travel_seconds)
+				u.cave_exit = terrain.vec(params.map.cave_b)
+				cave_transits += 1
 		return
 	var candidates: Array = [{"pos": terrain.nearest(waypoint), "value": float(cfg.values.zone), "kind": "flag"}]
 	if u.route == "main" and u.stage <= 2 and not terrain.gate_broken and not terrain.gate_open:
@@ -471,7 +550,7 @@ func ghost_order(u) -> void:
 				candidates = [{"pos": zone_point("plaza"), "value": float(cfg.values.zone), "kind": "flag"}]
 	for e in nearby(u.nav_pos, float(params.combat.chase_radius), 1):
 		if terrain.line_clear(u.nav_pos, e.nav_pos):
-			candidates.append({"pos": e.nav_pos, "value": float(cfg.values.archer if e.kind == "archer" else cfg.values.zone), "kind": e.kind, "id": e.id})
+			candidates.append({"pos": e.nav_pos, "value": float(cfg.values.archer if e.kind == "archer" and (not phase_b.analysis or u.focus_archers) else cfg.values.zone), "kind": e.kind, "id": e.id})
 	if rally_until > time and rally_members.has(u.id):
 		candidates.append({"pos": rally_pos, "value": float(cfg.rally_weight), "kind": "rally"})
 	var best := -INF
@@ -551,18 +630,21 @@ func nearest_enemy(u, radius: float = -1):
 		return best
 	var p: Vector3 = u.nav_pos
 	var size := float(params.combat.spatial_cell_size)
+	var best_score := INF
 	var radius_sq := distance * distance
 	for z in range(floori((p.z - distance) / size), floori((p.z + distance) / size) + 1):
 		for x in range(floori((p.x - distance) / size), floori((p.x + distance) / size) + 1):
 			for e in spatial.get(Vector3i(x, faction, z), []):
-				if not e.alive or e.cave_until >= 0:
+				if not e.alive or e.cave_until >= 0 or (u.faction == 1 and not phase_b.visible(e)):
 					continue
 				var delta := Vector2(e.nav_pos.x - p.x, e.nav_pos.z - p.z)
 				if delta.length_squared() > radius_sq:
 					continue
 				var d := delta.length()
-				if d < distance and terrain.line_clear(p, e.nav_pos):
-					distance = d
+				var score := phase_b.enemy_score(u, e) if phase_b.analysis else d
+				if (score < best_score if phase_b.analysis else d < distance) and terrain.line_clear(p, e.nav_pos):
+					if not phase_b.analysis: distance = d
+					best_score = score
 					best = e
 	return best
 
@@ -595,6 +677,9 @@ func separation(u) -> Vector3:
 	return v.limit_length(float(params.combat.max_separation_speed))
 
 func attack_structures(dt: float) -> void:
+	if phase_b.enabled:
+		phase_b.attack_structures(dt)
+		return
 	var attackers := {"gate": 0, "weak": 0}
 	for u in sides[0].units:
 		if not u.alive or u.cave_until >= 0 or time < u.stun_until or u.enemy_dist < float(params.combat.chase_radius):
@@ -616,6 +701,9 @@ func attack_structures(dt: float) -> void:
 			work.started_at = maxf(0, time - dt)
 		work.active_seconds += dt
 		work.attacker_seconds += count * dt
+		if phase_b.analysis:
+			var actual := minf(maxf(0, gate_hp if kind == "gate" else weak_hp), count * float(params.structures.damage_per_second) * dt)
+			phase_b.stats("ghost").structure_damage += actual
 		if kind == "gate": gate_hp -= count * float(params.structures.damage_per_second) * dt
 		else: weak_hp -= count * float(params.structures.damage_per_second) * dt
 	if gate_hp <= 0.000001 and not terrain.gate_broken:
@@ -629,6 +717,11 @@ func attack_structures(dt: float) -> void:
 		terrain.change(params.map.weak_rect, true, time, "weak_wall_breached")
 
 func stage_defender_at_gate(u) -> void:
+	if phase_b.enabled and phase_b.can_cave(u) and terrain.distance(u.nav_pos, u.slot, true) < float(params.map.flow_infinity):
+		return
+	if phase_b.enabled:
+		for wall in phase_b.walls.values():
+			if wall.broken: return
 	if terrain.gate_open or terrain.gate_broken or terrain.weak_broken or retreat_started:
 		return
 	var outside: bool = u.nav_pos.z > float(params.map.gate_rect[1])
@@ -784,7 +877,7 @@ func result() -> Dictionary:
 		resets[id] = zones[id].contested_resets
 	var early := archer_deaths.filter(func(t): return t <= float(params.strategies.early_archer_seconds)).size()
 	var configs := JSON.stringify(params, "", true, true)
-	return {"schema_version": 2, "seed": seed_value, "strategy": strategy, "params_sha256": configs.sha256_text(),
+	var output := {"schema_version": 2, "seed": seed_value, "strategy": strategy, "params_sha256": configs.sha256_text(),
 		"outcome": Outcome.keys()[outcome], "presentation": Presentation.keys()[presentation], "won": won, "victory_method": victory_method, "victory_time": snappedf(victory_time, 0.001), "ended_at": snappedf(ended_at, 0.001),
 		"zone_captures": captures, "zone_losses": losses, "capture_resets": resets,
 		"retreat": {"skipped": retreat_skipped, "started_at": snappedf(retreat_at, 0.001), "boat_depart_at": snappedf(boat_depart_at, 0.001), "escaped": escaped, "intercepted": intercepted, "stranded": stranded},
@@ -797,6 +890,10 @@ func result() -> Dictionary:
 		"reroutes": reroutes, "cave_transits": cave_transits, "archer_kill_times": archer_deaths, "early_archer_kills": early,
 		"topology_events": terrain.topology_events, "flow_repairs": terrain.flow_repairs, "flow_relaxed_cells": terrain.repaired_cells, "combat_events": events,
 		"simulation_steps": ceili(ended_at / float(params.simulation.step))}
+	if phase_b.analysis:
+		output.schema_version = 3
+		output.merge(phase_b.result())
+	return output
 
 func note(event: String) -> void:
 	events[event] = events.get(event, 0) + 1
@@ -817,5 +914,6 @@ func _exit_tree() -> void:
 	fine_spatial.clear()
 	units.clear()
 	director.main = null
+	phase_b.main = null
 	if bot != null:
 		bot.main = null
