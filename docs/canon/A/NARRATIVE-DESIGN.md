@@ -312,9 +312,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 坚持王位→确立统治→保留军誓→凭后期知识终止秘印。王子授权停机，再命令受束缚军团运粮守港；释放尚存囚魂，却保留军事强制。
 
-**Aftermath:** The first sunset falls over an undead king and working docks. Voluntary aid and compulsory labour are visibly different. Food shortages or effective reserves alter the immediate mood, not the core outcome.
+**Aftermath:** The first sunset after the Unending Day falls over an undead king and working docks. Across the realm, towns burn wood and peat for the first winter in living memory; the outer islands and the capital are at last equally cold and equally dark. Voluntary aid and compulsory labour are visibly different. Food shortages or effective reserves alter the immediate mood, not the core outcome.
 
-**尾声：** 首次日落照耀亡灵君主和仍在工作的码头。自愿支援与强制劳役有明确差异；粮食不足或储备充分改变当下氛围，不改结局组合。
+**尾声：** 永昼结束后的第一次日落照耀亡灵君主和仍在工作的码头。全国城镇在这个冬天第一次烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。自愿支援与强制劳役有明确差异；粮食不足或储备充分改变当下氛围，不改结局组合。
 
 **After Return:** “The sun went down. Your orders did not.” / “太阳落下了。你的命令却还没有结束。”
 
@@ -324,9 +324,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 坚持王位→取得认可的继承安排和有效行政→解除军誓→终止秘印。王子仍靠契约作为亡灵存在，只能依靠常规制度、自愿支持与紧急经济安排，而非超自然强制。
 
-**Aftermath:** The king signs a winter budget by candlelight. Eleanor can serve as an independent adviser, seek another life or disagree publicly. The kingdom faces a difficult transition; the name refers to its institutions, not a magically mortal Edmund.
+**Aftermath:** The king signs a winter budget by candlelight while towns across the realm burn wood and peat; the outer islands and the capital are at last equally cold and equally dark. Eleanor can serve as an independent adviser, seek another life or disagree publicly. The kingdom faces a difficult transition; the name refers to its institutions, not a magically mortal Edmund.
 
-**尾声：** 国王在烛光下签署冬季预算。妹妹可担任独立顾问、另寻生活或公开反对。王国经历艰难过渡；结局名称指国家制度回归凡世，并非王子突然变回活人。
+**尾声：** 国王在烛光下签署冬季预算，全国城镇烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。妹妹可担任独立顾问、另寻生活或公开反对。王国经历艰难过渡；结局名称指国家制度回归凡世，并非王子突然变回活人。
 
 **After Return:** “A kingdom that needs candles. Imagine the expense.” / “一个需要蜡烛的王国。想想那笔开销吧。”
 
@@ -336,9 +336,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→她解除摄政→保留军誓→共同安排并终止秘印。王子让亡灵军团守国、协助过冬；女王可附条件接受，或质疑仍在持续的强制，她仍是君主。
 
-**Aftermath:** The siblings meet on the shore at the end of the first winter preparations. Edmund promises to stand watch. An optional projected future shows a mortal sister growing old and an undead brother keeping watch, clearly labelled as a possibility, not remembered decades.
+**Aftermath:** The siblings meet on the shore at the end of the first winter preparations, while towns across the realm burn wood and peat and the outer islands and the capital are at last equally cold and equally dark. Edmund promises to stand watch. An optional projected future shows a mortal sister growing old and an undead brother keeping watch, clearly labelled as a possibility, not remembered decades.
 
-**尾声：** 首轮冬季准备结束时兄妹在岸边相见，王子承诺守望。可选的远期推演展示逐渐衰老的妹妹与亡灵兄长，须注明为可能未来，不是王子记得的数十年。
+**尾声：** 首轮冬季准备结束时兄妹在岸边相见，全国城镇烧起木柴和泥炭，外岛与王都终于一样冷、一样黑。王子承诺守望。可选的远期推演展示逐渐衰老的妹妹与亡灵兄长，须注明为可能未来，不是王子记得的数十年。
 
 **After Return:** “A long watch. I hope you remembered to ask for volunteers.” / “漫长的守望。希望你还记得问问谁愿意留下。”
 
@@ -348,9 +348,9 @@ The paths below specify prerequisites, decisions, connecting events and witnesse
 
 **路径：** 承认妹妹→恢复她独立执政→解除军誓→经她同意并制定可行过冬安排，终止秘印。它是 E04 最直接的情感延续，但非唯一后期成功结局或终章门槛。
 
-**Aftermath:** Eleanor sees the colour leave the white city walls. Pip's horn sounds dismissal; those who volunteer remain free. The kingdom faces an uncertain winter. Edmund is still bound to Return until he has the separate knowledge and chooses release.
+**Aftermath:** The Unending Day goes out. After the natural sun sets, night falls completely over Sunhold for the first time, and the city sees a sky full of stars. Eleanor watches the white walls lose their colour. Pip's horn sounds dismissal; those who volunteer remain free. Across the realm, towns burn wood and peat; the outer islands and the capital are at last equally cold and equally dark. The kingdom faces an uncertain winter. Edmund is still bound to Return until he has the separate knowledge and chooses release.
 
-**尾声：** 妹妹看着白色城墙逐渐失去光彩，皮普吹响散队号，自愿留下者保持自由。王国面对未知寒冬；王子在掌握独立解约知识并选择解除之前仍受回溯束缚。
+**尾声：** 永昼之日熄灭。自然太阳落山后，王都第一次迎来完整的黑夜，第一次看见满天星。妹妹看着白色城墙逐渐失去光彩；皮普吹响散队号，自愿留下者保持自由。全国城镇烧起木柴和泥炭；外岛与王都终于一样冷、一样黑。王国面对未知寒冬；王子在掌握独立解约知识并选择解除之前仍受回溯束缚。
 
 **After Return (if not yet final):** “It was a fine sunset. Pity no one else remembers it.” / “很美的一场日落。可惜没有别人记得。”
 
@@ -362,9 +362,9 @@ The pact recalls the Prince when a campaign fails or reaches its closing tide. E
 
 契约在讨伐失败或抵达战后收潮时召回王子。埃德蒙以为渡魂人给的是复仇机会，首胜才发现成功并非解约条款。渡魂人维护死者渡海，却不能直接干涉现世政权，也不知晓所有未来。他选择蒙冤的王室统帅，是因为被定罪舰队即将被截留，且王子有能力亲自到达设施。其身份及知情机制仍不公开。
 
-After witnessing the Seal release its captives in one late outcome, Edmund understands how a binding can be opened without destroying its subject. In the following anchor conversation the Ferryman explains that Edmund's own pact is similarly terminable by informed, voluntary relinquishment. The two bindings share a principle, not a fuel source. The Ferryman cannot revoke the pact for him; this must be Edmund's own act. No final test of moral purity is implied.
+After witnessing the Seal release its captives in one late outcome, Edmund first understands that a binding can be laid down without destroying its subject. The insight is a precedent in understanding, not a mechanism the two bindings share: the right to release his own pact has always been his, though he did not know it. In the following anchor conversation the Ferryman explains that Edmund's pact is terminable by informed, voluntary relinquishment. The Ferryman cannot revoke it for him; this must be Edmund's own act. No final test of moral purity is implied.
 
-亲历一次后期结局、见到秘印释放囚魂之后，埃德蒙理解如何在不消灭主体的情况下解除束缚。下一次锚点对话中，渡魂人解释王子自身的契约亦可经知情、自愿放弃而解除。两种束缚共享原理，但不共用燃料；渡魂人不能代为解除，须由王子自己完成。这并非道德纯洁测试。
+亲历一次后期结局、见到秘印释放囚魂之后，埃德蒙第一次理解：束缚可以被放下，而不必消灭被束缚者。这是认知上的先例，不是两套束缚共享的机制；解约的权利一直在王子手里，只是他此前不知道。下一次锚点对话中，渡魂人解释王子自身的契约亦可经知情、自愿放弃而解除；渡魂人不能代为解除，须由王子自己完成。这并非道德纯洁测试。
 
 > Edmund: “You never told me how to stop coming back.”
 >
@@ -439,8 +439,10 @@ This section is a proposed data contract; adapt to existing project architecture
 | Scope / 范围 | Fields / 字段 |
 |---|---|
 | Persistent per save / 存档持久 | `known_facts`, `known_routes`, `endings_seen`, `last_outcome`, `permanent_unlocks`, `ferryman_recognised`, `pact_release_known`, `save_status` |
-| Current expedition / 本轮 | `run_id`, `capital_entry`, `site_results`, `evidence`, `allegiance`, `councillor_fates`, `civilian_harm`, `stores`, `crown`, `oath`, `day`, `settlement_committed`, `aftermath_seen` |
+| Current expedition / 本轮 | `run_id`, `capital_entry`, `site_results`, `evidence`, `allegiance`, `councillor_fates`, `civilian_harm`, `stores`, `crown`, `oath`, `day`, `settlement_committed`, `aftermath_seen`, `time_of_day`, `legion_state` |
 | Final coda / 终章 | `final_history_outcome`, `successor_settled`, `final_oath_released`, `closure_confirmed`, `credits_seen` |
+
+**Day and night / 昼夜与军团：** Combat occurs only at natural night. By day the Prince may act in diplomacy, meetings, investigation and administration, but cannot use battle powers. At sunrise echoes disperse; the old company and the original fleet dead sink with the fleet, which sails submerged by day and rises after dark. The Unending Day is artificial light and does not count as natural daylight. `time_of_day` records natural day or night; `legion_state` records whether the fleet is afloat or submerged. / **昼夜与军团：** 战斗只在自然夜晚发生。王子白天可以外交、会面、调查和理政，但不能施展战斗力量。日出时回声散去，旧部与最初的舰队亡魂随舰队沉入水下；舰队白天在水下航行，入夜再浮起。永昼之日是人造光，不算自然白天。`time_of_day` 记录自然昼夜；`legion_state` 记录舰队浮起或沉潜。
 
 **Evaluation / 判定：** if the expedition fails before success is committed, record E00. Otherwise compute ending once from the three committed choices; do not evaluate uninitialised values as choices. Stage I and II supply the inherited Day policy only when the Seal decision is not available; no late success bit may be left unresolved. Clear all current-run data on Return. Final closure records the current ending and coda separately, then persists `COMPLETED` atomically before credits. A crash during credits must not restore an open anchor; offer credits replay or completed-save view. A new save starts fresh. / 若结算前失败记 E00；成功从已提交三项决定一次判定，不把未初始化值当作选择。前两阶段无秘印选择时使用继承政策，后期不能留下未定值。回溯清空本轮数据。终章分别记录本轮结局与收束，并在演职员表之前原子写入 `COMPLETED`。播放中崩溃不得恢复开放锚点，可重播演职员表或查阅完成档。新存档全部重置。
 
