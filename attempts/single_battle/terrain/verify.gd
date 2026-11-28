@@ -77,12 +77,20 @@ func _verify() -> void:
 		"keep": [map.zones[3].center, map.port, map.boat],
 		"overview": [map.zones[0].center, map.zones[1].center, map.zones[2].center, map.zones[3].center, map.port]
 	}
+	var landmark_tops := {
+		"coast": [Vector3(29, 3.4, 28.5), Vector3(45.5, 2.3, 37.5)],
+		"highland": [Vector3(6.5, 6.3, 21)],
+		"plaza": [Vector3(29, 3.4, 28.5), Vector3(21.5, 2.3, 20.5)],
+		"keep": [Vector3(32, 6.46, 4.58), Vector3(51.55, 3.51, 18.93), Vector3(51.55, 0.65, 22.38)],
+	}
 	for id: String in landmarks:
 		_check(terrain.apply_camera(camera, id), "Missing camera " + id)
 		for tile: Array in landmarks[id]:
 			var point := BattleMap.vec(tile)
 			point.y = terrain.height_at(point)
 			_check(camera.is_position_in_frustum(point), "%s camera lost landmark %s." % [id, tile])
+		for point: Vector3 in landmark_tops.get(id, []):
+			_check(camera.is_position_in_frustum(point), "%s camera clips the landmark at %s." % [id, point])
 	for time: float in [0.0, 0.28, 0.7, 1.0]:
 		terrain.set_time(time)
 	var cutter: MeshInstance3D = terrain.get_node("Garrison cutter")
