@@ -1,0 +1,21 @@
+MATRIX highland seed=1 won=True method=keep_retreat fire=480.0 casualties={'defender': 34, 'ghost': 71}
+MATRIX highland seed=2 won=True method=keep_retreat fire=570.0 casualties={'defender': 34, 'ghost': 80}
+MATRIX highland seed=3 won=False method=none fire=600.0 casualties={'defender': 32, 'ghost': 91}
+MATRIX highland seed=4 won=True method=keep_retreat fire=255.0 casualties={'defender': 30, 'ghost': 40}
+MATRIX highland seed=5 won=True method=keep_retreat fire=570.0 casualties={'defender': 34, 'ghost': 77}
+MATRIX highland seed=6 won=True method=keep_retreat fire=570.0 casualties={'defender': 29, 'ghost': 92}
+MATRIX highland seed=7 won=True method=keep_retreat fire=510.0 casualties={'defender': 34, 'ghost': 72}
+MATRIX highland seed=8 won=True method=keep_retreat fire=270.0 casualties={'defender': 28, 'ghost': 43}
+MATRIX highland seed=9 won=True method=keep_retreat fire=510.0 casualties={'defender': 34, 'ghost': 76}
+MATRIX highland seed=10 won=True method=keep_retreat fire=570.0 casualties={'defender': 34, 'ghost': 87}
+MATRIX highland seed=11 won=False method=none fire=600.0 casualties={'defender': 19, 'ghost': 114}
+MATRIX highland seed=12 won=True method=keep_retreat fire=270.0 casualties={'defender': 24, 'ghost': 42}
+MATRIX highland seed=13 won=True method=keep_retreat fire=570.0 casualties={'defender': 31, 'ghost': 99}
+MATRIX highland seed=14 won=True method=keep_retreat fire=330.0 casualties={'defender': 24, 'ghost': 58}
+MATRIX highland seed=15 won=True method=keep_retreat fire=450.0 casualties={'defender': 34, 'ghost': 72}
+MATRIX highland seed=16 won=True method=keep_retreat fire=390.0 casualties={'defender': 20, 'ghost': 65}
+MATRIX highland seed=17 won=True method=keep_retreat fire=270.0 casualties={'defender': 26, 'ghost': 42}
+MATRIX highland seed=18 won=True method=keep_retreat fire=515.0 casualties={'defender': 34, 'ghost': 81}
+MATRIX highland seed=19 won=True method=keep_retreat fire=480.0 casualties={'defender': 34, 'ghost': 67}
+MATRIX highland seed=20 won=True method=keep_retreat fire=510.0 casualties={'defender': 34, 'ghost': 73}
+T77_MATRIX PASS runs=20 repeats=0 seconds=1594.52 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/side_off/summary.md

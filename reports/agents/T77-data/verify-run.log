@@ -1,0 +1,19 @@
+MATRIX main_gate seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 49}
+MATRIX main_gate seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 57}
+MATRIX main_gate seed=3 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 54}
+MATRIX highland seed=1 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 72}
+MATRIX highland seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 79}
+MATRIX highland seed=3 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 85}
+MATRIX feint seed=1 won=False method=none casualties={'defender': 8, 'ghost': 112}
+MATRIX feint seed=2 won=False method=none casualties={'defender': 9, 'ghost': 115}
+MATRIX feint seed=3 won=False method=none casualties={'defender': 11, 'ghost': 113}
+MATRIX waves seed=1 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 41}
+MATRIX waves seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 32}
+MATRIX waves seed=3 won=True method=keep_retreat casualties={'defender': 33, 'ghost': 44}
+MATRIX idle seed=1 won=False method=none casualties={'defender': 21, 'ghost': 20}
+MATRIX idle seed=2 won=False method=none casualties={'defender': 14, 'ghost': 20}
+MATRIX idle seed=3 won=False method=none casualties={'defender': 6, 'ghost': 20}
+MATRIX late_batches seed=1 won=True method=keep_retreat casualties={'defender': 32, 'ghost': 30}
+MATRIX late_batches seed=2 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 43}
+MATRIX late_batches seed=3 won=True method=keep_retreat casualties={'defender': 34, 'ghost': 42}
+SIEGE_MATRIX PASS runs=18 repeats=0 seconds=558.57 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77-verify/summary.md

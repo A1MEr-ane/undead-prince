@@ -1,0 +1,31 @@
+{
+  "analysis": {
+    "enabled": true,
+    "route_values": {
+      "main": 2,
+      "side": 4,
+      "cave": 5
+    }
+  },
+  "strategies": {
+    "route_by_strategy": {
+      "main_gate": "main"
+    },
+    "archer_focus_by_strategy": {
+      "main_gate": true
+    },
+    "names": [
+      "main_gate"
+    ]
+  },
+  "targeting": {
+    "values": {
+      "archer": 10,
+      "gate": 2,
+      "weak": 2.3,
+      "zone": 2.5,
+      "keep": 5
+    },
+    "max_reroutes": 0
+  }
+}

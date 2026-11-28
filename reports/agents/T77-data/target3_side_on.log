@@ -1,0 +1,21 @@
+MATRIX highland seed=1 won=True method=keep_retreat fire=450.0 casualties={'defender': 21, 'ghost': 80}
+MATRIX highland seed=2 won=False method=none fire=600.0 casualties={'defender': 7, 'ghost': 101}
+MATRIX highland seed=3 won=True method=keep_retreat fire=390.0 casualties={'defender': 29, 'ghost': 61}
+MATRIX highland seed=4 won=False method=none fire=600.0 casualties={'defender': 5, 'ghost': 112}
+MATRIX highland seed=5 won=True method=keep_retreat fire=480.0 casualties={'defender': 31, 'ghost': 74}
+MATRIX highland seed=6 won=False method=none fire=600.0 casualties={'defender': 7, 'ghost': 112}
+MATRIX highland seed=7 won=False method=none fire=600.0 casualties={'defender': 12, 'ghost': 114}
+MATRIX highland seed=8 won=False method=none fire=600.0 casualties={'defender': 29, 'ghost': 95}
+MATRIX highland seed=9 won=True method=keep_retreat fire=330.0 casualties={'defender': 16, 'ghost': 58}
+MATRIX highland seed=10 won=True method=keep_retreat fire=330.0 casualties={'defender': 25, 'ghost': 59}
+MATRIX highland seed=11 won=False method=none fire=600.0 casualties={'defender': 19, 'ghost': 109}
+MATRIX highland seed=12 won=True method=keep_retreat fire=450.0 casualties={'defender': 26, 'ghost': 73}
+MATRIX highland seed=13 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 103}
+MATRIX highland seed=14 won=False method=none fire=600.0 casualties={'defender': 19, 'ghost': 106}
+MATRIX highland seed=15 won=False method=none fire=600.0 casualties={'defender': 9, 'ghost': 112}
+MATRIX highland seed=16 won=True method=keep_retreat fire=390.0 casualties={'defender': 28, 'ghost': 67}
+MATRIX highland seed=17 won=False method=none fire=600.0 casualties={'defender': 10, 'ghost': 114}
+MATRIX highland seed=18 won=False method=none fire=600.0 casualties={'defender': 4, 'ghost': 114}
+MATRIX highland seed=19 won=True method=keep_retreat fire=480.0 casualties={'defender': 24, 'ghost': 82}
+MATRIX highland seed=20 won=False method=none fire=600.0 casualties={'defender': 5, 'ghost': 111}
+T77_MATRIX PASS runs=20 repeats=0 seconds=1537.36 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/side_on/summary.md

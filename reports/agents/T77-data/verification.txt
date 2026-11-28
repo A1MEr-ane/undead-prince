@@ -1,0 +1,29 @@
+T77 verification evidence
+generated: 2026-11-26 19:33:12 +0800
+
+[required] proto/siege/run_matrix.sh --seeds 3
+SIEGE_MATRIX PASS runs=18 repeats=0 seconds=558.57 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77-verify/summary.md
+
+[determinism] old default 6 strategies seed 1, twice
+T77_MATRIX PASS runs=6 repeats=6 seconds=505.50 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/verify_repeat_old/summary.md
+[determinism] prep default 2 strategies seed 1, twice
+T77_MATRIX PASS runs=2 repeats=2 seconds=95.67 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/verify_repeat_prep/summary.md
+
+[baseline] 4 groups x old6 and prep2
+T77_MATRIX PASS runs=120 repeats=0 seconds=5143.54 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/old_default/summary.md
+T77_MATRIX PASS runs=40 repeats=0 seconds=1376.41 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/prep_default/summary.md
+T77_MATRIX PASS runs=120 repeats=0 seconds=5144.75 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/old_best01/summary.md
+T77_MATRIX PASS runs=40 repeats=0 seconds=1376.52 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/prep_best01/summary.md
+T77_MATRIX PASS runs=120 repeats=0 seconds=5103.67 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/old_best02/summary.md
+T77_MATRIX PASS runs=40 repeats=0 seconds=1339.34 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/prep_best02/summary.md
+T77_MATRIX PASS runs=120 repeats=0 seconds=5116.87 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/old_best03/summary.md
+T77_MATRIX PASS runs=40 repeats=0 seconds=1300.08 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/matrix/prep_best03/summary.md
+
+[target3] 4 arms
+T77_MATRIX PASS runs=20 repeats=0 seconds=945.87 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/main_on/summary.md
+T77_MATRIX PASS runs=20 repeats=0 seconds=1158.53 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/main_off/summary.md
+T77_MATRIX PASS runs=20 repeats=0 seconds=1537.36 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/side_on/summary.md
+T77_MATRIX PASS runs=20 repeats=0 seconds=1594.52 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/side_off/summary.md
+
+[phase B] 3 strategies x 20
+T77_MATRIX PASS runs=60 repeats=0 seconds=1966.98 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/phaseb/compare/summary.md

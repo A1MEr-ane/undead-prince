@@ -1,0 +1,21 @@
+MATRIX main_gate seed=1 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 111}
+MATRIX main_gate seed=2 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 114}
+MATRIX main_gate seed=3 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 112}
+MATRIX main_gate seed=4 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 113}
+MATRIX main_gate seed=5 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 109}
+MATRIX main_gate seed=6 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 111}
+MATRIX main_gate seed=7 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 111}
+MATRIX main_gate seed=8 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 110}
+MATRIX main_gate seed=9 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 113}
+MATRIX main_gate seed=10 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 114}
+MATRIX main_gate seed=11 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 110}
+MATRIX main_gate seed=12 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 111}
+MATRIX main_gate seed=13 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 111}
+MATRIX main_gate seed=14 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 111}
+MATRIX main_gate seed=15 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 112}
+MATRIX main_gate seed=16 won=False method=none fire=600.0 casualties={'defender': 21, 'ghost': 110}
+MATRIX main_gate seed=17 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 112}
+MATRIX main_gate seed=18 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 113}
+MATRIX main_gate seed=19 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 113}
+MATRIX main_gate seed=20 won=False method=none fire=600.0 casualties={'defender': 22, 'ghost': 111}
+T77_MATRIX PASS runs=20 repeats=0 seconds=945.87 summary=/Users/cyy/Projects/亡魂王子-t77/proto/siege/results/t77/target3/main_on/summary.md

@@ -1,0 +1,105 @@
+{
+  "phase_b": {
+    "enabled": true,
+    "assassin": true,
+    "giant": true,
+    "walls": true,
+    "cave_permission": "all",
+    "detection_radius": 1.4,
+    "cliff_entry": [
+      12,
+      37
+    ],
+    "cliff_exit": [
+      12,
+      21
+    ],
+    "cliff_seconds": 4,
+    "breakable_walls": [
+      {
+        "id": "wall_west",
+        "rect": [
+          26,
+          28,
+          1,
+          1
+        ],
+        "hp": 60
+      },
+      {
+        "id": "wall_east",
+        "rect": [
+          31,
+          28,
+          2,
+          1
+        ],
+        "hp": 75
+      },
+      {
+        "id": "wall_highland",
+        "rect": [
+          14,
+          20,
+          1,
+          2
+        ],
+        "hp": 50
+      }
+    ],
+    "prep_assassins": 2,
+    "prep_giants": 2,
+    "prep_deadline": 75,
+    "main_start": 80,
+    "total_budget": 120,
+    "main_wave_fire": 30,
+    "breach_target": "wall_west"
+  },
+  "analysis": {
+    "enabled": true,
+    "route_values": {
+      "main": 2,
+      "side": 4,
+      "cave": 5
+    }
+  },
+  "units": {
+    "assassin": {
+      "cost": 20,
+      "hp": 0.75,
+      "speed": 2.6,
+      "damage": 4,
+      "radius": 0.16,
+      "knockback": 0.15,
+      "stun": 0.1,
+      "melee_range": 0.6,
+      "cooldown": 0.7
+    },
+    "giant": {
+      "cost": 30,
+      "hp": 18,
+      "speed": 1.05,
+      "damage": 1.4,
+      "radius": 0.35,
+      "knockback": 1.2,
+      "stun": 0.3,
+      "melee_range": 0.5,
+      "cooldown": 1.8,
+      "structure_dps": 14,
+      "sweep_radius": 1.6,
+      "sweep_min_enemies": 3,
+      "sweep_damage": 1.6,
+      "sweep_cooldown": 3.5
+    }
+  },
+  "strategies": {
+    "names": [
+      "assassin_first",
+      "giant_breach"
+    ]
+  },
+  "view": {
+    "assassin_color": "#b6a1f5",
+    "giant_color": "#91ac78"
+  }
+}
