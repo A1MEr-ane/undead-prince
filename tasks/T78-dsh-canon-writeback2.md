@@ -2,7 +2,7 @@
 id: T78
 title: canon 第二轮写回：T72 列出的表格外残留（光热、召唤与回声、E04 傍晚措辞）
 owner: dsh
-status: queued
+status: done
 branch: dsh/t78-canon-writeback2
 worktree: ../亡魂王子-t78
 allowed: [docs/canon/A/WORLD-BIBLE.md, docs/canon/A/NARRATIVE-DESIGN.md, docs/canon/shared/CANON-COMPACT.md, docs/canon/WORLD-COMPENDIUM.md, docs/canon/B/, docs/canon/C/, docs/canon/CHANGELOG-R2.md]

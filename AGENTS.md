@@ -12,6 +12,7 @@
 | `docs/roadmap.md` | **开发路线图**：阶段 0、A–E，各阶段的问题、任务、出口 |
 | `docs/world-r2.md` | **世界观修订 R2**：双日、光热分离、冥火保密、王子昼行军团夜战、回溯私人契约；canon 的修订层 |
 | `docs/map-design.md` | 远征航图与攻城战场设计 |
+| `docs/behavior-goals.md` | **行动逻辑目标**与行为场景测试清单（现阶段的验收标准） |
 | `docs/siege-design.md` | **攻城玩法**：冥火原子化部署、夜间五分钟、守军调度的可行性与实现难度评估 |
 | `docs/gameplay-discussion-2026-11-26.md` | 用户与其他模型的玩法讨论原文（保留用户原话） |
 | `docs/roguelike.md` | 肉鸽结构：一局流程、资源、祝福体系、局外成长 |

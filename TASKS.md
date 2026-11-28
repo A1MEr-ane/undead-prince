@@ -47,8 +47,12 @@
 | T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
 | T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 已合并（破门流场 794→71 ms，调度尖峰 233→24 ms；300 单位仍超标） |
+| T80 | 行为场景测试 B01–B12（只写测试） | DSH | dsh/t80-behavior-scenarios | proto/siege/tests/ | 谷时排队 |
+| T81 | 攻城原型行动逻辑修正（behavior-goals 第 1–3 节） | Codex | codex/t81-behavior | proto/siege/ | 进行中 |
+| T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, docs/unit-sprites.md | 进行中 |
+| T83 | 按 T82 手册批量建模其余兵种 | DSH | — | assets/sprites/ | 待办（依赖 T82 审批） |
 | T76 | 结局插画补画 E06、E07、真结局（修订提示词） | Codex | codex/t76-endings-fix | art/story/ | 进行中 |
-| T77 | 攻城第二轮矩阵（目标 3、4 复测 + 阶段 B 对照） | DSH | dsh/t77-siege-resweep2 | proto/siege/params/ | 待办（依赖 T74） |
+| T77 | 攻城第二轮矩阵 | DSH | dsh/t77-siege-resweep2 | proto/siege/params/ | 已合并；胜率测试搁置（用户：现阶段只做行动逻辑） |
 | T78 | canon 第二轮写回（表格外残留） | DSH | dsh/t78-canon-writeback2 | docs/canon/ | 谷时排队 |
 | T74 | 阶段 B 预备：暗影刺客、缝合巨人、可破墙段、山洞权限（默认关） | Codex | codex/t74-siege-phaseB | proto/siege/ | 进行中（含 T68 后续：路线与目标解耦、拥堵口径） |
 | T66 | 修复后重跑守军参数扫描（T49 续） | DSH | dsh/t66-defender-resweep | data/battles/ | 搁置 |
