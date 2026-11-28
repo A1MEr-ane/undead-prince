@@ -1,0 +1,185 @@
+id: cavalry
+recipe: unit
+body: mounted
+triangle_budget: 1500
+rim: "#E7BB76"
+camera:
+  ortho: 6.35
+palette:
+  helmet: "#91929D"
+  skin: "#BE946C"
+  tunic: "#4C597B"
+  leather: "#8F7158"
+  boots: "#3B3340"
+  metal: "#B7BAC2"
+  cloth_trim: "#E7BB76"
+  blade: "#C0C4CC"
+parts:
+  head: helmet
+  hands: skin
+  legs: tunic
+  sleeves: tunic
+  tunic: tunic
+  boots: leather
+  belt: leather
+  collar: metal
+mount:
+  parts:
+    body: leather
+    face: leather
+    mane: boots
+    legs: leather
+    hooves: boots
+    tack: tunic
+  seat: 0.55
+  stride: 0.18
+  pace: trot
+head:
+  radius_x: 0.235
+  depth: 0.19
+  x: 0.035
+  profile: [[0.10, 0.36], [0.13, 0.55], [0.20, 0.74], [0.33, 0.90],
+            [0.50, 0.98], [0.68, 0.96], [0.82, 0.86], [0.92, 0.71],
+            [0.97, 0.54], [0.95, 0.38], [0.86, 0.24], [0.74, 0.12],
+            [0.58, 0.05], [0.40, 0.06], [0.24, 0.14], [0.14, 0.24]]
+  stamps:
+    - {shape: polygon, color: "#BE946C", points: [[0.55, 0.18], [0.72, 0.15], [0.88, 0.19], [0.94, 0.31],
+                                                  [0.93, 0.45], [0.84, 0.53], [0.68, 0.54], [0.60, 0.46],
+                                                  [0.56, 0.32]]}
+    - {shape: polygon, color: "#2C2A33", points: [[0.50, 0.54], [0.96, 0.52], [0.95, 0.47], [0.52, 0.49]]}
+    - {shape: polygon, color: "#2C2A33", points: [[0.70, 0.425], [0.81, 0.415], [0.81, 0.365], [0.71, 0.375]]}
+    - {shape: polygon, color: "#2C2A33", points: [[0.86, 0.405], [0.93, 0.39], [0.925, 0.345], [0.865, 0.355]]}
+neutral:
+  lean: 6
+  head_tilt: -2
+  hip: [0, 0, 0.32]
+  sword: 82
+  wrist_r: [0.26, 0.18, 0.36]
+  wrist_l: [0.18, -0.18, 0.33]
+pieces:
+  helmet_crest:
+    bone: head
+    part: cloth_trim
+    offset: [0, 0.020, 0]
+    depth: 0.100
+    points: [[-0.20, 0.36], [-0.08, 0.52], [0.04, 0.58], [0.10, 0.48],
+             [0.04, 0.36], [-0.08, 0.32]]
+  helmet_visor:
+    bone: head
+    part: metal
+    offset: [0, -0.045, 0]
+    depth: 0.24
+    points: [[-0.24, 0.235], [0.50, 0.205], [0.52, 0.275], [-0.21, 0.305]]
+  shoulder_plate:
+    bone: spine
+    part: metal
+    offset: [0, -0.100, 0.140]
+    depth: 0.150
+    points: [[-0.24, 0.10], [-0.22, 0.22], [-0.10, 0.29], [0.12, 0.29],
+             [0.28, 0.20], [0.26, 0.10], [0.12, 0.05], [-0.12, 0.05]]
+  saddle_blanket:
+    bone: mount_body
+    part: tunic
+    offset: [0.100, -0.020, 0.120]
+    depth: 0.260
+    points: [[-0.18, 0.10], [0.30, 0.08], [0.34, -0.06], [0.26, -0.14],
+             [0.18, -0.09], [0.10, -0.16], [0.02, -0.10], [-0.06, -0.17],
+             [-0.14, -0.10], [-0.22, -0.14], [-0.24, -0.02]]
+  reins:
+    bone: mount_head
+    part: leather
+    offset: [0.020, -0.150, 0.020]
+    depth: 0.030
+    points: [[-0.18, 0.12], [0.30, 0.02], [0.31, -0.01], [-0.18, 0.09]]
+  lance:
+    bone: hand_r
+    part: blade
+    offset: [0, -0.045, 0]
+    depth: 0.040
+    points: [[0.020, 0.010], [0.560, 0.075], [0.660, 0.115], [0.610, 0.150],
+             [0.010, 0.055]]
+  lance_tip:
+    bone: hand_r
+    part: metal
+    offset: [0, -0.047, 0]
+    depth: 0.048
+    points: [[0.640, 0.112], [0.720, 0.128], [0.680, 0.152], [0.630, 0.148]]
+  lance_pennant:
+    bone: hand_r
+    part: cloth_trim
+    offset: [0, -0.075, 0]
+    depth: 0.020
+    points: [[0.500, 0.145], [0.610, 0.190], [0.590, 0.225], [0.520, 0.195]]
+transitions: [[fall, sit], [sit, rise], [rise, idle]]
+actions:
+  rise:
+    tracks:
+      lean: [[0, -22], [0.18, 22], [0.37, 24], [0.60, 10], [0.74, 0],
+             [0.833, 0], [1, 0]]
+  idle:
+    tracks:
+      wrist_l: [[0, [0.18, -0.18, 0.33]], [1, [0.18, -0.18, 0.33]]]
+      lean: [[0, 0], [1, 0]]
+  walk:
+    tracks:
+      lean: [[0, 6], [0.25, 8], [0.5, 6], [0.75, 4], [1, 6]]
+      head_tilt: [[0, -2], [0.25, 2], [0.5, -2], [0.75, 2], [1, -2]]
+      wrist_r: [[0, [0.26, 0.18, 0.36]], [0.5, [0.29, 0.18, 0.38]], [1, [0.26, 0.18, 0.36]]]
+      sword: [[0, 82], [0.5, 78], [1, 82]]
+  attack:
+    tracks:
+      hip: [[0, [0, 0, 0.32]], [0.17, [-0.02, 0, 0.31]], [0.333, [0.03, 0, 0.31]],
+            [0.41, [0.04, 0, 0.30]], [0.60, [0, 0, 0.32]], [1, [0, 0, 0.32]]]
+      lean: [[0, 6], [0.17, -4], [0.333, 18], [0.41, 22], [0.60, 6], [1, 6]]
+      wrist_r: [[0, [0.26, 0.18, 0.36]], [0.17, [-0.10, 0.21, 0.50]],
+                [0.333, [0.52, 0.15, 0.42]], [0.41, [0.46, 0.15, 0.34]],
+                [0.60, [0.26, 0.18, 0.36]], [1, [0.26, 0.18, 0.36]]]
+      sword: [[0, 82], [0.17, 130], [0.333, 88], [0.41, 70], [0.60, 82], [1, 82]]
+  charge_start:
+    frames: 8
+    duration: 0.64
+    loop: false
+    events: {charge_ready: 0.48}
+    pose: walk
+    mount_gait: gallop
+    tracks:
+      lean: [[0, 6], [0.48, 18], [0.75, 16], [1, 6]]
+      head_tilt: [[0, -2], [0.48, -8], [1, -2]]
+      wrist_r: [[0, [0.26, 0.18, 0.36]], [0.48, [0.36, 0.16, 0.42]],
+                [0.75, [0.34, 0.16, 0.40]], [1, [0.26, 0.18, 0.36]]]
+      sword: [[0, 82], [0.48, 74], [0.75, 76], [1, 82]]
+  charge:
+    frames: 10
+    duration: 0.55
+    loop: true
+    events: {stride: 0.275}
+    pose: walk
+    mount_gait: gallop
+    tracks:
+      lean: [[0, 16], [0.5, 18], [1, 16]]
+      head_tilt: [[0, -8], [1, -8]]
+      wrist_r: [[0, [0.38, 0.16, 0.42]], [0.5, [0.42, 0.16, 0.43]], [1, [0.38, 0.16, 0.42]]]
+      sword: [[0, 72], [0.5, 70], [1, 72]]
+  charge_impact:
+    frames: 8
+    duration: 0.40
+    loop: false
+    events: {hit: 0.0}
+    pose: attack
+    tracks:
+      lean: [[0, 20], [0.18, 8], [0.45, 12], [1, 20]]
+      wrist_r: [[0, [0.52, 0.16, 0.39]], [0.18, [0.44, 0.16, 0.34]],
+                [0.45, [0.46, 0.16, 0.36]], [1, [0.52, 0.16, 0.39]]]
+      sword: [[0, 88], [0.18, 96], [0.45, 92], [1, 88]]
+  retreat_run:
+    frames: 8
+    duration: 0.52
+    loop: true
+    events: {right_step: 0, left_step: 0.26}
+    pose: walk
+    mount_gait: gallop
+    tracks:
+      lean: [[0, 10], [0.5, 12], [1, 10]]
+      wrist_r: [[0, [0.20, 0.18, 0.30]], [1, [0.20, 0.18, 0.30]]]
+      wrist_l: [[0, [0.14, -0.18, 0.28]], [1, [0.14, -0.18, 0.28]]]
+      sword: [[0, 88], [1, 88]]
