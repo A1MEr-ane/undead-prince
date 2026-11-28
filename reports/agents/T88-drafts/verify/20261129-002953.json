@@ -1,0 +1,11 @@
+{
+ "ok": true,
+ "commit": "175341b",
+ "log": "/Users/cyy/Projects/亡魂王子-t88/reports/verify/20261129-002953.log",
+ "checks": [
+  {
+   "check": "sprites",
+   "ok": true
+  }
+ ]
+}

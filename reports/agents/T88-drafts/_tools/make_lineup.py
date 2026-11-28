@@ -1,4 +1,4 @@
-"""Compose the seven-unit actual-size lineup from built ink atlases. Draft helper."""
+"""Compose the seven-unit actual-size lineup from built ink atlases. Final helper."""
 import json
 from pathlib import Path
 import sys
@@ -16,11 +16,11 @@ from unit_preview import PAGE, TERRAIN, MUTED, frames_from_atlas, preview_scale,
 UNITS = [
     ('ZOMBIE', ROOT / 'assets/sprites/units/zombie/zombie'),
     ('SHADOW ASSASSIN', ROOT / 'assets/sprites/units/shadow_assassin/shadow_assassin'),
-    ('STITCHED GIANT', ROOT / 'reports/agents/T88-drafts/stitched_giant/stitched_giant'),
-    ('LICH', ROOT / 'reports/agents/T88-drafts/lich/lich'),
-    ('SHIELDMAN', ROOT / 'reports/agents/T88-drafts/shieldman/shieldman'),
-    ('ARCHER', ROOT / 'reports/agents/T88-drafts/archer/archer'),
-    ('CAVALRY', ROOT / 'reports/agents/T88-drafts/cavalry/cavalry'),
+    ('STITCHED GIANT', ROOT / 'assets/sprites/units/stitched_giant/stitched_giant'),
+    ('LICH', ROOT / 'assets/sprites/units/lich/lich'),
+    ('SHIELDMAN', ROOT / 'assets/sprites/units/shieldman/shieldman'),
+    ('ARCHER', ROOT / 'assets/sprites/units/archer/archer'),
+    ('CAVALRY', ROOT / 'assets/sprites/units/cavalry/cavalry'),
 ]
 
 
@@ -38,7 +38,7 @@ def main():
     baseline = 330
     width = 30 + sum(frame.shape[1] + gap for _, frame, _, _ in entries)
     board = np.full((baseline + 105, width, 3), PAGE, np.uint8)
-    label(board, 'T88 DRAFTS / 1080P ACTUAL SIZE / 72 PX INFANTRY BASELINE', 14, 14, 2)
+    label(board, 'T88 FINAL / 1080P ACTUAL SIZE / 72 PX INFANTRY BASELINE', 14, 14, 2)
     label(board, 'B PROPORTION / SAME CAMERA SCALE FOR ALL SEVEN UNITS', 14, 36, colour=MUTED)
     x = 16
     for name, frame, anchor, height in entries:

@@ -81,7 +81,7 @@ bow_string:
   bow_bone: hand_l
   tips: [[-0.017, -0.010, -0.389], [-0.017, -0.010, 0.390]]
   draw_bone: hand_r
-  draw_offset: [0, -0.045, 0.012]
+  draw_offset: [0, -0.130, 0.012]
   part: cloth_trim
   width: 0.013
   nocked_pieces: [nock_arrow, arrow_head, arrow_fletch]
@@ -123,22 +123,22 @@ pieces:
     points: [[-0.020, -0.060], [0.055, -0.055], [0.058, 0.055], [-0.018, 0.060]]
   nock_arrow:
     bone: hand_r
-    part: leather
-    offset: [0.000, -0.048, 0]
+    part: cloth_trim
+    offset: [0.000, -0.134, 0]
     depth: 0.030
-    points: [[0, 0.018], [0.438, 0.018], [0.438, 0.006], [0, 0.006]]
+    points: [[0, 0.034], [0.438, 0.034], [0.438, 0.002], [0, 0.002]]
   arrow_head:
     bone: hand_r
     part: metal
-    offset: [0.000, -0.050, 0]
+    offset: [0.000, -0.136, 0]
     depth: 0.034
-    points: [[0.419, 0.031], [0.474, 0.012], [0.419, -0.007]]
+    points: [[0.410, 0.050], [0.492, 0.018], [0.410, -0.014]]
   arrow_fletch:
     bone: hand_r
-    part: cloth_trim
-    offset: [0.000, -0.052, 0]
+    part: leather
+    offset: [0.000, -0.138, 0]
     depth: 0.020
-    points: [[0.005, 0.034], [0.065, 0.015], [0.031, 0.003], [0.002, 0.007]]
+    points: [[0.005, 0.050], [0.080, 0.018], [0.036, 0.000], [0.002, 0.004]]
   quiver:
     bone: spine
     part: hilt

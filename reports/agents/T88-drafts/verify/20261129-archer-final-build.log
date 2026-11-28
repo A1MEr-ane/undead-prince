@@ -1,0 +1,296 @@
+PROCEDURAL_MODEL {'objects': 29, 'bones': 20, 'polygons': 379, 'triangles': 802}
+00:02.104  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 1/142 idle[0] t=0.000
+00:02.150  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 2/142 idle[1] t=0.083
+00:02.187  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 3/142 idle[2] t=0.167
+00:02.223  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 4/142 idle[3] t=0.250
+00:02.258  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 5/142 idle[4] t=0.333
+00:02.294  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 6/142 idle[5] t=0.417
+00:02.330  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 7/142 walk[0] t=0.000
+00:02.365  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 8/142 walk[1] t=0.083
+00:02.401  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 9/142 walk[2] t=0.167
+00:02.437  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 10/142 walk[3] t=0.250
+00:02.472  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 11/142 attack[0] t=0.000
+00:02.509  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 12/142 attack[1] t=0.095
+00:02.545  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 13/142 attack[2] t=0.190
+00:02.581  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 14/142 attack[3] t=0.286
+00:02.617  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 15/142 attack[4] t=0.333
+00:02.654  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 16/142 attack[5] t=0.476
+00:02.690  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 17/142 attack[6] t=0.571
+00:02.725  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 18/142 attack[7] t=0.667
+00:02.761  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 19/142 parry[0] t=0.000
+00:02.797  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 20/142 parry[1] t=0.095
+00:02.833  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 21/142 parry[2] t=0.190
+00:02.870  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 22/142 parry[3] t=0.250
+00:02.909  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 23/142 parry[4] t=0.381
+00:02.946  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 24/142 parry[5] t=0.476
+00:02.982  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 25/142 parry[6] t=0.571
+00:03.018  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 26/142 parry[7] t=0.667
+00:03.054  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 27/142 clash[0] t=0.000
+00:03.091  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 28/142 clash[1] t=0.111
+00:03.127  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 29/142 clash[2] t=0.222
+00:03.162  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 30/142 clash[3] t=0.333
+00:03.198  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 31/142 fall[0] t=0.000
+00:03.234  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 32/142 fall[1] t=0.111
+00:03.270  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 33/142 fall[2] t=0.222
+00:03.306  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 34/142 fall[3] t=0.333
+00:03.343  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 35/142 sit[0] t=0.000
+00:03.379  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 36/142 sit[1] t=0.083
+00:03.416  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 37/142 sit[2] t=0.167
+00:03.453  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 38/142 sit[3] t=0.250
+00:03.490  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 39/142 sit[4] t=0.333
+00:03.526  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 40/142 sit[5] t=0.417
+00:03.562  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 41/142 sit[6] t=0.500
+00:03.598  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 42/142 sit[7] t=0.583
+00:03.635  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 43/142 sit[8] t=0.667
+00:03.671  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 44/142 sit[9] t=0.750
+00:03.707  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 45/142 sit[10] t=0.833
+00:03.743  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 46/142 sit[11] t=0.917
+00:03.780  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 47/142 rise[0] t=0.000
+00:03.817  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 48/142 rise[1] t=0.093
+00:03.853  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 49/142 rise[2] t=0.185
+00:03.889  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 50/142 rise[3] t=0.278
+00:03.924  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 51/142 rise[4] t=0.370
+00:03.960  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 52/142 rise[5] t=0.463
+00:03.996  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 53/142 rise[6] t=0.556
+00:04.032  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 54/142 rise[7] t=0.648
+00:04.067  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 55/142 rise[8] t=0.667
+00:04.103  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 56/142 rise[9] t=0.833
+00:04.138  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 57/142 ragdoll[0] t=0.000
+00:04.174  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 58/142 ragdoll[1] t=0.083
+00:04.209  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 59/142 ragdoll[2] t=0.167
+00:04.245  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 60/142 ragdoll[3] t=0.250
+00:04.281  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 61/142 ragdoll[4] t=0.333
+00:04.317  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 62/142 ragdoll[5] t=0.417
+00:04.353  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 63/142 hit_light[0] t=0.000
+00:04.388  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 64/142 hit_light[1] t=0.111
+00:04.424  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 65/142 hit_light[2] t=0.222
+00:04.461  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 66/142 hit_light[3] t=0.333
+00:04.499  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 67/142 hit_heavy[0] t=0.000
+00:04.535  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 68/142 hit_heavy[1] t=0.083
+00:04.571  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 69/142 hit_heavy[2] t=0.194
+00:04.608  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 70/142 hit_heavy[3] t=0.292
+00:04.644  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 71/142 hit_heavy[4] t=0.389
+00:04.680  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 72/142 hit_heavy[5] t=0.486
+00:04.716  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 73/142 hit_heavy[6] t=0.583
+00:04.751  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 74/142 knockback[0] t=0.000
+00:04.787  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 75/142 knockback[1] t=0.083
+00:04.823  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 76/142 knockback[2] t=0.200
+00:04.860  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 77/142 knockback[3] t=0.300
+00:04.896  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 78/142 knockback[4] t=0.400
+00:04.932  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 79/142 knockback[5] t=0.500
+00:04.968  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 80/142 stun[0] t=0.000
+00:05.004  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 81/142 stun[1] t=0.083
+00:05.040  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 82/142 stun[2] t=0.167
+00:05.075  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 83/142 stun[3] t=0.250
+00:05.111  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 84/142 stun[4] t=0.333
+00:05.147  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 85/142 stun[5] t=0.417
+00:05.183  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 86/142 stun[6] t=0.500
+00:05.219  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 87/142 stun[7] t=0.583
+00:05.255  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 88/142 hit_arrow[0] t=0.000
+00:05.290  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 89/142 hit_arrow[1] t=0.083
+00:05.327  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 90/142 hit_arrow[2] t=0.200
+00:05.363  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 91/142 hit_arrow[3] t=0.300
+00:05.399  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 92/142 hit_arrow[4] t=0.400
+00:05.435  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 93/142 hit_arrow[5] t=0.500
+00:05.471  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 94/142 death_slash[0] t=0.000
+00:05.507  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 95/142 death_slash[1] t=0.097
+00:05.543  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 96/142 death_slash[2] t=0.194
+00:05.580  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 97/142 death_slash[3] t=0.292
+00:05.616  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 98/142 death_slash[4] t=0.389
+00:05.651  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 99/142 death_slash[5] t=0.417
+00:05.687  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 100/142 death_slash[6] t=0.583
+00:05.724  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 101/142 death_pierce[0] t=0.000
+00:05.759  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 102/142 death_pierce[1] t=0.097
+00:05.794  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 103/142 death_pierce[2] t=0.194
+00:05.830  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 104/142 death_pierce[3] t=0.292
+00:05.866  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 105/142 death_pierce[4] t=0.389
+00:05.902  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 106/142 death_pierce[5] t=0.417
+00:05.938  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 107/142 death_pierce[6] t=0.583
+00:05.974  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 108/142 death_crush[0] t=0.000
+00:06.010  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 109/142 death_crush[1] t=0.100
+00:06.044  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 110/142 death_crush[2] t=0.200
+00:06.078  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 111/142 death_crush[3] t=0.300
+00:06.111  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 112/142 death_crush[4] t=0.333
+00:06.145  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 113/142 death_crush[5] t=0.500
+00:06.182  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 114/142 hit[0] t=0.000
+00:06.219  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 115/142 hit[1] t=0.111
+00:06.254  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 116/142 hit[2] t=0.222
+00:06.290  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 117/142 hit[3] t=0.333
+00:06.326  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 118/142 death[0] t=0.000
+00:06.362  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 119/142 death[1] t=0.097
+00:06.398  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 120/142 death[2] t=0.194
+00:06.434  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 121/142 death[3] t=0.292
+00:06.470  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 122/142 death[4] t=0.389
+00:06.505  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 123/142 death[5] t=0.417
+00:06.541  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 124/142 death[6] t=0.583
+00:06.577  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 125/142 shoot[0] t=0.000
+00:06.613  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 126/142 shoot[1] t=0.093
+00:06.650  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 127/142 shoot[2] t=0.167
+00:06.687  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 128/142 shoot[3] t=0.278
+00:06.725  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 129/142 shoot[4] t=0.370
+00:06.765  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 130/142 shoot[5] t=0.463
+00:06.804  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 131/142 shoot[6] t=0.500
+00:06.844  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 132/142 shoot[7] t=0.648
+00:06.884  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 133/142 shoot[8] t=0.741
+00:06.921  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 134/142 shoot[9] t=0.833
+00:06.959  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 135/142 retreat_run[0] t=0.000
+00:06.997  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 136/142 retreat_run[1] t=0.083
+00:07.035  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 137/142 retreat_run[2] t=0.167
+00:07.074  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 138/142 retreat_run[3] t=0.250
+00:07.113  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 139/142 retreat_run[4] t=0.333
+00:07.153  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 140/142 retreat_run[5] t=0.417
+00:07.191  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 141/142 retreat_run[6] t=0.500
+00:07.230  render           | Saved: '/var/folders/fh/zy8s2cz96099ltkfq60x9llm0000gp/T/swordsman-3lj_pyu1/linear.exr'
+SPRITE 142/142 retreat_run[7] t=0.583
+Info: Saved as "archer.blend"
+COMPLETE {"covered_pixels": 363976, "antialiased_pixels": 72380, "shade_range": [23, 255], "all_frames_inside_cell": true, "uv_islands_valid": true, "transparent_rgb_zero": true} 8.7s
+Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:31:21)
+
+Blender quit
+PROCEDURAL_MODEL {'objects': 29, 'bones': 20, 'polygons': 379, 'triangles': 802}
+VALIDATED archer {"covered_pixels": 363976, "antialiased_pixels": 72380, "shade_range": [23, 255], "all_frames_inside_cell": true, "uv_islands_valid": true, "transparent_rgb_zero": true, "standing_alpha_bbox": [37, 43, 97, 124], "used_parts": ["blade", "boots", "cloth_trim", "helmet", "hilt", "leather", "metal", "trousers", "tunic"], "visible_parts": ["helmet", "tunic", "cloth_trim", "trousers", "boots", "leather", "metal", "blade", "hilt"], "actions": 21, "frames": 142, "ink_atlas": true, "nonempty_previews": true, "model": {"objects": 29, "bones": 20, "polygons": 379, "triangles": 802}, "loops_close": true, "exact_event_markers": 21, "checked_transitions": 3, "proportions": {"head": 0.4311, "leg": 0.2202}, "shuffles": ["walk"], "crotch": {"frames": 142, "standing_depth": 0.0664}}
+Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:31:21)
+
+Blender quit
+UNIT PASS archer /Users/cyy/Projects/亡魂王子-t88/assets/sprites/units/archer
