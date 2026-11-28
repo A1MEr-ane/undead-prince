@@ -49,7 +49,7 @@
 | T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 已合并（破门流场 794→71 ms，调度尖峰 233→24 ms；300 单位仍超标） |
 | T80 | 行为场景测试 B01–B12（只写测试） | DSH | dsh/t80-behavior-scenarios | proto/siege/tests/ | 谷时排队 |
 | T81 | 攻城原型行动逻辑修正（behavior-goals 第 1–3 节） | Codex | codex/t81-behavior | proto/siege/ | 进行中 |
-| T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, docs/unit-sprites.md | 进行中 |
+| T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, docs/unit-sprites.md | 暂停（等三线对齐） |
 | T83 | 按 T82 手册批量建模其余兵种 | DSH | — | assets/sprites/ | 待办（依赖 T82 审批） |
 | T76 | 结局插画补画 E06、E07、真结局（修订提示词） | Codex | codex/t76-endings-fix | art/story/ | 进行中 |
 | T77 | 攻城第二轮矩阵 | DSH | dsh/t77-siege-resweep2 | proto/siege/params/ | 已合并；胜率测试搁置（用户：现阶段只做行动逻辑） |

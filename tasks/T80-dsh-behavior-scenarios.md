@@ -2,7 +2,7 @@
 id: T80
 title: 行为场景测试套件 B01–B12（只写测试，不改行为代码）
 owner: dsh
-status: queued
+status: running
 branch: dsh/t80-behavior-scenarios
 worktree: ../亡魂王子-t80
 allowed: [proto/siege/tests/, tools/verify/proto_behavior.sh, reports/agents/]

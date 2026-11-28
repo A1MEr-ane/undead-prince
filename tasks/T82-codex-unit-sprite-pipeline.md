@@ -2,7 +2,7 @@
 id: T82
 title: 局内小兵形象、动作清单与 Blender 管线设计（为 DSH 批量建模铺路）
 owner: codex
-status: queued
+status: parked   # 用户 2026-11-28：先对齐玩法、美术、程序再做
 branch: codex/t82-unit-pipeline
 worktree: ../亡魂王子-t82
 images: [/Users/cyy/Projects/亡魂王子/art/units/chibi_lineup.png, /Users/cyy/Projects/亡魂王子/art/style/battle_mock.png]
