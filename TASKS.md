@@ -47,6 +47,7 @@
 | T71 | 攻城原型性能压力测试（规范测量） | DSH | dsh/t71-siege-perf | proto/siege/perf/ | 待办（依赖 T69） |
 | T65 | 战斗 bug 修复（1.2 米僵持、拼刀进度差、蛇形末行偏移） | Codex | codex/t65-battle-fixes | scripts/ | 搁置（用户 2026-11-26：战斗数值和逻辑不急） |
 | T73 | 攻城原型性能优化（空间哈希近邻、错峰索敌、流场增量重算、调度尖峰） | Codex | codex/t73-siege-perf | proto/siege/ | 已合并（破门流场 794→71 ms，调度尖峰 233→24 ms；300 单位仍超标） |
+| T84 | 局内风格样张（G4）：一个战区按目标画风在引擎里做出来 | Codex | codex/t84-style-frame | attempts/single_battle/style_frame/ | 进行中 |
 | T80 | 行为场景测试 B01–B12（只写测试） | DSH | dsh/t80-behavior-scenarios | proto/siege/tests/ | 已合并（首轮 7 过 5 不过：B01 B02 B06 B10 B12） |
 | T81 | 攻城原型行动逻辑修正（behavior-goals 第 1–3 节） | Codex | codex/t81-behavior | proto/siege/ | 进行中 |
 | T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, docs/unit-sprites.md | 暂停（等三线对齐） |
