@@ -60,3 +60,4 @@ escalate_if: [需要改游戏的着色器或精灵读取接口, 128 像素方案
 - 暗影刺客不动。
 - 预览：`shots/t87/zombie_in_game.png`、`zombie_actions.png`、`zombie_reactions.png`，再更新 `legs_check.png`，把骷髅那一行换成丧尸。
 - 报告里写明 T86 要改的地方：兵种 id 从 skeleton 改为 zombie，以及专属动作的名称。attempts/ 由 Lead 来改，你不要动。
+- **刺客追加（用户中途补充）**：兜帽和衣服要连成一件，见 `docs/unit-sprites.md` 第 5 节"兜帽和衣服连体"。刺客的动作和受击保留，只改模型和贴图，然后重新烘焙。前面"暗影刺客不动"一条作废。
