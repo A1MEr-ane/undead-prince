@@ -9,7 +9,7 @@ from common import map_uv
 from leg_pocket import build_pocket, guides
 from unit_motion import POSES, posed, shuffle
 from unit_spec import (BODIES, LANDMARKS, LEGACY_ACTIONS, MOUNT_PARENTS, UNIT_ACTIONS, VECTORS,
-                       WIDTHS, animations, camera)
+                       WEAPON_BONE, WIDTHS, animations, camera)
 
 V = Vector
 
@@ -24,6 +24,10 @@ class Unit(ChibiBody):
         self.neutral.update({k: self.control_value(k, v) for k, v in spec.get('neutral', {}).items()})
         self.lean = self.neutral['lean']
         self.mount = spec.get('mount')
+        self.near_shoulder_drop = spec.get('near_shoulder_drop', 0.) * self.height
+        self.scattered = spec.get('scattered', {})
+        self.has_dropped_weapon = WEAPON_BONE in self.scattered
+        self.garment = None
         self.animations = animations(spec)
         self.camera = camera(spec)
 
@@ -72,11 +76,13 @@ class Unit(ChibiBody):
             bones = self.mounted_skeleton(parameters)
         else:
             bones = super().skeleton(parameters)
+        if self.has_dropped_weapon:
+            bones[WEAPON_BONE] = bones['hand_r']
         spread = parameters.get('spread', 0)
         feet = bones.copy() if parameters else None
         if spread:
             rest = self.skeleton({})
-            for name, (x, y, z, pitch) in self.spec['scattered'].items():
+            for name, (x, y, z, pitch) in self.scattered.items():
                 a, b = bones[name]
                 start = a.lerp(V(self.control_value('hip', (x, y, z))), spread)
                 direction = b - a
@@ -84,7 +90,7 @@ class Unit(ChibiBody):
                 turn = Matrix.Rotation(math.radians(pitch), 3, 'Y') @ rest_direction
                 direction = direction.slerp(turn, spread, turn)
                 bones[name] = (start, start + direction)
-        bones.update(guides(self, bones, feet, spread))
+        bones.update(guides(self, bones, feet, spread if 'root' in self.scattered else 0))
         return bones
 
     def mounted_skeleton(self, p):
@@ -157,9 +163,13 @@ class Unit(ChibiBody):
         if self.mount:
             base.REST = {name: (a - offset, b - offset) for name, (a, b) in rest.items()}
         style = self.spec.get('body_style', 'clothed')
+        hood = self.spec.get('head', {}).get('garment')
         try:
-            self.body_model(include_head=False, style=style, segmented_legs=False)
-            self.side_head()
+            self.body_model(include_head=False, style=style, segmented_legs=False, include_clothing=hood is None)
+            if hood:
+                self.garment = self.joined_garment(hood)
+            else:
+                self.side_head()
         finally:
             base.REST = rest
         if self.mount:
@@ -175,8 +185,44 @@ class Unit(ChibiBody):
             self.mount_model()
         head_part = self.part('head')
         for obj in base.OBJECTS:
-            if obj != self.pocket and obj['part'] == head_part and obj.name != 'side_projected_head':
+            if obj not in (self.pocket, self.garment) and obj['part'] == head_part and obj.name != 'side_projected_head':
                 self.remap_v(obj, .02, .23)
+
+    def joined_garment(self, rows):
+        """Skin a closed hood and torso to the head and spine through the shoulder."""
+        H, g = self.height, self.ground
+        chin = (self.h['chin'] - g) / H
+        head = self.spec['head']
+        rings = []
+        weights, head_vertices = [], []
+        for z, back, front, depth in rows:
+            bevel = (front - back) * .11
+            ring = [(front, 0), (front - bevel, depth), (back + bevel, depth),
+                    (back, 0), (back + bevel, -depth), (front - bevel, -depth)]
+            rings.append((g + z * H, [(x * H, y * H) for x, y in ring]))
+            t = min(1., max(0., (z - chin + .075) / .155))
+            weights.extend([t * t * (3 - 2 * t)] * len(ring))
+            if z >= chin - 1e-8:
+                head_vertices.extend(range(len(weights) - len(ring), len(weights)))
+        part = self.part('head')
+        obj = self.profile('joined_hood_and_torso', rings, part, 'head')
+        obj['head_vertices'] = head_vertices
+        hood = obj.vertex_groups['head']
+        spine = obj.vertex_groups.new(name='spine')
+        for i, weight in enumerate(weights):
+            if weight == 0:
+                hood.remove([i])
+            else:
+                hood.add([i], weight, 'REPLACE')
+            if weight < 1:
+                spine.add([i], 1 - weight, 'REPLACE')
+        for loop in obj.data.loops:
+            co = obj.data.vertices[loop.vertex_index].co
+            u = .5 + (co.x / H - head.get('x', .02)) / (2 * head.get('radius_x', .23))
+            v = (co.z - self.h['chin']) / (self.h['helmet_top'] - self.h['chin'])
+            v = .30 + .70 * v if v > 0 else .30 + .37 * v
+            obj.data.uv_layers.active.data[loop.index].uv = map_uv(part, (min(1., max(0., u)), v))
+        return obj
 
     def side_head(self):
         h, H = self.h, self.height

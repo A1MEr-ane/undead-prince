@@ -16,8 +16,8 @@
 
 | 兵种 / 配方 id | 类别与剪影 | 3–4 组主色 | 部位与装备 | 实际尺寸辨识 |
 |---|---|---|---|---|
-| 普通骷髅 `skeleton` | 普通。宽额露颅、方圆下颌、窄骨架与大脚 | 骨灰 `#D6CEAF`、灰紫 `#7F638D`、锈褐 `#9A8170`、冥火青 `#5CE5C5` | 颅骨、肋骨和脚团上缘用 `skin`，连裆的破腰布用 `tunic`，手持锈剑 `blade` | 青眼窝、露肋、破腰布和斜剑。斩杀散成横向骨堆 |
-| 暗影刺客 `shadow_assassin` | 普通。兜帽尖前伸、瘦身前倾、连体短腿下露两个圆脚团 | 暗紫 `#665580`、墨蓝 `#37364F`、灰骨与刃、青 `#59E1C1` | 兜帽 `helmet`，贴身上衣 `tunic`，手 `skin`，腿脚 `cloth_trim`，双反握短刃 `blade` | 低帽尖、青眼缝与前后两把刀。潜行时头和武器保持低位 |
+| 普通丧尸 `zombie` | 普通。头向前探，近侧肩下沉，一只裸露的前臂前伸 | 冷灰 `#ADB9C0`、褪蓝 `#5D718A`、锈褐 `#A18B7D`、冥火青 `#5CE5C5` | 脸手与破袖下的前臂用 `skin`，水手外套用 `tunic`，破裤用 `cloth_trim`，绳腰带 `leather`，短弯刀 `blade` | 两个青眼点、微张的嘴、向前抓的空手和宽短弯刀。倒伏时刀落在手边 |
+| 暗影刺客 `shadow_assassin` | 普通。尖兜帽顺着肩线连到躯干，瘦身前倾、连体短腿下露两个圆脚团 | 暗紫 `#665580`、墨蓝 `#37364F`、灰骨与刃、青 `#59E1C1` | 兜帽、上衣与裤脚共用 `tunic`，手 `skin`，双反握短刃 `blade` | 低帽尖、青眼缝与前后两把刀。潜行时头和武器保持低位 |
 | 缝合巨人 `stitched_giant` | 大型。宽颅和驼肩之间有一级台阶，前臂显著加厚，一前一后两个大拳头 | 肉灰 `#AF9D94`、烟紫 `#735E73`、暗皮革 `#443647`、青 `#44DDBB` | 头、手和拳套外壳 `skin`，前臂可用同色 `sleeves`，腰带和脚 `leather`，破裙 `tunic`；徒手，前额和前臂各留一组明显缝线 | 横向拳头和驼肩先读到；砸墙举拳过顶，横扫伸臂与肩同高 |
 | 巫妖 `lich` | 普通。尖兜帽、露出短腿的裂袍，身形竖直；前手扶竖杖，另一手从袍底抬出，袍摆在脚上方 | 暗紫 `#60466F`、古金 `#998562`、骨灰 `#C5C4AE`、青 `#45DFC1` | 袍和兜帽 `tunic`，杖杆与袍缘 `leather`，面和手 `skin`，杖头 `metal`，可见冥火使用 `eye` 同色装饰件；裂叉杖 | 直立长杖和三角袍摆，青光在杖叉集中；远程发射可和手持待机区分 |
 | 盾兵 `shieldman` | 普通。圆顶宽檐盔、宽而圆角的蓝盾，盾沿在脸下，留出后肩和两个脚尖 | 钢灰 `#858A99`、靛蓝 `#485779`、暖褐 `#BE946C`、暖金 `#E7BB76` | 盔 `helmet`，面手 `skin`，衣和袖 `tunic`，脚与柄 `leather`，盾 `shield_face` 与 `shield_rim`，短剑 `blade`；盾面单一大形，压低纹章对比 | 盾约 29 px 高，轮廓宽而实，盔檐和金边露在盾后；格挡时盾向前顶 |
@@ -44,15 +44,15 @@
 | 倒地停留 `sit` | 12 | 是 | — | 接 `fall` 尾姿，小幅晃动 |
 | 起身 `rise` | 10 | 否 | `standing` 8 | 支地、收脚、回到待机 |
 | 击飞 `ragdoll` | 6 | 是 | — | 抱团翻转，世界空间抛物线由逻辑提供 |
-| 斩杀 `death_slash` | 7 | 否 | `ground_contact` 5 | 仰向后方倒下，骷髅散成骨堆 |
+| 斩杀 `death_slash` | 7 | 否 | `ground_contact` 5 | 仰向后方倒下 |
 | 刺杀 `death_pierce` | 7 | 否 | `ground_contact` 5 | 向前折腰，直接跪倒 |
 | 压碎 `death_crush` | 6 | 否 | `ground_contact` 4 | 撑臂后拍平，结尾保持压扁 |
 | 兼容 `hit`、`death` | 4、7 | 否 | 同轻受击、斩杀 | 保留旧调用的片名 |
 
 | 兵种 | 专属动作 | 帧数 / 循环 | 事件局部帧 | 姿势与接入 |
 |---|---|---|---|---|
-| 普通骷髅 | 骨堆 `bone_pile` | 2 / 是 | — | 接斩杀尾姿，露颅、落剑留地 |
-| 普通骷髅 | 骨堆重组 `reassemble` | 8 / 否 | `rattle` 0，`standing` 末尾 → 7 | 骨堆聚拢，最后握剑站起 |
+| 普通丧尸 | 倒伏 `downed` | 12 / 是 | — | 脸朝下，落刀留地，手臂轻抽 |
+| 普通丧尸 | 爬起 `rise_again` | 8 / 否 | `standing` 末尾 → 7 | 撑地、跪起拾刀、回到站姿 |
 | 暗影刺客 | 潜行 `sneak` | 4 / 是 | `right_step` 0，`left_step` 2 | 低姿收刃碎步，透明度和脱战计时由逻辑负责 |
 | 暗影刺客 | 背刺 `backstab` | 6 / 否 | `hit` 3 | 后收近刃、跨一步捅出、低位收刃 |
 | 缝合巨人 | 横扫 `sweep` | 10 / 否 | `hit` 5 | 抬肩蓄势、平扫、跟随 |
@@ -64,7 +64,7 @@
 | 骑兵 | 冲锋接触 `charge_impact` | 8 / 否 | `hit` 0 | 枪身和骑手收顿，击退只结算一次 |
 | 盾兵、弓兵、骑兵 | 撤退跑 `retreat_run` | 8 / 是 | `right_step` 0，`left_step` 4 | 向撤离点移动，陆兵收低装备，骑兵疾驰 |
 
-测试衔接时优先看攻击回待机、落地接倒地停留、起身接待机，骷髅另看斩杀 → 骨堆 → 重组 → 待机。刺杀和压碎先保留各自的尾姿，再由单局按复活状态切到骨堆。发射取杖尖或弓的画面接触点，翻转时对脚底锚点镜像。投射物、破墙、眩晕和骨堆冥火在世界空间另放。
+测试衔接时优先看攻击回待机、落地接倒地停留、起身接待机。丧尸保留各类死亡的尾姿，再由单局按复活状态切到 `downed` → `rise_again` → `idle`。发射取杖尖或弓的画面接触点，翻转时对脚底锚点镜像。投射物、破墙、眩晕和复活冥火在世界空间另放。
 
 ## 4. Blender 和图集【议】
 
@@ -87,16 +87,18 @@
 ### 准备配方
 
 1. 给 Lead 看侧面剪影、3–4 色色板、实际尺寸草稿和事件姿势。用 72 px 步兵作同机位参照，摆上巨人和骑兵检查高度与遮挡。
-2. 从 `assets/specs/units/skeleton.yml` 或 `shadow_assassin.yml` 取结构，按表命名为 `assets/specs/units/<id>.yml`。选择 `body` 和 `body_style`（一般兵省略，另有露骨 `bones` 与贴身衣 `fitted`）。`parts` 映射基础网格，`palette` 只填实际分区，`rim` 给阵营边光。普通、大型、骑乘的三角面预算可从 650、950、1500 起。
+2. 从 `assets/specs/units/zombie.yml` 或 `shadow_assassin.yml` 取结构，按表命名为 `assets/specs/units/<id>.yml`。选择 `body` 和 `body_style`（一般兵省略，另有露骨 `bones` 与贴身衣 `fitted`）。`parts` 映射基础网格，`palette` 只填实际分区，`rim` 给阵营边光。普通、大型、骑乘的三角面预算可从 650、950、1500 起。单侧破袖可用 `parts.forearm_l` 或 `parts.forearm_r` 指定露出的材质。
 3. `pieces` 每片填 `bone`、`part`、`points`、`depth`，可加 `offset`、`yaw`、`far`。点用围绕骨头原点的 `[x,z]` 排成闭合轮廓，末尾省略重复点。深度沿 Y，负 Y 靠镜头，位置和长度用站高作单位。孔洞可用几片相接的简单多边形围出。
 4. `head.profile` 和 `head.stamps` 用左下为 (0,0) 的归一化侧面坐标画形和眼睛。头部占分区 V=.30 以上，共用分区的手及肢体占下方。其他纹样用 `marks`。降低次要纹样对比，先确认眼窝、补片和刀刃在实际尺寸仍能看见。
 5. 在 `actions` 中覆盖模板或加专属动作。新动作填 `frames`、`loop`、`events`，`duration` 可省略，默认帧数 ÷ 12。用 `pose` 选择模板或 `neutral`。每条 `tracks` 从归一化时间 0 写到 1，循环的首尾值相同。髋、手腕、脚的向量用站高作单位，`lean`、`head_tilt`、`sword`（右手）、`shield`（左手）、`tumble` 用度数。压扁可以覆盖 `vertical_scale`，散架用 `spread` 和 `scattered` 的 `[x,y,z,俯仰角]`。需无缝的动作对写进 `transitions`。
 6. 行走继承四帧模板，保留 0 秒右脚、2/12 秒左脚两个步点。潜行沿用 `pose: walk`，可用常量轨道压低躯干和持刃位。骑手和马共同烘焙，日常走路用默认 `shuffle`，冲锋可用 `mount_gait: gallop`。巫妖漂浮可用 `pose: neutral` 为底，加循环髋位轨道及空 `events`。陆兵撤退跑以 `neutral` 写独立步态。配方用常规映射和行内列表，颜色加引号。
+7. 连帽紧身衣可参考刺客的 `head.garment`。每行按站高填 `[高度, 后缘, 前缘, 半深]`，从腰口到帽尖排列，中间包含下巴高度。头、衣身、领和腰共用一个部位。肩颈一带由头与脊椎共同驱动，开口用 `head.stamps` 绘制。逐帧检查扭头和潜行时的肩线与轮廓。
+8. 需要刀离手时，将刀身和刀柄都绑到 `weapon_r`，在 `scattered.weapon_r` 写地面位置和角度。`spread` 为 0 时随右手，1 时留在目标位置。检查落刀、撑地、拾刀和最后一帧接待机。
 
 ### 弓兵与缝合巨人配方注意事项
 
 - `archer.yml` 的弓臂连成一整根长弧，两端以细弦相连，弓臂与弦之间留出看得见的空形。搭箭时箭尾碰弦，满弓时拉弦手到耳边，放箭事件所在帧伸弓回弹并交给投射物。侧视与水平翻转都核对箭头方向、持弓手和耳侧拉弦手。
-- `stitched_giant.yml` 用 `body: large`，站姿约 1.7 倍步兵，保留大头、短腿和宽脚。通过横向肩线和两块粗前臂拉开轮廓，前额与近侧前臂各留清楚的缝线，补片用可辨的邻近色。上举砸墙和齐肩横扫各看一个事件格，拳头与脸留出空隙。预览同时摆普通骷髅看体量。
+- `stitched_giant.yml` 用 `body: large`，站姿约 1.7 倍步兵，保留大头、短腿和宽脚。通过横向肩线和两块粗前臂拉开轮廓，前额与近侧前臂各留清楚的缝线，补片用可辨的邻近色。上举砸墙和齐肩横扫各看一个事件格，拳头与脸留出空隙。预览同时摆普通丧尸看体量。
 
 ### 构建、检查和提交
 
@@ -104,15 +106,15 @@
 
 ```sh
 # 单件草稿
-python3 tools/blender/batch_units.py --draft --output /tmp/unit-draft assets/specs/units/skeleton.yml
+python3 tools/blender/batch_units.py --draft --output /tmp/unit-draft assets/specs/units/zombie.yml
 
 # 单件正式输出或批量重建
-python3 tools/blender/batch_units.py assets/specs/units/skeleton.yml
+python3 tools/blender/batch_units.py assets/specs/units/zombie.yml
 python3 tools/blender/batch_units.py
 tools/verify/verify.sh sprites
 
 # Godot 图形会话截图
-godot --path . --log-file /tmp/unit-capture.log --script tools/blender/capture_unit.gd -- res://assets/sprites/units/skeleton/skeleton /tmp/skeleton-godot.png
+godot --path . --log-file /tmp/unit-capture.log --script tools/blender/capture_unit.gd -- res://assets/sprites/units/zombie/zombie /tmp/zombie-godot.png
 ```
 
 草稿用 2× 超采样（256 px），正式用 4×（512 px）并保存 Blender 模型。正式墨线在普通格约 2 个图集像素，预览约 1–2 个屏幕像素。大型和骑乘按同一屏幕粗细换算。成功资产进 `assets/sprites/units/<id>/`，输出含 `VALIDATED <id>` 和 `UNIT PASS <id>`。固定验收遍历已入库的配方，提交时把正式图集、清单、三张预览和配方一起交付。
@@ -208,7 +210,7 @@ Lead 读了参考作的原始帧图集（本机解包文件，只看不取用）
   - 倒伏 `downed`：替换 `bone_pile`。脸朝下趴着，刀落在手边，偶尔一下抽动。
   - 爬起 `rise_again`：替换 `reassemble`。先撑起上身，再跪起，最后站直，约 8 帧 0.7 秒；`standing` 事件放在末帧。
 - **死亡**：三种死亡沿用共用模板。被砸死时压扁，用灰色和冥火色碎屑表现，**不画血**。
-- 骷髅的资产和配方移到 `assets/archive/`，不删。
+- 骷髅的资产和配方保存在 `assets/archive/skeleton/`。
 
 ### 5.z 暗影刺客：兜帽和衣服连体【定】（用户 2026-11-28）
 - 兜帽和上衣是**同一件连帽紧身衣**。兜帽下沿直接顺着肩线流进躯干：不画脖子，不画领口分界，兜帽和衣服之间没有色差或描边断开。

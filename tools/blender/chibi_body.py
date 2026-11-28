@@ -42,6 +42,7 @@ class ChibiBody:
         self.lean = p['lean_degrees']
         self.parts = spec['parts']
         self.shoulder_offsets = {'l': 0., 'r': 0.}
+        self.near_shoulder_drop = 0.
         self.leg_y = self.width['shoulders']*.18
         self.ankle_z = self.ground + (self.h['boot_top']-self.ground)*.55
         self.leg_length = (self.h['crotch']-self.ankle_z)*.505
@@ -80,8 +81,9 @@ class ChibiBody:
             bones['foot_'+suffix] = (ankle, ankle+V((self.width['foot_length']*.55, 0, 0)))
         shoulder_y = self.width['shoulders']*.5-self.height*.051
         for suffix, y in (('l', -shoulder_y), ('r', shoulder_y)):
+            drop = self.near_shoulder_drop if suffix == 'l' else 0.
             shoulder = body((self.shoulder_offsets[suffix], y,
-                             self.h['shoulder']-self.h['belt']-.024*self.height))
+                             self.h['shoulder']-self.h['belt']-.024*self.height-drop))
             wrist = V(p['wrist_'+suffix])
             elbow = shoulder+wrist-base.ik(shoulder, wrist, self.arm_length, self.arm_length)
             angle = math.radians(p['sword'] if suffix == 'r' else 18+p['shield'])
@@ -251,9 +253,7 @@ class ChibiBody:
         ob=base.mesh(name,verts,faces,[[(.3,.06),(.7,.06),(.5,.20)]]*20,part,bone,far,smooth=True)
         return ob
 
-    def body_model(self, exposed_head=False, include_head=True, *, style='clothed', segmented_legs=True):
-        """Build the shared body. exposed_head keeps the whole cranium and omits
-        the hair, ears and mouth so a skull recipe can replace them."""
+    def body_clothing(self, style):
         h,H=self.h,self.height
         # Pear outline: progressively wider towards the hem, without a pinched waist.
         body_scale = {'clothed': 1, 'fitted': .80, 'bones': .41}[style]
@@ -276,11 +276,20 @@ class ChibiBody:
             base.box('belt_buckle',(.141*H,0,h['belt']),(.022*H,.075*H,.055*H),self.part('belt','buckle_uv_part'),'spine')
         self.profile('collar',[(h['shoulder']-.008*H,self.ring(.085*H,.12*H,.008*H,sides=6)),
             (h['chin']+.008*H,self.ring(.085*H,.12*H,.008*H,sides=6))],self.part('collar'),'head',False,True)
+
+    def body_model(self, exposed_head=False, include_head=True, *, style='clothed', segmented_legs=True,
+                   include_clothing=True):
+        """Build the shared body, optionally leaving the torso and head to the recipe."""
+        h,H=self.h,self.height
+        if include_clothing:
+            self.body_clothing(style)
         if include_head:
             self.legacy_head(exposed_head)
         for side in ('l','r'):
             far=side=='r'
-            limbs = [('upper_arm_', self.part('sleeves'), .051*H), ('forearm_', self.part('sleeves'), .046*H)]
+            forearm = 'forearm_' + side
+            forearm_part = self.part(forearm if forearm in self.parts else 'sleeves')
+            limbs = [('upper_arm_', self.part('sleeves'), .051*H), ('forearm_', forearm_part, .046*H)]
             if segmented_legs:
                 limbs[:0] = [('thigh_', self.part('legs'), .047*H), ('shin_', self.part('legs'), .045*H)]
             for segment,part,radius in limbs:

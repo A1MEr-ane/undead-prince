@@ -79,7 +79,7 @@ func _run() -> void:
 	_material.set_shader_parameter("blood_from_alpha", false)
 
 	var names: Array[String] = ["idle", "walk", "attack"]
-	for name: String in ["sneak", "backstab", "bone_pile", "reassemble", "hit_heavy", "death_pierce", "death_crush"]:
+	for name: String in ["sneak", "backstab", "downed", "rise_again", "bone_pile", "reassemble", "hit_heavy", "death_pierce", "death_crush"]:
 		if _meta.animations.has(name):
 			names.append(name)
 	names.append("flip")

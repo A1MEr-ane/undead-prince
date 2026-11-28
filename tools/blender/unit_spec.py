@@ -21,10 +21,12 @@ LANDMARKS = dict(boot_top=.11, crotch=.22, tunic_hem=.265, belt=.32, shoulder=.5
                  chin=.56, eye=.735, helmet_brim=.81, helmet_top=1.)
 WIDTHS = dict(head=.46, shoulders=.44, foot_length=.14, hand_diameter=.11)
 BODY_PARTS = ('tunic', 'belt', 'collar', 'head', 'legs', 'sleeves', 'boots', 'hands')
+FOREARM_PARTS = {'forearm_l', 'forearm_r'}
 MOUNT_PARTS = ('body', 'face', 'mane', 'legs', 'hooves', 'tack')
 HUMANOID_BONES = ('root', 'spine', 'head') + tuple(
     f'{part}_{side}' for side in ('l', 'r')
     for part in ('thigh', 'shin', 'foot', 'upper_arm', 'forearm', 'hand'))
+WEAPON_BONE = 'weapon_r'
 MOUNT_PARENTS = {**dict(mount_body='root', mount_head='mount_body', mount_tail='mount_body'),
                  **{f'mount_{leg}_{side}_{joint}': ('mount_body' if joint == 'upper'
                      else f'mount_{leg}_{side}_upper') for leg in ('fore', 'hind')
@@ -118,7 +120,7 @@ def validate_recipe(spec):
 
     assert set(spec) <= {'id', 'recipe', 'body', 'parts', 'palette', 'rim', 'triangle_budget', 'camera', 'body_style',
                          'landmarks', 'widths', 'head', 'marks', 'neutral', 'pieces', 'actions',
-                         'mount', 'scattered', 'transitions'}, 'Unknown unit recipe fields'
+                         'mount', 'scattered', 'transitions', 'near_shoulder_drop'}, 'Unknown unit recipe fields'
     body = spec['body']
     assert body in BODIES, f'Unknown body {body}'
     assert spec.get('body_style', 'clothed') in ('clothed', 'bones', 'fitted')
@@ -131,7 +133,10 @@ def validate_recipe(spec):
     widths = WIDTHS | spec.get('widths', {})
     assert widths.keys() == WIDTHS.keys() and all(number(v) and v > 0 for v in widths.values())
     assert type(spec['triangle_budget']) is int and spec['triangle_budget'] > 0
-    assert spec['parts'].keys() == set(BODY_PARTS) and set(spec['parts'].values()) <= set(PARTS)
+    parts = spec['parts']
+    assert set(BODY_PARTS) <= parts.keys() <= set(BODY_PARTS) | FOREARM_PARTS
+    assert set(parts.values()) <= set(PARTS)
+    assert number(spec.get('near_shoulder_drop', 0)) and 0 <= spec.get('near_shoulder_drop', 0) <= .06
     mount = spec.get('mount', {})
     if body == 'mounted':
         assert set(mount) <= {'parts', 'seat', 'stride', 'pace'}
@@ -147,7 +152,7 @@ def validate_recipe(spec):
     expected_parts = set(spec['parts'].values()) | set(mount.get('parts', {}).values())
     expected_parts.update(piece['part'] for piece in spec.get('pieces', {}).values())
     assert expected_parts == palette.keys(), 'Specify exactly the occupied UV regions in palette'
-    assert set(spec.get('head', {})) <= {'x', 'depth', 'radius_x', 'profile', 'stamps'}
+    assert set(spec.get('head', {})) <= {'x', 'depth', 'radius_x', 'profile', 'stamps', 'garment'}
     head = spec.get('head', {})
     assert number(head.get('x', 0))
     for key in ('depth', 'radius_x'):
@@ -162,6 +167,14 @@ def validate_recipe(spec):
     if 'profile' in head:
         contour(head['profile'])
         assert all(0 <= v <= 1 for p in head['profile'] for v in p)
+    if 'garment' in head:
+        rows = head['garment']
+        assert body != 'mounted' and spec.get('body_style') == 'fitted' and 'profile' not in head
+        assert parts['head'] == parts['tunic'] == parts['collar'] == parts['belt']
+        assert len(rows) >= 4 and all(vector(row, 4) for row in rows)
+        assert all(a[0] < b[0] for a, b in zip(rows, rows[1:]))
+        assert rows[0][0] <= h['belt'] and h['chin'] in [row[0] for row in rows] and rows[-1][0] == h['helmet_top']
+        assert all(-.5 < back < front < .5 and 0 < depth <= .27 for _, back, front, depth in rows)
 
     def check_stamp(stamp):
         assert set(stamp) <= {'shape', 'at', 'radii', 'points', 'color'}
@@ -182,7 +195,11 @@ def validate_recipe(spec):
     for stamp in head.get('stamps', []):
         check_stamp(stamp)
 
+    scattered = spec.get('scattered', {})
     bones = set(HUMANOID_BONES) | (MOUNT_PARENTS.keys() if mount else set())
+    if WEAPON_BONE in scattered:
+        bones.add(WEAPON_BONE)
+        assert any(piece['bone'] == WEAPON_BONE for piece in spec.get('pieces', {}).values())
     for name, piece in spec.get('pieces', {}).items():
         assert re.fullmatch(ID, name) and set(piece) <= {'bone', 'part', 'points', 'depth', 'offset', 'yaw', 'far'}
         assert piece['bone'] in bones and piece['part'] in palette, f'{name}: unknown bone or missing part colour'
@@ -190,7 +207,6 @@ def validate_recipe(spec):
         assert 0 < piece['depth'] <= 1 and vector(piece.get('offset', [0, 0, 0]), 3), name
         assert number(piece.get('yaw', 0)) and type(piece.get('far', False)) is bool, name
 
-    scattered = spec.get('scattered', {})
     assert scattered.keys() <= bones
     assert all(vector(pose, 4) for pose in scattered.values()), 'Scattered bones use [x, y, z, pitch]'
 

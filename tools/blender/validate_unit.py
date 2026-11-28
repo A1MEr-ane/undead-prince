@@ -12,7 +12,7 @@ from leg_pocket import FRONT, POCKET_BONES, REAR
 from render_sprites import validate
 from unit_preview import INK, frames_from_atlas, ink_atlas, paint_tile, rgb
 from unit_spec import (B_PROPORTIONS, HUMANOID_BONES, MOUNT_PARENTS, PROPORTION_TOLERANCE,
-                       event_frame, presentation, sample_times, uses_shuffle)
+                       WEAPON_BONE, event_frame, presentation, sample_times, uses_shuffle)
 
 
 def verify_proportions(recipe):
@@ -29,7 +29,9 @@ def verify_proportions(recipe):
         seat = recipe.mount.get('seat', .65) * recipe.height if recipe.mount and obj == recipe.pocket else 0
         zs = [(transform @ vert.co).z - seat for vert in obj.data.vertices]
         body.extend(zs)
-        if bone == 'head' and obj.name != 'collar':
+        if obj == recipe.garment:
+            head.extend(zs[i] for i in obj['head_vertices'])
+        elif bone == 'head' and obj.name != 'collar':
             head.extend(zs)
     sole = min(body)
     height = max(body) - sole
@@ -189,6 +191,8 @@ def verify_rig(recipe, meta):
     rig, stats = recipe.build()
     scene = bpy.context.scene
     bones = set(HUMANOID_BONES) | set(POCKET_BONES) | (MOUNT_PARENTS.keys() if recipe.mount else set())
+    if recipe.has_dropped_weapon:
+        bones.add(WEAPON_BONE)
     assert stats == meta['model'] and set(rig.data.bones.keys()) == bones
     proportions = verify_proportions(recipe)
     assert {part for obj in base.OBJECTS for part in obj.get('uv_parts', [obj['part']])} == spec['palette'].keys()
@@ -196,6 +200,8 @@ def verify_rig(recipe, meta):
         assert len(obj.modifiers) == 1 and obj.modifiers[0].object == rig
         if obj == recipe.pocket:
             assert set(obj.vertex_groups.keys()) == set(POCKET_BONES)
+        elif obj == recipe.garment:
+            assert set(obj.vertex_groups.keys()) == {'head', 'spine'}
         else:
             assert len(obj.vertex_groups) == 1 and obj.vertex_groups[0].name in bones
         assert all(abs(sum(g.weight for g in v.groups) - 1) < 1e-6 for v in obj.data.vertices)
