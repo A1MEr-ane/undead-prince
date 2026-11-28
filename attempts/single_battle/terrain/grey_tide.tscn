@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://attempts/single_battle/terrain/terrain.gd" id="1_terrain"]
+
+[node name="GreyTide" type="Node3D"]
+script = ExtResource("1_terrain")
