@@ -36,7 +36,7 @@ const TABLE := {
 	"B10": {"script": B10, "title": "攻占主堡：剩余守军走最短路去港口，不反击", "seconds": 12.0},
 	"B11": {"script": B11, "title": "山洞权限：只有有权限的单位能走，容量满时排队", "seconds": 10.0},
 	"B12": {"script": B12, "title": "拼刀和格挡：按规格第 7 节触发，进度差取绝对值", "seconds": 1.0},
-	"U01": {"script": U01, "title": "骨堆四秒重组、驻敌阻止、每兵一次", "seconds": 10.0},
+	"U01": {"script": U01, "title": "丧尸倒伏四秒再起、驻敌阻止、每兵一次", "seconds": 10.0},
 	"U02": {"script": U02, "title": "潜行避开锁定和威胁、首击秒杀后排、脱战三秒", "seconds": 10.0},
 	"U03": {"script": U03, "title": "攻城五倍伤害、三敌触发扇形横扫、击落水中", "seconds": 1.5},
 	"U04": {"script": U04, "title": "巫妖维持射距、冥火弹范围眩晕与冲锋中断", "seconds": 7.0},

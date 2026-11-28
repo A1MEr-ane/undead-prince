@@ -77,7 +77,7 @@ func verify() -> void:
 		check(view.sprites.appearance(kind, "walk", 0.2).texture != null, "a display frame exists for " + id)
 	if view.sprites.atlases.has("ghost"):
 		var pile := view.sprites.clip_for("ghost", "bone_pile")
-		check(pile.tiles.size() == 2 and pile.loop, "the T82 skeleton uses its bone pile frames")
+		check(pile.tiles.size() >= 2 and pile.loop, "the zombie uses its downed frames")
 	world.time = 300.0
 	world.resolve_outcome()
 	view.refresh()

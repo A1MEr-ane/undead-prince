@@ -9,7 +9,7 @@ const GOLD := Color("#c6aa74")
 const TEXT := Color("#ece5d5")
 const FIRE := Color("#67dbb8")
 const CARDS := [
-	["ghost", "普通骷髅", "骨堆重组"],
+	["ghost", "普通丧尸", "残躯再起"],
 	["assassin", "暗影刺客", "潜行背刺"],
 	["giant", "缝合巨人", "破城横扫"],
 	["lich", "巫妖", "冥火眩晕"],

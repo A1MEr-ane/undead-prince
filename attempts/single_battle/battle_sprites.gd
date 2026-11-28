@@ -4,13 +4,13 @@ const SAMPLE := "res://attempts/single_battle/style_frame/silhouettes.svg"
 const UNITS := "res://assets/sprites/units/"
 const CELLS := ["ghost", "assassin", "giant", "lich", "shield", "archer", "cavalry",
 	"bones", "fire", "dust", "stun", "clash"]
-const FOLDERS := {"ghost": "skeleton", "assassin": "shadow_assassin", "giant": "stitched_giant", "lich": "lich",
+const FOLDERS := {"ghost": "zombie", "assassin": "shadow_assassin", "giant": "stitched_giant", "lich": "lich",
 	"shield": "shieldman", "archer": "archer", "cavalry": "cavalry"}
 const CLIP_NAMES := {"down": "sit", "cast": "gravefire_cast", "slam": "wall_slam", "stealth": "sneak",
-	"retreat": "retreat_run", "launch": "ragdoll", "hurt": "hit"}
+	"retreat": "retreat_run", "launch": "ragdoll", "hurt": "hit", "bone_pile": "downed", "reassemble": "rise_again"}
 const FALLBACK_CLIPS := {"sit": "fall", "shoot": "attack", "gravefire_cast": "attack", "backstab": "attack",
 	"wall_slam": "attack", "sweep": "attack", "charge": "walk", "charge_impact": "attack", "sneak": "walk",
-	"reassemble": "rise", "retreat_run": "walk", "ragdoll": "fall", "bone_pile": "death"}
+	"rise_again": "rise", "retreat_run": "walk", "ragdoll": "fall", "downed": "death"}
 var sample_tiles := {}
 var atlases := {}
 
