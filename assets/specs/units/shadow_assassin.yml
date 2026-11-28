@@ -4,11 +4,12 @@ body: normal
 body_style: fitted
 triangle_budget: 600
 rim: "#59E1C1"
+shoe_cuff: 0.12
 palette:
   tunic: "#665580"
   cloth_trim: "#37364F"
-  boots: "#373044"
-  sleeves: "#3C334B"
+  boots: "#24212C"
+  sleeves: "#24212C"
   blade: "#A7B4B5"
 parts:
   head: tunic
@@ -43,10 +44,11 @@ head:
     - {shape: polygon, color: "#65E9C8", points: [[0.52, 0.40], [0.77, 0.42], [0.73, 0.34], [0.59, 0.33]]}
 marks:
   boots:
-    - {shape: ellipse, color: "#59E1C1", at: [0.5, 0], radii: [0.17, 0.30]}
+    - {shape: polygon, color: "#181622", points: [[0, 0.57], [1, 0.57], [1, 1], [0, 1]]}
+    - {shape: ellipse, color: "#59E1C1", at: [0.5, 0], radii: [0.15, 0.12]}
   sleeves:
-    - {shape: polygon, color: "#534661", points: [[0, 0.34], [1, 0.47], [1, 0.60], [0, 0.47]]}
-    - {shape: polygon, color: "#534661", points: [[0, 0.63], [1, 0.76], [1, 0.89], [0, 0.76]]}
+    - {shape: polygon, color: "#1A1825", points: [[0, 0.34], [1, 0.47], [1, 0.60], [0, 0.47]]}
+    - {shape: polygon, color: "#1A1825", points: [[0, 0.63], [1, 0.76], [1, 0.89], [0, 0.76]]}
   blade:
     - {shape: polygon, color: "#E0DCCD", points: [[0, 0.06], [0.50, 0.37], [0.90, 0.60], [0.85, 0.48], [0.36, 0.22]]}
 neutral:

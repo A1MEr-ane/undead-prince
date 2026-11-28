@@ -71,12 +71,14 @@ def build_pocket(unit, style):
     count = len(sole)
     width_scale = max(.92, unit.width['foot_length'] / (.157 * H))
     parts = (unit.part('boots'), unit.part('legs'), unit.part('belt' if style == 'bones' else 'legs'))
+    cuff = unit.spec.get('shoe_cuff')
     vertices, coords, weights = [], [], []
     for side, rows in ((-1, (0, 1, 2, 3)), (1, (0, 2, 3))):
         for x, z in sole:
             edge = abs(x) / SOLE[-1][0]
             toe = clamp(.5 + x * width_scale / (2 * HALF_SPAN), 0., 1.)
-            levels = (z, max(z + .010, .047), max(z + .021, .081), (belt - floor) / H + .009 - .047 * edge**3)
+            upper_foot = cuff if cuff is not None else max(z + .021, .081)
+            levels = (z, max(z + .010, .047), upper_foot, (belt - floor) / H + .009 - .047 * edge**3)
             for row in rows:
                 level = levels[row]
                 # Move each sole and its colour bands together; pulling a
@@ -95,19 +97,21 @@ def build_pocket(unit, style):
         bands.append(band)
 
     back = count * 4
+    foot_band = 0 if cuff is not None else 1
+    rear_band = 0 if cuff is not None else 2
     for col in range(count - 1):
         a, b = col * 4, back + col * 3
-        for row in range(3):
+        for row, band in enumerate((0, foot_band, 2)):
             i = a + row
-            face((i, i + 4, i + 5, i + 1), row)
-        face((b + 1, b + 4, b + 3, b), 2)
+            face((i, i + 4, i + 5, i + 1), band)
+        face((b + 1, b + 4, b + 3, b), rear_band)
         face((b + 2, b + 5, b + 4, b + 1), 2)
         face((a + 4, a, b, b + 3), 0)
         face((a + 3, a + 7, b + 5, b + 2), 2)
     a, b = (count - 1) * 4, back + (count - 1) * 3
-    face((0, 1, 2, back + 1, back), 1)
+    face((0, 1, 2, back + 1, back), foot_band)
     face((2, 3, back + 2, back + 1), 2)
-    face((a + 2, a + 1, a, b, b + 1), 1)
+    face((a + 2, a + 1, a, b, b + 1), foot_band)
     face((a + 3, a + 2, b + 1, b + 2), 2)
 
     obj = base.mesh('leg_pocket', vertices, faces, [[coords[v] for v in f] for f in faces], parts[2], WAIST)

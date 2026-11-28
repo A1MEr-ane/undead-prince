@@ -105,6 +105,22 @@ def verify_crotch(recipe, rig, lower_body, standing, label):
     return check_crotch(mask, (-lo[0], front - lo[0]), scale, standing, label)
 
 
+def verify_assassin_shoe_contrast(raw, ink, spec):
+    # Select opaque fill by its UV island, then measure the final shaded artwork.
+    cells = raw[..., :2].astype(int) * 4 // 255
+    opaque = raw[..., 3] == 255
+    parts = spec['parts']
+    shoes = opaque & (cells == PARTS[parts['boots']][:2]).all(axis=2)
+    clothing = opaque & (cells == PARTS[parts['tunic']][:2]).all(axis=2)
+    _, v0, _, v1 = uv_rect(parts['tunic'])
+    clothing &= raw[..., 1] < round(255 * (v0 + .30 * (v1 - v0)))
+    assert shoes.any() and clothing.any(), 'shadow_assassin idle[0]: shoe and cloth fill must both be visible'
+    luma = ink[..., :3] @ np.array([.2126, .7152, .0722])
+    ratio = luma[shoes].mean() / luma[clothing].mean()
+    assert ratio <= .5, f'shadow_assassin idle[0]: shoe/cloth mean luma {ratio:.3f} > 0.50'
+    return round(float(ratio), 4)
+
+
 def verify_unit(output, meta, recipe, check_rig):
     spec, ident = recipe.spec, recipe.spec['id']
     size, ortho, target_z, margin = recipe.camera
@@ -169,7 +185,11 @@ def verify_unit(output, meta, recipe, check_rig):
     assert cells <= palette_cells, (ident, 'visible pixels reference an unused area', cells - palette_cells)
     ink = read_png(output / f'{ident}_ink.png')
     assert np.array_equal(ink, ink_atlas(atlas, meta, tile, rgb(spec['rim'])))
-    for i, frame in enumerate(frames_from_atlas(ink, meta)):
+    ink_frames = frames_from_atlas(ink, meta)
+    if ident == 'shadow_assassin':
+        standing = meta['animations']['idle']['start_frame']
+        result['shoe_cloth_luma_ratio'] = verify_assassin_shoe_contrast(frames[standing], ink_frames[standing], spec)
+    for i, frame in enumerate(ink_frames):
         assert not (frame[0, :, 3].any() or frame[-1, :, 3].any() or
                     frame[:, 0, 3].any() or frame[:, -1, 3].any()), (
             ident, meta['frames'][i]['animation'], meta['frames'][i]['local_frame'], 'ink touches the cell border')

@@ -120,7 +120,7 @@ def validate_recipe(spec):
 
     assert set(spec) <= {'id', 'recipe', 'body', 'parts', 'palette', 'rim', 'triangle_budget', 'camera', 'body_style',
                          'landmarks', 'widths', 'head', 'marks', 'neutral', 'pieces', 'actions',
-                         'mount', 'scattered', 'transitions', 'near_shoulder_drop'}, 'Unknown unit recipe fields'
+                         'mount', 'scattered', 'transitions', 'near_shoulder_drop', 'shoe_cuff'}, 'Unknown unit recipe fields'
     body = spec['body']
     assert body in BODIES, f'Unknown body {body}'
     assert spec.get('body_style', 'clothed') in ('clothed', 'bones', 'fitted')
@@ -130,6 +130,9 @@ def validate_recipe(spec):
     h = LANDMARKS | spec.get('landmarks', {})
     assert h.keys() == LANDMARKS.keys() and all(number(v) for v in h.values())
     assert 0 < h['boot_top'] < h['crotch'] < h['tunic_hem'] < h['belt'] < h['shoulder'] <= h['chin'] < h['eye'] < h['helmet_brim'] < h['helmet_top']
+    if 'shoe_cuff' in spec:
+        cuff = spec['shoe_cuff']
+        assert number(cuff) and .10 <= cuff <= h['belt'] - .05, 'Shoe cuff must fit between the foot lobes and waist'
     widths = WIDTHS | spec.get('widths', {})
     assert widths.keys() == WIDTHS.keys() and all(number(v) and v > 0 for v in widths.values())
     assert type(spec['triangle_budget']) is int and spec['triangle_budget'] > 0

@@ -1850,7 +1850,7 @@
         46,
         31,
         114,
-        84
+        85
       ],
       "ground_lift": 0
     },
@@ -1905,7 +1905,7 @@
       "source_time": 0.4166666666666667,
       "alpha_bbox": [
         14,
-        48,
+        47,
         82,
         100
       ],
@@ -3286,7 +3286,7 @@
     "polygons": 256,
     "triangles": 486
   },
-  "recipe_sha256": "30e0eee32e0fc7ef4fc2e9687f1252838ffc37a0dd63110cbb8c9dd6a0d2c4c2",
+  "recipe_sha256": "bf7d6ec3552af7bf708d0d652aac83ead7844510c70b17b2880d78324624f956",
   "presentation": {
     "body": "normal",
     "standing_height_ratio": 1.0,
@@ -3294,8 +3294,8 @@
     "review_pixels_per_model_unit": 37.5
   },
   "validation": {
-    "covered_pixels": 284100,
-    "antialiased_pixels": 35321,
+    "covered_pixels": 284453,
+    "antialiased_pixels": 35293,
     "shade_range": [
       26,
       254
