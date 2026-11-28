@@ -191,7 +191,7 @@ def blend(points, time):
         if time <= t1:
             t = (time - t0) / (t1 - t0)
             t = t * t * (3 - 2 * t)
-            return {k: lerp(a.get(k, DEFAULT[k]), b.get(k, DEFAULT[k]), t)
+            return {k: lerp(a[k] if k in a else DEFAULT[k], b[k] if k in b else DEFAULT[k], t)
                     for k in a.keys() | b.keys()}
     return dict(points[-1][1])
 
@@ -329,7 +329,7 @@ def skeleton(parameters):
     return bones
 
 
-def make_rig():
+def make_rig(parents=None):
     data = bpy.data.armatures.new('SwordsmanSkeleton')
     rig = bpy.data.objects.new('SwordsmanRig', data)
     bpy.context.collection.objects.link(rig)
@@ -353,7 +353,7 @@ def make_rig():
             parent = 'thigh_' + name[-1]
         elif name.startswith('foot_'):
             parent = 'shin_' + name[-1]
-        bone.parent = data.edit_bones[parent]
+        bone.parent = data.edit_bones[(parents or {}).get(name, parent)]
     bpy.ops.object.mode_set(mode='OBJECT')
     rig.show_in_front = True
     for ob in OBJECTS:
@@ -469,7 +469,8 @@ def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
                 pb.keyframe_insert(data_path=prop, frame=keyframe, group=bone.name)
 
 
-def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None):
+def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None,
+          *, animation_specs=None, parents=None):
     global REST, MATERIALS
     # Optional .blend export must not write thumbnails outside the chosen output.
     # This is only an in-memory preference; user settings are never saved.
@@ -479,26 +480,29 @@ def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None):
     bpy.ops.object.delete(use_global=False)
     # A validation process builds several recipes in one Blender scene. Avoid
     # reusing the previous rig's Actions through Blender's .001 name suffixes.
-    for name, *_ in ANIMATIONS:
+    for name, *_ in animation_specs or ANIMATIONS:
         previous = bpy.data.actions.get(name)
         if previous:
             bpy.data.actions.remove(previous)
     MATERIALS = {False: uv_material(False), True: uv_material(True)}
     REST = (skeleton_fn or skeleton)({})
     (model_builder or model)()
-    rig = make_rig()
+    rig = make_rig(parents)
     scene = bpy.context.scene
     scene.render.fps = 1000
-    for name, count, duration, loop, events in ANIMATIONS:
+    for name, count, duration, loop, events in animation_specs or ANIMATIONS:
         rig.animation_data_create()
         rig.animation_data.action = bpy.data.actions.new(name)
         # Millisecond timeline retains the precise .333 s attack event.
         times = ([i * duration / count for i in range(count)] if loop else
                  [i * duration / (count - 1) for i in range(count)])
-        if name == 'attack':
+        if not animation_specs and name == 'attack':
             times = [0, .085, .17, .25, .333, .41, .50, .60]
-        if name == 'parry':
+        if not animation_specs and name == 'parry':
             times = [0, .09, .18, .26, .35, .44, .54, .65]
+        if animation_specs:
+            from unit_spec import sample_times
+            times = sample_times(name, count, duration, loop, events)
         extra = (bake_times or {}).get(name, [])
         for t in sorted(set(times + ([duration] if loop else []) + list(events.values()) + extra)):
             apply_pose(rig, (pose_fn or pose_parameters)(name, t, duration), t * 1000 + 1, skeleton_fn)

@@ -17,12 +17,25 @@ from common import ANIMATIONS, OUTPUT, PARTS, read_png, uv_rect
 
 def verify(output, check_rig=True, spec_path=None):
     recipe = None
+    unit_spec = False
     if spec_path:
-        from build_shieldman import from_spec
-        recipe = from_spec(spec_path)
+        from asset_spec import load_spec
+        spec = load_spec(spec_path)
+        unit_spec = spec.get('recipe') == 'unit'
+        if unit_spec:
+            from build_unit import Unit
+            recipe = Unit(spec)
+        else:
+            from build_shieldman import from_spec
+            recipe = from_spec(spec_path)
     prefix = recipe.spec['id'] if recipe else 'swordsman'
     metadata = json.loads((output / f'{prefix}_uv.json').read_text())
     assert metadata['format'] == 'swordsman_uv_v1'
+    if unit_spec:
+        from validate_unit import verify_unit
+        result = verify_unit(output, metadata, recipe, check_rig)
+        print('VALIDATED', prefix, json.dumps(result, ensure_ascii=False), flush=True)
+        return result
     assert metadata['frame_size'] == [64, 64]
     assert metadata['columns'] == 8 and metadata['rows'] == 9
     assert metadata['image_size'] == [512, 576]
@@ -394,15 +407,22 @@ def validate_shield_poses(recipe, rig, objects):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=OUTPUT)
+    parser.add_argument('--output', type=Path)
     parser.add_argument('--artifacts-only', action='store_true')
-    parser.add_argument('--spec', type=Path, help='Only validate this spec asset; default validates T06, k2_shieldman and the T64 e2e unit')
+    parser.add_argument('--spec', type=Path, help='Only validate this spec; default also discovers assets/specs/units/*.yml')
     args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
+    from asset_spec import DEFAULT_SPEC, E2E_SPEC, read_yaml
+    from unit_spec import UNIT_OUTPUT, UNIT_SPECS
+    check_rig = not args.artifacts_only
     if args.spec:
-        verify(args.output, not args.artifacts_only, args.spec)
+        spec = read_yaml(args.spec)
+        default_output = UNIT_OUTPUT / spec['id'] if spec.get('recipe') == 'unit' else OUTPUT
+        verify(args.output or default_output, check_rig, args.spec)
     else:
-        verify(args.output, not args.artifacts_only)
-        from asset_spec import DEFAULT_SPEC, E2E_SPEC
-        verify(args.output, not args.artifacts_only, DEFAULT_SPEC)
+        output = args.output or OUTPUT
+        verify(output, check_rig)
+        verify(output, check_rig, DEFAULT_SPEC)
         if E2E_SPEC.is_file():
-            verify(E2E_SPEC.parent, not args.artifacts_only, E2E_SPEC)
+            verify(E2E_SPEC.parent, check_rig, E2E_SPEC)
+        for spec in sorted(UNIT_SPECS.glob('*.yml')):
+            verify(output / 'units' / read_yaml(spec)['id'], check_rig, spec)
