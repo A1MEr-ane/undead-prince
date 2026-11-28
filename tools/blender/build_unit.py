@@ -34,7 +34,9 @@ class Unit(ChibiBody):
     def pose_parameters(self, name, t, duration):
         fields = self.spec.get('actions', {}).get(name, {})
         pose = fields.get('pose', name if name in BASE_ACTIONS else 'idle')
-        if pose == 'idle':
+        if pose == 'neutral':
+            p = dict(self.neutral)
+        elif pose == 'idle':
             p = dict(self.neutral)
             bob = math.sin(math.tau * t / duration)
             hip = V(p['hip'])
@@ -45,6 +47,10 @@ class Unit(ChibiBody):
             if pose == 'walk':
                 authored_duration = duration
             p = super().pose_parameters(pose, t / duration * authored_duration, authored_duration)
+            if pose == 'ragdoll':
+                for channel in VECTORS:
+                    x, y, z = p[channel]
+                    p[channel] = (x, y, self.ground + (z - self.ground) * self.height / BODIES['normal'][0])
         phase = t / duration
         for channel, keys in fields.get('tracks', {}).items():
             value = base.blend([(q, {channel: v}) for q, v in keys], phase)[channel]
@@ -56,8 +62,21 @@ class Unit(ChibiBody):
 
     def skeleton(self, parameters):
         if self.mount:
-            return self.mounted_skeleton(parameters)
-        return super().skeleton(parameters)
+            bones = self.mounted_skeleton(parameters)
+        else:
+            bones = super().skeleton(parameters)
+        spread = parameters.get('spread', 0)
+        if spread:
+            rest = self.skeleton({})
+            for name, (x, y, z, pitch) in self.spec['scattered'].items():
+                a, b = bones[name]
+                start = a.lerp(V(self.control_value('hip', (x, y, z))), spread)
+                direction = b - a
+                rest_direction = rest[name][1] - rest[name][0]
+                turn = Matrix.Rotation(math.radians(pitch), 3, 'Y') @ rest_direction
+                direction = direction.slerp(turn, spread, turn)
+                bones[name] = (start, start + direction)
+        return bones
 
     def mounted_skeleton(self, p):
         H, g = self.height, self.ground
@@ -126,18 +145,27 @@ class Unit(ChibiBody):
             self.piece(name, piece)
         if self.mount:
             self.mount_model()
+        head_part = self.part('head')
+        for obj in base.OBJECTS:
+            if obj['part'] == head_part and obj.name != 'side_projected_head':
+                self.remap_v(obj, .02, .23)
 
     def side_head(self):
         h, H = self.h, self.height
         head = self.spec.get('head', {})
         x = head.get('x', .02) * H
-        rx = head.get('radius_x', .205) * H
+        rx = head.get('radius_x', self.width['head'] / H / 2) * H
         bottom, top = h['chin'], h['helmet_top']
         z, rz = (bottom + top) / 2, (top - bottom) / 2
         part = self.part('head')
-        obj = base.ellipsoid('side_projected_head', (x, 0, z),
-                             (rx, head.get('depth', .18) * H, rz), part, 'head', sides=10, bands=4,
-                             smooth=False)
+        depth = head.get('depth', .18) * H
+        if 'profile' in head:
+            points = [(2 * rx * (u - .5), 2 * rz * (v - .5)) for u, v in head['profile']]
+            obj = self.prism('side_projected_head', points, V((x, 0, z)), depth, part, 'head',
+                             bevel=.87)
+        else:
+            obj = base.ellipsoid('side_projected_head', (x, 0, z),
+                                 (rx, depth, rz), part, 'head', sides=10, bands=4, smooth=False)
         for loop in obj.data.loops:
             v = obj.data.vertices[loop.vertex_index].co
             # Separate the side-face projection from hands when both use skin.
@@ -148,27 +176,35 @@ class Unit(ChibiBody):
     def piece(self, name, piece):
         bone = piece['bone']
         H = self.height
-        points = [tuple(p) for p in piece['points']]
-        area = sum(x0 * z1 - x1 * z0 for (x0, z0), (x1, z1) in zip(points, points[1:] + points[:1]))
-        assert abs(area) > 1e-6, f'{name}: zero-area contour'
-        if area < 0:
-            points.reverse()
-        count = len(points)
         centre = base.REST[bone][0] + V(piece.get('offset', (0, 0, 0))) * H
-        turn = Matrix.Rotation(math.radians(piece.get('yaw', 0)), 3, 'Z')
-        depth = piece['depth'] / 2
-        vertices = [centre + turn @ V((x * H, y * H, z * H))
-                    for y in (-depth, depth) for x, z in points]
-        faces = [list(range(count)), list(reversed(range(count, count * 2)))]
-        for i in range(count):
-            j = (i + 1) % count
-            faces.append((j, i, i + count, j + count))
+        points = [(x * H, z * H) for x, z in piece['points']]
+        self.prism(name, points, centre, piece['depth'] * H / 2, piece['part'], bone,
+                   yaw=piece.get('yaw', 0), far=piece.get('far', False))
+
+    @staticmethod
+    def prism(name, points, centre, depth, part, bone, *, yaw=0, far=False, bevel=1):
+        area = sum(x0 * z1 - x1 * z0 for (x0, z0), (x1, z1) in zip(points, points[1:] + points[:1]))
+        if area < 0:
+            points = points[::-1]
+        count = len(points)
+        turn = Matrix.Rotation(math.radians(yaw), 3, 'Z')
+        rings = [(-depth, bevel), (depth, bevel)]
+        if bevel < 1:
+            rings[1:1] = [(-depth * .66, 1), (depth * .66, 1)]
+        vertices = [centre + turn @ V((x * factor, y, z * factor))
+                    for y, factor in rings for x, z in points]
+        faces = [list(range(count)), list(reversed(range(len(vertices) - count, len(vertices))))]
+        for row in range(len(rings) - 1):
+            a = row * count
+            for i in range(count):
+                j = (i + 1) % count
+                faces.append((a + j, a + i, a + i + count, a + j + count))
         # Front plane uses the full existing island. Edges and backs share its colour.
         lo_x, hi_x = min(x for x, _ in points), max(x for x, _ in points)
         lo_z, hi_z = min(z for _, z in points), max(z for _, z in points)
         uv = [((x - lo_x) / (hi_x - lo_x), (z - lo_z) / (hi_z - lo_z)) for x, z in points]
-        base.mesh(name, vertices, faces, [[uv[k % count] for k in face] for face in faces],
-                  piece['part'], bone, piece.get('far', False))
+        return base.mesh(name, vertices, faces, [[uv[k % count] for k in face] for face in faces],
+                         part, bone, far)
 
     def mount_model(self):
         H, g = self.height, self.ground

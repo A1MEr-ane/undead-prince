@@ -191,7 +191,7 @@ def blend(points, time):
         if time <= t1:
             t = (time - t0) / (t1 - t0)
             t = t * t * (3 - 2 * t)
-            return {k: lerp(a.get(k, DEFAULT[k]), b.get(k, DEFAULT[k]), t)
+            return {k: lerp(a[k] if k in a else DEFAULT[k], b[k] if k in b else DEFAULT[k], t)
                     for k in a.keys() | b.keys()}
     return dict(points[-1][1])
 

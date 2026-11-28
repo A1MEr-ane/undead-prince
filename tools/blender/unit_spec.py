@@ -2,7 +2,10 @@
 import math
 import re
 
-from common import ANIMATIONS, PARTS
+from common import ANIMATIONS, OUTPUT, PARTS, ROOT
+
+UNIT_SPECS = ROOT / 'assets/specs/units'
+UNIT_OUTPUT = OUTPUT / 'units'
 
 BODIES = {
     'normal': (1.92, 64, 3.05),
@@ -22,7 +25,7 @@ MOUNT_PARENTS = {**dict(mount_body='root', mount_head='mount_body', mount_tail='
                      else f'mount_{leg}_{side}_upper') for leg in ('fore', 'hind')
                      for side in ('l', 'r') for joint in ('upper', 'lower')}}
 VECTORS = {'hip', 'foot_l', 'foot_r', 'wrist_l', 'wrist_r'}
-ANGLES = {'lean', 'head_tilt', 'sword', 'shield', 'tumble'}
+SCALARS = {'lean', 'head_tilt', 'sword', 'shield', 'tumble', 'spread'}
 BASE_ACTIONS = {row[0]: row for row in ANIMATIONS}
 ID = r'[a-z][a-z0-9_]*'
 
@@ -32,7 +35,7 @@ def event_frame(t, count, duration):
 
 
 def sample_times(name, count, duration, loop, events):
-    times = [i * duration / (count if loop else count - 1) for i in range(count)]
+    times = [duration * (i / (count if loop else count - 1)) for i in range(count)]
     # Show each authored event pose on the same frame that is on screen at t.
     events_by_frame = {}
     for t in events.values():
@@ -42,6 +45,7 @@ def sample_times(name, count, duration, loop, events):
         times[index] = t
     assert times[0] == 0 and (loop or times[-1] == duration), (
         f'{name}: preserve frame 0 and the final non-loop sample for the endpoints')
+    assert all(a < b for a, b in zip(times, times[1:])), f'{name}: event pose samples out of order'
     return times
 
 
@@ -73,7 +77,8 @@ def validate_recipe(spec):
         return isinstance(value, list) and len(value) == size and all(map(number, value))
 
     assert set(spec) <= {'id', 'recipe', 'body', 'parts', 'palette', 'rim', 'triangle_budget', 'camera',
-                         'landmarks', 'widths', 'head', 'neutral', 'pieces', 'actions', 'mount'}, 'Unknown unit recipe fields'
+                         'landmarks', 'widths', 'head', 'marks', 'neutral', 'pieces', 'actions',
+                         'mount', 'scattered', 'transitions'}, 'Unknown unit recipe fields'
     body = spec['body']
     assert body in BODIES, f'Unknown body {body}'
     size, scale, _, margin = camera(spec)
@@ -99,37 +104,70 @@ def validate_recipe(spec):
     palette = spec['palette']
     assert palette.keys() <= PARTS.keys() and all(map(colour, palette.values())), 'Use quoted #RRGGBB for each occupied region'
     assert colour(spec['rim'])
-    assert (set(spec['parts'].values()) | set(mount.get('parts', {}).values())) <= palette.keys()
-    assert set(spec.get('head', {})) <= {'x', 'depth', 'radius_x', 'stamps'}
+    expected_parts = set(spec['parts'].values()) | set(mount.get('parts', {}).values())
+    expected_parts.update(piece['part'] for piece in spec.get('pieces', {}).values())
+    assert expected_parts == palette.keys(), 'Specify exactly the occupied UV regions in palette'
+    assert set(spec.get('head', {})) <= {'x', 'depth', 'radius_x', 'profile', 'stamps'}
+    head = spec.get('head', {})
+    assert number(head.get('x', 0))
     for key in ('depth', 'radius_x'):
-        assert .08 <= spec.get('head', {}).get(key, .19) <= .27, f'Invalid head {key}'
-    for stamp in spec.get('head', {}).get('stamps', []):
+        assert .08 <= head.get(key, .19) <= .27, f'Invalid head {key}'
+
+    def contour(points):
+        assert len(points) >= 3 and all(vector(p, 2) for p in points)
+        assert len(set(map(tuple, points))) == len(points), 'Repeated contour point'
+        assert abs(sum(a * d - c * b for (a, b), (c, d) in zip(points, points[1:] + points[:1]))) > 1e-6, (
+            'Zero-area contour')
+
+    if 'profile' in head:
+        contour(head['profile'])
+        assert all(0 <= v <= 1 for p in head['profile'] for v in p)
+
+    def check_stamp(stamp):
         assert set(stamp) <= {'shape', 'at', 'radii', 'points', 'color'}
         assert colour(stamp['color'])
         if stamp['shape'] == 'ellipse':
             assert vector(stamp['at'], 2) and vector(stamp['radii'], 2)
             assert all(0 <= v <= 1 for v in stamp['at']) and all(0 < v <= 1 for v in stamp['radii'])
         else:
-            assert stamp['shape'] == 'polygon' and len(stamp['points']) >= 3
+            assert stamp['shape'] == 'polygon'
+            contour(stamp['points'])
             assert all(vector(p, 2) and all(0 <= v <= 1 for v in p) for p in stamp['points'])
+
+    assert spec['parts']['head'] not in spec.get('marks', {}), 'Use head.stamps for the head projection'
+    for part, stamps in spec.get('marks', {}).items():
+        assert part in palette, f'Marks on unused region {part}'
+        for stamp in stamps:
+            check_stamp(stamp)
+    for stamp in head.get('stamps', []):
+        check_stamp(stamp)
+
     bones = set(HUMANOID_BONES) | (MOUNT_PARENTS.keys() if mount else set())
     for name, piece in spec.get('pieces', {}).items():
         assert re.fullmatch(ID, name) and set(piece) <= {'bone', 'part', 'points', 'depth', 'offset', 'yaw', 'far'}
         assert piece['bone'] in bones and piece['part'] in palette, f'{name}: unknown bone or missing part colour'
-        assert len(piece['points']) >= 3 and all(vector(p, 2) for p in piece['points']), name
+        contour(piece['points'])
         assert 0 < piece['depth'] <= 1 and vector(piece.get('offset', [0, 0, 0]), 3), name
+        assert number(piece.get('yaw', 0)) and type(piece.get('far', False)) is bool, name
+
+    scattered = spec.get('scattered', {})
+    assert scattered.keys() <= bones
+    assert all(vector(pose, 4) for pose in scattered.values()), 'Scattered bones use [x, y, z, pitch]'
 
     def check_value(channel, value):
-        assert vector(value, 3) if channel in VECTORS else (
-            channel in ANGLES and number(value)), f'Invalid pose channel {channel}: {value}'
+        valid = vector(value, 3) if channel in VECTORS else channel in SCALARS and number(value)
+        assert valid, f'Invalid pose channel {channel}: {value}'
+        if channel == 'spread':
+            assert scattered and 0 <= value <= 1, 'spread needs scattered targets and a value in [0, 1]'
 
     for channel, value in spec.get('neutral', {}).items():
+        assert channel != 'spread', 'The rest rig must be standing'
         check_value(channel, value)
     for name, count, duration, loop, events in animations(spec):
         fields = spec.get('actions', {}).get(name, {})
         assert re.fullmatch(ID, name) and set(fields) <= {
             'frames', 'duration', 'loop', 'events', 'pose', 'tracks', 'mount_gait'}, name
-        assert fields.get('pose', name if name in BASE_ACTIONS else 'idle') in BASE_ACTIONS, name
+        assert fields.get('pose', name if name in BASE_ACTIONS else 'idle') in BASE_ACTIONS.keys() | {'neutral'}, name
         assert type(count) is int and 2 <= count <= 32 and number(duration) and duration > 0 and type(loop) is bool, name
         assert all(re.fullmatch(ID, event) and number(t) and 0 <= t <= duration
                    and (not loop or t < duration) for event, t in events.items()), name
@@ -142,3 +180,6 @@ def validate_recipe(spec):
             assert not loop or keys[0][1] == keys[-1][1], (name, channel, 'loop must close')
             for _, value in keys:
                 check_value(channel, value)
+    names = {row[0] for row in animations(spec)}
+    for pair in spec.get('transitions', []):
+        assert len(pair) == 2 and set(pair) <= names, f'Unknown transition {pair}'
