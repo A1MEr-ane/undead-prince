@@ -2,17 +2,24 @@
 id: T82
 title: 局内小兵形象、动作清单与 Blender 管线设计（为 DSH 批量建模铺路）
 owner: codex
-status: parked   # 用户 2026-11-28：先对齐玩法、美术、程序再做
+status: queued
 branch: codex/t82-unit-pipeline
 worktree: ../亡魂王子-t82
-images: [/Users/cyy/Projects/亡魂王子/art/units/chibi_lineup.png, /Users/cyy/Projects/亡魂王子/art/style/battle_mock.png]
-allowed: [tools/blender/, assets/specs/, assets/sprites/pilot/, docs/unit-sprites.md, reports/agents/]
-forbidden: [scripts/, proto/, shaders/, data/, tasks/, art/, docs/canon/, assets/sprites/k2_*]
+images: [/Users/cyy/Projects/亡魂王子/shots/t84/02-midnight.png, /Users/cyy/Projects/亡魂王子/art/units/chibi_lineup.png]
+allowed: [tools/blender/, assets/specs/, assets/sprites/units/, docs/unit-sprites.md, reports/agents/]
+forbidden: [tools/blender/terrain/, attempts/, scripts/, proto/, shaders/, data/, tasks/, art/, docs/canon/, assets/sprites/k2_*]
 verify: tools/verify/verify.sh sprites
 retry_limit: 3
 max_minutes: 300
 escalate_if: [需要改动游戏的精灵格式或着色器接口, 和美术方向文档冲突]
 ---
+
+## 范围更新（2026-11-28，用户批准生产）
+- 兵种只做基础单局需要的 **7 种**（`docs/single-battle-v1.md` 第 2 节）：普通骷髅、暗影刺客、缝合巨人、巫妖、盾兵、弓兵、骑兵。下文提到的其他兵种一律不做。
+- 画风以**已经通过的局内风格样张**为准（附图 1，`attempts/single_battle/style_frame/`）：墨线外轮廓、两档平涂、阵营边光、3–4 块色。
+- 动作清单按 single-battle-v1 第 2 节的行为来定，例如骨堆重组、潜行背刺、破城横扫、冥火弹施法、骑兵冲锋、守军撤退跑。
+- 试点兵种改为**普通骷髅**（数量最多，最先要用）。产物放 `assets/sprites/units/`。
+- 镜头是单战区固定视角，只做单侧面加左右翻转。
 
 ## 目标
 用户要求：由 Codex 设计局内小兵的形象、动作和 Blender 管线，之后交给 DSH 批量建模。本任务产出**设计、管线和一个试点兵种**，并写一份 DSH 可以照着执行的生产手册。
@@ -25,7 +32,7 @@ escalate_if: [需要改动游戏的精灵格式或着色器接口, 和美术方�
 - 附图：附图 1 是局内 Q 版阵容（形象参考），附图 2 是局内风格样张
 
 ## 要做
-1. `docs/unit-sprites.md`（设计稿，标注【议】，由 Lead 审批）。覆盖 7 个亡魂兵种（普通亡魂、盾骷髅、暗影刺客、巫妖、狂战士、死灵骑士、缝合巨人）和 6 个守军兵种（民兵、盾兵、枪兵、弓兵、骑兵、神职者）。每个兵种写：
+1. `docs/unit-sprites.md`（设计稿，标注【议】，由 Lead 审批）。覆盖上述 7 个兵种。每个兵种写：
    - 剪影要点
    - 体型类别（普通、大型、骑乘）
    - 3–4 块主色
@@ -43,7 +50,7 @@ escalate_if: [需要改动游戏的精灵格式或着色器接口, 和美术方�
    - 侧视角下脸要能看清
    - 大型单位和骑乘单位的骨骼与画布尺寸
    - 批量命令：一条命令构建、渲染、验收、出预览图
-4. **试点**：用新管线完整做出"盾骷髅"，走完 YAML → 模型 → 动作 → 图集 → 验收 → 预览图，产物放 `assets/sprites/pilot/`。
+4. **试点**：用新管线完整做出"普通骷髅"，走完 YAML → 模型 → 动作 → 图集 → 验收 → 预览图，产物放 `assets/sprites/units/`。
 5. **`docs/unit-sprites.md` 附录：DSH 生产手册**。写明：每个兵种要准备什么、跑哪些命令、自检清单、失败时怎么办，以及哪些情况必须停下交回 Codex。
 
 ## 交付
