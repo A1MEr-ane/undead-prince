@@ -92,62 +92,104 @@ func update_detection() -> void:
 func visible(u) -> bool:
 	return not enabled or u.kind != "assassin" or u.detected
 
-func route_value(route: String) -> float:
-	var values: Dictionary = main.params.get("analysis", {}).get("route_values", {"main": 2.0, "side": 4.0, "cave": 5.0})
-	return float(values.get(route, 0))
-
 func enemy_score(u, enemy) -> float:
-	var distance: float = Vector2(u.nav_pos.x - enemy.nav_pos.x, u.nav_pos.z - enemy.nav_pos.z).length()
-	if analysis and u.faction == 0 and u.focus_archers and enemy.kind in ["archer", "priest"]:
+	var distance: float = u.distance_to(enemy.nav_pos)
+	if analysis and u.faction == 0 and u.focus_archers and distance <= float(main.params.brain.idle_enemy_distance) and enemy.kind in ["archer", "priest"]:
 		distance -= float(main.params.targeting.values.archer) * float(main.params.targeting.value_weight)
 	return distance
+
+func can_climb(u) -> bool:
+	if not enabled or u.kind != "assassin":
+		return false
+	var entry: Vector3 = main.terrain.vec(cfg.cliff_entry)
+	var exit: Vector3 = main.terrain.vec(cfg.cliff_exit)
+	if not main.terrain.is_walkable_at(entry) or not main.terrain.is_walkable_at(exit):
+		return false
+	var to_entry: float = main.terrain.distance(u.nav_pos, entry)
+	if to_entry >= float(main.params.map.flow_infinity):
+		return false
+	return to_entry + float(cfg.cliff_seconds) * u.speed < main.terrain.distance(u.nav_pos, exit)
 
 func special_order(u) -> bool:
 	if not enabled or u.retreating or main.retreat_started:
 		return false
+	if u.kind == "assassin":
+		return assassin_order(u)
+	if u.kind == "giant" or u.route.begins_with("breach:"):
+		return breach_order(u)
+	return false
+
+func assassin_order(u) -> bool:
+	if u.route == "cliff" and u.stage == 0:
+		u.slot = main.terrain.vec(cfg.cliff_entry)
+		u.objective = "cliff"
+		if u.distance_to(u.slot) <= float(main.params.map.cave_entry_radius):
+			start_transit(u, main.terrain.vec(cfg.cliff_exit), float(cfg.cliff_seconds), "cliff")
+		return true
 	if u.route == "cliff":
-		if u.stage == 0:
-			u.slot = main.terrain.vec(cfg.cliff_entry)
-			u.objective = "cliff"
-			if u.nav_pos.distance_to(u.slot + Vector3(0, u.nav_pos.y, 0)) <= float(main.params.map.cave_entry_radius):
-				start_transit(u, main.terrain.vec(cfg.cliff_exit), float(cfg.cliff_seconds), "cliff")
-			return true
-		# 清理阵地后仍沿原侧路推进；不改胜负条件。
 		u.route = "side"
 		u.stage = 1
-	if u.kind == "assassin":
-		var best = null
-		var distance := INF
-		for enemy in main.sides[1].units:
-			if not main.effective_defender(enemy) or enemy.kind not in ["archer", "priest"]:
-				continue
-			var d: float = main.terrain.distance(u.nav_pos, enemy.nav_pos)
-			if d < distance:
-				distance = d
-				best = enemy
-		if best != null:
-			u.slot = best.nav_pos
-			u.objective = best.kind
+	if u.rear_target >= 0:
+		var rear = main.units[u.rear_target]
+		if not rear.alive:
+			u.rear_target = -1
+		elif rear.cave_until < 0 and main.terrain.is_walkable_at(rear.nav_pos):
+			u.slot = rear.nav_pos
+			u.objective = rear.kind
 			return true
-	if u.route.begins_with("breach:"):
-		var id: String = u.route.trim_prefix("breach:")
-		var wall: Dictionary = walls[id]
-		var r: Array = wall.rect
-		u.objective = id if not wall.broken else "flag"
-		if not wall.broken:
-			u.slot = Vector3(float(r[0]) + float(r[2]) * 0.5, 0, float(r[1]) + float(r[3]) + 0.5)
-		elif u.stage == 0:
-			u.slot = Vector3(float(r[0]) + float(r[2]) * 0.5, 0, float(r[1]) - 0.5)
-			if Vector2(u.nav_pos.x - u.slot.x, u.nav_pos.z - u.slot.z).length() < 0.8:
-				u.stage = 1
 		else:
-			u.slot = main.zone_point("keep")
-		return true
-	return false
+			# 目标在洞内时沿进攻路线推进，等待目标出洞。
+			return false
+	var best := float(main.params.map.flow_infinity)
+	for enemy in main.sides[1].units:
+		if not main.effective_defender(enemy) or enemy.cave_until >= 0 or enemy.kind not in ["archer", "priest"]:
+			continue
+		var distance: float = main.terrain.distance(u.nav_pos, enemy.nav_pos)
+		if distance < best:
+			best = distance
+			u.rear_target = enemy.id
+	if u.rear_target < 0:
+		return false
+	u.slot = main.units[u.rear_target].nav_pos
+	u.objective = main.units[u.rear_target].kind
+	return true
+
+func breach_order(u) -> bool:
+	var targets := {"gate": {"rect": main.params.map.gate_rect, "broken": main.terrain.gate_broken or main.terrain.gate_open},
+		"weak": {"rect": main.params.map.weak_rect, "broken": main.terrain.weak_broken}}
+	targets.merge(walls)
+	if u.breach_target.is_empty():
+		var hint: String = u.route.trim_prefix("breach:") if u.kind != "giant" else ""
+		var best := INF
+		for id in targets:
+			var wall: Dictionary = targets[id]
+			if (hint.is_empty() and wall.broken) or (not hint.is_empty() and hint != id):
+				continue
+			var approach: Dictionary = main.approach_structure(u, wall.rect)
+			if not approach.is_empty() and approach.distance < best:
+				best = approach.distance
+				u.breach_target = id
+				u.breach_approach = approach.pos
+				u.breach_crossing = approach.through
+	if u.breach_target.is_empty():
+		return false
+	var wall: Dictionary = targets[u.breach_target]
+	if not wall.broken:
+		u.objective = u.breach_target
+		u.slot = u.breach_approach
+	elif not u.breach_passage and main.terrain.is_walkable_at(u.breach_crossing):
+		u.objective = "flag"
+		u.slot = u.breach_crossing
+		u.breach_passage = u.distance_to(u.slot) < float(main.params.targeting.route_waypoint_radius) * 0.5
+	else:
+		u.objective = "flag"
+		u.slot = main.zone_point("keep")
+	return true
 
 func special_tick(u) -> void:
 	var config: Dictionary = main.params.units[u.kind]
-	u.walk_dir = u.order_dir
+	u.apply_order()
+	var breaching: bool = u.kind == "giant" and u.objective == u.breach_target and not u.breach_target.is_empty()
 	if u.kind == "giant":
 		var victims: Array = []
 		for enemy in main.nearby(u.nav_pos, float(config.sweep_radius), 1):
@@ -159,18 +201,19 @@ func special_tick(u) -> void:
 			u.play("attack")
 			for enemy in victims:
 				hit(u, enemy, float(config.sweep_damage))
-	if u.enemy == null:
+	if not u.can_see_enemy(u.enemy):
 		return
 	var reach: float = float(config.melee_range) + u.radius + u.enemy.radius
 	if u.enemy_dist <= reach and main.terrain.line_clear(u.nav_pos, u.enemy.nav_pos):
-		u.walk_dir = Vector3.ZERO
+		if not breaching:
+			u.walk_dir = Vector3.ZERO
 		u.look(u.enemy_dir)
 		if main.time >= u.next_melee:
 			u.next_melee = main.time + float(config.cooldown)
 			u.play("attack")
 			reveal(u, "attack")
 			hit(u, u.enemy, float(config.damage))
-	elif u.enemy_dist <= float(main.params.combat.chase_radius) and not (u.kind == "giant" and u.objective in walls):
+	elif u.enemy_dist <= float(main.params.combat.chase_radius) and not breaching:
 		u.walk_dir = u.enemy_dir
 
 func hit(u, victim, damage: float) -> void:
@@ -198,16 +241,17 @@ func killed(victim, source) -> void:
 			assassinations.append({"time": snappedf(main.time, 0.001), "unit": source.id, "victim": victim.id, "kind": victim.kind})
 
 func at_structure(u) -> bool:
+	var world = u.main
 	var rect: Array = []
-	if u.objective == "gate" and not main.terrain.gate_broken: rect = main.params.map.gate_rect
-	elif u.objective == "weak" and not main.terrain.weak_broken: rect = main.params.map.weak_rect
+	if u.objective == "gate" and not world.terrain.gate_open: rect = world.params.map.gate_rect
+	elif u.objective == "weak" and not world.terrain.weak_broken: rect = world.params.map.weak_rect
 	elif walls.has(u.objective) and not walls[u.objective].broken: rect = walls[u.objective].rect
 	if rect.is_empty(): return false
 	var p := Vector2(clampf(u.nav_pos.x, rect[0], rect[0] + rect[2]), clampf(u.nav_pos.z, rect[1], rect[1] + rect[3]))
-	return Vector2(u.nav_pos.x, u.nav_pos.z).distance_to(p) <= float(main.params.structures.attack_range)
+	return Vector2(u.nav_pos.x, u.nav_pos.z).distance_to(p) <= float(world.params.structures.attack_range) and world.terrain.line_clear(u.nav_pos, Vector3(p.x, 0, p.y).move_toward(u.nav_pos, 0.001))
 
 func attack_structures(dt: float) -> void:
-	var targets := {"gate": {"rect": main.params.map.gate_rect, "hp": main.gate_hp, "broken": main.terrain.gate_broken}, "weak": {"rect": main.params.map.weak_rect, "hp": main.weak_hp, "broken": main.terrain.weak_broken}}
+	var targets := {"gate": {"rect": main.params.map.gate_rect, "hp": main.gate_hp, "broken": main.terrain.gate_open}, "weak": {"rect": main.params.map.weak_rect, "hp": main.weak_hp, "broken": main.terrain.weak_broken}}
 	targets.merge(walls)
 	for id in targets:
 		var wall: Dictionary = targets[id]
@@ -215,13 +259,11 @@ func attack_structures(dt: float) -> void:
 			continue
 		var attackers: Array = []
 		for u in main.sides[0].units:
-			if not u.alive or u.cave_until >= 0 or u.objective != id or main.time < u.stun_until:
+			if not u.alive or u.cave_until >= 0 or u.objective != id or main.time < maxf(u.stun_until, u.rise_until):
 				continue
 			if u.kind != "giant" and u.enemy_dist < float(main.params.combat.chase_radius):
 				continue
-			var r: Array = wall.rect
-			var nearest := Vector2(clampf(u.nav_pos.x, r[0], r[0] + r[2]), clampf(u.nav_pos.z, r[1], r[1] + r[3]))
-			if Vector2(u.nav_pos.x, u.nav_pos.z).distance_to(nearest) <= float(main.params.structures.attack_range):
+			if at_structure(u):
 				attackers.append(u)
 		if attackers.size() < (int(main.params.structures.weak_min_attackers) if id == "weak" else 1):
 			continue

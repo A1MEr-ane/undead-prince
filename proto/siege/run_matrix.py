@@ -124,7 +124,7 @@ def summary(rows, params):
         rate = mean(group, lambda r: int(r["won"]))
         text.append(f"| {'有' if early else '无'} | {len(group)} | {'—' if rate is None else format(rate, '.0%')} |")
     ratio = mean(rows, lambda r: r["congestion_per_deployed"])
-    text += ["", f"4. `congestion_events / (spawned.ghost + spawned.defender)` 均值 {ratio:.3f}；初值参考上限 {metrics['acceptable_congestion_per_deployed']:.3f}。原始指标包括站岗和近战，`travel_congestion_events` 补充过滤无敌人且未到位的行军堵塞。", "", "原始记录见 `results.jsonl`；每局 stdout/stderr 和引擎日志均保留。", ""]
+    text += ["", f"4. `congestion_events / (spawned.ghost + spawned.defender)` 均值 {ratio:.3f}；初值参考上限 {metrics['acceptable_congestion_per_deployed']:.3f}。两项拥堵计数采用行军意图口径，排除驻防、实际交战和受击停顿。", "", "原始记录见 `results.jsonl`；每局 stdout/stderr 和引擎日志均保留。", ""]
     return "\n".join(text)
 
 

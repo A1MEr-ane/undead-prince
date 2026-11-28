@@ -30,7 +30,7 @@ var map_metrics := {}
 var structure_work := {"gate": {"started_at": -1.0, "breached_at": -1.0, "active_seconds": 0.0, "attacker_seconds": 0.0}, "weak": {"started_at": -1.0, "breached_at": -1.0, "active_seconds": 0.0, "attacker_seconds": 0.0}}
 var recovery_events: Array = []
 var retreat_skipped := false
-var rally_origin := Vector3.ZERO
+var rally_serial := 0
 var rally_members: Array = []
 var params: Dictionary
 var args := {}
@@ -140,7 +140,7 @@ func _ready() -> void:
 		zones[z.id] = {"owner": "defender", "progress": 0.0, "retake": 0.0, "captures": [], "losses": [], "contested_resets": []}
 	for group in params.garrisons:
 		for n in int(group.count):
-			var u = spawn(group.kind, 1, terrain.vec(group.anchor) + formation_offset(n), group.zone, group.get("victory_eligible", true))
+			var u = spawn(group.kind, 1, terrain.vec(group.anchor) + formation_offset(n, int(group.count)), group.zone, group.get("victory_eligible", true))
 			u.reserve = group.get("reserve", false)
 	phase_b.sample_peaks()
 	map_metrics = Metrics.describe(self)
@@ -264,9 +264,10 @@ func simulate() -> void:
 	for u in units:
 		if not u.alive:
 			continue
+		u.waiting_for_passage = false
 		if u.faction == 0:
 			ghost_order(u)
-		else:
+		elif u.cave_until < 0:
 			director.unit_order(u)
 			stage_defender_at_gate(u)
 			if phase_b.enabled: try_cave(u)
@@ -369,10 +370,15 @@ func spawn(kind: String, faction: int, pos: Vector3, zone: String, victory_eligi
 	hooks.publish("spawn", {"unit": u, "step": step_number})
 	return u
 
-func formation_offset(n: int) -> Vector3:
-	var columns := int(params.director.formation_columns)
+func formation_offset(n: int, count: int = -1) -> Vector3:
+	var columns := maxi(1, int(params.director.formation_columns))
+	var row := floori(float(n) / columns)
+	var in_row := columns if count < 0 else mini(columns, count - row * columns)
+	var column := n % columns
+	if row % 2 == 1:
+		column = in_row - 1 - column
 	var spacing := float(params.director.garrison_spacing)
-	return Vector3((n % columns - (columns - 1) * 0.5) * spacing, 0, (n / columns) * spacing)
+	return Vector3((column - (in_row - 1) * 0.5) * spacing, 0, row * spacing)
 
 func zone_point(id: String) -> Vector3:
 	for z in params.map.zones:
@@ -401,7 +407,9 @@ func deploy(pos: Vector3, kind: String = "ghost", route_hint: String = "", focus
 	resource_event(before, "deployment")
 	var u = spawn(kind, 0, pos, "coast")
 	u.focus_archers = focus
-	u.route = route_hint if phase_b.analysis and valid_route(u, route_hint) else choose_route(u, false)
+	u.route = route_hint if valid_route(u, route_hint) else choose_route(u, false)
+	if kind == "assassin" and phase_b.can_climb(u):
+		u.route = "cliff"
 	u.initial_route = u.route
 	if phase_b.analysis: phase_b.deployed(u, cost)
 	if waves.is_empty() or time - last_deploy > float(params.economy.wave_gap_seconds):
@@ -422,11 +430,9 @@ func rally(pos: Vector3) -> bool:
 	fire_spent += cost
 	resource_event(before, "rally")
 	rally_pos = pos
-	rally_origin = pos
+	rally_serial += 1
 	rally_until = time + float(params.economy.rally_seconds)
 	refresh_rally_members()
-	for id in rally_members:
-		units[id].next_target = time
 	rally_events.append({"time": snappedf(time, 0.001), "point": [snappedf(pos.x, 0.01), snappedf(pos.z, 0.01)], "cost": cost, "radius": params.economy.rally_radius, "until": rally_until, "units": rally_members.duplicate()})
 	return true
 
@@ -435,7 +441,7 @@ func refresh_rally_members() -> void:
 	if rally_until <= time or outcome != Outcome.ACTIVE:
 		return
 	for u in sides[0].units:
-		if u.alive and u.cave_until < 0 and Vector2(u.nav_pos.x - rally_pos.x, u.nav_pos.z - rally_pos.z).length() <= float(params.economy.rally_radius):
+		if u.alive and u.cave_until < 0 and u.rally_received != rally_serial and ((u.rallying and u.rally_order == rally_serial) or u.distance_to(rally_pos) <= float(params.economy.rally_radius)):
 			rally_members.append(u.id)
 
 func valid_route(u, route: String) -> bool:
@@ -446,141 +452,222 @@ func valid_route(u, route: String) -> bool:
 	return params.map.routes.has(route) and (route != "cave" or phase_b.can_cave(u))
 
 func try_cave(u) -> bool:
-	if not u.alive or u.cave_until >= 0 or not phase_b.can_cave(u):
+	if not phase_b.can_cave(u) or not u.alive or u.cave_until >= 0:
 		return false
-	var i: int = terrain.index(terrain.tile(u.nav_pos))
-	if i not in [terrain.cave_a, terrain.cave_b]:
+	var here: int = terrain.index(terrain.tile(u.nav_pos))
+	if here not in [terrain.cave_a, terrain.cave_b]:
+		u.cave_queued_at = -1.0
 		return false
-	var other: int = terrain.cave_b if i == terrain.cave_a else terrain.cave_a
-	if terrain.field(u.slot, true).next[i] != other:
+	var other: int = terrain.cave_b if here == terrain.cave_a else terrain.cave_a
+	if terrain.field(u.slot, true).next[here] != other:
+		u.cave_queued_at = -1.0
 		return false
+	return queue_cave(u, terrain.point(here), terrain.point(other))
+
+func queue_cave(u, entry: Vector3, exit: Vector3) -> bool:
+	if u.distance_to(entry) > float(params.map.cave_entry_radius):
+		u.cave_queued_at = -1.0
+		return false
+	if u.cave_queued_at < 0:
+		u.cave_queued_at = time
+	u.waiting_for_passage = true
 	var count := 0
-	for unit in units:
-		if unit.cave_until >= 0 and unit.transit_kind == "cave": count += 1
+	for other in units:
+		if not other.alive or other == u:
+			continue
+		if other.cave_until >= 0 and other.transit_kind == "cave":
+			count += 1
+		elif other.cave_queued_at >= 0 and (other.cave_queued_at < u.cave_queued_at or (other.cave_queued_at == u.cave_queued_at and other.id < u.id)):
+			return false
 	if count >= int(params.map.cave_capacity):
 		return false
-	phase_b.start_transit(u, terrain.point(other), float(params.map.cave_travel_seconds), "cave")
+	u.cave_queued_at = -1.0
+	u.waiting_for_passage = false
+	phase_b.start_transit(u, exit, float(params.map.cave_travel_seconds), "cave")
 	return true
 
+func finish_transit(u) -> bool:
+	var exit: Vector3 = u.cave_exit
+	if not terrain.is_walkable_at(exit):
+		return false
+	var positions: Array[Vector3] = [exit]
+	if u.transit_kind == "cave":
+		for direction in Map.DIRS:
+			positions.append(exit + Vector3(direction.x, 0, direction.y) * 0.45)
+	for p in positions:
+		if not terrain.line_clear(exit, p):
+			continue
+		var clear := true
+		for side in 2:
+			for other in fine_spatial.query(p, 1, side, false):
+				if other != u and other.cave_until < 0 and other.distance_to(p) < u.radius + other.radius:
+					clear = false
+					break
+		if clear:
+			u.nav_pos = p
+			u.nav_pos.y = terrain.height_at(p)
+			u.previous_pos = u.nav_pos
+			return true
+	return false
+
 func choose_route(u, congestion_change: bool) -> String:
-	var scores := {}
-	var cfg: Dictionary = params.targeting
+	var best: String = u.route if valid_route(u, u.route) else ""
+	var best_distance := INF
 	for route in params.map.routes:
-		if not valid_route(u, route):
+		if not valid_route(u, route) or (congestion_change and route == u.route):
 			continue
 		var first: Vector3 = terrain.vec(params.map.routes[route][0])
-		var distance: float = terrain.distance(u.nav_pos, first, false)
-		var crowd := 0
-		for f in sides[0].units:
-			if f.alive and f != u and f.route == route and f.stage < 2 and Vector2(f.nav_pos.x - first.x, f.nav_pos.z - first.z).length() <= float(cfg.crowd_radius):
-				crowd += 1
-		var value := phase_b.route_value(route) if phase_b.analysis else float(cfg.values.gate if route == "main" else cfg.values.archer if route == "side" else cfg.values.keep)
-		var commitment := float(cfg.route_commitment) if route == u.route and not congestion_change else 0.0
-		# 同一登陆点的主路/侧路入口可以区分；高地尚存弓手时，侧路偏好更高。
-		scores[route] = value * float(cfg.value_weight) - distance * float(cfg.distance_weight) - crowd * float(cfg.congestion_weight) + commitment
-	var best := "main"
-	var highest := -INF
-	for route in scores:
-		if scores[route] > highest:
-			highest = scores[route]
-			best = route
+		if not terrain.is_walkable_at(first):
+			continue
+		var distance: float = terrain.distance(u.nav_pos, first)
+		if distance >= float(params.map.flow_infinity) or distance >= best_distance:
+			continue
+		if congestion_change:
+			if u.distance_to(first) < 1.0 or nearby_count(first, 1.0, u.faction) > 1:
+				continue
+			var alternate: Vector3 = terrain.direction(u.nav_pos, first)
+			if alternate.dot(u.order_dir) > 0.8 * alternate.length() * u.order_dir.length():
+				continue
+		best_distance = distance
+		best = route
 	return best
 
 func ghost_order(u) -> void:
 	if u.cave_until >= 0:
 		return
+	u.rallying = false
 	if retreat_started:
-		var target = nearest_enemy(u, float(params.retreat.pursuit_radius))
-		u.slot = target.nav_pos if target != null else terrain.vec(params.map.port)
+		u.cave_queued_at = -1.0
+		u.slot = u.enemy.nav_pos if u.can_see_enemy(u.enemy) else terrain.vec(params.map.port)
 		return
-	if phase_b.enabled:
-		if not valid_route(u, u.route):
-			u.route = choose_route(u, false)
-			u.stage = 0
-		if phase_b.special_order(u): return
+	if rally_until > time and u.rally_received != rally_serial and rally_members.has(u.id):
+		if u.distance_to(rally_pos) <= maxf(float(params.map.path_arrival_radius), u.radius * 2.0):
+			u.rally_received = rally_serial
+		elif terrain.distance(u.nav_pos, rally_pos, phase_b.can_cave(u)) < float(params.map.flow_infinity):
+			u.rallying = true
+			u.rally_order = rally_serial
+			u.slot = rally_pos
+			u.objective = "rally"
+			u.brain.ready.set_true()
+			try_cave(u)
+			return
+	if not valid_route(u, u.route):
+		u.route = choose_route(u, false)
+		u.stage = 0
+	if phase_b.special_order(u):
+		u.cave_queued_at = -1.0
+		return
+	if not params.map.routes.has(u.route):
+		u.route = choose_route(u, false)
+		u.stage = 0
+		if not params.map.routes.has(u.route):
+			u.slot = zone_point("keep")
+			return
 	var cfg: Dictionary = params.targeting
-	if time < u.next_target and u.objective != "cave":
-		return
 	if time >= u.next_target:
 		u.next_target = time + float(cfg.think_seconds)
-		if u.stage < 2 and u.reroutes < int(cfg.max_reroutes) and time >= u.reroute_at and time - u.cell_since >= float(cfg.reroute_after_seconds) and nearby_count(u.nav_pos, float(cfg.crowd_radius), 0) > int(cfg.route_crowd_threshold):
+		var near_approach := terrain.zone_at(u.nav_pos) in ["coast", "highland"] or terrain.in_rect(u.nav_pos, params.map.gate_rect)
+		if near_approach and u.movement_since >= 0 and time - u.movement_since >= float(cfg.reroute_after_seconds) and u.reroutes < int(cfg.max_reroutes) and time >= u.reroute_at:
 			var alternative := choose_route(u, true)
-			if alternative != u.route:
-				if terrain.distance(u.nav_pos, terrain.vec(params.map.routes[alternative][0]), false) >= float(params.map.flow_infinity):
-					return
+			if alternative != u.route and u.change_behavior():
 				u.route = alternative
 				if phase_b.analysis: phase_b.choice(u, "reroute")
 				u.stage = 0
 				u.reroutes += 1
 				reroutes += 1
 				u.reroute_at = time + float(cfg.reroute_cooldown_seconds)
+				u.cave_queued_at = -1.0
+				u.recovery_until = -1.0
+				u.movement_since = -1.0
 	var route: Array = params.map.routes[u.route]
-	var waypoint: Vector3 = terrain.vec(route[mini(u.stage, route.size() - 1)])
-	if Vector2(waypoint.x - u.nav_pos.x, waypoint.z - u.nav_pos.z).length() < float(cfg.route_waypoint_radius) and u.stage < route.size() - 1:
-		u.stage += 1
-		waypoint = terrain.vec(route[u.stage])
-	if u.route == "cave" and u.stage <= 1:
+	if route.is_empty():
+		u.slot = zone_point("keep")
+		return
+	if u.route == "cave" and u.stage < 2:
 		u.slot = terrain.vec(params.map.cave_a)
 		u.objective = "cave"
-		var travelers := 0
-		for f in units:
-			if f.cave_until >= 0:
-				travelers += 1
-		if Vector2(u.slot.x - u.nav_pos.x, u.slot.z - u.nav_pos.z).length() <= float(params.map.cave_entry_radius) and travelers < int(params.map.cave_capacity):
-			if phase_b.enabled:
-				phase_b.start_transit(u, terrain.vec(params.map.cave_b), float(params.map.cave_travel_seconds), "cave")
-			else:
-				u.cave_until = time + float(params.map.cave_travel_seconds)
-				u.cave_exit = terrain.vec(params.map.cave_b)
-				cave_transits += 1
+		queue_cave(u, u.slot, terrain.vec(params.map.cave_b))
 		return
-	var candidates: Array = [{"pos": terrain.nearest(waypoint), "value": float(cfg.values.zone), "kind": "flag"}]
-	if u.route == "main" and u.stage <= 2 and not terrain.gate_broken and not terrain.gate_open:
-		candidates = [{"pos": terrain.vec(params.map.routes.main[1]), "value": float(cfg.values.gate), "kind": "gate"}]
-	elif u.route == "side" and u.stage <= 3:
-		if zones.highland.owner != "ghost" and u.stage <= 2:
-			candidates = [{"pos": zone_point("highland"), "value": float(cfg.values.zone), "kind": "flag"}]
-		else:
-			if u.stage < 2:
-				u.stage = 2
-			if not terrain.weak_broken:
-				candidates = [{"pos": Vector3(float(params.map.weak_rect[0]) - 0.5, 0, float(params.map.weak_rect[1]) + float(params.map.weak_rect[3]) * 0.5), "value": float(cfg.values.weak), "kind": "weak"}]
-			else:
-				u.stage = maxi(u.stage, 3)
-				candidates = [{"pos": zone_point("plaza"), "value": float(cfg.values.zone), "kind": "flag"}]
-	for e in nearby(u.nav_pos, float(params.combat.chase_radius), 1):
-		if terrain.line_clear(u.nav_pos, e.nav_pos):
-			candidates.append({"pos": e.nav_pos, "value": float(cfg.values.archer if e.kind == "archer" and (not phase_b.analysis or u.focus_archers) else cfg.values.zone), "kind": e.kind, "id": e.id})
-	if rally_until > time and rally_members.has(u.id):
-		candidates.append({"pos": rally_pos, "value": float(cfg.rally_weight), "kind": "rally"})
-	var best := -INF
-	var chosen: Dictionary = {}
-	var current: Dictionary = {}
-	var current_score := -INF
-	for c in candidates:
-		var dist: float = terrain.distance(u.nav_pos, c.pos, false)
-		if dist >= float(params.map.flow_infinity):
+	u.cave_queued_at = -1.0
+	var waypoint: Vector3 = terrain.vec(route[mini(u.stage, route.size() - 1)])
+	if u.stage < route.size() - 1 and u.distance_to(waypoint) < float(cfg.route_waypoint_radius):
+		u.stage += 1
+		waypoint = terrain.vec(route[u.stage])
+	u.objective = "flag"
+	var from_zone: String = terrain.zone_at(u.nav_pos)
+	if u.route == "main" and u.stage > 0 and from_zone == "coast" and not terrain.gate_broken and not terrain.gate_open:
+		u.objective = "gate"
+		waypoint = route_approach(u, params.map.gate_rect, waypoint)
+	elif u.route == "side" and from_zone == "highland" and not terrain.weak_broken and u.stage >= 2:
+		u.objective = "weak"
+		waypoint = route_approach(u, params.map.weak_rect, waypoint)
+	u.slot = waypoint
+
+func route_approach(u, rect: Array, fallback: Vector3) -> Vector3:
+	if u.route_approach_kind != u.objective or u.route_approach.is_empty():
+		u.route_approach_kind = u.objective
+		u.route_approach = approach_structure(u, rect)
+	return u.route_approach.get("pos", fallback)
+
+func approach_structure(u, rect: Array) -> Dictionary:
+	var best := float(params.map.flow_infinity)
+	var approach := {}
+	for cell in terrain.rect_cells(rect):
+		for dir in Map.DIRS:
+			var p: Vector3 = terrain.vec([cell.x + dir.x, cell.y + dir.y])
+			if not terrain.is_walkable_at(p) or terrain.in_rect(p, rect):
+				continue
+			var distance: float = terrain.distance(u.nav_pos, p)
+			if distance < best:
+				best = distance
+				approach = {"pos": p, "through": terrain.vec([cell.x - dir.x, cell.y - dir.y]), "distance": distance}
+	return approach
+
+func should_queue(u) -> bool:
+	var ahead: Vector3 = u.walk_dir.normalized()
+	for friend in nearby(u.nav_pos, 1.0, u.faction):
+		if friend == u:
 			continue
-		var crowded := nearby_count(c.pos, float(cfg.crowd_radius), 0)
-		var score := float(c.value) * float(cfg.value_weight) - dist * float(cfg.distance_weight) - crowded * float(cfg.congestion_weight)
-		var key: String = c.kind + ":" + str(c.get("id", terrain.tile(c.pos)))
-		c.key = key
-		if key == u.target_key:
-			current = c
-			current_score = score
-		if score > best:
-			best = score
-			chosen = c
-	if chosen.is_empty():
-		return
-	if not current.is_empty() and chosen.kind != "rally" and (time < u.target_lock_until or best < current_score + float(cfg.switch_margin)):
-		chosen = current
-	if chosen.key != u.target_key:
-		u.target_key = chosen.key
-		u.target_lock_until = time + float(cfg.target_lock_seconds)
-		note("objective_switch")
-	u.slot = chosen.pos
-	u.objective = chosen.kind
+		var offset: Vector3 = friend.nav_pos - u.nav_pos
+		offset.y = 0
+		var along := offset.dot(ahead)
+		if along <= 0 or along > u.radius + friend.radius + float(params.combat.contact_slack):
+			continue
+		if (offset - ahead * along).length_squared() >= (u.radius + friend.radius) ** 2 or not terrain.line_clear(u.nav_pos, friend.nav_pos):
+			continue
+		if terrain.tile(u.slot) == terrain.tile(friend.slot):
+			var remaining: float = u.distance_to(u.slot)
+			var friend_remaining: float = friend.distance_to(u.slot)
+			if friend_remaining > remaining or (is_equal_approx(friend_remaining, remaining) and friend.id > u.id):
+				continue
+		return true
+	return false
+
+func retreat_direction(u, shortest: Vector3) -> Vector3:
+	var attackers: Array = nearby(u.nav_pos, float(params.combat.chase_radius), 0)
+	if attackers.is_empty():
+		return shortest
+	var f: Dictionary = terrain.field(u.slot, phase_b.enabled and phase_b.can_cave(u))
+	var here: int = terrain.index(terrain.tile(u.nav_pos))
+	var next: int = f.next[here]
+	if next < 0 or next not in terrain.adjacency[here]:
+		return shortest
+	var best := next
+	var clearance := -1.0
+	for edge in terrain.neighbors(here, false):
+		var cell: int = edge[0]
+		if f.dist[cell] != f.dist[next]:
+			continue
+		var p: Vector3 = terrain.point(cell)
+		var gap := INF
+		for enemy in attackers:
+			gap = minf(gap, enemy.distance_to(p))
+		if gap > clearance or (gap == clearance and cell == next):
+			best = cell
+			clearance = gap
+	var direction: Vector3 = terrain.point(best) - u.nav_pos
+	direction.y = 0
+	return direction.limit_length(1.0) if best != next else shortest
 
 func rebuild_spatial() -> void:
 	spatial.clear()
@@ -622,6 +709,12 @@ func adjacent_units(u, radius: float) -> Array:
 		return u.squad.units
 	return fine_spatial.candidates(u.nav_pos, radius, u.faction, u.squad.units)
 
+func enemy_score(u, enemy) -> float:
+	var score := phase_b.enemy_score(u, enemy)
+	if u.kind == "cavalry" and enemy.wants_to_move and not enemy.in_combat():
+		score -= float(params.combat.chase_radius)
+	return score
+
 func nearest_enemy(u, radius: float = -1):
 	var best = null
 	var distance := float(params.combat.sense_radius) if radius < 0 else radius
@@ -635,15 +728,13 @@ func nearest_enemy(u, radius: float = -1):
 	for z in range(floori((p.z - distance) / size), floori((p.z + distance) / size) + 1):
 		for x in range(floori((p.x - distance) / size), floori((p.x + distance) / size) + 1):
 			for e in spatial.get(Vector3i(x, faction, z), []):
-				if not e.alive or e.cave_until >= 0 or (u.faction == 1 and not phase_b.visible(e)):
+				if not e.alive or e.cave_until >= 0 or not u.can_engage(e) or (u.faction == 1 and not phase_b.visible(e)):
 					continue
 				var delta := Vector2(e.nav_pos.x - p.x, e.nav_pos.z - p.z)
 				if delta.length_squared() > radius_sq:
 					continue
-				var d := delta.length()
-				var score := phase_b.enemy_score(u, e) if phase_b.analysis else d
-				if (score < best_score if phase_b.analysis else d < distance) and terrain.line_clear(p, e.nav_pos):
-					if not phase_b.analysis: distance = d
+				var score := enemy_score(u, e)
+				if (score < best_score or (score == best_score and e.id < best.id)) and terrain.line_clear(p, e.nav_pos):
 					best_score = score
 					best = e
 	return best
@@ -682,16 +773,10 @@ func attack_structures(dt: float) -> void:
 		return
 	var attackers := {"gate": 0, "weak": 0}
 	for u in sides[0].units:
-		if not u.alive or u.cave_until >= 0 or time < u.stun_until or u.enemy_dist < float(params.combat.chase_radius):
+		if not u.alive or u.cave_until >= 0 or time < maxf(u.stun_until, u.rise_until) or u.enemy_dist < float(params.combat.chase_radius):
 			continue
-		if u.objective == "gate" and not terrain.gate_broken:
-			var gate: Array = params.map.gate_rect
-			if u.nav_pos.x >= gate[0] - float(params.structures.attack_range) and u.nav_pos.x <= gate[0] + gate[2] + float(params.structures.attack_range) and absf(u.nav_pos.z - float(gate[1]) - 0.5) < float(params.structures.attack_range):
-				attackers.gate += 1
-		elif u.objective == "weak" and not terrain.weak_broken:
-			var weak: Array = params.map.weak_rect
-			if absf(u.nav_pos.x - float(weak[0]) - 0.5) < float(params.structures.attack_range) and u.nav_pos.z >= weak[1] - float(params.structures.attack_range) and u.nav_pos.z <= weak[1] + weak[3] + float(params.structures.attack_range):
-				attackers.weak += 1
+		if attackers.has(u.objective) and phase_b.at_structure(u):
+			attackers[u.objective] += 1
 	for kind in attackers:
 		var count: int = attackers[kind]
 		if count < (int(params.structures.weak_min_attackers) if kind == "weak" else 1):
@@ -717,20 +802,13 @@ func attack_structures(dt: float) -> void:
 		terrain.change(params.map.weak_rect, true, time, "weak_wall_breached")
 
 func stage_defender_at_gate(u) -> void:
-	if phase_b.enabled and phase_b.can_cave(u) and terrain.distance(u.nav_pos, u.slot, true) < float(params.map.flow_infinity):
+	if not u.marching or terrain.gate_open or not params.structures.gate_auto_open or retreat_started:
 		return
-	if phase_b.enabled:
-		for wall in phase_b.walls.values():
-			if wall.broken: return
-	if terrain.gate_open or terrain.gate_broken or terrain.weak_broken or retreat_started:
-		return
-	var outside: bool = u.nav_pos.z > float(params.map.gate_rect[1])
-	var target_outside: bool = u.slot.z > float(params.map.gate_rect[1])
-	if outside != target_outside:
-		u.slot = Vector3(float(params.map.gate_rect[0]) + float(params.map.gate_rect[2]) * 0.5, 0, float(params.map.gate_rect[1]) + (1.5 if outside else -0.5))
+	if terrain.distance(u.nav_pos, u.slot, phase_b.enabled and phase_b.can_cave(u)) >= float(params.map.flow_infinity):
+		u.slot = approach_structure(u, params.map.gate_rect).get("pos", u.slot)
 
 func update_gate() -> void:
-	if terrain.gate_broken or not params.structures.gate_auto_open:
+	if retreat_started or terrain.gate_broken or not params.structures.gate_auto_open:
 		return
 	var center := Vector3(float(params.map.gate_rect[0]) + float(params.map.gate_rect[2]) * 0.5, 0, float(params.map.gate_rect[1]) + 0.5)
 	var want := false
@@ -819,6 +897,10 @@ func start_retreat() -> void:
 			u.dangerous = false
 			u.dispatch_to = ""
 			u.dispatch_at = -1
+			u.marching = false
+			u.enemy = null
+			u.brain.idle.set_true()
+			u.dangerous = false
 
 func update_retreat() -> void:
 	var port: Vector3 = terrain.vec(params.map.port)

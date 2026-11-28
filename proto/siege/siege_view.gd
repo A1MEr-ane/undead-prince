@@ -335,7 +335,7 @@ func refresh(alpha: float = 1.0) -> void:
 	rally_marker.visible = main.rally_until > main.time and main.outcome == main.Outcome.ACTIVE
 	rally_marker.position = main.rally_pos + Vector3(0, main.terrain.height_at(main.rally_pos) + 0.1, 0)
 	rally_area.visible = rally_marker.visible or rally_mode
-	var ring_pos: Vector3 = p if rally_mode else main.rally_origin
+	var ring_pos: Vector3 = p if rally_mode else main.rally_pos
 	rally_area.position = ring_pos + Vector3(0, 1.4, 0)
 	skip_button.visible = main.presentation == main.Presentation.RETREAT
 	var ghosts: int = main.sides[0].units.filter(func(u): return u.alive).size()

@@ -207,24 +207,31 @@ func test_view_startup() -> void:
 
 func test_congestion() -> void:
 	var w = fresh()
-	var gate_approach: Vector3 = w.terrain.vec(w.params.map.routes.main[0])
-	for n in 16:
-		w.spawn("ghost", 0, gate_approach, "coast")
-	w.rebuild_spatial()
-	w.time = float(w.params.targeting.reroute_after_seconds) + 1
-	var first = w.units[0]
-	w.ghost_order(first)
-	check(first.route != "main" and w.reroutes == 1, "路口拥堵时必须能自主改走其他路线")
+	w.params.map.cave_enabled = false
+	w.params.combat.separation_strength = 0.0
+	w.params.map.gate_rect = [29, 28, 1, 1]
+	w.terrain.change(w.params.map.gate_rect, true, 0, "test_narrow_gate")
+	w.terrain.gate_open = true
+	w.terrain.gate_broken = true
+	w.terrain.weak_broken = true
+	w.terrain.change(w.params.map.weak_rect, true, 0, "test_side_open")
+	var lead = w.spawn("ghost", 0, Vector3(29.5, 0, 28.5), "coast")
+	lead.stage = 2
+	lead.speed = 0.0
+	for n in 9:
+		var unit = w.spawn("ghost", 0, Vector3(29.5, 0, 28.93 + n * 0.47), "coast")
+		unit.stage = 2
+	var guard = w.spawn("shield", 1, w.zone_point("keep"), "keep")
+	guard.hp = 1000.0
+	for step in 238:
+		w.simulate()
+	check(w.reroutes > 0 and w.travel_congestion > 0, "窄门实际堵塞后，一部分亡魂应改走可达的侧路")
+	check(guard.congestion_count == 0, "驻防等待不算拥堵")
+	lead.speed = 2.0
+	for step in 240:
+		w.simulate()
+	check(w.sides[0].units.any(func(unit): return unit.nav_pos.z < 28.0), "障碍离开后原路线的队伍继续通行")
 	dispose(w)
-	var counter = fresh()
-	var guard = counter.spawn("shield", 1, counter.zone_point("keep"), "keep")
-	guard.cell = counter.terrain.tile(guard.nav_pos)
-	counter.time = float(counter.params.targeting.congestion_seconds) + 1
-	guard.tick(0)
-	guard.tick(0)
-	check(counter.congestion == 1, "同次同格停留超过阈值只能累计一次")
-	check(counter.travel_congestion == 0, "站岗停留应能与行军堵塞区分")
-	dispose(counter)
 
 func test_locked_outcomes() -> void:
 	var w = fresh()
@@ -429,41 +436,29 @@ func test_late_batches() -> void:
 
 func test_objective_hysteresis_and_rally() -> void:
 	var w = fresh()
-	w.params.targeting.congestion_weight = 0
 	var unit = w.spawn("ghost", 0, Vector3(29.5, 0, 40.5), "coast")
-	var a = w.spawn("archer", 1, unit.nav_pos + Vector3(2, 0, 0), "coast")
-	var b = w.spawn("archer", 1, unit.nav_pos + Vector3(2.4, 0, 0), "coast")
+	var archer = w.spawn("archer", 1, unit.nav_pos + Vector3(2, 0, 0), "coast")
 	w.rebuild_spatial()
-	unit.next_target = 0
 	w.ghost_order(unit)
-	var original: String = unit.target_key
-	b.nav_pos = unit.nav_pos + Vector3(1.7, 0, 0)
-	w.rebuild_spatial()
-	w.time = 1
-	unit.next_target = 0
-	w.ghost_order(unit)
-	check(unit.target_key == original, "战术目标在锁定时间内保持稳定")
-	w.time = 3
-	unit.next_target = 0
-	w.ghost_order(unit)
-	check(unit.target_key == original, "战术目标的微小评分变化不能越过切换滞后")
-	a.alive = false
-	w.rebuild_spatial()
-	unit.next_target = 0
-	w.ghost_order(unit)
-	check(unit.target_key != original and unit.slot == b.nav_pos, "战术目标死亡后立即重新选择")
+	var waypoint: Vector3 = unit.slot
+	unit.next_sense = 0
+	unit.sense()
+	check(unit.enemy == archer and unit.slot == waypoint, "索敌与行军点独立")
 	var outside = w.spawn("ghost", 0, Vector3(49.5, 0, 43.5), "coast")
 	check(w.rally(unit.nav_pos + Vector3(0, 0, -2)), "可下达局部集结命令")
-	unit.next_target = 0
 	w.ghost_order(unit)
-	check(unit.objective == "rally" and w.rally_members.has(unit.id) and not w.rally_members.has(outside.id), "集结范围只作用于半径内单位，并打断目标锁")
+	check(unit.rallying and unit.slot == w.rally_pos and not w.rally_members.has(outside.id), "半径内单位立即转向集结点")
 	outside.nav_pos = unit.nav_pos
 	w.refresh_rally_members()
-	check(w.rally_members.has(outside.id), "持续集结沿用动态作用范围：后来进入的单位也应接令")
-	w.time = w.rally_until + 0.1
-	unit.next_target = 0
+	check(w.rally_members.has(outside.id), "持续集结沿用动态作用范围")
+	unit.nav_pos = w.rally_pos
 	w.ghost_order(unit)
-	check(unit.objective != "rally", "集结到期应恢复自主目标")
+	check(not unit.rallying and unit.route == "main", "到达后恢复原路线")
+	w.refresh_rally_members()
+	check(not w.rally_members.has(unit.id), "已到达者不再重复响应同一条集结指令")
+	w.time = w.rally_until + 0.1
+	w.ghost_order(outside)
+	check(not outside.rallying, "集结到期应恢复自主目标")
 	dispose(w)
 
 func test_presentation_isolation_and_scale() -> void:

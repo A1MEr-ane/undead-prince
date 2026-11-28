@@ -15,7 +15,8 @@ var reinforcements_arrived := false
 func setup(world) -> void:
 	main = world
 	travel_map.setup(main.params)
-	travel_map.change(main.params.map.gate_rect, true, 0, "estimate_gate_access")
+	if main.params.structures.gate_auto_open:
+		travel_map.change(main.params.map.gate_rect, true, 0, "estimate_gate_access")
 	for zone in main.params.map.zones:
 		cooldown[zone.id] = 0.0
 		threats[zone.id] = 0.0
@@ -78,6 +79,7 @@ func tick() -> void:
 	for ghost in main.sides[0].units:
 		if ghost.alive and ghost.cave_until < 0 and perceived(ghost):
 			visible.append(ghost)
+	var responding := {}
 	for z in main.params.map.zones:
 		var threat := 0.0
 		var center: Vector3 = main.zone_point(z.id)
@@ -91,10 +93,13 @@ func tick() -> void:
 		threats[z.id] = threat
 		var stationed := 0
 		var assigned := 0
+		responding[z.id] = 0
 		for guard in main.sides[1].units:
 			if main.effective_defender(guard):
 				if guard.assigned == z.id: assigned += 1
 				if main.terrain.zone_at(guard.nav_pos) == z.id: stationed += 1
+				if guard.dispatch_to == z.id or (guard.assigned == z.id and guard.home != z.id and guard.dispatch_to.is_empty()):
+					responding[z.id] += 1
 		history.append({"time": snappedf(main.time, 0.001), "zone": z.id, "threat": snappedf(threat, 0.01), "stationed": stationed, "assigned": assigned})
 	var targets: Array = main.params.map.zones.duplicate()
 	targets.sort_custom(func(a, b):
@@ -103,6 +108,10 @@ func tick() -> void:
 		return threats[a.id] > threats[b.id])
 	for z in targets:
 		if threats[z.id] < float(cfg.threat_threshold) or main.time < cooldown[z.id]:
+			continue
+		var response := maxi(1, floori(threats[z.id] / maxf(0.001, float(cfg.threat_threshold))))
+		var batch := mini(int(cfg.support_batch), response - int(responding[z.id]))
+		if batch <= 0:
 			continue
 		var donors: Array = []
 		var available := {}
@@ -113,13 +122,16 @@ func tick() -> void:
 					count += 1
 			available[source.id] = maxi(0, count - int(source.min_garrison))
 		for u in main.sides[1].units:
-			if not u.alive or u.assigned == z.id or not u.dispatch_to.is_empty() or u.marching or main.time < u.mission_lock_until:
+			if not main.effective_defender(u) or u.kind == "archer" or u.cave_until >= 0 or u.assigned == z.id or not u.dispatch_to.is_empty() or u.marching or main.time < u.mission_lock_until:
 				continue
 			if main.terrain.zone_at(u.nav_pos) != u.assigned:
 				continue
 			if u.enemy != null and u.enemy_dist < float(cfg.busy_enemy_radius):
 				continue
 			if available[u.assigned] <= 0:
+				continue
+			var source_threat: float = threats[u.assigned]
+			if source_threat >= float(cfg.threat_threshold):
 				continue
 			donors.append(u)
 		var distances := {}
@@ -137,18 +149,19 @@ func tick() -> void:
 		var selected: Array = []
 		var members: Array = []
 		for u in donors:
-			if selected.size() >= int(cfg.support_batch):
+			if selected.size() >= batch:
 				break
 			if available[u.assigned] <= 0:
 				continue
-			if travel_seconds(u.nav_pos, main.zone_point(z.id), u.speed) < 0:
+			var travel := travel_seconds(u.nav_pos, destination, u.speed)
+			if travel < 0 or not u.change_behavior():
 				continue
 			available[u.assigned] -= 1
 			u.mission_lock_until = main.time + float(cfg.dispatch_delay) + float(cfg.mission_lock_seconds)
 			u.dispatch_to = z.id
 			u.dispatch_at = main.time + float(cfg.dispatch_delay)
 			selected.append(u.id)
-			members.append({"unit": u.id, "kind": u.kind, "from": u.assigned, "estimated_arrival_at": snappedf(u.dispatch_at + travel_seconds(u.nav_pos, main.zone_point(z.id), u.speed), 0.001)})
+			members.append({"unit": u.id, "kind": u.kind, "from": u.assigned, "estimated_arrival_at": snappedf(u.dispatch_at + travel, 0.001)})
 		if not selected.is_empty():
 			cooldown[z.id] = main.time + float(cfg.dispatch_cooldown)
 			record({"event": "ordered", "to": z.id, "units": selected, "members": members, "reason": "retake_perceived_zone" if main.zones[z.id].owner == "ghost" else "perceived_threat", "threat": snappedf(threats[z.id], 0.01), "depart_at": snappedf(main.time + float(cfg.dispatch_delay), 0.001)})
@@ -167,10 +180,6 @@ func unit_order(u) -> void:
 		u.anchor = main.terrain.nearest(u.anchor + main.formation_offset(u.id % int(main.params.director.formation_columns)))
 		record({"event": "arrive", "unit": u.id, "from": u.mission_from, "to": u.assigned, "reason": "mission_arrival", "estimated_arrival_at": snappedf(u.expected_arrival, 0.001), "actual_arrival_at": snappedf(main.time, 0.001), "actual_travel_seconds": snappedf(main.time - u.departed_at, 0.001), "arrival_error_seconds": snappedf(main.time - u.expected_arrival, 0.001), "locked_until": snappedf(u.mission_lock_until, 0.001)})
 	u.slot = u.anchor
-	if u.enemy != null and u.enemy_dist < float(main.params.combat.defender_leash):
-		if Vector2(u.enemy.nav_pos.x - u.anchor.x, u.enemy.nav_pos.z - u.anchor.z).length() <= float(main.params.combat.defender_leash) and main.terrain.line_clear(u.nav_pos, u.enemy.nav_pos):
-			u.slot = u.enemy.nav_pos
-
 func perceived(ghost) -> bool:
 	if not main.phase_b.visible(ghost):
 		return false
