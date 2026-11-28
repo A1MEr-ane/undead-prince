@@ -2,7 +2,7 @@
 id: T83
 title: 按 T82 手册批量制作其余 6 个兵种（暗影刺客、缝合巨人、巫妖、盾兵、弓兵、骑兵）
 owner: dsh
-status: revised   # 用户 2026-11-28 要求提高画质，待 T87 新基准后重做
+status: superseded   # 被 T88 取代（新基准 2026-11-28）
 branch: dsh/t83-unit-batch
 worktree: ../亡魂王子-t83
 allowed: [assets/specs/units/, assets/sprites/units/, reports/agents/]
