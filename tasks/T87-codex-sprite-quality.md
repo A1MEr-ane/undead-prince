@@ -1,0 +1,41 @@
+---
+id: T87
+title: 小兵画质与可读性升级：128 像素图集、关键姿势、受击分类，重做骷髅和刺客作为新基准
+owner: codex
+status: queued
+branch: codex/t87-sprite-quality
+worktree: ../亡魂王子-t87
+images: [/Users/cyy/Projects/亡魂王子/shots/t84/02-midnight.png, /Users/cyy/Projects/亡魂王子/shots/t83/shadow_assassin_48px.png, /Users/cyy/Projects/亡魂王子/shots/t83/archer_48px.png]
+allowed: [tools/blender/, assets/specs/units/, assets/sprites/units/, docs/unit-sprites.md, reports/agents/]
+forbidden: [tools/blender/terrain/, attempts/, scripts/, proto/, shaders/, data/, tasks/, art/]
+verify: tools/verify/verify.sh sprites
+retry_limit: 3
+max_minutes: 300
+escalate_if: [需要改游戏的着色器或精灵读取接口, 128 像素方案在性能或图集上明显不可行]
+---
+
+## 目标
+用户审了 6 个兵种的草稿，认为辨识度太低。修订要求写在 `docs/unit-sprites.md` 第 5 节，那是本任务的规格：
+- 画质更高
+- 看得出在做什么动作
+- 受击表现能区分
+- 具体问题：弓、骷髅披风、刺客成团、巨人太小
+
+本任务先改管线并做两个新基准，再由 DSH 重做其余兵种。
+
+## 要做
+1. **管线**：图集单格改为 128 像素（超采样、墨线粗细、验收器、预览图都跟着改）。读图基准是"1080p 下普通步兵约 72 像素"。预览图按这个实际大小出，并且**不再把所有兵种缩放到同一高度**，巨人和骑兵按真实比例显示。
+2. **受击分类**：把第 5 节表里的受击和死亡动作加进共用模板，所有兵种都继承。
+3. **关键姿势**：在模板层面加强预备、出手、收势，并给手册写出检查方法（关键帧剪影差异）。
+4. **重做两个基准**：
+   - **普通骷髅**（去掉披风）
+   - **暗影刺客**（修正成团的问题）
+   刺客最难读，用来验证新标准够不够。
+5. **更新手册**：`docs/unit-sprites.md` 附录"DSH 生产手册"按新标准改写；把弓兵和巨人的修正要点写进对应配方的注意事项（配方本身由 DSH 重做）。
+6. **预览**：两个基准各出新的实际大小预览、动作表、受击表，放到 `shots/t87/`。
+
+## 给 T86 的接口说明
+`attempts/single_battle/` 由 T86 负责。你不要改它，在报告里写明：精灵尺寸和读取格式有哪些变化、镜头要拉近多少，由 Lead 转给 T86。
+
+## 交付
+报告 `reports/agents/T87.md`，开头用 YAML 摘要。用户审过两个基准后，DSH 再重做其余 5 个兵种。
