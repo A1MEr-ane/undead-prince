@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://attempts/single_battle/style_frame/style_frame.gd" id="1_frame"]
+
+[node name="GreyTideLanding" type="Node3D"]
+script = ExtResource("1_frame")
