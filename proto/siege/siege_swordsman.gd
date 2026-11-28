@@ -219,7 +219,7 @@ func _ready_update() -> void:
 
 
 func _should_hunt(victim, hunt_dist: float) -> bool:
-	if not _valid(victim) or victim.dangerous:
+	if not _valid(victim) or victim.dangerous or not u.can_engage(victim):
 		return false
 	if victim == u.enemy and u.enemy_dist < hunt_dist * cfg.hunt_distance_scale and u.enemy_dir.dot(u.order_dir) > 0.0:
 		return true
@@ -312,10 +312,10 @@ func _hunting_update() -> void:
 
 ## 出手：够得着就进入攻击，并通知对方的盾（可能招架）
 func try_attack(t) -> bool:
-	if not _valid(t) or not u.hopping.active or not u.alive_grounded.active:
+	if not _valid(t) or not u.hopping.active or not u.alive_grounded.active or u.sliding.active or u.retreating or u.rallying or not u.can_engage(t):
 		return false
 	var reach: float = u.radius + t.radius + range_()
-	if (t.nav_pos - u.nav_pos).length_squared() > reach * reach:
+	if _flat(t.nav_pos - u.nav_pos).length_squared() > reach * reach or not u.terrain.line_clear(u.nav_pos, t.nav_pos):
 		return false
 	attack.set_true()
 	target = t
@@ -349,10 +349,10 @@ func _attack_update() -> void:
 
 
 func _do_hit() -> void:
-	if not _valid(target) or not attack.active:
+	if not _valid(target) or not attack.active or not u.can_engage(target) or not u.terrain.line_clear(u.nav_pos, target.nav_pos):
 		return
 	var d: float = _flat(target.nav_pos - u.nav_pos).length() - (u.radius + target.radius + range_())
-	if d >= 0.0:
+	if d > 0.0:
 		return
 	var dir: Vector3 = _flat(target.nav_pos - u.nav_pos).normalized()
 	var atk := {"damage": damage, "knockback": knockback, "stun": stun, "launch": 0.0,
@@ -365,7 +365,7 @@ func _do_hit() -> void:
 func modify_attack(atk: Dictionary) -> void:
 	var a = atk.get("attacker")
 	if a != null and a.get_script() == get_script() and attack.active and a.attack.active and target == a.u \
-			and a.u.anim_norm() - u.anim_norm() < cfg.clash_phase_window:
+			and absf(a.u.anim_norm() - u.anim_norm()) < cfg.clash_phase_window:
 		atk.damage = 0.0
 		atk["clash"] = true
 		clash.set_true()
@@ -388,7 +388,7 @@ func modify_attack(atk: Dictionary) -> void:
 
 
 func maybe_parry(attacker) -> void:
-	if ready.active or pursuing.active:
+	if not u.retreating and not u.rallying and u.kind != "archer" and (ready.active or pursuing.active):
 		u.play("parry")
 		parry_attacker = attacker
 		parry.set_true()
@@ -427,7 +427,7 @@ func _clash_update() -> void:
 # ---------- 工具 ----------
 
 func _valid(x) -> bool:
-	return x != null and is_instance_valid(x) and x.alive_grounded.active
+	return x != null and is_instance_valid(x) and x.alive_grounded.active and x.cave_until < 0
 
 
 static func _flat(v: Vector3) -> Vector3:

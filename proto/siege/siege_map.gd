@@ -117,10 +117,36 @@ func zone_at(p: Vector3) -> String:
 	return "coast"
 
 func line_clear(a: Vector3, b: Vector3) -> bool:
-	var delta := Vector3(b.x - a.x, 0, b.z - a.z)
-	var count := maxi(1, ceili(delta.length() / float(cfg.line_sample_step)))
-	for n in range(count + 1):
-		if not is_walkable_at(a + delta * float(n) / count):
+	var here := tile(a)
+	var goal := tile(b)
+	if not walkable(here) or not walkable(goal):
+		return false
+	if here == goal:
+		return true
+	var delta := Vector2(b.x - a.x, b.z - a.z)
+	var step := Vector2i(signf(delta.x), signf(delta.y))
+	var tx := (here.x + (1 if step.x > 0 else 0) - a.x) / delta.x if step.x != 0 else INF
+	var tz := (here.y + (1 if step.y > 0 else 0) - a.z) / delta.y if step.y != 0 else INF
+	var dx := absf(1.0 / delta.x) if step.x != 0 else INF
+	var dz := absf(1.0 / delta.y) if step.y != 0 else INF
+	while here != goal:
+		if here.x == goal.x:
+			tx = INF
+		if here.y == goal.y:
+			tz = INF
+		if absf(tx - tz) < 0.000001:
+			if not walkable(here + Vector2i(step.x, 0)) or not walkable(here + Vector2i(0, step.y)):
+				return false
+			here += step
+			tx += dx
+			tz += dz
+		elif tx < tz:
+			here.x += step.x
+			tx += dx
+		else:
+			here.y += step.y
+			tz += dz
+		if not walkable(here):
 			return false
 	return true
 
@@ -308,6 +334,8 @@ func distance(a: Vector3, b: Vector3, cave: bool = false) -> float:
 	return field(b, cave).dist[index(tile(a))] if is_walkable_at(a) else float(cfg.flow_infinity)
 
 func direction(a: Vector3, b: Vector3, cave: bool = false) -> Vector3:
+	if not is_walkable_at(a) or not is_walkable_at(b):
+		return Vector3.ZERO
 	if Vector2(a.x - b.x, a.z - b.z).length_squared() <= float(cfg.direct_path_radius) ** 2 and line_clear(a, b):
 		return Vector3(b.x - a.x, 0, b.z - a.z).limit_length(1.0)
 	var f := field(b, cave)
@@ -315,6 +343,8 @@ func direction(a: Vector3, b: Vector3, cave: bool = false) -> Vector3:
 	var j: int = f.next[i]
 	if j < 0:
 		return Vector3.ZERO
+	if cave and (i == cave_a and j == cave_b or i == cave_b and j == cave_a):
+		j = i
 	return (point(j) - Vector3(a.x, 0, a.z)).limit_length(1.0)
 
 func change(rect: Array, open: bool, at: float, reason: String) -> void:

@@ -362,7 +362,10 @@
       "idle": 0.667,
       "attack": 0.6,
       "clash": 0.35,
-      "parry": 0.65
+      "parry": 0.65,
+      "fall": 0.35,
+      "down": 1.017,
+      "rise": 0.833
     },
     "brain_seed_phase_range": 100,
     "spatial_cell_size": 3,
@@ -435,7 +438,7 @@
     "rally_weight": 40,
     "route_waypoint_radius": 1.35,
     "route_crowd_threshold": 7,
-    "reroute_after_seconds": 3,
+    "reroute_after_seconds": 5,
     "reroute_cooldown_seconds": 8,
     "crowd_radius": 2.2,
     "values": {

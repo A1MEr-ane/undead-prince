@@ -1,0 +1,61 @@
+{
+  "strategy": "feint",
+  "seed": 7,
+  "comparison": "byte_equal_full_SIEGE_line",
+  "modes": {
+    "zones": {
+      "bytes": 54478,
+      "sha256": "48a8aa6e85b9410f307c222712d31746598e0a1c494c4993f03c250abb3a30fe",
+      "roundtrip_diagnostic": [
+        {
+          "first_float_difference": ".waves[2].end raw=43.80000000000000426 parsed=43.79999999999999716",
+          "raw_dictionary_equal": false,
+          "raw_different_fields": [
+            "retreat",
+            "casualties",
+            "spawned",
+            "waves",
+            "structure_work",
+            "map_scale",
+            "route_observations",
+            "recovery_events",
+            "hook_counts",
+            "zone_history",
+            "dispatch_decisions",
+            "archer_kill_times",
+            "topology_events",
+            "combat_events"
+          ],
+          "reserialized_equal": false
+        }
+      ]
+    },
+    "continuous": {
+      "bytes": 54478,
+      "sha256": "48a8aa6e85b9410f307c222712d31746598e0a1c494c4993f03c250abb3a30fe",
+      "roundtrip_diagnostic": [
+        {
+          "first_float_difference": ".waves[2].end raw=43.80000000000000426 parsed=43.79999999999999716",
+          "raw_dictionary_equal": false,
+          "raw_different_fields": [
+            "retreat",
+            "casualties",
+            "spawned",
+            "waves",
+            "structure_work",
+            "map_scale",
+            "route_observations",
+            "recovery_events",
+            "hook_counts",
+            "zone_history",
+            "dispatch_decisions",
+            "archer_kill_times",
+            "topology_events",
+            "combat_events"
+          ],
+          "reserialized_equal": false
+        }
+      ]
+    }
+  }
+}
