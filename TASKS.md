@@ -52,8 +52,8 @@
 | T84 | 局内风格样张（G4）：一个战区按目标画风在引擎里做出来 | Codex | codex/t84-style-frame | attempts/single_battle/style_frame/ | 已合并，截图待用户审（G4） |
 | T80 | 行为场景测试 B01–B12（只写测试） | DSH | dsh/t80-behavior-scenarios | proto/siege/tests/ | 已合并（首轮 7 过 5 不过：B01 B02 B06 B10 B12） |
 | T81 | 攻城原型行动逻辑修正（behavior-goals 第 1–3 节） | Codex | codex/t81-behavior | proto/siege/ | 已合并（行为测试 11/12；B02 是测试条件过严） |
-| T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, assets/sprites/units/ | 进行中（7 个兵种，试点普通骷髅） |
-| T83 | 按 T82 手册批量建模其余兵种 | DSH | — | assets/sprites/ | 待办（依赖 T82 审批） |
+| T82 | 局内小兵形象、动作清单、Blender 管线与试点（盾骷髅）+ DSH 生产手册 | Codex | codex/t82-unit-pipeline | tools/blender/, assets/sprites/units/ | 已合并（骷髅试点用户已批准） |
+| T83 | 按 T82 手册批量做其余 6 个兵种（先草稿、Lead 审、再正式） | DSH | dsh/t83-unit-batch | assets/sprites/units/ | 进行中（终端标签可见） |
 | T76 | 结局插画补画 E06、E07、真结局（修订提示词） | Codex | codex/t76-endings-fix | art/story/ | 进行中 |
 | T77 | 攻城第二轮矩阵 | DSH | dsh/t77-siege-resweep2 | proto/siege/params/ | 已合并；胜率测试搁置（用户：现阶段只做行动逻辑） |
 | T78 | canon 第二轮写回（表格外残留） | DSH | dsh/t78-canon-writeback2 | docs/canon/ | 谷时排队 |
