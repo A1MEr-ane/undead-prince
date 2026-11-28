@@ -3,10 +3,12 @@ import math
 
 import bpy
 import numpy as np
+from mathutils import Vector
 
 import build_swordsman as base
 from common import PARTS, read_png, uv_rect
 from chibi_body import ChibiBody
+from leg_pocket import FRONT, POCKET_BONES, REAR
 from render_sprites import validate
 from unit_preview import INK, frames_from_atlas, ink_atlas, paint_tile, rgb
 from unit_spec import (B_PROPORTIONS, HUMANOID_BONES, MOUNT_PARENTS, PROPORTION_TOLERANCE,
@@ -24,7 +26,8 @@ def verify_proportions(recipe):
     for obj in recipe.body_objects:
         bone = obj.vertex_groups[0].name
         transform = unseat.get(bone, obj.matrix_world)
-        zs = [(transform @ vert.co).z for vert in obj.data.vertices]
+        seat = recipe.mount.get('seat', .65) * recipe.height if recipe.mount and obj == recipe.pocket else 0
+        zs = [(transform @ vert.co).z - seat for vert in obj.data.vertices]
         body.extend(zs)
         if bone == 'head' and obj.name != 'collar':
             head.extend(zs)
@@ -36,6 +39,68 @@ def verify_proportions(recipe):
         assert abs(measured[name] - expected) <= PROPORTION_TOLERANCE, (
             f'{recipe.spec["id"]}: B {name} ratio {measured[name]:.3f} exceeds {expected:.3f} ±{PROPORTION_TOLERANCE}')
     return {key: round(value, 4) for key, value in measured.items()}
+
+
+def check_crotch(mask, heel_columns, pixels_per_height, standing, label):
+    """Measure the open notch against the line through both soles."""
+    rear, front = heel_columns
+    cut = mask[:, rear:front + 1]
+    assert cut.shape[1] > 1 and cut.any(axis=0).all(), f'{label}: legs split across crotch'
+    bottom = cut.argmax(axis=0)
+    top = len(cut) - 1 - cut[::-1].argmax(axis=0)
+    assert (cut.sum(axis=0) == top - bottom + 1).all(), f'{label}: hole in lower body'
+    notch = bottom - np.linspace(bottom[0], bottom[-1], len(bottom))
+    peak = int(notch.argmax())
+    depth = notch[peak]
+    assert not standing or depth <= .08 * pixels_per_height, f'{label}: standing notch {depth / pixels_per_height:.1%} > 8%'
+    if depth >= .025 * pixels_per_height:
+        # A V retains only one third of its width between these levels. A
+        # rounded arch retains over half, also when one foot is lifted.
+        def width(level):
+            below = notch < level * depth
+            return np.flatnonzero(below[peak:])[0] + np.flatnonzero(below[:peak][::-1])[0]
+
+        assert width(.75) >= .55 * width(.25), f'{label}: pointed crotch gap'
+    return depth / pixels_per_height
+
+
+def verify_crotch(recipe, rig, lower_body, standing, label):
+    # Rasterize the evaluated leg meshes on their own. A long tabard or weapon
+    # must not be able to hide a gap. Use the soles' local plane for tumbles.
+    scale = 256
+    graph = bpy.context.evaluated_depsgraph_get()
+    sole = rig.pose.bones[REAR]
+    up = (sole.tail - sole.head).normalized()
+    forward = up.cross(Vector((0, -1, 0)))
+    origin = sole.head
+
+    def project(point):
+        delta = point - origin
+        return delta.dot(forward) * scale / recipe.height, delta.dot(up) * scale / recipe.height
+
+    surfaces = []
+    for obj in lower_body:
+        mesh = obj.evaluated_get(graph).data
+        mesh.calc_loop_triangles()
+        points = np.array([project(vertex.co) for vertex in mesh.vertices])
+        surfaces.append(points[[tri.vertices[:] for tri in mesh.loop_triangles]])
+    triangles = np.concatenate(surfaces)
+    lo = np.floor(triangles.min(axis=(0, 1))).astype(int)
+    hi = np.ceil(triangles.max(axis=(0, 1))).astype(int)
+    mask = np.zeros(tuple((hi - lo + 1)[::-1]), dtype=bool)
+    for triangle in triangles:
+        a, b = np.floor(triangle.min(axis=0)).astype(int), np.ceil(triangle.max(axis=0)).astype(int)
+        yy, xx = np.ogrid[a[1]:b[1] + 1, a[0]:b[0] + 1]
+        edges = [(v[0] - u[0]) * (yy - u[1]) - (v[1] - u[1]) * (xx - u[0])
+                 for u, v in zip(triangle, np.roll(triangle, -1, axis=0))]
+        if abs((triangle[1, 0] - triangle[0, 0]) * (triangle[2, 1] - triangle[0, 1]) -
+               (triangle[1, 1] - triangle[0, 1]) * (triangle[2, 0] - triangle[0, 0])) < 1e-6:
+            continue
+        mask[a[1] - lo[1]:b[1] - lo[1] + 1, a[0] - lo[0]:b[0] - lo[0] + 1] |= (
+            np.logical_and.reduce([edge >= -1e-6 for edge in edges]) |
+            np.logical_and.reduce([edge <= 1e-6 for edge in edges]))
+    front = round(project(rig.pose.bones[FRONT].head)[0])
+    return check_crotch(mask, (-lo[0], front - lo[0]), scale, standing, label)
 
 
 def verify_unit(output, meta, recipe, check_rig):
@@ -123,17 +188,23 @@ def verify_rig(recipe, meta):
     spec = recipe.spec
     rig, stats = recipe.build()
     scene = bpy.context.scene
-    bones = set(HUMANOID_BONES) | (MOUNT_PARENTS.keys() if recipe.mount else set())
+    bones = set(HUMANOID_BONES) | set(POCKET_BONES) | (MOUNT_PARENTS.keys() if recipe.mount else set())
     assert stats == meta['model'] and set(rig.data.bones.keys()) == bones
     proportions = verify_proportions(recipe)
-    assert set(obj['part'] for obj in base.OBJECTS) == spec['palette'].keys()
+    assert {part for obj in base.OBJECTS for part in obj.get('uv_parts', [obj['part']])} == spec['palette'].keys()
     for obj in base.OBJECTS:
         assert len(obj.modifiers) == 1 and obj.modifiers[0].object == rig
-        assert len(obj.vertex_groups) == 1 and obj.vertex_groups[0].name in bones
-        assert all(len(v.groups) == 1 and abs(v.groups[0].weight - 1) < 1e-6 for v in obj.data.vertices)
-        u0, v0, u1, v1 = uv_rect(obj['part'])
+        if obj == recipe.pocket:
+            assert set(obj.vertex_groups.keys()) == set(POCKET_BONES)
+        else:
+            assert len(obj.vertex_groups) == 1 and obj.vertex_groups[0].name in bones
+        assert all(abs(sum(g.weight for g in v.groups) - 1) < 1e-6 for v in obj.data.vertices)
         uv = np.array([loop.uv[:] for loop in obj.data.uv_layers.active.data])
-        assert (uv >= np.array([u0, v0]) - 1e-6).all() and (uv <= np.array([u1, v1]) + 1e-6).all()
+        covered = np.zeros(len(uv), bool)
+        for part in obj.get('uv_parts', [obj['part']]):
+            u0, v0, u1, v1 = uv_rect(part)
+            covered |= (uv >= np.array([u0, v0]) - 1e-6).all(axis=1) & (uv <= np.array([u1, v1]) + 1e-6).all(axis=1)
+        assert covered.all()
     by_name = {obj.name: obj for obj in base.OBJECTS}
     for name, piece in spec.get('pieces', {}).items():
         assert by_name[name]['part'] == piece['part'] and by_name[name].vertex_groups[0].name == piece['bone']
@@ -152,12 +223,21 @@ def verify_rig(recipe, meta):
     tolerance = recipe.height * .003
     markers = 0
     shuffles = []
+    crotch = {'frames': 0, 'standing_depth': 0.}
+    lower_body = [recipe.pocket] + [obj for obj in base.OBJECTS
+                                   if obj['bone'].startswith(('thigh_', 'shin_', 'foot_'))]
     for name, _, duration, loop, events in recipe.animations:
         action = bpy.data.actions[name]
         assert dict((marker.name, marker.frame) for marker in action.pose_markers) == {
             key: round(t * 1000 + 1) for key, t in events.items()}, name
         if loop:
             assert distance(evaluate(name, 0), evaluate(name, duration)) < tolerance, f'{name}: loop seam'
+        for i, t in enumerate(meta['animations'][name]['source_sample_times']):
+            evaluate(name, t)
+            depth = verify_crotch(recipe, rig, lower_body, name == 'idle', f'{spec["id"]} {name}[{i}]')
+            crotch['frames'] += 1
+            if name == 'idle':
+                crotch['standing_depth'] = round(max(crotch['standing_depth'], depth), 4)
         if uses_shuffle(name, spec.get('actions', {}).get(name, {})):
             reference = evaluate(name, 0)
             for t in meta['animations'][name]['source_sample_times']:
@@ -190,4 +270,5 @@ def verify_rig(recipe, meta):
         duration = meta['animations'][before]['duration']
         assert distance(evaluate(before, duration), evaluate(after, 0)) < tolerance, f'{before} -> {after}: pose seam'
     return dict(model=stats, loops_close=True, exact_event_markers=markers,
-                checked_transitions=len(spec.get('transitions', [])), proportions=proportions, shuffles=shuffles)
+                checked_transitions=len(spec.get('transitions', [])), proportions=proportions, shuffles=shuffles,
+                crotch=crotch)

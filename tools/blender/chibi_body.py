@@ -251,7 +251,7 @@ class ChibiBody:
         ob=base.mesh(name,verts,faces,[[(.3,.06),(.7,.06),(.5,.20)]]*20,part,bone,far,smooth=True)
         return ob
 
-    def body_model(self, exposed_head=False, include_head=True, *, style='clothed'):
+    def body_model(self, exposed_head=False, include_head=True, *, style='clothed', segmented_legs=True):
         """Build the shared body. exposed_head keeps the whole cranium and omits
         the hair, ears and mouth so a skull recipe can replace them."""
         h,H=self.h,self.height
@@ -280,18 +280,21 @@ class ChibiBody:
             self.legacy_head(exposed_head)
         for side in ('l','r'):
             far=side=='r'
-            for segment,part,radius in (('thigh_',self.part('legs'),.047*H),('shin_',self.part('legs'),.045*H),
-                ('upper_arm_',self.part('sleeves'),.051*H),('forearm_',self.part('sleeves'),.046*H)):
+            limbs = [('upper_arm_', self.part('sleeves'), .051*H), ('forearm_', self.part('sleeves'), .046*H)]
+            if segmented_legs:
+                limbs[:0] = [('thigh_', self.part('legs'), .047*H), ('shin_', self.part('legs'), .045*H)]
+            for segment,part,radius in limbs:
                 self.limb(segment+side,radius*(.76 if style == 'bones' else 1),part,far)
-            ankle=base.REST['foot_'+side][0]
-            foot_offset=ankle.z-self.ankle_z if not include_head else 0
-            length=self.width['foot_length']
-            self.profile('boot_'+side,[(self.ground+foot_offset,self.ring(length/2,.053*H,ankle.x+.020*H,ankle.y,sides=6)),
-                (self.ground+foot_offset+.065*H,self.ring(length*.42,.048*H,ankle.x+.014*H,ankle.y,sides=6))],
-                self.part('boots'),'foot_'+side,True,True,far)
-            self.profile('boot_cuff_'+side,[(self.ground+foot_offset+.062*H,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6)),
-                (h['boot_top']+foot_offset,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6))],
-                self.part('boots'),'shin_'+side,False,True,far)
+            if segmented_legs:
+                ankle=base.REST['foot_'+side][0]
+                foot_offset=ankle.z-self.ankle_z if not include_head else 0
+                length=self.width['foot_length']
+                self.profile('boot_'+side,[(self.ground+foot_offset,self.ring(length/2,.053*H,ankle.x+.020*H,ankle.y,sides=6)),
+                    (self.ground+foot_offset+.065*H,self.ring(length*.42,.048*H,ankle.x+.014*H,ankle.y,sides=6))],
+                    self.part('boots'),'foot_'+side,True,True,far)
+                self.profile('boot_cuff_'+side,[(self.ground+foot_offset+.062*H,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6)),
+                    (h['boot_top']+foot_offset,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6))],
+                    self.part('boots'),'shin_'+side,False,True,far)
             self.glove('fist_'+side,base.REST['hand_'+side][0],self.part('hands'),'hand_'+side,far)
 
     def legacy_head(self, exposed_head):

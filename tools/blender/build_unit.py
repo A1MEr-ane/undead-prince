@@ -6,6 +6,7 @@ from mathutils import Matrix, Vector
 import build_swordsman as base
 from chibi_body import ChibiBody
 from common import map_uv
+from leg_pocket import build_pocket, guides
 from unit_motion import POSES, posed, shuffle
 from unit_spec import (BODIES, LANDMARKS, LEGACY_ACTIONS, MOUNT_PARENTS, UNIT_ACTIONS, VECTORS,
                        WIDTHS, animations, camera)
@@ -72,6 +73,7 @@ class Unit(ChibiBody):
         else:
             bones = super().skeleton(parameters)
         spread = parameters.get('spread', 0)
+        feet = bones.copy() if parameters else None
         if spread:
             rest = self.skeleton({})
             for name, (x, y, z, pitch) in self.spec['scattered'].items():
@@ -82,6 +84,7 @@ class Unit(ChibiBody):
                 turn = Matrix.Rotation(math.radians(pitch), 3, 'Y') @ rest_direction
                 direction = direction.slerp(turn, spread, turn)
                 bones[name] = (start, start + direction)
+        bones.update(guides(self, bones, feet, spread))
         return bones
 
     def mounted_skeleton(self, p):
@@ -153,8 +156,9 @@ class Unit(ChibiBody):
         offset = V((0, 0, self.mount.get('seat', .65) * self.height if self.mount else 0))
         if self.mount:
             base.REST = {name: (a - offset, b - offset) for name, (a, b) in rest.items()}
+        style = self.spec.get('body_style', 'clothed')
         try:
-            self.body_model(include_head=False, style=self.spec.get('body_style', 'clothed'))
+            self.body_model(include_head=False, style=style, segmented_legs=False)
             self.side_head()
         finally:
             base.REST = rest
@@ -162,6 +166,7 @@ class Unit(ChibiBody):
             for obj in base.OBJECTS:
                 for vertex in obj.data.vertices:
                     vertex.co += offset
+        self.pocket = build_pocket(self, style)
         for name, piece in self.spec.get('pieces', {}).items():
             self.piece(name, piece)
         self.body_objects = tuple(obj for obj in base.OBJECTS
@@ -170,7 +175,7 @@ class Unit(ChibiBody):
             self.mount_model()
         head_part = self.part('head')
         for obj in base.OBJECTS:
-            if obj['part'] == head_part and obj.name != 'side_projected_head':
+            if obj != self.pocket and obj['part'] == head_part and obj.name != 'side_projected_head':
                 self.remap_v(obj, .02, .23)
 
     def side_head(self):

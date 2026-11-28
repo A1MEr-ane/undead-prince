@@ -1,7 +1,15 @@
 """Paint UV regions and bake the fixed-camera ink treatment into RGBA artwork."""
+import argparse
+import json
+from pathlib import Path
+import sys
+
 import numpy as np
 
-from common import PARTS, PART_SIZE, PADDING, write_png
+if __name__ == '__main__':
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from common import PARTS, PART_SIZE, PADDING, read_png, write_png
 from preview import decode, label, paste
 from unit_spec import REACTIONS
 
@@ -185,3 +193,41 @@ def create_previews(atlas, meta, output, spec):
     draw_overview(output / f'{ident}_in_game.png', meta, frames, ident)
     draw_sheet(output / f'{ident}_actions.png', meta, frames, moves, f'{ident} / ACTIONS')
     draw_sheet(output / f'{ident}_reactions.png', meta, frames, REACTIONS, f'{ident} / REACTIONS')
+
+
+def draw_leg_comparison(output, stems):
+    zoom = 4
+    width, height = 54 * zoom, 34 * zoom
+    stride = width + 14
+    board = np.full((60 + len(stems) * (height + 53), 28 + 3 * stride - 14, 3), PAGE, np.uint8)
+    label(board, 'LOWER BODY / 4X ATLAS CROP', 14, 13, 2)
+    for col, caption in enumerate(('STANCE', 'SHUFFLE', 'LUNGE')):
+        label(board, caption, 14 + col * stride, 43, colour=MUTED)
+    for row, stem in enumerate(stems):
+        meta = json.loads(stem.with_name(stem.name + '_uv.json').read_text())
+        ink = read_png(stem.with_name(stem.name + '_ink.png'))
+        frames = frames_from_atlas(ink, meta)
+        actions = meta['animations']
+        lunge = 'backstab' if 'backstab' in actions else 'attack'
+        poses = [('idle', actions['idle']['start_frame']), ('walk', actions['walk']['event_frames']['left_step']),
+                 (lunge, actions[lunge]['event_frames']['hit'])]
+        foot_x, foot_y = map(round, meta['coordinates']['standing_foot_anchor_pixels'])
+        y = 60 + row * (height + 53)
+        label(board, stem.name.replace('_', ' '), 14, y + 2, 2)
+        y += 22
+        for col, (name, index) in enumerate(poses):
+            x = 14 + col * stride
+            board[y:y + height, x:x + width] = TERRAIN
+            board[y + 30 * zoom, x:x + width] = (80, 97, 88)
+            sprite = frames[index][foot_y - 30:foot_y + 4, foot_x - 27:foot_x + 27]
+            paste(board, sprite, x, y, zoom)
+            label(board, f'{name} {index - actions[name]["start_frame"]:02d}', x, y + height + 7, colour=MUTED)
+    write_png(output, board)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Compare cropped lower-body poses from built unit atlases.')
+    parser.add_argument('output', type=Path)
+    parser.add_argument('stems', type=Path, nargs='+', help='Paths to atlases without _ink.png')
+    args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else None)
+    draw_leg_comparison(args.output, args.stems)

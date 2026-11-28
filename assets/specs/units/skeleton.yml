@@ -2,7 +2,7 @@ id: skeleton
 recipe: unit
 body: normal
 body_style: bones
-triangle_budget: 550
+triangle_budget: 600
 rim: "#5CE5C5"
 palette:
   skin: "#D6CEAF"
@@ -16,7 +16,7 @@ parts:
   sleeves: skin
   tunic: skin
   boots: cloth_trim
-  belt: cloth_trim
+  belt: tunic
   collar: skin
 widths: {foot_length: 0.157}
 head:
@@ -41,8 +41,8 @@ marks:
 neutral:
   lean: 1
   sword: 58
-  foot_l: [0.079, -0.0792, 0.0605]
-  foot_r: [-0.081, 0.0792, 0.0605]
+  foot_l: [0.048, -0.0792, 0.0605]
+  foot_r: [-0.055, 0.0792, 0.0605]
   wrist_r: [0.161, 0.18, 0.35]
   wrist_l: [-0.144, -0.175, 0.322]
 pieces:
