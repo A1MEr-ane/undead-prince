@@ -11,7 +11,7 @@ from chibi_body import ChibiBody
 from leg_pocket import FRONT, POCKET_BONES, REAR
 from render_sprites import validate
 from unit_preview import INK, frames_from_atlas, ink_atlas, paint_tile, rgb
-from unit_spec import (B_PROPORTIONS, HUMANOID_BONES, MOUNT_PARENTS, PROPORTION_TOLERANCE,
+from unit_spec import (B_PROPORTIONS, BOW_STRING_BONES, HUMANOID_BONES, MOUNT_PARENTS, PROPORTION_TOLERANCE,
                        WEAPON_BONE, event_frame, presentation, sample_times, uses_shuffle)
 
 
@@ -211,6 +211,8 @@ def verify_rig(recipe, meta):
     rig, stats = recipe.build()
     scene = bpy.context.scene
     bones = set(HUMANOID_BONES) | set(POCKET_BONES) | (MOUNT_PARENTS.keys() if recipe.mount else set())
+    if recipe.bow:
+        bones.update(BOW_STRING_BONES)
     if recipe.has_dropped_weapon:
         bones.add(WEAPON_BONE)
     assert stats == meta['model'] and set(rig.data.bones.keys()) == bones
@@ -247,6 +249,14 @@ def verify_rig(recipe, meta):
         return max((a[name][i] - b[name][i]).length for name in a for i in (0, 1))
 
     tolerance = recipe.height * .003
+    scaled = {bone for fields in spec.get('actions', {}).values() for bone in fields.get('bone_scale', {})}
+    nocked = recipe.bow.get('nocked_pieces', []) if recipe.bow else []
+
+    def attachment(name, offset):
+        rest = rig.data.bones[name]
+        point = rest.head_local + recipe.height * Vector(offset)
+        return rig.pose.bones[name].matrix @ (rest.matrix_local.inverted() @ point)
+
     markers = 0
     shuffles = []
     crotch = {'frames': 0, 'standing_depth': 0.}
@@ -259,8 +269,27 @@ def verify_rig(recipe, meta):
         if loop:
             assert distance(evaluate(name, 0), evaluate(name, duration)) < tolerance, f'{name}: loop seam'
         for i, t in enumerate(meta['animations'][name]['source_sample_times']):
-            evaluate(name, t)
-            depth = verify_crotch(recipe, rig, lower_body, name == 'idle', f'{spec["id"]} {name}[{i}]')
+            current = evaluate(name, t)
+            label = f'{spec["id"]} {name}[{i}]'
+            if scaled:
+                scales = recipe.pose_parameters(name, t, duration).get('bone_scale', {})
+                for bone in scaled:
+                    start_point, tip = current[bone]
+                    ratio = (tip - start_point).length / rig.data.bones[bone].length
+                    assert abs(ratio - scales.get(bone, 1.)) < 1e-4, (label, bone, 'bone scale', ratio)
+            if recipe.bow:
+                bow = recipe.bow
+                draw = spec.get('actions', {}).get(name, {}).get('bow_draw')
+                drawn = bool(draw and events[draw[0]] <= t < events[draw[1]])
+                bottom, top = [attachment(bow['bow_bone'], tip) for tip in bow['tips']]
+                nock = (attachment(bow['draw_bone'], bow.get('draw_offset', (0, 0, 0))) if drawn
+                        else bottom.lerp(top, .5))
+                expected = dict(zip(BOW_STRING_BONES, ((bottom, nock), (nock, top))))
+                assert distance(expected, current) < tolerance, (label, 'bow string endpoints')
+                graph = bpy.context.evaluated_depsgraph_get()
+                for piece in nocked:
+                    assert by_name[piece].evaluated_get(graph).hide_render != drawn, (label, piece, 'nock visibility')
+            depth = verify_crotch(recipe, rig, lower_body, name == 'idle', label)
             crotch['frames'] += 1
             if name == 'idle':
                 crotch['standing_depth'] = round(max(crotch['standing_depth'], depth), 4)

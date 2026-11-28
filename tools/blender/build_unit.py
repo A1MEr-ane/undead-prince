@@ -8,8 +8,8 @@ from chibi_body import ChibiBody
 from common import map_uv
 from leg_pocket import build_pocket, guides
 from unit_motion import POSES, posed, shuffle
-from unit_spec import (BODIES, LANDMARKS, LEGACY_ACTIONS, MOUNT_PARENTS, UNIT_ACTIONS, VECTORS,
-                       WEAPON_BONE, WIDTHS, animations, camera)
+from unit_spec import (BODIES, BOW_STRING_BONES, LANDMARKS, LEGACY_ACTIONS, MOUNT_PARENTS,
+                       UNIT_ACTIONS, VECTORS, WEAPON_BONE, WIDTHS, animations, camera)
 
 V = Vector
 
@@ -24,6 +24,8 @@ class Unit(ChibiBody):
         self.neutral.update({k: self.control_value(k, v) for k, v in spec.get('neutral', {}).items()})
         self.lean = self.neutral['lean']
         self.mount = spec.get('mount')
+        self.parents = MOUNT_PARENTS if self.mount else {}
+        self.bow = spec.get('bow_string')
         self.near_shoulder_drop = spec.get('near_shoulder_drop', 0.) * self.height
         self.scattered = spec.get('scattered', {})
         self.has_dropped_weapon = WEAPON_BONE in self.scattered
@@ -65,6 +67,16 @@ class Unit(ChibiBody):
         for channel, keys in fields.get('tracks', {}).items():
             value = base.blend([(q, {channel: v}) for q, v in keys], phase)[channel]
             p[channel] = self.control_value(channel, value)
+        if fields.get('bone_scale'):
+            p['bone_scale'] = {
+                bone: base.blend([(q, {bone: value}) for q, value in keys], phase)[bone]
+                for bone, keys in fields['bone_scale'].items()
+            }
+        if 'bow_draw' in fields:
+            nock, release = fields['bow_draw']
+            p['bow_drawn'] = fields['events'][nock] <= t < fields['events'][release]
+        elif self.bow:
+            p['bow_drawn'] = False
         p.setdefault('vertical_scale', 1.)
         if self.mount:
             gait = fields.get('mount_gait', 'shuffle' if pose == 'walk' else 'stand')
@@ -78,6 +90,8 @@ class Unit(ChibiBody):
             bones = super().skeleton(parameters)
         if self.has_dropped_weapon:
             bones[WEAPON_BONE] = bones['hand_r']
+        if scales := parameters.get('bone_scale'):
+            self.scale_bones(bones, scales)
         spread = parameters.get('spread', 0)
         feet = bones.copy() if parameters else None
         if spread:
@@ -91,7 +105,38 @@ class Unit(ChibiBody):
                 direction = direction.slerp(turn, spread, turn)
                 bones[name] = (start, start + direction)
         bones.update(guides(self, bones, feet, spread if 'root' in self.scattered else 0))
+        if self.bow:
+            bottom, nock, top = self.bow_points(bones, parameters)
+            bones.update(zip(BOW_STRING_BONES, ((bottom, nock), (nock, top))))
         return bones
+
+    def scale_bones(self, bones, scales):
+        offsets = {'root': V((0, 0, 0))}
+        for name, (start, end) in bones.items():
+            offset = offsets[base.bone_parent(name, self.parents)]
+            stretch = scales.get(name, 1.)
+            rest_start, rest_end = base.REST[name]
+            extension = (end - start).normalized() * ((rest_end - rest_start).length * (stretch - 1.))
+            # The analytic tail defines the axis. The rig scales the mesh's rest length.
+            bones[name] = (start + offset, start + offset + (end - start) * stretch)
+            offsets[name] = offset + extension
+
+    def bow_points(self, bones, parameters):
+        def attachment(bone, offset):
+            delta = V(offset) * self.height
+            if not parameters:
+                return bones[bone][0] + delta
+            rest = base.bone_matrix(*base.REST[bone])
+            local = rest.inverted().to_3x3() @ delta
+            local.y *= parameters.get('bone_scale', {}).get(bone, 1.)
+            return base.bone_matrix(*bones[bone]) @ local
+
+        bow = self.bow
+        bottom, top = (attachment(bow['bow_bone'], tip) for tip in bow['tips'])
+        nock = bottom.lerp(top, .5)
+        if parameters.get('bow_drawn'):
+            nock = attachment(bow['draw_bone'], bow.get('draw_offset', (0, 0, 0)))
+        return bottom, nock, top
 
     def mounted_skeleton(self, p):
         H, g = self.height, self.ground
@@ -179,6 +224,8 @@ class Unit(ChibiBody):
         self.pocket = build_pocket(self, style)
         for name, piece in self.spec.get('pieces', {}).items():
             self.piece(name, piece)
+        if self.bow:
+            self.bow_string_model()
         self.body_objects = tuple(obj for obj in base.OBJECTS
                                   if self.spec.get('pieces', {}).get(obj.name, {}).get('bone', 'head') == 'head')
         if self.mount:
@@ -187,6 +234,19 @@ class Unit(ChibiBody):
         for obj in base.OBJECTS:
             if obj not in (self.pocket, self.garment) and obj['part'] == head_part and obj.name != 'side_projected_head':
                 self.remap_v(obj, .02, .23)
+
+    def bow_string_model(self):
+        radius = self.bow['width'] * self.height / 2
+        for name in BOW_STRING_BONES:
+            start, end = base.REST[name]
+            frame = base.bone_matrix(start, end)
+            length = (end - start).length
+            # Overlap the caps by half a string width at the shared nock.
+            vertices = [frame @ V((x, y, z)) for z in (-radius, radius)
+                        for y in (-radius, length + radius) for x in (-radius, radius)]
+            faces = [(0, 2, 3, 1), (4, 5, 7, 6), (0, 1, 5, 4),
+                     (2, 6, 7, 3), (0, 4, 6, 2), (1, 3, 7, 5)]
+            base.mesh(name, vertices, faces, [[(.5, .5)] * 4] * 6, self.bow['part'], name)
 
     def joined_garment(self, rows):
         """Skin a closed hood and torso to the head and spine through the shoulder."""
@@ -304,8 +364,29 @@ class Unit(ChibiBody):
                          (.12 * H, .11 * H, .078 * H), parts['hooves'], bone, side == 'r')
 
     def build(self):
+        bake_times, scaled_bones = {}, set()
+        for name, _, duration, _, _ in self.animations:
+            scales = self.spec.get('actions', {}).get(name, {}).get('bone_scale', {})
+            if scales:
+                scaled_bones.update(scales)
+                bake_times[name] = [phase * duration for keys in scales.values() for phase, _ in keys]
         rig, stats = base.build(self.model, self.skeleton, self.pose_parameters, animation_specs=self.animations,
-                                parents=MOUNT_PARENTS if self.mount else None)
+                                parents=self.parents, bake_times=bake_times, scaled_bones=scaled_bones,
+                                span_bones=BOW_STRING_BONES if self.bow else ())
+        if self.bow:
+            nocked = self.bow.get('nocked_pieces', ())
+            for obj in base.OBJECTS:
+                if obj.name not in nocked:
+                    continue
+                for prop in ('hide_render', 'hide_viewport'):
+                    driver = obj.driver_add(prop).driver
+                    driver.type = 'SCRIPTED'
+                    visible = driver.variables.new()
+                    visible.name = 'drawn'
+                    visible.type = 'SINGLE_PROP'
+                    visible.targets[0].id = rig
+                    visible.targets[0].data_path = '["bow_drawn"]'
+                    driver.expression = '1 - drawn'
         assert stats['triangles'] <= self.spec['triangle_budget'], (self.spec['id'], stats)
         rig.name = self.spec['id'] + '_rig'
         return rig, stats

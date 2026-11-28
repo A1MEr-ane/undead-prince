@@ -329,7 +329,19 @@ def skeleton(parameters):
     return bones
 
 
-def make_rig(parents=None):
+def bone_parent(name, parents=None):
+    if name in (parents or {}):
+        return parents[name]
+    stem, _, side = name.rpartition('_')
+    if name == 'head' or stem == 'upper_arm':
+        return 'spine'
+    if stem in ('forearm', 'hand', 'shin', 'foot'):
+        parent = {'forearm': 'upper_arm', 'hand': 'forearm', 'shin': 'thigh', 'foot': 'shin'}[stem]
+        return f'{parent}_{side}'
+    return 'root'
+
+
+def make_rig(parents=None, scaled_bones=()):
     data = bpy.data.armatures.new('SwordsmanSkeleton')
     rig = bpy.data.objects.new('SwordsmanRig', data)
     bpy.context.collection.objects.link(rig)
@@ -342,18 +354,10 @@ def make_rig(parents=None):
         bone.matrix = bone_matrix(a, b)
         if name == 'root':
             continue
-        parent = 'root'
-        if name == 'head' or name.startswith('upper_arm_'):
-            parent = 'spine'
-        elif name.startswith('forearm_'):
-            parent = 'upper_arm_' + name[-1]
-        elif name.startswith('hand_'):
-            parent = 'forearm_' + name[-1]
-        elif name.startswith('shin_'):
-            parent = 'thigh_' + name[-1]
-        elif name.startswith('foot_'):
-            parent = 'shin_' + name[-1]
-        bone.parent = data.edit_bones[(parents or {}).get(name, parent)]
+        parent = bone_parent(name, parents)
+        bone.parent = data.edit_bones[parent]
+        if parent in scaled_bones:
+            bone.inherit_scale = 'NONE'
     bpy.ops.object.mode_set(mode='OBJECT')
     rig.show_in_front = True
     for ob in OBJECTS:
@@ -451,12 +455,17 @@ def model():
     ellipsoid('shield_boss', centre + normal * .065, (.065, .043, .065), 'metal', 'hand_l', sides=6, bands=2)
 
 
-def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
+def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None, span_bones=()):
     if 'vertical_scale' in parameters:
         rig.scale.z = parameters['vertical_scale']
         if keyframe is not None:
             rig.keyframe_insert(data_path='scale', index=2, frame=keyframe, group='Body')
+    if 'bow_drawn' in parameters:
+        rig['bow_drawn'] = parameters['bow_drawn']
+        if keyframe is not None:
+            rig.keyframe_insert(data_path='["bow_drawn"]', frame=keyframe, group='Equipment')
     bones = (skeleton_fn or skeleton)(parameters)
+    scales = parameters.get('bone_scale', {})
     # Blender pose matrices depend on evaluated parents. Assign in hierarchy order.
     for bone in rig.data.bones:
         pb = rig.pose.bones[bone.name]
@@ -466,6 +475,12 @@ def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
         if yaw:
             pivot = Matrix.Translation(bones[bone.name][0])
             matrix = pivot @ Matrix.Rotation(math.radians(yaw), 4, 'Z') @ pivot.inverted() @ matrix
+        stretch = scales.get(bone.name, 1.)
+        if bone.name in span_bones:
+            start, end = bones[bone.name]
+            stretch = (end - start).length / bone.length
+        if stretch != 1.:
+            matrix @= Matrix.Diagonal((1., stretch, 1., 1.))
         pb.matrix = matrix
         bpy.context.view_layer.update()
         if keyframe is not None:
@@ -474,11 +489,15 @@ def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
 
 
 def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None,
-          *, animation_specs=None, parents=None):
+          *, animation_specs=None, parents=None, scaled_bones=(), span_bones=()):
     global REST, MATERIALS
     # Optional .blend export must not write thumbnails outside the chosen output.
     # This is only an in-memory preference; user settings are never saved.
     bpy.context.preferences.filepaths.file_preview_type = 'NONE'
+    # Hidden nocked equipment is excluded from Blender's select-all operation.
+    for obj in OBJECTS:
+        if obj.hide_viewport:
+            bpy.data.objects.remove(obj, do_unlink=True)
     OBJECTS.clear()
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.delete(use_global=False)
@@ -491,7 +510,7 @@ def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None,
     MATERIALS = {False: uv_material(False), True: uv_material(True)}
     REST = (skeleton_fn or skeleton)({})
     (model_builder or model)()
-    rig = make_rig(parents)
+    rig = make_rig(parents, scaled_bones)
     scene = bpy.context.scene
     scene.render.fps = 1000
     for name, count, duration, loop, events in animation_specs or ANIMATIONS:
@@ -509,7 +528,7 @@ def build(model_builder=None, skeleton_fn=None, pose_fn=None, bake_times=None,
             times = sample_times(name, count, duration, loop, events)
         extra = (bake_times or {}).get(name, [])
         for t in sorted(set(times + ([duration] if loop else []) + list(events.values()) + extra)):
-            apply_pose(rig, (pose_fn or pose_parameters)(name, t, duration), t * 1000 + 1, skeleton_fn)
+            apply_pose(rig, (pose_fn or pose_parameters)(name, t, duration), t * 1000 + 1, skeleton_fn, span_bones)
         action = rig.animation_data.action
         action['sample_times'] = times
         action['duration'] = duration

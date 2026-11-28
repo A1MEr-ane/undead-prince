@@ -27,6 +27,7 @@ HUMANOID_BONES = ('root', 'spine', 'head') + tuple(
     f'{part}_{side}' for side in ('l', 'r')
     for part in ('thigh', 'shin', 'foot', 'upper_arm', 'forearm', 'hand'))
 WEAPON_BONE = 'weapon_r'
+BOW_STRING_BONES = ('bow_string_lower', 'bow_string_upper')
 MOUNT_PARENTS = {**dict(mount_body='root', mount_head='mount_body', mount_tail='mount_body'),
                  **{f'mount_{leg}_{side}_{joint}': ('mount_body' if joint == 'upper'
                      else f'mount_{leg}_{side}_upper') for leg in ('fore', 'hind')
@@ -120,7 +121,8 @@ def validate_recipe(spec):
 
     assert set(spec) <= {'id', 'recipe', 'body', 'parts', 'palette', 'rim', 'triangle_budget', 'camera', 'body_style',
                          'landmarks', 'widths', 'head', 'marks', 'neutral', 'pieces', 'actions',
-                         'mount', 'scattered', 'transitions', 'near_shoulder_drop', 'shoe_cuff'}, 'Unknown unit recipe fields'
+                         'mount', 'scattered', 'transitions', 'near_shoulder_drop', 'shoe_cuff',
+                         'bow_string'}, 'Unknown unit recipe fields'
     body = spec['body']
     assert body in BODIES, f'Unknown body {body}'
     assert spec.get('body_style', 'clothed') in ('clothed', 'bones', 'fitted')
@@ -154,6 +156,9 @@ def validate_recipe(spec):
     assert colour(spec['rim'])
     expected_parts = set(spec['parts'].values()) | set(mount.get('parts', {}).values())
     expected_parts.update(piece['part'] for piece in spec.get('pieces', {}).values())
+    bow = spec.get('bow_string')
+    if bow is not None:
+        expected_parts.add(bow['part'])
     assert expected_parts == palette.keys(), 'Specify exactly the occupied UV regions in palette'
     assert set(spec.get('head', {})) <= {'x', 'depth', 'radius_x', 'profile', 'stamps', 'garment'}
     head = spec.get('head', {})
@@ -209,6 +214,19 @@ def validate_recipe(spec):
         contour(piece['points'])
         assert 0 < piece['depth'] <= 1 and vector(piece.get('offset', [0, 0, 0]), 3), name
         assert number(piece.get('yaw', 0)) and type(piece.get('far', False)) is bool, name
+    if bow is not None:
+        assert not set(BOW_STRING_BONES) & spec.get('pieces', {}).keys(), 'Bow string piece names are reserved'
+        assert set(bow) <= {'part', 'bow_bone', 'draw_bone', 'tips', 'draw_offset', 'width', 'nocked_pieces'}
+        assert bow['bow_bone'] in bones and bow['draw_bone'] in bones and bow['bow_bone'] != bow['draw_bone']
+        assert len(bow['tips']) == 2 and all(vector(tip, 3) for tip in bow['tips']), 'Use two [x,y,z] bow tips'
+        assert bow['tips'][0] != bow['tips'][1], 'Bow tips must be distinct'
+        assert vector(bow.get('draw_offset', [0, 0, 0]), 3)
+        assert number(bow['width']) and bow['width'] > 0
+        nocked_pieces = bow.get('nocked_pieces', [])
+        assert isinstance(nocked_pieces, list), 'Use a list of nocked piece names'
+        for name in nocked_pieces:
+            assert spec.get('pieces', {}).get(name, {}).get('bone') == bow['draw_bone'], (
+                f'{name}: nocked pieces must be on draw_bone')
 
     assert scattered.keys() <= bones
     assert all(vector(pose, 4) for pose in scattered.values()), 'Scattered bones use [x, y, z, pitch]'
@@ -224,10 +242,17 @@ def validate_recipe(spec):
     for channel, value in spec.get('neutral', {}).items():
         assert channel not in ('spread', 'vertical_scale'), 'The rest rig must be standing'
         check_value(channel, value)
+
+    def check_keys(name, channel, keys, loop):
+        assert len(keys) >= 2 and keys[0][0] == 0 and keys[-1][0] == 1, (name, channel)
+        assert all(number(q) for q, _ in keys), (name, channel)
+        assert all(a[0] < b[0] for a, b in zip(keys, keys[1:])), (name, channel)
+        assert not loop or keys[0][1] == keys[-1][1], (name, channel, 'loop must close')
+
     for name, count, duration, loop, events in animations(spec):
         fields = spec.get('actions', {}).get(name, {})
         assert re.fullmatch(ID, name) and set(fields) <= {
-            'frames', 'duration', 'loop', 'events', 'pose', 'tracks', 'mount_gait'}, name
+            'frames', 'duration', 'loop', 'events', 'pose', 'tracks', 'mount_gait', 'bone_scale', 'bow_draw'}, name
         assert fields.get('pose', name if name in UNIT_ACTIONS else 'idle') in UNIT_ACTIONS.keys() | {'neutral'}, name
         assert type(count) is int and 2 <= count <= 32 and number(duration) and type(loop) is bool, name
         assert math.isclose(duration * FPS, count, abs_tol=1e-7), f'{name}: clips must play at 12 fps'
@@ -240,13 +265,24 @@ def validate_recipe(spec):
             for channel, keys in fields.get('tracks', {}).items():
                 if channel not in ('foot_l', 'foot_r'):
                     assert all(value == keys[0][1] for _, value in keys), f'{name}: lock the upper body'
+            for bone, keys in fields.get('bone_scale', {}).items():
+                assert all(value == keys[0][1] for _, value in keys), f'{name}: lock {bone} scale'
         sample_times(name, count, duration, loop, events)
         for channel, keys in fields.get('tracks', {}).items():
-            assert len(keys) >= 2 and keys[0][0] == 0 and keys[-1][0] == 1, (name, channel)
-            assert all(a[0] < b[0] for a, b in zip(keys, keys[1:])), (name, channel)
-            assert not loop or keys[0][1] == keys[-1][1], (name, channel, 'loop must close')
+            check_keys(name, channel, keys, loop)
             for _, value in keys:
                 check_value(channel, value)
+        for bone, keys in fields.get('bone_scale', {}).items():
+            assert bone in bones, f'{name}: unknown bone {bone}'
+            check_keys(name, bone, keys, loop)
+            assert all(number(value) and value > 0 for _, value in keys), f'{name}: {bone} needs positive scales'
+        if 'bow_draw' in fields:
+            draw = fields['bow_draw']
+            assert bow is not None and isinstance(draw, list) and len(draw) == 2, (
+                f'{name}: bow_draw needs bow_string and [nock_event, release_event]')
+            nock, release = draw
+            assert all(isinstance(event, str) and event in events for event in draw) and events[nock] < events[release], (
+                f'{name}: bow_draw needs two ordered events')
     names = {row[0] for row in animations(spec)}
     for pair in spec.get('transitions', []):
         assert len(pair) == 2 and set(pair) <= names, f'Unknown transition {pair}'
