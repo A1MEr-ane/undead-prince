@@ -79,8 +79,8 @@ def downsample(raw, size, factor):
 
 def bounds():
     graph = bpy.context.evaluated_depsgraph_get()
-    points = [ob.evaluated_get(graph).matrix_world @ Vector(v)
-              for ob in OBJECTS for v in ob.evaluated_get(graph).bound_box]
+    evaluated = [ob.evaluated_get(graph) for ob in OBJECTS]
+    points = [ob.matrix_world @ Vector(v) for ob in evaluated if not ob.hide_render for v in ob.bound_box]
     return [min(p[i] for p in points) for i in range(3)], [max(p[i] for p in points) for i in range(3)]
 
 
