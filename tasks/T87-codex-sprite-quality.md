@@ -6,7 +6,7 @@ status: queued
 branch: codex/t87-sprite-quality
 worktree: ../亡魂王子-t87
 images: [/Users/cyy/Projects/亡魂王子/shots/t84/02-midnight.png, /Users/cyy/Projects/亡魂王子/shots/t83/shadow_assassin_48px.png, /Users/cyy/Projects/亡魂王子/shots/t83/archer_48px.png]
-allowed: [tools/blender/, assets/specs/units/, assets/sprites/units/, docs/unit-sprites.md, reports/agents/]
+allowed: [tools/blender/, assets/archive/, assets/specs/units/, assets/sprites/units/, docs/unit-sprites.md, reports/agents/]
 forbidden: [tools/blender/terrain/, attempts/, scripts/, proto/, shaders/, data/, tasks/, art/]
 verify: tools/verify/verify.sh sprites
 retry_limit: 3
@@ -52,3 +52,11 @@ escalate_if: [需要改游戏的着色器或精灵读取接口, 128 像素方案
 - 改共用模板和验收器（加"裆部透空"检查），重出骷髅和刺客两个基准。
 - 预览照旧放 `shots/t87/`，另加一张"站姿、迈步、弓步"三帧的下半身放大对比图 `shots/t87/legs_check.png`。
 - 动作、受击、比例其他部分已通过，不要重做。
+
+## 修订 3（用户 2026-11-28）
+用户审了修订 2：连体下半身的方向对了。另外决定**普通骷髅改为普通丧尸**。
+- 按 `docs/unit-sprites.md` 第 5 节"普通丧尸"做新基准 `zombie`。配方放在 `assets/specs/units/zombie.yml`，图集放在 `assets/sprites/units/zombie/`。专属动作是 `downed` 和 `rise_again`，替换骷髅的骨堆和重组。
+- 骷髅的配方和图集移到 `assets/archive/skeleton/`（allowed 已放开），不删。
+- 暗影刺客不动。
+- 预览：`shots/t87/zombie_in_game.png`、`zombie_actions.png`、`zombie_reactions.png`，再更新 `legs_check.png`，把骷髅那一行换成丧尸。
+- 报告里写明 T86 要改的地方：兵种 id 从 skeleton 改为 zombie，以及专属动作的名称。attempts/ 由 Lead 来改，你不要动。
