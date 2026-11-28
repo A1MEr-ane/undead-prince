@@ -83,6 +83,20 @@ def _entry(text):
 
 
 def load_spec(path=DEFAULT_SPEC):
+    spec = read_yaml(path)
+    path = Path(path).resolve()
+    assert re.fullmatch(r'[a-z][a-z0-9_]*', spec['id']), 'Unsafe asset id'
+    if spec.get('recipe') == 'unit':
+        from unit_spec import validate_recipe
+        validate_recipe(spec)
+    else:
+        validate_legacy(spec)
+    spec['_path'] = path
+    spec['_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return spec
+
+
+def read_yaml(path):
     path = Path(path).resolve()
     lines = []
     pending = 0
@@ -138,7 +152,10 @@ def load_spec(path=DEFAULT_SPEC):
 
     spec, end = block(0, 0)
     assert end == len(lines)
-    assert re.fullmatch(r'[a-z][a-z0-9_]*', spec['id']), 'Unsafe asset id'
+    return spec
+
+
+def validate_legacy(spec):
     heights = list(spec['proportions']['landmarks_from_ground'].values())
     # Mapping order is editorial: a skirt can end below the crotch listed above
     # it. Validate values and anatomical order, rather than YAML insertion order.
@@ -151,6 +168,3 @@ def load_spec(path=DEFAULT_SPEC):
         for key, value in part.items():
             if key.endswith('uv_part'):
                 assert value in PARTS, f'Unknown UV part {value}; keep the atlas contract'
-    spec['_path'] = path
-    spec['_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
-    return spec

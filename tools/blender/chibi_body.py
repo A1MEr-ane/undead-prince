@@ -251,7 +251,7 @@ class ChibiBody:
         ob=base.mesh(name,verts,faces,[[(.3,.06),(.7,.06),(.5,.20)]]*20,part,bone,far,smooth=True)
         return ob
 
-    def body_model(self, exposed_head=False):
+    def body_model(self, exposed_head=False, include_head=True):
         """Build the shared body. exposed_head keeps the whole cranium and omits
         the hair, ears and mouth so a skull recipe can replace them."""
         h,H=self.h,self.height
@@ -268,9 +268,30 @@ class ChibiBody:
         belt_ob=self.profile('belt',[(h['belt']-.020*H,self.ring(.138*H,.169*H)),
             (h['belt']+.020*H,self.ring(.138*H,.169*H))],self.part('belt'),'spine',False,False)
         self.leather_uv(belt_ob)
-        base.box('belt_buckle',(.141*H,0,h['belt']),(.022*H,.075*H,.055*H),self.part('belt','buckle_uv_part'),'spine')
+        if 'buckle_uv_part' in self.parts['belt']:
+            base.box('belt_buckle',(.141*H,0,h['belt']),(.022*H,.075*H,.055*H),self.part('belt','buckle_uv_part'),'spine')
         self.profile('collar',[(h['shoulder']-.008*H,self.ring(.085*H,.12*H,.008*H,sides=6)),
             (h['chin']+.008*H,self.ring(.085*H,.12*H,.008*H,sides=6))],self.part('collar'),'head',False,True)
+        if include_head:
+            self.legacy_head(exposed_head)
+        for side in ('l','r'):
+            far=side=='r'
+            for segment,part,radius in (('thigh_',self.part('legs'),.047*H),('shin_',self.part('legs'),.045*H),
+                ('upper_arm_',self.part('sleeves'),.051*H),('forearm_',self.part('sleeves'),.046*H)):
+                self.limb(segment+side,radius,part,far)
+            ankle=base.REST['foot_'+side][0]
+            foot_offset=ankle.z-self.ankle_z if not include_head else 0
+            length=self.width['foot_length']
+            self.profile('boot_'+side,[(self.ground+foot_offset,self.ring(length/2,.053*H,ankle.x+.020*H,ankle.y,sides=6)),
+                (self.ground+foot_offset+.065*H,self.ring(length*.42,.048*H,ankle.x+.014*H,ankle.y,sides=6))],
+                self.part('boots'),'foot_'+side,True,True,far)
+            self.profile('boot_cuff_'+side,[(self.ground+foot_offset+.062*H,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6)),
+                (h['boot_top']+foot_offset,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6))],
+                self.part('boots'),'shin_'+side,False,True,far)
+            self.glove('fist_'+side,base.REST['hand_'+side][0],self.part('hands'),'hand_'+side,far)
+
+    def legacy_head(self, exposed_head):
+        h,H=self.h,self.height
         head=base.ellipsoid('head',(.008*H,0,self.head_centre),
             (self.width['head']*.46,self.width['head']*.45,self.head_radius),self.part('head'),'head',sides=8,bands=6)
         bm=bmesh.new()
@@ -317,17 +338,3 @@ class ChibiBody:
             x=.008*H+self.width['head']*.46*r+.001*H
             verts=[(x,y,z+dz) for y,dz in ((-.017*H,-.002*H),(.017*H,-.002*H),(.017*H,.002*H),(-.017*H,.002*H))]
             base.mesh('mouth',verts,[(0,1,2,3)],[[(0,0),(1,0),(1,1),(0,1)]],self.part('eyes'),'head')
-        for side in ('l','r'):
-            far=side=='r'
-            for segment,part,radius in (('thigh_',self.part('legs'),.047*H),('shin_',self.part('legs'),.045*H),
-                ('upper_arm_',self.part('sleeves'),.051*H),('forearm_',self.part('sleeves'),.046*H)):
-                self.limb(segment+side,radius,part,far)
-            ankle=base.REST['foot_'+side][0]
-            length=self.width['foot_length']
-            self.profile('boot_'+side,[(self.ground,self.ring(length/2,.053*H,ankle.x+.020*H,ankle.y,sides=6)),
-                (self.ground+.065*H,self.ring(length*.42,.048*H,ankle.x+.014*H,ankle.y,sides=6))],
-                self.part('boots'),'foot_'+side,True,True,far)
-            self.profile('boot_cuff_'+side,[(self.ground+.062*H,self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6)),
-                (h['boot_top'],self.ring(.052*H,.056*H,ankle.x,ankle.y,sides=6))],
-                self.part('boots'),'shin_'+side,False,True,far)
-            self.glove('fist_'+side,base.REST['hand_'+side][0],self.part('hands'),'hand_'+side,far)
