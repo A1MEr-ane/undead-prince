@@ -5,7 +5,7 @@
 
 ## 1. The shape of the realm / 王国形态
 
-Alderreach grew around the Crownsea, a sheltered inland sea separated from the Grey Sea by a broken belt of islands. The Frostcrown mountains feed rivers and timber country; the southern Grainlands feed the ports. Sunhold occupies the high eastern shore and the finest deep-water harbour, not the geographical centre. Its unnatural light and winter warmth are local; the kingdom beyond still has nights and seasons. The crown consolidated the realm by controlling navigable passages rather than by owning every island. / 奥德里奇围绕王冠海发展；破碎岛链把这片受遮蔽的内海与灰海隔开。霜冠山脉滋养河流与林区，南方粮地供养港口。王城位于东岸高地，占据最优深水港而非地理中心。永昼光热作用局限王都港区，其余地方仍有昼夜四季。王室依靠控制可航行水道统一王国，不必拥有每座岛。
+Alderreach grew around the Crownsea, a sheltered inland sea separated from the Grey Sea by a broken belt of islands. The Frostcrown mountains feed rivers and timber country; the southern Grainlands feed the ports. Sunhold occupies the high eastern shore and the finest deep-water harbour, not the geographical centre. Its unnatural light is local, and winter warmth reaches only what the sacred-flame network supplies; the kingdom beyond still has nights and seasons. The crown consolidated the realm by controlling navigable passages rather than by owning every island. / 奥德里奇围绕王冠海发展；破碎岛链把这片受遮蔽的内海与灰海隔开。霜冠山脉滋养河流与林区，南方粮地供养港口。王城位于东岸高地，占据最优深水港而非地理中心。永昼之光只覆盖王都，冬季供暖只到达圣火网络覆盖之处；其余地方仍有昼夜四季。王室依靠控制可航行水道统一王国，不必拥有每座岛。
 
 The old Winter Palace, ruined royal causeways, submerged memorial statues and successive generations of forts record earlier attempts to unite the sea. Some ruins predate the Unending Day. They are evidence of past economies, wars and engineering, not a new magical conspiracy. / 寒宫遗址、旧王堤、沉水纪念巨像和历代海防工事记录了王国统一内海的过程。一些遗址早于永昼；它们体现经济、战争与工程历史，不增加新的魔法阴谋。
 

@@ -2,9 +2,9 @@
 
 - 日期：2026-11-26
 - 依据：`docs/world-r2.md`（用户已批准，第 10 节为写回清单）
-- 分支：`dsh/t72-canon-writeback`
-- 范围：只改 R2 第 10 节表格列出的冲突句/段，中英文成对修改；`WORLD-COMPENDIUM.md` 同步其中的合编段落。
-- 表格之外发现的冲突未改，见 `reports/agents/T72.md` 的“风险与未完成”。
+- 分支：`dsh/t72-canon-writeback`（第一轮）、`dsh/t78-canon-writeback2`（第二轮）
+- 范围：只改冲突句/段，中英文成对修改；`WORLD-COMPENDIUM.md` 同步其中的合编段落。第一轮改 R2 第 10 节表格；第二轮（T78）改表格之外、`reports/agents/T72.md` 列出的残留，并同步 C 卷中的同文段落。
+- 第一轮表格之外发现的冲突见 `reports/agents/T72.md`；第二轮的判断与依据见 `reports/agents/T78.md`。
 
 ## 1. `docs/canon/shared/CANON-COMPACT.md`
 
@@ -95,3 +95,51 @@
 | 4.9 | 第 1777–1779 行，§10.1 | 解约认知先例，不是共享机制 | 3.1 |
 
 `WORLD-COMPENDIUM.md` 未收录 `NARRATIVE-DESIGN.md` 第 12 节实现约定，因此 3.6 无对应合编段落。
+
+## 5. T78 第二轮写回：表格外残留
+
+依据 `reports/agents/T72.md` 末尾列出的第 1–6 条，逐句写回；同时在任务卡允许的 B/C 卷中审计出四处同文重复（C.2 三处、C.1.1 一处），一并同步。只改冲突句，不新增剧情、人名、地名或结局编号。
+
+### 5.1 终止永昼的代价（`A/WORLD-BIBLE.md` 第 95、97 行；`WORLD-COMPENDIUM.md` 第 84、86 行）
+
+- **原句**：`The capital loses artificial light and warmth, not the natural sun. The immediate cost is a return to seasonal shipping and the need for food reserves, alternate anchorages and heating.` / `王都失去人工光热，不失去自然太阳。直接代价是季节性航运恢复，需要粮储、备用港口及供暖。`
+- **新句**：`The capital loses the light of the Unending Day and the warmth of the sacred flame, not the natural sun; the cost is nationwide. In the short term this means a return to seasonal shipping and the need for food reserves, alternate anchorages and ordinary fuel.` / `王都失去永昼之日的光与圣火的供暖，不失去自然太阳；代价是全国性的。短期意味着季节性航运恢复，需要粮储、备用港口和普通燃料。`
+- **依据**：R2 §2（永昼之日只发光、不供热）、§3（供暖由圣火承担）、§8（终止代价是全国性的，应对办法含普通燃料）。
+
+### 5.2 常规招魂生成什么（`A/WORLD-BIBLE.md` 第 99、101 行；`WORLD-COMPENDIUM.md` 第 88、90 行）
+
+- **原句**：`Necromancy normally uses residual soulfire to give a willing or unclaimed shade a body; routine troop summons are not a Seal-like destruction of persons.` / `常规招魂使用残余冥火让愿意应召或尚未归属的亡魂获得实体，不像秘印一样消耗人格。`
+- **新句**：`Ordinary battlefield necromancy uses residual soulfire to shape echoes: the dead's form and skill, without a full person, dispersing at dawn and costing no one's soul. The old company are different: named souls bound by the original oath, which is a binding command that initially makes refusal impossible.` / `常规战场招魂以残余冥火凝成回声：借用死者生前的形与技艺，没有完整人格，天亮即散，不消耗任何人的灵魂。有名有姓的旧部则不同：他们是受最初军誓约束的具名灵魂；军誓具有强制力，最初不能拒绝命令。`
+- **依据**：R2 §1.2（战斗生成的是回声，没有完整人格，天亮即散，不消耗灵魂；旧部是有名有姓的灵魂）、§4（日出时回声散去）。
+
+### 5.3 大寒冬初代秘印的光与热（`WORLD-COMPENDIUM.md` 第 174 行；`C/C2-KINGDOM-CHRONICLES.md` 第 25 行）
+
+- **原句**：`Its light and warmth were local, and relief still required ships and grain.` / `其光热只覆盖局部，赈济仍需船粮。`
+- **新句**：`Its light was local, and its heat came only through the sacred flame it fed; relief still required ships and grain.` / `其光只覆盖王都，热只经由它分出的圣火供给；赈济仍需船粮。`
+- **依据**：R2 §2（光热分离）、§3（热由秘印分出的圣火输送）。
+
+### 5.4 旧王领的地理特征（`WORLD-COMPENDIUM.md` 第 1428、1430 行；`C/C2-KINGDOM-CHRONICLES.md` 第 143、145 行）
+
+- **原句**：`away from the capital’s artificial warmth` / `远离王都人工光热`
+- **新句**：`away from the capital’s artificial daylight and the sacred-flame network` / `远离王都的人造日光与圣火网络`
+- **依据**：R2 §2（王都的人工光是永昼之日）、§3（全国供暖靠圣火网络，且覆盖不均）。
+
+### 5.5 永昼盆地的起源（`WORLD-COMPENDIUM.md` 第 1452、1454 行；`C/C2-KINGDOM-CHRONICLES.md` 第 167、169 行）
+
+- **原句**：`The Seal originally secured light and warmth during a catastrophic winter.` / `秘印最初在灾冬提供光热。`
+- **新句**：`The Seal originally secured light during a catastrophic winter; heat came from the sacred flame drawn from it.` / `秘印最初在灾冬提供光，热则由它分出的圣火供给。`
+- **依据**：R2 §2、§3。
+
+### 5.6 E04 尾声的傍晚措辞（`A/NARRATIVE-DESIGN.md` 第 303、305 行；`WORLD-COMPENDIUM.md` 第 1715、1717 行）
+
+- **原句**：`the city does not know evening` / `这座城却不知何为傍晚`
+- **新句**：`the city has forgotten what darkness looks like` / `这座城早已忘了黑暗是什么样子`
+- **依据**：R2 §2（自然昼夜仍在；王都夜里也被人造光照亮，居民并非没见过星星，只是没有真正的黑暗）。
+
+### 5.7 王都的光与冬季供暖（`C/C11-GEOGRAPHY-AND-PASSAGES.md` 第 8 行）
+
+- **原句**：`Its unnatural light and winter warmth are local; the kingdom beyond still has nights and seasons.` / `永昼光热作用局限王都港区，其余地方仍有昼夜四季。`
+- **新句**：`Its unnatural light is local, and winter warmth reaches only what the sacred-flame network supplies; the kingdom beyond still has nights and seasons.` / `永昼之光只覆盖王都，冬季供暖只到达圣火网络覆盖之处；其余地方仍有昼夜四季。`
+- **依据**：R2 §2、§3。B/C 审计中发现的同文残留，任务卡允许修改 C 卷。
+
+**未改**：`shared/CANON-COMPACT.md` 第 17 行 `IV after witnessing an end-of-Day outcome grants release knowledge for a later success.` 属于分阶段解锁的玩法表述，与 R2 §5“解约权利一直在王子手里、亲历释放是认知契机”不冲突，保留原文。
