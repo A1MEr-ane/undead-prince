@@ -1,8 +1,9 @@
 extends SceneTree
 ## Screenshot the T84 Sprite3D artwork and the existing UV shader at a 30° camera angle.
 
-const WINDOW := Vector2i(1152, 468)
+const WINDOW := Vector2i(1440, 468)
 const BACKGROUND := Color("#30424b")
+const PIXELS_PER_WORLD_UNIT := 100.0
 var _scene: Node3D
 var _camera: Camera3D
 var _canvas: CanvasLayer
@@ -53,13 +54,19 @@ func _run() -> void:
 	root.add_child(_canvas)
 	_scene.add_child(_camera)
 	_camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	_camera.size = float(WINDOW.y) / 100.0
+	_camera.size = float(WINDOW.y) / PIXELS_PER_WORLD_UNIT
 	_camera.position = Vector3(0.0, sin(_pitch), cos(_pitch)) * 10.0
 	_camera.rotation.x = -_pitch
 	_camera.current = true
 	_cell_px = int(_meta.frame_size[0])
-	var bounds: Array = _meta.frames[0].alpha_bbox
-	_cell_world = 0.48 * _cell_px / (float(bounds[3]) - float(bounds[1]))
+	var sizing: Dictionary = _meta.get("presentation", {})
+	var target_height := 48.0
+	if sizing.is_empty():
+		var bounds: Array = _meta.frames[0].alpha_bbox
+		_cell_world = target_height * _cell_px / (float(bounds[3]) - float(bounds[1])) / PIXELS_PER_WORLD_UNIT
+	else:
+		_cell_world = _cell_px * float(sizing.review_pixels_per_model_unit) / float(sizing.pixels_per_model_unit) / PIXELS_PER_WORLD_UNIT
+		target_height = 72.0 * float(sizing.standing_height_ratio)
 	var atlas := ImageTexture.create_from_image(source)
 	_material.shader = load("res://shaders/unit.gdshader")
 	_material.set_shader_parameter("atlas", atlas)
@@ -72,14 +79,14 @@ func _run() -> void:
 	_material.set_shader_parameter("blood_from_alpha", false)
 
 	var names: Array[String] = ["idle", "walk", "attack"]
-	for name: String in _meta.animations:
-		if name not in ["idle", "walk", "attack", "parry", "clash", "fall", "sit", "rise", "death", "ragdoll", "hit"]:
+	for name: String in ["sneak", "backstab", "bone_pile", "reassemble", "hit_heavy", "death_pierce", "death_crush"]:
+		if _meta.animations.has(name):
 			names.append(name)
 	names.append("flip")
 	var rows := mini(names.size(), 9)
-	_caption(stem.get_file().capitalize() + " / 30° / 48 px", Vector2(28, 22))
-	_caption("Ink artwork / Sprite3D", Vector2(28, 88))
-	_caption("UV atlas / unit.gdshader", Vector2(28, 260))
+	_caption(stem.get_file().capitalize() + " / 30° / ~%d px" % roundi(target_height), Vector2(28, 16))
+	_caption("Ink artwork / Sprite3D", Vector2(28, 45))
+	_caption("UV atlas / unit.gdshader", Vector2(28, 221))
 	for i in rows:
 		var name := names[i]
 		var flip := name == "flip"
@@ -94,6 +101,7 @@ func _run() -> void:
 		var x := (i + 0.5) * WINDOW.x / rows
 		_draw_ink(index, flip, Vector2(x, 195))
 		_draw_uv(index, flip, Vector2(x, 371))
+		_caption(name.capitalize(), Vector2(x - 39, 201))
 		_caption(name.capitalize(), Vector2(x - 39, 401))
 
 	await process_frame
@@ -124,8 +132,8 @@ func _run() -> void:
 func _on_ground(screen: Vector2) -> Vector3:
 	# The camera looks along -Z in the horizontal plane. Project the ground
 	# position to the requested screen coordinate through the pitched camera.
-	return Vector3((screen.x - WINDOW.x * 0.5) / 100.0, 0.0,
-		(screen.y - WINDOW.y * 0.5) / (100.0 * sin(_pitch)))
+	return Vector3((screen.x - WINDOW.x * 0.5) / PIXELS_PER_WORLD_UNIT, 0.0,
+		(screen.y - WINDOW.y * 0.5) / (PIXELS_PER_WORLD_UNIT * sin(_pitch)))
 
 
 func _anchor_offset() -> float:
@@ -137,7 +145,7 @@ func _draw_ink(index: int, flip: bool, screen: Vector2) -> void:
 	var sprite := Sprite3D.new()
 	sprite.texture = ImageTexture.create_from_image(_ink.get_region(Rect2i(frame[0], frame[1], frame[2], frame[3])))
 	sprite.pixel_size = _cell_world / _cell_px
-	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
 	sprite.flip_h = flip
 	sprite.basis = _camera.basis
 	sprite.position = _on_ground(screen) + _camera.basis.y * _anchor_offset()

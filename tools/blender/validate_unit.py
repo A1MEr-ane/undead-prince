@@ -6,9 +6,36 @@ import numpy as np
 
 import build_swordsman as base
 from common import PARTS, read_png, uv_rect
+from chibi_body import ChibiBody
 from render_sprites import validate
-from unit_preview import frames_from_atlas, ink_atlas, paint_tile, rgb
-from unit_spec import HUMANOID_BONES, MOUNT_PARENTS, event_frame, sample_times
+from unit_preview import INK, frames_from_atlas, ink_atlas, paint_tile, rgb
+from unit_spec import (B_PROPORTIONS, HUMANOID_BONES, MOUNT_PARENTS, PROPORTION_TOLERANCE,
+                       event_frame, presentation, sample_times, uses_shuffle)
+
+
+def verify_proportions(recipe):
+    # Measure mesh extents and actual thigh pivots, including a custom hood or helmet.
+    # Measure a mounted rider on their standing rig before applying the seated pose.
+    standing = ChibiBody.skeleton(recipe, {})
+    rest = recipe.skeleton({})
+    unseat = {key: base.bone_matrix(*standing[key]) @ base.bone_matrix(*rest[key]).inverted()
+              for key in standing} if recipe.mount else {}
+    head, body = [], []
+    for obj in recipe.body_objects:
+        bone = obj.vertex_groups[0].name
+        transform = unseat.get(bone, obj.matrix_world)
+        zs = [(transform @ vert.co).z for vert in obj.data.vertices]
+        body.extend(zs)
+        if bone == 'head' and obj.name != 'collar':
+            head.extend(zs)
+    sole = min(body)
+    height = max(body) - sole
+    crotch = (standing['thigh_l'][0].z + standing['thigh_r'][0].z) / 2
+    measured = {'head': (max(head) - min(head)) / height, 'leg': (crotch - sole) / height}
+    for name, expected in B_PROPORTIONS.items():
+        assert abs(measured[name] - expected) <= PROPORTION_TOLERANCE, (
+            f'{recipe.spec["id"]}: B {name} ratio {measured[name]:.3f} exceeds {expected:.3f} ±{PROPORTION_TOLERANCE}')
+    return {key: round(value, 4) for key, value in measured.items()}
 
 
 def verify_unit(output, meta, recipe, check_rig):
@@ -19,6 +46,7 @@ def verify_unit(output, meta, recipe, check_rig):
     assert meta['recipe_sha256'] == spec['_sha256'], f'{ident}: rebuild after editing the recipe'
     assert meta['image'] == f'{ident}_uv.png' and meta['frame_size'] == [size, size]
     assert (meta['columns'], meta['rows'], meta['image_size']) == (8, rows, [8 * size, rows * size])
+    assert meta['presentation'] == presentation(spec, size, ortho)
     texture = meta['part_texture']
     assert texture['image'] == f'{ident}_parts.png' and texture['grid'] == [2, 2] and texture['tile_size'] == [256, 256]
     assert texture['appearances'] == [{'name': ident, 'cell': [0, 0]}]
@@ -78,10 +106,10 @@ def verify_unit(output, meta, recipe, check_rig):
         assert not (frame[0, :, 3].any() or frame[-1, :, 3].any() or
                     frame[:, 0, 3].any() or frame[:, -1, 3].any()), (
             ident, meta['frames'][i]['animation'], meta['frames'][i]['local_frame'], 'ink touches the cell border')
-    for suffix in ('actions', '48px'):
+    for suffix in ('actions', 'in_game', 'reactions'):
         preview = read_png(output / f'{ident}_{suffix}.png')
         assert preview.ndim == 3 and preview.shape[2] == 3 and min(preview.shape[:2]) > size
-        assert (preview == [17, 22, 34]).all(axis=2).sum() >= 10, f'{ident}: empty {suffix} preview'
+        assert (preview <= np.asarray(INK) + 8).all(axis=2).sum() >= 10, f'{ident}: empty {suffix} preview'
 
     result.update(standing_alpha_bbox=[x0, y0, x1, y1], used_parts=sorted(spec['palette']),
                   visible_parts=[part for part, values in PARTS.items() if values[:2] in cells],
@@ -97,6 +125,7 @@ def verify_rig(recipe, meta):
     scene = bpy.context.scene
     bones = set(HUMANOID_BONES) | (MOUNT_PARENTS.keys() if recipe.mount else set())
     assert stats == meta['model'] and set(rig.data.bones.keys()) == bones
+    proportions = verify_proportions(recipe)
     assert set(obj['part'] for obj in base.OBJECTS) == spec['palette'].keys()
     for obj in base.OBJECTS:
         assert len(obj.modifiers) == 1 and obj.modifiers[0].object == rig
@@ -122,12 +151,31 @@ def verify_rig(recipe, meta):
 
     tolerance = recipe.height * .003
     markers = 0
+    shuffles = []
     for name, _, duration, loop, events in recipe.animations:
         action = bpy.data.actions[name]
         assert dict((marker.name, marker.frame) for marker in action.pose_markers) == {
             key: round(t * 1000 + 1) for key, t in events.items()}, name
         if loop:
             assert distance(evaluate(name, 0), evaluate(name, duration)) < tolerance, f'{name}: loop seam'
+        if uses_shuffle(name, spec.get('actions', {}).get(name, {})):
+            reference = evaluate(name, 0)
+            for t in meta['animations'][name]['source_sample_times']:
+                actual = evaluate(name, t)
+                for bone in ('root', 'spine', 'head', 'hand_l', 'hand_r'):
+                    assert (actual[bone][0] - reference[bone][0]).length < tolerance, (name, bone, 'shuffle body moved')
+                    assert (actual[bone][1] - reference[bone][1]).length < tolerance, (name, bone, 'shuffle body turned')
+                for bone in ('foot_l', 'foot_r'):
+                    assert abs(actual[bone][0].z - reference[bone][0].z) <= .015 * recipe.height, (
+                        name, bone, 'shuffle foot lifts too high')
+            for side, other in (('r', 'l'), ('l', 'r')):
+                actual = evaluate(name, events[{'r': 'right_step', 'l': 'left_step'}[side]])
+                if recipe.mount:
+                    lead, trail = (actual[f'mount_fore_{key}_lower'][1] for key in (side, other))
+                else:
+                    lead, trail = (actual[f'foot_{key}'][0] for key in (side, other))
+                assert lead.x > trail.x and abs(lead.z - trail.z) < tolerance, (name, side, 'step must land with the named foot ahead')
+            shuffles.append(name)
         for t in set(events.values()):
             expected = recipe.skeleton(recipe.pose_parameters(name, t, duration))
             # A rigid Blender bone preserves its rest length, while an IK target can
@@ -142,4 +190,4 @@ def verify_rig(recipe, meta):
         duration = meta['animations'][before]['duration']
         assert distance(evaluate(before, duration), evaluate(after, 0)) < tolerance, f'{before} -> {after}: pose seam'
     return dict(model=stats, loops_close=True, exact_event_markers=markers,
-                checked_transitions=len(spec.get('transitions', [])))
+                checked_transitions=len(spec.get('transitions', [])), proportions=proportions, shuffles=shuffles)

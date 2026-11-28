@@ -35,7 +35,7 @@ def main():
         ident = spec['id']
         with tempfile.TemporaryDirectory(prefix=f'.{ident}-', dir=output) as temporary:
             common = ['--', '--spec', str(spec['_path']), '--output', temporary]
-            supersample = '2' if args.draft else '8'
+            supersample = '2' if args.draft else '4'
             flags = [] if args.draft else ['--save-blend']
             subprocess.run([*blender, '-P', str(tools / 'render_sprites.py'), *common,
                             '--supersample', supersample, '--threads', str(args.threads), *flags],
@@ -48,6 +48,7 @@ def main():
             # deliverable in target is untouched.
             for artifact in sorted(Path(temporary).iterdir(), key=lambda p: p.suffix == '.json'):
                 artifact.replace(target / artifact.name)
+            (target / f'{ident}_48px.png').unlink(missing_ok=True)
         print(f'UNIT PASS {ident} {target}', flush=True)
 
 

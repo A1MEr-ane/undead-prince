@@ -452,6 +452,10 @@ def model():
 
 
 def apply_pose(rig, parameters, keyframe=None, skeleton_fn=None):
+    if 'vertical_scale' in parameters:
+        rig.scale.z = parameters['vertical_scale']
+        if keyframe is not None:
+            rig.keyframe_insert(data_path='scale', index=2, frame=keyframe, group='Body')
     bones = (skeleton_fn or skeleton)(parameters)
     # Blender pose matrices depend on evaluated parents. Assign in hierarchy order.
     for bone in rig.data.bones:

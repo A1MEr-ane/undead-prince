@@ -6,8 +6,9 @@ from mathutils import Matrix, Vector
 import build_swordsman as base
 from chibi_body import ChibiBody
 from common import map_uv
-from unit_spec import (BASE_ACTIONS, BODIES, LANDMARKS, MOUNT_PARENTS, VECTORS, WIDTHS,
-                       animations, camera)
+from unit_motion import POSES, posed, shuffle
+from unit_spec import (BODIES, LANDMARKS, LEGACY_ACTIONS, MOUNT_PARENTS, UNIT_ACTIONS, VECTORS,
+                       WIDTHS, animations, camera)
 
 V = Vector
 
@@ -33,7 +34,9 @@ class Unit(ChibiBody):
 
     def pose_parameters(self, name, t, duration):
         fields = self.spec.get('actions', {}).get(name, {})
-        pose = fields.get('pose', name if name in BASE_ACTIONS else 'idle')
+        pose = fields.get('pose', name if name in UNIT_ACTIONS else 'idle')
+        pose = {'hit': 'hit_light', 'death': 'death_slash'}.get(pose, pose)
+        phase = t / duration
         if pose == 'neutral':
             p = dict(self.neutral)
         elif pose == 'idle':
@@ -42,21 +45,24 @@ class Unit(ChibiBody):
             hip = V(p['hip'])
             hip.z += .004 * self.height * bob
             p.update(hip=tuple(hip), head_tilt=p['head_tilt'] + 2 * bob)
+        elif pose == 'walk':
+            p = shuffle(self, phase)
+        elif pose in POSES or pose == 'stun':
+            p = posed(self, pose, phase)
         else:
-            authored_duration = BASE_ACTIONS[pose][2]
-            if pose == 'walk':
-                authored_duration = duration
-            p = super().pose_parameters(pose, t / duration * authored_duration, authored_duration)
+            legacy = 'death' if pose == 'death_slash' else pose
+            authored_duration = LEGACY_ACTIONS[legacy][2]
+            p = super().pose_parameters(legacy, phase * authored_duration, authored_duration)
             if pose == 'ragdoll':
-                for channel in VECTORS:
-                    x, y, z = p[channel]
-                    p[channel] = (x, y, self.ground + (z - self.ground) * self.height / BODIES['normal'][0])
-        phase = t / duration
+                tuck = dict(hip=(0, 0, .72), foot_l=(.14, -.08, .69), foot_r=(.163, .08, .66),
+                            wrist_l=(.06, -.24, .80), wrist_r=(.07, .23, .82))
+                p.update({key: self.control_value(key, value) for key, value in tuck.items()})
         for channel, keys in fields.get('tracks', {}).items():
             value = base.blend([(q, {channel: v}) for q, v in keys], phase)[channel]
             p[channel] = self.control_value(channel, value)
+        p.setdefault('vertical_scale', 1.)
         if self.mount:
-            gait = fields.get('mount_gait', self.mount.get('pace', 'trot') if name == 'walk' else 'stand')
+            gait = fields.get('mount_gait', 'shuffle' if pose == 'walk' else 'stand')
             p.update(mount_gait=gait, phase=phase, mounted_pose=pose)
         return p
 
@@ -84,11 +90,13 @@ class Unit(ChibiBody):
         gait = p.get('mount_gait', 'stand')
         phase = math.tau * p.get('phase', 0)
         stride = self.mount.get('stride', .16) if gait != 'stand' else 0
-        bob = abs(math.sin(phase)) * stride * .16
+        if gait == 'shuffle':
+            stride *= .45
+        bob = abs(math.sin(phase)) * stride * .16 if gait in ('trot', 'gallop') else 0
         rider = dict(self.neutral, **p)
         pose = p.get('mounted_pose', 'idle')
-        for side, y in (('l', -.22), ('r', .22)):
-            rider[f'foot_{side}'] = (.04 * H, y * H, g - .28 * H)
+        for side, y in (('l', -.158), ('r', .158)):
+            rider[f'foot_{side}'] = (.036 * H, y * H, g + .087 * H)
         offset = V((0, 0, (seat + bob) * H))
         bones = {name: (a + offset, b + offset)
                  for name, (a, b) in super().skeleton(rider).items()}
@@ -96,22 +104,35 @@ class Unit(ChibiBody):
         def point(x, y, z):
             return V((x * H, y * H, g + (z + bob) * H))
 
-        bones.update(mount_body=(point(-.12, 0, .57), point(.23, 0, .62)),
+        bones.update(mount_body=(point(-.12, 0, .49), point(.23, 0, .54)),
                      mount_head=(point(.25, 0, .66), point(.47, 0, .88)),
                      mount_tail=(point(-.45, 0, .64), point(-.67, 0, .39)))
         for leg, x in (('fore', .29), ('hind', -.33)):
+            bend = .04 if leg == 'fore' else .06
+            upper = math.hypot(.20, bend) * H
+            lower = math.hypot(.115, bend) * H
             for side, y in (('l', -.13), ('r', .13)):
-                lead = ((side == 'r') ^ (leg == 'hind')) if gait == 'trot' else side == 'r'
+                lead = ((side == 'l') ^ (leg == 'hind')) if gait in ('shuffle', 'trot') else side == 'r'
                 angle = phase + (math.pi if lead else 0) + (.65 if gait == 'gallop' and leg == 'hind' else 0)
-                dx = math.cos(angle) * stride
-                lift = max(0, math.sin(angle)) * stride * .5
+                lift = max(0, math.sin(angle)) * stride * (.12 if gait == 'shuffle' else .5)
                 prefix = f'mount_{leg}_{side}'
-                hip = point(x, y, .54)
-                knee = point(x + dx * .45 + (.06 if leg == 'hind' else -.03), y, .27 + lift * .45)
-                hoof = point(x + dx, y, .055 + lift - bob)
+                hip = point(x, y, .37)
+                hoof_z = .055 + lift - bob
+                reach = math.sqrt(max(0, (upper + lower - .001)**2 - ((.37 - hoof_z) * H)**2)) / H
+                dx = max(-reach, min(reach, math.cos(angle) * stride))
+                hoof = point(x + dx, y, hoof_z)
+                if leg == 'fore':
+                    knee = hip + hoof - base.ik(hip, hoof, lower, upper)
+                else:
+                    knee = base.ik(hip, hoof, upper, lower)
                 bones[prefix + '_upper'] = (hip, knee)
                 bones[prefix + '_lower'] = (knee, hoof)
-        if pose in ('fall', 'sit', 'rise', 'death', 'ragdoll'):
+        if pose == 'knockback':
+            displacement = V(p['hip']) - V(self.neutral['hip'])
+            for name in MOUNT_PARENTS:
+                a, b = bones[name]
+                bones[name] = (a + displacement, b + displacement)
+        if pose in ('fall', 'sit', 'rise', 'death_slash', 'death_pierce', 'death_crush', 'ragdoll'):
             # Keep mount and rider one silhouette through the existing same-atlas actions.
             knockdown, lean, tuck = .22 * H, p.get('lean', 0), p.get('tumble', 0)
             strength = min(1., abs(lean) / 86)
@@ -133,7 +154,7 @@ class Unit(ChibiBody):
         if self.mount:
             base.REST = {name: (a - offset, b - offset) for name, (a, b) in rest.items()}
         try:
-            self.body_model(include_head=False)
+            self.body_model(include_head=False, style=self.spec.get('body_style', 'clothed'))
             self.side_head()
         finally:
             base.REST = rest
@@ -143,6 +164,8 @@ class Unit(ChibiBody):
                     vertex.co += offset
         for name, piece in self.spec.get('pieces', {}).items():
             self.piece(name, piece)
+        self.body_objects = tuple(obj for obj in base.OBJECTS
+                                  if self.spec.get('pieces', {}).get(obj.name, {}).get('bone', 'head') == 'head')
         if self.mount:
             self.mount_model()
         head_part = self.part('head')
@@ -210,12 +233,12 @@ class Unit(ChibiBody):
         H, g = self.height, self.ground
         parts = self.mount['parts']
         for name, centre, size, part, bone in (
-                ('barrel', (-.04, 0, .59), (.46, .18, .20), 'body', 'mount_body'),
+                ('barrel', (-.04, 0, .49), (.46, .21, .28), 'body', 'mount_body'),
                 ('neck', (.29, 0, .72), (.18, .12, .24), 'body', 'mount_head'),
                 ('muzzle', (.47, 0, .86), (.21, .105, .12), 'face', 'mount_head'),
                 ('mane', (.22, 0, .83), (.10, .133, .21), 'mane', 'mount_head'),
                 ('ears', (.39, 0, .99), (.064, .069, .095), 'face', 'mount_head'),
-                ('saddle', (-.05, 0, .76), (.25, .187, .07), 'tack', 'mount_body'),
+                ('saddle', (-.05, 0, .74), (.25, .217, .07), 'tack', 'mount_body'),
                 ('tail', (-.57, 0, .52), (.16, .07, .17), 'mane', 'mount_tail')):
             x, y, z = centre
             base.ellipsoid('horse_' + name, (x * H, y * H, g + z * H), tuple(v * H for v in size),

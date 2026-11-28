@@ -195,7 +195,9 @@ def run(args):
         animations=animations, frames=frame_records, model=model_stats)
     if unit_spec:
         from unit_preview import create_previews
+        from unit_spec import presentation
         metadata['recipe_sha256'] = unit_spec['_sha256']
+        metadata['presentation'] = presentation(unit_spec, size, ortho)
         create_previews(atlas, metadata, args.output, unit_spec)
     elif recipe:
         from shieldman_preview import create_previews, render_views

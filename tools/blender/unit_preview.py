@@ -3,6 +3,13 @@ import numpy as np
 
 from common import PARTS, PART_SIZE, PADDING, write_png
 from preview import decode, label, paste
+from unit_spec import REACTIONS
+
+INK = (17, 22, 34)
+PAGE = (27, 37, 43)
+TERRAIN = (62, 77, 72)
+MUTED = (151, 168, 166)
+EVENT = (230, 179, 102)
 
 
 def rgb(colour):
@@ -49,23 +56,27 @@ def paint_marks(area, stamps, *, head=False):
     area[:] = np.round(paint.reshape(64, 4, 64, 4, 3).mean(axis=(1, 3))).astype(np.uint8)
 
 
-def art_frame(raw, tile, rim):
+def art_frame(raw, tile, rim, width):
     """The RGBA export uses the same frame rectangles as the independent UV data."""
     two_tone = raw.copy()
     two_tone[..., 2] = np.where(raw[..., 2] >= 140, 136, 77)
     out = decode(two_tone, tile)
     a = raw[..., 3]
-    padded = np.pad(a, 1)
-    near = padded[:-2, 1:-1]
-    left = padded[1:-1, :-2]
-    extended = np.maximum.reduce([near, left, padded[2:, 1:-1], padded[1:-1, 2:], a])
+    padded = np.pad(a, width)
+    size = a.shape[0]
+    extended = np.maximum.reduce([
+        padded[width+y:width+y+size, width+x:width+x+size]
+        for y in range(-width, width + 1) for x in range(-width, width + 1)
+        if x*x + y*y <= width*width
+    ])
+    near = padded[:size, width:width+size]
     light = (a >= 155) & (near < 125) & (two_tone[..., 2] == 136)
     out[light, :3] = np.round(out[light, :3] * .27 + np.asarray(rim) * .73).astype(np.uint8)
     # The ink is composited under coverage to preserve a soft antialiased edge.
     fill = a.astype(np.float32) / 255
     total = extended.astype(np.float32) / 255
     mix = np.divide(fill, total, out=np.zeros_like(fill), where=total > 0)[..., None]
-    out[..., :3] = np.round(out[..., :3] * mix + np.array([17, 22, 34]) * (1 - mix)).astype(np.uint8)
+    out[..., :3] = np.round(out[..., :3] * mix + np.asarray(INK) * (1 - mix)).astype(np.uint8)
     out[..., 3] = extended
     out[extended == 0] = 0
     return out
@@ -77,16 +88,90 @@ def frames_from_atlas(atlas, meta):
 
 def ink_atlas(atlas, meta, tile, rim):
     ink = np.zeros_like(atlas)
+    width = max(1, round(1.45 / preview_scale(meta)))
     for x, y, w, h in (f['rect'] for f in meta['frames']):
-        ink[y:y + h, x:x + w] = art_frame(atlas[y:y + h, x:x + w], tile, rim)
+        ink[y:y + h, x:x + w] = art_frame(atlas[y:y + h, x:x + w], tile, rim, width)
     return ink
+
+
+def preview_scale(meta):
+    sizing = meta['presentation']
+    return sizing['review_pixels_per_model_unit'] / sizing['pixels_per_model_unit']
+
+
+def resample(sprite, side):
+    """Resize straight-alpha artwork with premultiplied bilinear sampling."""
+    src = sprite.astype(np.float32) / 255
+    src[..., :3] *= src[..., 3:4]
+    coords = np.clip((np.arange(side) + .5) * len(src) / side - .5, 0, len(src) - 1)
+    lo = coords.astype(int)
+    hi = np.minimum(lo + 1, len(src) - 1)
+    amount = (coords - lo)[None, :, None]
+    horiz = src[:, lo] * (1 - amount) + src[:, hi] * amount
+    vert = horiz[lo] * (1 - amount.transpose(1, 0, 2)) + horiz[hi] * amount.transpose(1, 0, 2)
+    a = vert[..., 3:4]
+    vert[..., :3] = np.divide(vert[..., :3], a, out=np.zeros_like(vert[..., :3]), where=a > 0)
+    return np.round(np.clip(vert, 0, 1) * 255).astype(np.uint8)
+
+
+def draw_sheet(output, meta, frames, names, title):
+    size = len(frames[0])
+    anchor = round(size * meta['coordinates']['standing_foot_anchor_pixels'][1] / meta['frame_size'][1])
+    margin, stride = 146, size + 23
+    max_frames = max(meta['animations'][name]['frame_count'] for name in names)
+    board = np.full((52 + len(names) * stride, margin + max_frames * (size + 4) + 12, 3), PAGE, np.uint8)
+    label(board, title, 12, 13, 2)
+    label(board, '1080P SCALE / GOLD = EVENT', 12, 33, colour=MUTED)
+    for row, name in enumerate(names):
+        action = meta['animations'][name]
+        first = action['start_frame']
+        y = 48 + row * stride
+        label(board, name, 12, y + size // 2 - 7)
+        label(board, f'{action["duration"]:.3f} S', 12, y + size // 2 + 6, colour=MUTED)
+        for local in range(action['frame_count']):
+            i = first + local
+            x = margin + local * (size + 4)
+            board[y:y + size, x:x + size] = TERRAIN
+            board[y + anchor, x:x + size] = (80, 97, 88)
+            paste(board, frames[i], x, y, 1)
+            label(board, f'{local:02d}', x + 4, y + size + 5,
+                  colour=EVENT if i in action['event_frames'].values() else MUTED)
+    write_png(output, board)
+
+
+def draw_overview(output, meta, frames, ident):
+    animations = meta['animations']
+    poses = [('IDLE', 0), ('STEP', animations['walk']['start_frame'] + 1)]
+    attack = animations['attack']
+    start, span = attack['start_frame'], attack['frame_count'] - 1
+    poses += [('WIND UP', start + round(span * .28)),
+              ('CONTACT', attack['event_frames'].get('hit', start + round(span * .5))),
+              ('RECOVER', start + round(span * .74))]
+    for name in animations:
+        if name not in {'idle', 'walk', 'attack', 'parry', 'clash', 'hit', 'death', *REACTIONS}:
+            action = animations[name]
+            poses.append((name, action['event_frames'].get('hit', action['start_frame'] + action['frame_count'] // 2)))
+    poses.append(('FLIP', 0))
+    size = len(frames[0])
+    span = size + 10
+    cols = min(len(poses), max(1, 1420 // span))
+    rows = (len(poses) + cols - 1) // cols
+    board = np.full((53 + rows * (size + 25), 20 + cols * span, 3), PAGE, np.uint8)
+    label(board, f'{ident} / 1080P SCALE', 14, 12, 2)
+    label(board, '72 PX INFANTRY BASELINE / SAME CAMERA FOR ALL UNITS', 14, 33, colour=MUTED)
+    for col, (name, index) in enumerate(poses):
+        x, y = 12 + col % cols * span, 50 + col // cols * (size + 25)
+        board[y:y + size, x:x + size] = TERRAIN
+        sprite = frames[index]
+        paste(board, sprite[:, ::-1] if name == 'FLIP' else sprite, x, y, 1)
+        label(board, name, x + 3, y + size + 7)
+    write_png(output, board)
 
 
 def create_previews(atlas, meta, output, spec):
     ident = spec['id']
     tile = paint_tile(spec)
     ink = ink_atlas(atlas, meta, tile, rgb(spec['rim']))
-    frames = frames_from_atlas(ink, meta)
     parts = np.tile(tile, (2, 2, 1))
     texture = meta['part_texture']
     texture['image'] = f'{ident}_parts.png'
@@ -94,47 +179,9 @@ def create_previews(atlas, meta, output, spec):
     write_png(output / texture['image'], parts)
     write_png(output / f'{ident}_ink.png', ink)
 
-    size = meta['frame_size'][0]
-    margin, stride = 152, size + 18
-    max_frames = max(an['frame_count'] for an in meta['animations'].values())
-    canvas = np.full((46 + len(meta['animations']) * stride, margin + max_frames * (size + 4) + 12, 3),
-                     [37, 44, 45], np.uint8)
-    label(canvas, f'{ident} / ART REVIEW / 1X', 12, 13, 2)
-    for row, (name, action) in enumerate(meta['animations'].items()):
-        first = action['start_frame']
-        y = 40 + row * stride
-        label(canvas, name, 12, y + size // 2 - 7)
-        label(canvas, f'{action["duration"]:.3f} S', 12, y + size // 2 + 4, colour=(151, 168, 166))
-        for local in range(action['frame_count']):
-            i = first + local
-            x = margin + local * (size + 4)
-            paste(canvas, frames[i], x, y, 1)
-            ink = (230, 179, 102) if i in action['event_frames'].values() else (151, 168, 166)
-            label(canvas, f'{local:02d}', x + 4, y + size + 3, colour=ink)
-    write_png(output / f'{ident}_actions.png', canvas)
-
-    poses = [('IDLE', 0), ('WALK', meta['animations']['walk']['start_frame'] + 2)]
-    for name, action in meta['animations'].items():
-        if name == 'attack' or name not in ('idle', 'walk', 'parry', 'clash', 'sit', 'ragdoll', 'fall', 'rise', 'death', 'hit'):
-            middle = action['start_frame'] + action['frame_count'] // 2
-            interior = [i for i in action['event_frames'].values()
-                        if action['start_frame'] < i < action['start_frame'] + action['frame_count'] - 1]
-            poses.append((name, interior[0] if interior else middle))
-    # Scale from the solid idle footprint and lock that scale across all poses.
-    footprint = np.flatnonzero((frames[0][..., 3] >= 128).any(axis=1))
-    scaled = round(size * 48 / (footprint[-1] - footprint[0] + 1))
-    coords = ((np.arange(scaled) + .5) * size / scaled).astype(int)
-    converted = [frames[i][coords[:, None], coords] for _, i in poses]
-    converted.append(converted[0][:, ::-1])
-    poses.append(('FLIP', 0))
-    span = scaled + 26
-    board = np.empty((scaled + 99, max(span * len(poses), 466), 3), np.uint8)
-    board[:48] = [26, 35, 39]
-    board[48:-34] = [66, 72, 58]
-    board[-34:] = [26, 35, 39]
-    label(board, f'{ident} / 48 PX', 14, 15, 2)
-    for col, (sprite, (name, _)) in enumerate(zip(converted, poses)):
-        x = (board.shape[1] - span * len(poses)) // 2 + col * span + 10
-        paste(board, sprite, x, 56, 1)
-        label(board, name, x + 4, board.shape[0] - 22)
-    write_png(output / f'{ident}_48px.png', board)
+    size = round(meta['frame_size'][0] * preview_scale(meta))
+    frames = [resample(frame, size) for frame in frames_from_atlas(ink, meta)]
+    moves = [name for name in meta['animations'] if name not in {*REACTIONS, 'hit', 'death'}]
+    draw_overview(output / f'{ident}_in_game.png', meta, frames, ident)
+    draw_sheet(output / f'{ident}_actions.png', meta, frames, moves, f'{ident} / ACTIONS')
+    draw_sheet(output / f'{ident}_reactions.png', meta, frames, REACTIONS, f'{ident} / REACTIONS')

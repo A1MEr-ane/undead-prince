@@ -251,22 +251,26 @@ class ChibiBody:
         ob=base.mesh(name,verts,faces,[[(.3,.06),(.7,.06),(.5,.20)]]*20,part,bone,far,smooth=True)
         return ob
 
-    def body_model(self, exposed_head=False, include_head=True):
+    def body_model(self, exposed_head=False, include_head=True, *, style='clothed'):
         """Build the shared body. exposed_head keeps the whole cranium and omits
         the hair, ears and mouth so a skull recipe can replace them."""
         h,H=self.h,self.height
         # Pear outline: progressively wider towards the hem, without a pinched waist.
-        self.profile('tabard_body',[(h['belt'],self.ring(.133*H,.163*H,sides=6)),
-            (h['shoulder'],self.ring(.105*H,.150*H,sides=6))],self.part('tunic'),'spine',False,True)
-        hem,belt=h['tunic_hem'],h['belt']+.008*H
-        rings=[self.ring(.151*H,.182*H),self.ring(.133*H,.163*H)]
-        verts=[(x,y,z+(.035*H if row==0 and i in (0,4) else 0))
-               for row,(z,ring) in enumerate(zip((hem,belt),rings)) for i,(x,y) in enumerate(ring)]
-        faces=[(i,(i+1)%8,8+(i+1)%8,8+i) for i in range(8)]
-        uv=[[(0,0),(1,0),(1,1),(0,1)]]*8
-        base.mesh('split_tabard_skirt',verts,faces,uv,self.part('tunic'),'root')
-        belt_ob=self.profile('belt',[(h['belt']-.020*H,self.ring(.138*H,.169*H)),
-            (h['belt']+.020*H,self.ring(.138*H,.169*H))],self.part('belt'),'spine',False,False)
+        body_scale = {'clothed': 1, 'fitted': .80, 'bones': .41}[style]
+        self.profile('tabard_body', [(h['belt'], self.ring(.133*H*body_scale,.163*H*body_scale,sides=6)),
+            (h['shoulder'], self.ring(.105*H*body_scale,.150*H*body_scale,.05*H if style == 'fitted' else 0,sides=6))],
+            self.part('tunic'), 'spine', False, True)
+        if style == 'clothed':
+            hem,belt=h['tunic_hem'],h['belt']+.008*H
+            rings=[self.ring(.151*H,.182*H),self.ring(.133*H,.163*H)]
+            verts=[(x,y,z+(.035*H if row==0 and i in (0,4) else 0))
+                   for row,(z,ring) in enumerate(zip((hem,belt),rings)) for i,(x,y) in enumerate(ring)]
+            faces=[(i,(i+1)%8,8+(i+1)%8,8+i) for i in range(8)]
+            uv=[[(0,0),(1,0),(1,1),(0,1)]]*8
+            base.mesh('split_tabard_skirt',verts,faces,uv,self.part('tunic'),'root')
+        belt_scale = max(.75, body_scale)
+        belt_ob=self.profile('belt',[(z,self.ring(.138*H*belt_scale,.169*H*belt_scale))
+            for z in (h['belt']-.020*H, h['belt']+.020*H)],self.part('belt'),'spine',False,False)
         self.leather_uv(belt_ob)
         if 'buckle_uv_part' in self.parts['belt']:
             base.box('belt_buckle',(.141*H,0,h['belt']),(.022*H,.075*H,.055*H),self.part('belt','buckle_uv_part'),'spine')
@@ -278,7 +282,7 @@ class ChibiBody:
             far=side=='r'
             for segment,part,radius in (('thigh_',self.part('legs'),.047*H),('shin_',self.part('legs'),.045*H),
                 ('upper_arm_',self.part('sleeves'),.051*H),('forearm_',self.part('sleeves'),.046*H)):
-                self.limb(segment+side,radius,part,far)
+                self.limb(segment+side,radius*(.76 if style == 'bones' else 1),part,far)
             ankle=base.REST['foot_'+side][0]
             foot_offset=ankle.z-self.ankle_z if not include_head else 0
             length=self.width['foot_length']
