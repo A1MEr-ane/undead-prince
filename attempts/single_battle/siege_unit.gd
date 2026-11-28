@@ -338,7 +338,7 @@ func tick_cavalry() -> bool:
 		charge_target.deal_damage({"damage": float(cfg.damage) * float(cfg.charge_damage_scale),
 			"knockback": float(cfg.charge_knockback), "stun": float(cfg.charge_stun), "dir": facing, "source": self})
 		charge_target = null
-		play("attack")
+		play("charge_impact")
 		main.note("cavalry_charge_hit")
 	else:
 		walk_dir = delta.normalized()

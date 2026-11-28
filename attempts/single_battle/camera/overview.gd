@@ -42,7 +42,7 @@ func _draw() -> void:
 		draw_circle(p, 5, c)
 		if observer.latest.has(id):
 			draw_arc(p, 10 + 2 * sin(Time.get_ticks_msec() * 0.008), 0, TAU, 24, Color("ffb87c"), 2)
-		text_at(p + Vector2(9, -5), "%d %s" % [observer.ids.find(id) + 1, zone.label], c)
+		text_at(p + Vector2(9, -5), zone.label, c)
 		text_at(p + Vector2(9, 13), "%s · 亡%d / 守%d" % [observer.zone_status(id), observer.counts[id][0], observer.counts[id][1]], Color("ffffff"), 14)
 	for r in world.params.map.wall_rects:
 		draw_rect(rectangle(r), Color("#878783"))

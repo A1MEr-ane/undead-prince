@@ -81,5 +81,5 @@ func evaluate() -> void:
 	check(bool(shield_hit.shield_fx), "没有招架时没有记录盾牌特效")
 	check(valid.events.get("clash", 0) >= 1, "有效拼刀没有产生 clash 事件")
 	check(parried.events.get("parry", 0) >= 1, "招架没有产生 parry 事件")
-	note("有效拼刀 %s；反向 %s；无效拼刀 %s（这是待修 bug）" % [JSON.stringify(valid), JSON.stringify(reverse), JSON.stringify(invalid)])
+	note("有效拼刀 %s；反向 %s；进度差过大 %s" % [JSON.stringify(valid), JSON.stringify(reverse), JSON.stringify(invalid)])
 	note("招架 %s；无招架正面 %s" % [JSON.stringify(parried), JSON.stringify(shield_hit)])

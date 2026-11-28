@@ -22,12 +22,21 @@ func setup(main) -> void:
 	sea.shader = SEA_SHADER
 	var scene_path: String = world.params.view.get("terrain_scene", "")
 	if not scene_path.is_empty():
-		var packed := load(scene_path) as PackedScene
-		imported = packed.instantiate() as Node3D
+		imported = (load(scene_path) as PackedScene).instantiate() as Node3D
 		add_child(imported)
-		if imported.has_method("set_battle_state"):
-			return
-	build_fallback()
+		var deploy: Array = world.params.map.deploy_rect
+		var outline := Ink.new()
+		var color := Color("#527d71")
+		var y := float(world.params.map.base_height) + 0.06
+		var near := Vector3(float(deploy[0]) + 0.15, y, float(deploy[1]) + 0.15)
+		var far := Vector3(near.x + float(deploy[2]) - 0.3, y, near.z + float(deploy[3]) - 0.3)
+		var corners := [near, Vector3(far.x, y, near.z), far, Vector3(near.x, y, far.z)]
+		for i in corners.size():
+			outline.stroke(corners[i], corners[(i + 1) % corners.size()], 0.055, color)
+		outline.instance(self, "登陆区", ink)
+	else:
+		build_fallback()
+	build_banners()
 
 func build_fallback() -> void:
 	var map = world.terrain
@@ -86,28 +95,21 @@ func build_fallback() -> void:
 	for id in world.phase_b.walls:
 		structures[id] = wall(world.phase_b.walls[id].rect, Color("#75716b"), id)
 	var wall_body := Ink.new()
+	var has_wall := false
 	for rect in cfg.wall_rects:
 		for t in map.rect_cells(rect):
 			var p := Vector3(t.x + 0.5, 0, t.y + 0.5)
-			if not map.land[map.index(t)] or structures_at(p):
+			if structures_at(p):
 				continue
+			has_wall = true
 			p.y = map.height_at(p) + 0.85
-			wall_body.block(p, Vector3(1, 1.7, 1), Color("#6d6b67"))
+			var foot := p.y - 0.85 if map.is_land_at(p) else -0.24
+			var top := p.y + 0.85
+			wall_body.block(Vector3(p.x, (top + foot) * 0.5, p.z), Vector3(1, top - foot, 1), Color("#6d6b67"))
 			wall_body.block(p + Vector3.UP * 0.87, Vector3(0.9, 0.17, 1.06), Color("#9a9080"))
-	wall_body.instance(self, "完整城墙", ink)
+	if has_wall:
+		wall_body.instance(self, "完整城墙", ink)
 	var props := Ink.new()
-	for z in cfg.zones:
-		var p: Vector3 = world.zone_point(z.id)
-		p.y = map.height_at(p)
-		props.block(p + Vector3.UP * 0.94, Vector3(0.09, 1.88, 0.09), Color("#9b8970"))
-		var node := MeshInstance3D.new()
-		var mesh := QuadMesh.new()
-		mesh.size = Vector2(0.96, 0.50)
-		node.mesh = mesh
-		node.material_override = solid(Color("#bc9873"))
-		node.position = p + Vector3(0.46, 1.61, 0)
-		banners[z.id] = node
-		add_child(node)
 	for key in ["port", "cave_a", "cave_b"]:
 		if key != "port" and not cfg.cave_enabled:
 			continue
@@ -117,7 +119,7 @@ func build_fallback() -> void:
 			props.block(p + Vector3(1.45, -0.04, 0), Vector3(3.68, 0.19, 2.2), Color("#776553"))
 		else:
 			props.block(p + Vector3(0.49, 0.31, 0), Vector3(0.35, 0.62, 0.74), Color("#232b31"))
-	props.instance(self, "旗杆与码头", ink)
+	props.instance(self, "码头与山洞", ink)
 	ship = Node3D.new()
 	ship_origin = map.vec(cfg.boat)
 	ship.position = ship_origin
@@ -128,6 +130,22 @@ func build_fallback() -> void:
 	hull.quad(Vector3(0, 0.66, -0.95), Vector3(0, 0.63, 0.87),
 		Vector3(0, 1.57, 0.50), Vector3(0, 1.65, -0.28), Color("#9e9985"))
 	hull.instance(ship, "撤离船", ink)
+
+func build_banners() -> void:
+	var poles := Ink.new()
+	for id in world.zones:
+		var p: Vector3 = world.zone_point(id)
+		p.y = world.terrain.height_at(p)
+		poles.block(p + Vector3.UP * 0.94, Vector3(0.09, 1.88, 0.09), Color("#9b8970"))
+		var node := MeshInstance3D.new()
+		var mesh := QuadMesh.new()
+		mesh.size = Vector2(0.96, 0.50)
+		node.mesh = mesh
+		node.material_override = solid(Color("#bc9873"))
+		node.position = p + Vector3(0.46, 1.61, 0)
+		banners[id] = node
+		add_child(node)
+	poles.instance(self, "战区旗杆", ink)
 
 func structures_at(p: Vector3) -> bool:
 	var map = world.terrain
@@ -185,25 +203,22 @@ func sync() -> void:
 	var dawn := smoothstep(0.30, 1.0, hour)
 	var midnight := smoothstep(0.0, 0.27, hour) * (1.0 - dawn)
 	sprite_light = Color("#c6ccdb").lerp(Color("#fff1d5"), dawn)
-	if imported != null and imported.has_method("set_night_progress"):
-		imported.set_night_progress(hour)
-	if imported != null and imported.has_method("set_battle_state"):
-		var state := {"gate": "broken" if world.terrain.gate_broken else "open" if world.terrain.gate_open else "closed",
-			"breaches": {"weak": world.terrain.weak_broken}, "owners": {}, "boat_seconds": 0.0}
-		for id in world.phase_b.walls:
-			state.breaches[id] = world.phase_b.walls[id].broken
-		for id in world.zones:
-			state.owners[id] = world.zones[id].owner
-		if world.retreat_started:
-			state.boat_seconds = clampf(world.time - world.boat_depart_at, 0.0, float(world.params.retreat.boat_sail_seconds))
-		if state != last_topology:
-			imported.set_battle_state(state)
-			last_topology = state
-		return
 	var exposure := Vector3(0.74, 0.84, 0.98).lerp(Vector3(0.61, 0.74, 0.90), midnight)
 	exposure = exposure.lerp(Vector3(1.17, 1.16, 1.11), dawn)
 	ink.set_shader_parameter("exposure", exposure)
 	ink.set_shader_parameter("air", Vector3(0.027, 0.046, 0.066).lerp(Vector3(0.071, 0.074, 0.076), dawn))
+	for id in banners:
+		banners[id].material_override.albedo_color = Color("#65b6a0") if world.zones[id].owner == "ghost" else Color("#bd9974")
+	var sail_seconds := float(world.params.retreat.boat_sail_seconds)
+	var sailing := clampf(world.time - world.boat_depart_at, 0.0, sail_seconds) if world.retreat_started else 0.0
+	if imported != null:
+		imported.set_time(hour)
+		sync_structure("gate", "broken" if world.terrain.gate_broken else "open" if world.terrain.gate_open else "closed")
+		sync_structure("weak_wall", "breached" if world.terrain.weak_broken else "intact")
+		for id in world.phase_b.walls:
+			sync_structure(id, "breached" if world.phase_b.walls[id].broken else "intact")
+		imported.set_boat_progress(sailing / sail_seconds)
+		return
 	sea.set_shader_parameter("clock", world.time)
 	sea.set_shader_parameter("dawn", dawn)
 	sea.set_shader_parameter("water", Color("#283e4b").lerp(Color("#203647"), midnight).lerp(Color("#526974"), dawn))
@@ -215,10 +230,12 @@ func sync() -> void:
 	structures.weak.visible = not world.terrain.weak_broken
 	for id in world.phase_b.walls:
 		structures[id].visible = not world.phase_b.walls[id].broken
-	for id in banners:
-		banners[id].material_override.albedo_color = Color("#65b6a0") if world.zones[id].owner == "ghost" else Color("#bd9974")
-	if world.retreat_started:
-		ship.position.x = ship_origin.x + clampf(world.time - world.boat_depart_at, 0.0, float(world.params.retreat.boat_sail_seconds)) * 2.5
+	ship.position.x = ship_origin.x + sailing * 2.5
+
+func sync_structure(id: String, state: String) -> void:
+	if last_topology.get(id) != state:
+		imported.set_structure_state(id, state)
+		last_topology[id] = state
 
 static func solid(color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

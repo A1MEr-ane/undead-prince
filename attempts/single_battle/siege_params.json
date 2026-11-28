@@ -481,6 +481,7 @@
     "animation_lengths": {
       "idle": 0.667,
       "attack": 0.6,
+      "charge_impact": 0.6,
       "clash": 0.35,
       "parry": 0.65,
       "fall": 0.35,

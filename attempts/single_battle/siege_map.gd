@@ -22,11 +22,25 @@ var flow_repairs := 0
 var repaired_cells := 0
 var topology_events: Array = []
 var battle_cells := {}
+var surfaces: Array[Dictionary] = []
+var top_height := 0.0
 
 func setup(params: Dictionary) -> void:
 	cfg = params.map
 	width = int(cfg.width)
 	depth = int(cfg.depth)
+	top_height = maxf(float(cfg.highland_height), maxf(float(cfg.keep_height), float(cfg.base_height)))
+	for region: Dictionary in cfg.get("surfaces", []):
+		var rim := PackedVector2Array()
+		for coordinate: Array in region.rim:
+			rim.append(Vector2(coordinate[0], coordinate[1]))
+		var surface := region.duplicate()
+		surface.rim = rim
+		surfaces.append(surface)
+		if surface.has("grade"):
+			top_height = maxf(top_height, maxf(float(surface.grade.from[1]), float(surface.grade.to[1])))
+		else:
+			top_height = maxf(top_height, float(surface.height))
 	land.resize(width * depth)
 	blocked.resize(width * depth)
 	for r in cfg.land_rects:
@@ -140,6 +154,17 @@ func is_fall_edge(a: Vector3, b: Vector3) -> bool:
 	return walkable(t) and height_at(a) - height_at(b) >= float(cfg.water_fall_depth)
 
 func height_at(p: Vector3) -> float:
+	if not surfaces.is_empty():
+		for surface in surfaces:
+			if not Geometry2D.is_point_in_polygon(Vector2(p.x, p.z), surface.rim):
+				continue
+			if not surface.has("grade"):
+				return float(surface.height)
+			var grade: Dictionary = surface.grade
+			var coordinate := p.x if grade.axis == "x" else p.z
+			var t := clampf(inverse_lerp(float(grade.from[0]), float(grade.to[0]), coordinate), 0.0, 1.0)
+			return lerpf(float(grade.from[1]), float(grade.to[1]), t)
+		return float(cfg.base_height)
 	for section in cfg.get("height_rects", []):
 		if in_rect(p, section.rect):
 			return float(section.height)
@@ -148,6 +173,28 @@ func height_at(p: Vector3) -> float:
 	if in_rect(p, cfg.keep_rect):
 		return float(cfg.keep_height)
 	return float(cfg.base_height)
+
+func pick_surface(origin: Vector3, direction: Vector3) -> Vector3:
+	# Sample only the slice that contains the ground. Refine the first intersection on slopes.
+	var above = Plane(Vector3.UP, top_height + 0.01).intersects_ray(origin, direction)
+	var below = Plane(Vector3.UP, float(cfg.base_height) - 0.01).intersects_ray(origin, direction)
+	if above == null or below == null:
+		return Vector3.INF
+	var steps := maxi(1, ceili(above.distance_to(below) / 0.12))
+	var left: Vector3 = above
+	for i in range(1, steps + 1):
+		var right: Vector3 = above.lerp(below, float(i) / steps)
+		if is_land_at(right) and right.y <= height_at(right):
+			for refinement in 8:
+				var middle := left.lerp(right, 0.5)
+				if is_land_at(middle) and middle.y <= height_at(middle):
+					right = middle
+				else:
+					left = middle
+			right.y = height_at(right)
+			return right if is_walkable_at(right) else Vector3.INF
+		left = right
+	return Vector3.INF
 
 func zone_at(p: Vector3) -> String:
 	for z in cfg.zones:

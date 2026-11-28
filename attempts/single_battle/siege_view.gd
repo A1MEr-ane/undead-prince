@@ -140,6 +140,7 @@ func build_ui() -> void:
 	for id in observer.ids:
 		var button := button_to(alert_column, str(observer.cfg.zones[id].label), select_zone.bind(id, "label"))
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.toggle_mode = true
 		zone_buttons[id] = button
 
 	var footer := dock(0.5, 1.0, 0.5, 1.0, -344, -134, 344, -16)
@@ -169,10 +170,13 @@ func build_ui() -> void:
 		var kind: String = entry[0]
 		var button := button_to(controls, "%d  %s\n%s 冥火" % [i + 1, entry[1], cost_text(main.phase_b.cost(kind))], select_kind.bind(kind))
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.toggle_mode = true
 		button.tooltip_text = entry[2]
 		unit_cards[kind] = button
 	rally_button = button_to(controls, "集结  F\n%s 冥火" % cost_text(float(main.params.economy.rally_cost)), select_command.bind(Command.RALLY))
 	spell_button = button_to(controls, "", select_command.bind(Command.SPELL))
+	rally_button.toggle_mode = true
+	spell_button.toggle_mode = true
 	hint = label_to(command_stack, "", 14)
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
@@ -280,7 +284,8 @@ func select_kind(kind: String) -> void:
 
 func select_command(value: Command) -> void:
 	cancel_deploy()
-	if not expanded and main.outcome == main.Outcome.ACTIVE:
+	var button := rally_button if value == Command.RALLY else spell_button
+	if not expanded and not button.disabled:
 		command = Command.DEPLOY if command == value else value
 
 func _input(event: InputEvent) -> void:
@@ -332,6 +337,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func mouse_world(screen: Vector2) -> Vector3:
 	var origin := camera.project_ray_origin(screen)
 	var normal := camera.project_ray_normal(screen)
+	if not main.terrain.surfaces.is_empty():
+		return main.terrain.pick_surface(origin, normal)
 	var map: Dictionary = main.params.map
 	var heights: Array = [map.base_height, map.highland_height, map.keep_height]
 	for section in map.get("height_rects", []):
@@ -389,6 +396,7 @@ func refresh(alpha := 1.0) -> void:
 			marker.position = ground(Vector3(cast.point[0], 0, cast.point[1])) + Vector3.UP * 0.09
 
 func refresh_hud() -> void:
+	var can_play: bool = not watch and main.bot == null and main.outcome == main.Outcome.ACTIVE
 	var label: String = observer.cfg.zones[observer.current].label
 	zone_label.text = label + "  ·  " + observer.zone_status(observer.current)
 	var remaining := ceili(maxf(0, float(main.params.simulation.night_seconds) - main.time))
@@ -405,17 +413,14 @@ func refresh_hud() -> void:
 		button.modulate = GOLD if not notice.is_empty() else Color.WHITE
 	for kind in unit_cards:
 		var button: Button = unit_cards[kind]
-		button.disabled = not main.phase_b.available(kind) or main.fire < main.phase_b.cost(kind)
+		button.disabled = not can_play or not main.phase_b.available(kind) or main.fire < main.phase_b.cost(kind)
 		button.set_pressed_no_signal(command == Command.DEPLOY and kind == main.selected_kind)
-		button.toggle_mode = true
-	rally_button.toggle_mode = true
 	rally_button.set_pressed_no_signal(command == Command.RALLY)
-	rally_button.disabled = main.fire < float(main.params.economy.rally_cost)
+	rally_button.disabled = not can_play or main.fire < float(main.params.economy.rally_cost)
 	var name: String = main.params.spell.active
 	var left: int = int(main.params.spell.charges) - main.spell_uses
-	spell_button.toggle_mode = true
 	spell_button.set_pressed_no_signal(command == Command.SPELL)
-	spell_button.disabled = left <= 0 or main.fire < float(main.params.spell[name].cost)
+	spell_button.disabled = not can_play or left <= 0 or main.fire < float(main.params.spell[name].cost)
 	spell_button.text = "%s G  %d/%d\n%s 冥火" % ["狂化" if name == "frenzy" else "虚弱", left, int(main.params.spell.charges), cost_text(float(main.params.spell[name].cost))]
 	match command:
 		Command.RALLY: hint.text = "点击地面集结  ·  右键取消"
@@ -432,8 +437,9 @@ func refresh_hud() -> void:
 
 func refresh_units(alpha: float) -> void:
 	for u in main.units:
-		var bones: bool = not u.alive and u.bones_until > main.time
-		var dead: bool = not u.alive and not u.escaped and u.anim_name == "death" and main.time < u.death_at + 0.45
+		var death_length := float(sprites.clip_for(u.kind, "death").get("duration", 0.45))
+		var dead: bool = not u.alive and not u.escaped and u.anim_name == "death" and main.time < u.death_at + death_length
+		var bones: bool = not dead and not u.alive and u.bones_until > main.time
 		var visible_here: bool = (u.alive and u.cave_until < 0.0) or bones or dead
 		if not visible_here:
 			if actors.has(u.id):
@@ -454,18 +460,17 @@ func refresh_units(alpha: float) -> void:
 		var sprite: Sprite3D = actor.sprite
 		var action := "idle"
 		var clock: float = main.time
-		var looping := true
 		if dead:
 			action = "death"
 			clock = main.time - u.death_at
-			looping = false
-		elif not bones:
+		elif bones:
+			action = "bone_pile"
+		else:
 			action = pose_for(u)
-			looping = action in ["idle", "walk", "retreat", "stealth", "down", "charge"]
-			clock = main.time + float(u.id) * 0.13 if looping else u.anim_t
+			clock = main.time + float(u.id) * 0.13 if action in ["idle", "walk", "retreat", "stealth"] else u.anim_t
 			if action == "hurt":
 				clock = float(main.params.combat.animation_lengths.hurt) - (u.hurt_until - main.time)
-		var art := sprites.appearance("bones" if bones else u.kind, action, clock, looping)
+		var art := sprites.appearance(u.kind, action, clock)
 		sprite.texture = art.texture
 		sprite.pixel_size = float(main.params.view.sprite_heights[u.kind]) / float(art.height)
 		sprite.offset = Vector2(sprite.texture.get_width() * 0.5 - art.foot.x, art.foot.y - sprite.texture.get_height() * 0.5)
@@ -478,7 +483,7 @@ func refresh_units(alpha: float) -> void:
 		if not bones and not sprites.atlases.has(u.kind):
 			if action in ["walk", "charge", "retreat", "stealth"]:
 				hop = absf(sin(u.walked * 3.9)) * float(main.params.combat.hop_height)
-			elif action in ["attack", "backstab", "slam", "sweep", "cast", "hurt"]:
+			elif action in ["attack", "backstab", "slam", "sweep", "cast", "hurt", "parry", "charge_impact"]:
 				tilt = sin(clampf(clock * 4.0, 0, PI)) * 0.19 * (-1 if sprite.flip_h else 1)
 			elif action in ["fall", "down", "death", "launch"]:
 				tilt = -1.05 * smoothstep(0.01, 0.24, clock)
@@ -497,8 +502,8 @@ func refresh_units(alpha: float) -> void:
 			sprite.modulate = sprite.modulate.lerp(effect_color("frenzy"), 0.35)
 		elif main.time < u.weakness_until:
 			sprite.modulate = sprite.modulate.lerp(effect_color("weakness"), 0.35)
-		if dead:
-			sprite.modulate.a *= 1.0 - clock / 0.45
+		if dead and u.bones_until < 0.0:
+			sprite.modulate.a *= 1.0 - smoothstep(death_length * 0.72, death_length, clock)
 		actor.stun.visible = u.targetable() and u.faction == 1 and u.stun_until > main.time and u.spell_stun_until > main.time
 		actor.stun.position.y = float(main.params.view.sprite_heights[u.kind]) * 0.88
 
@@ -510,8 +515,10 @@ func pose_for(u) -> String:
 		return u.anim_name
 	if main.time < u.hurt_until: return "hurt"
 	if u.charge_target != null: return "charge"
-	if u.anim_name in ["attack", "shoot", "backstab", "slam", "sweep", "cast"] and u.anim_t < 0.48:
-		return u.anim_name
+	if u.anim_name in ["attack", "shoot", "backstab", "slam", "sweep", "cast", "parry", "clash", "charge_impact"]:
+		var duration := float(sprites.clip_for(u.kind, u.anim_name).get("duration", 0.48))
+		if u.anim_t < duration:
+			return u.anim_name
 	if u.walk_dir.length_squared() > 0.03:
 		return "stealth" if u.kind == "assassin" and not main.phase_b.visible(u) else "walk"
 	return "idle"
