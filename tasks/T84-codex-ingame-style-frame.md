@@ -2,7 +2,7 @@
 id: T84
 title: 局内风格样张（G4）：一个战区按目标画风在引擎里做出来
 owner: codex
-status: queued
+status: done
 branch: codex/t84-style-frame
 worktree: ../亡魂王子-t84
 images: [/Users/cyy/Projects/亡魂王子/art/style/battle_mock.png, /Users/cyy/Projects/亡魂王子/art/units/chibi_lineup.png]

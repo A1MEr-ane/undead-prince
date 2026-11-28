@@ -2,7 +2,7 @@
 id: T81
 title: 攻城原型行动逻辑修正（按 behavior-goals 第 1–3 节）
 owner: codex
-status: queued
+status: done
 branch: codex/t81-behavior
 worktree: ../亡魂王子-t81
 allowed: [proto/siege/, tools/verify/proto_siege.sh]
