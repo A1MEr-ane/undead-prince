@@ -2,7 +2,7 @@
 id: T79
 title: 结局 E06 重画（新构图，无文书）
 owner: codex
-status: queued
+status: done
 branch: codex/t79-e06
 worktree: ../亡魂王子-t79
 images: []
